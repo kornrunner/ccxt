@@ -1,0 +1,12 @@
+<?php
+
+require_once '../vendor/autoload.php';
+
+date_default_timezone_set ('UTC');
+
+// instantiate the exchange by id
+$exchange = '\\ccxt\\kraken';
+$exchange = new $exchange ();
+var_dump ($exchange->fetch_order_book ('BTC/USD', array (
+    'count' => 10, // up to ten order on each side for example
+)));
