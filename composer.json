@@ -224,6 +224,6 @@
         "classmap": ["src"]
     },
     "require": {
-        "php": ">=5.3.0"
+        "php": "^7.1"
     }
 }

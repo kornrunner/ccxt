@@ -351,11 +351,11 @@ class Exchange {
         preg_match ($regex, $timestamp, $matches);
         array_shift ($matches);
         list ($yyyy, $mm, $dd, $h, $m, $s) = $matches;
-        $ms = @$matches[6] ? $matches[6] : '.000';
-        $sign = @$matches[7] ? $matches[7] : '';
-        $sign = intval ($sign . '1');
-        $hours = @$matches[8] ? intval ($matches[8]) * $sign : 0;
-        $minutes = @$matches[9] ? intval ($matches[9]) * $sign : 0;
+        $ms = $matches[6] ?? '.000';
+        $sign = $matches[7] ?? 0;
+        $sign = intval ($sign . 1);
+        $hours = (int) ($matches[8] ?? 0);
+        $minutes = (int) ($matches[9] ?? 0);
         // $ms = $ms or '.000';
         // $sign = $sign or '';
         // $sign = intval ($sign . '1');
