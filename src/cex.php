@@ -83,30 +83,30 @@ class cex extends Exchange {
             $id = $market['symbol1'] . '/' . $market['symbol2'];
             $symbol = $id;
             list ($base, $quote) = explode ('/', $symbol);
-            $precision = array (
-                'price' => 4,
-                'amount' => -1 * log10 ($market['minLotSize']),
-            );
-            $amountLimits = array (
-                'min' => $market['minLotSize'],
-                'max' => $market['maxLotSize'],
-            );
-            $priceLimits = array (
-                'min' => $market['minPrice'],
-                'max' => $market['maxPrice'],
-            );
-            $limits = array (
-                'amount' => $amountLimits,
-                'price' => $priceLimits,
-            );
             $result[] = array (
                 'id' => $id,
+                'info' => $market,
                 'symbol' => $symbol,
                 'base' => $base,
                 'quote' => $quote,
-                'precision' => $precision,
-                'limits' => $limits,
-                'info' => $market,
+                'precision' => array (
+                    'price' => $this->precision_from_string($market['minPrice']),
+                    'amount' => -1 * log10 ($market['minLotSize']),
+                ),
+                'limits' => array (
+                    'amount' => array (
+                        'min' => $market['minLotSize'],
+                        'max' => $market['maxLotSize'],
+                    ),
+                    'price' => array (
+                        'min' => floatval ($market['minPrice']),
+                        'max' => floatval ($market['maxPrice']),
+                    ),
+                    'cost' => array (
+                        'min' => $market['minLotSizeS2'],
+                        'max' => null,
+                    ),
+                ),
             );
         }
         return $result;
@@ -116,8 +116,9 @@ class cex extends Exchange {
         $this->load_markets();
         $balances = $this->privatePostBalance ();
         $result = array ( 'info' => $balances );
-        for ($c = 0; $c < count ($this->currencies); $c++) {
-            $currency = $this->currencies[$c];
+        $currencies = array_keys ($this->currencies);
+        for ($i = 0; $i < count ($currencies); $i++) {
+            $currency = $currencies[$i];
             if (array_key_exists ($currency, $balances)) {
                 $account = array (
                     'free' => floatval ($balances[$currency]['available']),
@@ -209,9 +210,9 @@ class cex extends Exchange {
 
     public function fetch_tickers ($symbols = null, $params = array ()) {
         $this->load_markets();
-        $currencies = implode ('/', $this->currencies);
+        $currencies = array_keys ($this->currencies);
         $response = $this->publicGetTickersCurrencies (array_merge (array (
-            'currencies' => $currencies,
+            'currencies' => implode ('/', $currencies),
         ), $params));
         $tickers = $response['data'];
         $result = array ();
@@ -264,10 +265,18 @@ class cex extends Exchange {
             'type' => $side,
             'amount' => $amount,
         );
-        if ($type == 'limit')
+        if ($type == 'limit') {
             $order['price'] = $price;
-        else
+        } else {
+            // for market buy CEX.io requires the $amount of quote currency to spend
+            if ($side == 'buy') {
+                if (!$price) {
+                    throw new InvalidOrder ('For market buy orders ' . $this->id . " requires the $amount of quote currency to spend, to calculate proper costs call createOrder ($symbol, 'market', 'buy', $amount, $price)");
+                }
+                $order['amount'] = $amount * $price;
+            }
             $order['order_type'] = $type;
+        }
         $response = $this->privatePostPlaceOrderPair (array_merge ($order, $params));
         return array (
             'info' => $response,

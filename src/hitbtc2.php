@@ -108,12 +108,14 @@ class hitbtc2 extends hitbtc {
     }
 
     public function common_currency_code ($currency) {
-        if ($currency == 'XBT')
-            return 'BTC';
-        if ($currency == 'DRK')
-            return 'DASH';
         if ($currency == 'CAT')
             return 'BitClave';
+        return $currency;
+    }
+
+    public function currency_id ($currency) {
+        if ($currency == 'BitClave')
+            return 'CAT';
         return $currency;
     }
 
@@ -146,6 +148,7 @@ class hitbtc2 extends hitbtc {
                 'symbol' => $symbol,
                 'base' => $base,
                 'quote' => $quote,
+                'active' => true,
                 'lot' => $lot,
                 'step' => $step,
                 'taker' => $taker,
@@ -161,7 +164,7 @@ class hitbtc2 extends hitbtc {
                         'max' => null,
                     ),
                     'cost' => array (
-                        'min' => null,
+                        'min' => $lot * $step,
                         'max' => null,
                     ),
                 ),
@@ -332,10 +335,13 @@ class hitbtc2 extends hitbtc {
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $clientOrderId = $this->milliseconds ();
+        $clientOrderId = $this->uuid ();
+        // their max accepted length is 32 characters
+        $clientOrderId = str_replace ('-', '', $clientOrderId);
+        $clientOrderId = mb_substr ($clientOrderId, 0, 32);
         $amount = floatval ($amount);
         $request = array (
-            'clientOrderId' => (string) $clientOrderId,
+            'clientOrderId' => $clientOrderId,
             'symbol' => $market['id'],
             'side' => $side,
             'quantity' => $this->amount_to_precision($symbol, $amount),
@@ -382,14 +388,24 @@ class hitbtc2 extends hitbtc {
         } else if ($status == 'filled') {
             $status = 'closed';
         }
+        $id = (string) $order['clientOrderId'];
+        $price = $this->safe_float($order, 'price');
+        if ($price === null) {
+            if (array_key_exists ($id, $this->orders))
+                $price = $this->orders[$id].price;
+        }
         $remaining = null;
+        $cost = null;
         if ($amount !== null) {
             if ($filled !== null) {
                 $remaining = $amount - $filled;
+                if ($price !== null) {
+                    $cost = $filled * $price;
+                }
             }
         }
         return array (
-            'id' => (string) $order['clientOrderId'],
+            'id' => $id,
             'timestamp' => $created,
             'datetime' => $this->iso8601 ($created),
             'created' => $created,
@@ -398,8 +414,9 @@ class hitbtc2 extends hitbtc {
             'symbol' => $symbol,
             'type' => $order['type'],
             'side' => $order['side'],
-            'price' => $this->safe_float($order, 'price'),
+            'price' => $price,
             'amount' => $amount,
+            'cost' => $cost,
             'filled' => $filled,
             'remaining' => $remaining,
             'fee' => null,
@@ -415,7 +432,15 @@ class hitbtc2 extends hitbtc {
         $numOrders = count ($response);
         if ($numOrders > 0)
             return $this->parse_order($response[0]);
-        throw OrderNotFound ($this->id . ' order ' . $id . ' not found');
+        throw new OrderNotFound ($this->id . ' order ' . $id . ' not found');
+    }
+
+    public function fetch_active_order ($id, $symbol = null, $params = array ()) {
+        $this->load_markets();
+        $response = $this->privateGetOrderClientOrderId (array_merge (array (
+            'clientOrderId' => $id,
+        ), $params));
+        return $this->parse_order($response);
     }
 
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -471,12 +496,40 @@ class hitbtc2 extends hitbtc {
         return $this->parse_trades($response, $market);
     }
 
+    public function create_deposit_address ($currency, $params = array ()) {
+        $currencyId = $this->currency_id ($currency);
+        $response = $this->privatePostAccountCryptoAddressCurrency (array (
+            'currency' => $currencyId,
+        ));
+        $address = $response['address'];
+        return array (
+            'currency' => $currency,
+            'address' => $address,
+            'status' => 'ok',
+            'info' => $response,
+        );
+    }
+
+    public function fetch_deposit_address ($currency, $params = array ()) {
+        $currencyId = $this->currency_id ($currency);
+        $response = $this->privateGetAccountCryptoAddressCurrency (array (
+            'currency' => $currencyId,
+        ));
+        $address = $response['address'];
+        return array (
+            'currency' => $currency,
+            'address' => $address,
+            'status' => 'ok',
+            'info' => $response,
+        );
+    }
+
     public function withdraw ($currency, $amount, $address, $params = array ()) {
-        $this->load_markets();
+        $currencyId = $this->currency_id ($currency);
         $amount = floatval ($amount);
         $response = $this->privatePostAccountCryptoWithdraw (array_merge (array (
-            'currency' => $currency,
-            'amount' => (string) $amount,
+            'currency' => $currencyId,
+            'amount' => $amount,
             'address' => $address,
         ), $params));
         return array (

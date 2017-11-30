@@ -38,7 +38,7 @@ class coinmarketcap extends Exchange {
                     ),
                 ),
             ),
-            'currencies' => array (
+            'currencyCodes' => array (
                 'AUD',
                 'BRL',
                 'CAD',
@@ -67,11 +67,12 @@ class coinmarketcap extends Exchange {
         $result = array ();
         for ($p = 0; $p < count ($markets); $p++) {
             $market = $markets[$p];
-            for ($c = 0; $c < count ($this->currencies); $c++) {
+            $currencies = $this->currencyCodes;
+            for ($i = 0; $i < count ($currencies); $i++) {
+                $quote = $currencies[$i];
+                $quoteId = strtolower ($quote);
                 $base = $market['symbol'];
                 $baseId = $market['id'];
-                $quote = $this->currencies[$c];
-                $quoteId = strtolower ($quote);
                 $symbol = $base . '/' . $quote;
                 $id = $baseId . '/' . $quote;
                 $result[] = array (
@@ -142,7 +143,9 @@ class coinmarketcap extends Exchange {
 
     public function fetch_tickers ($currency = 'USD', $params = array ()) {
         $this->load_markets();
-        $request = array ();
+        $request = array (
+            'limit' => 10000,
+        );
         if ($currency)
             $request['convert'] = $currency;
         $response = $this->publicGetTicker (array_merge ($request, $params));

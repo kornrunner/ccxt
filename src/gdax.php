@@ -217,6 +217,13 @@ class gdax extends Exchange {
         $symbol = null;
         if ($market)
             $symbol = $market['symbol'];
+        $fee = null;
+        if (array_key_exists ('fill_fees', $trade)) {
+            $fee = array (
+                'cost' => floatval ($trade['fill_fees']),
+                'currency' => $market['quote'],
+            );
+        }
         return array (
             'id' => (string) $trade['trade_id'],
             'info' => $trade,
@@ -227,6 +234,7 @@ class gdax extends Exchange {
             'side' => $side,
             'price' => floatval ($trade['price']),
             'amount' => floatval ($trade['size']),
+            'fee' => $fee,
         );
     }
 
@@ -458,9 +466,10 @@ class gdax extends Exchange {
             $nonce = (string) $this->nonce ();
             $payload = '';
             if ($method != 'GET') {
-                if ($query)
+                if ($query) {
                     $body = $this->json ($query);
                     $payload = $body;
+                }
             }
             // $payload = ($body) ? $body : '';
             $what = $nonce . $method . $request . $payload;

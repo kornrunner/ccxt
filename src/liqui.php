@@ -145,11 +145,13 @@ class liqui extends Exchange {
                 'price' => $priceLimits,
                 'cost' => $costLimits,
             );
+            $active = ($market['hidden'] == 0);
             $result[] = array_merge ($this->fees['trading'], array (
                 'id' => $id,
                 'symbol' => $symbol,
                 'base' => $base,
                 'quote' => $quote,
+                'active' => $active,
                 'taker' => $market['fee'] / 100,
                 'lot' => $amountLimits['min'],
                 'precision' => $precision,
@@ -448,9 +450,10 @@ class liqui extends Exchange {
             'order_id' => intval ($id),
         ), $params));
         $id = (string) $id;
-        $order = $this->parse_order(array_merge (array ( 'id' => $id ), $response['return'][$id]));
-        $this->orders[$id] = array_merge ($this->orders[$id], $order);
-        return $order;
+        $newOrder = $this->parse_order(array_merge (array ( 'id' => $id ), $response['return'][$id]));
+        $oldOrder = (array_key_exists ($id, $this->orders)) ? $this->orders[$id] : array ();
+        $this->orders[$id] = array_merge ($oldOrder, $newOrder);
+        return $this->orders[$id];
     }
 
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {

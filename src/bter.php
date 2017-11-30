@@ -106,8 +106,9 @@ class bter extends Exchange {
         $this->load_markets();
         $balance = $this->privatePostBalances ();
         $result = array ( 'info' => $balance );
-        for ($c = 0; $c < count ($this->currencies); $c++) {
-            $currency = $this->currencies[$c];
+        $currencies = array_keys ($this->currencies);
+        for ($i = 0; $i < count ($currencies); $i++) {
+            $currency = $currencies[$i];
             $code = $this->common_currency_code($currency);
             $account = $this->account ();
             if (array_key_exists ('available', $balance)) {
@@ -207,13 +208,13 @@ class bter extends Exchange {
             'type' => null,
             'side' => $trade['type'],
             'price' => $trade['rate'],
-            'amount' => $trade['amount'],
+            'amount' => $this->safe_float($trade, 'amount'),
         );
     }
 
     public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
-        $market = $this->market ($symbol);
         $this->load_markets();
+        $market = $this->market ($symbol);
         $response = $this->publicGetTradeHistoryId (array_merge (array (
             'id' => $market['id'],
         ), $params));

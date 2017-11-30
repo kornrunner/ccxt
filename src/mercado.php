@@ -56,6 +56,12 @@ class mercado extends Exchange {
                 'LTC/BRL' => array ( 'id' => 'BRLLTC', 'symbol' => 'LTC/BRL', 'base' => 'LTC', 'quote' => 'BRL', 'suffix' => 'Litecoin' ),
                 'BCH/BRL' => array ( 'id' => 'BRLBCH', 'symbol' => 'BCH/BRL', 'base' => 'BCH', 'quote' => 'BRL', 'suffix' => 'BCash' ),
             ),
+            'fees' => array (
+                'trading' => array (
+                    'maker' => 0.3 / 100,
+                    'taker' => 0.7 / 100,
+                ),
+            ),
         ));
     }
 
@@ -124,8 +130,9 @@ class mercado extends Exchange {
         $response = $this->privatePostGetAccountInfo ();
         $balances = $response['response_data']['balance'];
         $result = array ( 'info' => $response );
-        for ($c = 0; $c < count ($this->currencies); $c++) {
-            $currency = $this->currencies[$c];
+        $currencies = array_keys ($this->currencies);
+        for ($i = 0; $i < count ($currencies); $i++) {
+            $currency = $currencies[$i];
             $lowercase = strtolower ($currency);
             $account = $this->account ();
             if (array_key_exists ($lowercase, $balances)) {
