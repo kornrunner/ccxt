@@ -138,19 +138,19 @@ class Exchange {
     }
 
     public static function safe_float ($object, $key, $default_value = null) {
-        return (array_key_exists ($key, $object) && $object[$key]) ? floatval ($object[$key]) : $default_value;
+        return (is_array($object) && array_key_exists ($key, $object) && $object[$key]) ? floatval ($object[$key]) : $default_value;
     }
 
     public static function safe_string ($object, $key, $default_value = null) {
-        return (array_key_exists ($key, $object) && $object[$key]) ? strval ($object[$key]) : $default_value;
+        return (is_array($object) && array_key_exists ($key, $object) && $object[$key]) ? strval ($object[$key]) : $default_value;
     }
 
     public static function safe_integer ($object, $key, $default_value = null) {
-        return (array_key_exists ($key, $object) && $object[$key]) ? intval ($object[$key]) : $default_value;
+        return (is_array($object) && array_key_exists ($key, $object) && $object[$key]) ? intval ($object[$key]) : $default_value;
     }
 
     public static function safe_value ($object, $key, $default_value = null) {
-        return (array_key_exists ($key, $object) && $object[$key]) ? $object[$key] : $default_value;
+        return (is_array($object) && array_key_exists ($key, $object) && $object[$key]) ? $object[$key] : $default_value;
     }
 
     public static function truncate ($number, $precision = 0) {
@@ -974,10 +974,10 @@ class Exchange {
     public function parse_order_book ($orderbook, $timestamp = null, $bids_key = 'bids', $asks_key = 'asks', $price_key = 0, $amount_key = 1) {
         $timestamp = $timestamp ? $timestamp : $this->milliseconds ();
         return array (
-            'bids' => array_key_exists ($bids_key, $orderbook) ?
+            'bids' => is_array($orderbook) && array_key_exists ($bids_key, $orderbook) ?
                 $this->parse_bids_asks ($orderbook[$bids_key], $price_key, $amount_key) :
                 array (),
-            'asks' => array_key_exists ($asks_key, $orderbook) ?
+            'asks' => is_array($orderbook) && array_key_exists ($asks_key, $orderbook) ?
                 $this->parse_bids_asks ($orderbook[$asks_key], $price_key, $amount_key) :
                 array (),
             'timestamp' => $timestamp,
@@ -1036,7 +1036,7 @@ class Exchange {
 
     public function parse_trades ($trades, $market = null) {
         $result = array ();
-        $array = array_values ($trades);
+        $array = is_array($trades) ? array_values ($trades) : [];
         foreach ($array as $trade)
             $result[] = $this->parse_trade ($trade, $market);
         return $result;
