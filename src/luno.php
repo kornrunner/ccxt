@@ -9,7 +9,7 @@ class luno extends Exchange {
             'id' => 'luno',
             'name' => 'luno',
             'countries' => array ( 'GB', 'SG', 'ZA' ),
-            'rateLimit' => 3000,
+            'rateLimit' => 10000,
             'version' => '1',
             'hasCORS' => false,
             'hasFetchTickers' => true,

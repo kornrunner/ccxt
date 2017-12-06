@@ -463,6 +463,8 @@ class Exchange {
 
         $this->timeout     = 10000; // in milliseconds
         $this->proxy       = '';
+        $this->headers     = array ();
+
         $this->markets     = null;
         $this->symbols     = null;
         $this->ids         = null;
@@ -485,6 +487,7 @@ class Exchange {
         $this->userAgent   = 'ccxt/' . $version . ' (+https://github.com/ccxt/ccxt) PHP/' . PHP_VERSION;
         $this->substituteCommonCurrencyCodes = true;
         $this->timeframes = null;
+        $this->parseJsonResponse = true;
 
         $this->hasPublicAPI         = true;
         $this->hasPrivateAPI        = true;
@@ -655,6 +658,8 @@ class Exchange {
 
         if ($this->enableRateLimit)
             $this->throttle ();
+
+        $headers = array_merge ($this->headers, $headers ? $headers : array ());
 
         if (strlen ($this->proxy))
             $headers['Origin'] = '*';
@@ -828,35 +833,40 @@ class Exchange {
             }
         }
 
-        $this->last_json_response =
-            ((gettype ($result) == 'string') &&  (strlen ($result) > 1)) ?
-                json_decode ($result, $as_associative_array = true) : null;
+        if ($this->parseJsonResponse) {
 
-        if (!$this->last_json_response) {
+            $this->last_json_response =
+                ((gettype ($result) == 'string') &&  (strlen ($result) > 1)) ?
+                    json_decode ($result, $as_associative_array = true) : null;
 
-            if (preg_match ('#offline|busy|retry|wait|unavailable|maintain|maintenance|maintenancing#i', $result)) {
+            if (!$this->last_json_response) {
 
-                $details = '(possible reasons: ' . implode (', ', array (
-                    'exchange is down or offline',
-                    'on maintenance',
-                    'DDoS protection',
-                    'rate-limiting in effect',
-                )) . ')';
+                if (preg_match ('#offline|busy|retry|wait|unavailable|maintain|maintenance|maintenancing#i', $result)) {
 
-                $this->raise_error ('ExchangeNotAvailable', $url, $method, $http_status_code,
-                    'not accessible from this location at the moment', $details);
+                    $details = '(possible reasons: ' . implode (', ', array (
+                        'exchange is down or offline',
+                        'on maintenance',
+                        'DDoS protection',
+                        'rate-limiting in effect',
+                    )) . ')';
+
+                    $this->raise_error ('ExchangeNotAvailable', $url, $method, $http_status_code,
+                        'not accessible from this location at the moment', $details);
+                }
+
+                if (preg_match ('#cloudflare|incapsula#i', $result)) {
+                    $this->raise_error ('DDoSProtection', $url, $method, $http_status_code,
+                        'not accessible from this location at the moment');
+                }
             }
 
-            if (preg_match ('#cloudflare|incapsula#i', $result)) {
-                $this->raise_error ('DDoSProtection', $url, $method, $http_status_code,
-                    'not accessible from this location at the moment');
-            }
+            return $this->last_json_response;
         }
 
-        return $this->last_json_response;
+        return $result;
     }
 
-    public function set_markets ($markets) {
+    public function set_markets ($markets, $currencies = null) {
         $values = array_values ($markets);
         for ($i = 0; $i < count($values); $i++) {
             $values[$i] = array_merge (
@@ -872,24 +882,28 @@ class Exchange {
         sort ($this->symbols);
         $this->ids = array_keys ($this->markets_by_id);
         sort ($this->ids);
-        $base_currencies = array_map (function ($market) {
-            return array (
-                'id' => array_key_exists ('baseId', $market) ? $market['baseId'] : $market['base'],
-                'code' => $market['base'],
-            );
-        }, array_filter ($values, function ($market) {
-            return array_key_exists ('base', $market);
-        }));
-        $quote_currencies = array_map (function ($market) {
-            return array (
-                'id' => array_key_exists ('quoteId', $market) ? $market['quoteId'] : $market['quote'],
-                'code' => $market['base'],
-            );
-        }, array_filter ($values, function ($market) {
-            return array_key_exists ('quote', $market);
-        }));
-        $currencies = $this->indexBy (array_merge ($base_currencies, $quote_currencies), 'code');
-        $this->currencies = array_replace_recursive ($currencies, $this->currencies);
+        if ($currencies) {
+            $this->currencies = array_replace_recursive ($currencies, $this->currencies);
+        } else {
+            $base_currencies = array_map (function ($market) {
+                return array (
+                    'id' => array_key_exists ('baseId', $market) ? $market['baseId'] : $market['base'],
+                    'code' => $market['base'],
+                );
+            }, array_filter ($values, function ($market) {
+                return array_key_exists ('base', $market);
+            }));
+            $quote_currencies = array_map (function ($market) {
+                return array (
+                    'id' => array_key_exists ('quoteId', $market) ? $market['quoteId'] : $market['quote'],
+                    'code' => $market['base'],
+                );
+            }, array_filter ($values, function ($market) {
+                return array_key_exists ('quote', $market);
+            }));
+            $currencies = $this->indexBy (array_merge ($base_currencies, $quote_currencies), 'code');
+            $this->currencies = array_replace_recursive ($currencies, $this->currencies);
+        }
         return $this->markets;
     }
 
