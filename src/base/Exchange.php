@@ -1341,6 +1341,13 @@ class Exchange {
         return $this->common_currency_code ($currency);
     }
 
+    public function currency ($code) {
+        return ((gettype ($code) === 'string') &&
+                   isset ($this->currencies) &&
+                   isset ($this->currencies[$code])) ?
+                        $this->currencies[$code] : $code;
+    }
+
     public function market ($symbol) {
         return ((gettype ($symbol) === 'string') &&
                    isset ($this->markets)        &&
