@@ -225,5 +225,9 @@
     },
     "require": {
         "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "satooshi/php-coveralls": "^1.0"
     }
 }

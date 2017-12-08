@@ -171,7 +171,7 @@ class bithumb extends Exchange {
             $id = $ids[$i];
             $symbol = $id;
             $market = null;
-            if (array_key_exists ($id, $this->markets_by_id)) {
+            if (array_key_exists ($id, (array) $this->markets_by_id)) {
                 $market = $this->markets_by_id[$id];
                 $symbol = $market['symbol'];
             }

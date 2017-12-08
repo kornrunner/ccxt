@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ccxt Test Suite" tests="184" assertions="175" errors="9" failures="0" skipped="0" time="101.261538">
+    <testsuite name="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" tests="184" assertions="175" errors="9" failures="0" skipped="0" time="101.261538">
+      <testsuite name="ExchangeTest::testDescribe" tests="92" assertions="92" errors="0" failures="0" skipped="0" time="0.004470">
+        <testcase name="testDescribe with data set #0" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.002180"/>
+        <testcase name="testDescribe with data set #1" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000049"/>
+        <testcase name="testDescribe with data set #2" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000037"/>
+        <testcase name="testDescribe with data set #3" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000037"/>
+        <testcase name="testDescribe with data set #4" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000033"/>
+        <testcase name="testDescribe with data set #5" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000031"/>
+        <testcase name="testDescribe with data set #6" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000031"/>
+        <testcase name="testDescribe with data set #7" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000029"/>
+        <testcase name="testDescribe with data set #8" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #9" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #10" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000029"/>
+        <testcase name="testDescribe with data set #11" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #12" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #13" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #14" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #15" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #16" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #17" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #18" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #19" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #20" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #21" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #22" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #23" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #24" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #25" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #26" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #27" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #28" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #29" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #30" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #31" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #32" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #33" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000026"/>
+        <testcase name="testDescribe with data set #34" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000026"/>
+        <testcase name="testDescribe with data set #35" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #36" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #37" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #38" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #39" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #40" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #41" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #42" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #43" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000026"/>
+        <testcase name="testDescribe with data set #44" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #45" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #46" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #47" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #48" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #49" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #50" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #51" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #52" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #53" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #54" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #55" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #56" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #57" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000022"/>
+        <testcase name="testDescribe with data set #58" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #59" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #60" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #61" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #62" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #63" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #64" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #65" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #66" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #67" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #68" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000022"/>
+        <testcase name="testDescribe with data set #69" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #70" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #71" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #72" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #73" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #74" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #75" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #76" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #77" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #78" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #79" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #80" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+        <testcase name="testDescribe with data set #81" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #82" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000033"/>
+        <testcase name="testDescribe with data set #83" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #84" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #85" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #86" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000026"/>
+        <testcase name="testDescribe with data set #87" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000024"/>
+        <testcase name="testDescribe with data set #88" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000026"/>
+        <testcase name="testDescribe with data set #89" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000027"/>
+        <testcase name="testDescribe with data set #90" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000025"/>
+        <testcase name="testDescribe with data set #91" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="11" assertions="1" time="0.000023"/>
+      </testsuite>
+      <testsuite name="ExchangeTest::testFetchTicker" tests="92" assertions="83" errors="9" failures="0" skipped="0" time="101.257067">
+        <testcase name="testFetchTicker with data set #0" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000311"/>
+        <testcase name="testFetchTicker with data set #1" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000039"/>
+        <testcase name="testFetchTicker with data set #2" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="2.020271"/>
+        <testcase name="testFetchTicker with data set #3" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000081"/>
+        <testcase name="testFetchTicker with data set #4" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000048"/>
+        <testcase name="testFetchTicker with data set #5" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="2.669142"/>
+        <testcase name="testFetchTicker with data set #6" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000153"/>
+        <testcase name="testFetchTicker with data set #7" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000037"/>
+        <testcase name="testFetchTicker with data set #8" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000035"/>
+        <testcase name="testFetchTicker with data set #9" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.810747"/>
+        <testcase name="testFetchTicker with data set #10" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.408871"/>
+        <testcase name="testFetchTicker with data set #11" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000170"/>
+        <testcase name="testFetchTicker with data set #12" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.510576"/>
+        <testcase name="testFetchTicker with data set #13" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.416620"/>
+        <testcase name="testFetchTicker with data set #14" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000164"/>
+        <testcase name="testFetchTicker with data set #15" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000119"/>
+        <testcase name="testFetchTicker with data set #16" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000150"/>
+        <testcase name="testFetchTicker with data set #17" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000104"/>
+        <testcase name="testFetchTicker with data set #18" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000100"/>
+        <testcase name="testFetchTicker with data set #19" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.476083"/>
+        <testcase name="testFetchTicker with data set #20" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000147"/>
+        <testcase name="testFetchTicker with data set #21" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="30.756037">
+          <error type="ccxt\RequestTimeout">ExchangeTest::testFetchTicker with data set #21 (ccxt\bleutrade Object (...))
+ccxt\RequestTimeout: bleutrade GET https://bleutrade.com/api/v2/public/getmarketsummaries 28 Operation timed out after 30001 milliseconds with 0 bytes received
+
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:628
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:771
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:649
+/home/work/github/kornrunner/ccxt/src/bittrex.php:638
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:592
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:1380
+/home/work/github/kornrunner/ccxt/src/bittrex.php:299
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #22" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000110"/>
+        <testcase name="testFetchTicker with data set #23" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000063"/>
+        <testcase name="testFetchTicker with data set #24" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="2.512014">
+          <error type="ccxt\ExchangeNotAvailable">ExchangeTest::testFetchTicker with data set #24 (ccxt\btcexchange Object (...))
+ccxt\ExchangeNotAvailable: btcexchange GET https://www.btcexchange.ph/api/ticker 6 Could not resolve host: www.btcexchange.ph
+
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:628
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:776
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:649
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:653
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:592
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:1380
+/home/work/github/kornrunner/ccxt/src/btcturk.php:113
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #25" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000179"/>
+        <testcase name="testFetchTicker with data set #26" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000118"/>
+        <testcase name="testFetchTicker with data set #27" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.739462"/>
+        <testcase name="testFetchTicker with data set #28" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000220"/>
+        <testcase name="testFetchTicker with data set #29" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="0.697224">
+          <error type="PHPUnit\Framework\Error\Warning">ExchangeTest::testFetchTicker with data set #29 (ccxt\bter Object (...))
+array_key_exists() expects parameter 2 to be array, null given
+
+/home/work/github/kornrunner/ccxt/src/bter.php:283
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:592
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:1380
+/home/work/github/kornrunner/ccxt/src/bter.php:60
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:928
+/home/work/github/kornrunner/ccxt/src/bter.php:168
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #30" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="3.171212"/>
+        <testcase name="testFetchTicker with data set #31" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.467784"/>
+        <testcase name="testFetchTicker with data set #32" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.288784"/>
+        <testcase name="testFetchTicker with data set #33" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000181"/>
+        <testcase name="testFetchTicker with data set #34" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000150"/>
+        <testcase name="testFetchTicker with data set #35" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000108"/>
+        <testcase name="testFetchTicker with data set #36" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000102"/>
+        <testcase name="testFetchTicker with data set #37" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.878820"/>
+        <testcase name="testFetchTicker with data set #38" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="1.789922"/>
+        <testcase name="testFetchTicker with data set #39" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000086"/>
+        <testcase name="testFetchTicker with data set #40" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000057"/>
+        <testcase name="testFetchTicker with data set #41" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000053"/>
+        <testcase name="testFetchTicker with data set #42" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="2.318050"/>
+        <testcase name="testFetchTicker with data set #43" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="0.473556">
+          <error type="PHPUnit\Framework\Error\Warning">ExchangeTest::testFetchTicker with data set #43 (ccxt\dsx Object (...))
+Division by zero
+
+/home/work/github/kornrunner/ccxt/src/dsx.php:125
+/home/work/github/kornrunner/ccxt/src/liqui.php:257
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #44" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.443726"/>
+        <testcase name="testFetchTicker with data set #45" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000174"/>
+        <testcase name="testFetchTicker with data set #46" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000125"/>
+        <testcase name="testFetchTicker with data set #47" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000114"/>
+        <testcase name="testFetchTicker with data set #48" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000111"/>
+        <testcase name="testFetchTicker with data set #49" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="2.541813"/>
+        <testcase name="testFetchTicker with data set #50" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="1.651574"/>
+        <testcase name="testFetchTicker with data set #51" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000170"/>
+        <testcase name="testFetchTicker with data set #52" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000123"/>
+        <testcase name="testFetchTicker with data set #53" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.401574"/>
+        <testcase name="testFetchTicker with data set #54" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.515234"/>
+        <testcase name="testFetchTicker with data set #55" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000151"/>
+        <testcase name="testFetchTicker with data set #56" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000109"/>
+        <testcase name="testFetchTicker with data set #57" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000097"/>
+        <testcase name="testFetchTicker with data set #58" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000096"/>
+        <testcase name="testFetchTicker with data set #59" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000094"/>
+        <testcase name="testFetchTicker with data set #60" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="1.736495">
+          <error type="ccxt\ExchangeError">ExchangeTest::testFetchTicker with data set #60 (ccxt\jubi Object (...))
+ccxt\ExchangeError: jubi {"result":false,"code":"405"}
+
+/home/work/github/kornrunner/ccxt/src/btcbox.php:216
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:592
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:1380
+/home/work/github/kornrunner/ccxt/src/btcbox.php:113
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #61" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="6.186083"/>
+        <testcase name="testFetchTicker with data set #62" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000150"/>
+        <testcase name="testFetchTicker with data set #63" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000103"/>
+        <testcase name="testFetchTicker with data set #64" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.586307"/>
+        <testcase name="testFetchTicker with data set #65" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="2.452158"/>
+        <testcase name="testFetchTicker with data set #66" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.395340"/>
+        <testcase name="testFetchTicker with data set #67" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000190"/>
+        <testcase name="testFetchTicker with data set #68" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000150"/>
+        <testcase name="testFetchTicker with data set #69" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000135"/>
+        <testcase name="testFetchTicker with data set #70" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000107"/>
+        <testcase name="testFetchTicker with data set #71" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000099"/>
+        <testcase name="testFetchTicker with data set #72" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000098"/>
+        <testcase name="testFetchTicker with data set #73" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000098"/>
+        <testcase name="testFetchTicker with data set #74" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="1.335485"/>
+        <testcase name="testFetchTicker with data set #75" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="3.172708">
+          <error type="PHPUnit\Framework\Error\Warning">ExchangeTest::testFetchTicker with data set #75 (ccxt\qryptos Object (...))
+count(): Parameter must be an array or an object that implements Countable
+
+/home/work/github/kornrunner/ccxt/src/qryptos.php:131
+/home/work/github/kornrunner/ccxt/src/qryptos.php:171
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #76" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000155"/>
+        <testcase name="testFetchTicker with data set #77" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="2.900987">
+          <error type="PHPUnit\Framework\Error\Warning">ExchangeTest::testFetchTicker with data set #77 (ccxt\quoine Object (...))
+count(): Parameter must be an array or an object that implements Countable
+
+/home/work/github/kornrunner/ccxt/src/qryptos.php:131
+/home/work/github/kornrunner/ccxt/src/qryptos.php:171
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #78" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="1.296328"/>
+        <testcase name="testFetchTicker with data set #79" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000244"/>
+        <testcase name="testFetchTicker with data set #80" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="1.942620"/>
+        <testcase name="testFetchTicker with data set #81" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.620548"/>
+        <testcase name="testFetchTicker with data set #82" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000060"/>
+        <testcase name="testFetchTicker with data set #83" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000032"/>
+        <testcase name="testFetchTicker with data set #84" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000029"/>
+        <testcase name="testFetchTicker with data set #85" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000028"/>
+        <testcase name="testFetchTicker with data set #86" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.712434"/>
+        <testcase name="testFetchTicker with data set #87" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="0.000281">
+          <error type="ccxt\AuthenticationError">ExchangeTest::testFetchTicker with data set #87 (ccxt\xbtce Object (...))
+ccxt\AuthenticationError: xbtce requires apiKey for all requests, their public API is always busy
+
+/home/work/github/kornrunner/ccxt/src/xbtce.php:304
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:648
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:653
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:592
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:1380
+/home/work/github/kornrunner/ccxt/src/xbtce.php:103
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:928
+/home/work/github/kornrunner/ccxt/src/xbtce.php:198
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #88" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000146"/>
+        <testcase name="testFetchTicker with data set #89" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="0" time="20.953638">
+          <error type="ccxt\ExchangeNotAvailable">ExchangeTest::testFetchTicker with data set #89 (ccxt\yunbi Object (...))
+ccxt\ExchangeNotAvailable: yunbi GET https://yunbi.com/api/v2/markets.json 503 not accessible from this location at the moment
+
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:628
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:835
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:649
+/home/work/github/kornrunner/ccxt/src/acx.php:339
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:592
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:1380
+/home/work/github/kornrunner/ccxt/src/acx.php:77
+/home/work/github/kornrunner/ccxt/src/base/Exchange.php:928
+/home/work/github/kornrunner/ccxt/src/acx.php:160
+/home/work/github/kornrunner/ccxt/test/ExchangeTest.php:21
+</error>
+        </testcase>
+        <testcase name="testFetchTicker with data set #90" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000172"/>
+        <testcase name="testFetchTicker with data set #91" class="ExchangeTest" classname="ExchangeTest" file="/home/work/github/kornrunner/ccxt/test/ExchangeTest.php" line="18" assertions="1" time="0.000114"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
