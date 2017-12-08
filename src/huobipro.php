@@ -301,26 +301,26 @@ class huobipro extends Exchange {
         if (!$symbol)
             throw new ExchangeError ($this->id . ' fetchOrders() requires a $symbol parameter');
         $this->load_markets ();
-        market = $this->market ($symbol);
+        $market = $this->market ($symbol);
         if (array_key_exists ('type', $params)) {
-            status = $params['type'];
+            $status = $params['type'];
         } else if (array_key_exists ('status', $params)) {
-            status = $params['status']
+            $status = $params['status'];
         } else {
-            throw new ExchangeError ($this->id . ' fetchOrders() requires type param or status param for spot market ' . $symbol . '(0 or "open" for unfilled or partial filled orders, 1 or "closed" for filled orders)')
+            throw new ExchangeError ($this->id . ' fetchOrders() requires type param or status param for spot market ' . $symbol . '(0 or "open" for unfilled or partial filled orders, 1 or "closed" for filled orders)');
         }
-        if ((status == 0) || (status == 'open')) {
-            status = 'submitted,partial-filled';
+        if (($status == 0) || ($status == 'open')) {
+            $status = 'submitted,partial-filled';
         } else if ((status == 1) || (status == 'closed')) {
-            status = 'filled,partial-canceled'
+            $status = 'filled,partial-canceled';
         } else {
             throw new ExchangeError ($this->id . ' fetchOrders() wrong type param or status param for spot market ' . $symbol . '(0 or "open" for unfilled or partial filled orders, 1 or "closed" for filled orders)');
         }
         $response = $this->privateGetOrderOrders (array_merge (array (
-            'symbol' => market['id'],
-            'states' => status,
+            'symbol' => $market['id'],
+            'states' => $status,
         )));
-        return $this->parse_orders($response['data'], market);
+        return $this->parse_orders($response['data'], $market);
     }
 
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -347,10 +347,10 @@ class huobipro extends Exchange {
         $side = null;
         $type = null;
         if (array_key_exists ('type', $order)) {
-            order_type = explode ('-', $order['type']);
+            $order_type = explode ('-', $order['type']);
             $side = order_type[0];
             $type = order_type[1];
-            status = $this->parse_order_status($order['state']);
+            $status = $this->parse_order_status($order['state']);
         }
         $symbol = null;
         if (!$market) {
