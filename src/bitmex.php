@@ -10,6 +10,7 @@ class bitmex extends Exchange {
             'name' => 'BitMEX',
             'countries' => 'SC', // Seychelles
             'version' => 'v1',
+            'userAgent' => null,
             'rateLimit' => 1500,
             'hasCORS' => false,
             'hasFetchOHLCV' => true,
