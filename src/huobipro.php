@@ -11,11 +11,20 @@ class huobipro extends Exchange {
             'countries' => 'CN',
             'rateLimit' => 2000,
             'version' => 'v1',
-            'hasCORS' => false,
-            'hasFetchOHLCV' => true,
             'accounts' => null,
             'accountsById' => null,
             'hostname' => 'api.huobi.pro',
+            'hasCORS' => false,
+            // obsolete metainfo structure
+            'hasFetchOHLCV' => true,
+            'hasFetchOrders' => true,
+            'hasFetchOpenOrders' => true,
+            // new metainfo structure
+            'has' => array (
+                'fetchOHCLV' => true,
+                'fetchOrders' => true,
+                'fetchOpenOrders' => true,
+            ),
             'timeframes' => array (
                 '1m' => '1min',
                 '5m' => '5min',
