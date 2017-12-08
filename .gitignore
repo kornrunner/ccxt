@@ -3,3 +3,4 @@ vendor/
 example/tests/keys.json
 /nbproject/private/
 nbproject/
+build/
