@@ -12,6 +12,7 @@ class ExchangeTest extends TestCase {
             'ccxt\\dsx',
             'ccxt\\gateio',
             'ccxt\\jubi',
+            'ccxt\\southxchange',
             'ccxt\\qryptos',
             'ccxt\\quoine',
             'ccxt\\xbtce',
