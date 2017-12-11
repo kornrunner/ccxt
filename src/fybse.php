@@ -76,9 +76,9 @@ class fybse extends Exchange {
         $timestamp = $this->milliseconds ();
         $last = null;
         $volume = null;
-        if (array_key_exists ('last', $ticker))
+        if (is_array ($ticker) && array_key_exists ('last', $ticker))
             $last = floatval ($ticker['last']);
-        if (array_key_exists ('vol', $ticker))
+        if (is_array ($ticker) && array_key_exists ('vol', $ticker))
             $volume = floatval ($ticker['vol']);
         return array (
             'symbol' => $symbol,
@@ -160,7 +160,7 @@ class fybse extends Exchange {
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
         if ($api == 'private')
-            if (array_key_exists ('error', $response))
+            if (is_array ($response) && array_key_exists ('error', $response))
                 if ($response['error'])
                     throw new ExchangeError ($this->id . ' ' . $this->json ($response));
         return $response;
