@@ -5,6 +5,20 @@ use PHPUnit\Framework\TestCase;
 
 class ExchangeTest extends TestCase {
 
+    private static $skip = [
+        'testFetchTicker' => [
+            'ccxt\\btcexchange',
+            'ccxt\\bter',
+            'ccxt\\dsx',
+            'ccxt\\gateio',
+            'ccxt\\jubi',
+            'ccxt\\qryptos',
+            'ccxt\\quoine',
+            'ccxt\\xbtce',
+            'ccxt\\yunbi',
+        ],
+    ];
+
     /**
      * @dataProvider getExchangeClasses
      */
@@ -16,6 +30,11 @@ class ExchangeTest extends TestCase {
      * @dataProvider getExchangeClasses
      */
     public function testFetchTicker($exchange) {
+        $class_name = get_class($exchange);
+        if (in_array($class_name, self::$skip[__FUNCTION__])) {
+            return $this->markTestSkipped("{$class_name}: fetch ticker skipped");
+        }
+
         if ($exchange->hasFetchTickers) {
             $exchange->timeout = 30000;
             $tickers = $exchange->fetch_tickers();
