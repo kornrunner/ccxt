@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 date_default_timezone_set ('UTC');
 
@@ -32,8 +32,8 @@ foreach (\ccxt\Exchange::$exchanges as $id) {
     $exchanges[$id] = new $exchange (array ('verbose' => false));
 }
 
-$keys_global = './keys.dist.json';
-$keys_local = './keys.json';
+$keys_global = __DIR__ . '/keys.dist.json';
+$keys_local = __DIR__ . '/keys.json';
 $keys_file = file_exists ($keys_local) ? $keys_local : $keys_global;
 
 var_dump ($keys_file);
