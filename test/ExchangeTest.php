@@ -7,8 +7,10 @@ class ExchangeTest extends TestCase {
 
     private static $skip = [
         'testFetchTicker' => [
+            'ccxt\\bleutrade',
             'ccxt\\btcexchange',
             'ccxt\\bter',
+            'ccxt\\ccex',
             'ccxt\\dsx',
             'ccxt\\gateio',
             'ccxt\\jubi',
@@ -35,6 +37,15 @@ class ExchangeTest extends TestCase {
         if (in_array($class_name, self::$skip[__FUNCTION__])) {
             return $this->markTestSkipped("{$class_name}: fetch ticker skipped");
         }
+
+        switch ($class_name) {
+            case 'ccxt\\gdax':
+                $exchange->urls['api'] = 'https://api-public.sandbox.gdax.com';
+                break;
+        }
+
+        $delay = $exchange->rateLimit * 1000;
+        usleep($delay);
 
         if ($exchange->hasFetchTickers) {
             $exchange->timeout = 30000;
