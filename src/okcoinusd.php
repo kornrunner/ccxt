@@ -271,7 +271,7 @@ class okcoinusd extends Exchange {
         }
         $method .= 'Trades';
         $response = $this->$method (array_merge ($request, $params));
-        return $this->parse_trades($response, $market);
+        return $this->parse_trades($response, $market, $since, $limit);
     }
 
     public function fetch_ohlcv ($symbol, $timeframe = '1m', $since = null, $limit = 1440, $params = array ()) {
@@ -505,7 +505,7 @@ class okcoinusd extends Exchange {
             $params = $this->omit ($params, array ( 'type', 'status' ));
         }
         $response = $this->$method (array_merge ($request, $params));
-        return $this->parse_orders($response['orders'], $market);
+        return $this->parse_orders($response['orders'], $market, $since, $limit);
     }
 
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {

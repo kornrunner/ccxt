@@ -79,6 +79,7 @@ class bitfinex extends Exchange {
                 ),
                 'private' => array (
                     'post' => array (
+                        'account_fees',
                         'account_infos',
                         'balances',
                         'basket_manage',
@@ -135,6 +136,9 @@ class bitfinex extends Exchange {
             return 'CST_BCC';
         if ($currency == 'BCU')
             return 'CST_BCU';
+        // issue #796
+        if ($currency == 'IOT')
+            return 'IOTA';
         return $currency;
     }
 
@@ -306,7 +310,7 @@ class bitfinex extends Exchange {
         $response = $this->publicGetTradesSymbol (array_merge (array (
             'symbol' => $market['id'],
         ), $params));
-        return $this->parse_trades($response, $market);
+        return $this->parse_trades($response, $market, $since, $limit);
     }
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -320,7 +324,7 @@ class bitfinex extends Exchange {
             $request['timestamp'] = intval ($since / 1000);
         }
         $response = $this->privatePostMytrades (array_merge ($request, $params));
-        return $this->parse_trades($response, $market);
+        return $this->parse_trades($response, $market, $since, $limit);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
@@ -402,9 +406,9 @@ class bitfinex extends Exchange {
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $response = $this->privatePostOrders ($params);
-        $orders = $this->parse_orders($response);
+        $orders = $this->parse_orders($response, null, $since, $limit);
         if ($symbol)
-            return $this->filter_by($orders, 'symbol', $symbol);
+            $orders = $this->filter_by($orders, 'symbol', $symbol);
         return $orders;
     }
 
@@ -414,7 +418,7 @@ class bitfinex extends Exchange {
         if ($limit)
             $request['limit'] = $limit;
         $response = $this->privatePostOrdersHist (array_merge ($request, $params));
-        $orders = $this->parse_orders($response);
+        $orders = $this->parse_orders($response, null, $since, $limit);
         if ($symbol)
             return $this->filter_by($orders, 'symbol', $symbol);
         return $orders;

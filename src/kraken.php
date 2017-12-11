@@ -414,7 +414,7 @@ class kraken extends Exchange {
             'pair' => $id,
         ), $params));
         $trades = $response['result'][$id];
-        return $this->parse_trades($trades, $market);
+        return $this->parse_trades($trades, $market, $since, $limit);
     }
 
     public function fetch_balance ($params = array ()) {
@@ -525,7 +525,7 @@ class kraken extends Exchange {
         );
     }
 
-    public function parse_orders ($orders, $market = null) {
+    public function parse_orders ($orders, $market = null, $since = null, $limit = null) {
         $result = array ();
         $ids = array_keys ($orders);
         for ($i = 0; $i < count ($ids); $i++) {
@@ -533,7 +533,7 @@ class kraken extends Exchange {
             $order = array_merge (array ( 'id' => $id ), $orders[$id]);
             $result[] = $this->parse_order($order, $market);
         }
-        return $result;
+        return $this->filter_by_since_limit($result, $since, $limit);
     }
 
     public function fetch_order ($id, $symbol = null, $params = array ()) {
@@ -565,7 +565,7 @@ class kraken extends Exchange {
         for ($i = 0; $i < count ($ids); $i++) {
             $trades[$ids[$i]]['id'] = $ids[$i];
         }
-        return $this->parse_trades($trades);
+        return $this->parse_trades($trades, null, $since, $limit);
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
@@ -590,7 +590,7 @@ class kraken extends Exchange {
         if ($since)
             $request['start'] = intval ($since / 1000);
         $response = $this->privatePostOpenOrders (array_merge ($request, $params));
-        $orders = $this->parse_orders($response['result']['open']);
+        $orders = $this->parse_orders($response['result']['open'], null, $since, $limit);
         return $this->filter_orders_by_symbol($orders, $symbol);
     }
 
@@ -600,7 +600,7 @@ class kraken extends Exchange {
         if ($since)
             $request['start'] = intval ($since / 1000);
         $response = $this->privatePostClosedOrders (array_merge ($request, $params));
-        $orders = $this->parse_orders($response['result']['closed']);
+        $orders = $this->parse_orders($response['result']['closed'], null, $since, $limit);
         return $this->filter_orders_by_symbol($orders, $symbol);
     }
 

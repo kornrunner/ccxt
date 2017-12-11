@@ -257,7 +257,7 @@ class cex extends Exchange {
         $response = $this->publicGetTradeHistoryPair (array_merge (array (
             'pair' => $market['id'],
         ), $params));
-        return $this->parse_trades($response, $market);
+        return $this->parse_trades($response, $market, $since, $limit);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
@@ -381,7 +381,7 @@ class cex extends Exchange {
         for ($i = 0; $i < count ($orders); $i++) {
             $orders[$i] = array_merge ($orders[$i], array ( 'status' => 'open' ));
         }
-        return $this->parse_orders($orders, $market);
+        return $this->parse_orders($orders, $market, $since, $limit);
     }
 
     public function nonce () {

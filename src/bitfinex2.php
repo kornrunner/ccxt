@@ -211,6 +211,9 @@ class bitfinex2 extends bitfinex {
             return 'DASH';
         if ($currency == 'QTM')
             return 'QTUM';
+        // issue #796
+        if ($currency == 'IOT')
+            return 'IOTA';
         return $currency;
     }
 
@@ -341,7 +344,7 @@ class bitfinex2 extends bitfinex {
             $request['limit'] = $limit;
         }
         $response = $this->publicGetTradesSymbolHist (array_merge ($request, $params));
-        return $this->parse_trades($response, $market);
+        return $this->parse_trades($response, $market, $since, $limit);
     }
 
     public function fetch_ohlcv ($symbol, $timeframe = '1m', $since = null, $limit = null, $params = array ()) {

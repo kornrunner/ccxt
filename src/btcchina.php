@@ -262,7 +262,7 @@ class btcchina extends Exchange {
         if ($market['plus']) {
             return $this->parse_trades_plus ($response['trades'], $market);
         }
-        return $this->parse_trades($response, $market);
+        return $this->parse_trades($response, $market, $since, $limit);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
@@ -319,7 +319,7 @@ class btcchina extends Exchange {
                 '&$params=' . $p
             );
             $signature = $this->hmac ($this->encode ($query), $this->encode ($this->secret), 'sha1');
-            $auth = $this->apiKey . ':' . $signature;
+            $auth = $this->encode ($this->apiKey . ':' . $signature);
             $headers = array (
                 'Authorization' => 'Basic ' . base64_encode ($auth),
                 'Json-Rpc-Tonce' => $nonce,

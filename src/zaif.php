@@ -196,7 +196,7 @@ class zaif extends Exchange {
         $response = $this->publicGetTradesPair (array_merge (array (
             'pair' => $market['id'],
         ), $params));
-        return $this->parse_trades($response, $market);
+        return $this->parse_trades($response, $market, $since, $limit);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
@@ -246,7 +246,7 @@ class zaif extends Exchange {
         );
     }
 
-    public function parse_orders ($orders, $market = null) {
+    public function parse_orders ($orders, $market = null, $since = null, $limit = null) {
         $ids = array_keys ($orders);
         $result = array ();
         for ($i = 0; $i < count ($ids); $i++) {
@@ -255,7 +255,7 @@ class zaif extends Exchange {
             $extended = array_merge ($order, array ( 'id' => $id ));
             $result[] = $this->parse_order($extended, $market);
         }
-        return $result;
+        return $this->filter_by_since_limit($result, $since, $limit);
     }
 
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -270,7 +270,7 @@ class zaif extends Exchange {
             $request['currency_pair'] = $market['id'];
         }
         $response = $this->privatePostActiveOrders (array_merge ($request, $params));
-        return $this->parse_orders($response['return'], $market);
+        return $this->parse_orders($response['return'], $market, $since, $limit);
     }
 
     public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -291,7 +291,7 @@ class zaif extends Exchange {
             $request['currency_pair'] = $market['id'];
         }
         $response = $this->privatePostTradeHistory (array_merge ($request, $params));
-        return $this->parse_orders($response['return'], $market);
+        return $this->parse_orders($response['return'], $market, $since, $limit);
     }
 
     public function withdraw ($currency, $amount, $address, $params = array ()) {

@@ -240,7 +240,7 @@ class btctradeua extends Exchange {
                 $trades[] = $response[$i];
             }
         }
-        return $this->parse_trades($trades, $market);
+        return $this->parse_trades($trades, $market, $since, $limit);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
@@ -288,7 +288,7 @@ class btctradeua extends Exchange {
             'symbol' => $market['id'],
         ), $params));
         $orders = $response['your_open_orders'];
-        return $this->parse_orders($orders, $market);
+        return $this->parse_orders($orders, $market, $since, $limit);
     }
 
     public function nonce () {

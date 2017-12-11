@@ -207,7 +207,7 @@ class qryptos extends Exchange {
         if ($limit)
             $request['limit'] = $limit;
         $response = $this->publicGetExecutions (array_merge ($request, $params));
-        return $this->parse_trades($response['models'], $market);
+        return $this->parse_trades($response['models'], $market, $since, $limit);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
@@ -228,9 +228,13 @@ class qryptos extends Exchange {
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
         $this->load_markets();
-        return $this->privatePutOrdersIdCancel (array_merge (array (
+        $result = $this->privatePutOrdersIdCancel (array_merge (array (
             'id' => $id,
         ), $params));
+        $order = $this->parse_order ($result);
+        if (!$order['type'])
+            throw new OrderNotFound ($this->id . ' ' . $order);
+        return $order;
     }
 
     public function parse_order ($order) {
@@ -249,13 +253,17 @@ class qryptos extends Exchange {
         }
         $amount = floatval ($order['quantity']);
         $filled = floatval ($order['filled_quantity']);
+        $symbol = null;
+        if ($market) {
+            $symbol = $market['symbol'];
+        }
         return array (
             'id' => $order['id'],
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'type' => $order['order_type'],
             'status' => $status,
-            'symbol' => $market['symbol'],
+            'symbol' => $symbol,
             'side' => $order['side'],
             'price' => $order['price'],
             'amount' => $amount,
@@ -296,7 +304,7 @@ class qryptos extends Exchange {
         }
         $result = $this->privateGetOrders ($request);
         $orders = $result['models'];
-        return $this->parse_orders($orders, $market);
+        return $this->parse_orders($orders, $market, $since, $limit);
     }
 
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -330,6 +338,11 @@ class qryptos extends Exchange {
                     $messages = $errors['user'];
                     if (mb_strpos ($messages, 'not_enough_free_balance') !== false) {
                         throw new InsufficientFunds ($this->id . ' ' . $body);
+                    }
+                } else if (array_key_exists ('quantity', $errors)) {
+                    $messages = $errors['quantity'];
+                    if (mb_strpos ($messages, 'less_than_order_size') !== false) {
+                        throw new InvalidOrder ($this->id . ' ' . $body);
                     }
                 }
             }
