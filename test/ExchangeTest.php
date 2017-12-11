@@ -7,18 +7,25 @@ class ExchangeTest extends TestCase {
 
     private static $skip = [
         'testFetchTicker' => [
-            'ccxt\\bleutrade',
-            'ccxt\\btcexchange',
-            'ccxt\\bter',
-            'ccxt\\ccex',
-            'ccxt\\dsx',
-            'ccxt\\gateio',
-            'ccxt\\jubi',
-            'ccxt\\southxchange',
-            'ccxt\\qryptos',
-            'ccxt\\quoine',
-            'ccxt\\xbtce',
-            'ccxt\\yunbi',
+            'bleutrade',
+            'btcexchange',
+            'bter',
+            'ccex',
+            'dsx',
+            'gateio',
+            'jubi',
+            'southxchange',
+            'qryptos',
+            'quoine',
+            'xbtce',
+            'yunbi',
+        ],
+        'testLoadMarkets' => [
+            '_1broker',
+            'bter',
+            'flowbtc',
+            'xbtce',
+            'yunbi',
         ],
     ];
 
@@ -33,22 +40,14 @@ class ExchangeTest extends TestCase {
      * @dataProvider getExchangeClasses
      */
     public function testFetchTicker($exchange) {
-        $class_name = get_class($exchange);
-        if (in_array($class_name, self::$skip[__FUNCTION__])) {
-            return $this->markTestSkipped("{$class_name}: fetch ticker skipped");
-        }
-
-        switch ($class_name) {
-            case 'ccxt\\gdax':
-                $exchange->urls['api'] = 'https://api-public.sandbox.gdax.com';
-                break;
+        if (in_array($exchange->id, self::$skip[__FUNCTION__])) {
+            return $this->markTestSkipped("{$exchange->id}: fetch ticker skipped");
         }
 
         $delay = $exchange->rateLimit * 1000;
         usleep($delay);
 
         if ($exchange->hasFetchTickers) {
-            $exchange->timeout = 30000;
             $tickers = $exchange->fetch_tickers();
             $this->assertNotEmpty($tickers);
         } else {
@@ -56,11 +55,30 @@ class ExchangeTest extends TestCase {
         }
     }
 
+    /**
+     * @dataProvider getExchangeClasses
+     */
+    public function testLoadMarkets($exchange) {
+        if (in_array($exchange->id, self::$skip[__FUNCTION__])) {
+            return $this->markTestSkipped("{$exchange->id}: load markets skipped");
+        }
+
+        $tickers = $exchange->load_markets();
+        $this->assertNotEmpty($tickers);
+    }
+
     public static function getExchangeClasses(): array {
         $classes = [];
         foreach (Exchange::$exchanges as $name) {
             $class = "ccxt\\{$name}";
-            $classes[] = [new $class];
+            $exchange = new $class;
+            $exchange->timeout = 15000;
+
+            if ($name === 'gdax') {
+                $exchange->urls['api'] = 'https://api-public.sandbox.gdax.com';
+            }
+
+            $classes[] = [$exchange];
         }
         return $classes;
     }
