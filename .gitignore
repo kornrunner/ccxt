@@ -1,6 +1,7 @@
 !.gitignore
 vendor/
 example/tests/keys.json
+tests/keys.json
 /nbproject/private/
 nbproject/
 build/
