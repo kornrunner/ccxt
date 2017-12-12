@@ -10,7 +10,7 @@ install:
   - travis_retry composer install --prefer-dist --dev
 
 before_script:
-  - if [[ ${TRAVIS_PHP_VERSION:0:3} != "7.2" ]]; then phpenv config-rm xdebug.ini; fi
+  - phpenv config-add travis.php.ini
 
 script:
   - mkdir -p build/logs
