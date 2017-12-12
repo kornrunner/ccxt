@@ -10,11 +10,11 @@ install:
   - travis_retry composer install --prefer-dist --dev
 
 before_script:
-  - phpenv config-rm xdebug.ini
+  - if [ ${TRAVIS_PHP_VERSION} != "nightly" ]; then phpenv config-rm xdebug.ini fi;
 
 script:
   - mkdir -p build/logs
-  - phpdbg -qrr phpunit -c phpunit.xml.dist
+  - phpdbg -qrr vendor/bin/phpunit -c phpunit.xml.dist
 
 after_script:
   - php vendor/bin/coveralls -v
