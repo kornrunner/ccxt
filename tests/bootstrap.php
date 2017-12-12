@@ -4,5 +4,5 @@ use VCR\VCR;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-VCR::configure()->setStorage('json');
+VCR::configure()->setMode('new_episodes')->setStorage('json');
 VCR::turnOn();

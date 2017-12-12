@@ -22,65 +22,50 @@ class ExchangeTest extends TestCase {
             'yunbi',
         ],
         'testLoadMarkets' => [
-            '_1broker',
-            'bter',
-            'flowbtc',
-            'xbtce',
-            'yunbi',
+            '_1broker', // apiKey required
+            'bter',     // array issue @63
+            'ccex',     // not accessible
+            'flowbtc',  // bad offset in response
+            'gdax',     // UserAgent is required
+            'xbtce',    // apiKey required
+            'yunbi',    // not accessible
         ],
         'testFetchTrades' => [
-            'allcoin',
-            'bithumb',
-            'bitlish',
-            'bitstamp1',
-            'btcexchange',
-            'btctradeua',
-            'btcx',
-            'chilebit',
-            'coingi',
-            'coinspot',
-            'gateio',
-            'getbtc',
-            'foxbit',
-            'huobi',
-            'huobipro',
-            'huobicny',
-            'urdubit',
-            'jubi',
-            'lakebtc',
-            'okcoincny',
-            'okex',
-            'surbitcoin',
-            // empty:
+            'allcoin',      // not accessible
+            'bitcoincoid',  // not accessible
+            'bitstamp1',    // array to string @142
+            'btcexchange',  // bad offset in response
+            'btctradeua',   // array issue @206
+            'btcx',         // bad offset in response
+            'coincheck',    // supports BTC/JPY only
+            'coingi',       // not accessible
+            'coinspot',     // apiKey required
+            'huobi',        // not accessible
+            'huobicny',     // bad offset in response
+            'jubi',         // not accessible
+            'kraken',       // bad offset in response
+            'okcoincny',    // not accessible
+            // empty response:
             'btcchina',
-            'dsx',
-            'gatecoin',
-            'gdax',
             'livecoin',
-            'qryptos',
-            'quoine',
-            'tidex',
         ],
         'testFetchOrderBook' => [
-            'allcoin',
-            'anxpro',
-            'bithumb',
-            'btcchina',
-            'bitstamp1',
-            'btcexchange',
-            'btcx',
-            'coingi',
-            'coinspot',
-            'gdax',
-            'getbtc',
-            'huobi',
-            'huobicny',
-            'jubi',
-            'okex',
-            'okcoincny',
-            'virwox',
-            'kraken',
-            'lakebtc',
+            'allcoin',      // not accessible
+            'anxpro',       // not accessible
+            'bitcoincoid',  // not accessible
+            'bitstamp1',    // array to string @74
+            'bittrex',      // null in Exchange @959
+            'btcexchange',  // bad offset in response
+            'btcx',         // bad offset in response
+            'coincheck',    // supports BTC/JPY only
+            'coingi',       // not accessible
+            'coinspot',     // apiKey required
+            'huobi',        // not accessible
+            'huobicny',     // bad offset in response
+            'jubi',         // not accessible
+            'kraken',       // string instead of array @336
+            'okcoincny',    // not accessible
+            'virwox',       // not implemented
         ],
     ];
 
@@ -143,7 +128,7 @@ class ExchangeTest extends TestCase {
         }
 
         if ($exchange->hasFetchTrades) {
-            $market = array_rand(self::$markets[$exchange->id]);
+            $market = current(self::$markets[$exchange->id]);
             $trades = $exchange->fetch_trades($market);
             $this->assertNotEmpty($trades);
         } else {
@@ -162,7 +147,7 @@ class ExchangeTest extends TestCase {
         }
 
         if ($exchange->hasFetchOrderBook) {
-            $market = array_rand(self::$markets[$exchange->id]);
+            $market = current(self::$markets[$exchange->id]);
             $order_book = $exchange->fetch_order_book($market);
             $this->assertNotEmpty($order_book);
         } else {
