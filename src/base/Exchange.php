@@ -32,7 +32,7 @@ namespace ccxt;
 
 $version = '1.9.282';
 
-class Exchange {
+abstract class Exchange {
 
     public static $exchanges = array (
         '_1broker',
