@@ -98,6 +98,11 @@ class ExchangeTest extends TestCase {
         if ($exchange->hasFetchTickers) {
             $tickers = $exchange->fetch_tickers();
             $this->assertNotEmpty($tickers);
+
+            $ticker = current($tickers);
+            $this->assertArrayHasKey('symbol', $ticker);
+            $this->assertArrayHasKey('baseVolume', $ticker);
+            $this->assertArrayHasKey('info', $ticker);
         } else {
             $this->assertFalse($exchange->hasFetchTickers);
         }
