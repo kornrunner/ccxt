@@ -32,11 +32,11 @@ foreach (\ccxt\Exchange::$exchanges as $id) {
     $exchanges[$id] = new $exchange (array ('verbose' => false));
 }
 
-$keys_global = __DIR__ . '/keys.dist.json';
-$keys_local = __DIR__ . '/keys.json';
+$keys_global = __DIR__ . '/../../tests/keys.dist.json';
+$keys_local = __DIR__ . '/../../tests/keys.json';
 $keys_file = file_exists ($keys_local) ? $keys_local : $keys_global;
 
-var_dump ($keys_file);
+var_dump (realpath($keys_file));
 
 $config = json_decode (file_get_contents ($keys_file), true);
 
