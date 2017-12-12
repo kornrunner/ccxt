@@ -364,40 +364,11 @@ class Exchange {
     }
 
     public static function parse8601 ($timestamp) {
-        $yyyy = '([0-9]{4})-?';
-        $mm   = '([0-9]{2})-?';
-        $dd   = '([0-9]{2})(?:T|[\s])?';
-        $h    = '([0-9]{2}):?';
-        $m    = '([0-9]{2}):?';
-        $s    = '([0-9]{2})';
-        $ms   = '(\.[0-9]{3})?';
-        $tz = '(?:(\+|\-)([0-9]{2})\:?([0-9]{2})|Z)?';
-        $regex = '/' . $yyyy . $mm . $dd . $h . $m . $s . $ms . $tz.'/';
-        preg_match ($regex, $timestamp, $matches);
-        array_shift ($matches);
-        list ($yyyy, $mm, $dd, $h, $m, $s) = $matches;
-        $ms = $matches[6] ?? '.000';
-        $sign = $matches[7] ?? 0;
-        $sign = intval ($sign . 1);
-        $hours = (int) ($matches[8] ?? 0);
-        $minutes = (int) ($matches[9] ?? 0);
-        // $ms = $ms or '.000';
-        // $sign = $sign or '';
-        // $sign = intval ($sign . '1');
-        // $hours = (intval ($hours) or 0) * $sign;
-        // $minutes = (intval ($minutes) or 0) * $sign;
-
-        // is_dst parameter has been removed in PHP 7.0.0.
-        // http://php.net/manual/en/function.mktime.php
-        $t = null;
-        if (version_compare (PHP_VERSION, '7.0.0', '>=')) {
-            $t = mktime ($h, $m, $s, $mm, $dd, $yyyy);
-        } else {
-            $t = mktime ($h, $m, $s, $mm, $dd, $yyyy, 0);
+        $time = strtotime ($timestamp) * 1000;
+        if (preg_match ('/\.(?<milliseconds>[0-9]{1,3})/', $timestamp, $match)) {
+            $time += $match['milliseconds'];
         }
-        $t += $hours * 3600 + $minutes * 60;
-        $t *= 1000;
-        return $t;
+        return $time;
     }
 
     public static function Ymd ($timestamp, $infix = ' ') {
@@ -461,10 +432,10 @@ class Exchange {
             'defaultCost' => 1.0,
             'maxCapacity' => 1000,
         );
-
         $this->timeout     = 10000; // in milliseconds
         $this->proxy       = '';
         $this->headers     = array ();
+        $this->curlopt_interface = null;
 
         $this->markets     = null;
         $this->symbols     = null;
@@ -523,18 +494,24 @@ class Exchange {
 
         // API methods metainfo
         $this->has = array (
+            'cancelOrder' => $this->hasPrivateAPI,
+            'createDepositAddress' => false,
+            'createOrder' => $this->hasPrivateAPI,
             'deposit' => false,
-            'fetchTicker' => true,
-            'fetchOrderBook' => true,
-            'fetchTrades' => true,
-            'fetchTickers' => false,
-            'fetchOHLCV' => false,
             'fetchBalance' => true,
-            'fetchOrder' => false,
-            'fetchOrders' => false,
-            'fetchOpenOrders' => false,
             'fetchClosedOrders' => false,
+            'fetchCurrencies' => false,
+            'fetchDepositAddress' => false,
+            'fetchMarkets' => true,
             'fetchMyTrades' => false,
+            'fetchOHLCV' => false,
+            'fetchOpenOrders' => false,
+            'fethcOrder' => false,
+            'fethcOrderBook' => true,
+            'fetchOrders' => false,
+            'fetchTicker' => true,
+            'fetchTickers' => false,
+            'fetchTrades' => true,
             'withdraw' => false,
         );
 
@@ -677,6 +654,8 @@ class Exchange {
                 $headers[] = $key . ': ' . $value;
         }
 
+        // this name for the proxy string is deprecated
+        // we should rename it to $this->cors everywhere
         $url = $this->proxy . $url;
 
         $verbose_headers = $headers;
@@ -736,6 +715,20 @@ class Exchange {
             print_r ("\nRequest:\n");
             print_r (array ($method, $url, $verbose_headers, $body));
         }
+
+        // we probably only need to set it once on startup
+        if ($this->curlopt_interface) {
+			curl_setopt ($this->curl, CURLOPT_INTERFACE, $this->curlopt_interface);
+        }
+
+        /*
+
+        // this is currently not integrated, reserved for future
+        if ($this->proxy) {
+            curl_setopt ($this->curl, CURLOPT_PROXY, $this->proxy);
+        }
+
+        */
 
         curl_setopt ($this->curl, CURLOPT_FAILONERROR, false);
 
@@ -1395,3 +1388,4 @@ class Exchange {
         }
     }
 }
+
