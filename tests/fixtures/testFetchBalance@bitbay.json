@@ -1,0 +1,137 @@
+[{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/bitbay.net\/API\/Trading\/tradingApi.php",
+        "headers": {
+            "Host": "bitbay.net",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "API-Key": "3faec3e5458d24809a68fbaf0e97245b",
+            "API-Hash": "affa770993e711fedca0081605e02682a98d67bedd0234cd9eee3e6ca2caa721e419809ce53fb3678c6234dd8bb6dfd316ce070ed82679c95ab50693754e7894"
+        },
+        "body": "method=info&moment=1513255135"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:38:55 GMT",
+            "Content-Type": "text\/plain;charset=UTF-8",
+            "Content-Length": "142",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dc58e04ba6e37bf739c89c3856212715d1513255135; expires=Fri, 14-Dec-18 12:38:55 GMT; path=\/; domain=.bitbay.net; HttpOnly",
+            "Content-Disposition": "inline;filename=f.txt",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "sameorigin",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd139140a607c72-BEG"
+        },
+        "body": "{\"success\":1,\"balances\":{\"BTC\":{\"available\":\"0\",\"locked\":\"0\"},\"BCC\":{\"available\":\"0\",\"locked\":\"0\"},\"PLN\":{\"available\":\"0\",\"locked\":\"0\"},\"EUR\":{\"available\":\"0\",\"locked\":\"0\"},\"GAME\":{\"available\":\"0\",\"locked\":\"0\"},\"LSK\":{\"available\":\"0\",\"locked\":\"0\"},\"USD\":{\"available\":\"0\",\"locked\":\"0\"},\"ETH\":{\"available\":\"0\",\"locked\":\"0\"},\"LTC\":{\"available\":\"0\",\"locked\":\"0\"},\"DASH\":{\"available\":\"0\",\"locked\":\"0\"}},\"addresses\":{},\"fee\":\"0.43\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/bitbay.net\/API\/Trading\/tradingApi.php",
+        "headers": {
+            "Host": "bitbay.net",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "API-Key": "3faec3e5458d24809a68fbaf0e97245b",
+            "API-Hash": "4619c86c10af2731bc7cc0d08362f89177b4822ca80170d5ef0c32c66f5f3119303426b9feb1066cee432dfd16895b66387d5e0f012b03c70929fa67d7d26201"
+        },
+        "body": "method=info&moment=1513256172"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:56:12 GMT",
+            "Content-Type": "text\/plain;charset=UTF-8",
+            "Content-Length": "142",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d51a7a579818482ac12061392cd73113b1513256172; expires=Fri, 14-Dec-18 12:56:12 GMT; path=\/; domain=.bitbay.net; HttpOnly",
+            "Content-Disposition": "inline;filename=f.txt",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "sameorigin",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd152646fbf7c96-BEG"
+        },
+        "body": "{\"success\":1,\"balances\":{\"BTC\":{\"available\":\"0\",\"locked\":\"0\"},\"BCC\":{\"available\":\"0\",\"locked\":\"0\"},\"PLN\":{\"available\":\"0\",\"locked\":\"0\"},\"EUR\":{\"available\":\"0\",\"locked\":\"0\"},\"GAME\":{\"available\":\"0\",\"locked\":\"0\"},\"LSK\":{\"available\":\"0\",\"locked\":\"0\"},\"USD\":{\"available\":\"0\",\"locked\":\"0\"},\"ETH\":{\"available\":\"0\",\"locked\":\"0\"},\"LTC\":{\"available\":\"0\",\"locked\":\"0\"},\"DASH\":{\"available\":\"0\",\"locked\":\"0\"}},\"addresses\":{},\"fee\":\"0.43\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/bitbay.net\/API\/Trading\/tradingApi.php",
+        "headers": {
+            "Host": "bitbay.net",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "API-Key": "3faec3e5458d24809a68fbaf0e97245b",
+            "API-Hash": "503eef5e8f005d581aba7af8c8f20574f952f48b0dd80fea1749e46c97d9789c4be273fe8ab540d16b7ac74ffb8f53f514b4120bbd0e28e7d87793b9e63cc40b"
+        },
+        "body": "method=info&moment=1513259887"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 13:58:07 GMT",
+            "Content-Type": "text\/plain;charset=UTF-8",
+            "Content-Length": "142",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=da84c8f2cc06f07dcf75970c1766f11be1513259887; expires=Fri, 14-Dec-18 13:58:07 GMT; path=\/; domain=.bitbay.net; HttpOnly",
+            "Content-Disposition": "inline;filename=f.txt",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "sameorigin",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1ad178ec17c8a-BEG"
+        },
+        "body": "{\"success\":1,\"balances\":{\"BTC\":{\"available\":\"0\",\"locked\":\"0\"},\"BCC\":{\"available\":\"0\",\"locked\":\"0\"},\"PLN\":{\"available\":\"0\",\"locked\":\"0\"},\"EUR\":{\"available\":\"0\",\"locked\":\"0\"},\"GAME\":{\"available\":\"0\",\"locked\":\"0\"},\"LSK\":{\"available\":\"0\",\"locked\":\"0\"},\"USD\":{\"available\":\"0\",\"locked\":\"0\"},\"ETH\":{\"available\":\"0\",\"locked\":\"0\"},\"LTC\":{\"available\":\"0\",\"locked\":\"0\"},\"DASH\":{\"available\":\"0\",\"locked\":\"0\"}},\"addresses\":{},\"fee\":\"0.43\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/bitbay.net\/API\/Trading\/tradingApi.php",
+        "headers": {
+            "Host": "bitbay.net",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "API-Key": "3faec3e5458d24809a68fbaf0e97245b",
+            "API-Hash": "284fa7f3d8a004c55b3a23638127283d7a0e6a3e466e17aa9ba3a3f350125f8fce93895e607ed7f1c486e6bc30ee89103e9b72cf03cb64915974865e053e9551"
+        },
+        "body": "method=info&moment=1513259966"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 13:59:26 GMT",
+            "Content-Type": "text\/plain;charset=UTF-8",
+            "Content-Length": "142",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d48a8118c05dbaa5934f568c2c87124b11513259966; expires=Fri, 14-Dec-18 13:59:26 GMT; path=\/; domain=.bitbay.net; HttpOnly",
+            "Content-Disposition": "inline;filename=f.txt",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "sameorigin",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1af06f99d7c78-BEG"
+        },
+        "body": "{\"success\":1,\"balances\":{\"BTC\":{\"available\":\"0\",\"locked\":\"0\"},\"BCC\":{\"available\":\"0\",\"locked\":\"0\"},\"PLN\":{\"available\":\"0\",\"locked\":\"0\"},\"EUR\":{\"available\":\"0\",\"locked\":\"0\"},\"GAME\":{\"available\":\"0\",\"locked\":\"0\"},\"LSK\":{\"available\":\"0\",\"locked\":\"0\"},\"USD\":{\"available\":\"0\",\"locked\":\"0\"},\"ETH\":{\"available\":\"0\",\"locked\":\"0\"},\"LTC\":{\"available\":\"0\",\"locked\":\"0\"},\"DASH\":{\"available\":\"0\",\"locked\":\"0\"}},\"addresses\":{},\"fee\":\"0.43\"}"
+    }
+}]

@@ -1,0 +1,116 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.zaif.jp\/api\/1\/currency_pairs\/all",
+        "headers": {
+            "Host": "api.zaif.jp"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:41:19 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "14042",
+            "Connection": "keep-alive",
+            "Server": "nginx\/1.10.3 (Ubuntu)",
+            "Set-Cookie": "api.zaif.jp.chat_client_id=; Max-Age=0; Path=\/; expires=Wed, 31-Dec-97 23:59:59 GMT, userhash=; Max-Age=0; Path=\/; expires=Thu, 14-Dec-2017 12:41:19 GMT, trading_view_user_id=-1; Path=\/, locale=ja; Max-Age=315360000; Path=\/; expires=Sun, 12-Dec-2027 12:41:19 GMT, session=0EgvHYGC6UG-_13xLK3g4jCETuw9I6USM3CrViWlhQdzGFLOhPKy3SCjzsYw63i5oXMITt6xfVm6qCDaqrBgNoAElVwAAAAAAAAASm9xMlpHQdaMnFvShLR9lCiMB19jc3JmdF-UjCgzOWYzZTAxYTYxMmE0ZDQ0OGI5NmQwMTZlODYyNjFlYjFkNzRiZWY2lIwFdG9rZW6UaAKMA2FwaZR9lHWHlC4; Path=\/",
+            "X-Frame-Options": "SAMEORIGIN, SAMEORIGIN"
+        },
+        "body": "[{\"item_unit_step\": 0.0001, \"seq\": 0, \"aux_unit_point\": 0, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.0001, \"item_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"title\": \"BTC\/JPY\", \"is_token\": false, \"id\": 1, \"currency_pair\": \"btc_jpy\", \"aux_unit_step\": 5.0, \"event_number\": 0, \"aux_unit_min\": 5.0, \"name\": \"BTC\/JPY\", \"description\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u30fb\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u3092\\u884c\\u3046\\u3053\\u3068\\u304c\\u3067\\u304d\\u307e\\u3059\"}, {\"item_unit_step\": 0.1, \"seq\": 1, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.1, \"item_japanese\": \"XEM\", \"title\": \"XEM\/JPY\", \"is_token\": false, \"id\": 4, \"currency_pair\": \"xem_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"XEM\/JPY\", \"description\": \"XEM\\u30fb\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u3092\\u884c\\u3046\\u3053\\u3068\\u304c\\u3067\\u304d\\u307e\\u3059\"}, {\"item_unit_step\": 1.0, \"seq\": 23, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"FSCC\", \"title\": \"FSCC\/BTC \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 23, \"currency_pair\": \"fscc_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"FSCC\/BTC\", \"description\": \"FSCC\/BTC\\u53d6\\u5f15\\u6240\\u3002FSCC\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.1, \"seq\": 12, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.1, \"item_japanese\": \"SJCX\", \"title\": \"SJCX\/JPY \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 12, \"currency_pair\": \"sjcx_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"SJCX\/JPY\", \"description\": \"SJCX\/JPY\\u53d6\\u5f15\\u6240\\u3002SJCX\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.0001, \"seq\": 177, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.0001, \"item_japanese\": \"ZEN\", \"title\": \"JPYZ\/JPY \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 174, \"currency_pair\": \"jpyz_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"JPYZ\/JPY\", \"description\": \"JPYZ\/JPY \\u53d6\\u5f15\\u6240\\u3002JPYZ\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 176, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"NCXC\", \"title\": \"NCXC\/BTC \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 173, \"currency_pair\": \"ncxc_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"NCXC\/BTC\", \"description\": \"NCXC\/BTC \\u53d6\\u5f15\\u6240\\u3002NCXC\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 7, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"\\u30b6\\u30a4\\u30d5\", \"title\": \"ZAIF\/BTC \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 7, \"currency_pair\": \"zaif_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"ZAIF\/BTC\", \"description\": \"ZAIF\/BTC\\u53d6\\u5f15\\u6240\\u3002ZAIF\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.0001, \"seq\": 179, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 0.0001, \"item_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u30ad\\u30e3\\u30c3\\u30b7\\u30e5\", \"title\": \"BCH\/BTC\", \"is_token\": true, \"id\": 176, \"currency_pair\": \"bch_btc\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"BCH\/BTC\", \"description\": \"\\u30d3\\u30c3\\u30c8\\u30ad\\u30e3\\u30c3\\u30b7\\u30e5\\u30fb\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u3092\\u884c\\u3046\\u3053\\u3068\\u304c\\u3067\\u304d\\u307e\\u3059\"}, {\"item_unit_step\": 1.0, \"seq\": 2, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"XEM\", \"title\": \"XEM\/BTC\", \"is_token\": false, \"id\": 5, \"currency_pair\": \"xem_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"XEM\/BTC\", \"description\": \"XEM\\u30fb\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u3092\\u884c\\u3046\\u3053\\u3068\\u304c\\u3067\\u304d\\u307e\\u3059\"}, {\"item_unit_step\": 0.0001, \"seq\": 181, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 0.0001, \"item_japanese\": \"\\u30a4\\u30fc\\u30b5\\u30ea\\u30a2\\u30e0\", \"title\": \"ETH\/BTC\", \"is_token\": true, \"id\": 178, \"currency_pair\": \"eth_btc\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"ETH\/BTC\", \"description\": \"ETH\/BTC \\u53d6\\u5f15\\u6240\\u3002\\u30a4\\u30fc\\u30b5\\u30ea\\u30a2\\u30e0\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 13, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"SJCX\", \"title\": \"SJCX\/BTC \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 13, \"currency_pair\": \"sjcx_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"SJCX\/BTC\", \"description\": \"SJCX\/BTC\\u53d6\\u5f15\\u6240\\u3002SJCX\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.0001, \"seq\": 180, \"aux_unit_point\": 0, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.0001, \"item_japanese\": \"\\u30a4\\u30fc\\u30b5\\u30ea\\u30a2\\u30e0\", \"title\": \"ETH\/JPY \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 177, \"currency_pair\": \"eth_jpy\", \"aux_unit_step\": 5.0, \"event_number\": 0, \"aux_unit_min\": 5.0, \"name\": \"ETH\/JPY\", \"description\": \"ETH\/JPY \\u53d6\\u5f15\\u6240\\u3002\\u30a4\\u30fc\\u30b5\\u30ea\\u30a2\\u30e0\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 174, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"CICC\", \"title\": \"CICC\/BTC \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 171, \"currency_pair\": \"cicc_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"CICC\/BTC\", \"description\": \"CICC\/BTC \\u53d6\\u5f15\\u6240\\u3002CICC\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.0001, \"seq\": 175, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.0001, \"item_japanese\": \"NCXC\", \"title\": \"NCXC\/JPY \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 172, \"currency_pair\": \"ncxc_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"NCXC\/JPY\", \"description\": \"NCXC\/JPY \\u53d6\\u5f15\\u6240\\u3002NCXC\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.0001, \"seq\": 183, \"aux_unit_point\": 2, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 10.0, \"item_japanese\": \"CMS:XEM\", \"title\": \"CMS:XEM\/JPY \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 180, \"currency_pair\": \"mosaic.cms_jpy\", \"aux_unit_step\": 0.01, \"event_number\": 0, \"aux_unit_min\": 0.01, \"name\": \"MOSAIC.CMS\/JPY\", \"description\": \"CMS:XEM\/JPY \\u53d6\\u5f15\\u6240\\u3002CMS:XEM\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 4, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"\\u30e2\\u30ca\\u30b3\\u30a4\\u30f3\", \"title\": \"MONA\/BTC\", \"is_token\": false, \"id\": 3, \"currency_pair\": \"mona_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"MONA\/BTC\", \"description\": \"\\u30e2\\u30ca\\u30b3\\u30a4\\u30f3\\u30fb\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u3092\\u884c\\u3046\\u3053\\u3068\\u304c\\u3067\\u304d\\u307e\\u3059\"}, {\"item_unit_step\": 0.0001, \"seq\": 173, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.0001, \"item_japanese\": \"CICC\", \"title\": \"CICC\/JPY \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 170, \"currency_pair\": \"cicc_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"CICC\/JPY\", \"description\": \"CICC\/JPY \\u53d6\\u5f15\\u6240\\u3002CICC\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 133, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"PEPECASH\", \"title\": \"PEPECASH\/BTC \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 130, \"currency_pair\": \"pepecash_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"PEPECASH\/BTC\", \"description\": \"PEPECASH\/BTC \\u53d6\\u5f15\\u6240\\u3002PEPECASH\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.0001, \"seq\": 182, \"aux_unit_point\": 2, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 10.0, \"item_japanese\": \"CMS:ETH\", \"title\": \"CMS:ETH\/JPY \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 179, \"currency_pair\": \"erc20.cms_jpy\", \"aux_unit_step\": 0.01, \"event_number\": 0, \"aux_unit_min\": 0.01, \"name\": \"ERC20.CMS\/JPY\", \"description\": \"CMS:ETH\/JPY \\u53d6\\u5f15\\u6240\\u3002CMS:ETH\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.0001, \"seq\": 132, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.0001, \"item_japanese\": \"PEPECASH\", \"title\": \"PEPECASH\/JPY \\u53d6\\u5f15\\u6240 - ZAIF Exchange\", \"is_token\": true, \"id\": 129, \"currency_pair\": \"pepecash_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"PEPECASH\/JPY\", \"description\": \"PEPECASH\/JPY \\u53d6\\u5f15\\u6240\\u3002PEPECASH\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.1, \"seq\": 8, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.1, \"item_japanese\": \"XCP\", \"title\": \"XCP\/JPY \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 8, \"currency_pair\": \"xcp_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"XCP\/JPY\", \"description\": \"XCP\/JPY\\u53d6\\u5f15\\u6240\\u3002XCP\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.1, \"seq\": 10, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.1, \"item_japanese\": \"BCY\", \"title\": \"BCY\/JPY \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 10, \"currency_pair\": \"bitcrystals_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"BITCRYSTALS\/JPY\", \"description\": \"BCY\/JPY\\u53d6\\u5f15\\u6240\\u3002BITCRYSTALS\\u3068\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 0.0001, \"seq\": 178, \"aux_unit_point\": 0, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.0001, \"item_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u30ad\\u30e3\\u30c3\\u30b7\\u30e5\", \"title\": \"BCH\/JPY\", \"is_token\": true, \"id\": 175, \"currency_pair\": \"bch_jpy\", \"aux_unit_step\": 5.0, \"event_number\": 0, \"aux_unit_min\": 5.0, \"name\": \"BCH\/JPY\", \"description\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u30ad\\u30e3\\u30c3\\u30b7\\u30e5\\u30fb\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u3092\\u884c\\u3046\\u3053\\u3068\\u304c\\u3067\\u304d\\u307e\\u3059\"}, {\"item_unit_step\": 0.1, \"seq\": 6, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.1, \"item_japanese\": \"\\u30b6\\u30a4\\u30d5\", \"title\": \"ZAIF\\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 6, \"currency_pair\": \"zaif_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"ZAIF\/JPY\", \"description\": \"ZAIF\\u53d6\\u5f15\\u6240\\u3002ZAIF\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 3, \"aux_unit_point\": 1, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 1.0, \"item_japanese\": \"\\u30e2\\u30ca\\u30b3\\u30a4\\u30f3\", \"title\": \"MONA\/JPY\", \"is_token\": false, \"id\": 2, \"currency_pair\": \"mona_jpy\", \"aux_unit_step\": 0.1, \"event_number\": 0, \"aux_unit_min\": 0.1, \"name\": \"MONA\/JPY\", \"description\": \"\\u30e2\\u30ca\\u30b3\\u30a4\\u30f3\\u30fb\\u65e5\\u672c\\u5186\\u306e\\u53d6\\u5f15\\u3092\\u884c\\u3046\\u3053\\u3068\\u304c\\u3067\\u304d\\u307e\\u3059\"}, {\"item_unit_step\": 0.0001, \"seq\": 22, \"aux_unit_point\": 4, \"aux_japanese\": \"\\u65e5\\u672c\\u5186\", \"item_unit_min\": 0.0001, \"item_japanese\": \"FSCC\", \"title\": \"FSCC\\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 22, \"currency_pair\": \"fscc_jpy\", \"aux_unit_step\": 0.0001, \"event_number\": 0, \"aux_unit_min\": 0.0001, \"name\": \"FSCC\/JPY\", \"description\": \"FSCC\\u53d6\\u5f15\\u6240\\u3002FSCC\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 9, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"XCP\", \"title\": \"XCP\/BTC \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 9, \"currency_pair\": \"xcp_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"XCP\/BTC\", \"description\": \"XCP\/BTC\\u53d6\\u5f15\\u6240\\u3002XCP\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}, {\"item_unit_step\": 1.0, \"seq\": 11, \"aux_unit_point\": 8, \"aux_japanese\": \"\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\", \"item_unit_min\": 1.0, \"item_japanese\": \"BCY\", \"title\": \"BCY\/BTC \\u53d6\\u5f15\\u6240 - Zaif Exchange\", \"is_token\": true, \"id\": 11, \"currency_pair\": \"bitcrystals_btc\", \"aux_unit_step\": 1e-08, \"event_number\": 0, \"aux_unit_min\": 1e-08, \"name\": \"BITCRYSTALS\/BTC\", \"description\": \"BCY\/BTC\\u53d6\\u5f15\\u6240\\u3002BITCRYSTALS\\u3068\\u30d3\\u30c3\\u30c8\\u30b3\\u30a4\\u30f3\\u306e\\u53d6\\u5f15\\u304c\\u884c\\u3048\\u307e\\u3059\\u3002\"}]"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/api.zaif.jp\/tapi",
+        "headers": {
+            "Host": "api.zaif.jp",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "Key": "580c7232-06c7-4698-8fb7-4cd2a543cea8",
+            "Sign": "27a5632d2bc78cc5a40d51b739d0c64cf17127eccfef112b7c833e305f9bf682f19c284dc863df3ca9568726d2c83e3003cd5f0cc2b94e277b7f5602b33e900c"
+        },
+        "body": "method=get_info&nonce=1513255279"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:41:20 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "45",
+            "Connection": "keep-alive",
+            "Server": "nginx\/1.10.3 (Ubuntu)",
+            "Set-Cookie": "api.zaif.jp.chat_client_id=; Max-Age=0; Path=\/; expires=Wed, 31-Dec-97 23:59:59 GMT, userhash=; Max-Age=0; Path=\/; expires=Thu, 14-Dec-2017 12:41:20 GMT, trading_view_user_id=-1; Path=\/, locale=ja; Max-Age=315360000; Path=\/; expires=Sun, 12-Dec-2027 12:41:20 GMT, session=qEG8B5s5XBzPTxzPAtqAzJpBqv3TbK9e8Z3Ymj3RdEwJzCiIwCgITIKE2wHmPNsxeuMXr2z-OWh4o8jF0qWygIAElV0AAAAAAAAASnBxMlpHQdaMnFw08MR9lCiMB19jc3JmdF-UjChlMzFlZDY5ZjFmY2U5ODBmOTE1ZTI1ZjVlNWUwNGFlOWM0MTdlOGU0lIwEdGFwaZR9lIwFdG9rZW6UaAJ1h5Qu; Path=\/",
+            "X-Frame-Options": "SAMEORIGIN, SAMEORIGIN",
+            "X-Message": "signature mismatch"
+        },
+        "body": "{\"success\": 0, \"error\": \"signature mismatch\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/api.zaif.jp\/tapi",
+        "headers": {
+            "Host": "api.zaif.jp",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "Key": "580c7232-06c7-4698-8fb7-4cd2a543cea8",
+            "Sign": "ea9396942b483404769d7111a7f025fba59c5a6d5841862d86bdf3fb39013cf9cb757e2b910927e7a280ccfde22cc269bcab3187c30e887dc0a350040c13c83f"
+        },
+        "body": "method=get_info&nonce=1513256200"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:56:41 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "45",
+            "Connection": "keep-alive",
+            "Server": "nginx\/1.10.3 (Ubuntu)",
+            "Set-Cookie": "api.zaif.jp.chat_client_id=; Max-Age=0; Path=\/; expires=Wed, 31-Dec-97 23:59:59 GMT, userhash=; Max-Age=0; Path=\/; expires=Thu, 14-Dec-2017 12:56:41 GMT, trading_view_user_id=-1; Path=\/, locale=ja; Max-Age=315360000; Path=\/; expires=Sun, 12-Dec-2027 12:56:41 GMT, session=zxZBupuHxxDhwTSRUXwjlUtvqcx3t8G0FyucrUl7N1Rth3KUVbJ6_nj3P1e2VHeulS_IJl-LX3ohSN1wv_vW84AElV0AAAAAAAAASgl1MlpHQdaMnUJ60-h9lCiMBXRva2VulIwoNTI3ODJiOGFlOTg4NGM1ZTBmZWEzOWQ3MGQyY2JhYmU3ZTc2NjMwOZSMBHRhcGmUfZSMB19jc3JmdF-UaAJ1h5Qu; Path=\/",
+            "X-Frame-Options": "SAMEORIGIN, SAMEORIGIN",
+            "X-Message": "signature mismatch"
+        },
+        "body": "{\"success\": 0, \"error\": \"signature mismatch\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/api.zaif.jp\/tapi",
+        "headers": {
+            "Host": "api.zaif.jp",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "Key": "580c7232-06c7-4698-8fb7-4cd2a543cea8",
+            "Sign": "894caeb13391747c98988a5834a240199a8c136762cb4b31001cb28259018d1dbcc9492e297d321c6e1000e187f886a368e8ecb485223e46d45a36d608febe4d"
+        },
+        "body": "method=get_info&nonce=1513259921"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 13:58:43 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "45",
+            "Connection": "keep-alive",
+            "Server": "nginx\/1.10.3 (Ubuntu)",
+            "Set-Cookie": "api.zaif.jp.chat_client_id=; Max-Age=0; Path=\/; expires=Wed, 31-Dec-97 23:59:59 GMT, userhash=; Max-Age=0; Path=\/; expires=Thu, 14-Dec-2017 13:58:43 GMT, trading_view_user_id=-1; Path=\/, locale=ja; Max-Age=315360000; Path=\/; expires=Sun, 12-Dec-2027 13:58:43 GMT, session=arNTXVj3iLFAxBQ2DJqUrEjJhSaO3gf77qvrLNw8cSpGxgXU7FAwGXqSbdv_6m3uwEf3bI4KnGzniqFWQvCViYAElV0AAAAAAAAASpODMlpHQdaMoOT5VE59lCiMBXRva2VulIwoMTJkZjA4YWU5YzI3ODE4N2MzOGE4NWU3NjY0NTA5NDQxNDViMjIwN5SMBHRhcGmUfZSMB19jc3JmdF-UaAJ1h5Qu; Path=\/",
+            "X-Frame-Options": "SAMEORIGIN, SAMEORIGIN",
+            "X-Message": "signature mismatch"
+        },
+        "body": "{\"success\": 0, \"error\": \"signature mismatch\"}"
+    }
+}]

@@ -1,0 +1,113 @@
+[{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.fybse.se\/api\/SEK\/getaccinfo",
+        "headers": {
+            "Host": "www.fybse.se",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "gY7y57RlYqKN5ZI50O5C",
+            "sig": "74193405d6d30cd0efcf529e4eaf08489bfa965c"
+        },
+        "body": "timestamp=1513255201"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "X-Frame-Options": "DENY",
+            "Content-Encoding": "gzip",
+            "Content-Type": "text\/html; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Date": "Thu, 14 Dec 2017 12:40:02 GMT",
+            "Server": "lighttpd\/1.4.33"
+        },
+        "body": "{\"accNo\":14127,\"btcBal\":\"0.00000000\",\"btcDeposit\":\"1KF4KhbHCRDiNP7nm89wMuoxxZiFKDNxC2\",\"email\":\"igor.kroitor@gmail.com\",\"error\":0,\"sekBal\":\"0.00\"}\n"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.fybse.se\/api\/SEK\/getaccinfo",
+        "headers": {
+            "Host": "www.fybse.se",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "gY7y57RlYqKN5ZI50O5C",
+            "sig": "1da755833a3c1cbfe768e8804705629265bbb298"
+        },
+        "body": "timestamp=1513256185"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "X-Frame-Options": "DENY",
+            "Content-Encoding": "gzip",
+            "Content-Type": "text\/html; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Date": "Thu, 14 Dec 2017 12:56:26 GMT",
+            "Server": "lighttpd\/1.4.33"
+        },
+        "body": "{\"accNo\":14127,\"btcBal\":\"0.00000000\",\"btcDeposit\":\"1KF4KhbHCRDiNP7nm89wMuoxxZiFKDNxC2\",\"email\":\"igor.kroitor@gmail.com\",\"error\":0,\"sekBal\":\"0.00\"}\n"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.fybse.se\/api\/SEK\/getaccinfo",
+        "headers": {
+            "Host": "www.fybse.se",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "gY7y57RlYqKN5ZI50O5C",
+            "sig": "57f92ab9d54f7d473a897d005b976c45a5231efc"
+        },
+        "body": "timestamp=1513259900"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "X-Frame-Options": "DENY",
+            "Content-Encoding": "gzip",
+            "Content-Type": "text\/html; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Date": "Thu, 14 Dec 2017 13:58:26 GMT",
+            "Server": "lighttpd\/1.4.33"
+        },
+        "body": "{\"accNo\":14127,\"btcBal\":\"0.00000000\",\"btcDeposit\":\"1KF4KhbHCRDiNP7nm89wMuoxxZiFKDNxC2\",\"email\":\"igor.kroitor@gmail.com\",\"error\":0,\"sekBal\":\"0.00\"}\n"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.fybse.se\/api\/SEK\/getaccinfo",
+        "headers": {
+            "Host": "www.fybse.se",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "gY7y57RlYqKN5ZI50O5C",
+            "sig": "3955a4007dd6e567dd2cdb8ccb71d1df4a1b1758"
+        },
+        "body": "timestamp=1513259979"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "X-Frame-Options": "DENY",
+            "Content-Encoding": "gzip",
+            "Content-Type": "text\/html; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Date": "Thu, 14 Dec 2017 13:59:40 GMT",
+            "Server": "lighttpd\/1.4.33"
+        },
+        "body": "{\"accNo\":14127,\"btcBal\":\"0.00000000\",\"btcDeposit\":\"1KF4KhbHCRDiNP7nm89wMuoxxZiFKDNxC2\",\"email\":\"igor.kroitor@gmail.com\",\"error\":0,\"sekBal\":\"0.00\"}\n"
+    }
+}]

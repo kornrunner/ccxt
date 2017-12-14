@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.jubi.com\/api\/v1\/balance",
+        "headers": {
+            "Host": "www.jubi.com",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "key=icbh6-v163t-6ravj-7ezbg-1yab2-pun37-qmj25&nonce=1513255216&signature=ccaa1c0a3c300a213208898f7a9675c19c249edb6f758d1326c0cc93485c842a"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:40:25 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "X-Powered-By": "PHP\/5.6.9",
+            "Content-Encoding": "gzip",
+            "X-Powered-By-Defense": " from pon-wdxm-bgp-qs-qssec-kd23"
+        },
+        "body": "{\"result\":false,\"code\":\"405\"}"
+    }
+}]

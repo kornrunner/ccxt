@@ -1,0 +1,121 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.btcmarkets.net\/account\/balance",
+        "headers": {
+            "Host": "api.btcmarkets.net",
+            "Content-Type": "application\/json",
+            "apikey": "26f4eebf-0f56-41dd-a1fd-db938d378d68",
+            "timestamp": "1513255145635",
+            "signature": "yTD9JvtyOoHZyFMe2UQX0f4WREwFbZyrjGsUc7xBWBmcPZLmo\/k\/xxFdeOwgZqvKUhKLj3gFvxsDzs5vNalu8A=="
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:39:07 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d6d9a667c92368f5dcfb40c112d27f0041513255145; expires=Fri, 14-Dec-18 12:39:05 GMT; path=\/; domain=.btcmarkets.net; HttpOnly",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd139551d467c96-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[{\"balance\":0,\"pendingFunds\":0,\"currency\":\"AUD\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"BTC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"LTC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"ETH\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"XRP\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"ETC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"BCH\"}]"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.btcmarkets.net\/account\/balance",
+        "headers": {
+            "Host": "api.btcmarkets.net",
+            "Content-Type": "application\/json",
+            "apikey": "26f4eebf-0f56-41dd-a1fd-db938d378d68",
+            "timestamp": "1513256176878",
+            "signature": "nXHekyrVi6MtQ3T5j0SGmGnWQrLSQxJQz0pz3NSLmibn8k6q+VHFAdkl7fOtgIwlq9hdLxiO1+4KxpT7ediu6g=="
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:56:18 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d4254bb1cf4975cbdca0d9208cc7690581513256176; expires=Fri, 14-Dec-18 12:56:16 GMT; path=\/; domain=.btcmarkets.net; HttpOnly",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd152820ce37c54-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[{\"balance\":0,\"pendingFunds\":0,\"currency\":\"AUD\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"BTC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"LTC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"ETH\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"XRP\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"ETC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"BCH\"}]"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.btcmarkets.net\/account\/balance",
+        "headers": {
+            "Host": "api.btcmarkets.net",
+            "Content-Type": "application\/json",
+            "apikey": "26f4eebf-0f56-41dd-a1fd-db938d378d68",
+            "timestamp": "1513259891961",
+            "signature": "ZLZaSvKALjOYoPPhwCnxOFEQ4cHIbMaSKhbYVac4i2Cj\/Mta8BsMe6rxmCe6+Lm9HZd2r0JjfW\/nng1efH1G8A=="
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 13:58:13 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dd8c17e60d922d2d60d24b65a828239441513259892; expires=Fri, 14-Dec-18 13:58:12 GMT; path=\/; domain=.btcmarkets.net; HttpOnly",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1ad354da57c3c-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[{\"balance\":0,\"pendingFunds\":0,\"currency\":\"AUD\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"BTC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"LTC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"ETH\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"XRP\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"ETC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"BCH\"}]"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.btcmarkets.net\/account\/balance",
+        "headers": {
+            "Host": "api.btcmarkets.net",
+            "Content-Type": "application\/json",
+            "apikey": "26f4eebf-0f56-41dd-a1fd-db938d378d68",
+            "timestamp": "1513259971339",
+            "signature": "mLmxj7ybAIj+Kgdi9vf3go6EX4OSyPWELFWhk6wDlPvtZYl3UsXs4r+2hzTYQLGyJFOBP4XSsiaTRItpJRkXjw=="
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 13:59:32 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d4e3b6684d3b0b720f10c7498185636d11513259971; expires=Fri, 14-Dec-18 13:59:31 GMT; path=\/; domain=.btcmarkets.net; HttpOnly",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1af2538de7c90-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[{\"balance\":0,\"pendingFunds\":0,\"currency\":\"AUD\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"BTC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"LTC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"ETH\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"XRP\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"ETC\"},{\"balance\":0,\"pendingFunds\":0,\"currency\":\"BCH\"}]"
+    }
+}]

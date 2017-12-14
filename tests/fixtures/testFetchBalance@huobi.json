@@ -1,0 +1,29 @@
+[{
+    "request": {
+        "method": "POST",
+        "url": "http:\/\/api.huobi.com\/apiv3",
+        "headers": {
+            "Host": "api.huobi.com",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "access_key=5d8afad0-05eb1e1d-8399a6ee-7761d&created=1513255205&method=get_account_info&sign=fa376ef718e1466143af806cb1356451"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:40:12 GMT",
+            "Content-Type": "application\/json;charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "Set-Cookie": "__jsluid=b66f63286e854c1ca67bfed1fbcd58eb; max-age=31536000; path=\/; HttpOnly",
+            "X-Cache": "bypass"
+        },
+        "body": "{\"code\":66,\"message\":\"\u60a8\u7684api key\u5df2\u88ab\u7981\u7528   \",\"msg\":\"\u60a8\u7684api key\u5df2\u88ab\u7981\u7528   \"}"
+    }
+}]

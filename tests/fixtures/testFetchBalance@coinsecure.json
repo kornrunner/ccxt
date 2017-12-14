@@ -1,0 +1,34 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.coinsecure.in\/v1\/user\/exchange\/bank\/summary",
+        "headers": {
+            "Host": "api.coinsecure.in",
+            "Authorization": "gzrm0fP6BGMilMzmsoJFPMpWjDvCLThyrVanX0yu"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:39:42 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "254",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "Set-Cookie": "PLAY_SESSION=c1720139d591357a966e56e6d5dca258c2bf9a02-csrfToken=67e933d68b7f0c30c70fdb13f17858ba66e1f489-1513255182359-6918c07bbd4ffa6f9051aa6c; Path=\/; Domain=.coinsecure.in; HTTPOnly, visid_incap_1033907=StfnHPtNSAiPirE\/KlAnfg1xMloAAAAAQUIPAAAAAADT1j3UwhB9TN3DSp9sUvx0; expires=Fri, 14 Dec 2018 10:28:26 GMT; path=\/; Domain=.coinsecure.in, incap_ses_535_1033907=xAnHZGRMaVgAZtGAB7RsBw5xMloAAAAAJkh1dtoGqPqccRkmg1g\/ig==; path=\/; Domain=.coinsecure.in",
+            "Request-Time": "71",
+            "Content-Encoding": "gzip",
+            "Access-Control-Max-Age": "0",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, Accept, Referer, User-Agent, Authorization, accept",
+            "X-Iinfo": "8-43491543-43491565 NNNN CT(179 361 0) RT(1513255181551 104) q(0 0 5 0) r(8 8) U9",
+            "X-CDN": "Incapsula"
+        },
+        "body": "{\"success\":true,\"count\":12,\"message\":{\"pendingCoinBalance\":0,\"pendingFiatBalance\":0,\"availableCoinBalance\":0,\"availableFiatBalance\":0,\"totalCoinBalance\":0,\"totalFiatBalance\":0,\"coinFeePercentage\":0.6,\"fiatFeePercentage\":0.6,\"bankLinkStatus\":\"Incomplete\",\"hasTradeNetki\":false,\"tradeNetkiName\":\"none\",\"tradeNetkiAddress\":\"none\"},\"time\":1513255182428,\"method\":\"Exchange Bank Summary\",\"title\":\"\/v1\/user\/exchange\/bank\/summary\"}"
+    }
+}]

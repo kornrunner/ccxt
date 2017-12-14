@@ -1,0 +1,129 @@
+[{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/btc-trade.com.ua\/api\/balance",
+        "headers": {
+            "Host": "btc-trade.com.ua",
+            "public-key": "dd5de6b608f21776665da9098232bfb47445cc42485a7258350a2d426a14367c",
+            "api-sign": "dfe57f1c114ac745b4807b22789757ee499e6aaf7efcd6b56fe44dca5cbf1493",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "out_order_id=1513255147639&nonce=1513255147639"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.8.1",
+            "Date": "Thu, 14 Dec 2017 12:39:09 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "close",
+            "Vary": "Accept-Language, Cookie",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Language": "ru",
+            "Cache-Control": "max-age=0",
+            "X-Upstream": "crypton_api"
+        },
+        "body": "{\"msg_count\": 0, \"accounts\": [{\"currency\": \"UAH\", \"balance\": \"0.00000000\"}, {\"currency\": \"BTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"LTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"NVC\", \"balance\": \"0.00000000\"}, {\"currency\": \"DASH\", \"balance\": \"0.00000000\"}, {\"currency\": \"VTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"PPC\", \"balance\": \"0.00000000\"}, {\"currency\": \"HIRO\", \"balance\": \"0.00000000\"}, {\"currency\": \"DOGE\", \"balance\": \"0.00000000\"}, {\"currency\": \"XMR\", \"balance\": \"0.00000000\"}, {\"currency\": \"CLR\", \"balance\": \"0.00000000\"}, {\"currency\": \"RMS\", \"balance\": \"0.00000000\"}, {\"currency\": \"SIB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ITI\", \"balance\": \"0.00000000\"}, {\"currency\": \"KRB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ETH\", \"balance\": \"0.00000000\"}, {\"currency\": \"ZEC\", \"balance\": \"0.00000000\"}, {\"currency\": \"BCH\", \"balance\": \"0.00000000\"}], \"use_f2a\": false, \"notify_count\": 0}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/btc-trade.com.ua\/api\/balance",
+        "headers": {
+            "Host": "btc-trade.com.ua",
+            "public-key": "dd5de6b608f21776665da9098232bfb47445cc42485a7258350a2d426a14367c",
+            "api-sign": "43ba1ebcd82fe451c2d25952c4b44f7efc98a90199b40e0c783b0e61f8cac7c0",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "out_order_id=1513256178488&nonce=1513256178488"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.8.1",
+            "Date": "Thu, 14 Dec 2017 12:56:19 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "close",
+            "Vary": "Accept-Language, Cookie",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Language": "ru",
+            "Cache-Control": "max-age=0",
+            "X-Upstream": "crypton_api"
+        },
+        "body": "{\"msg_count\": 0, \"accounts\": [{\"currency\": \"UAH\", \"balance\": \"0.00000000\"}, {\"currency\": \"BTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"LTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"NVC\", \"balance\": \"0.00000000\"}, {\"currency\": \"DASH\", \"balance\": \"0.00000000\"}, {\"currency\": \"VTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"PPC\", \"balance\": \"0.00000000\"}, {\"currency\": \"HIRO\", \"balance\": \"0.00000000\"}, {\"currency\": \"DOGE\", \"balance\": \"0.00000000\"}, {\"currency\": \"XMR\", \"balance\": \"0.00000000\"}, {\"currency\": \"CLR\", \"balance\": \"0.00000000\"}, {\"currency\": \"RMS\", \"balance\": \"0.00000000\"}, {\"currency\": \"SIB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ITI\", \"balance\": \"0.00000000\"}, {\"currency\": \"KRB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ETH\", \"balance\": \"0.00000000\"}, {\"currency\": \"ZEC\", \"balance\": \"0.00000000\"}, {\"currency\": \"BCH\", \"balance\": \"0.00000000\"}], \"use_f2a\": false, \"notify_count\": 0}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/btc-trade.com.ua\/api\/balance",
+        "headers": {
+            "Host": "btc-trade.com.ua",
+            "public-key": "dd5de6b608f21776665da9098232bfb47445cc42485a7258350a2d426a14367c",
+            "api-sign": "ff1d711694252d0d5b37348960f257350fd852529eb7737ae146a84c064a8faa",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "out_order_id=1513259893682&nonce=1513259893682"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.8.1",
+            "Date": "Thu, 14 Dec 2017 13:58:14 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "close",
+            "Vary": "Accept-Language, Cookie",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Language": "ru",
+            "Cache-Control": "max-age=0",
+            "X-Upstream": "crypton_api"
+        },
+        "body": "{\"msg_count\": 0, \"accounts\": [{\"currency\": \"UAH\", \"balance\": \"0.00000000\"}, {\"currency\": \"BTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"LTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"NVC\", \"balance\": \"0.00000000\"}, {\"currency\": \"DASH\", \"balance\": \"0.00000000\"}, {\"currency\": \"VTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"PPC\", \"balance\": \"0.00000000\"}, {\"currency\": \"HIRO\", \"balance\": \"0.00000000\"}, {\"currency\": \"DOGE\", \"balance\": \"0.00000000\"}, {\"currency\": \"XMR\", \"balance\": \"0.00000000\"}, {\"currency\": \"CLR\", \"balance\": \"0.00000000\"}, {\"currency\": \"RMS\", \"balance\": \"0.00000000\"}, {\"currency\": \"SIB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ITI\", \"balance\": \"0.00000000\"}, {\"currency\": \"KRB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ETH\", \"balance\": \"0.00000000\"}, {\"currency\": \"ZEC\", \"balance\": \"0.00000000\"}, {\"currency\": \"BCH\", \"balance\": \"0.00000000\"}], \"use_f2a\": false, \"notify_count\": 0}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/btc-trade.com.ua\/api\/balance",
+        "headers": {
+            "Host": "btc-trade.com.ua",
+            "public-key": "dd5de6b608f21776665da9098232bfb47445cc42485a7258350a2d426a14367c",
+            "api-sign": "922aac68f0522f5790f2562b8f1bd037e1b43bc82ba50c7ee57ca5c838badd34",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "out_order_id=1513259972949&nonce=1513259972949"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.8.1",
+            "Date": "Thu, 14 Dec 2017 13:59:33 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "close",
+            "Vary": "Accept-Language, Cookie",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Language": "ru",
+            "Cache-Control": "max-age=0",
+            "X-Upstream": "crypton_api"
+        },
+        "body": "{\"msg_count\": 0, \"accounts\": [{\"currency\": \"UAH\", \"balance\": \"0.00000000\"}, {\"currency\": \"BTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"LTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"NVC\", \"balance\": \"0.00000000\"}, {\"currency\": \"DASH\", \"balance\": \"0.00000000\"}, {\"currency\": \"VTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"PPC\", \"balance\": \"0.00000000\"}, {\"currency\": \"HIRO\", \"balance\": \"0.00000000\"}, {\"currency\": \"DOGE\", \"balance\": \"0.00000000\"}, {\"currency\": \"XMR\", \"balance\": \"0.00000000\"}, {\"currency\": \"CLR\", \"balance\": \"0.00000000\"}, {\"currency\": \"RMS\", \"balance\": \"0.00000000\"}, {\"currency\": \"SIB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ITI\", \"balance\": \"0.00000000\"}, {\"currency\": \"KRB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ETH\", \"balance\": \"0.00000000\"}, {\"currency\": \"ZEC\", \"balance\": \"0.00000000\"}, {\"currency\": \"BCH\", \"balance\": \"0.00000000\"}], \"use_f2a\": false, \"notify_count\": 0}"
+    }
+}]

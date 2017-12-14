@@ -30,6 +30,31 @@ class ExchangeTest extends TestCase {
             'bitso',    // not accessible
             'kraken',   // timeout
         ],
+        'testFetchBalance' => [
+            'anxpro',       // not accessible
+            'binance',      // bad apiKey
+            'bitcoincoid',  // nonce
+            'bitfinex',     // nonce
+            'bitfinex2',    // not accessible
+            'bitlish',      // not accessible
+            'btcx',         // bad offset in response
+            'bter',         // not countable @63
+            'bxinth',       // no apiKey
+            'chbtc',        // bad offset in response
+            'coingi',       // not accessible
+            'dsx',          // bad apiKey
+            'flowbtc',      // bad offset in response
+            'huobi',        // bad apiKey
+            'huobipro',     // bad apiKey
+            'jubi',         // not accessible
+            'liqui',        // null instead of array
+            'okcoinusd',    // not accessible
+            'okex',         // not accessible
+            'southxchange', // not countable @71
+            'virwox',       // no method parameter?!
+            'yobit',        // bad apiKey
+            'zaif',         // signature mismatch
+        ],
         'testFetchTrades' => [
             'allcoin',      // not accessible
             'bitcoincoid',  // not accessible
@@ -131,6 +156,25 @@ class ExchangeTest extends TestCase {
         $markets = $exchange->load_markets();
         VCR::eject();
         $this->assertNotEmpty($markets);
+    }
+
+    /**
+     * @dataProvider getExchangeClasses
+     */
+    public function testFetchBalance(string $name) {
+        $exchange = self::exchangeFactory($name);
+        if (in_array($exchange->id, self::$skip[__FUNCTION__])) {
+            return $this->markTestSkipped("{$exchange->id}: fetch balance skipped");
+        }
+
+        if (!empty($exchange->apiKey)) {
+            VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
+            $balance = $exchange->fetch_balance();
+            VCR::eject();
+            $this->assertNotEmpty($balance);
+        } else {
+            $this->assertEmpty($exchange->apiKey);
+        }
     }
 
     /**

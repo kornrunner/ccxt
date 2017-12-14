@@ -1,0 +1,65 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.okcoin.com\/v2\/markets\/products.do",
+        "headers": {
+            "Host": "www.okcoin.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:40:56 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dafaadc0a9adf691aefb96681a165dd9d1513255254; expires=Fri, 14-Dec-18 12:40:54 GMT; path=\/; domain=.okcoin.com; HttpOnly, locale=zh-CN; Expires=Thu, 21-Dec-2017 12:40:56 GMT; Path=\/",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
+            "X-Frame-Options": "DENY",
+            "Content-Disposition": "inline;filename=f.txt",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd13bfbc9bb7c5a-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"code\":0,\"data\":[{\"baseCurrency\":0,\"marketFrom\":0,\"maxPriceDigit\":2,\"maxSizeDigit\":4,\"minTradeSize\":0.01000000,\"online\":1,\"productId\":16,\"quoteCurrency\":3,\"sort\":0,\"symbol\":\"btc_usd\"},{\"baseCurrency\":1,\"marketFrom\":3,\"maxPriceDigit\":2,\"maxSizeDigit\":4,\"minTradeSize\":0.10000000,\"online\":1,\"productId\":17,\"quoteCurrency\":3,\"sort\":1,\"symbol\":\"ltc_usd\"},{\"baseCurrency\":2,\"marketFrom\":36,\"maxPriceDigit\":2,\"maxSizeDigit\":4,\"minTradeSize\":0.01000000,\"online\":1,\"productId\":18,\"quoteCurrency\":3,\"sort\":2,\"symbol\":\"eth_usd\"},{\"baseCurrency\":4,\"marketFrom\":39,\"maxPriceDigit\":3,\"maxSizeDigit\":4,\"minTradeSize\":0.10000000,\"online\":1,\"productId\":1,\"quoteCurrency\":3,\"sort\":3,\"symbol\":\"etc_usd\"},{\"baseCurrency\":5,\"marketFrom\":106,\"maxPriceDigit\":3,\"maxSizeDigit\":4,\"minTradeSize\":0.00100000,\"online\":1,\"productId\":15,\"quoteCurrency\":3,\"sort\":4,\"symbol\":\"bch_usd\"}],\"detailMsg\":\"\",\"msg\":\"\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.okcoin.com\/api\/v1\/userinfo.do",
+        "headers": {
+            "Host": "www.okcoin.com",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "api_key=da83cf1b-6fdc-495a-af55-f809bec64e2b&sign=75FD9A861F9EC7EA58DF638BEEA1E2A1"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:40:57 GMT",
+            "Content-Type": "text\/html;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d3d84f483f23479fd33d07cc9db0636431513255256; expires=Fri, 14-Dec-18 12:40:56 GMT; path=\/; domain=.okcoin.com; HttpOnly, coin_session_id_o=30076568-d1cd-478e-a3fe-702c1fe4e75dgXTJ; Domain=okcoin.com; Path=\/; Secure; HttpOnly, language=1; Expires=Thu, 21-Dec-2017 12:40:57 GMT; Path=\/",
+            "Cache-Control": "no-store",
+            "Expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "Pragma": "no-cache",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd13c07be107c5a-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"error_code\":10000,\"result\":false}"
+    }
+}]

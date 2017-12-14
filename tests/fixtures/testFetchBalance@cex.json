@@ -1,0 +1,146 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/cex.io\/api\/currency_limits\/",
+        "headers": {
+            "Host": "cex.io"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:39:22 GMT",
+            "Content-Type": "text\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d50a13f4ea4fb18d439438f55defef3a31513255162; expires=Fri, 14-Dec-18 12:39:22 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3AG80W1MRGzXJ8UJ09qErTEw65.pEjKDcYDh0DT3ieNb3VuePWXpN%2BBtGOuCEztdvQ2xfo; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+            "X-Frame-Options": "DENY",
+            "Vary": "Accept-Encoding",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Encoding": "gzip",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd139bc5de87ca2-BEG"
+        },
+        "body": "{\"e\":\"currency_limits\",\"ok\":\"ok\",\"data\":{\"pairs\":[{\"symbol1\":\"BTC\",\"symbol2\":\"USD\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":30,\"minPrice\":\"100\",\"maxPrice\":\"35000\"},{\"symbol1\":\"ETH\",\"symbol2\":\"USD\",\"minLotSize\":0.1,\"minLotSizeS2\":2.5,\"maxLotSize\":1000,\"minPrice\":\"2.5\",\"maxPrice\":\"4096\"},{\"symbol1\":\"BCH\",\"symbol2\":\"USD\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":30,\"minPrice\":\"50\",\"maxPrice\":\"5128\"},{\"symbol1\":\"BTG\",\"symbol2\":\"USD\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"2.5\",\"maxPrice\":\"2048\"},{\"symbol1\":\"DASH\",\"symbol2\":\"USD\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"2.5\",\"maxPrice\":\"4096\"},{\"symbol1\":\"XRP\",\"symbol2\":\"USD\",\"minLotSize\":10,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"0.005\",\"maxPrice\":\"50\"},{\"symbol1\":\"ZEC\",\"symbol2\":\"USD\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"2.5\",\"maxPrice\":\"1024\"},{\"symbol1\":\"BTC\",\"symbol2\":\"EUR\",\"minLotSize\":0.01,\"minLotSizeS2\":2.2,\"maxLotSize\":30,\"minPrice\":\"100.00\",\"maxPrice\":\"35000\"},{\"symbol1\":\"ETH\",\"symbol2\":\"EUR\",\"minLotSize\":0.1,\"minLotSizeS2\":2.2,\"maxLotSize\":null,\"minPrice\":\"2\",\"maxPrice\":\"4096\"},{\"symbol1\":\"BCH\",\"symbol2\":\"EUR\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"50\",\"maxPrice\":\"5128\"},{\"symbol1\":\"BTG\",\"symbol2\":\"EUR\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"2.5\",\"maxPrice\":\"2048\"},{\"symbol1\":\"DASH\",\"symbol2\":\"EUR\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"2.5\",\"maxPrice\":\"4096\"},{\"symbol1\":\"XRP\",\"symbol2\":\"EUR\",\"minLotSize\":10,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"0.005\",\"maxPrice\":\"50\"},{\"symbol1\":\"ZEC\",\"symbol2\":\"EUR\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"2.5\",\"maxPrice\":\"1024\"},{\"symbol1\":\"BTC\",\"symbol2\":\"GBP\",\"minLotSize\":0.01,\"minLotSizeS2\":2.2,\"maxLotSize\":null,\"minPrice\":\"100\",\"maxPrice\":\"30000\"},{\"symbol1\":\"ETH\",\"symbol2\":\"GBP\",\"minLotSize\":0.1,\"minLotSizeS2\":2.2,\"maxLotSize\":null,\"minPrice\":\"50\",\"maxPrice\":\"5128\"},{\"symbol1\":\"BCH\",\"symbol2\":\"GBP\",\"minLotSize\":0.01,\"minLotSizeS2\":2.5,\"maxLotSize\":null,\"minPrice\":\"50\",\"maxPrice\":\"4096\"},{\"symbol1\":\"DASH\",\"symbol2\":\"GBP\",\"minLotSize\":0.01,\"minLotSizeS2\":2.2,\"maxLotSize\":null,\"minPrice\":\"2.5\",\"maxPrice\":\"4096\"},{\"symbol1\":\"ZEC\",\"symbol2\":\"GBP\",\"minLotSize\":0.01,\"minLotSizeS2\":2.2,\"maxLotSize\":null,\"minPrice\":\"2.5\",\"maxPrice\":\"1024\"},{\"symbol1\":\"BTC\",\"symbol2\":\"RUB\",\"minLotSize\":0.01,\"minLotSizeS2\":150,\"maxLotSize\":null,\"minPrice\":\"10000\",\"maxPrice\":\"2000000\"},{\"symbol1\":\"ETH\",\"symbol2\":\"BTC\",\"minLotSize\":0.1,\"minLotSizeS2\":0.01,\"maxLotSize\":1000,\"minPrice\":\"0.001\",\"maxPrice\":\"2\"},{\"symbol1\":\"BCH\",\"symbol2\":\"BTC\",\"minLotSize\":0.1,\"minLotSizeS2\":0.01,\"maxLotSize\":30,\"minPrice\":\"0.005\",\"maxPrice\":\"2\"},{\"symbol1\":\"BTG\",\"symbol2\":\"BTC\",\"minLotSize\":0.01,\"minLotSizeS2\":0.001,\"maxLotSize\":null,\"minPrice\":\"0.005\",\"maxPrice\":\"2\"},{\"symbol1\":\"DASH\",\"symbol2\":\"BTC\",\"minLotSize\":0.01,\"minLotSizeS2\":0.001,\"maxLotSize\":null,\"minPrice\":\"0.005\",\"maxPrice\":\"2\"},{\"symbol1\":\"XRP\",\"symbol2\":\"BTC\",\"minLotSize\":40,\"minLotSizeS2\":0.001,\"maxLotSize\":null,\"minPrice\":\"0.000003\",\"maxPrice\":\"0.0005\"},{\"symbol1\":\"ZEC\",\"symbol2\":\"BTC\",\"minLotSize\":0.01,\"minLotSizeS2\":0.001,\"maxLotSize\":null,\"minPrice\":\"0.005\",\"maxPrice\":\"2\"},{\"symbol1\":\"GHS\",\"symbol2\":\"BTC\",\"minLotSize\":1,\"minLotSizeS2\":0.01,\"maxLotSize\":null,\"minPrice\":\"0.00001\",\"maxPrice\":\"0.01\"}]}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/cex.io\/api\/balance\/",
+        "headers": {
+            "Host": "cex.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "key=X9IgdgEpB9rb6mxNEgFj4yEEA&signature=89AD8E0088D7F2B22DB140AFCBAFDDFEFBC6BD4356396F9B605470A6EAC94882&nonce=1513255162390"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:39:22 GMT",
+            "Content-Type": "text\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d3324d5ad2b50c7b38ef23b147d783a6e1513255162; expires=Fri, 14-Dec-18 12:39:22 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3A7mvH0jutOzMBk41Wlwgd4XRL.r77ZB%2BpyUzJtUgPk8kqOdVDEEBWHXmq2Hdgv1N%2BQGVw; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+            "X-Frame-Options": "DENY",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd139bd49647c4e-BEG"
+        },
+        "body": "{\"error\":\"API key is missing.\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/cex.io\/api\/balance\/",
+        "headers": {
+            "Host": "cex.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "key=X9IgdgEpB9rb6mxNEgFj4yEEA&signature=F5FA12CC5FBF8AF70DCB806EBE19289C70767C2F124084520F3FF106D0F6FA41&nonce=1513256180190"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:56:20 GMT",
+            "Content-Type": "text\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dbe02e30126da3a80eac5647f9699d0581513256180; expires=Fri, 14-Dec-18 12:56:20 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3A35c4tglJwusZfEETQyTnzbEz.oz8eB1LboEJ6oZG1taPjZ8ORr%2Fprh6bM13Ccj3Lr9fc; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+            "X-Frame-Options": "DENY",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd15296cc187c90-BEG"
+        },
+        "body": "{\"error\":\"API key is missing.\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/cex.io\/api\/balance\/",
+        "headers": {
+            "Host": "cex.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "key=X9IgdgEpB9rb6mxNEgFj4yEEA&signature=33D546AEC95EDF1B7BC3CD8A8333904B5F8A9B52F739A497790269A264F6E726&nonce=1513259895767"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 13:58:15 GMT",
+            "Content-Type": "text\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d57a187febff6d994a7a4d0ad8aa920131513259895; expires=Fri, 14-Dec-18 13:58:15 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3AG-HqoVxMb5YqPo30kgiqY_DT.cC0goHMSwpuwo1hJeN75i5QtqVLRxUfA3CkJp4R565E; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+            "X-Frame-Options": "DENY",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1ad4d0e9d7c3c-BEG"
+        },
+        "body": "{\"error\":\"API key is missing.\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/cex.io\/api\/balance\/",
+        "headers": {
+            "Host": "cex.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "key=X9IgdgEpB9rb6mxNEgFj4yEEA&signature=259F818D52B5FC8C9D07A23E68E11D37EDE14372CCB586C0367E53EF629C4A4D&nonce=1513259974725"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 13:59:34 GMT",
+            "Content-Type": "text\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dad0f59be494587b05e887e463720027e1513259974; expires=Fri, 14-Dec-18 13:59:34 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3A6_JtfRBi3S0teUnobrQCtpDb.4cIqrFlyf4o1coFKo2R%2FcsNs60sFa1N8CDPr1cl6tP8; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+            "X-Frame-Options": "DENY",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1af3a6c087c72-BEG"
+        },
+        "body": "{\"error\":\"API key is missing.\"}"
+    }
+}]

@@ -1,0 +1,54 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bitlish.com\/api\/v1\/pairs",
+        "headers": {
+            "Host": "bitlish.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:39:00 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Content-Length": "1739",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "Strict-Transport-Security": "max-age=86400; includeSubDomains",
+            "Content-Security-Policy-Report-Only": "default-src https: wss:; script-src https: 'unsafe-eval' 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: data: blob:; font-src https: data:; report-uri \/csp-report"
+        },
+        "body": "{\"btceur\":{\"currency_id\":\"eur\",\"id\":\"btceur\",\"item_id\":\"btc\",\"name\":\"BTC\\\/EUR\"},\"btcrub\":{\"currency_id\":\"rub\",\"id\":\"btcrub\",\"item_id\":\"btc\",\"name\":\"BTC\\\/RUB\"},\"btcusd\":{\"currency_id\":\"usd\",\"id\":\"btcusd\",\"item_id\":\"btc\",\"name\":\"BTC\\\/USD\"},\"btgbtc\":{\"currency_id\":\"btc\",\"id\":\"btgbtc\",\"item_id\":\"btg\",\"name\":\"BTG\\\/BTC\"},\"dshbtc\":{\"currency_id\":\"btc\",\"id\":\"dshbtc\",\"item_id\":\"dsh\",\"name\":\"DSH\\\/BTC\"},\"dsheur\":{\"currency_id\":\"eur\",\"id\":\"dsheur\",\"item_id\":\"dsh\",\"name\":\"DSH\\\/EUR\"},\"dshrub\":{\"currency_id\":\"rub\",\"id\":\"dshrub\",\"item_id\":\"dsh\",\"name\":\"DSH\\\/RUB\"},\"dshusd\":{\"currency_id\":\"usd\",\"id\":\"dshusd\",\"item_id\":\"dsh\",\"name\":\"DSH\\\/USD\"},\"ethbtc\":{\"currency_id\":\"btc\",\"id\":\"ethbtc\",\"item_id\":\"eth\",\"name\":\"ETH\\\/BTC\"},\"etheur\":{\"currency_id\":\"eur\",\"id\":\"etheur\",\"item_id\":\"eth\",\"name\":\"ETH\\\/EUR\"},\"ethrub\":{\"currency_id\":\"rub\",\"id\":\"ethrub\",\"item_id\":\"eth\",\"name\":\"ETH\\\/RUB\"},\"ethusd\":{\"currency_id\":\"usd\",\"id\":\"ethusd\",\"item_id\":\"eth\",\"name\":\"ETH\\\/USD\"},\"ltcbtc\":{\"currency_id\":\"btc\",\"id\":\"ltcbtc\",\"item_id\":\"ltc\",\"name\":\"LTC\\\/BTC\"},\"ltceur\":{\"currency_id\":\"eur\",\"id\":\"ltceur\",\"item_id\":\"ltc\",\"name\":\"LTC\\\/EUR\"},\"ltcrub\":{\"currency_id\":\"rub\",\"id\":\"ltcrub\",\"item_id\":\"ltc\",\"name\":\"LTC\\\/RUB\"},\"ltcusd\":{\"currency_id\":\"usd\",\"id\":\"ltcusd\",\"item_id\":\"ltc\",\"name\":\"LTC\\\/USD\"},\"xdgbtc\":{\"currency_id\":\"btc\",\"id\":\"xdgbtc\",\"item_id\":\"xdg\",\"name\":\"XDG\\\/BTC\"},\"xmrbtc\":{\"currency_id\":\"btc\",\"id\":\"xmrbtc\",\"item_id\":\"xmr\",\"name\":\"XMR\\\/BTC\"},\"zecbtc\":{\"currency_id\":\"btc\",\"id\":\"zecbtc\",\"item_id\":\"zec\",\"name\":\"ZEC\\\/BTC\"},\"zeceur\":{\"currency_id\":\"eur\",\"id\":\"zeceur\",\"item_id\":\"zec\",\"name\":\"ZEC\\\/EUR\"},\"zecrub\":{\"currency_id\":\"rub\",\"id\":\"zecrub\",\"item_id\":\"zec\",\"name\":\"ZEC\\\/RUB\"},\"zecusd\":{\"currency_id\":\"usd\",\"id\":\"zecusd\",\"item_id\":\"zec\",\"name\":\"ZEC\\\/USD\"}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/bitlish.com\/api\/v1\/balance",
+        "headers": {
+            "Host": "bitlish.com",
+            "Content-Type": "application\/json"
+        },
+        "body": "{\"token\":\"fixed:N5lK4iokAc9ajk0Z8pvHfpoJsyzNzQ2nespNH\\\/mY7is\"}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "403",
+            "message": "Forbidden"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:39:01 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Content-Length": "158",
+            "Connection": "keep-alive"
+        },
+        "body": "{\"args\":[],\"errcode\":\"Bitlish::Err::NoPerm\",\"msg\":\"No permission to execute this call\",\"text\":\"Bitlish::Err::NoPerm: 'No permission to execute this call' \\n\"}"
+    }
+}]

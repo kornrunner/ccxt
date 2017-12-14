@@ -1,0 +1,144 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/markets",
+        "headers": {
+            "Host": "api.vaultoro.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:41:10 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"MarketCurrency\": \"GLD\",\n    \"BaseCurrency\": \"BTC\",\n    \"MarketCurrencyLong\": \"Gold\",\n    \"BaseCurrencyLong\": \"Bitcoin\",\n    \"MinTradeSize\": 1e-8,\n    \"MarketName\": \"BTC-GLD\",\n    \"IsActive\": true,\n    \"MinUnitQty\": 0.0002,\n    \"MinPrice\": 0.000002,\n    \"LastPrice\": \"0.00257900\",\n    \"24hLow\": \"0.00257700\",\n    \"24hHigh\": \"0.00271000\",\n    \"24hVolume\": \"12230.654\"\n  }\n}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513255270&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "66bfddf04cf4b25df524f6b118e33ac44fd325806bdca64b6ec97930802a17f1"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:41:10 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513256196&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "8d30d90c3fe54cbab6cf5d3d9df34d0df6e4a087f201dc81a7e88a6202807c44"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:56:36 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513259915&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "3b85cb2d0e13053d6393b72aa5238658f2332b0ea162c67551e4bb376d3c899e"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 13:58:36 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513259989&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "bf5192f9cd1e61dfb59825eab4c3458bc622efd203183139bb4bdfc5a31e8a5d"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 13:59:49 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
+}]

@@ -1,0 +1,36 @@
+[{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/vip.bitcoin.co.id\/tapi",
+        "headers": {
+            "Host": "vip.bitcoin.co.id",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "Key": "OEJGH4SX-5AKKDJUL-FXS0WTM8-NLLGG0FK-S52DHUJJ",
+            "Sign": "50660f60368fc15c93eb802236b03a2b5cdb2b3ec6431d8d8655318af29223436dd66189eb39949b718d8e985dadeda52e82362c7924204019f46934f5d65ce6"
+        },
+        "body": "method=getInfo&nonce=1513255135"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:38:58 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d414ec7ae0313d25dd1cc085fc1fa24d41513255137; expires=Fri, 14-Dec-18 12:38:57 GMT; path=\/; domain=.bitcoin.co.id; HttpOnly, btcid=52b9d3dc4eeea64f19f978f1aa743411; expires=Fri, 15-Dec-2017 00:38:58 GMT; Max-Age=43200; path=\/; domain=vip.bitcoin.co.id; secure",
+            "X-Powered-By": "Bitcoin Indonesia",
+            "v": "2",
+            "X-Served-By": "C1",
+            "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+            "X-Content-Type-Options": "nosniff",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd139207fa67c54-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"success\":0,\"error\":\"Nonce must be greater than 1511175621790786. You provided 1513255135.\",\"error_code\":\"invalid_nonce\"}"
+    }
+}]

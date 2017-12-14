@@ -1,0 +1,31 @@
+[{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/api.bitfinex.com\/v2\/auth\/r\/wallets",
+        "headers": {
+            "Host": "api.bitfinex.com",
+            "bfx-nonce": "1513255139741",
+            "bfx-apikey": "VM9UCkrumj7VRMeRwRdTDxNudfaVLcknvbSVCsbSNTH",
+            "bfx-signature": "5221044372001650dd991e445dc249963dd459a9f624483b85f5cd32373165cba1347b340e066b029de7b2d800aa2568",
+            "Content-Type": "application\/json"
+        },
+        "body": "{}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "500",
+            "message": "Internal Server Error"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:39:00 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d0246b20f7b5bb9290fbc281a0d5ae22f1513255139; expires=Fri, 14-Dec-18 12:38:59 GMT; path=\/; domain=.bitfinex.com; HttpOnly",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1392fbf557c96-BEG"
+        },
+        "body": "[\"error\",10114,\"nonce: small\"]"
+    }
+}]

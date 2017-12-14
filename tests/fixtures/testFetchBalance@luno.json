@@ -1,0 +1,53 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.mybitx.com\/api\/1\/tickers",
+        "headers": {
+            "Host": "api.mybitx.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Cache-Control": "public, max-age=0",
+            "Content-Encoding": "gzip",
+            "Content-Type": "application\/json",
+            "Date": "Thu, 14 Dec 2017 12:40:47 GMT",
+            "Last-Modified": "Thu, 14 Dec 2017 12:40:47 GMT",
+            "Server": "nginx",
+            "Set-Cookie": "device=ZHQxxIHXyXgpN6DbbArksqYHRw==:1RRKlbJLLNHw4KdJSk\/Wk0CJ9dY=; Path=\/; Max-Age=31536000; HttpOnly; Secure",
+            "Content-Length": "260",
+            "Connection": "keep-alive"
+        },
+        "body": "{\"tickers\":[{\"timestamp\":1513255247534,\"bid\":\"264128.00\",\"ask\":\"264129.00\",\"last_trade\":\"264129.00\",\"rolling_24_hour_volume\":\"1409.724599\",\"pair\":\"XBTZAR\"},{\"timestamp\":1513255247537,\"bid\":\"6126701.00\",\"ask\":\"6150000.00\",\"last_trade\":\"6150000.00\",\"rolling_24_hour_volume\":\"44.965105\",\"pair\":\"XBTNGN\"},{\"timestamp\":1513255247538,\"bid\":\"71652.00\",\"ask\":\"71682.00\",\"last_trade\":\"71652.00\",\"rolling_24_hour_volume\":\"323.043298\",\"pair\":\"XBTMYR\"},{\"timestamp\":1513255247539,\"bid\":\"236353000.00\",\"ask\":\"238400000.00\",\"last_trade\":\"236354000.00\",\"rolling_24_hour_volume\":\"9.26953\",\"pair\":\"XBTIDR\"}]}\n"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.mybitx.com\/api\/1\/balance",
+        "headers": {
+            "Host": "api.mybitx.com",
+            "Authorization": "Basic bnJwemc3cmtkOHBuZjpQczBEWHcwVHBUemRKMlllazhWNVR6RkRmVFd6eVU1dmZMZENpQlA2dnNJ"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Content-Encoding": "gzip",
+            "Content-Type": "application\/json",
+            "Date": "Thu, 14 Dec 2017 12:40:47 GMT",
+            "Server": "nginx",
+            "Content-Length": "115",
+            "Connection": "keep-alive"
+        },
+        "body": "{\"balance\":[{\"account_id\":\"3707914449784523712\",\"asset\":\"XBT\",\"balance\":\"0.00\",\"reserved\":\"0.00\",\"unconfirmed\":\"0.00\"}]}\n"
+    }
+}]

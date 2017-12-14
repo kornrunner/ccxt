@@ -1,0 +1,54 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/dsx.uk\/mapi\/info",
+        "headers": {
+            "Host": "dsx.uk"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:39:45 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Credentials": "true"
+        },
+        "body": "{\n  \"server_time\" : 1513252736,\n  \"pairs\" : {\n    \"ethusd\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 100.00000,\n      \"max_price\" : 1000.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"btgeur\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 90.00000,\n      \"max_price\" : 1000.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 3\n    },\n    \"btcrub\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 200000.00000,\n      \"max_price\" : 1300000.00000,\n      \"min_amount\" : 0.0001000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 5\n    },\n    \"etheur\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 100.00000,\n      \"max_price\" : 1000.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"ltcgbp\" : {\n      \"decimal_places\" : 6,\n      \"min_price\" : 10.000000,\n      \"max_price\" : 500.000000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 3\n    },\n    \"btcgbp\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 1500.00000,\n      \"max_price\" : 20000.00000,\n      \"min_amount\" : 0.0001000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"ltcbtc\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 0.00010,\n      \"max_price\" : 0.03000,\n      \"min_amount\" : 0.0001000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"gbpusd\" : {\n      \"decimal_places\" : 6,\n      \"min_price\" : 0.900000,\n      \"max_price\" : 2.000000,\n      \"min_amount\" : 1.0000000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 1\n    },\n    \"btggbp\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 90.00000,\n      \"max_price\" : 1000.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 3\n    },\n    \"bccgbp\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 300.00000,\n      \"max_price\" : 2500.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"ethgbp\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 90.00000,\n      \"max_price\" : 1000.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"btgbtc\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 0.00500,\n      \"max_price\" : 0.30000,\n      \"min_amount\" : 0.0010000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"bccbtc\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 0.01000,\n      \"max_price\" : 0.35000,\n      \"min_amount\" : 0.0010000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"usdrub\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 40.00000,\n      \"max_price\" : 80.00000,\n      \"min_amount\" : 10.0000000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 0\n    },\n    \"ethbtc\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 0.01000,\n      \"max_price\" : 0.50000,\n      \"min_amount\" : 0.0010000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"ltcusd\" : {\n      \"decimal_places\" : 6,\n      \"min_price\" : 10.000000,\n      \"max_price\" : 500.000000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 3\n    },\n    \"bccusd\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 300.00000,\n      \"max_price\" : 2500.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"btcusd\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 1000.00000,\n      \"max_price\" : 20000.00000,\n      \"min_amount\" : 0.0001000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"ltceur\" : {\n      \"decimal_places\" : 6,\n      \"min_price\" : 10.000000,\n      \"max_price\" : 500.000000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 3\n    },\n    \"eurusd\" : {\n      \"decimal_places\" : 6,\n      \"min_price\" : 0.900000,\n      \"max_price\" : 1.300000,\n      \"min_amount\" : 1.0000000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 1\n    },\n    \"bcceur\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 300.00000,\n      \"max_price\" : 2500.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"btceur\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 1500.00000,\n      \"max_price\" : 20000.00000,\n      \"min_amount\" : 0.0001000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 4\n    },\n    \"btgusd\" : {\n      \"decimal_places\" : 5,\n      \"min_price\" : 100.00000,\n      \"max_price\" : 1000.00000,\n      \"min_amount\" : 0.0100000000,\n      \"hidden\" : 0,\n      \"fee\" : 0,\n      \"amount_decimal_places\" : 3\n    }\n  }\n}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/dsx.uk\/tapi",
+        "headers": {
+            "Host": "dsx.uk",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "Key": "13bbd413-2d97-4373-8757-72f35b8803cc",
+            "Sign": "ZfBpls9MRr3mgzSve3MeTWdxcxcRWZhetCjeCTjnC6k0o4FYM62oh+7DKLrQZ2oXTu8x8mOAoeDs3\/AybAPABg=="
+        },
+        "body": "nonce=1513255185&method=getInfo"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 12:39:45 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "https:\/\/dsx.uk",
+            "Access-Control-Allow-Credentials": "true"
+        },
+        "body": "{\n  \"success\" : 0,\n  \"error\" : \"Sign is invalid\"\n}"
+    }
+}]

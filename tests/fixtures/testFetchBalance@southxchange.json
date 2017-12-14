@@ -1,0 +1,91 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.southxchange.com\/api\/markets",
+        "headers": {
+            "Host": "www.southxchange.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:41:06 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d880058237fecd9f2258da944ae6866281513255265; expires=Fri, 14-Dec-18 12:41:05 GMT; path=\/; domain=.southxchange.com; HttpOnly, _culture=en-US; path=\/, ARRAffinity=e0c8bb89ab8abaa9ae1fd8a7013dd298770e4e3868c4ee9a3dc39fe531c46dee;Path=\/;HttpOnly;Domain=www.southxchange.com",
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "-1",
+            "X-AspNetMvc-Version": "5.2",
+            "Access-Control-Allow-Origin": "*",
+            "X-AspNet-Version": "4.0.30319",
+            "X-Powered-By": "ASP.NET",
+            "X-Frame-Options": "DENY",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd13c442f097c6c-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[[\"BCH\",\"BTC\"],[\"BSD\",\"BTC\"],[\"BTA\",\"BTC\"],[\"BTG\",\"BTC\"],[\"CHA\",\"BTC\"],[\"CYR\",\"BTC\"],[\"DASH\",\"BTC\"],[\"DOGE\",\"BTC\"],[\"EGOLD\",\"BTC\"],[\"ETH\",\"BTC\"],[\"FLB\",\"BTC\"],[\"GRT\",\"BTC\"],[\"ICE\",\"BTC\"],[\"INXT\",\"BTC\"],[\"LTC\",\"BTC\"],[\"LUX\",\"BTC\"],[\"MBCH\",\"BTC\"],[\"MINT\",\"BTC\"],[\"MRN\",\"BTC\"],[\"MSR\",\"BTC\"],[\"NMC\",\"BTC\"],[\"NSR\",\"BTC\"],[\"NXT\",\"BTC\"],[\"PPC\",\"BTC\"],[\"PTC\",\"BTC\"],[\"RESTORE\",\"BTC\"],[\"RGC\",\"BTC\"],[\"SMS\",\"BTC\"],[\"STAR\",\"BTC\"],[\"STRAT\",\"BTC\"],[\"SUP\",\"BTC\"],[\"VTC\",\"BTC\"],[\"XGOX\",\"BTC\"],[\"XMR\",\"BTC\"],[\"XVG\",\"BTC\"],[\"ZEIT\",\"BTC\"],[\"CHRC\",\"LTC\"],[\"RESTORE\",\"LTC\"],[\"XGOX\",\"LTC\"],[\"ZEIT\",\"LTC\"],[\"BCH\",\"USD\"],[\"BTC\",\"USD\"],[\"BTG\",\"USD\"],[\"DASH\",\"USD\"],[\"ETH\",\"USD\"],[\"GRT\",\"USD\"],[\"ICE\",\"USD\"],[\"INXT\",\"USD\"],[\"LTC\",\"USD\"],[\"MRN\",\"USD\"],[\"MSR\",\"USD\"],[\"RESTORE\",\"USD\"],[\"SMS\",\"USD\"],[\"STRAT\",\"USD\"],[\"SUP\",\"USD\"],[\"USNBT\",\"USD\"],[\"XGOX\",\"USD\"],[\"XMR\",\"USD\"],[\"BTC\",\"USNBT\"],[\"ETH\",\"USNBT\"],[\"NSR\",\"USNBT\"]]"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.southxchange.com\/api\/listBalances",
+        "headers": {
+            "Host": "www.southxchange.com",
+            "Content-Type": "application\/json",
+            "Hash": "e9bd7caadc458c7ae5b21f8e84aac2f61cfc30aea52759e2a897ab66df77841ddf9758c90471bd708e1faf6cc6331f6eb3b620f2c118755b44d218ffd24cc5f7"
+        },
+        "body": "{\"key\":\"owpxVPAjPFGanKyBxLVsnYXXwsrmAg\",\"nonce\":1513255266}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "411",
+            "message": "Length Required"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:41:07 GMT",
+            "Content-Type": "text\/html; charset=us-ascii",
+            "Content-Length": "344",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d59eff57e029f9a343243afbeb6e6ce571513255266; expires=Fri, 14-Dec-18 12:41:06 GMT; path=\/; domain=.southxchange.com; HttpOnly",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd13c485bb77c4e-BEG"
+        },
+        "body": "<!DOCTYPE HTML PUBLIC \"-\/\/W3C\/\/DTD HTML 4.01\/\/EN\"\"http:\/\/www.w3.org\/TR\/html4\/strict.dtd\">\r\n<HTML><HEAD><TITLE>Length Required<\/TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text\/html; charset=us-ascii\"><\/HEAD>\r\n<BODY><h2>Length Required<\/h2>\r\n<hr><p>HTTP Error 411. The request must be chunked or have a content length.<\/p>\r\n<\/BODY><\/HTML>\r\n"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.southxchange.com\/api\/listBalances",
+        "headers": {
+            "Host": "www.southxchange.com",
+            "Content-Type": "application\/json",
+            "Hash": "e835e6d8b68707a992da0954478a404eb25fd72d2edc6d8af6559fd0c9e5b83c0aac15ebdd69dbc18440eaec2c1f8410bb3b00b911af58c59d4615e99865e6f7"
+        },
+        "body": "{\"key\":\"owpxVPAjPFGanKyBxLVsnYXXwsrmAg\",\"nonce\":1513256194}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "411",
+            "message": "Length Required"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:56:35 GMT",
+            "Content-Type": "text\/html; charset=us-ascii",
+            "Content-Length": "344",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=de87d3c81d4b7e284a8a7129a4d660dc61513256194; expires=Fri, 14-Dec-18 12:56:34 GMT; path=\/; domain=.southxchange.com; HttpOnly",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd152f03c047c7e-BEG"
+        },
+        "body": "<!DOCTYPE HTML PUBLIC \"-\/\/W3C\/\/DTD HTML 4.01\/\/EN\"\"http:\/\/www.w3.org\/TR\/html4\/strict.dtd\">\r\n<HTML><HEAD><TITLE>Length Required<\/TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text\/html; charset=us-ascii\"><\/HEAD>\r\n<BODY><h2>Length Required<\/h2>\r\n<hr><p>HTTP Error 411. The request must be chunked or have a content length.<\/p>\r\n<\/BODY><\/HTML>\r\n"
+    }
+}]

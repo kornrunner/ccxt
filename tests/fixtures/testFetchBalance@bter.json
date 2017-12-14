@@ -1,0 +1,27 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/data.bter.com\/api2\/1\/marketinfo",
+        "headers": {
+            "Host": "data.bter.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "301",
+            "message": "Moved Permanently"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 12:39:16 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d11319d53bb5727b8075839e3d00637d11513255156; expires=Fri, 14-Dec-18 12:39:16 GMT; path=\/; domain=.bter.com; HttpOnly",
+            "Location": "http:\/\/bter.cn\/api2\/1\/marketinfo",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd13995eb217c54-BEG"
+        },
+        "body": "<html>\n<head><title>301 Moved Permanently<\/title><\/head>\n<body bgcolor=\"white\">\n<center><h1>301 Moved Permanently<\/h1><\/center>\n<hr><center>nginx\/1.10.0 (Ubuntu)<\/center>\n<\/body>\n<\/html>\n"
+    }
+}]
