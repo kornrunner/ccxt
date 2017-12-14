@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api-public.sandbox.gdax.com\/products\/BTC-USD\/book?level=2",
+        "headers": {
+            "Host": "api-public.sandbox.gdax.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "access-control-allow-methods": "GET,POST,DELETE,PUT",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Content-Type, Accept, cb-session, cb-fp",
+            "access-control-expose-headers": "cb-before, cb-after",
+            "access-control-max-age": "7200",
+            "cache-control": "public, max-age=1",
+            "content-type": "application\/json; charset=utf-8",
+            "content-length": "294",
+            "etag": "W\/\"126-QeDg8PXybwiIXdz720qSgfmRTpA\"",
+            "date": "Thu, 14 Dec 2017 11:38:37 GMT",
+            "connection": "close"
+        },
+        "body": "{\"sequence\":5123,\"bids\":[[\"16624\",\"0.06015399\",1],[\"16472.03\",\"0.02\",1],[\"16443.31\",\"0.02\",1],[\"16435.26\",\"0.02\",1],[\"16411.05\",\"0.02\",1],[\"25\",\"968.04481949\",1],[\"24.99\",\"100\",1],[\"22\",\"22\",1],[\"2\",\"1\",1],[\"1\",\"1\",1]],\"asks\":[[\"16651\",\"0.05047139\",1],[\"16831.52\",\"0.06\",3],[\"16888\",\"0.02\",1]]}"
+    }
+}]

@@ -26,7 +26,6 @@ class ExchangeTest extends TestCase {
             'bter',     // array issue @63
             'ccex',     // not accessible
             'flowbtc',  // bad offset in response
-            'gdax',     // UserAgent is required
             'yunbi',    // not accessible
             'bitso',    // not accessible
             'kraken',   // timeout

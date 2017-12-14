@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api-public.sandbox.gdax.com\/products",
+        "headers": {
+            "Host": "api-public.sandbox.gdax.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "access-control-allow-methods": "GET,POST,DELETE,PUT",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Content-Type, Accept, cb-session, cb-fp",
+            "access-control-expose-headers": "cb-before, cb-after",
+            "access-control-max-age": "7200",
+            "cache-control": "public, max-age=5",
+            "content-type": "application\/json; charset=utf-8",
+            "content-length": "2015",
+            "etag": "W\/\"7df-aEuGAcZLPB7+sWavNpJ9C4+IQds\"",
+            "date": "Thu, 14 Dec 2017 11:37:55 GMT",
+            "connection": "close"
+        },
+        "body": "[{\"id\":\"BTC-USD\",\"base_currency\":\"BTC\",\"quote_currency\":\"USD\",\"base_min_size\":\"0.01\",\"base_max_size\":\"10000\",\"quote_increment\":\"0.01\",\"display_name\":\"BTC\/USD\",\"status\":\"online\",\"margin_enabled\":true,\"status_message\":null},{\"id\":\"BTC-GBP\",\"base_currency\":\"BTC\",\"quote_currency\":\"GBP\",\"base_min_size\":\"0.01\",\"base_max_size\":\"10000\",\"quote_increment\":\"0.01\",\"display_name\":\"BTC\/GBP\",\"status\":\"online\",\"margin_enabled\":false,\"status_message\":null},{\"id\":\"BTC-EUR\",\"base_currency\":\"BTC\",\"quote_currency\":\"EUR\",\"base_min_size\":\"0.01\",\"base_max_size\":\"10000\",\"quote_increment\":\"0.01\",\"display_name\":\"BTC\/EUR\",\"status\":\"online\",\"margin_enabled\":false,\"status_message\":null},{\"id\":\"ETH-BTC\",\"base_currency\":\"ETH\",\"quote_currency\":\"BTC\",\"base_min_size\":\"0.01\",\"base_max_size\":\"1000000\",\"quote_increment\":\"0.00001\",\"display_name\":\"ETH\/BTC\",\"status\":\"online\",\"margin_enabled\":false,\"status_message\":null},{\"id\":\"ETH-USD\",\"base_currency\":\"ETH\",\"quote_currency\":\"USD\",\"base_min_size\":\"0.01\",\"base_max_size\":\"1000000\",\"quote_increment\":\"0.01\",\"display_name\":\"ETH\/USD\",\"status\":\"online\",\"margin_enabled\":true,\"status_message\":null},{\"id\":\"LTC-BTC\",\"base_currency\":\"LTC\",\"quote_currency\":\"BTC\",\"base_min_size\":\"0.01\",\"base_max_size\":\"1000000\",\"quote_increment\":\"0.00001\",\"display_name\":\"LTC\/BTC\",\"status\":\"online\",\"margin_enabled\":false,\"status_message\":null},{\"id\":\"LTC-USD\",\"base_currency\":\"LTC\",\"quote_currency\":\"USD\",\"base_min_size\":\"0.01\",\"base_max_size\":\"1000000\",\"quote_increment\":\"0.01\",\"display_name\":\"LTC\/USD\",\"status\":\"online\",\"margin_enabled\":false,\"status_message\":null},{\"id\":\"LTC-EUR\",\"base_currency\":\"LTC\",\"quote_currency\":\"EUR\",\"base_min_size\":\"0.01\",\"base_max_size\":\"1000000\",\"quote_increment\":\"0.01\",\"display_name\":\"LTC\/EUR\",\"status\":\"online\",\"margin_enabled\":false,\"status_message\":null},{\"id\":\"ETH-EUR\",\"base_currency\":\"ETH\",\"quote_currency\":\"EUR\",\"base_min_size\":\"0.01\",\"base_max_size\":\"1000000\",\"quote_increment\":\"0.01\",\"display_name\":\"ETH\/EUR\",\"status\":\"online\",\"margin_enabled\":false,\"status_message\":null}]"
+    }
+}]

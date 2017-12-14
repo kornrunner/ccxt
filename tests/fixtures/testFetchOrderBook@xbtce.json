@@ -98,4 +98,54 @@
         },
         "body": "[{\n \"Symbol\": \"EURUSD\",\n \"Timestamp\": 1513212251570,\n \"BestBid\": {\n  \"Type\": \"Bid\",\n  \"Price\": 1.18042,\n  \"Volume\": 100000\n },\n \"BestAsk\": {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18632,\n  \"Volume\": 5600000\n },\n \"Bids\": [{\n  \"Type\": \"Bid\",\n  \"Price\": 1.18042,\n  \"Volume\": 100000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.18041,\n  \"Volume\": 500000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.1804,\n  \"Volume\": 3400000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17851,\n  \"Volume\": 250000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.1785,\n  \"Volume\": 1300000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.14783,\n  \"Volume\": 30000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.12416,\n  \"Volume\": 170000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.06501,\n  \"Volume\": 350000\n }],\n \"Asks\": [{\n  \"Type\": \"Ask\",\n  \"Price\": 1.18632,\n  \"Volume\": 5600000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18633,\n  \"Volume\": 2000000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18634,\n  \"Volume\": 4500000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18821,\n  \"Volume\": 2200000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18822,\n  \"Volume\": 1250000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.21888,\n  \"Volume\": 30000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.24252,\n  \"Volume\": 170000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.30169,\n  \"Volume\": 350000\n }]\n}]"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/cryptottlivewebapi.xbtce.net:8443\/api\/v1\/level2\/EURUSD",
+        "headers": {
+            "Host": "cryptottlivewebapi.xbtce.net:8443",
+            "Accept-Encoding": "gzip, deflate",
+            "Authorization": "HMAC 68ef0552-3c37-4896-ba56-76173d9cd573:dK2jBXMTppAM57ZJ:1513251406989:vDBH8v9mb5EiE6oVjHT4gSHCRgE7KWMCCjhk1pO5Hao="
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Content-Length": "264",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Encoding": "gzip",
+            "Server": "Microsoft-HTTPAPI\/2.0",
+            "Date": "Thu, 14 Dec 2017 11:36:46 GMT"
+        },
+        "body": "[{\n \"Symbol\": \"EURUSD\",\n \"Timestamp\": 1513251407051,\n \"BestBid\": {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17934,\n  \"Volume\": 1500000\n },\n \"BestAsk\": {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18524,\n  \"Volume\": 1000000\n },\n \"Bids\": [{\n  \"Type\": \"Bid\",\n  \"Price\": 1.17934,\n  \"Volume\": 1500000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17933,\n  \"Volume\": 1400000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17932,\n  \"Volume\": 5500000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17744,\n  \"Volume\": 249000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17743,\n  \"Volume\": 1800000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.1468,\n  \"Volume\": 30000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.12316,\n  \"Volume\": 170000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.06404,\n  \"Volume\": 350000\n }],\n \"Asks\": [{\n  \"Type\": \"Ask\",\n  \"Price\": 1.18524,\n  \"Volume\": 1000000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18525,\n  \"Volume\": 2500000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18526,\n  \"Volume\": 8900000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18714,\n  \"Volume\": 1275000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18715,\n  \"Volume\": 1500000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.21778,\n  \"Volume\": 30000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.24143,\n  \"Volume\": 170000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.30054,\n  \"Volume\": 350000\n }]\n}]"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/cryptottlivewebapi.xbtce.net:8443\/api\/v1\/level2\/EURUSD",
+        "headers": {
+            "Host": "cryptottlivewebapi.xbtce.net:8443",
+            "Accept-Encoding": "gzip, deflate",
+            "Authorization": "HMAC 68ef0552-3c37-4896-ba56-76173d9cd573:dK2jBXMTppAM57ZJ:1513251525286:nYrZfb\/OKCsA2JNdc2g7yZv61CWjvA3wEjVwp6ekCdg="
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Content-Length": "269",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Encoding": "gzip",
+            "Server": "Microsoft-HTTPAPI\/2.0",
+            "Date": "Thu, 14 Dec 2017 11:38:44 GMT"
+        },
+        "body": "[{\n \"Symbol\": \"EURUSD\",\n \"Timestamp\": 1513251525236,\n \"BestBid\": {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17928,\n  \"Volume\": 1100000\n },\n \"BestAsk\": {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18519,\n  \"Volume\": 500000\n },\n \"Bids\": [{\n  \"Type\": \"Bid\",\n  \"Price\": 1.17928,\n  \"Volume\": 1100000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17927,\n  \"Volume\": 7400000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17926,\n  \"Volume\": 2500000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.1774,\n  \"Volume\": 500000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.17739,\n  \"Volume\": 251000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.14677,\n  \"Volume\": 30000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.12314,\n  \"Volume\": 170000\n }, {\n  \"Type\": \"Bid\",\n  \"Price\": 1.06403,\n  \"Volume\": 350000\n }],\n \"Asks\": [{\n  \"Type\": \"Ask\",\n  \"Price\": 1.18519,\n  \"Volume\": 500000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.1852,\n  \"Volume\": 1100000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18521,\n  \"Volume\": 8400000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.18709,\n  \"Volume\": 501000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.1871,\n  \"Volume\": 2250000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.21775,\n  \"Volume\": 30000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.2414,\n  \"Volume\": 170000\n }, {\n  \"Type\": \"Ask\",\n  \"Price\": 1.30052,\n  \"Volume\": 350000\n }]\n}]"
+    }
 }]
