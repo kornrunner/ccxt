@@ -45,6 +45,8 @@ class ExchangeTest extends TestCase {
             'jubi',         // not accessible
             'kraken',       // bad offset in response
             'okcoincny',    // not accessible
+            'bit2c',        // travis kills
+            'fybse',        // travis kills
             // empty response:
             'btcchina',
             'livecoin',
