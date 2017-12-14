@@ -24,7 +24,6 @@ class ExchangeTest extends TestCase {
         ],
         'testLoadMarkets' => [
             'bter',     // array issue @63
-            'ccex',     // not accessible
             'flowbtc',  // bad offset in response
             'yunbi',    // not accessible
             'bitso',    // not accessible
@@ -96,6 +95,19 @@ class ExchangeTest extends TestCase {
             'okcoincny',    // not accessible
             'virwox',       // not implemented
         ],
+    ];
+
+    private static $proxy = [
+        'ccex' => 'https://cors-anywhere.herokuapp.com/',
+
+    ];
+
+/**
+ * https://api-public.sandbox.gdax.com
+ * https://crossorigin.me/
+ */
+    private static $api_url = [
+        'gdax' => 'https://api-public.sandbox.gdax.com',
     ];
 
     private static $config = [];
@@ -232,8 +244,12 @@ class ExchangeTest extends TestCase {
         $exchange = new $class;
         $exchange->timeout = 15000;
 
-        if ($class === 'ccxt\\gdax') {
-            $exchange->urls['api'] = 'https://api-public.sandbox.gdax.com';
+        if (array_key_exists($exchange->id, self::$api_url)) {
+            $exchange->urls['api'] = self::$api_url[$exchange->id];
+        }
+
+        if (array_key_exists($exchange->id, self::$proxy)) {
+            $exchange->proxy = self::$proxy[$exchange->id];
         }
 
         if (array_key_exists($exchange->id, self::$config)) {
