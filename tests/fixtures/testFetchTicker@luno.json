@@ -1,0 +1,28 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.mybitx.com\/api\/1\/tickers",
+        "headers": {
+            "Host": "api.mybitx.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Cache-Control": "public, max-age=0",
+            "Content-Encoding": "gzip",
+            "Content-Type": "application\/json",
+            "Date": "Thu, 14 Dec 2017 00:30:47 GMT",
+            "Last-Modified": "Thu, 14 Dec 2017 00:30:47 GMT",
+            "Server": "nginx",
+            "Set-Cookie": "device=ZHQxdfb2ARA5bNDW4GuowVK8sw==:u874oNNUbhZ8f1mAJkkSBsk8Qcg=; Path=\/; Max-Age=31536000; HttpOnly; Secure",
+            "Content-Length": "257",
+            "Connection": "keep-alive"
+        },
+        "body": "{\"tickers\":[{\"timestamp\":1513211447261,\"bid\":\"256254.00\",\"ask\":\"256255.00\",\"last_trade\":\"256255.00\",\"rolling_24_hour_volume\":\"1489.137565\",\"pair\":\"XBTZAR\"},{\"timestamp\":1513211447262,\"bid\":\"6138946.00\",\"ask\":\"6145499.00\",\"last_trade\":\"6145499.00\",\"rolling_24_hour_volume\":\"41.67143\",\"pair\":\"XBTNGN\"},{\"timestamp\":1513211447263,\"bid\":\"240001000.00\",\"ask\":\"243398000.00\",\"last_trade\":\"240000000.00\",\"rolling_24_hour_volume\":\"10.409595\",\"pair\":\"XBTIDR\"},{\"timestamp\":1513211447264,\"bid\":\"71095.00\",\"ask\":\"71096.00\",\"last_trade\":\"71095.00\",\"rolling_24_hour_volume\":\"332.812988\",\"pair\":\"XBTMYR\"}]}\n"
+    }
+}]

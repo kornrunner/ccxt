@@ -1,0 +1,31 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.lakebtc.com\/api_v2\/ticker",
+        "headers": {
+            "Host": "api.lakebtc.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:31:34 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "2381",
+            "Connection": "keep-alive",
+            "Status": "200 OK",
+            "Access-Control-Allow-Origin": "*",
+            "X-Request-Id": "8d1dbe5f-ef0b-4add-a7e3-b2291429e668",
+            "ETag": "\"f19a642d756d43a010d10417a0ac7f59\"",
+            "X-Runtime": "1.197013",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Cache-Control": "public"
+        },
+        "body": "{\"btcusd\":{\"high\":\"17312.64\",\"low\":\"15753.04\",\"volume\":\"10688.7697\",\"last\":\"16190.1\",\"bid\":\"16176.43\",\"ask\":\"16178.68\"},\"btceur\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"11807.45\",\"bid\":\"13653.3\",\"ask\":\"13685.24\"},\"btchkd\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"34787.44\",\"bid\":\"126213.35\",\"ask\":\"126298.87\"},\"btcjpy\":{\"high\":\"1982808.0\",\"low\":\"1651567.0\",\"volume\":null,\"last\":\"1946256.0\",\"bid\":\"1830524.0\",\"ask\":\"1831104.0\"},\"btcgbp\":{\"high\":\"13500.0\",\"low\":\"12614.47\",\"volume\":null,\"last\":\"13500.0\",\"bid\":\"12308.95\",\"ask\":\"12325.68\"},\"btcaud\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"10612.73\",\"bid\":\"21298.78\",\"ask\":null},\"btccad\":{\"high\":\"22093.61\",\"low\":\"18697.7\",\"volume\":null,\"last\":\"21973.28\",\"bid\":\"20744.65\",\"ask\":\"20779.9\"},\"btcsgd\":{\"high\":\"23186.27\",\"low\":\"19591.04\",\"volume\":null,\"last\":\"23186.27\",\"bid\":\"21776.71\",\"ask\":\"21818.57\"},\"btcchf\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"6147.74\",\"bid\":\"15924.07\",\"ask\":\"15971.6\"},\"btcnzd\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"6079.09\",\"bid\":\"22994.21\",\"ask\":\"23089.32\"},\"btcngn\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"600000.0\",\"bid\":null,\"ask\":null},\"eurusd\":{\"high\":\"1.175\",\"low\":\"1.175\",\"volume\":\"0.39\",\"last\":\"1.175\",\"bid\":\"1.1822\",\"ask\":\"1.1848\"},\"gbpusd\":{\"high\":\"1.3057\",\"low\":\"1.1744\",\"volume\":\"2925.3\",\"last\":\"1.3057\",\"bid\":\"1.3126\",\"ask\":\"1.3142\"},\"usdjpy\":{\"high\":\"116.8\",\"low\":\"92.73\",\"volume\":null,\"last\":\"113.94\",\"bid\":\"113.16\",\"ask\":\"113.18\"},\"usdhkd\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"7.8092\",\"bid\":\"7.8023\",\"ask\":\"7.8065\"},\"usdcad\":{\"high\":\"1.2945\",\"low\":\"1.2749\",\"volume\":null,\"last\":\"1.2888\",\"bid\":\"1.2824\",\"ask\":\"1.2844\"},\"usdsgd\":{\"high\":\"1.3562\",\"low\":\"1.3391\",\"volume\":null,\"last\":\"1.3536\",\"bid\":\"1.3462\",\"ask\":\"1.3486\"},\"audusd\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"0.7577\",\"bid\":null,\"ask\":\"0.7595\"},\"nzdusd\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"0.7264\",\"bid\":\"0.7007\",\"ask\":\"0.7035\"},\"usdchf\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"0.9975\",\"bid\":\"0.9844\",\"ask\":\"0.9872\"},\"usdngn\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"200.0\",\"bid\":null,\"ask\":null},\"ethbtc\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"0.02\",\"bid\":\"0.02\",\"ask\":\"0.039\"},\"ltcbtc\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"0.0145\",\"bid\":null,\"ask\":\"0.011\"},\"baceth\":{\"high\":null,\"low\":null,\"volume\":null,\"last\":\"0.0001\",\"bid\":null,\"ask\":null}}"
+    }
+}]

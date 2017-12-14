@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.gatecoin.com\/Public\/MarketDepth\/BTCEUR",
+        "headers": {
+            "Host": "api.gatecoin.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:34:22 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d177877aabebaa2c7f44c4026076623431513211661; expires=Fri, 14-Dec-18 00:34:21 GMT; path=\/; domain=.gatecoin.com; HttpOnly",
+            "Cache-Control": "private",
+            "Content-Encoding": "gzip",
+            "Strict-Transport-Security": "max-age=15552000; includeSubDomains; preload",
+            "X-Content-Type-Options": "nosniff",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd13b47c8c7c96-BEG"
+        },
+        "body": "{\"asks\":[{\"price\":14349.9,\"volume\":0.03},{\"price\":14380,\"volume\":0.05},{\"price\":14571,\"volume\":0.25724},{\"price\":14999.9,\"volume\":0.02},{\"price\":15076,\"volume\":0.01},{\"price\":15087,\"volume\":0.086},{\"price\":15098,\"volume\":0.096},{\"price\":15109,\"volume\":0.1},{\"price\":15120,\"volume\":0.01},{\"price\":15131,\"volume\":0.076},{\"price\":15142,\"volume\":0.08},{\"price\":15153,\"volume\":0.09},{\"price\":15164,\"volume\":0.022},{\"price\":15175,\"volume\":0.1},{\"price\":15200,\"volume\":0.05},{\"price\":15218,\"volume\":0.1},{\"price\":15300,\"volume\":0.08131},{\"price\":15300,\"volume\":0.36027},{\"price\":15500,\"volume\":0.14674675},{\"price\":15580,\"volume\":0.1},{\"price\":15888,\"volume\":0.1},{\"price\":16000,\"volume\":0.05},{\"price\":16900,\"volume\":0.10},{\"price\":16916.6,\"volume\":9.05815235},{\"price\":20000,\"volume\":0.03557},{\"price\":25890,\"volume\":0.16},{\"price\":610101,\"volume\":0.1}],\"bids\":[{\"price\":14000,\"volume\":0.00605238},{\"price\":13701.4,\"volume\":2},{\"price\":13701,\"volume\":0.10615135},{\"price\":13700,\"volume\":0.01405},{\"price\":13601,\"volume\":0.00732675},{\"price\":13600.1,\"volume\":1.30611376},{\"price\":13600,\"volume\":1.31668132},{\"price\":13500,\"volume\":0.01},{\"price\":13352,\"volume\":0.071},{\"price\":13342,\"volume\":0.03},{\"price\":13332,\"volume\":0.08},{\"price\":13322,\"volume\":0.04},{\"price\":13312,\"volume\":0.094},{\"price\":13302,\"volume\":0.028},{\"price\":13292,\"volume\":0.036},{\"price\":13282,\"volume\":0.075},{\"price\":13272,\"volume\":0.04},{\"price\":13262,\"volume\":0.1},{\"price\":13002,\"volume\":0.03835905},{\"price\":13001,\"volume\":0.2},{\"price\":12501,\"volume\":0.4},{\"price\":12500,\"volume\":0.03188839},{\"price\":11888,\"volume\":0.37},{\"price\":11500,\"volume\":0.91},{\"price\":11500,\"volume\":0.22},{\"price\":10800,\"volume\":0.08304268},{\"price\":10200,\"volume\":0.12},{\"price\":10000,\"volume\":5},{\"price\":10000,\"volume\":0.00065301},{\"price\":10000,\"volume\":0.15},{\"price\":9900,\"volume\":0.00201315},{\"price\":9900,\"volume\":0.17011167},{\"price\":7500,\"volume\":0.03390798},{\"price\":7089,\"volume\":0.14083729},{\"price\":6850,\"volume\":0.34348102},{\"price\":6501,\"volume\":0.29845405},{\"price\":6200,\"volume\":0.38216082},{\"price\":5700,\"volume\":40},{\"price\":5000,\"volume\":0.59790732},{\"price\":3000,\"volume\":0.9965122},{\"price\":2000,\"volume\":0.00459392},{\"price\":10,\"volume\":0.0006773},{\"price\":10,\"volume\":0.00065194},{\"price\":0.1,\"volume\":2.8898854}],\"responseStatus\":{\"message\":\"OK\"}}"
+    }
+}]

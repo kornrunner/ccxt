@@ -1,0 +1,28 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.zb.com\/data\/v1\/markets",
+        "headers": {
+            "Host": "api.zb.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.12.2",
+            "Date": "Thu, 14 Dec 2017 00:32:04 GMT",
+            "Content-Type": "text\/javascript;charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "Access-Control-Allow-Origin": "*",
+            "CNDServer": "cache_server_1",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"btc_usdt\":{\"amountScale\":4,\"priceScale\":2},\"bcc_usdt\":{\"amountScale\":3,\"priceScale\":2},\"ltc_usdt\":{\"amountScale\":3,\"priceScale\":2},\"eth_usdt\":{\"amountScale\":3,\"priceScale\":2},\"etc_usdt\":{\"amountScale\":2,\"priceScale\":2},\"bts_usdt\":{\"amountScale\":0,\"priceScale\":4},\"eos_usdt\":{\"amountScale\":1,\"priceScale\":3},\"qtum_usdt\":{\"amountScale\":2,\"priceScale\":2},\"hsr_usdt\":{\"amountScale\":2,\"priceScale\":2},\"xrp_usdt\":{\"amountScale\":0,\"priceScale\":4},\"bcd_usdt\":{\"amountScale\":3,\"priceScale\":2},\"dash_usdt\":{\"amountScale\":3,\"priceScale\":2},\"btc_qc\":{\"amountScale\":4,\"priceScale\":2},\"bcc_qc\":{\"amountScale\":3,\"priceScale\":2},\"ltc_qc\":{\"amountScale\":3,\"priceScale\":2},\"eth_qc\":{\"amountScale\":3,\"priceScale\":2},\"etc_qc\":{\"amountScale\":2,\"priceScale\":2},\"bts_qc\":{\"amountScale\":0,\"priceScale\":4},\"eos_qc\":{\"amountScale\":1,\"priceScale\":3},\"qtum_qc\":{\"amountScale\":2,\"priceScale\":2},\"hsr_qc\":{\"amountScale\":2,\"priceScale\":2},\"xrp_qc\":{\"amountScale\":0,\"priceScale\":4},\"bcd_qc\":{\"amountScale\":3,\"priceScale\":2},\"dash_qc\":{\"amountScale\":3,\"priceScale\":2},\"bcc_btc\":{\"amountScale\":3,\"priceScale\":6},\"ltc_btc\":{\"amountScale\":3,\"priceScale\":6},\"eth_btc\":{\"amountScale\":3,\"priceScale\":6},\"etc_btc\":{\"amountScale\":2,\"priceScale\":6},\"bts_btc\":{\"amountScale\":0,\"priceScale\":8},\"eos_btc\":{\"amountScale\":1,\"priceScale\":6},\"qtum_btc\":{\"amountScale\":2,\"priceScale\":6},\"hsr_btc\":{\"amountScale\":2,\"priceScale\":6},\"xrp_btc\":{\"amountScale\":0,\"priceScale\":8},\"bcd_btc\":{\"amountScale\":3,\"priceScale\":6},\"dash_btc\":{\"amountScale\":3,\"priceScale\":6},\"sbtc_usdt\":{\"amountScale\":3,\"priceScale\":2},\"sbtc_qc\":{\"amountScale\":3,\"priceScale\":2},\"sbtc_btc\":{\"amountScale\":3,\"priceScale\":6},\"ubtc_usdt\":{\"amountScale\":3,\"priceScale\":2},\"ubtc_qc\":{\"amountScale\":3,\"priceScale\":2},\"ubtc_btc\":{\"amountScale\":3,\"priceScale\":6}}"
+    }
+}]

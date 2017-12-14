@@ -1,0 +1,31 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/1broker.com\/api\/v2\/market\/quotes.php?token=A0f79063a5e91e6d62fbcbbbbdd63258&symbols=AU200",
+        "headers": {
+            "Host": "1broker.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:33:32 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=db8e37e4afe66fbbd0d5487dda18e26261513211612; expires=Fri, 14-Dec-18 00:33:32 GMT; path=\/; domain=.1broker.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, must-revalidate",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd128459997ca8-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"server_time\":\"2017-12-14T00:33:32.959Z\",\"error\":false,\"warning\":false,\"response\":[{\"symbol\":\"AU200\",\"bid\":\"6036.34\",\"ask\":\"6037.34\",\"updated\":\"2017-12-14T00:33:21Z\"}]}"
+    }
+}]

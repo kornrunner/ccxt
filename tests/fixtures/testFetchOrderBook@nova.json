@@ -1,0 +1,28 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/novaexchange.com\/remote\/v2\/market\/openorders\/BTC_SNGLS\/both\/",
+        "headers": {
+            "Host": "novaexchange.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:34:34 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "298",
+            "Connection": "keep-alive",
+            "Set-Cookie": "session=ca908697-04d5-4aa6-9a5a-db65d4d45242; Expires=Thu, 14-Dec-2017 10:34:34 GMT; HttpOnly; Path=\/; secure; HttpOnly",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Strict-Transport-Security": "max-age=31536000",
+            "X-XSS-Protection": "1; mode=block"
+        },
+        "body": "{\"status\": \"success\", \"buyorders\": [{\"currency\": \"SNGLS\", \"amount\": \"1000.00000000\", \"price\": \"0.00000028\", \"basecurrency\": \"BTC\", \"baseamount\": \"0.00028000\"}], \"sellorders\": [{\"currency\": \"SNGLS\", \"amount\": \"11.99201822\", \"price\": \"0.00100000\", \"basecurrency\": \"BTC\", \"baseamount\": \"0.01199202\"}]}"
+    }
+}]

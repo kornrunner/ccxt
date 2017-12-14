@@ -1,0 +1,36 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.southxchange.com\/api\/trades\/BCH\/BTC",
+        "headers": {
+            "Host": "www.southxchange.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:33:09 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dd4f5c89f720bd1637ff2f46ade69ded21513211588; expires=Fri, 14-Dec-18 00:33:08 GMT; path=\/; domain=.southxchange.com; HttpOnly, _culture=en-US; path=\/, ARRAffinity=04f20859064b4e50d0a9c30436f9cc8a3e3b7902fe49a523458c4aef59bd6de7;Path=\/;HttpOnly;Domain=www.southxchange.com",
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "-1",
+            "Vary": "Accept-Encoding",
+            "X-AspNetMvc-Version": "5.2",
+            "Access-Control-Allow-Origin": "*",
+            "X-AspNet-Version": "4.0.30319",
+            "X-Powered-By": "ASP.NET",
+            "X-Frame-Options": "DENY",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd11ed59387c5a-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[{\"At\":1513207826,\"Amount\":0.0863,\"Price\":0.09711734,\"Type\":\"sell\"},{\"At\":1513207181,\"Amount\":0.01849246,\"Price\":0.09754032,\"Type\":\"buy\"},{\"At\":1513202179,\"Amount\":0.0883,\"Price\":0.09581612,\"Type\":\"sell\"},{\"At\":1513189010,\"Amount\":0.0893,\"Price\":0.09882916,\"Type\":\"sell\"},{\"At\":1513186942,\"Amount\":0.00730506,\"Price\":0.09719006,\"Type\":\"sell\"},{\"At\":1513183484,\"Amount\":0.46468781,\"Price\":0.09789777,\"Type\":\"buy\"},{\"At\":1513178924,\"Amount\":0.00074275,\"Price\":0.09629144,\"Type\":\"buy\"},{\"At\":1513177161,\"Amount\":1.08895534,\"Price\":0.09425651,\"Type\":\"sell\"},{\"At\":1513173196,\"Amount\":1.5,\"Price\":0.09300635,\"Type\":\"sell\"},{\"At\":1513170846,\"Amount\":0.1001,\"Price\":0.09300635,\"Type\":\"sell\"},{\"At\":1513149811,\"Amount\":0.1041,\"Price\":0.09248524,\"Type\":\"sell\"},{\"At\":1513144880,\"Amount\":0.01,\"Price\":0.09206364,\"Type\":\"sell\"},{\"At\":1513137155,\"Amount\":0.12131813,\"Price\":0.0918,\"Type\":\"sell\"},{\"At\":1513129359,\"Amount\":0.0999,\"Price\":0.09335273,\"Type\":\"sell\"},{\"At\":1513126500,\"Amount\":0.01517647,\"Price\":0.09558192,\"Type\":\"buy\"},{\"At\":1513118124,\"Amount\":0.05728078,\"Price\":0.0921972,\"Type\":\"sell\"},{\"At\":1513111015,\"Amount\":0.58369166,\"Price\":0.0928678,\"Type\":\"buy\"},{\"At\":1513111013,\"Amount\":0.00644395,\"Price\":0.09286779,\"Type\":\"buy\"},{\"At\":1513107473,\"Amount\":0.11797539,\"Price\":0.09249268,\"Type\":\"buy\"},{\"At\":1513105655,\"Amount\":0.00118989,\"Price\":0.09252981,\"Type\":\"buy\"}]"
+    }
+}]

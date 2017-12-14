@@ -1,0 +1,35 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/data.btcchina.com\/data\/orderbook?market=btccny",
+        "headers": {
+            "Host": "data.btcchina.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Access-Control-Allow-Methods": "GET",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Content-Encoding": "gzip",
+            "Content-Type": "application\/json",
+            "Date": "Thu, 14 Dec 2017 00:33:54 GMT",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Front-End-Https": "on",
+            "Pragma": "no-cache",
+            "Server": "nginx",
+            "Set-Cookie": "PHPSESSID=hc9r0fovo8ua27bq20grrc69e5; path=\/; domain=.btcc.com, btcchina_lang=en; expires=Fri, 14-Dec-2018 00:33:54 GMT; path=\/; domain=.btcc.com",
+            "Vary": "Accept-Encoding, Accept-Encoding",
+            "X-Cache-CFC": "- 1513211634.119",
+            "X-Powered-By": "PHP\/5.4.45",
+            "Content-Length": "39",
+            "Connection": "keep-alive"
+        },
+        "body": "{\"date\":1508143041}"
+    }
+}]

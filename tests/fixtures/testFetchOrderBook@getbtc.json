@@ -1,0 +1,32 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/getbtc.org\/api\/order-book?currency=USD",
+        "headers": {
+            "Host": "getbtc.org"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.4.6 (Ubuntu)",
+            "Date": "Thu, 14 Dec 2017 00:34:15 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "PHPSESSID=paevlba17cs7se960cg3api0l5; path=\/; secure; HttpOnly",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Powered-By": "WLOX",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"order-book\":{\"request_currency\":\"USD\",\"bid\":[],\"ask\":[]}}"
+    }
+}]

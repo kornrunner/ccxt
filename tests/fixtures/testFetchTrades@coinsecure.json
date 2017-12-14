@@ -1,0 +1,34 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.coinsecure.in\/v1\/exchange\/trades",
+        "headers": {
+            "Host": "api.coinsecure.in"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:32:33 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "277",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "Request-Time": "4",
+            "Content-Encoding": "gzip",
+            "Access-Control-Max-Age": "0",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, Accept, Referer, User-Agent, Authorization, accept",
+            "Set-Cookie": "visid_incap_1033907=DWvK3vlnR\/eraim55rqAEKHGMVoAAAAAQUIPAAAAAABkBO2GDhq0y7dn8OkbGRSf; expires=Thu, 13 Dec 2018 08:26:57 GMT; path=\/; Domain=.coinsecure.in, incap_ses_474_1033907=WvqufyKMUT7mSwdqIv2TBqHGMVoAAAAA9q+PpUugvRi1jI+LWenTBg==; path=\/; Domain=.coinsecure.in",
+            "X-Iinfo": "10-32612759-32611675 2NNN RT(1513211553098 94) q(0 0 0 -1) r(6 6)",
+            "X-CDN": "Incapsula",
+            "Cache-Control": "max-age=0"
+        },
+        "body": "{\"success\":true,\"count\":10,\"message\":[{\"time\":1513210613658,\"rate\":134000000,\"vol\":53700000,\"ordType\":\"bid\"},{\"time\":1513209160366,\"rate\":133200000,\"vol\":4400000,\"ordType\":\"ask\"},{\"time\":1513209085359,\"rate\":134000000,\"vol\":2900000,\"ordType\":\"bid\"},{\"time\":1513208475261,\"rate\":133200000,\"vol\":800000,\"ordType\":\"bid\"},{\"time\":1513208165455,\"rate\":133200000,\"vol\":1700000,\"ordType\":\"bid\"},{\"time\":1513208065036,\"rate\":133200008,\"vol\":11600000,\"ordType\":\"ask\"},{\"time\":1513208019522,\"rate\":133500000,\"vol\":1700000,\"ordType\":\"ask\"},{\"time\":1513208003607,\"rate\":134000000,\"vol\":200000,\"ordType\":\"ask\"},{\"time\":1513206870019,\"rate\":134000000,\"vol\":1200000,\"ordType\":\"ask\"},{\"time\":1513206829369,\"rate\":135000000,\"vol\":13500000,\"ordType\":\"bid\"}],\"time\":1513211553687,\"method\":\"All Completed Trades\",\"title\":\"\/v1\/exchange\/trades\"}"
+    }
+}]

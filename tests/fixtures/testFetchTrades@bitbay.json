@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bitbay.net\/API\/Public\/BTCUSD\/trades.json",
+        "headers": {
+            "Host": "bitbay.net"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:32:12 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Content-Length": "747",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d8ce765882ad4ddb0427c28d1d37ca3de1513211532; expires=Fri, 14-Dec-18 00:32:12 GMT; path=\/; domain=.bitbay.net; HttpOnly",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "sameorigin",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd108b0ccf7c7e-BEG"
+        },
+        "body": "[{\"date\":1400230002,\"price\":446.67,\"type\":\"sell\",\"amount\":0.117858,\"tid\":\"0\"},{\"date\":1400230012,\"price\":446.67,\"type\":\"sell\",\"amount\":0.0823241,\"tid\":\"1\"},{\"date\":1400230023,\"price\":446.67,\"type\":\"sell\",\"amount\":0.0657015,\"tid\":\"2\"},{\"date\":1400230048,\"price\":446.59,\"type\":\"sell\",\"amount\":0.06795,\"tid\":\"3\"},{\"date\":1400230111,\"price\":446.55,\"type\":\"buy\",\"amount\":0.17960501,\"tid\":\"4\"},{\"date\":1400230156,\"price\":446.6,\"type\":\"buy\",\"amount\":0.109718,\"tid\":\"5\"},{\"date\":1400230165,\"price\":446.6,\"type\":\"buy\",\"amount\":0.223914,\"tid\":\"6\"},{\"date\":1400230332,\"price\":446.55,\"type\":\"sell\",\"amount\":0.32798201,\"tid\":\"7\"},{\"date\":1400230338,\"price\":446.6,\"type\":\"buy\",\"amount\":0.0474541,\"tid\":\"8\"},{\"date\":1400230375,\"price\":446.59,\"type\":\"buy\",\"amount\":0.37618399,\"tid\":\"9\"},{\"date\":1400230382,\"price\":446.55,\"type\":\"sell\",\"amount\":0.30691701,\"tid\":\"10\"},{\"date\":1400230428,\"price\":446.3,\"type\":\"sell\",\"amount\":0.0499402,\"tid\":\"11\"},{\"date\":1400230459,\"price\":446.3,\"type\":\"sell\",\"amount\":0.063362,\"tid\":\"12\"},{\"date\":1400230476,\"price\":446.3,\"type\":\"sell\",\"amount\":0.0562178,\"tid\":\"13\"},{\"date\":1400230608,\"price\":446.29,\"type\":\"sell\",\"amount\":0.13658801,\"tid\":\"14\"},{\"date\":1400230664,\"price\":446.31,\"type\":\"buy\",\"amount\":0.85142601,\"tid\":\"15\"},{\"date\":1400230684,\"price\":446.31,\"type\":\"buy\",\"amount\":0.123233,\"tid\":\"16\"},{\"date\":1400230696,\"price\":446.29,\"type\":\"sell\",\"amount\":0.40727001,\"tid\":\"17\"},{\"date\":1400230708,\"price\":446.29,\"type\":\"sell\",\"amount\":0.0658345,\"tid\":\"18\"},{\"date\":1400230816,\"price\":446.31,\"type\":\"buy\",\"amount\":0.0974883,\"tid\":\"19\"},{\"date\":1400230875,\"price\":446.29,\"type\":\"sell\",\"amount\":0.55380702,\"tid\":\"20\"},{\"date\":1400230969,\"price\":446.31,\"type\":\"buy\",\"amount\":0.15532599,\"tid\":\"21\"},{\"date\":1400231018,\"price\":446.29,\"type\":\"buy\",\"amount\":0.834243,\"tid\":\"22\"},{\"date\":1400231063,\"price\":446.59,\"type\":\"buy\",\"amount\":0.0837031,\"tid\":\"23\"},{\"date\":1400231121,\"price\":446.99,\"type\":\"buy\",\"amount\":0.354314,\"tid\":\"24\"},{\"date\":1400231224,\"price\":446.64,\"type\":\"buy\",\"amount\":0.43353301,\"tid\":\"25\"},{\"date\":1400231238,\"price\":447.7,\"type\":\"buy\",\"amount\":0.0695504,\"tid\":\"26\"},{\"date\":1400231254,\"price\":446.18,\"type\":\"sell\",\"amount\":0.0786383,\"tid\":\"27\"},{\"date\":1400231262,\"price\":446.18,\"type\":\"sell\",\"amount\":0.199119,\"tid\":\"28\"},{\"date\":1400231272,\"price\":446.18,\"type\":\"sell\",\"amount\":0.0564867,\"tid\":\"29\"},{\"date\":1400231286,\"price\":447.9,\"type\":\"buy\",\"amount\":0.0510159,\"tid\":\"30\"},{\"date\":1400231296,\"price\":446.18,\"type\":\"sell\",\"amount\":0.246426,\"tid\":\"31\"},{\"date\":1400231306,\"price\":446.18,\"type\":\"sell\",\"amount\":0.12941,\"tid\":\"32\"},{\"date\":1400232643,\"price\":448.08,\"type\":\"buy\",\"amount\":0.30946401,\"tid\":\"33\"},{\"date\":1400232789,\"price\":448.14,\"type\":\"buy\",\"amount\":0.111572,\"tid\":\"34\"},{\"date\":1400233113,\"price\":446.11,\"type\":\"sell\",\"amount\":0.0895814,\"tid\":\"35\"},{\"date\":1400235739,\"price\":446.69,\"type\":\"sell\",\"amount\":0.0517398,\"tid\":\"36\"},{\"date\":1400235781,\"price\":446.69,\"type\":\"sell\",\"amount\":0.124217,\"tid\":\"37\"},{\"date\":1400235851,\"price\":446.9,\"type\":\"buy\",\"amount\":0.0490042,\"tid\":\"38\"},{\"date\":1400235932,\"price\":446.9,\"type\":\"buy\",\"amount\":0.0540433,\"tid\":\"39\"},{\"date\":1400235969,\"price\":446.7,\"type\":\"sell\",\"amount\":0.39539701,\"tid\":\"40\"},{\"date\":1400236026,\"price\":446.7,\"type\":\"sell\",\"amount\":0.101232,\"tid\":\"41\"},{\"date\":1400236106,\"price\":446.7,\"type\":\"sell\",\"amount\":0.943371,\"tid\":\"42\"},{\"date\":1400236160,\"price\":446.9,\"type\":\"buy\",\"amount\":1.62143004,\"tid\":\"43\"},{\"date\":1400242237,\"price\":447.56,\"type\":\"buy\",\"amount\":0.101455,\"tid\":\"44\"},{\"date\":1400242280,\"price\":447.05,\"type\":\"sell\",\"amount\":0.116085,\"tid\":\"45\"},{\"date\":1400242290,\"price\":447.05,\"type\":\"sell\",\"amount\":0.0863228,\"tid\":\"46\"},{\"date\":1400242303,\"price\":447.05,\"type\":\"sell\",\"amount\":0.378775,\"tid\":\"47\"},{\"date\":1400242310,\"price\":447.9,\"type\":\"buy\",\"amount\":0.15842301,\"tid\":\"48\"},{\"date\":1400242335,\"price\":447.05,\"type\":\"sell\",\"amount\":0.123985,\"tid\":\"49\"}]"
+    }
+}]

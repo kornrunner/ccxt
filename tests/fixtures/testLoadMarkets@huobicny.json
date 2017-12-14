@@ -1,0 +1,28 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/be.huobi.com\/v1\/common\/symbols",
+        "headers": {
+            "Host": "be.huobi.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:31:28 GMT",
+            "Content-Type": "application\/json;charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "X-Application-Context": "dawn-broker-bitex:prd:8080",
+            "Content-Encoding": "gzip",
+            "Set-Cookie": "__jsluid=8424be1885c37e7d2427841514b96d9b; max-age=31536000; path=\/; HttpOnly",
+            "X-Cache": "bypass"
+        },
+        "body": "{\"status\":\"ok\",\"data\":[{\"base-currency\":\"bcc\",\"quote-currency\":\"cny\",\"price-precision\":2,\"amount-precision\":4},{\"base-currency\":\"eth\",\"quote-currency\":\"cny\",\"price-precision\":2,\"amount-precision\":4},{\"base-currency\":\"etc\",\"quote-currency\":\"cny\",\"price-precision\":2,\"amount-precision\":4}]}"
+    }
+}]

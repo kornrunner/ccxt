@@ -1,0 +1,25 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.chbtc.com\/data\/v1\/depth?currency=btc_cny",
+        "headers": {
+            "Host": "api.chbtc.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "Tengine\/2.1.2",
+            "Date": "Thu, 14 Dec 2017 00:34:00 GMT",
+            "Content-Type": "text\/javascript;charset=utf-8",
+            "Content-Length": "44",
+            "Connection": "keep-alive",
+            "CNDServer": "cache_server_1"
+        },
+        "body": "{\"result\":false,\"message\":\"\u670d\u52a1\u7aef\u5fd9\u788c\"}"
+    }
+}]

@@ -1,0 +1,32 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.therocktrading.com\/v1\/funds\/tickers",
+        "headers": {
+            "Host": "api.therocktrading.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:30:49 GMT",
+            "Content-Type": "application\/json; charset=utf-8; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"d411b1d5614e52c1750fdc8e6955bb22\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "d9fe3956-1fe8-4c5a-8825-e5c24023a91e",
+            "X-Runtime": "0.268026",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"tickers\":[{\"date\":\"2017-12-14T01:29:55.255+01:00\",\"fund_id\":\"BTCEUR\",\"bid\":13486.72,\"ask\":13500.2,\"last\":13506.95,\"open\":13657.09,\"close\":13381.08,\"low\":13280.0,\"high\":13988.65,\"volume\":2803443.98,\"volume_traded\":234.436},{\"date\":\"2017-12-14T01:30:47.169+01:00\",\"fund_id\":\"BTCUSD\",\"bid\":15500.22,\"ask\":16899.81,\"last\":16680.0,\"open\":16497.23,\"close\":17499.0,\"low\":16100.51,\"high\":18995.0,\"volume\":28299.98,\"volume_traded\":1.69},{\"date\":\"2017-12-14T01:30:34.938+01:00\",\"fund_id\":\"LTCEUR\",\"bid\":245.0,\"ask\":248.11,\"last\":245.0,\"open\":249.76,\"close\":252.9,\"low\":235.05,\"high\":284.74,\"volume\":474084.32,\"volume_traded\":1874.09},{\"date\":\"2017-12-14T01:29:18.154+01:00\",\"fund_id\":\"LTCBTC\",\"bid\":0.01808,\"ask\":0.01819,\"last\":0.01818,\"open\":0.01774,\"close\":0.0183,\"low\":0.01738,\"high\":0.01992,\"volume\":22.49182795,\"volume_traded\":1221.2},{\"date\":\"2017-12-14T01:30:46.977+01:00\",\"fund_id\":\"BTCXRP\",\"bid\":34770.51,\"ask\":35448.41,\"last\":34698.13,\"open\":43657.63,\"close\":34626.04,\"low\":30000.01,\"high\":64980.98,\"volume\":612061.34724,\"volume_traded\":15.966},{\"date\":\"2017-12-14T01:30:36.923+01:00\",\"fund_id\":\"EURXRP\",\"bid\":2.55,\"ask\":2.63,\"last\":2.63,\"open\":3.61,\"close\":2.64,\"low\":2.34,\"high\":3.79,\"volume\":514532.6691,\"volume_traded\":190709.63},{\"date\":\"2017-12-14T01:30:44.617+01:00\",\"fund_id\":\"USDXRP\",\"bid\":2.11,\"ask\":2.13,\"last\":2.15,\"open\":2.83,\"close\":2.13,\"low\":1.01,\"high\":2.97,\"volume\":13066.4894,\"volume_traded\":5559.56},{\"date\":\"2017-12-14T01:28:26.353+01:00\",\"fund_id\":\"PPCEUR\",\"bid\":3.5,\"ask\":3.51,\"last\":3.5,\"open\":2.82,\"close\":3.5,\"low\":2.8,\"high\":3.95,\"volume\":41017.06,\"volume_traded\":12322.4},{\"date\":\"2017-12-14T01:27:35.438+01:00\",\"fund_id\":\"PPCBTC\",\"bid\":0.00025,\"ask\":0.00027,\"last\":0.00026,\"open\":0.0002,\"close\":0.00025,\"low\":0.0002,\"high\":0.00028,\"volume\":1.59356639,\"volume_traded\":6288.69},{\"date\":\"2017-12-14T01:29:49.021+01:00\",\"fund_id\":\"ETHEUR\",\"bid\":550.03,\"ask\":580.0,\"last\":580.0,\"open\":519.99,\"close\":587.67,\"low\":495.0,\"high\":600.0,\"volume\":1140029.39,\"volume_traded\":2335.07},{\"date\":\"2017-12-14T01:30:48.793+01:00\",\"fund_id\":\"ETHBTC\",\"bid\":0.04253,\"ask\":0.04285,\"last\":0.04287,\"open\":0.0372,\"close\":0.04274,\"low\":0.03634,\"high\":0.04368,\"volume\":32.74967894,\"volume_traded\":874.89},{\"date\":\"2017-12-14T01:27:52.376+01:00\",\"fund_id\":\"ZECBTC\",\"bid\":0.0258,\"ask\":0.02597,\"last\":0.02585,\"open\":0.0217,\"close\":0.02581,\"low\":0.02082,\"high\":0.0267,\"volume\":1.4836186,\"volume_traded\":63.772},{\"date\":\"2017-12-14T01:30:28.948+01:00\",\"fund_id\":\"ZECEUR\",\"bid\":341.67,\"ask\":356.0,\"last\":347.75,\"open\":295.79,\"close\":346.74,\"low\":287.01,\"high\":369.0,\"volume\":144063.82,\"volume_traded\":446.193},{\"date\":\"2017-12-14T01:29:57.349+01:00\",\"fund_id\":\"BCHBTC\",\"bid\":0.09644,\"ask\":0.09768,\"last\":0.09689,\"open\":0.09385,\"close\":0.09743,\"low\":0.09123,\"high\":0.10039,\"volume\":2.89354807,\"volume_traded\":30.398},{\"date\":\"2017-12-14T01:15:41.033+01:00\",\"fund_id\":\"EURNEUR\",\"bid\":0.99,\"ask\":1.0,\"last\":1.0,\"open\":1.0,\"close\":1.0,\"low\":0.99,\"high\":1.0,\"volume\":6240.35,\"volume_traded\":6259.42},{\"date\":\"2017-12-14T01:30:45.734+01:00\",\"fund_id\":\"EURNBTC\",\"bid\":0.00006,\"ask\":0.00008,\"last\":0.00006,\"open\":0.0,\"close\":0.0,\"low\":0.0,\"high\":0.0,\"volume\":0.0012,\"volume_traded\":20.0}]}"
+    }
+}]

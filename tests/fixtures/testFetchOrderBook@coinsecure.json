@@ -1,0 +1,67 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.coinsecure.in\/v1\/exchange\/bid\/orders",
+        "headers": {
+            "Host": "api.coinsecure.in"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:34:11 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "209",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "Request-Time": "5",
+            "Content-Encoding": "gzip",
+            "Access-Control-Max-Age": "0",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, Accept, Referer, User-Agent, Authorization, accept",
+            "Set-Cookie": "visid_incap_1033907=127+89pJTpCLSGHWChJwCAPHMVoAAAAAQUIPAAAAAABZi8J8c4dLgoz7UPTdSl0b; expires=Thu, 13 Dec 2018 08:27:03 GMT; path=\/; Domain=.coinsecure.in, incap_ses_474_1033907=63XVMHME3FkHhAdqIv2TBgPHMVoAAAAA0+Clcs51rpRfJ3BN2\/XbcA==; path=\/; Domain=.coinsecure.in",
+            "X-Iinfo": "3-11472226-11462039 2NNN RT(1513211650656 109) q(0 0 0 -1) r(8 8)",
+            "X-CDN": "Incapsula",
+            "Cache-Control": "max-age=0"
+        },
+        "body": "{\"success\":true,\"count\":10,\"message\":[{\"rate\":134000000,\"vol\":91400000},{\"rate\":133050000,\"vol\":1000000},{\"rate\":133000100,\"vol\":10000000},{\"rate\":133000000,\"vol\":7900000},{\"rate\":132900000,\"vol\":8400000},{\"rate\":132700000,\"vol\":4500000},{\"rate\":132501101,\"vol\":18900000},{\"rate\":132501100,\"vol\":4000000},{\"rate\":132500000,\"vol\":11100000},{\"rate\":132310100,\"vol\":2800000}],\"time\":1513211651469,\"method\":\"All Buy Orders\",\"title\":\"\/v1\/exchange\/bid\/orders\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.coinsecure.in\/v1\/exchange\/ask\/orders",
+        "headers": {
+            "Host": "api.coinsecure.in"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:34:12 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "205",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "Request-Time": "5",
+            "Content-Encoding": "gzip",
+            "Access-Control-Max-Age": "0",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, Accept, Referer, User-Agent, Authorization, accept",
+            "Set-Cookie": "visid_incap_1033907=vWLesqdFR7qjgerCfAdEHwTHMVoAAAAAQUIPAAAAAABGYgRqOR1tTtbzCNs6aW3V; expires=Thu, 13 Dec 2018 08:27:01 GMT; path=\/; Domain=.coinsecure.in, incap_ses_474_1033907=kpPASnfGcD97hAdqIv2TBgTHMVoAAAAA4Fl\/DXu2UTBiMG8AQ9DUyg==; path=\/; Domain=.coinsecure.in",
+            "X-Iinfo": "9-28370317-28369748 2NNN RT(1513211651649 91) q(0 0 0 -1) r(6 6)",
+            "X-CDN": "Incapsula",
+            "Cache-Control": "max-age=0"
+        },
+        "body": "{\"success\":true,\"count\":10,\"message\":[{\"rate\":134900000,\"vol\":1600000},{\"rate\":135000000,\"vol\":38600000},{\"rate\":135290000,\"vol\":56900000},{\"rate\":135500000,\"vol\":3600000},{\"rate\":135700000,\"vol\":2000000},{\"rate\":136500000,\"vol\":7900000},{\"rate\":137500000,\"vol\":4900000},{\"rate\":137799900,\"vol\":30000000},{\"rate\":137800000,\"vol\":20000000},{\"rate\":137900000,\"vol\":12800000}],\"time\":1513211652236,\"method\":\"All Sell Orders\",\"title\":\"\/v1\/exchange\/ask\/orders\"}"
+    }
+}]

@@ -1,0 +1,40 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.btcturk.com\/api\/trades?pairSymbol=BTCTRY",
+        "headers": {
+            "Host": "www.btcturk.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
+            "Content-Length": "996",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Encoding": "gzip",
+            "Expires": "-1",
+            "ETag": "\"12720a11-12b2-4a51-841c-0649d314f2a5\"",
+            "Vary": "Accept-Encoding,Accept-Encoding",
+            "RateLimit-Limit": "1",
+            "RateLimit-Remaining": "0",
+            "Strict-Transport-Security": "max-age=31536000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-Xss-Protection": "1;mode=block",
+            "Content-Security-Policy": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "X-Content-Security-Policy": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "X-Webkit-CSP": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "Access-Control-Allow-Origin": "*",
+            "Request-Context": "appId=cid-v1:d672206b-5ee8-42f2-91b5-713de13155fd",
+            "Set-Cookie": "ARRAffinity=8dbd27e51801d42a62fb02d15359a81d5420632b74a6ced8cf8f4bc43c927a97;Path=\/;HttpOnly;Domain=www.btcturk.com",
+            "Date": "Thu, 14 Dec 2017 00:34:23 GMT"
+        },
+        "body": "[{\"date\":1513211435.0,\"tid\":\"1\",\"price\":67801.03,\"amount\":0.09125835},{\"date\":1513211366.0,\"tid\":\"2\",\"price\":67801.0,\"amount\":0.08797051},{\"date\":1513211365.0,\"tid\":\"3\",\"price\":67801.01,\"amount\":0.00002949},{\"date\":1513211337.0,\"tid\":\"4\",\"price\":68249.99,\"amount\":0.00072944},{\"date\":1513211211.0,\"tid\":\"5\",\"price\":67801.01,\"amount\":0.044},{\"date\":1513211090.0,\"tid\":\"6\",\"price\":68299.0,\"amount\":0.03570801},{\"date\":1513211089.0,\"tid\":\"7\",\"price\":68298.99,\"amount\":0.15861699},{\"date\":1513211030.0,\"tid\":\"8\",\"price\":67801.01,\"amount\":0.15861699},{\"date\":1513211029.0,\"tid\":\"9\",\"price\":67801.08,\"amount\":0.00002949},{\"date\":1513210801.0,\"tid\":\"10\",\"price\":68300.0,\"amount\":0.02885964},{\"date\":1513210800.0,\"tid\":\"11\",\"price\":68299.0,\"amount\":0.07326876},{\"date\":1513210474.0,\"tid\":\"12\",\"price\":67722.0,\"amount\":0.17134279},{\"date\":1513210473.0,\"tid\":\"13\",\"price\":67750.0,\"amount\":0.00305037},{\"date\":1513210473.0,\"tid\":\"14\",\"price\":67777.77,\"amount\":0.0003397},{\"date\":1513210473.0,\"tid\":\"15\",\"price\":67800.0,\"amount\":0.005},{\"date\":1513210472.0,\"tid\":\"16\",\"price\":67800.0,\"amount\":0.14499316},{\"date\":1513210472.0,\"tid\":\"17\",\"price\":67850.0,\"amount\":0.01},{\"date\":1513210471.0,\"tid\":\"18\",\"price\":67850.0,\"amount\":0.25},{\"date\":1513210471.0,\"tid\":\"19\",\"price\":67860.0,\"amount\":0.00833193},{\"date\":1513210471.0,\"tid\":\"20\",\"price\":68000.0,\"amount\":0.00393793},{\"date\":1513210470.0,\"tid\":\"21\",\"price\":68000.0,\"amount\":0.23585446},{\"date\":1513210470.0,\"tid\":\"22\",\"price\":68000.0,\"amount\":0.000018},{\"date\":1513210470.0,\"tid\":\"23\",\"price\":68001.0,\"amount\":0.01},{\"date\":1513210469.0,\"tid\":\"24\",\"price\":68002.0,\"amount\":0.1},{\"date\":1513210469.0,\"tid\":\"25\",\"price\":68010.0,\"amount\":0.106},{\"date\":1513210468.0,\"tid\":\"26\",\"price\":68050.0,\"amount\":0.00002936},{\"date\":1513210468.0,\"tid\":\"27\",\"price\":68050.0,\"amount\":0.016311},{\"date\":1513210468.0,\"tid\":\"28\",\"price\":68100.0,\"amount\":0.0019},{\"date\":1513210467.0,\"tid\":\"29\",\"price\":68100.0,\"amount\":0.04387},{\"date\":1513210467.0,\"tid\":\"30\",\"price\":68104.02,\"amount\":0.32470352},{\"date\":1513210399.0,\"tid\":\"31\",\"price\":68299.0,\"amount\":0.00839692},{\"date\":1513210202.0,\"tid\":\"32\",\"price\":68299.0,\"amount\":0.05551375},{\"date\":1513210202.0,\"tid\":\"33\",\"price\":68250.0,\"amount\":0.025},{\"date\":1513210167.0,\"tid\":\"34\",\"price\":68104.02,\"amount\":0.02194307},{\"date\":1513209941.0,\"tid\":\"35\",\"price\":68104.02,\"amount\":0.00046864},{\"date\":1513209840.0,\"tid\":\"36\",\"price\":68299.0,\"amount\":0.00046864},{\"date\":1513209744.0,\"tid\":\"37\",\"price\":68104.02,\"amount\":0.28659227},{\"date\":1513209674.0,\"tid\":\"38\",\"price\":68104.02,\"amount\":0.0154469},{\"date\":1513209640.0,\"tid\":\"39\",\"price\":68299.0,\"amount\":0.29246721},{\"date\":1513209640.0,\"tid\":\"40\",\"price\":68298.99,\"amount\":0.1155},{\"date\":1513209640.0,\"tid\":\"41\",\"price\":68298.98,\"amount\":0.35015685},{\"date\":1513209639.0,\"tid\":\"42\",\"price\":68250.0,\"amount\":0.11498126},{\"date\":1513209638.0,\"tid\":\"43\",\"price\":68250.0,\"amount\":0.04299202},{\"date\":1513209552.0,\"tid\":\"44\",\"price\":68250.0,\"amount\":0.00700798},{\"date\":1513209411.0,\"tid\":\"45\",\"price\":68104.02,\"amount\":0.0056868},{\"date\":1513209351.0,\"tid\":\"46\",\"price\":68111.02,\"amount\":0.0143132},{\"date\":1513209260.0,\"tid\":\"47\",\"price\":68111.02,\"amount\":0.0009},{\"date\":1513209101.0,\"tid\":\"48\",\"price\":68111.02,\"amount\":0.22026728},{\"date\":1513209100.0,\"tid\":\"49\",\"price\":68111.88,\"amount\":0.4321314},{\"date\":1513209100.0,\"tid\":\"50\",\"price\":68112.0,\"amount\":0.00002936}]"
+    }
+}]

@@ -1,0 +1,32 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/getbtc.org\/api\/transactions?currency=USD",
+        "headers": {
+            "Host": "getbtc.org"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.4.6 (Ubuntu)",
+            "Date": "Thu, 14 Dec 2017 00:32:40 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "PHPSESSID=4qh6fb55n0r6p954hbriojruj6; path=\/; secure; HttpOnly",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Powered-By": "WLOX",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"transactions\":{\"0\":{\"id\":\"707906\",\"date\":\"2017-12-14 03:32:02\",\"timestamp\":\"1513211522\",\"btc\":\"0.04910000\",\"maker_type\":\"buy\",\"price\":\"16471.50\",\"amount\":\"808.75\",\"currency\":\"USD\"},\"1\":{\"id\":\"707905\",\"date\":\"2017-12-14 03:32:02\",\"timestamp\":\"1513211522\",\"btc\":\"0.02780000\",\"maker_type\":\"buy\",\"price\":\"17775.04\",\"amount\":\"494.15\",\"currency\":\"RUB\"},\"2\":{\"id\":\"707904\",\"date\":\"2017-12-14 03:32:02\",\"timestamp\":\"1513211522\",\"btc\":\"0.06750000\",\"maker_type\":\"buy\",\"price\":\"16532.14\",\"amount\":\"1115.92\",\"currency\":\"EUR\"},\"3\":{\"id\":\"707903\",\"date\":\"2017-12-14 03:31:03\",\"timestamp\":\"1513211463\",\"btc\":\"0.16160000\",\"maker_type\":\"buy\",\"price\":\"16471.50\",\"amount\":\"2661.79\",\"currency\":\"USD\"},\"4\":{\"id\":\"707902\",\"date\":\"2017-12-14 03:31:02\",\"timestamp\":\"1513211462\",\"btc\":\"0.01030000\",\"maker_type\":\"buy\",\"price\":\"17775.04\",\"amount\":\"183.08\",\"currency\":\"RUB\"},\"5\":{\"id\":\"707901\",\"date\":\"2017-12-14 03:31:02\",\"timestamp\":\"1513211462\",\"btc\":\"0.03990000\",\"maker_type\":\"buy\",\"price\":\"16532.14\",\"amount\":\"659.63\",\"currency\":\"EUR\"},\"6\":{\"id\":\"707900\",\"date\":\"2017-12-14 03:30:02\",\"timestamp\":\"1513211402\",\"btc\":\"0.16050000\",\"maker_type\":\"buy\",\"price\":\"16471.50\",\"amount\":\"2643.68\",\"currency\":\"USD\"},\"7\":{\"id\":\"707899\",\"date\":\"2017-12-14 03:30:02\",\"timestamp\":\"1513211402\",\"btc\":\"0.02210000\",\"maker_type\":\"buy\",\"price\":\"17775.04\",\"amount\":\"392.83\",\"currency\":\"RUB\"},\"8\":{\"id\":\"707898\",\"date\":\"2017-12-14 03:30:02\",\"timestamp\":\"1513211402\",\"btc\":\"0.19480000\",\"maker_type\":\"buy\",\"price\":\"16532.14\",\"amount\":\"3220.46\",\"currency\":\"EUR\"},\"9\":{\"id\":\"707897\",\"date\":\"2017-12-14 03:29:02\",\"timestamp\":\"1513211342\",\"btc\":\"0.06800000\",\"maker_type\":\"buy\",\"price\":\"16471.50\",\"amount\":\"1120.06\",\"currency\":\"USD\"},\"request_currency\":\"USD\"}}"
+    }
+}]

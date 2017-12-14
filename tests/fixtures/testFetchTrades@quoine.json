@@ -1,0 +1,43 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.quoine.com\/executions?product_id=1",
+        "headers": {
+            "Host": "api.quoine.com",
+            "X-Quoine-API-Version": "2",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:33:08 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Length": "452",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d526d8d1e626fdb33a20da68be7b3d9111513211587; expires=Fri, 14-Dec-18 00:33:07 GMT; path=\/; domain=.quoine.com; HttpOnly, _vax_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJTkzZjkwZmQwYWIzMDE4NTM2NTI4Zjg2NmFhNmIwNmVjBjsAVEkiCWxhbmcGOwBGOgdlbg%3D%3D--9953b908263fddeed4560188fdc1240bbee6370d; path=\/; secure; HttpOnly",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "Content-Encoding": "gzip",
+            "Etag": "\"777d39144dec94734cc24ecfc609ba11\"",
+            "Status": "200 OK",
+            "Strict-Transport-Security": "max-age=631152000; includeSubdomains",
+            "Vary": "Accept-Encoding",
+            "Via": "1.1 spaces-router (95e7969569d5)",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Powered-By": "Phusion Passenger 5.1.2",
+            "X-Rack-Cache": "miss",
+            "X-Request-Id": "29919dfc-a49a-8820-8128-a4e0efb62ed1",
+            "X-Runtime": "0.042278",
+            "X-Ua-Compatible": "IE=Edge,chrome=1",
+            "X-Xss-Protection": "1; mode=block",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd11e3edb27c9c-BEG"
+        },
+        "body": "{\"models\":[{\"id\":15261035,\"quantity\":\"0.08\",\"price\":\"16799.0\",\"taker_side\":\"sell\",\"created_at\":1513211540},{\"id\":15261034,\"quantity\":\"0.29024714\",\"price\":\"16817.82848\",\"taker_side\":\"buy\",\"created_at\":1513211539},{\"id\":15261033,\"quantity\":\"0.08\",\"price\":\"16799.0\",\"taker_side\":\"buy\",\"created_at\":1513211539},{\"id\":15261005,\"quantity\":\"1.02\",\"price\":\"16747.59138\",\"taker_side\":\"sell\",\"created_at\":1513211412},{\"id\":15260994,\"quantity\":\"4.33977474\",\"price\":\"16748.8196\",\"taker_side\":\"sell\",\"created_at\":1513211407},{\"id\":15260983,\"quantity\":\"0.08212996\",\"price\":\"16788.88893\",\"taker_side\":\"buy\",\"created_at\":1513211359},{\"id\":15260903,\"quantity\":\"0.02\",\"price\":\"16836.48019\",\"taker_side\":\"buy\",\"created_at\":1513211077},{\"id\":15260785,\"quantity\":\"5.36\",\"price\":\"16824.17808\",\"taker_side\":\"buy\",\"created_at\":1513210459},{\"id\":15260673,\"quantity\":\"0.4\",\"price\":\"16751.00875\",\"taker_side\":\"sell\",\"created_at\":1513210245},{\"id\":15260638,\"quantity\":\"0.90122526\",\"price\":\"16669.13998\",\"taker_side\":\"sell\",\"created_at\":1513210146},{\"id\":15260593,\"quantity\":\"0.125\",\"price\":\"16710.52386\",\"taker_side\":\"sell\",\"created_at\":1513210087},{\"id\":15260550,\"quantity\":\"0.96488\",\"price\":\"16773.23222\",\"taker_side\":\"sell\",\"created_at\":1513209970},{\"id\":15260549,\"quantity\":\"1.03512\",\"price\":\"16779.57473\",\"taker_side\":\"sell\",\"created_at\":1513209970},{\"id\":15260546,\"quantity\":\"2.0\",\"price\":\"16770.42778\",\"taker_side\":\"sell\",\"created_at\":1513209964},{\"id\":15260544,\"quantity\":\"2.0\",\"price\":\"16770.42778\",\"taker_side\":\"sell\",\"created_at\":1513209959},{\"id\":15260543,\"quantity\":\"1.50488\",\"price\":\"16764.08873\",\"taker_side\":\"sell\",\"created_at\":1513209954},{\"id\":15260542,\"quantity\":\"0.49512\",\"price\":\"16770.42778\",\"taker_side\":\"sell\",\"created_at\":1513209954},{\"id\":15260540,\"quantity\":\"2.0\",\"price\":\"16770.40631\",\"taker_side\":\"sell\",\"created_at\":1513209941},{\"id\":15260534,\"quantity\":\"2.54\",\"price\":\"16762.35597\",\"taker_side\":\"sell\",\"created_at\":1513209921},{\"id\":15260533,\"quantity\":\"0.16555102\",\"price\":\"16799.5912\",\"taker_side\":\"buy\",\"created_at\":1513209919}],\"current_page\":1}"
+    }
+}]

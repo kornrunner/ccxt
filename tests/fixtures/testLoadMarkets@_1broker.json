@@ -1,0 +1,181 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/1broker.com\/api\/v2\/market\/categories.php?token=A0f79063a5e91e6d62fbcbbbbdd63258",
+        "headers": {
+            "Host": "1broker.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:30:52 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d304f531daffe0af8555b36d2ad8ed90e1513211451; expires=Fri, 14-Dec-18 00:30:51 GMT; path=\/; domain=.1broker.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, must-revalidate",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd0e96dc3b7c84-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"server_time\":\"2017-12-14T00:30:52.079Z\",\"error\":false,\"warning\":false,\"response\":[\"INDEX\",\"STOCK\",\"COMMODITY\",\"FOREX\",\"CRYPTO\"]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/1broker.com\/api\/v2\/market\/list.php?token=A0f79063a5e91e6d62fbcbbbbdd63258&category=index",
+        "headers": {
+            "Host": "1broker.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:30:52 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d093fc8863b40ebeb2c88698a11924a101513211452; expires=Fri, 14-Dec-18 00:30:52 GMT; path=\/; domain=.1broker.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, must-revalidate",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd0e9818197c3c-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"server_time\":\"2017-12-14T00:30:52.277Z\",\"error\":false,\"warning\":false,\"response\":[{\"symbol\":\"AU200\",\"name\":\"ASX 200\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"CH30\",\"name\":\"SMI\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"DAX\",\"name\":\"DAX (German 30)\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"DOW\",\"name\":\"Dow Jones 30 Industrial\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"ES35\",\"name\":\"IBEX 35\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"EU50\",\"name\":\"Euro Stoxx 50\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"FR40\",\"name\":\"CAC 40\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"HK50\",\"name\":\"Hong Kong 50\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"JP225\",\"name\":\"Nikkei 225\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"NDX\",\"name\":\"NASDAQ 100\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"SP500\",\"name\":\"S&P 500\",\"category\":\"INDEX\",\"type\":\"CFD\"},{\"symbol\":\"UK100\",\"name\":\"FTSE 100\",\"category\":\"INDEX\",\"type\":\"CFD\"}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/1broker.com\/api\/v2\/market\/list.php?token=A0f79063a5e91e6d62fbcbbbbdd63258&category=stock",
+        "headers": {
+            "Host": "1broker.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:30:52 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dbdd6f78b01d1b586f7ca675ce0791d7f1513211452; expires=Fri, 14-Dec-18 00:30:52 GMT; path=\/; domain=.1broker.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, must-revalidate",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd0e995c997c78-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"server_time\":\"2017-12-14T00:30:52.481Z\",\"error\":false,\"warning\":false,\"response\":[{\"symbol\":\"AABA\",\"name\":\"Altaba, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"AAPL\",\"name\":\"Apple, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"AMD\",\"name\":\"Advanced Micro Devices, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"AMZN\",\"name\":\"Amazon.com, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"ATVI\",\"name\":\"Activision Blizzard, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"BA\",\"name\":\"The Boeing Company\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"BABA\",\"name\":\"Alibaba Group H. Ltd.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"BAC\",\"name\":\"Bank of America Corp.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"BMW\",\"name\":\"BMW AG\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"BRKB\",\"name\":\"Berkshire Hathaway, Inc\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"C\",\"name\":\"Citigroup, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"CSCO\",\"name\":\"Cisco Systems, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"DBK\",\"name\":\"Deutsche Bank AG\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"DIS\",\"name\":\"The Walt Disney Company\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"F\",\"name\":\"Ford Motor Comp.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"FB\",\"name\":\"Facebook, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"GOOG\",\"name\":\"Alphabet, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"GPRO\",\"name\":\"GoPro, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"INTC\",\"name\":\"Intel Corporation\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"KO\",\"name\":\"Coca-Cola\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"LHA\",\"name\":\"Deutsche Lufthansa AG\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"MSFT\",\"name\":\"Microsoft Corp.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"NFLX\",\"name\":\"Netflix, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"NVDA\",\"name\":\"NVIDIA Corp.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"PEP\",\"name\":\"PepsiCo, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"SIE\",\"name\":\"Siemens AG\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"SNAP\",\"name\":\"Snap, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"TSLA\",\"name\":\"Tesla Motors, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"TWTR\",\"name\":\"Twitter, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"TWX\",\"name\":\"Time Warner, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"V\",\"name\":\"Visa, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"VOW3\",\"name\":\"Volkswagen AG\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"WMT\",\"name\":\"Wal-Mart Stores, Inc.\",\"category\":\"STOCK\",\"type\":\"STOCK\"},{\"symbol\":\"WU\",\"name\":\"Western Union\",\"category\":\"STOCK\",\"type\":\"STOCK\"}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/1broker.com\/api\/v2\/market\/list.php?token=A0f79063a5e91e6d62fbcbbbbdd63258&category=commodity",
+        "headers": {
+            "Host": "1broker.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:30:52 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d12c6ebdddc8ba0994ff2b8b4898aa5271513211452; expires=Fri, 14-Dec-18 00:30:52 GMT; path=\/; domain=.1broker.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, must-revalidate",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd0e9a8eb77c72-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"server_time\":\"2017-12-14T00:30:52.663Z\",\"error\":false,\"warning\":false,\"response\":[{\"symbol\":\"GOLD\",\"name\":\"Gold 1 oz\",\"category\":\"COMMODITY\",\"type\":\"CFD\"},{\"symbol\":\"HG\",\"name\":\"Copper\",\"category\":\"COMMODITY\",\"type\":\"FUTURE\"},{\"symbol\":\"NG\",\"name\":\"Natural Gas\",\"category\":\"COMMODITY\",\"type\":\"FUTURE\"},{\"symbol\":\"OILWTI\",\"name\":\"Crude Oil (WTI) \",\"category\":\"COMMODITY\",\"type\":\"FUTURE\"},{\"symbol\":\"SILVER\",\"name\":\"Silver 1 oz\",\"category\":\"COMMODITY\",\"type\":\"CFD\"}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/1broker.com\/api\/v2\/market\/list.php?token=A0f79063a5e91e6d62fbcbbbbdd63258&category=forex",
+        "headers": {
+            "Host": "1broker.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:30:52 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d4311656bc4621defe16c0dbd1ec7d3441513211452; expires=Fri, 14-Dec-18 00:30:52 GMT; path=\/; domain=.1broker.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, must-revalidate",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd0e9bbc0d7c7e-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"server_time\":\"2017-12-14T00:30:52.775Z\",\"error\":false,\"warning\":false,\"response\":[{\"symbol\":\"AUDNZD\",\"name\":\"AUD\/NZD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"AUDUSD\",\"name\":\"AUD\/USD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURAUD\",\"name\":\"EUR\/AUD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURCAD\",\"name\":\"EUR\/CAD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURCHF\",\"name\":\"EUR\/CHF\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURGBP\",\"name\":\"EUR\/GBP\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURJPY\",\"name\":\"EUR\/JPY\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURNOK\",\"name\":\"EUR\/NOK\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURSEK\",\"name\":\"EUR\/SEK\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURTRY\",\"name\":\"EUR\/TRY\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"EURUSD\",\"name\":\"EUR\/USD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"GBPUSD\",\"name\":\"GBP\/USD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"NZDUSD\",\"name\":\"NZD\/USD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDCAD\",\"name\":\"USD\/CAD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDCHF\",\"name\":\"USD\/CHF\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDCNH\",\"name\":\"USD\/CNH\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDHKD\",\"name\":\"USD\/HKD\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDJPY\",\"name\":\"USD\/JPY\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDMXN\",\"name\":\"USD\/MXN\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDRUB\",\"name\":\"USD\/RUB\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDTRY\",\"name\":\"USD\/TRY\",\"category\":\"FOREX\",\"type\":\"CFD\"},{\"symbol\":\"USDZAR\",\"name\":\"USD\/ZAR\",\"category\":\"FOREX\",\"type\":\"CFD\"}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/1broker.com\/api\/v2\/market\/list.php?token=A0f79063a5e91e6d62fbcbbbbdd63258&category=crypto",
+        "headers": {
+            "Host": "1broker.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:30:52 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d1eb53252073ac804daaf6530801b17171513211452; expires=Fri, 14-Dec-18 00:30:52 GMT; path=\/; domain=.1broker.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, must-revalidate",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd0e9c6daf7ca8-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"server_time\":\"2017-12-14T00:30:52.885Z\",\"error\":false,\"warning\":false,\"response\":[{\"symbol\":\"BTCUSD\",\"name\":\"BTC\/USD\",\"category\":\"CRYPTO\",\"type\":\"CFD\"}]}"
+    }
+}]

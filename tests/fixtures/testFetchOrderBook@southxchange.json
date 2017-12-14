@@ -1,0 +1,36 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.southxchange.com\/api\/book\/BCH\/BTC",
+        "headers": {
+            "Host": "www.southxchange.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:34:50 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d9b3971b7cb1471ee5e45221f07bd90571513211690; expires=Fri, 14-Dec-18 00:34:50 GMT; path=\/; domain=.southxchange.com; HttpOnly, _culture=en-US; path=\/, ARRAffinity=04f20859064b4e50d0a9c30436f9cc8a3e3b7902fe49a523458c4aef59bd6de7;Path=\/;HttpOnly;Domain=www.southxchange.com",
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "-1",
+            "Vary": "Accept-Encoding",
+            "X-AspNetMvc-Version": "5.2",
+            "Access-Control-Allow-Origin": "*",
+            "X-AspNet-Version": "4.0.30319",
+            "X-Powered-By": "ASP.NET",
+            "X-Frame-Options": "DENY",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd146729817c96-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"BuyOrders\":[{\"Index\":0,\"Amount\":2.48,\"Price\":0.09739809},{\"Index\":1,\"Amount\":1.337071,\"Price\":0.0951142},{\"Index\":2,\"Amount\":0.2,\"Price\":0.09386},{\"Index\":3,\"Amount\":0.0937423,\"Price\":0.0909},{\"Index\":4,\"Amount\":0.0365,\"Price\":0.087086},{\"Index\":5,\"Amount\":0.02,\"Price\":0.0849448},{\"Index\":6,\"Amount\":0.01,\"Price\":0.081393},{\"Index\":7,\"Amount\":0.008,\"Price\":0.07717},{\"Index\":8,\"Amount\":0.004261,\"Price\":0.0729},{\"Index\":9,\"Amount\":0.003,\"Price\":0.069377},{\"Index\":10,\"Amount\":0.05,\"Price\":0.001},{\"Index\":11,\"Amount\":0.2,\"Price\":0.0005},{\"Index\":12,\"Amount\":1,\"Price\":0.00005},{\"Index\":13,\"Amount\":2,\"Price\":0.00001},{\"Index\":14,\"Amount\":4,\"Price\":0.000005}],\"SellOrders\":[{\"Index\":0,\"Amount\":2.9893,\"Price\":0.09788154},{\"Index\":1,\"Amount\":0.24627,\"Price\":0.1003401},{\"Index\":2,\"Amount\":0.327995,\"Price\":0.1026},{\"Index\":3,\"Amount\":0.033,\"Price\":0.1044576},{\"Index\":4,\"Amount\":0.01716,\"Price\":0.1074761},{\"Index\":5,\"Amount\":0.020575,\"Price\":0.111466},{\"Index\":6,\"Amount\":0.0116,\"Price\":0.114759},{\"Index\":7,\"Amount\":0.0057,\"Price\":0.1170777},{\"Index\":8,\"Amount\":0.00395,\"Price\":0.1221},{\"Index\":9,\"Amount\":0.0023066,\"Price\":0.1266},{\"Index\":10,\"Amount\":0.11773944,\"Price\":0.15},{\"Index\":11,\"Amount\":0.26375843,\"Price\":0.338},{\"Index\":12,\"Amount\":0.00074126,\"Price\":0.3389},{\"Index\":13,\"Amount\":0.1,\"Price\":0.515},{\"Index\":14,\"Amount\":0.1,\"Price\":0.523},{\"Index\":15,\"Amount\":0.02501642,\"Price\":0.6457},{\"Index\":16,\"Amount\":0.1,\"Price\":0.73},{\"Index\":17,\"Amount\":0.57194615,\"Price\":1.896},{\"Index\":18,\"Amount\":0.40707873,\"Price\":3.56},{\"Index\":19,\"Amount\":0.01618993,\"Price\":6},{\"Index\":20,\"Amount\":0.00128173,\"Price\":14},{\"Index\":21,\"Amount\":0.00039216,\"Price\":16}]}"
+    }
+}]

@@ -1,0 +1,35 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.bitstamp.net\/api\/v2\/transactions\/ltcusd\/?time=minute",
+        "headers": {
+            "Host": "www.bitstamp.net"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, accept, cache-control",
+            "Access-Control-Allow-Methods": "POST, GET",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Language": "en",
+            "Content-Type": "application\/json",
+            "Date": "Thu, 14 Dec 2017 00:32:17 GMT",
+            "Server": "Apache",
+            "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
+            "Vary": "Accept-Language",
+            "X-Frame-Options": "SAMEORIGIN",
+            "transfer-encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "visid_incap_99025=r6\/QeA7OS9eHfRzi0vG9hpDGMVoAAAAAQUIPAAAAAAA9VXCm97xlgXuHbpcj8bzc; expires=Thu, 13 Dec 2018 08:38:33 GMT; path=\/; Domain=.bitstamp.net, nlbi_99025=89iYBXDX2BmOBRce8F1n9AAAAABIn5hXpsAWnVgviePVt+RI; path=\/; Domain=.bitstamp.net, incap_ses_730_99025=hJuNBZnBMXw5DiHBWXshCpDGMVoAAAAAtwtH2wMJRpMfPVg9KiYfaw==; path=\/; Domain=.bitstamp.net",
+            "X-Iinfo": "12-20914179-20913443 PNNN RT(1513211536160 96) q(0 0 0 -1) r(0 0) U10000",
+            "X-CDN": "Incapsula",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[{\"date\": \"1513211519\", \"tid\": \"32638316\", \"price\": \"297.00\", \"type\": \"0\", \"amount\": \"105.02549232\"}, {\"date\": \"1513211519\", \"tid\": \"32638315\", \"price\": \"296.83\", \"type\": \"0\", \"amount\": \"4.55000000\"}, {\"date\": \"1513211519\", \"tid\": \"32638314\", \"price\": \"296.83\", \"type\": \"1\", \"amount\": \"0.70426106\"}, {\"date\": \"1513211519\", \"tid\": \"32638313\", \"price\": \"296.59\", \"type\": \"0\", \"amount\": \"0.49594997\"}, {\"date\": \"1513211519\", \"tid\": \"32638312\", \"price\": \"296.59\", \"type\": \"0\", \"amount\": \"0.24940189\"}, {\"date\": \"1513211519\", \"tid\": \"32638311\", \"price\": \"296.47\", \"type\": \"0\", \"amount\": \"1.80606842\"}, {\"date\": \"1513211518\", \"tid\": \"32638310\", \"price\": \"296.43\", \"type\": \"1\", \"amount\": \"0.90730422\"}, {\"date\": \"1513211517\", \"tid\": \"32638307\", \"price\": \"296.43\", \"type\": \"1\", \"amount\": \"0.70426106\"}, {\"date\": \"1513211517\", \"tid\": \"32638305\", \"price\": \"296.43\", \"type\": \"0\", \"amount\": \"34.85300000\"}, {\"date\": \"1513211517\", \"tid\": \"32638304\", \"price\": \"296.43\", \"type\": \"0\", \"amount\": \"0.70426106\"}, {\"date\": \"1513211491\", \"tid\": \"32638270\", \"price\": \"296.59\", \"type\": \"0\", \"amount\": \"0.24654808\"}, {\"date\": \"1513211479\", \"tid\": \"32638246\", \"price\": \"294.86\", \"type\": \"1\", \"amount\": \"1.42348500\"}, {\"date\": \"1513211472\", \"tid\": \"32638239\", \"price\": \"296.74\", \"type\": \"1\", \"amount\": \"24.92384601\"}, {\"date\": \"1513211472\", \"tid\": \"32638238\", \"price\": \"296.74\", \"type\": \"0\", \"amount\": \"0.82548483\"}, {\"date\": \"1513211472\", \"tid\": \"32638237\", \"price\": \"296.74\", \"type\": \"0\", \"amount\": \"13.04000000\"}, {\"date\": \"1513211472\", \"tid\": \"32638236\", \"price\": \"296.73\", \"type\": \"0\", \"amount\": \"0.82548483\"}, {\"date\": \"1513211472\", \"tid\": \"32638235\", \"price\": \"296.73\", \"type\": \"0\", \"amount\": \"8.47408433\"}]"
+    }
+}]

@@ -1,0 +1,32 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bx.in.th\/api\/pairing\/",
+        "headers": {
+            "Host": "bx.in.th"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:31:09 GMT",
+            "Content-Type": "text\/javascript",
+            "Content-Length": "333",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d7f3fbbe34d7b2fdb2d8fe8e75a3d083b1513211469; expires=Fri, 14-Dec-18 00:31:09 GMT; path=\/; domain=.bx.in.th; HttpOnly; Secure",
+            "Cache-Control": "max-age=86400",
+            "Content-Encoding": "gzip",
+            "Expires": "Fri, 15 Dec 2017 00:31:09 GMT",
+            "Vary": "Accept-Encoding",
+            "Strict-Transport-Security": "max-age=0",
+            "X-Content-Type-Options": "nosniff",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd0f01bea67c6c-BEG"
+        },
+        "body": "{\"1\":{\"pairing_id\":1,\"primary_currency\":\"THB\",\"secondary_currency\":\"BTC\"},\"21\":{\"pairing_id\":21,\"primary_currency\":\"THB\",\"secondary_currency\":\"ETH\"},\"22\":{\"pairing_id\":22,\"primary_currency\":\"THB\",\"secondary_currency\":\"DAS\"},\"23\":{\"pairing_id\":23,\"primary_currency\":\"THB\",\"secondary_currency\":\"REP\"},\"20\":{\"pairing_id\":20,\"primary_currency\":\"BTC\",\"secondary_currency\":\"ETH\"},\"27\":{\"pairing_id\":27,\"primary_currency\":\"THB\",\"secondary_currency\":\"BCH\"},\"4\":{\"pairing_id\":4,\"primary_currency\":\"BTC\",\"secondary_currency\":\"DOG\"},\"28\":{\"pairing_id\":28,\"primary_currency\":\"THB\",\"secondary_currency\":\"EVX\"},\"6\":{\"pairing_id\":6,\"primary_currency\":\"BTC\",\"secondary_currency\":\"FTC\"},\"24\":{\"pairing_id\":24,\"primary_currency\":\"THB\",\"secondary_currency\":\"GNO\"},\"13\":{\"pairing_id\":13,\"primary_currency\":\"BTC\",\"secondary_currency\":\"HYP\"},\"30\":{\"pairing_id\":30,\"primary_currency\":\"THB\",\"secondary_currency\":\"LTC\"},\"2\":{\"pairing_id\":2,\"primary_currency\":\"BTC\",\"secondary_currency\":\"LTC\"},\"3\":{\"pairing_id\":3,\"primary_currency\":\"BTC\",\"secondary_currency\":\"NMC\"},\"26\":{\"pairing_id\":26,\"primary_currency\":\"THB\",\"secondary_currency\":\"OMG\"},\"14\":{\"pairing_id\":14,\"primary_currency\":\"BTC\",\"secondary_currency\":\"PND\"},\"5\":{\"pairing_id\":5,\"primary_currency\":\"BTC\",\"secondary_currency\":\"PPC\"},\"19\":{\"pairing_id\":19,\"primary_currency\":\"BTC\",\"secondary_currency\":\"QRK\"},\"15\":{\"pairing_id\":15,\"primary_currency\":\"BTC\",\"secondary_currency\":\"XCN\"},\"7\":{\"pairing_id\":7,\"primary_currency\":\"BTC\",\"secondary_currency\":\"XPM\"},\"17\":{\"pairing_id\":17,\"primary_currency\":\"BTC\",\"secondary_currency\":\"XPY\"},\"25\":{\"pairing_id\":25,\"primary_currency\":\"THB\",\"secondary_currency\":\"XRP\"},\"29\":{\"pairing_id\":29,\"primary_currency\":\"THB\",\"secondary_currency\":\"XZC\"},\"8\":{\"pairing_id\":8,\"primary_currency\":\"BTC\",\"secondary_currency\":\"ZEC\"}}"
+    }
+}]

@@ -1,0 +1,29 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bitlish.com\/api\/v1\/trades_depth?pair_id=btceur",
+        "headers": {
+            "Host": "bitlish.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:33:43 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Content-Length": "809",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "Strict-Transport-Security": "max-age=86400; includeSubDomains",
+            "Content-Security-Policy-Report-Only": "default-src https: wss:; script-src https: 'unsafe-eval' 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: data: blob:; font-src https: data:; report-uri \/csp-report"
+        },
+        "body": "{\"ask\":[{\"price\":\"14188.29\",\"volume\":\"0.9605\"},{\"price\":\"14188.3\",\"volume\":\"233.76\"},{\"price\":\"19999\",\"volume\":\"0.2177\"},{\"price\":\"50000\",\"volume\":\"0.2\"}],\"ask_end\":\"1\",\"bid\":[{\"price\":\"13595.81\",\"volume\":\"0.056\"},{\"price\":\"13595.8\",\"volume\":\"6.21\"},{\"price\":\"13578.8\",\"volume\":\"30.1\"},{\"price\":\"13569.8\",\"volume\":\"1.61\"},{\"price\":\"13562.8\",\"volume\":\"1.26\"},{\"price\":\"13559.8\",\"volume\":\"2.53\"},{\"price\":\"13555.8\",\"volume\":\"3.01\"},{\"price\":\"13552.8\",\"volume\":\"6\"},{\"price\":\"13550.8\",\"volume\":\"2.36\"},{\"price\":\"13549.8\",\"volume\":\"5\"},{\"price\":\"13544.9\",\"volume\":\"5.15\"},{\"price\":\"13540.9\",\"volume\":\"14.67\"},{\"price\":\"12500\",\"volume\":\"0.0049\"},{\"price\":\"11501.3\",\"volume\":\"0.6955\"},{\"price\":\"10000\",\"volume\":\"0.0033\"},{\"price\":\"9101\",\"volume\":\"0.433\"}],\"bid_end\":\"1\",\"last\":\"1513211622511914\",\"pair_id\":\"btceur\"}"
+    }
+}]

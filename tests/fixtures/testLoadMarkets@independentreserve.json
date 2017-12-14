@@ -1,0 +1,49 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.independentreserve.com\/Public\/GetValidPrimaryCurrencyCodes",
+        "headers": {
+            "Host": "api.independentreserve.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Cache-Control": "private",
+            "Content-Type": "application\/json",
+            "Date": "Thu, 14 Dec 2017 00:31:31 GMT",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Content-Length": "19",
+            "Connection": "keep-alive"
+        },
+        "body": "[\"Xbt\",\"Eth\",\"Bch\"]"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.independentreserve.com\/Public\/GetValidSecondaryCurrencyCodes",
+        "headers": {
+            "Host": "api.independentreserve.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Cache-Control": "private",
+            "Content-Type": "application\/json",
+            "Date": "Thu, 14 Dec 2017 00:31:33 GMT",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Content-Length": "19",
+            "Connection": "keep-alive"
+        },
+        "body": "[\"Usd\",\"Aud\",\"Nzd\"]"
+    }
+}]

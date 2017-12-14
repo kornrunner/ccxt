@@ -1,6 +1,7 @@
 <?php
 
 use ccxt\Exchange;
+use VCR\VCR;
 use PHPUnit\Framework\TestCase;
 
 class ExchangeTest extends TestCase {
@@ -22,13 +23,13 @@ class ExchangeTest extends TestCase {
             'yunbi',
         ],
         'testLoadMarkets' => [
-            '_1broker', // apiKey required
             'bter',     // array issue @63
             'ccex',     // not accessible
             'flowbtc',  // bad offset in response
             'gdax',     // UserAgent is required
-            'xbtce',    // apiKey required
             'yunbi',    // not accessible
+            'bitso',    // not accessible
+            'kraken',   // timeout
         ],
         'testFetchTrades' => [
             'allcoin',      // not accessible
@@ -39,7 +40,6 @@ class ExchangeTest extends TestCase {
             'btcx',         // bad offset in response
             'coincheck',    // supports BTC/JPY only
             'coingi',       // not accessible
-            'coinspot',     // apiKey required
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
             'jubi',         // not accessible
@@ -48,6 +48,8 @@ class ExchangeTest extends TestCase {
             // empty response:
             'btcchina',
             'livecoin',
+            'paymium',
+            'xbtce',
         ],
         'testFetchOrderBook' => [
             'allcoin',      // not accessible
@@ -59,7 +61,6 @@ class ExchangeTest extends TestCase {
             'btcx',         // bad offset in response
             'coincheck',    // supports BTC/JPY only
             'coingi',       // not accessible
-            'coinspot',     // apiKey required
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
             'jubi',         // not accessible
@@ -70,33 +71,42 @@ class ExchangeTest extends TestCase {
     ];
 
     private static $config = [];
-    private static $markets = [];
 
-    public static function setUpBeforeClass () {
+    public static function tearDownAfterClass() {
+        parent::tearDownAfterClass();
+        VCR::turnOff();
+    }
+
+    public function setUp() {
+        parent::setUp();
+
         $keys_global = __DIR__ . '/keys.dist.json';
         $keys_local = __DIR__ . '/keys.json';
-        $keys_file = file_exists ($keys_local) ? $keys_local : $keys_global;
-        self::$config = json_decode (file_get_contents ($keys_file), true);
+        $keys_file = file_exists($keys_local) ? $keys_local : $keys_global;
+        self::$config = json_decode(file_get_contents ($keys_file), true);
     }
 
     /**
      * @dataProvider getExchangeClasses
      */
-    public function testDescribe($exchange) {
+    public function testDescribe(string $name) {
+        $exchange = self::exchangeFactory($name);
         $this->assertArrayHasKey('name', $exchange->describe());
     }
 
     /**
      * @dataProvider getExchangeClasses
-     * @vcr fetchTicker
      */
-    public function testFetchTicker($exchange) {
+    public function testFetchTicker(string $name) {
+        $exchange = self::exchangeFactory($name);
         if (in_array($exchange->id, self::$skip[__FUNCTION__])) {
             return $this->markTestSkipped("{$exchange->id}: fetch ticker skipped");
         }
 
         if ($exchange->hasFetchTickers) {
+            VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
             $tickers = $exchange->fetch_tickers();
+            VCR::eject();
             $this->assertNotEmpty($tickers);
 
             $ticker = current($tickers);
@@ -110,31 +120,37 @@ class ExchangeTest extends TestCase {
 
     /**
      * @dataProvider getExchangeClasses
-     * @vcr loadMarkets
      */
-    public function testLoadMarkets($exchange) {
+    public function testLoadMarkets(string $name) {
+        $exchange = self::exchangeFactory($name);
         if (in_array($exchange->id, self::$skip[__FUNCTION__])) {
             return $this->markTestSkipped("{$exchange->id}: load markets skipped");
         }
 
+        VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
         $markets = $exchange->load_markets();
+        VCR::eject();
         $this->assertNotEmpty($markets);
-        self::$markets[$exchange->id] = $markets;
     }
 
     /**
      * @dataProvider getExchangeClasses
-     * @depends testLoadMarkets
-     * @vcr fetchTrades
      */
-    public function testFetchTrades($exchange) {
-        if (in_array($exchange->id, self::$skip[__FUNCTION__]) || !array_key_exists($exchange->id, self::$markets)) {
+    public function testFetchTrades(string $name) {
+        $exchange = self::exchangeFactory($name);
+        if (in_array($exchange->id, array_merge(self::$skip[__FUNCTION__], self::$skip['testLoadMarkets']))) {
             return $this->markTestSkipped("{$exchange->id}: fetch trades skipped");
         }
 
         if ($exchange->hasFetchTrades) {
-            $market = current(self::$markets[$exchange->id]);
+            VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
+            $markets = $exchange->load_markets();
+            VCR::eject();
+            $market = current($markets);
+
+            VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
             $trades = $exchange->fetch_trades($market);
+            VCR::eject();
             $this->assertNotEmpty($trades);
         } else {
             $this->assertFalse($exchange->hasFetchTrades);
@@ -143,43 +159,51 @@ class ExchangeTest extends TestCase {
 
     /**
      * @dataProvider getExchangeClasses
-     * @depends testLoadMarkets
-     * @vcr fetchOrderBook
      */
-    public function testFetchOrderBook($exchange) {
-        if (in_array($exchange->id, self::$skip[__FUNCTION__]) || !array_key_exists($exchange->id, self::$markets)) {
+    public function testFetchOrderBook(string $name) {
+        $exchange = self::exchangeFactory($name);
+        if (in_array($exchange->id, array_merge(self::$skip[__FUNCTION__], self::$skip['testLoadMarkets']))) {
             return $this->markTestSkipped("{$exchange->id}: fetch fetch order book skipped");
         }
 
         if ($exchange->hasFetchOrderBook) {
-            $market = current(self::$markets[$exchange->id]);
+            VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
+            $markets = $exchange->load_markets();
+            VCR::eject();
+            $market = current($markets);
+
+            VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
             $order_book = $exchange->fetch_order_book($market);
+            VCR::eject();
             $this->assertNotEmpty($order_book);
         } else {
             $this->assertFalse($exchange->hasFetchOrderBook);
         }
     }
 
+    private static function exchangeFactory(string $class): Exchange {
+        $exchange = new $class;
+        $exchange->timeout = 15000;
+
+        if ($class === 'ccxt\\gdax') {
+            $exchange->urls['api'] = 'https://api-public.sandbox.gdax.com';
+        }
+
+        if (array_key_exists($exchange->id, self::$config)) {
+            $params = self::$config[$exchange->id];
+
+            foreach($params as $key => $value) {
+                $exchange->{$key} = $value;
+            }
+        }
+
+        return $exchange;
+    }
+
     public static function getExchangeClasses(): array {
         $classes = [];
         foreach (Exchange::$exchanges as $name) {
-            $class = "ccxt\\{$name}";
-            $exchange = new $class;
-            $exchange->timeout = 15000;
-
-            if ($name === 'gdax') {
-                $exchange->urls['api'] = 'https://api-public.sandbox.gdax.com';
-            }
-
-            if (array_key_exists($exchange->id, self::$config)) {
-                $params = self::$config[$exchange->id];
-
-                foreach($params as $key => $value) {
-                    $exchange->key = $value;
-                }
-            }
-
-            $classes[] = [$exchange];
+            $classes[] = ["ccxt\\{$name}"];
         }
         return $classes;
     }

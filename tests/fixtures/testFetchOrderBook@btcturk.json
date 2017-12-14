@@ -1,0 +1,40 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.btcturk.com\/api\/orderbook?pairSymbol=BTCTRY",
+        "headers": {
+            "Host": "www.btcturk.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
+            "Content-Length": "872",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Encoding": "gzip",
+            "Expires": "-1",
+            "ETag": "\"6fd7a215-4e43-4e7d-bad3-27465bae0772\"",
+            "Vary": "Accept-Encoding,Accept-Encoding",
+            "RateLimit-Limit": "1",
+            "RateLimit-Remaining": "0",
+            "Strict-Transport-Security": "max-age=31536000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-Xss-Protection": "1;mode=block",
+            "Content-Security-Policy": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "X-Content-Security-Policy": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "X-Webkit-CSP": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "Access-Control-Allow-Origin": "*",
+            "Request-Context": "appId=cid-v1:d672206b-5ee8-42f2-91b5-713de13155fd",
+            "Set-Cookie": "ARRAffinity=cd0933948e56de940e9a1f16d1f6e97411be4f3066a1afda2dec496318fd2eb0;Path=\/;HttpOnly;Domain=www.btcturk.com",
+            "Date": "Thu, 14 Dec 2017 00:33:56 GMT"
+        },
+        "body": "{\"timestamp\":1513211637.0,\"bids\":[[\"67801.05000000\",\"0.13375388\"],[\"67801.04000000\",\"0.20000000\"],[\"67801.00000000\",\"0.41202949\"],[\"67800.00000000\",\"0.45299670\"],[\"67722.00000000\",\"0.30313721\"],[\"67721.00000000\",\"0.12132004\"],[\"67720.30000000\",\"0.10000000\"],[\"67710.00000000\",\"0.08903285\"],[\"67702.00000000\",\"0.12164784\"],[\"67701.00000000\",\"0.02500000\"],[\"67700.10000000\",\"0.02500000\"],[\"67700.00000000\",\"0.08619729\"],[\"67650.00000000\",\"0.00103703\"],[\"67604.01000000\",\"0.00250000\"],[\"67603.01000000\",\"0.00250000\"],[\"67600.01000000\",\"0.16440894\"],[\"67600.00000000\",\"0.33999649\"],[\"67560.00000000\",\"0.00082500\"],[\"67550.00000000\",\"0.00742855\"],[\"67500.11000000\",\"0.00973206\"],[\"67500.10000000\",\"0.02500000\"],[\"67500.00000000\",\"2.21738400\"],[\"67401.00000000\",\"0.02800000\"],[\"67400.10000000\",\"0.02500000\"],[\"67400.00000000\",\"0.01100000\"],[\"67300.00000000\",\"0.39619743\"],[\"67200.10000000\",\"0.02500000\"],[\"67200.00000000\",\"0.01720320\"],[\"67100.99000000\",\"0.00800000\"],[\"67100.00000000\",\"0.33145800\"]],\"asks\":[[\"68298.99000000\",\"0.14952891\"],[\"68299.00000000\",\"0.20829199\"],[\"68398.00000000\",\"0.32996699\"],[\"68400.00000000\",\"0.23025265\"],[\"68440.00000000\",\"0.21876440\"],[\"68491.96000000\",\"0.46513575\"],[\"68500.00000000\",\"1.26222421\"],[\"68520.05000000\",\"1.16685122\"],[\"68600.00000000\",\"0.07091159\"],[\"68748.00000000\",\"0.07849751\"],[\"68749.00000000\",\"4.67646200\"],[\"68808.00000000\",\"0.00117430\"],[\"68898.97000000\",\"0.02835530\"],[\"68901.00000000\",\"0.00036312\"],[\"68930.00000000\",\"0.50000001\"],[\"68985.00000000\",\"0.02731878\"],[\"68987.28000000\",\"0.23888346\"],[\"68990.00000000\",\"0.39000000\"],[\"68999.00000000\",\"0.20458203\"],[\"68999.98000000\",\"0.01000000\"],[\"68999.99000000\",\"0.14050000\"],[\"69000.00000000\",\"2.99089528\"],[\"69030.00000000\",\"0.44535245\"],[\"69090.00000000\",\"0.02136100\"],[\"69098.97000000\",\"0.03000000\"],[\"69100.00000000\",\"0.10895297\"],[\"69140.00000000\",\"0.01160000\"],[\"69149.01000000\",\"0.02500000\"],[\"69198.00000000\",\"0.20938445\"],[\"69199.01000000\",\"0.00273526\"]]}"
+    }
+}]

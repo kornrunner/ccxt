@@ -1,0 +1,40 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.btcturk.com\/api\/ticker",
+        "headers": {
+            "Host": "www.btcturk.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
+            "Content-Length": "354",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Encoding": "gzip",
+            "Expires": "-1",
+            "ETag": "\"d9f0915c-30b4-402b-8650-7e975e5587a4\"",
+            "Vary": "Accept-Encoding,Accept-Encoding",
+            "RateLimit-Limit": "10",
+            "RateLimit-Remaining": "9",
+            "Strict-Transport-Security": "max-age=31536000",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-Xss-Protection": "1;mode=block",
+            "Content-Security-Policy": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "X-Content-Security-Policy": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "X-Webkit-CSP": "script-src 'self' www.googleadservices.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';style-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' www.googleadservices.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com az732725.vo.msecnd.net data:;object-src 'self' ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "Access-Control-Allow-Origin": "*",
+            "Request-Context": "appId=cid-v1:d672206b-5ee8-42f2-91b5-713de13155fd",
+            "Set-Cookie": "ARRAffinity=8295ea724bc6309f3f5faf5cdf2fcdeb88f62bc200055c8d5ec520389fcf66d7;Path=\/;HttpOnly;Domain=www.btcturk.com",
+            "Date": "Thu, 14 Dec 2017 00:30:18 GMT"
+        },
+        "body": "[{\"pair\":\"BTCTRY\",\"high\":69500.0,\"last\":67801.0,\"timestamp\":1513211419.0,\"bid\":67801.07,\"volume\":708.86,\"low\":64101.0,\"ask\":68298.99,\"open\":68788.99,\"average\":68435.11},{\"pair\":\"ETHBTC\",\"high\":0.0,\"last\":0.0,\"timestamp\":1513211419.0,\"bid\":0.0,\"volume\":0.0,\"low\":0.0,\"ask\":0.0,\"open\":0.0,\"average\":0.0},{\"pair\":\"ETHTRY\",\"high\":2989.0,\"last\":2875.0,\"timestamp\":1513211419.0,\"bid\":2851.8,\"volume\":22161.87,\"low\":2421.0,\"ask\":2875.0,\"open\":2495.0,\"average\":2795.24}]"
+    }
+}]

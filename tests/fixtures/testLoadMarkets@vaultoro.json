@@ -1,0 +1,28 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/markets",
+        "headers": {
+            "Host": "api.vaultoro.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:31:56 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"MarketCurrency\": \"GLD\",\n    \"BaseCurrency\": \"BTC\",\n    \"MarketCurrencyLong\": \"Gold\",\n    \"BaseCurrencyLong\": \"Bitcoin\",\n    \"MinTradeSize\": 1e-8,\n    \"MarketName\": \"BTC-GLD\",\n    \"IsActive\": true,\n    \"MinUnitQty\": 0.0002,\n    \"MinPrice\": 0.000002,\n    \"LastPrice\": \"0.00269400\",\n    \"24hLow\": \"0.00257000\",\n    \"24hHigh\": \"0.00271000\",\n    \"24hVolume\": \"12241.659\"\n  }\n}"
+    }
+}]

@@ -1,0 +1,32 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/coinmate.io\/api\/transactions?currencyPair=BTC_EUR&minutesIntoHistory=10",
+        "headers": {
+            "Host": "coinmate.io"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:32:32 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d2109bd18a79229717deeebc8bb9212f21513211552; expires=Fri, 14-Dec-18 00:32:32 GMT; path=\/; domain=.coinmate.io; HttpOnly",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd110c2efb7c6c-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"error\":false,\"errorMessage\":null,\"data\":[{\"timestamp\":1513211495509,\"transactionId\":\"1369462\",\"price\":13661.44,\"amount\":0.00195909,\"currencyPair\":\"BTC_EUR\"},{\"timestamp\":1513211176448,\"transactionId\":\"1369447\",\"price\":13800.99,\"amount\":0.054,\"currencyPair\":\"BTC_EUR\"},{\"timestamp\":1513211044662,\"transactionId\":\"1369430\",\"price\":13800.99,\"amount\":0.00449228,\"currencyPair\":\"BTC_EUR\"},{\"timestamp\":1513211044650,\"transactionId\":\"1369428\",\"price\":13705.62,\"amount\":0.038633,\"currencyPair\":\"BTC_EUR\"},{\"timestamp\":1513211044634,\"transactionId\":\"1369426\",\"price\":13680.32,\"amount\":0.03456,\"currencyPair\":\"BTC_EUR\"}]}"
+    }
+}]

@@ -1,0 +1,36 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.bitfinex.com\/v1\/book\/BTCUSD",
+        "headers": {
+            "Host": "api.bitfinex.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:33:38 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dde1cf0068c5601aab7d6b7e92ccc43a81513211617; expires=Fri, 14-Dec-18 00:33:37 GMT; path=\/; domain=.bitfinex.com; HttpOnly",
+            "Strict-Transport-Security": "max-age=31536000",
+            "X-Frame-Options": "SAMEORIGIN, SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "ETag": "\"c78dce4737b4287325475eeba9507a54\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "38117e9f-c0a4-4e8d-af5b-c716d21a5f44",
+            "X-Runtime": "0.015961",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd12a38dec7c5a-BEG"
+        },
+        "body": "{\"bids\":[{\"price\":\"16128\",\"amount\":\"2.5\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16126\",\"amount\":\"0.10676976\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16124\",\"amount\":\"0.13848897\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16121\",\"amount\":\"1\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16114\",\"amount\":\"0.03148753\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16111\",\"amount\":\"1.1903\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16110\",\"amount\":\"4.79202941\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16106\",\"amount\":\"0.00223537\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16104\",\"amount\":\"0.03864\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16100\",\"amount\":\"0.22942194\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16099\",\"amount\":\"0.29824536\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16090\",\"amount\":\"0.0045425\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16089\",\"amount\":\"0.01153171\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16088\",\"amount\":\"1.8\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16086\",\"amount\":\"0.3\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16083\",\"amount\":\"0.03589266\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16082\",\"amount\":\"0.02133262\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16078\",\"amount\":\"0.6919\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16076\",\"amount\":\"2.04\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16073\",\"amount\":\"2.95535183\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16070\",\"amount\":\"1.6981\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16068\",\"amount\":\"0.172\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16067\",\"amount\":\"14.28195199\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16066\",\"amount\":\"5\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16065\",\"amount\":\"1.6374\",\"timestamp\":\"1513211617.0\"}],\"asks\":[{\"price\":\"16130\",\"amount\":\"10.06557935\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16131\",\"amount\":\"2.37052057\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16132\",\"amount\":\"0.42665\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16139\",\"amount\":\"2.4\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16143\",\"amount\":\"0.3\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16144\",\"amount\":\"1.2\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16146\",\"amount\":\"0.44547574\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16147\",\"amount\":\"0.02754001\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16149\",\"amount\":\"0.61922064\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16150\",\"amount\":\"2\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16155\",\"amount\":\"0.11\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16157\",\"amount\":\"3.10311315\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16158\",\"amount\":\"28.49282101\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16159\",\"amount\":\"1.62\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16161\",\"amount\":\"0.00811219\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16162\",\"amount\":\"0.01460327\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16166\",\"amount\":\"0.11411\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16171\",\"amount\":\"2.00299109\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16180\",\"amount\":\"0.0181069\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16181\",\"amount\":\"0.1\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16182\",\"amount\":\"1.54\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16183\",\"amount\":\"0.172\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16187\",\"amount\":\"0.25\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16190\",\"amount\":\"0.01\",\"timestamp\":\"1513211617.0\"},{\"price\":\"16195\",\"amount\":\"1.44\",\"timestamp\":\"1513211617.0\"}]}"
+    }
+}]

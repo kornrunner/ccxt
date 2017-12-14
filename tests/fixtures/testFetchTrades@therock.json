@@ -1,0 +1,32 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.therocktrading.com\/v1\/funds\/BTCEUR\/trades",
+        "headers": {
+            "Host": "api.therocktrading.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:33:23 GMT",
+            "Content-Type": "application\/json; charset=utf-8; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"751563d38fb2cbcf8509f1454018646f\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "803142a1-8548-4de4-84ec-98bdfbaa4cfb",
+            "X-Runtime": "0.077452",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"trades\":[{\"id\":2683975,\"fund_id\":\"BTCEUR\",\"amount\":0.072,\"price\":13506.95,\"side\":\"sell\",\"dark\":false,\"date\":\"2017-12-14T00:32:12.788Z\"},{\"id\":2683974,\"fund_id\":\"BTCEUR\",\"amount\":0.017,\"price\":13527.21,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:32:06.160Z\"},{\"id\":2683973,\"fund_id\":\"BTCEUR\",\"amount\":0.008,\"price\":13509.2,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:32:06.039Z\"},{\"id\":2683972,\"fund_id\":\"BTCEUR\",\"amount\":0.008,\"price\":13509.2,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:32:04.158Z\"},{\"id\":2683971,\"fund_id\":\"BTCEUR\",\"amount\":0.016,\"price\":13500.2,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:32:04.111Z\"},{\"id\":2683956,\"fund_id\":\"BTCEUR\",\"amount\":0.045,\"price\":13506.95,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:29:32.064Z\"},{\"id\":2683955,\"fund_id\":\"BTCEUR\",\"amount\":0.042,\"price\":13488.96,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:29:32.026Z\"},{\"id\":2683954,\"fund_id\":\"BTCEUR\",\"amount\":0.042,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:29:31.961Z\"},{\"id\":2683951,\"fund_id\":\"BTCEUR\",\"amount\":0.007,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:25:33.986Z\"},{\"id\":2683949,\"fund_id\":\"BTCEUR\",\"amount\":0.001,\"price\":13506.95,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:24:56.564Z\"},{\"id\":2683948,\"fund_id\":\"BTCEUR\",\"amount\":0.05,\"price\":13488.96,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:24:56.514Z\"},{\"id\":2683947,\"fund_id\":\"BTCEUR\",\"amount\":0.014,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:24:56.473Z\"},{\"id\":2683945,\"fund_id\":\"BTCEUR\",\"amount\":0.024,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:24:38.355Z\"},{\"id\":2683944,\"fund_id\":\"BTCEUR\",\"amount\":0.012,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:23:48.295Z\"},{\"id\":2683939,\"fund_id\":\"BTCEUR\",\"amount\":0.014,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:22:04.340Z\"},{\"id\":2683938,\"fund_id\":\"BTCEUR\",\"amount\":0.015,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:19:57.888Z\"},{\"id\":2683937,\"fund_id\":\"BTCEUR\",\"amount\":0.045,\"price\":13461.54,\"side\":\"sell\",\"dark\":false,\"date\":\"2017-12-14T00:19:04.928Z\"},{\"id\":2683931,\"fund_id\":\"BTCEUR\",\"amount\":0.006,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:18:20.438Z\"},{\"id\":2683930,\"fund_id\":\"BTCEUR\",\"amount\":0.006,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:18:11.785Z\"},{\"id\":2683922,\"fund_id\":\"BTCEUR\",\"amount\":0.024,\"price\":13479.97,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:16:07.691Z\"},{\"id\":2683914,\"fund_id\":\"BTCEUR\",\"amount\":0.029,\"price\":13489.41,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:15:00.193Z\"},{\"id\":2683913,\"fund_id\":\"BTCEUR\",\"amount\":0.002,\"price\":13480.42,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:15:00.156Z\"},{\"id\":2683911,\"fund_id\":\"BTCEUR\",\"amount\":0.018,\"price\":13452.09,\"side\":\"sell\",\"dark\":false,\"date\":\"2017-12-14T00:14:53.625Z\"},{\"id\":2683910,\"fund_id\":\"BTCEUR\",\"amount\":0.05,\"price\":13461.06,\"side\":\"sell\",\"dark\":false,\"date\":\"2017-12-14T00:14:53.594Z\"},{\"id\":2683901,\"fund_id\":\"BTCEUR\",\"amount\":0.012,\"price\":13480.42,\"side\":\"buy\",\"dark\":false,\"date\":\"2017-12-14T00:14:36.266Z\"}],\"meta\":{\"total_count\":null,\"first\":{\"page\":1,\"href\":\"https:\/\/api.therocktrading.com\/v1\/funds\/BTCEUR\/trades?page=1\"},\"previous\":null,\"current\":{\"page\":1,\"href\":\"https:\/\/api.therocktrading.com\/v1\/funds\/BTCEUR\/trades?page=1\"},\"next\":{\"page\":2,\"href\":\"https:\/\/api.therocktrading.com\/v1\/funds\/BTCEUR\/trades?page=2\"},\"last\":null}}"
+    }
+}]

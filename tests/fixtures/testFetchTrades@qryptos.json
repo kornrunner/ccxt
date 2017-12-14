@@ -1,0 +1,43 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.qryptos.com\/executions?product_id=1",
+        "headers": {
+            "Host": "api.qryptos.com",
+            "X-Quoine-API-Version": "2",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:33:06 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Length": "271",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dcc5ca3cf473660f768474d40d0839afa1513211584; expires=Fri, 14-Dec-18 00:33:04 GMT; path=\/; domain=.qryptos.com; HttpOnly, _vax_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJWM4ODQ5MTIwNTY3M2EwZDg1YjYwYTFmNzI5ZjZmYWRjBjsAVEkiCWxhbmcGOwBGOgdlbg%3D%3D--cf5f890e7a0a5c4d391bde71cc306469c290222f; path=\/; secure; HttpOnly",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "Content-Encoding": "gzip",
+            "Etag": "\"e804e9b04a9095b75398ee28bf95c1ab\"",
+            "Status": "200 OK",
+            "Strict-Transport-Security": "max-age=631152000; includeSubdomains",
+            "Vary": "Accept-Encoding",
+            "Via": "1.1 spaces-router (95e7969569d5)",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Powered-By": "Phusion Passenger 5.1.2",
+            "X-Rack-Cache": "miss",
+            "X-Request-Id": "8e242da1-cb81-a4c1-0cb7-976ca16d49f5",
+            "X-Runtime": "0.015845",
+            "X-Ua-Compatible": "IE=Edge,chrome=1",
+            "X-Xss-Protection": "1; mode=block",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd11d4ac037c5a-BEG"
+        },
+        "body": "{\"models\":[{\"id\":206230,\"quantity\":\"0.2\",\"price\":\"0.02232\",\"taker_side\":\"buy\",\"created_at\":1513154208},{\"id\":206229,\"quantity\":\"0.2\",\"price\":\"0.02231\",\"taker_side\":\"buy\",\"created_at\":1513154201},{\"id\":206228,\"quantity\":\"0.2\",\"price\":\"0.02231\",\"taker_side\":\"buy\",\"created_at\":1513154192},{\"id\":206223,\"quantity\":\"0.2\",\"price\":\"0.02216\",\"taker_side\":\"buy\",\"created_at\":1513154072},{\"id\":206222,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513154040},{\"id\":206219,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513154031},{\"id\":206215,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513154023},{\"id\":206214,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153977},{\"id\":206213,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153963},{\"id\":206212,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153950},{\"id\":206211,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153936},{\"id\":206210,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153917},{\"id\":206209,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153902},{\"id\":206208,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153895},{\"id\":206206,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153836},{\"id\":206205,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153810},{\"id\":206204,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153802},{\"id\":206203,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153789},{\"id\":206202,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153775},{\"id\":206201,\"quantity\":\"0.2\",\"price\":\"0.02215\",\"taker_side\":\"buy\",\"created_at\":1513153767}],\"current_page\":1}"
+    }
+}]

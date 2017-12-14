@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bleutrade.com\/api\/v2\/public\/getmarkethistory?market=ADC_BTC",
+        "headers": {
+            "Host": "bleutrade.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:32:19 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=db4d6c9cb3b8f08a2a02573f31951a5de1513211538; expires=Fri, 14-Dec-18 00:32:18 GMT; path=\/; domain=.bleutrade.com; HttpOnly",
+            "Vary": "Accept-Encoding",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": "true",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd10b25cb57c42-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"success\":\"true\",\"message\":\"\",\"result\":[{\"TimeStamp\":\"2017-12-13 20:30:30\",\"Quantity\":\"10000.00000000\",\"Price\":\"0.00000023\",\"Total\":\"0.00230000\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 18:11:23\",\"Quantity\":\"240.50824660\",\"Price\":\"0.00000023\",\"Total\":\"0.00005532\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 18:11:21\",\"Quantity\":\"240.50824660\",\"Price\":\"0.00000023\",\"Total\":\"0.00005532\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 18:11:21\",\"Quantity\":\"240.50824660\",\"Price\":\"0.00000023\",\"Total\":\"0.00005532\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 18:11:19\",\"Quantity\":\"240.50824660\",\"Price\":\"0.00000023\",\"Total\":\"0.00005532\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 18:11:17\",\"Quantity\":\"240.50824660\",\"Price\":\"0.00000023\",\"Total\":\"0.00005532\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 18:11:17\",\"Quantity\":\"240.50824660\",\"Price\":\"0.00000023\",\"Total\":\"0.00005532\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 18:11:15\",\"Quantity\":\"240.50824660\",\"Price\":\"0.00000023\",\"Total\":\"0.00005532\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 18:11:15\",\"Quantity\":\"240.50824660\",\"Price\":\"0.00000023\",\"Total\":\"0.00005532\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 16:11:38\",\"Quantity\":\"1600.00000000\",\"Price\":\"0.00000020\",\"Total\":\"0.00032000\",\"OrderType\":\"SELL\"},{\"TimeStamp\":\"2017-12-13 14:57:52\",\"Quantity\":\"3599.00000000\",\"Price\":\"0.00000020\",\"Total\":\"0.00071980\",\"OrderType\":\"SELL\"},{\"TimeStamp\":\"2017-12-13 05:16:29\",\"Quantity\":\"50.00000000\",\"Price\":\"0.00000023\",\"Total\":\"0.00001150\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 04:40:16\",\"Quantity\":\"6416.34301578\",\"Price\":\"0.00000019\",\"Total\":\"0.00121911\",\"OrderType\":\"SELL\"},{\"TimeStamp\":\"2017-12-13 04:40:16\",\"Quantity\":\"1000.00000000\",\"Price\":\"0.00000019\",\"Total\":\"0.00019000\",\"OrderType\":\"SELL\"},{\"TimeStamp\":\"2017-12-13 04:40:16\",\"Quantity\":\"9424.94547010\",\"Price\":\"0.00000019\",\"Total\":\"0.00179074\",\"OrderType\":\"SELL\"},{\"TimeStamp\":\"2017-12-13 04:40:16\",\"Quantity\":\"22500.00000000\",\"Price\":\"0.00000020\",\"Total\":\"0.00450000\",\"OrderType\":\"SELL\"},{\"TimeStamp\":\"2017-12-13 04:40:16\",\"Quantity\":\"87.25804535\",\"Price\":\"0.00000021\",\"Total\":\"0.00001832\",\"OrderType\":\"SELL\"},{\"TimeStamp\":\"2017-12-13 04:40:16\",\"Quantity\":\"1354.47096543\",\"Price\":\"0.00000021\",\"Total\":\"0.00028444\",\"OrderType\":\"SELL\"},{\"TimeStamp\":\"2017-12-13 03:35:51\",\"Quantity\":\"93.45950339\",\"Price\":\"0.00000023\",\"Total\":\"0.00002150\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 03:35:51\",\"Quantity\":\"1061.86956523\",\"Price\":\"0.00000023\",\"Total\":\"0.00024423\",\"OrderType\":\"BUY\"},{\"TimeStamp\":\"2017-12-13 02:10:07\",\"Quantity\":\"100.00000000\",\"Price\":\"0.00000023\",\"Total\":\"0.00002300\",\"OrderType\":\"BUY\"}]}"
+    }
+}]

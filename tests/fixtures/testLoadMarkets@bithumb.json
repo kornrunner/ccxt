@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.bithumb.com\/public\/ticker\/all",
+        "headers": {
+            "Host": "api.bithumb.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:31:05 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d89119ecd09d024358ee31a433de4d9251513211465; expires=Fri, 14-Dec-18 00:31:05 GMT; path=\/; domain=.bithumb.com; HttpOnly, ci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%22f43c5baea4108d88dfcff053ee4f15d7%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A14%3A%22178.148.12.166%22%3Bs%3A10%3A%22user_agent%22%3Bb%3A0%3Bs%3A13%3A%22last_activity%22%3Bi%3A1513211464%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7Dabc8c6fdd30642a13d46fa8d76f4dde283c3a1a5; expires=Thu, 14-Dec-2017 02:31:04 GMT; Max-Age=7200; path=\/",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "*",
+            "Access-Control-Allow-Headers": "*",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd0ee968d87c90-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"status\":\"0000\",\"data\":{\"BTC\":{\"opening_price\":\"19000000\",\"closing_price\":\"18275000\",\"min_price\":\"17630000\",\"max_price\":\"19050000\",\"average_price\":\"18493472.1719\",\"units_traded\":\"38609.7989431\",\"volume_1day\":\"38609.7989431\",\"volume_7day\":\"604774.22463219\",\"buy_price\":\"18243000\",\"sell_price\":\"18275000\"},\"ETH\":{\"opening_price\":\"717100\",\"closing_price\":\"782000\",\"min_price\":\"640000\",\"max_price\":\"819000\",\"average_price\":\"737449.8564\",\"units_traded\":\"533975.42534776487231857\",\"volume_1day\":\"533975.42534776487231857\",\"volume_7day\":\"2407210.257708639271067308\",\"buy_price\":\"782000\",\"sell_price\":\"782200\"},\"DASH\":{\"opening_price\":\"997100\",\"closing_price\":\"981700\",\"min_price\":\"880000\",\"max_price\":\"1035000\",\"average_price\":\"973176.8857\",\"units_traded\":\"55049.11971277\",\"volume_1day\":\"55049.11971277\",\"volume_7day\":\"331171.992404420000000000\",\"buy_price\":\"981600\",\"sell_price\":\"982200\"},\"LTC\":{\"opening_price\":\"346200\",\"closing_price\":\"332700\",\"min_price\":\"280000\",\"max_price\":\"377000\",\"average_price\":\"337670.1417\",\"units_traded\":\"1255812.35678341\",\"volume_1day\":\"1255812.35678341\",\"volume_7day\":\"9472109.650458780000000000\",\"buy_price\":\"332500\",\"sell_price\":\"332700\"},\"ETC\":{\"opening_price\":\"33140\",\"closing_price\":\"33000\",\"min_price\":\"29600\",\"max_price\":\"35450\",\"average_price\":\"32772.6745\",\"units_traded\":\"5887136.7670874839791078\",\"volume_1day\":\"5887136.7670874839791078\",\"volume_7day\":\"39298770.135592028683026100\",\"buy_price\":\"32960\",\"sell_price\":\"32970\"},\"XRP\":{\"opening_price\":\"400\",\"closing_price\":\"518\",\"min_price\":\"358\",\"max_price\":\"599\",\"average_price\":\"484.1754\",\"units_traded\":\"1844685019.357247\",\"volume_1day\":\"1844685019.357247\",\"volume_7day\":\"4503940420.844310000000000000\",\"buy_price\":\"518\",\"sell_price\":\"519\"},\"BCH\":{\"opening_price\":\"1795500\",\"closing_price\":\"1771500\",\"min_price\":\"1630000\",\"max_price\":\"1850000\",\"average_price\":\"1746260.5048\",\"units_traded\":\"120423.77026493\",\"volume_1day\":\"120423.77026493\",\"volume_7day\":\"975947.108691020000000000\",\"buy_price\":\"1769000\",\"sell_price\":\"1771500\"},\"XMR\":{\"opening_price\":\"342000\",\"closing_price\":\"343300\",\"min_price\":\"295000\",\"max_price\":\"357000\",\"average_price\":\"337117.2893\",\"units_traded\":\"154966.74590536\",\"volume_1day\":\"154966.74590536\",\"volume_7day\":\"1205172.895395070000000000\",\"buy_price\":\"342800\",\"sell_price\":\"343200\"},\"ZEC\":{\"opening_price\":\"414000\",\"closing_price\":\"478900\",\"min_price\":\"384000\",\"max_price\":\"483000\",\"average_price\":\"433902.6420\",\"units_traded\":\"100988.82456591\",\"volume_1day\":\"100988.82456591\",\"volume_7day\":\"396682.805609730000000000\",\"buy_price\":\"479000\",\"sell_price\":\"478800\"},\"QTUM\":{\"opening_price\":\"16880\",\"closing_price\":\"19100\",\"min_price\":\"15550\",\"max_price\":\"23500\",\"average_price\":\"18875.1271\",\"units_traded\":\"15326017.66733749\",\"volume_1day\":\"15326017.66733749\",\"volume_7day\":\"42438270.011978810000000000\",\"buy_price\":\"19110\",\"sell_price\":\"19120\"},\"BTG\":{\"opening_price\":\"311300\",\"closing_price\":\"298000\",\"min_price\":\"270000\",\"max_price\":\"317000\",\"average_price\":\"297137.8391\",\"units_traded\":\"469928.47502553\",\"volume_1day\":\"469928.47502553\",\"volume_7day\":\"2617437.896822030000000000\",\"buy_price\":\"298100\",\"sell_price\":\"298200\"},\"date\":\"1513211464883\"}}"
+    }
+}]

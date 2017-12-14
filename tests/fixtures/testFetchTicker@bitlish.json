@@ -1,0 +1,57 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bitlish.com\/api\/v1\/pairs",
+        "headers": {
+            "Host": "bitlish.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:30:16 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Content-Length": "1739",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "Strict-Transport-Security": "max-age=86400; includeSubDomains",
+            "Content-Security-Policy-Report-Only": "default-src https: wss:; script-src https: 'unsafe-eval' 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: data: blob:; font-src https: data:; report-uri \/csp-report"
+        },
+        "body": "{\"btceur\":{\"currency_id\":\"eur\",\"id\":\"btceur\",\"item_id\":\"btc\",\"name\":\"BTC\\\/EUR\"},\"btcrub\":{\"currency_id\":\"rub\",\"id\":\"btcrub\",\"item_id\":\"btc\",\"name\":\"BTC\\\/RUB\"},\"btcusd\":{\"currency_id\":\"usd\",\"id\":\"btcusd\",\"item_id\":\"btc\",\"name\":\"BTC\\\/USD\"},\"btgbtc\":{\"currency_id\":\"btc\",\"id\":\"btgbtc\",\"item_id\":\"btg\",\"name\":\"BTG\\\/BTC\"},\"dshbtc\":{\"currency_id\":\"btc\",\"id\":\"dshbtc\",\"item_id\":\"dsh\",\"name\":\"DSH\\\/BTC\"},\"dsheur\":{\"currency_id\":\"eur\",\"id\":\"dsheur\",\"item_id\":\"dsh\",\"name\":\"DSH\\\/EUR\"},\"dshrub\":{\"currency_id\":\"rub\",\"id\":\"dshrub\",\"item_id\":\"dsh\",\"name\":\"DSH\\\/RUB\"},\"dshusd\":{\"currency_id\":\"usd\",\"id\":\"dshusd\",\"item_id\":\"dsh\",\"name\":\"DSH\\\/USD\"},\"ethbtc\":{\"currency_id\":\"btc\",\"id\":\"ethbtc\",\"item_id\":\"eth\",\"name\":\"ETH\\\/BTC\"},\"etheur\":{\"currency_id\":\"eur\",\"id\":\"etheur\",\"item_id\":\"eth\",\"name\":\"ETH\\\/EUR\"},\"ethrub\":{\"currency_id\":\"rub\",\"id\":\"ethrub\",\"item_id\":\"eth\",\"name\":\"ETH\\\/RUB\"},\"ethusd\":{\"currency_id\":\"usd\",\"id\":\"ethusd\",\"item_id\":\"eth\",\"name\":\"ETH\\\/USD\"},\"ltcbtc\":{\"currency_id\":\"btc\",\"id\":\"ltcbtc\",\"item_id\":\"ltc\",\"name\":\"LTC\\\/BTC\"},\"ltceur\":{\"currency_id\":\"eur\",\"id\":\"ltceur\",\"item_id\":\"ltc\",\"name\":\"LTC\\\/EUR\"},\"ltcrub\":{\"currency_id\":\"rub\",\"id\":\"ltcrub\",\"item_id\":\"ltc\",\"name\":\"LTC\\\/RUB\"},\"ltcusd\":{\"currency_id\":\"usd\",\"id\":\"ltcusd\",\"item_id\":\"ltc\",\"name\":\"LTC\\\/USD\"},\"xdgbtc\":{\"currency_id\":\"btc\",\"id\":\"xdgbtc\",\"item_id\":\"xdg\",\"name\":\"XDG\\\/BTC\"},\"xmrbtc\":{\"currency_id\":\"btc\",\"id\":\"xmrbtc\",\"item_id\":\"xmr\",\"name\":\"XMR\\\/BTC\"},\"zecbtc\":{\"currency_id\":\"btc\",\"id\":\"zecbtc\",\"item_id\":\"zec\",\"name\":\"ZEC\\\/BTC\"},\"zeceur\":{\"currency_id\":\"eur\",\"id\":\"zeceur\",\"item_id\":\"zec\",\"name\":\"ZEC\\\/EUR\"},\"zecrub\":{\"currency_id\":\"rub\",\"id\":\"zecrub\",\"item_id\":\"zec\",\"name\":\"ZEC\\\/RUB\"},\"zecusd\":{\"currency_id\":\"usd\",\"id\":\"zecusd\",\"item_id\":\"zec\",\"name\":\"ZEC\\\/USD\"}}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bitlish.com\/api\/v1\/tickers",
+        "headers": {
+            "Host": "bitlish.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:30:16 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Content-Length": "3248",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "Strict-Transport-Security": "max-age=86400; includeSubDomains",
+            "Content-Security-Policy-Report-Only": "default-src https: wss:; script-src https: 'unsafe-eval' 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: data: blob:; font-src https: data:; report-uri \/csp-report"
+        },
+        "body": "{\"btceur\":{\"first\":\"14698.3000000000000000\",\"last\":\"14161.3\",\"max\":\"14698.3000000000000000\",\"min\":\"13874.2100000000000000\",\"prc\":\"-0.0365\",\"sum\":\"22.05062308\"},\"btcrub\":{\"first\":\"1025992.0000000000000000\",\"last\":\"1034869\",\"max\":\"1062248.0000000000000000\",\"min\":\"910809\",\"prc\":\"0.0087\",\"sum\":\"6.6154969\"},\"btcusd\":{\"first\":\"17272.5000000000000000\",\"last\":\"16702.3\",\"max\":\"17272.5000000000000000\",\"min\":\"16182.6\",\"prc\":\"-0.033\",\"sum\":\"11.06831103\"},\"btgbtc\":{\"first\":\"0.0011100000000000\",\"last\":\"0.0011100000000000\",\"max\":\"0.0011100000000000\",\"min\":\"0.0011100000000000\",\"prc\":\"0\",\"sum\":\"0.9407\"},\"dshbtc\":{\"first\":\"0.0521800000000000\",\"last\":\"0.05285\",\"max\":\"0.0546100000000000\",\"min\":\"0.0505100000000000\",\"prc\":\"0.0128\",\"sum\":\"0.82140053\"},\"dsheur\":{\"first\":\"820.4000000000000000\",\"last\":\"820.9\",\"max\":\"820.9\",\"min\":\"820.4000000000000000\",\"prc\":\"0.0006\",\"sum\":\"5.87984453\"},\"dshrub\":{\"first\":\"57433.0000000000000000\",\"last\":\"57273\",\"max\":\"57433.0000000000000000\",\"min\":\"57273\",\"prc\":\"-0.0028\",\"sum\":\"0.55791857\"},\"dshusd\":{\"first\":\"864.7000000000000000\",\"last\":\"924.8000000000000000\",\"max\":\"924.8000000000000000\",\"min\":\"864.7000000000000000\",\"prc\":\"0.0695\",\"sum\":\"2.3641\"},\"ethbtc\":{\"first\":\"0.0375900000000000\",\"last\":\"0.04185\",\"max\":\"0.0434900000000000\",\"min\":\"0.0364600000000000\",\"prc\":\"0.1133\",\"sum\":\"17.04708392\"},\"etheur\":{\"first\":\"477.9600000000000000\",\"last\":\"602.4200000000000000\",\"max\":\"602.4200000000000000\",\"min\":\"477.9600000000000000\",\"prc\":\"0.2604\",\"sum\":\"6.35818482\"},\"ethrub\":{\"first\":\"40043.0000000000000000\",\"last\":\"43271\",\"max\":\"45135.0000000000000000\",\"min\":\"33600.0000000000000000\",\"prc\":\"0.0806\",\"sum\":\"7.89037311\"},\"ethusd\":{\"first\":\"646.2900000000000000\",\"last\":\"698.39\",\"max\":\"737.6500000000000000\",\"min\":\"621.1000000000000000\",\"prc\":\"0.0806\",\"sum\":\"40.62515151\"},\"ltcbtc\":{\"first\":\"0.0180300000000000\",\"last\":\"0.01852\",\"max\":\"0.0199100000000000\",\"min\":\"0.0175200000000000\",\"prc\":\"0.0272\",\"sum\":\"40.81273273\"},\"ltceur\":{\"first\":\"275.7500000000000000\",\"last\":\"277.45\",\"max\":\"277.45\",\"min\":\"247.2600000000000000\",\"prc\":\"0.0062\",\"sum\":\"3.17948279\"},\"ltcrub\":{\"first\":\"15222.0000000000000000\",\"last\":\"19196\",\"max\":\"21326.0000000000000000\",\"min\":\"15222.0000000000000000\",\"prc\":\"0.2611\",\"sum\":\"20.09333517\"},\"ltcusd\":{\"first\":\"306.1100000000000000\",\"last\":\"305.49\",\"max\":\"337.3600000000000000\",\"min\":\"280.44\",\"prc\":\"-0.002\",\"sum\":\"108.6714403\"},\"xdgbtc\":{\"first\":\"0.0000002000000000\",\"last\":\"0.0000002000000000\",\"max\":\"0.0000002000000000\",\"min\":\"0.0000002000000000\",\"prc\":\"0\",\"sum\":\"4985\"},\"xmrbtc\":{\"first\":\"0.0195400000000000\",\"last\":\"0.0195400000000000\",\"max\":\"0.0195400000000000\",\"min\":\"0.0195400000000000\",\"prc\":\"0\",\"sum\":\"0.00510235\"},\"zecbtc\":{\"first\":\"0.0215400000000000\",\"last\":\"0.026\",\"max\":\"0.026\",\"min\":\"0.0215400000000000\",\"prc\":\"0.2071\",\"sum\":\"0.16638461\"},\"zeceur\":{\"first\":\"369.3000000000000000\",\"last\":\"369.3000000000000000\",\"max\":\"369.3000000000000000\",\"min\":\"369.3000000000000000\",\"prc\":\"0\",\"sum\":\"0.1353\"},\"zecrub\":{\"first\":\"27006.0000000000000000\",\"last\":\"24989\",\"max\":\"27006.0000000000000000\",\"min\":\"24989\",\"prc\":\"-0.0747\",\"sum\":\"0.77748847\"},\"zecusd\":{\"first\":\"349.3000000000000000\",\"last\":\"396.2000000000000000\",\"max\":\"415.3000000000000000\",\"min\":\"349.3000000000000000\",\"prc\":\"0.1343\",\"sum\":\"10.42445725\"}}"
+    }
+}]

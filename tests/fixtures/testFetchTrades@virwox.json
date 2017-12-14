@@ -1,0 +1,97 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513211579&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:33:28 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513211579\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513211821&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:37:31 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513211821\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513212023&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:40:52 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513212023\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513212195&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 00:43:44 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513212195\"}"
+    }
+}]

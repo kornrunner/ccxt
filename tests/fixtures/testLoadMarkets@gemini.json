@@ -1,0 +1,24 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.gemini.com\/v1\/symbols",
+        "headers": {
+            "Host": "api.gemini.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:31:22 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "28",
+            "Connection": "keep-alive",
+            "Server": "nginx"
+        },
+        "body": "[\"btcusd\",\"ethbtc\",\"ethusd\"]"
+    }
+}]

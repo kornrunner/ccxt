@@ -1,0 +1,38 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.bitstamp.net\/api\/v2\/trading-pairs-info\/",
+        "headers": {
+            "Host": "www.bitstamp.net"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, accept, cache-control",
+            "Access-Control-Allow-Methods": "POST, GET",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "max-age=0",
+            "Content-Language": "en",
+            "Content-Type": "application\/json",
+            "Date": "Thu, 14 Dec 2017 00:31:06 GMT",
+            "Expires": "Thu, 14 Dec 2017 00:31:06 GMT",
+            "Last-Modified": "Thu, 14 Dec 2017 00:31:06 GMT",
+            "Server": "Apache",
+            "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
+            "Vary": "Accept-Language",
+            "X-Frame-Options": "SAMEORIGIN",
+            "transfer-encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "visid_incap_99025=G6BckluKTYuHQg9nbv\/A2UnGMVoAAAAAQUIPAAAAAAD0xwsnSkDS1N5eUVLDEYXh; expires=Thu, 13 Dec 2018 08:38:25 GMT; path=\/; Domain=.bitstamp.net, nlbi_99025=dRLSCZEmBUb6BoUS8F1n9AAAAAD4SOEVzl49hP8AARl6OGK9; path=\/; Domain=.bitstamp.net, incap_ses_730_99025=gOBzfFfvoDmM6iDBWXshCknGMVoAAAAAU1sOF02OJ8Umj2vyMAW2Dg==; path=\/; Domain=.bitstamp.net",
+            "X-Iinfo": "14-28133325-28131434 PNNN RT(1513211465842 95) q(0 0 0 -1) r(0 0) U2",
+            "X-CDN": "Incapsula",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[{\"base_decimals\": 8, \"minimum_order\": \"5.0 USD\", \"name\": \"LTC\/USD\", \"counter_decimals\": 2, \"trading\": \"Enabled\", \"url_symbol\": \"ltcusd\", \"description\": \"Litecoin \/ U.S. dollar\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 USD\", \"name\": \"ETH\/USD\", \"counter_decimals\": 2, \"trading\": \"Enabled\", \"url_symbol\": \"ethusd\", \"description\": \"Ether \/ U.S. dollar\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 EUR\", \"name\": \"XRP\/EUR\", \"counter_decimals\": 5, \"trading\": \"Enabled\", \"url_symbol\": \"xrpeur\", \"description\": \"XRP \/ Euro\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 USD\", \"name\": \"BCH\/USD\", \"counter_decimals\": 2, \"trading\": \"Enabled\", \"url_symbol\": \"bchusd\", \"description\": \"Bitcoin Cash \/ U.S. dollar\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 EUR\", \"name\": \"BCH\/EUR\", \"counter_decimals\": 2, \"trading\": \"Enabled\", \"url_symbol\": \"bcheur\", \"description\": \"Bitcoin Cash \/ Euro\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 EUR\", \"name\": \"BTC\/EUR\", \"counter_decimals\": 2, \"trading\": \"Enabled\", \"url_symbol\": \"btceur\", \"description\": \"Bitcoin \/ Euro\"}, {\"base_decimals\": 8, \"minimum_order\": \"0.001 BTC\", \"name\": \"XRP\/BTC\", \"counter_decimals\": 8, \"trading\": \"Enabled\", \"url_symbol\": \"xrpbtc\", \"description\": \"XRP \/ Bitcoin\"}, {\"base_decimals\": 5, \"minimum_order\": \"5.0 USD\", \"name\": \"EUR\/USD\", \"counter_decimals\": 5, \"trading\": \"Enabled\", \"url_symbol\": \"eurusd\", \"description\": \"Euro \/ U.S. dollar\"}, {\"base_decimals\": 8, \"minimum_order\": \"0.001 BTC\", \"name\": \"BCH\/BTC\", \"counter_decimals\": 8, \"trading\": \"Enabled\", \"url_symbol\": \"bchbtc\", \"description\": \"Bitcoin Cash \/ Bitcoin\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 EUR\", \"name\": \"LTC\/EUR\", \"counter_decimals\": 2, \"trading\": \"Enabled\", \"url_symbol\": \"ltceur\", \"description\": \"Litecoin \/ Euro\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 USD\", \"name\": \"BTC\/USD\", \"counter_decimals\": 2, \"trading\": \"Enabled\", \"url_symbol\": \"btcusd\", \"description\": \"Bitcoin \/ U.S. dollar\"}, {\"base_decimals\": 8, \"minimum_order\": \"0.001 BTC\", \"name\": \"LTC\/BTC\", \"counter_decimals\": 8, \"trading\": \"Enabled\", \"url_symbol\": \"ltcbtc\", \"description\": \"Litecoin \/ Bitcoin\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 USD\", \"name\": \"XRP\/USD\", \"counter_decimals\": 5, \"trading\": \"Enabled\", \"url_symbol\": \"xrpusd\", \"description\": \"XRP \/ U.S. dollar\"}, {\"base_decimals\": 8, \"minimum_order\": \"0.001 BTC\", \"name\": \"ETH\/BTC\", \"counter_decimals\": 8, \"trading\": \"Enabled\", \"url_symbol\": \"ethbtc\", \"description\": \"Ether \/ Bitcoin\"}, {\"base_decimals\": 8, \"minimum_order\": \"5.0 EUR\", \"name\": \"ETH\/EUR\", \"counter_decimals\": 2, \"trading\": \"Enabled\", \"url_symbol\": \"etheur\", \"description\": \"Ether \/ Euro\"}]"
+    }
+}]

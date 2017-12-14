@@ -1,0 +1,36 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.southxchange.com\/api\/markets",
+        "headers": {
+            "Host": "www.southxchange.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:31:54 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d78ed5b9842594c97cbc4177c3e2374641513211514; expires=Fri, 14-Dec-18 00:31:54 GMT; path=\/; domain=.southxchange.com; HttpOnly, _culture=en-US; path=\/, ARRAffinity=04f20859064b4e50d0a9c30436f9cc8a3e3b7902fe49a523458c4aef59bd6de7;Path=\/;HttpOnly;Domain=www.southxchange.com",
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "-1",
+            "Vary": "Accept-Encoding",
+            "X-AspNetMvc-Version": "5.2",
+            "Access-Control-Allow-Origin": "*",
+            "X-AspNet-Version": "4.0.30319",
+            "X-Powered-By": "ASP.NET",
+            "X-Frame-Options": "DENY",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd101baa4d7c78-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "[[\"BCH\",\"BTC\"],[\"BSD\",\"BTC\"],[\"BTA\",\"BTC\"],[\"BTG\",\"BTC\"],[\"CHA\",\"BTC\"],[\"CYR\",\"BTC\"],[\"DASH\",\"BTC\"],[\"DOGE\",\"BTC\"],[\"EGOLD\",\"BTC\"],[\"ETH\",\"BTC\"],[\"FLB\",\"BTC\"],[\"GRT\",\"BTC\"],[\"ICE\",\"BTC\"],[\"INXT\",\"BTC\"],[\"LTC\",\"BTC\"],[\"LUX\",\"BTC\"],[\"MBCH\",\"BTC\"],[\"MINT\",\"BTC\"],[\"MRN\",\"BTC\"],[\"MSR\",\"BTC\"],[\"NMC\",\"BTC\"],[\"NSR\",\"BTC\"],[\"NXT\",\"BTC\"],[\"PPC\",\"BTC\"],[\"PTC\",\"BTC\"],[\"RESTORE\",\"BTC\"],[\"RGC\",\"BTC\"],[\"SMS\",\"BTC\"],[\"STAR\",\"BTC\"],[\"STRAT\",\"BTC\"],[\"SUP\",\"BTC\"],[\"VTC\",\"BTC\"],[\"XGOX\",\"BTC\"],[\"XMR\",\"BTC\"],[\"XVG\",\"BTC\"],[\"ZEIT\",\"BTC\"],[\"CHRC\",\"LTC\"],[\"RESTORE\",\"LTC\"],[\"XGOX\",\"LTC\"],[\"ZEIT\",\"LTC\"],[\"BCH\",\"USD\"],[\"BTC\",\"USD\"],[\"BTG\",\"USD\"],[\"DASH\",\"USD\"],[\"ETH\",\"USD\"],[\"GRT\",\"USD\"],[\"ICE\",\"USD\"],[\"INXT\",\"USD\"],[\"LTC\",\"USD\"],[\"MRN\",\"USD\"],[\"MSR\",\"USD\"],[\"RESTORE\",\"USD\"],[\"SMS\",\"USD\"],[\"STRAT\",\"USD\"],[\"SUP\",\"USD\"],[\"USNBT\",\"USD\"],[\"XGOX\",\"USD\"],[\"XMR\",\"USD\"],[\"BTC\",\"USNBT\"],[\"ETH\",\"USNBT\"],[\"NSR\",\"USNBT\"]]"
+    }
+}]

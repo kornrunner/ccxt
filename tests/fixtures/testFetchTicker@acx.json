@@ -1,0 +1,67 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/acx.io\/api\/api\/v2\/markets.json",
+        "headers": {
+            "Host": "acx.io"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:30:07 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "281",
+            "Connection": "keep-alive",
+            "Status": "200 OK",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "Access-Control-Allow-Origin": "*",
+            "X-Request-Id": "327796c9-6cd0-44d4-a28d-92cc55fcc2fa",
+            "ETag": "\"41d228ef432ccf084972a59ddff4e407\"",
+            "X-Runtime": "0.002291",
+            "X-Powered-By": "acx",
+            "Server": "acx",
+            "Strict-Transport-Security": "max-age=63072000",
+            "X-Frame-Options": "DENY",
+            "X-Content-Type-Options": "sniff"
+        },
+        "body": "[{\"id\":\"btcaud\",\"name\":\"BTC\/AUD\",\"base_unit\":\"btc\",\"quote_unit\":\"aud\"},{\"id\":\"bchaud\",\"name\":\"BCH\/AUD\",\"base_unit\":\"bch\",\"quote_unit\":\"aud\"},{\"id\":\"ethaud\",\"name\":\"ETH\/AUD\",\"base_unit\":\"eth\",\"quote_unit\":\"aud\"},{\"id\":\"hsraud\",\"name\":\"HSR\/AUD\",\"base_unit\":\"hsr\",\"quote_unit\":\"aud\"}]"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/acx.io\/api\/api\/v2\/tickers.json",
+        "headers": {
+            "Host": "acx.io"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:30:08 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "816",
+            "Connection": "keep-alive",
+            "Status": "200 OK",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "Access-Control-Allow-Origin": "*",
+            "X-Request-Id": "e041cc4f-943f-4ac6-9f78-dd5b4234d983",
+            "ETag": "\"5d73ecf6f39f94b2238f2035df0b4183\"",
+            "X-Runtime": "0.019954",
+            "X-Powered-By": "acx",
+            "Server": "acx",
+            "Strict-Transport-Security": "max-age=63072000",
+            "X-Frame-Options": "DENY",
+            "X-Content-Type-Options": "sniff"
+        },
+        "body": "{\"btcaud\":{\"name\":\"BTC\/AUD\",\"base_unit\":\"btc\",\"quote_unit\":\"aud\",\"at\":1513211408,\"ticker\":{\"buy\":\"24020.53\",\"sell\":\"24049.83\",\"open\":25300.0,\"low\":\"23400.01\",\"high\":\"25625.0\",\"last\":\"24020.51\",\"vol\":\"2005.4689\"}},\"bchaud\":{\"name\":\"BCH\/AUD\",\"base_unit\":\"bch\",\"quote_unit\":\"aud\",\"at\":1513211408,\"ticker\":{\"buy\":\"2251.04\",\"sell\":\"2399.99\",\"open\":2300.0,\"low\":\"2101.28\",\"high\":\"2400.0\",\"last\":\"2399.99\",\"vol\":\"68.1945\"}},\"ethaud\":{\"name\":\"ETH\/AUD\",\"base_unit\":\"eth\",\"quote_unit\":\"aud\",\"at\":1513211408,\"ticker\":{\"buy\":\"1010.88\",\"sell\":\"1042.0\",\"open\":970.0,\"low\":\"880.0\",\"high\":\"1096.99\",\"last\":\"1044.99\",\"vol\":\"464.4652\"}},\"hsraud\":{\"name\":\"HSR\/AUD\",\"base_unit\":\"hsr\",\"quote_unit\":\"aud\",\"at\":1513211408,\"ticker\":{\"buy\":\"24.6\",\"sell\":\"24.67\",\"open\":23.29,\"low\":\"21.54\",\"high\":\"24.97\",\"last\":\"24.65\",\"vol\":\"679678.5957\"}}}"
+    }
+}]

@@ -1,0 +1,43 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.qryptos.com\/products\/1\/price_levels",
+        "headers": {
+            "Host": "api.qryptos.com",
+            "X-Quoine-API-Version": "2",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:34:47 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Length": "358",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d2d9051400dd5ea88e8882ac7abc8e04d1513211686; expires=Fri, 14-Dec-18 00:34:46 GMT; path=\/; domain=.qryptos.com; HttpOnly, _vax_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJTY1ZGJkMmIwNmRmODhkNDU1YzkwZGE1MjEzYTRmOWYxBjsAVEkiCWxhbmcGOwBGOgdlbg%3D%3D--fa226e5c161073b9445d765cba417f2668c96e6d; path=\/; secure; HttpOnly",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "Content-Encoding": "gzip",
+            "Etag": "\"029daae83f403f5422d949678b52482e\"",
+            "Status": "200 OK",
+            "Strict-Transport-Security": "max-age=631152000; includeSubdomains",
+            "Vary": "Accept-Encoding",
+            "Via": "1.1 spaces-router (95e7969569d5)",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Powered-By": "Phusion Passenger 5.1.2",
+            "X-Rack-Cache": "miss",
+            "X-Request-Id": "a4baf973-493c-bf6f-ecfa-a8155eb0e66a",
+            "X-Runtime": "0.019428",
+            "X-Ua-Compatible": "IE=Edge,chrome=1",
+            "X-Xss-Protection": "1; mode=block",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd144f79157c4e-BEG"
+        },
+        "body": "{\"buy_price_levels\":[[\"0.01158000\",\"2.00000000\"],[\"0.01157011\",\"1.00000000\"],[\"0.01157010\",\"3.00000000\"],[\"0.01155706\",\"1.04760000\"],[\"0.01130000\",\"2.00000000\"],[\"0.01129000\",\"2.00000000\"],[\"0.01000000\",\"1.00000000\"],[\"0.00370002\",\"2.00000000\"],[\"0.00370001\",\"100.00000000\"],[\"0.00370000\",\"11.00000000\"],[\"0.00300000\",\"2.00000000\"],[\"0.00151000\",\"5.00000000\"],[\"0.00150004\",\"30.00000000\"],[\"0.00150003\",\"30.00000000\"],[\"0.00150002\",\"30.00000000\"],[\"0.00150001\",\"30.00000000\"],[\"0.00114326\",\"1.08800000\"],[\"0.00041000\",\"18.35200000\"],[\"0.00032875\",\"0.95830000\"],[\"0.00008400\",\"26.00000000\"],[\"0.00007002\",\"77.00000000\"]], \"sell_price_levels\":[[\"0.02639000\",\"2.00000000\"],[\"0.02704000\",\"2.00000000\"],[\"0.02737000\",\"1.51135000\"],[\"0.02990000\",\"1.00000000\"],[\"0.03199000\",\"1.13646652\"],[\"0.04999000\",\"1.13646652\"],[\"0.05987000\",\"0.69624550\"],[\"0.05999628\",\"0.58225502\"],[\"0.06007817\",\"0.30013363\"],[\"0.06021907\",\"0.20951416\"],[\"0.06028890\",\"0.36235773\"],[\"0.06035872\",\"0.76113615\"],[\"0.06044850\",\"0.90542806\"],[\"0.06052830\",\"0.37844978\"],[\"0.06075000\",\"0.03628547\"],[\"0.06077000\",\"0.18186000\"],[\"0.06080000\",\"0.18194000\"],[\"0.06083000\",\"0.18196000\"],[\"0.06085000\",\"0.18215000\"],[\"0.06088000\",\"0.18274000\"],[\"0.06092000\",\"0.18323000\"]]}"
+    }
+}]

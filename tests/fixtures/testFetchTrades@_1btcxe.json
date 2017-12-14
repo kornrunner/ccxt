@@ -1,0 +1,37 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/1btcxe.com\/api\/transactions?currency=USD",
+        "headers": {
+            "Host": "1btcxe.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 00:32:05 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d684ffeb0074eab65ad7230aa942bd5ec1513211525; expires=Fri, 14-Dec-18 00:32:05 GMT; path=\/; domain=.1btcxe.com; HttpOnly, KEY_PHPSESSID=tjgovdQD04A5Pq1mwbuCSOedxVww7bS1OrzM6TPvQzM%3D%3Ar6WJNMRGOL2%2FgjintET4RhdhVoRzH9w3eRSOkh2b8Gk%3D; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=174th2qkspogq0liefh2l4hhf0; path=\/; domain=.1btcxe.com; HttpOnly, KEY_PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=\/; domain=.1btcxe.com; httponly, KEY_PHPSESSID=JNWA2pyG0ykKhNtIieqYyUJ%2FoYo7Zobm5BzvTLm0ZRc%3D%3ABOpj57VqgNf1ktMI6kye6azb80N21xENwtom3ZpA0PI%3D; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=19lc5u7hcgq5se9o3oir8h76h2; path=\/; domain=.1btcxe.com; HttpOnly, PHPSESSID=r3afk7p16fti8av4qmaduale85; path=\/; domain=.1btcxe.com; HttpOnly",
+            "X-Powered-By": "WLOX",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "Vary": "Accept-Encoding",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Content-Type-Options": "nosniff",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3ccd10601b157c78-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"transactions\":{\"0\":{\"id\":\"1259972\",\"date\":\"2017-12-13 05:56:29\",\"timestamp\":\"1513144589\",\"btc\":\"0.00980000\",\"maker_type\":\"sell\",\"price\":\"16978.26\",\"amount\":\"166.39\",\"currency\":\"USD\"},\"1\":{\"id\":\"1259971\",\"date\":\"2017-12-12 15:14:12\",\"timestamp\":\"1513091652\",\"btc\":\"0.00210000\",\"maker_type\":\"buy\",\"price\":\"17494.75\",\"amount\":\"36.74\",\"currency\":\"USD\"},\"2\":{\"id\":\"1259970\",\"date\":\"2017-12-12 15:14:12\",\"timestamp\":\"1513091652\",\"btc\":\"0.01330000\",\"maker_type\":\"buy\",\"price\":\"17497.87\",\"amount\":\"232.72\",\"currency\":\"USD\"},\"3\":{\"id\":\"1259969\",\"date\":\"2017-12-12 15:14:12\",\"timestamp\":\"1513091652\",\"btc\":\"0.02460000\",\"maker_type\":\"buy\",\"price\":\"17500.20\",\"amount\":\"430.50\",\"currency\":\"USD\"},\"4\":{\"id\":\"1259968\",\"date\":\"2017-12-12 15:13:46\",\"timestamp\":\"1513091626\",\"btc\":\"0.00360000\",\"maker_type\":\"sell\",\"price\":\"17809.76\",\"amount\":\"64.12\",\"currency\":\"USD\"},\"5\":{\"id\":\"1259967\",\"date\":\"2017-12-12 15:13:46\",\"timestamp\":\"1513091626\",\"btc\":\"0.02040000\",\"maker_type\":\"sell\",\"price\":\"17809.66\",\"amount\":\"363.32\",\"currency\":\"USD\"},\"6\":{\"id\":\"1259966\",\"date\":\"2017-12-12 15:13:46\",\"timestamp\":\"1513091626\",\"btc\":\"0.01010000\",\"maker_type\":\"sell\",\"price\":\"17808.22\",\"amount\":\"179.86\",\"currency\":\"USD\"},\"7\":{\"id\":\"1259965\",\"date\":\"2017-12-12 15:13:46\",\"timestamp\":\"1513091626\",\"btc\":\"0.00590000\",\"maker_type\":\"sell\",\"price\":\"17805.10\",\"amount\":\"105.05\",\"currency\":\"USD\"},\"8\":{\"id\":\"1259964\",\"date\":\"2017-12-12 15:11:58\",\"timestamp\":\"1513091518\",\"btc\":\"0.00280000\",\"maker_type\":\"buy\",\"price\":\"17452.45\",\"amount\":\"48.87\",\"currency\":\"USD\"},\"9\":{\"id\":\"1259963\",\"date\":\"2017-12-12 15:11:58\",\"timestamp\":\"1513091518\",\"btc\":\"0.02170000\",\"maker_type\":\"buy\",\"price\":\"17455.06\",\"amount\":\"378.77\",\"currency\":\"USD\"},\"request_currency\":\"USD\"}}"
+    }
+}]
