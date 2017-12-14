@@ -8,7 +8,7 @@ php:
 install:
   - travis_retry composer self-update
   - travis_retry composer install --prefer-dist --dev
-  - if [[ "$TRAVIS_PHP_VERSION" != "7.3.0" ]]; then phpenv config-rm xdebug.ini; fi
+  - if [[ "$TRAVIS_PHP_VERSION" != "nightly" ]]; then phpenv config-rm xdebug.ini; fi
 
 script:
   - mkdir -p build/logs
