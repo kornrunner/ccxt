@@ -55,6 +55,8 @@ class ExchangeTest extends TestCase {
             'virwox',       // no method parameter?!
             'yobit',        // bad apiKey
             'zaif',         // signature mismatch
+            'fybse',        // travis
+            'virwox',       // travis
         ],
         'testFetchTrades' => [
             'allcoin',      // not accessible
