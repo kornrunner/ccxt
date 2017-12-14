@@ -57,7 +57,6 @@ class ExchangeTest extends TestCase {
             'anxpro',       // not accessible
             'bitcoincoid',  // not accessible
             'bitstamp1',    // array to string @74
-            'bittrex',      // null in Exchange @959
             'btcexchange',  // bad offset in response
             'btcx',         // bad offset in response
             'coincheck',    // supports BTC/JPY only
