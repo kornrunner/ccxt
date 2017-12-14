@@ -334,4 +334,100 @@
         },
         "body": "{\"result\":{\"1\":{\"instrumentID\":\"1\",\"symbol\":\"EUR\\\/SLL\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"2\":{\"instrumentID\":\"2\",\"symbol\":\"GBP\\\/SLL\",\"longCurrency\":\"GBP\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"3\":{\"instrumentID\":\"3\",\"symbol\":\"CHF\\\/SLL\",\"longCurrency\":\"CHF\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"4\":{\"instrumentID\":\"4\",\"symbol\":\"USD\\\/SLL\",\"longCurrency\":\"USD\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"5\":{\"instrumentID\":\"5\",\"symbol\":\"SLL\\\/OMC\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"OMC\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"6\":{\"instrumentID\":\"6\",\"symbol\":\"EUR\\\/OMC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"7\":{\"instrumentID\":\"7\",\"symbol\":\"USD\\\/OMC\",\"longCurrency\":\"USD\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"8\":{\"instrumentID\":\"8\",\"symbol\":\"SLL\\\/ACD\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"ACD\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"9\":{\"instrumentID\":\"9\",\"symbol\":\"EUR\\\/ACD\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"10\":{\"instrumentID\":\"10\",\"symbol\":\"USD\\\/ACD\",\"longCurrency\":\"USD\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"11\":{\"instrumentID\":\"11\",\"symbol\":\"BTC\\\/SLL\",\"longCurrency\":\"BTC\",\"shortCurrency\":\"SLL\",\"decimals\":\"0\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"0.001000000\",\"decimalsOrder\":\"4\"},\"12\":{\"instrumentID\":\"12\",\"symbol\":\"EUR\\\/MVC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"MVC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"}},\"error\":null,\"id\":\"1513254639\"}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getInstruments&id=1513260059",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 14:00:59 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "2821",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"1\":{\"instrumentID\":\"1\",\"symbol\":\"EUR\\\/SLL\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"2\":{\"instrumentID\":\"2\",\"symbol\":\"GBP\\\/SLL\",\"longCurrency\":\"GBP\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"3\":{\"instrumentID\":\"3\",\"symbol\":\"CHF\\\/SLL\",\"longCurrency\":\"CHF\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"4\":{\"instrumentID\":\"4\",\"symbol\":\"USD\\\/SLL\",\"longCurrency\":\"USD\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"5\":{\"instrumentID\":\"5\",\"symbol\":\"SLL\\\/OMC\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"OMC\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"6\":{\"instrumentID\":\"6\",\"symbol\":\"EUR\\\/OMC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"7\":{\"instrumentID\":\"7\",\"symbol\":\"USD\\\/OMC\",\"longCurrency\":\"USD\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"8\":{\"instrumentID\":\"8\",\"symbol\":\"SLL\\\/ACD\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"ACD\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"9\":{\"instrumentID\":\"9\",\"symbol\":\"EUR\\\/ACD\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"10\":{\"instrumentID\":\"10\",\"symbol\":\"USD\\\/ACD\",\"longCurrency\":\"USD\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"11\":{\"instrumentID\":\"11\",\"symbol\":\"BTC\\\/SLL\",\"longCurrency\":\"BTC\",\"shortCurrency\":\"SLL\",\"decimals\":\"0\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"0.001000000\",\"decimalsOrder\":\"4\"},\"12\":{\"instrumentID\":\"12\",\"symbol\":\"EUR\\\/MVC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"MVC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"}},\"error\":null,\"id\":\"1513260059\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getInstruments&id=1513260109",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 14:01:49 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "2821",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"1\":{\"instrumentID\":\"1\",\"symbol\":\"EUR\\\/SLL\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"2\":{\"instrumentID\":\"2\",\"symbol\":\"GBP\\\/SLL\",\"longCurrency\":\"GBP\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"3\":{\"instrumentID\":\"3\",\"symbol\":\"CHF\\\/SLL\",\"longCurrency\":\"CHF\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"4\":{\"instrumentID\":\"4\",\"symbol\":\"USD\\\/SLL\",\"longCurrency\":\"USD\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"5\":{\"instrumentID\":\"5\",\"symbol\":\"SLL\\\/OMC\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"OMC\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"6\":{\"instrumentID\":\"6\",\"symbol\":\"EUR\\\/OMC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"7\":{\"instrumentID\":\"7\",\"symbol\":\"USD\\\/OMC\",\"longCurrency\":\"USD\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"8\":{\"instrumentID\":\"8\",\"symbol\":\"SLL\\\/ACD\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"ACD\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"9\":{\"instrumentID\":\"9\",\"symbol\":\"EUR\\\/ACD\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"10\":{\"instrumentID\":\"10\",\"symbol\":\"USD\\\/ACD\",\"longCurrency\":\"USD\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"11\":{\"instrumentID\":\"11\",\"symbol\":\"BTC\\\/SLL\",\"longCurrency\":\"BTC\",\"shortCurrency\":\"SLL\",\"decimals\":\"0\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"0.001000000\",\"decimalsOrder\":\"4\"},\"12\":{\"instrumentID\":\"12\",\"symbol\":\"EUR\\\/MVC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"MVC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"}},\"error\":null,\"id\":\"1513260109\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getInstruments&id=1513260212",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 14:03:32 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "2821",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"1\":{\"instrumentID\":\"1\",\"symbol\":\"EUR\\\/SLL\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"2\":{\"instrumentID\":\"2\",\"symbol\":\"GBP\\\/SLL\",\"longCurrency\":\"GBP\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"3\":{\"instrumentID\":\"3\",\"symbol\":\"CHF\\\/SLL\",\"longCurrency\":\"CHF\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"4\":{\"instrumentID\":\"4\",\"symbol\":\"USD\\\/SLL\",\"longCurrency\":\"USD\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"5\":{\"instrumentID\":\"5\",\"symbol\":\"SLL\\\/OMC\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"OMC\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"6\":{\"instrumentID\":\"6\",\"symbol\":\"EUR\\\/OMC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"7\":{\"instrumentID\":\"7\",\"symbol\":\"USD\\\/OMC\",\"longCurrency\":\"USD\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"8\":{\"instrumentID\":\"8\",\"symbol\":\"SLL\\\/ACD\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"ACD\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"9\":{\"instrumentID\":\"9\",\"symbol\":\"EUR\\\/ACD\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"10\":{\"instrumentID\":\"10\",\"symbol\":\"USD\\\/ACD\",\"longCurrency\":\"USD\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"11\":{\"instrumentID\":\"11\",\"symbol\":\"BTC\\\/SLL\",\"longCurrency\":\"BTC\",\"shortCurrency\":\"SLL\",\"decimals\":\"0\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"0.001000000\",\"decimalsOrder\":\"4\"},\"12\":{\"instrumentID\":\"12\",\"symbol\":\"EUR\\\/MVC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"MVC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"}},\"error\":null,\"id\":\"1513260212\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getInstruments&id=1513260265",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 14:04:25 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "2821",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"1\":{\"instrumentID\":\"1\",\"symbol\":\"EUR\\\/SLL\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"2\":{\"instrumentID\":\"2\",\"symbol\":\"GBP\\\/SLL\",\"longCurrency\":\"GBP\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"3\":{\"instrumentID\":\"3\",\"symbol\":\"CHF\\\/SLL\",\"longCurrency\":\"CHF\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"4\":{\"instrumentID\":\"4\",\"symbol\":\"USD\\\/SLL\",\"longCurrency\":\"USD\",\"shortCurrency\":\"SLL\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"5\":{\"instrumentID\":\"5\",\"symbol\":\"SLL\\\/OMC\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"OMC\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"6\":{\"instrumentID\":\"6\",\"symbol\":\"EUR\\\/OMC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"7\":{\"instrumentID\":\"7\",\"symbol\":\"USD\\\/OMC\",\"longCurrency\":\"USD\",\"shortCurrency\":\"OMC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.019\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"8\":{\"instrumentID\":\"8\",\"symbol\":\"SLL\\\/ACD\",\"longCurrency\":\"SLL\",\"shortCurrency\":\"ACD\",\"decimals\":\"3\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"25\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"9\":{\"instrumentID\":\"9\",\"symbol\":\"EUR\\\/ACD\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"10\":{\"instrumentID\":\"10\",\"symbol\":\"USD\\\/ACD\",\"longCurrency\":\"USD\",\"shortCurrency\":\"ACD\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"},\"11\":{\"instrumentID\":\"11\",\"symbol\":\"BTC\\\/SLL\",\"longCurrency\":\"BTC\",\"shortCurrency\":\"SLL\",\"decimals\":\"0\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.039\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"0.001000000\",\"decimalsOrder\":\"4\"},\"12\":{\"instrumentID\":\"12\",\"symbol\":\"EUR\\\/MVC\",\"longCurrency\":\"EUR\",\"shortCurrency\":\"MVC\",\"decimals\":\"1\",\"commissionRate\":\"0.039\",\"commissionRateMkt\":\"0.029\",\"commissionConstMkt\":\"50\",\"minimumOrder\":\"1.000000000\",\"decimalsOrder\":\"0\"}},\"error\":null,\"id\":\"1513260265\"}"
+    }
 }]

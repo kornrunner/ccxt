@@ -142,4 +142,76 @@
         },
         "body": "{\"success\":true,\"data\":{\"balances\":{\"available\":{\"PLN\":0.00000000,\"EUR\":0.00000000,\"BTC\":0.00000000,\"LTC\":0.00000000,\"BCC\":0.00000000,\"BTG\":0.00000000,\"DOGE\":0.00000000,\"LiteMineX\":0.00000000,\"PlnX\":0.00000000},\"blocked\":{\"PLN\":0.00000000,\"BTC\":0.00000000,\"EUR\":0.00000000,\"LTC\":0.00000000,\"BCC\":0.00000000,\"BTG\":0.00000000,\"LiteMineX\":0.00000000,\"PlnX\":0.00000000}},\"account\":{\"turnover\":0.0000,\"commissionMaker\":0.1500,\"commissionTaker\":0.4500},\"bank_deposit_fiat\":{\"PLN\":{\"seed\":1540102890000005,\"bank_name\":\"BOS BANK\",\"pay_to\":\"Agent BM\",\"acc_num\":\"\",\"transfer_title\":\"zasilenie konta w BM login igorkroitor\"},\"EUR\":{\"seed\":1540000500004600,\"bank_name\":\"BOS BANK\",\"swift_code\":\"EBOSPLPWXXX\",\"pay_to\":\"BM Agent\",\"acc_num\":\"\",\"transfer_title\":\"deposit in BM login igorkroitor\"}}},\"time\":1513259968,\"limit\":{\"used\":2,\"allowed\":100,\"expires\":1513260000}}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.bitmarket.pl\/api2\/",
+        "headers": {
+            "Host": "www.bitmarket.pl",
+            "API-Key": "2024227b532f27d7ced1987653029d91",
+            "API-Hash": "e5575b70f9f23336f6266e9f838d52b2830e6cd3ae45c943bc9d81c148b3d57de08628687eb9a40830bb3a5944ad5916d15f4279abd1841390a8205151119ad7"
+        },
+        "body": "tonce=1513260066&method=info"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 14:01:06 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "393",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dd3e88202102c2832a9706e32135a23fd1513260066; expires=Fri, 14-Dec-18 14:01:06 GMT; path=\/; domain=.bitmarket.pl; HttpOnly; Secure, PHPSESSID=lbcusvo77hgp7al9ja28jfhe25; path=\/",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Encoding": "gzip",
+            "Vary": "Accept-Encoding",
+            "Accept-Ranges": "bytes",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1b17618ed7c5a-BEG"
+        },
+        "body": "{\"success\":true,\"data\":{\"balances\":{\"available\":{\"PLN\":0.00000000,\"EUR\":0.00000000,\"BTC\":0.00000000,\"LTC\":0.00000000,\"BCC\":0.00000000,\"BTG\":0.00000000,\"DOGE\":0.00000000,\"LiteMineX\":0.00000000,\"PlnX\":0.00000000},\"blocked\":{\"PLN\":0.00000000,\"BTC\":0.00000000,\"EUR\":0.00000000,\"LTC\":0.00000000,\"BCC\":0.00000000,\"BTG\":0.00000000,\"LiteMineX\":0.00000000,\"PlnX\":0.00000000}},\"account\":{\"turnover\":0.0000,\"commissionMaker\":0.1500,\"commissionTaker\":0.4500},\"bank_deposit_fiat\":{\"PLN\":{\"seed\":1540102890000005,\"bank_name\":\"BOS BANK\",\"pay_to\":\"Agent BM\",\"acc_num\":\"\",\"transfer_title\":\"zasilenie konta w BM login igorkroitor\"},\"EUR\":{\"seed\":1540000500004600,\"bank_name\":\"BOS BANK\",\"swift_code\":\"EBOSPLPWXXX\",\"pay_to\":\"BM Agent\",\"acc_num\":\"\",\"transfer_title\":\"deposit in BM login igorkroitor\"}}},\"time\":1513260066,\"limit\":{\"used\":1,\"allowed\":100,\"expires\":1513260600}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.bitmarket.pl\/api2\/",
+        "headers": {
+            "Host": "www.bitmarket.pl",
+            "API-Key": "2024227b532f27d7ced1987653029d91",
+            "API-Hash": "3550a7cd223b002fd535646ae957522568205dfec32286de0f0192599f66a26b7c19c434b3a2c9e27f644fc9cfcf6a3186f68d69ebae1cd47d9bd67ac35df34e"
+        },
+        "body": "tonce=1513260222&method=info"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 14:03:42 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "394",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=de40a88be6fb37dd041ad001e44935c331513260222; expires=Fri, 14-Dec-18 14:03:42 GMT; path=\/; domain=.bitmarket.pl; HttpOnly; Secure, PHPSESSID=5aggkhrkbf7c5rj6q2a0nh74p1; path=\/",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Encoding": "gzip",
+            "Vary": "Accept-Encoding",
+            "Accept-Ranges": "bytes",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1b54578e47c48-BEG"
+        },
+        "body": "{\"success\":true,\"data\":{\"balances\":{\"available\":{\"PLN\":0.00000000,\"EUR\":0.00000000,\"BTC\":0.00000000,\"LTC\":0.00000000,\"BCC\":0.00000000,\"BTG\":0.00000000,\"DOGE\":0.00000000,\"LiteMineX\":0.00000000,\"PlnX\":0.00000000},\"blocked\":{\"PLN\":0.00000000,\"BTC\":0.00000000,\"EUR\":0.00000000,\"LTC\":0.00000000,\"BCC\":0.00000000,\"BTG\":0.00000000,\"LiteMineX\":0.00000000,\"PlnX\":0.00000000}},\"account\":{\"turnover\":0.0000,\"commissionMaker\":0.1500,\"commissionTaker\":0.4500},\"bank_deposit_fiat\":{\"PLN\":{\"seed\":1540102890000005,\"bank_name\":\"BOS BANK\",\"pay_to\":\"Agent BM\",\"acc_num\":\"\",\"transfer_title\":\"zasilenie konta w BM login igorkroitor\"},\"EUR\":{\"seed\":1540000500004600,\"bank_name\":\"BOS BANK\",\"swift_code\":\"EBOSPLPWXXX\",\"pay_to\":\"BM Agent\",\"acc_num\":\"\",\"transfer_title\":\"deposit in BM login igorkroitor\"}}},\"time\":1513260222,\"limit\":{\"used\":2,\"allowed\":100,\"expires\":1513260600}}"
+    }
 }]

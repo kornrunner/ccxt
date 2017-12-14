@@ -146,4 +146,78 @@
         },
         "body": "{\"success\":true,\"jpy\":\"0\",\"btc\":\"0\",\"eth\":\"0\",\"etc\":\"0\",\"dao\":\"0\",\"lsk\":\"0\",\"fct\":\"0\",\"xmr\":\"0\",\"rep\":\"0\",\"xrp\":\"0\",\"zec\":\"0\",\"xem\":\"0\",\"ltc\":\"0\",\"dash\":\"0\",\"bch\":\"0\",\"jpy_reserved\":\"0.0\",\"btc_reserved\":\"0.0\",\"eth_reserved\":\"0.0\",\"etc_reserved\":\"0.0\",\"dao_reserved\":\"0.0\",\"lsk_reserved\":\"0.0\",\"fct_reserved\":\"0.0\",\"xmr_reserved\":\"0.0\",\"rep_reserved\":\"0.0\",\"xrp_reserved\":\"0.0\",\"zec_reserved\":\"0.0\",\"xem_reserved\":\"0.0\",\"ltc_reserved\":\"0.0\",\"dash_reserved\":\"0.0\",\"bch_reserved\":\"0.0\",\"jpy_lend_in_use\":\"0.0\",\"btc_lend_in_use\":\"0.0\",\"eth_lend_in_use\":\"0.0\",\"etc_lend_in_use\":\"0.0\",\"dao_lend_in_use\":\"0.0\",\"lsk_lend_in_use\":\"0.0\",\"fct_lend_in_use\":\"0.0\",\"xmr_lend_in_use\":\"0.0\",\"rep_lend_in_use\":\"0.0\",\"xrp_lend_in_use\":\"0.0\",\"zec_lend_in_use\":\"0.0\",\"xem_lend_in_use\":\"0.0\",\"ltc_lend_in_use\":\"0.0\",\"dash_lend_in_use\":\"0.0\",\"bch_lend_in_use\":\"0.0\",\"jpy_lent\":\"0.0\",\"btc_lent\":\"0.0\",\"eth_lent\":\"0.0\",\"etc_lent\":\"0.0\",\"dao_lent\":\"0.0\",\"lsk_lent\":\"0.0\",\"fct_lent\":\"0.0\",\"xmr_lent\":\"0.0\",\"rep_lent\":\"0.0\",\"xrp_lent\":\"0.0\",\"zec_lent\":\"0.0\",\"xem_lent\":\"0.0\",\"ltc_lent\":\"0.0\",\"dash_lent\":\"0.0\",\"bch_lent\":\"0.0\",\"jpy_debt\":\"0.0\",\"btc_debt\":\"0.0\",\"eth_debt\":\"0.0\",\"etc_debt\":\"0.0\",\"dao_debt\":\"0.0\",\"lsk_debt\":\"0.0\",\"fct_debt\":\"0.0\",\"xmr_debt\":\"0.0\",\"rep_debt\":\"0.0\",\"xrp_debt\":\"0.0\",\"zec_debt\":\"0.0\",\"xem_debt\":\"0.0\",\"ltc_debt\":\"0.0\",\"dash_debt\":\"0.0\",\"bch_debt\":\"0.0\"}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/coincheck.com\/api\/accounts\/balance",
+        "headers": {
+            "Host": "coincheck.com",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "ACCESS-KEY": "dCyzY2T6w0DFhaco",
+            "ACCESS-NONCE": "1513260073",
+            "ACCESS-SIGNATURE": "9767e69e638b9dedee871f7b9bf86bcd7c4ae482e47989c5f3b124a0c7ac5f4b"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Date": "Thu, 14 Dec 2017 14:01:14 GMT",
+            "Server": "nginx",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"f1c250a365074325866109ef8c895a48\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "02c70639-6e3a-45f7-861f-da085e3574e8",
+            "X-Runtime": "0.018877",
+            "Content-Encoding": "gzip",
+            "X-Cache": "Miss from cloudfront",
+            "Via": "1.1 89934ce37ea0d70a19ace48a847ae306.cloudfront.net (CloudFront)",
+            "X-Amz-Cf-Id": "QXkoROQCu9Tu6ppCMrokwcnFdLcCGqHC2DE-ec3CJPcgv5uuzcO7Lg=="
+        },
+        "body": "{\"success\":true,\"jpy\":\"0\",\"btc\":\"0\",\"eth\":\"0\",\"etc\":\"0\",\"dao\":\"0\",\"lsk\":\"0\",\"fct\":\"0\",\"xmr\":\"0\",\"rep\":\"0\",\"xrp\":\"0\",\"zec\":\"0\",\"xem\":\"0\",\"ltc\":\"0\",\"dash\":\"0\",\"bch\":\"0\",\"jpy_reserved\":\"0.0\",\"btc_reserved\":\"0.0\",\"eth_reserved\":\"0.0\",\"etc_reserved\":\"0.0\",\"dao_reserved\":\"0.0\",\"lsk_reserved\":\"0.0\",\"fct_reserved\":\"0.0\",\"xmr_reserved\":\"0.0\",\"rep_reserved\":\"0.0\",\"xrp_reserved\":\"0.0\",\"zec_reserved\":\"0.0\",\"xem_reserved\":\"0.0\",\"ltc_reserved\":\"0.0\",\"dash_reserved\":\"0.0\",\"bch_reserved\":\"0.0\",\"jpy_lend_in_use\":\"0.0\",\"btc_lend_in_use\":\"0.0\",\"eth_lend_in_use\":\"0.0\",\"etc_lend_in_use\":\"0.0\",\"dao_lend_in_use\":\"0.0\",\"lsk_lend_in_use\":\"0.0\",\"fct_lend_in_use\":\"0.0\",\"xmr_lend_in_use\":\"0.0\",\"rep_lend_in_use\":\"0.0\",\"xrp_lend_in_use\":\"0.0\",\"zec_lend_in_use\":\"0.0\",\"xem_lend_in_use\":\"0.0\",\"ltc_lend_in_use\":\"0.0\",\"dash_lend_in_use\":\"0.0\",\"bch_lend_in_use\":\"0.0\",\"jpy_lent\":\"0.0\",\"btc_lent\":\"0.0\",\"eth_lent\":\"0.0\",\"etc_lent\":\"0.0\",\"dao_lent\":\"0.0\",\"lsk_lent\":\"0.0\",\"fct_lent\":\"0.0\",\"xmr_lent\":\"0.0\",\"rep_lent\":\"0.0\",\"xrp_lent\":\"0.0\",\"zec_lent\":\"0.0\",\"xem_lent\":\"0.0\",\"ltc_lent\":\"0.0\",\"dash_lent\":\"0.0\",\"bch_lent\":\"0.0\",\"jpy_debt\":\"0.0\",\"btc_debt\":\"0.0\",\"eth_debt\":\"0.0\",\"etc_debt\":\"0.0\",\"dao_debt\":\"0.0\",\"lsk_debt\":\"0.0\",\"fct_debt\":\"0.0\",\"xmr_debt\":\"0.0\",\"rep_debt\":\"0.0\",\"xrp_debt\":\"0.0\",\"zec_debt\":\"0.0\",\"xem_debt\":\"0.0\",\"ltc_debt\":\"0.0\",\"dash_debt\":\"0.0\",\"bch_debt\":\"0.0\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/coincheck.com\/api\/accounts\/balance",
+        "headers": {
+            "Host": "coincheck.com",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "ACCESS-KEY": "dCyzY2T6w0DFhaco",
+            "ACCESS-NONCE": "1513260228",
+            "ACCESS-SIGNATURE": "f3d83ae86f61e177a22f722aaea0ed7fb73b1095ffddfbd617b38476f7b06eb3"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Date": "Thu, 14 Dec 2017 14:03:49 GMT",
+            "Server": "nginx",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"f1c250a365074325866109ef8c895a48\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "319db5df-bc1b-46b0-86a9-6adb5563f078",
+            "X-Runtime": "0.014569",
+            "Content-Encoding": "gzip",
+            "X-Cache": "Miss from cloudfront",
+            "Via": "1.1 9aa5ad511f524bf7de1d1c4cc83930b5.cloudfront.net (CloudFront)",
+            "X-Amz-Cf-Id": "kmMSBn8MpLHJYv5L5KaLAR7PeyYOqYIaMp7eELIHiJAOnDCA6dBf9w=="
+        },
+        "body": "{\"success\":true,\"jpy\":\"0\",\"btc\":\"0\",\"eth\":\"0\",\"etc\":\"0\",\"dao\":\"0\",\"lsk\":\"0\",\"fct\":\"0\",\"xmr\":\"0\",\"rep\":\"0\",\"xrp\":\"0\",\"zec\":\"0\",\"xem\":\"0\",\"ltc\":\"0\",\"dash\":\"0\",\"bch\":\"0\",\"jpy_reserved\":\"0.0\",\"btc_reserved\":\"0.0\",\"eth_reserved\":\"0.0\",\"etc_reserved\":\"0.0\",\"dao_reserved\":\"0.0\",\"lsk_reserved\":\"0.0\",\"fct_reserved\":\"0.0\",\"xmr_reserved\":\"0.0\",\"rep_reserved\":\"0.0\",\"xrp_reserved\":\"0.0\",\"zec_reserved\":\"0.0\",\"xem_reserved\":\"0.0\",\"ltc_reserved\":\"0.0\",\"dash_reserved\":\"0.0\",\"bch_reserved\":\"0.0\",\"jpy_lend_in_use\":\"0.0\",\"btc_lend_in_use\":\"0.0\",\"eth_lend_in_use\":\"0.0\",\"etc_lend_in_use\":\"0.0\",\"dao_lend_in_use\":\"0.0\",\"lsk_lend_in_use\":\"0.0\",\"fct_lend_in_use\":\"0.0\",\"xmr_lend_in_use\":\"0.0\",\"rep_lend_in_use\":\"0.0\",\"xrp_lend_in_use\":\"0.0\",\"zec_lend_in_use\":\"0.0\",\"xem_lend_in_use\":\"0.0\",\"ltc_lend_in_use\":\"0.0\",\"dash_lend_in_use\":\"0.0\",\"bch_lend_in_use\":\"0.0\",\"jpy_lent\":\"0.0\",\"btc_lent\":\"0.0\",\"eth_lent\":\"0.0\",\"etc_lent\":\"0.0\",\"dao_lent\":\"0.0\",\"lsk_lent\":\"0.0\",\"fct_lent\":\"0.0\",\"xmr_lent\":\"0.0\",\"rep_lent\":\"0.0\",\"xrp_lent\":\"0.0\",\"zec_lent\":\"0.0\",\"xem_lent\":\"0.0\",\"ltc_lent\":\"0.0\",\"dash_lent\":\"0.0\",\"bch_lent\":\"0.0\",\"jpy_debt\":\"0.0\",\"btc_debt\":\"0.0\",\"eth_debt\":\"0.0\",\"etc_debt\":\"0.0\",\"dao_debt\":\"0.0\",\"lsk_debt\":\"0.0\",\"fct_debt\":\"0.0\",\"xmr_debt\":\"0.0\",\"rep_debt\":\"0.0\",\"xrp_debt\":\"0.0\",\"zec_debt\":\"0.0\",\"xem_debt\":\"0.0\",\"ltc_debt\":\"0.0\",\"dash_debt\":\"0.0\",\"bch_debt\":\"0.0\"}"
+    }
 }]

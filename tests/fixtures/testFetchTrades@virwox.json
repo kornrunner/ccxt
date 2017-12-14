@@ -166,4 +166,52 @@
         },
         "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513254640\"}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513260109&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 14:01:49 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513260109\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513260265&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 14:04:25 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513260265\"}"
+    }
 }]

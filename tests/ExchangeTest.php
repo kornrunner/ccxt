@@ -34,6 +34,7 @@ class ExchangeTest extends TestCase {
             'anxpro',       // not accessible
             'binance',      // bad apiKey
             'bitcoincoid',  // nonce
+            'btctradeua',   // not accessible
             'bitfinex',     // nonce
             'bitfinex2',    // not accessible
             'bitlish',      // not accessible

@@ -134,4 +134,72 @@
         },
         "body": "{\"success\":1,\"balances\":{\"BTC\":{\"available\":\"0\",\"locked\":\"0\"},\"BCC\":{\"available\":\"0\",\"locked\":\"0\"},\"PLN\":{\"available\":\"0\",\"locked\":\"0\"},\"EUR\":{\"available\":\"0\",\"locked\":\"0\"},\"GAME\":{\"available\":\"0\",\"locked\":\"0\"},\"LSK\":{\"available\":\"0\",\"locked\":\"0\"},\"USD\":{\"available\":\"0\",\"locked\":\"0\"},\"ETH\":{\"available\":\"0\",\"locked\":\"0\"},\"LTC\":{\"available\":\"0\",\"locked\":\"0\"},\"DASH\":{\"available\":\"0\",\"locked\":\"0\"}},\"addresses\":{},\"fee\":\"0.43\"}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/bitbay.net\/API\/Trading\/tradingApi.php",
+        "headers": {
+            "Host": "bitbay.net",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "API-Key": "3faec3e5458d24809a68fbaf0e97245b",
+            "API-Hash": "32e6362202f49fa6af81a3dd4466af5509128e08ac526fee5497396e023ab46896a6b553152a85336f81ed67b023c572ac6b2a0262a891ae1dd18e87cd506881"
+        },
+        "body": "method=info&moment=1513260064"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 14:01:04 GMT",
+            "Content-Type": "text\/plain;charset=UTF-8",
+            "Content-Length": "142",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=df484e73ecabf425b7e56d4aec75560131513260064; expires=Fri, 14-Dec-18 14:01:04 GMT; path=\/; domain=.bitbay.net; HttpOnly",
+            "Content-Disposition": "inline;filename=f.txt",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "sameorigin",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1b16c49d27c48-BEG"
+        },
+        "body": "{\"success\":1,\"balances\":{\"BTC\":{\"available\":\"0\",\"locked\":\"0\"},\"BCC\":{\"available\":\"0\",\"locked\":\"0\"},\"PLN\":{\"available\":\"0\",\"locked\":\"0\"},\"EUR\":{\"available\":\"0\",\"locked\":\"0\"},\"GAME\":{\"available\":\"0\",\"locked\":\"0\"},\"LSK\":{\"available\":\"0\",\"locked\":\"0\"},\"USD\":{\"available\":\"0\",\"locked\":\"0\"},\"ETH\":{\"available\":\"0\",\"locked\":\"0\"},\"LTC\":{\"available\":\"0\",\"locked\":\"0\"},\"DASH\":{\"available\":\"0\",\"locked\":\"0\"}},\"addresses\":{},\"fee\":\"0.43\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/bitbay.net\/API\/Trading\/tradingApi.php",
+        "headers": {
+            "Host": "bitbay.net",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "API-Key": "3faec3e5458d24809a68fbaf0e97245b",
+            "API-Hash": "22306f0de4246ea51783db590cf51d8800c67da063ceaf5014a3940b2b5b586a1c2653c10374694eecd103b13890d9abfac2999e1985a4ec397ab5ab893e6c2b"
+        },
+        "body": "method=info&moment=1513260220"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 14:03:40 GMT",
+            "Content-Type": "text\/plain;charset=UTF-8",
+            "Content-Length": "142",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d21ba4b9277f5b121da5a282f6a64a2de1513260220; expires=Fri, 14-Dec-18 14:03:40 GMT; path=\/; domain=.bitbay.net; HttpOnly",
+            "Content-Disposition": "inline;filename=f.txt",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "sameorigin",
+            "Vary": "Accept-Encoding",
+            "Content-Encoding": "gzip",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1b53b5f967c96-BEG"
+        },
+        "body": "{\"success\":1,\"balances\":{\"BTC\":{\"available\":\"0\",\"locked\":\"0\"},\"BCC\":{\"available\":\"0\",\"locked\":\"0\"},\"PLN\":{\"available\":\"0\",\"locked\":\"0\"},\"EUR\":{\"available\":\"0\",\"locked\":\"0\"},\"GAME\":{\"available\":\"0\",\"locked\":\"0\"},\"LSK\":{\"available\":\"0\",\"locked\":\"0\"},\"USD\":{\"available\":\"0\",\"locked\":\"0\"},\"ETH\":{\"available\":\"0\",\"locked\":\"0\"},\"LTC\":{\"available\":\"0\",\"locked\":\"0\"},\"DASH\":{\"available\":\"0\",\"locked\":\"0\"}},\"addresses\":{},\"fee\":\"0.43\"}"
+    }
 }]

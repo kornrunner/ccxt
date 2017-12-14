@@ -161,4 +161,70 @@
         },
         "body": "{\"success\":true,\"payload\":{\"balances\":[{\"currency\":\"bch\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"btc\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"etc\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"eth\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"xrp\",\"available\":\"0.00000000\",\"locked\":\"0.000000\",\"total\":\"0.000000\",\"pending_deposit\":\"0.000000\",\"pending_withdrawal\":\"0.000000\"},{\"currency\":\"mxn\",\"available\":\"0.00000000\",\"locked\":\"0.00\",\"total\":\"0.00\",\"pending_deposit\":\"0.00\",\"pending_withdrawal\":\"0.00\"}]}}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.bitso.com\/v3\/balance",
+        "headers": {
+            "Host": "api.bitso.com",
+            "Authorization": "Bitso xZnHRmdlgJ:1513260066:ca71f3999794ae690d64948f1664ee8d99815f4e30864d592af3cbe494126ac1",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 14:01:07 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dbe0994ec9d4f741d27d99e0871d9ca4d1513260066; expires=Fri, 14-Dec-18 14:01:06 GMT; path=\/; domain=.bitso.com; HttpOnly, __cflb=3694793051; path=\/; expires=Fri, 15-Dec-17 13:01:07 GMT",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
+            "BS": "02",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1b17ab8e07c54-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"success\":true,\"payload\":{\"balances\":[{\"currency\":\"bch\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"btc\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"etc\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"eth\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"xrp\",\"available\":\"0.00000000\",\"locked\":\"0.000000\",\"total\":\"0.000000\",\"pending_deposit\":\"0.000000\",\"pending_withdrawal\":\"0.000000\"},{\"currency\":\"mxn\",\"available\":\"0.00000000\",\"locked\":\"0.00\",\"total\":\"0.00\",\"pending_deposit\":\"0.00\",\"pending_withdrawal\":\"0.00\"}]}}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.bitso.com\/v3\/balance",
+        "headers": {
+            "Host": "api.bitso.com",
+            "Authorization": "Bitso xZnHRmdlgJ:1513260222:07599b9b62e4c1bb822aa84869bc55586930bf8bd828857a8c5d8f8604dea4f2",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 14:03:43 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dae409066c6502c111824df942eabb9451513260223; expires=Fri, 14-Dec-18 14:03:43 GMT; path=\/; domain=.bitso.com; HttpOnly, __cflb=1877559458; path=\/; expires=Fri, 15-Dec-17 13:03:43 GMT",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
+            "BS": "02",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1b54a0fd37c4e-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"success\":true,\"payload\":{\"balances\":[{\"currency\":\"bch\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"btc\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"etc\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"eth\",\"available\":\"0.00000000\",\"locked\":\"0.00000000\",\"total\":\"0.00000000\",\"pending_deposit\":\"0.00000000\",\"pending_withdrawal\":\"0.00000000\"},{\"currency\":\"xrp\",\"available\":\"0.00000000\",\"locked\":\"0.000000\",\"total\":\"0.000000\",\"pending_deposit\":\"0.000000\",\"pending_withdrawal\":\"0.000000\"},{\"currency\":\"mxn\",\"available\":\"0.00000000\",\"locked\":\"0.00\",\"total\":\"0.00\",\"pending_deposit\":\"0.00\",\"pending_withdrawal\":\"0.00\"}]}}"
+    }
 }]

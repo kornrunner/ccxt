@@ -130,4 +130,70 @@
         },
         "body": "{\"error\":false,\"errorMessage\":null,\"data\":{\"EUR\":{\"currency\":\"EUR\",\"balance\":0,\"reserved\":0,\"available\":0},\"CZK\":{\"currency\":\"CZK\",\"balance\":0,\"reserved\":0,\"available\":0},\"BCH\":{\"currency\":\"BCH\",\"balance\":0,\"reserved\":0,\"available\":0},\"BTC\":{\"currency\":\"BTC\",\"balance\":0,\"reserved\":0,\"available\":0},\"LTC\":{\"currency\":\"LTC\",\"balance\":0,\"reserved\":0,\"available\":0}}}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/coinmate.io\/api\/balances",
+        "headers": {
+            "Host": "coinmate.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "clientId=12092&nonce=1513260074&publicKey=RK3tVw8CEmHfvx5qryeNa2lvvQovU4W31qXqBuQDObY&signature=A45B613F8F79855250A9A9D96C6445F066681C1258D5B1CF1A9966890DB1D58C"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 14:01:15 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d57c64c9237d03391c2d52f40195515b91513260074; expires=Fri, 14-Dec-18 14:01:14 GMT; path=\/; domain=.coinmate.io; HttpOnly",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1b1ac7fe87c84-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"error\":false,\"errorMessage\":null,\"data\":{\"EUR\":{\"currency\":\"EUR\",\"balance\":0,\"reserved\":0,\"available\":0},\"CZK\":{\"currency\":\"CZK\",\"balance\":0,\"reserved\":0,\"available\":0},\"BCH\":{\"currency\":\"BCH\",\"balance\":0,\"reserved\":0,\"available\":0},\"BTC\":{\"currency\":\"BTC\",\"balance\":0,\"reserved\":0,\"available\":0},\"LTC\":{\"currency\":\"LTC\",\"balance\":0,\"reserved\":0,\"available\":0}}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/coinmate.io\/api\/balances",
+        "headers": {
+            "Host": "coinmate.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "clientId=12092&nonce=1513260230&publicKey=RK3tVw8CEmHfvx5qryeNa2lvvQovU4W31qXqBuQDObY&signature=58F06117A40A9761F8FF8123FDCF50BC7B1DA8CA3F72755B182E97141B98AD33"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 14 Dec 2017 14:03:50 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=db8b5ad1c10e08f0c012a4d63b4e454271513260230; expires=Fri, 14-Dec-18 14:03:50 GMT; path=\/; domain=.coinmate.io; HttpOnly",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cd1b5765f237c42-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"error\":false,\"errorMessage\":null,\"data\":{\"EUR\":{\"currency\":\"EUR\",\"balance\":0,\"reserved\":0,\"available\":0},\"CZK\":{\"currency\":\"CZK\",\"balance\":0,\"reserved\":0,\"available\":0},\"BCH\":{\"currency\":\"BCH\",\"balance\":0,\"reserved\":0,\"available\":0},\"BTC\":{\"currency\":\"BTC\",\"balance\":0,\"reserved\":0,\"available\":0},\"LTC\":{\"currency\":\"LTC\",\"balance\":0,\"reserved\":0,\"available\":0}}}"
+    }
 }]

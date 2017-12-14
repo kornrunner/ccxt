@@ -110,4 +110,60 @@
         },
         "body": "{\"accNo\":14127,\"btcBal\":\"0.00000000\",\"btcDeposit\":\"1KF4KhbHCRDiNP7nm89wMuoxxZiFKDNxC2\",\"email\":\"igor.kroitor@gmail.com\",\"error\":0,\"sekBal\":\"0.00\"}\n"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.fybse.se\/api\/SEK\/getaccinfo",
+        "headers": {
+            "Host": "www.fybse.se",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "gY7y57RlYqKN5ZI50O5C",
+            "sig": "a8ebedbb1ebd9ac97e9cf81851ce5caa2bb71fdd"
+        },
+        "body": "timestamp=1513260078"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "X-Frame-Options": "DENY",
+            "Content-Encoding": "gzip",
+            "Content-Type": "text\/html; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Date": "Thu, 14 Dec 2017 14:01:19 GMT",
+            "Server": "lighttpd\/1.4.33"
+        },
+        "body": "{\"accNo\":14127,\"btcBal\":\"0.00000000\",\"btcDeposit\":\"1KF4KhbHCRDiNP7nm89wMuoxxZiFKDNxC2\",\"email\":\"igor.kroitor@gmail.com\",\"error\":0,\"sekBal\":\"0.00\"}\n"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.fybse.se\/api\/SEK\/getaccinfo",
+        "headers": {
+            "Host": "www.fybse.se",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "gY7y57RlYqKN5ZI50O5C",
+            "sig": "4a647ab8ab4fe8717498707e5e3fca35c6f53845"
+        },
+        "body": "timestamp=1513260233"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "X-Frame-Options": "DENY",
+            "Content-Encoding": "gzip",
+            "Content-Type": "text\/html; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Date": "Thu, 14 Dec 2017 14:03:54 GMT",
+            "Server": "lighttpd\/1.4.33"
+        },
+        "body": "{\"accNo\":14127,\"btcBal\":\"0.00000000\",\"btcDeposit\":\"1KF4KhbHCRDiNP7nm89wMuoxxZiFKDNxC2\",\"email\":\"igor.kroitor@gmail.com\",\"error\":0,\"sekBal\":\"0.00\"}\n"
+    }
 }]

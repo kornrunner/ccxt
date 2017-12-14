@@ -126,4 +126,31 @@
         },
         "body": "{\"msg_count\": 0, \"accounts\": [{\"currency\": \"UAH\", \"balance\": \"0.00000000\"}, {\"currency\": \"BTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"LTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"NVC\", \"balance\": \"0.00000000\"}, {\"currency\": \"DASH\", \"balance\": \"0.00000000\"}, {\"currency\": \"VTC\", \"balance\": \"0.00000000\"}, {\"currency\": \"PPC\", \"balance\": \"0.00000000\"}, {\"currency\": \"HIRO\", \"balance\": \"0.00000000\"}, {\"currency\": \"DOGE\", \"balance\": \"0.00000000\"}, {\"currency\": \"XMR\", \"balance\": \"0.00000000\"}, {\"currency\": \"CLR\", \"balance\": \"0.00000000\"}, {\"currency\": \"RMS\", \"balance\": \"0.00000000\"}, {\"currency\": \"SIB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ITI\", \"balance\": \"0.00000000\"}, {\"currency\": \"KRB\", \"balance\": \"0.00000000\"}, {\"currency\": \"ETH\", \"balance\": \"0.00000000\"}, {\"currency\": \"ZEC\", \"balance\": \"0.00000000\"}, {\"currency\": \"BCH\", \"balance\": \"0.00000000\"}], \"use_f2a\": false, \"notify_count\": 0}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/btc-trade.com.ua\/api\/balance",
+        "headers": {
+            "Host": "btc-trade.com.ua",
+            "public-key": "dd5de6b608f21776665da9098232bfb47445cc42485a7258350a2d426a14367c",
+            "api-sign": "842b80449da3073e5e7c409858a24dfc095a45f363820fba9aa003ac15f47263",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "out_order_id=1513260071834&nonce=1513260071834"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "502",
+            "message": "Bad Gateway"
+        },
+        "headers": {
+            "Server": "nginx\/1.8.1",
+            "Date": "Thu, 14 Dec 2017 14:01:12 GMT",
+            "Content-Type": "text\/html",
+            "Content-Length": "172",
+            "Connection": "close"
+        },
+        "body": "<html>\r\n<head><title>502 Bad Gateway<\/title><\/head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502 Bad Gateway<\/h1><\/center>\r\n<hr><center>nginx\/1.8.1<\/center>\r\n<\/body>\r\n<\/html>\r\n"
+    }
 }]

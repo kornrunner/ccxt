@@ -141,4 +141,62 @@
         },
         "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513260087&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "e9d1cbb4739c101378f61b724781d45ea460d19249bb43b5ec562e6edbe6d7f3"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 14:01:28 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513260243&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "3be10c273883ac215d2de07d6229d2e134bc1582279fafdf40a1c98b2a9e5f3e"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 14 Dec 2017 14:04:04 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
 }]
