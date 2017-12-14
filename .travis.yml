@@ -9,12 +9,9 @@ install:
   - travis_retry composer self-update
   - travis_retry composer install --prefer-dist --dev
 
-before_script:
-  - phpenv config-add travis.php.ini
-
 script:
   - mkdir -p build/logs
-  - vendor/bin/phpunit -c phpunit.xml.dist
+  - phpdbg -qrr vendor/bin/phpunit -c phpunit.xml.dist
 
 after_script:
   - php vendor/bin/coveralls -v
