@@ -58,6 +58,7 @@ class ExchangeTest extends TestCase {
             'zaif',         // signature mismatch
             'fybse',        // travis
             'virwox',       // travis
+            'vaultoro',     // travis
         ],
         'testFetchTrades' => [
             'bitcoincoid',  // not accessible
@@ -102,6 +103,7 @@ class ExchangeTest extends TestCase {
             'okcoincny',    // not accessible
             'huobicny',     // empty response
             'poloniex',     // travis
+            'bitlish',      // travis
         ],
     ];
 
