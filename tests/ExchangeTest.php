@@ -28,6 +28,7 @@ class ExchangeTest extends TestCase {
             'yunbi',    // not accessible
             'bitso',    // not accessible
             'kraken',   // timeout
+            'xbtce',    // travis
         ],
         'testFetchBalance' => [
             'anxpro',       // not accessible
@@ -93,12 +94,14 @@ class ExchangeTest extends TestCase {
             'kraken',       // string instead of array @336
             'okcoincny',    // not accessible
             'virwox',       // not implemented
+            'xbtce',        // travis
         ],
         'testFetchOHLCV' => [
             'btcexchange',  // bad offset in response
             'huobi',        // not accessible
             'okcoincny',    // not accessible
             'huobicny',     // empty response
+            'poloniex',     // travis
         ],
     ];
 
