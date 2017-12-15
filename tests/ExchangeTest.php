@@ -59,6 +59,7 @@ class ExchangeTest extends TestCase {
             'fybse',        // travis
             'virwox',       // travis
             'vaultoro',     // travis
+            'bitso',        // travis
         ],
         'testFetchTrades' => [
             'bitcoincoid',  // not accessible
