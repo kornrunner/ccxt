@@ -42,6 +42,7 @@ class ExchangeTest extends TestCase {
             'bxinth',       // no apiKey
             'chbtc',        // bad offset in response
             'coingi',       // not accessible
+            'coincheck',    // bad apiKey
             'dsx',          // bad apiKey
             'flowbtc',      // bad offset in response
             'huobi',        // bad apiKey
@@ -58,7 +59,6 @@ class ExchangeTest extends TestCase {
             'virwox',       // travis
         ],
         'testFetchTrades' => [
-            'allcoin',      // not accessible
             'bitcoincoid',  // not accessible
             'bitstamp1',    // array to string @142
             'btcexchange',  // bad offset in response
@@ -80,7 +80,6 @@ class ExchangeTest extends TestCase {
             'xbtce',
         ],
         'testFetchOrderBook' => [
-            'allcoin',      // not accessible
             'anxpro',       // not accessible
             'bitcoincoid',  // not accessible
             'bitstamp1',    // array to string @74
@@ -95,17 +94,23 @@ class ExchangeTest extends TestCase {
             'okcoincny',    // not accessible
             'virwox',       // not implemented
         ],
-    ];
-
-    private static $proxy = [
-        'ccex' => 'https://cors-anywhere.herokuapp.com/',
-
+        'testFetchOHLCV' => [
+            'btcexchange',  // bad offset in response
+            'huobi',        // not accessible
+            'okcoincny',    // not accessible
+            'huobicny',     // empty response
+        ],
     ];
 
 /**
  * https://api-public.sandbox.gdax.com
  * https://crossorigin.me/
  */
+    private static $proxy = [
+        'ccex' => 'https://cors-anywhere.herokuapp.com/',
+        'allcoin' => 'https://cors-anywhere.herokuapp.com/',      // not accessible
+    ];
+
     private static $api_url = [
         'gdax' => 'https://api-public.sandbox.gdax.com',
     ];
@@ -222,7 +227,7 @@ class ExchangeTest extends TestCase {
     public function testFetchOrderBook(string $name) {
         $exchange = self::exchangeFactory($name);
         if (in_array($exchange->id, array_merge(self::$skip[__FUNCTION__], self::$skip['testLoadMarkets']))) {
-            return $this->markTestSkipped("{$exchange->id}: fetch fetch order book skipped");
+            return $this->markTestSkipped("{$exchange->id}: fetch order book skipped");
         }
 
         if ($exchange->hasFetchOrderBook) {
@@ -237,6 +242,30 @@ class ExchangeTest extends TestCase {
             $this->assertNotEmpty($order_book);
         } else {
             $this->assertFalse($exchange->hasFetchOrderBook);
+        }
+    }
+
+    /**
+     * @dataProvider getExchangeClasses
+     */
+    public function testFetchOHLCV(string $name) {
+        $exchange = self::exchangeFactory($name);
+        if (in_array($exchange->id, array_merge(self::$skip[__FUNCTION__], self::$skip['testLoadMarkets']))) {
+            return $this->markTestSkipped("{$exchange->id}: fetch OHLCV skipped");
+        }
+
+        if ($exchange->hasFetchOHLCV) {
+            VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
+            $markets = $exchange->load_markets();
+            VCR::eject();
+            $market = current($markets);
+
+            VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
+            $ohlcv = $exchange->fetch_ohlcv($market);
+            VCR::eject();
+            $this->assertNotEmpty($ohlcv);
+        } else {
+            $this->assertFalse($exchange->hasFetchOHLCV);
         }
     }
 

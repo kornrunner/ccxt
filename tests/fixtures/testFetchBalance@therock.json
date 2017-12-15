@@ -233,4 +233,106 @@
         },
         "body": "{\"balances\":[{\"currency\":\"BTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"LTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"NMC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"PPC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"DOGE\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"XRP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"Linden\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ETH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EUR\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"USD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"CAD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"GBP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ZEC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"BCH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EURN\",\"balance\":0.0,\"trading_balance\":0.0}]}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.therocktrading.com\/v1\/balances",
+        "headers": {
+            "Host": "api.therocktrading.com",
+            "X-TRT-KEY": "a521b8c93466ccf5fdcd2dcad1bb1b287e41ec2b",
+            "X-TRT-NONCE": "1513351826",
+            "X-TRT-SIGN": "ec645b88092e4c7c25aac4d72a93ef503c306cf1baa11884082d78bfdba057feea7e75d99cb96e5e1b5a38e85d7626c904033f2d7a17e4ac76b911fc12790703"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Fri, 15 Dec 2017 15:30:27 GMT",
+            "Content-Type": "application\/json; charset=utf-8; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"f2ed99d4c13b69abe6af0123aac5dc79\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "17839cfa-f300-44be-a54e-2475d45f4aea",
+            "X-Runtime": "0.707244",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"balances\":[{\"currency\":\"BTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"LTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"NMC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"PPC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"DOGE\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"XRP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"Linden\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ETH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EUR\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"USD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"CAD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"GBP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ZEC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"BCH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EURN\",\"balance\":0.0,\"trading_balance\":0.0}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.therocktrading.com\/v1\/balances",
+        "headers": {
+            "Host": "api.therocktrading.com",
+            "X-TRT-KEY": "a521b8c93466ccf5fdcd2dcad1bb1b287e41ec2b",
+            "X-TRT-NONCE": "1513352081",
+            "X-TRT-SIGN": "b545f5136265563cd12af65965661faf0d374c3d569e31354b0fa76fa3ef81319f761ac7c14c7ab05663dcd32738b985324dbc39bf1c1a5194a054d074dd3588"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Fri, 15 Dec 2017 15:34:42 GMT",
+            "Content-Type": "application\/json; charset=utf-8; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"f2ed99d4c13b69abe6af0123aac5dc79\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "71a3abe8-76e8-422b-9717-ae7fdababd3d",
+            "X-Runtime": "0.556457",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"balances\":[{\"currency\":\"BTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"LTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"NMC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"PPC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"DOGE\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"XRP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"Linden\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ETH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EUR\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"USD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"CAD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"GBP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ZEC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"BCH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EURN\",\"balance\":0.0,\"trading_balance\":0.0}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.therocktrading.com\/v1\/balances",
+        "headers": {
+            "Host": "api.therocktrading.com",
+            "X-TRT-KEY": "a521b8c93466ccf5fdcd2dcad1bb1b287e41ec2b",
+            "X-TRT-NONCE": "1513353941",
+            "X-TRT-SIGN": "a54823020d6ec3a3cf60b68aff0e4f5f3e30bdbcc2c9d4d4005eacd0505e00a120e40567ddfb6bab534c64ccaf358775258c448e4d084135ab6be7a96a99644f"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Fri, 15 Dec 2017 16:05:41 GMT",
+            "Content-Type": "application\/json; charset=utf-8; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"f2ed99d4c13b69abe6af0123aac5dc79\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "31f504f7-77ef-456d-a075-4c0e6e085a10",
+            "X-Runtime": "0.124168",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"balances\":[{\"currency\":\"BTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"LTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"NMC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"PPC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"DOGE\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"XRP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"Linden\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ETH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EUR\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"USD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"CAD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"GBP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ZEC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"BCH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EURN\",\"balance\":0.0,\"trading_balance\":0.0}]}"
+    }
 }]

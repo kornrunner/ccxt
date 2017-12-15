@@ -196,4 +196,103 @@
         },
         "body": "{\"btc_available\":\"0.00000000\",\"btc_reserved\":\"0.00000000\",\"btc_balance\":\"0.00000000\",\"bch_available\":\"0.00000000\",\"bch_reserved\":\"0.00000000\",\"bch_balance\":\"0.00000000\",\"btg_available\":\"0.00000000\",\"btg_reserved\":\"0.00000000\",\"btg_balance\":\"0.00000000\",\"eth_available\":\"0.00000000\",\"eth_reserved\":\"0.00000000\",\"eth_balance\":\"0.00000000\",\"ltc_available\":\"0.00000000\",\"ltc_reserved\":\"0.00000000\",\"ltc_balance\":\"0.00000000\",\"etc_available\":\"0.00000000\",\"etc_reserved\":\"0.00000000\",\"etc_balance\":\"0.00000000\",\"cad_available\":\"0.00\",\"cad_reserved\":\"0.00\",\"cad_balance\":\"0.00\",\"usd_available\":\"0.00\",\"usd_reserved\":\"0.00\",\"usd_balance\":\"0.00\",\"xau_available\":\"0.000000\",\"xau_reserved\":\"0.000000\",\"xau_balance\":\"0.000000\",\"fee\":\"0.5000\",\"fees\":{\"btc_cad\":\"0.5000\",\"btc_usd\":\"0.5000\",\"eth_btc\":\"0.2000\",\"eth_cad\":\"0.5000\",\"ltc_cad\":\"0.5000\",\"bch_cad\":\"0.5000\",\"btg_cad\":\"0.5000\"}}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/api.quadrigacx.com\/v2\/balance",
+        "headers": {
+            "Host": "api.quadrigacx.com",
+            "Content-Type": "application\/json"
+        },
+        "body": "{\"key\":\"qvFrjjJEEF\",\"nonce\":1513351823,\"signature\":\"d46bfc0f68f762cd735feead8d38a2f6cfa05232cc89667319b3df6706eec8dc\"}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Fri, 15 Dec 2017 15:30:23 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "199",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d73c110f9a44f866171e3f9ed74fb21be1513351823; expires=Sat, 15-Dec-18 15:30:23 GMT; path=\/; domain=.quadrigacx.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Encoding": "gzip",
+            "Vary": "Accept-Encoding",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cda71a1e82e7c72-BEG"
+        },
+        "body": "{\"btc_available\":\"0.00000000\",\"btc_reserved\":\"0.00000000\",\"btc_balance\":\"0.00000000\",\"bch_available\":\"0.00000000\",\"bch_reserved\":\"0.00000000\",\"bch_balance\":\"0.00000000\",\"btg_available\":\"0.00000000\",\"btg_reserved\":\"0.00000000\",\"btg_balance\":\"0.00000000\",\"eth_available\":\"0.00000000\",\"eth_reserved\":\"0.00000000\",\"eth_balance\":\"0.00000000\",\"ltc_available\":\"0.00000000\",\"ltc_reserved\":\"0.00000000\",\"ltc_balance\":\"0.00000000\",\"etc_available\":\"0.00000000\",\"etc_reserved\":\"0.00000000\",\"etc_balance\":\"0.00000000\",\"cad_available\":\"0.00\",\"cad_reserved\":\"0.00\",\"cad_balance\":\"0.00\",\"usd_available\":\"0.00\",\"usd_reserved\":\"0.00\",\"usd_balance\":\"0.00\",\"xau_available\":\"0.000000\",\"xau_reserved\":\"0.000000\",\"xau_balance\":\"0.000000\",\"fee\":\"0.5000\",\"fees\":{\"btc_cad\":\"0.5000\",\"btc_usd\":\"0.5000\",\"eth_btc\":\"0.2000\",\"eth_cad\":\"0.5000\",\"ltc_cad\":\"0.5000\",\"bch_cad\":\"0.5000\",\"btg_cad\":\"0.5000\"}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/api.quadrigacx.com\/v2\/balance",
+        "headers": {
+            "Host": "api.quadrigacx.com",
+            "Content-Type": "application\/json"
+        },
+        "body": "{\"key\":\"qvFrjjJEEF\",\"nonce\":1513352078,\"signature\":\"f94cfa5b16d4c93d5efe1dd1e3a104be5007e218ba186f802b879c7f91212fea\"}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Fri, 15 Dec 2017 15:34:39 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "199",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d63be13fb24f147167e8a0881c429baf31513352078; expires=Sat, 15-Dec-18 15:34:38 GMT; path=\/; domain=.quadrigacx.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Encoding": "gzip",
+            "Vary": "Accept-Encoding",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cda77dd3c427c6c-BEG"
+        },
+        "body": "{\"btc_available\":\"0.00000000\",\"btc_reserved\":\"0.00000000\",\"btc_balance\":\"0.00000000\",\"bch_available\":\"0.00000000\",\"bch_reserved\":\"0.00000000\",\"bch_balance\":\"0.00000000\",\"btg_available\":\"0.00000000\",\"btg_reserved\":\"0.00000000\",\"btg_balance\":\"0.00000000\",\"eth_available\":\"0.00000000\",\"eth_reserved\":\"0.00000000\",\"eth_balance\":\"0.00000000\",\"ltc_available\":\"0.00000000\",\"ltc_reserved\":\"0.00000000\",\"ltc_balance\":\"0.00000000\",\"etc_available\":\"0.00000000\",\"etc_reserved\":\"0.00000000\",\"etc_balance\":\"0.00000000\",\"cad_available\":\"0.00\",\"cad_reserved\":\"0.00\",\"cad_balance\":\"0.00\",\"usd_available\":\"0.00\",\"usd_reserved\":\"0.00\",\"usd_balance\":\"0.00\",\"xau_available\":\"0.000000\",\"xau_reserved\":\"0.000000\",\"xau_balance\":\"0.000000\",\"fee\":\"0.5000\",\"fees\":{\"btc_cad\":\"0.5000\",\"btc_usd\":\"0.5000\",\"eth_btc\":\"0.2000\",\"eth_cad\":\"0.5000\",\"ltc_cad\":\"0.5000\",\"bch_cad\":\"0.5000\",\"btg_cad\":\"0.5000\"}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/api.quadrigacx.com\/v2\/balance",
+        "headers": {
+            "Host": "api.quadrigacx.com",
+            "Content-Type": "application\/json"
+        },
+        "body": "{\"key\":\"qvFrjjJEEF\",\"nonce\":1513353938,\"signature\":\"b7760d1d5c884ce6434f9d0f50ba9b1254dcdc9d9798b89ec2ef5c835812f2b7\"}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Fri, 15 Dec 2017 16:05:38 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "199",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d7dd50877936dbed76b9e4fc1b1173a621513353938; expires=Sat, 15-Dec-18 16:05:38 GMT; path=\/; domain=.quadrigacx.com; HttpOnly",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Encoding": "gzip",
+            "Vary": "Accept-Encoding",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cdaa54559247c72-BEG"
+        },
+        "body": "{\"btc_available\":\"0.00000000\",\"btc_reserved\":\"0.00000000\",\"btc_balance\":\"0.00000000\",\"bch_available\":\"0.00000000\",\"bch_reserved\":\"0.00000000\",\"bch_balance\":\"0.00000000\",\"btg_available\":\"0.00000000\",\"btg_reserved\":\"0.00000000\",\"btg_balance\":\"0.00000000\",\"eth_available\":\"0.00000000\",\"eth_reserved\":\"0.00000000\",\"eth_balance\":\"0.00000000\",\"ltc_available\":\"0.00000000\",\"ltc_reserved\":\"0.00000000\",\"ltc_balance\":\"0.00000000\",\"etc_available\":\"0.00000000\",\"etc_reserved\":\"0.00000000\",\"etc_balance\":\"0.00000000\",\"cad_available\":\"0.00\",\"cad_reserved\":\"0.00\",\"cad_balance\":\"0.00\",\"usd_available\":\"0.00\",\"usd_reserved\":\"0.00\",\"usd_balance\":\"0.00\",\"xau_available\":\"0.000000\",\"xau_reserved\":\"0.000000\",\"xau_balance\":\"0.000000\",\"fee\":\"0.5000\",\"fees\":{\"btc_cad\":\"0.5000\",\"btc_usd\":\"0.5000\",\"eth_btc\":\"0.2000\",\"eth_cad\":\"0.5000\",\"ltc_cad\":\"0.5000\",\"bch_cad\":\"0.5000\",\"btg_cad\":\"0.5000\"}}"
+    }
 }]

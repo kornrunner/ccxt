@@ -1,0 +1,24 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/be.huobi.com\/market\/history\/kline?symbol=bcccny&period=1min&size=2000",
+        "headers": {
+            "Host": "be.huobi.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Fri, 15 Dec 2017 15:23:27 GMT",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__jsluid=e2d8292233d83fb81d98049365916895; max-age=31536000; path=\/; HttpOnly",
+            "X-Cache": "bypass"
+        },
+        "body": "{\"status\":\"ok\",\"ch\":\"market.bcccny.kline.1min\",\"ts\":1513351407112,\"data\":[]}"
+    }
+}]

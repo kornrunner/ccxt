@@ -199,4 +199,91 @@
         },
         "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513351828&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "aa108397996feac2702264a6857984baf2a5189973eade6ad66c58582c8718fc"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Fri, 15 Dec 2017 15:30:28 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513352082&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "357aa425caeebe17e673cc951d2f7e0d3ae768e52ad830ec84123d14cc409a4a"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Fri, 15 Dec 2017 15:34:43 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.vaultoro.com\/1\/balance?nonce=1513353942&apikey=7omZ3XSd74T87JSCsTyKTtD5ppRBarQL",
+        "headers": {
+            "Host": "api.vaultoro.com",
+            "Content-Type": "application\/json",
+            "X-Signature": "0684be9e6ddccf9a3174c774bd0cd1d8adb019129536d1489c7a26363e93a10b"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Fri, 15 Dec 2017 16:05:42 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+            "Strict-Transport-Security": "max-age=31536000"
+        },
+        "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"currency_code\": \"btc\",\n      \"cash\": 0,\n      \"reserved\": 0\n    },\n    {\n      \"currency_code\": \"gld\",\n      \"cash\": 0,\n      \"reserved\": 0\n    }\n  ]\n}"
+    }
 }]

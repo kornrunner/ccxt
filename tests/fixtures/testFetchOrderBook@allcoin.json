@@ -1,0 +1,35 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/cors-anywhere.herokuapp.com\/https:\/\/api.allcoin.com\/api\/v1\/depth?symbol=eth_btc",
+        "headers": {
+            "Host": "cors-anywhere.herokuapp.com",
+            "Origin": "*"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Connection": "keep-alive",
+            "X-Request-Url": "https:\/\/api.allcoin.com\/api\/v1\/depth?symbol=eth_btc",
+            "Cache-Control": "no-cache",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Date": "Fri, 15 Dec 2017 15:31:02 GMT",
+            "Expires": "-1",
+            "Pragma": "no-cache",
+            "Server": "Microsoft-IIS\/8.5",
+            "X-Aspnet-Version": "4.0.30319",
+            "X-Powered-By": "ASP.NET",
+            "Content-Length": "4128",
+            "X-Final-Url": "https:\/\/api.allcoin.com\/api\/v1\/depth?symbol=eth_btc",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Expose-Headers": "cache-control,content-type,date,expires,pragma,server,x-aspnet-version,x-powered-by,content-length,connection,x-final-url,access-control-allow-origin",
+            "Via": "1.1 vegur"
+        },
+        "body": "{\r\n  \"bids\": [\r\n    [\r\n      0.0370006,\r\n      0.313\r\n    ],\r\n    [\r\n      0.0370005,\r\n      0.4519\r\n    ],\r\n    [\r\n      0.0370004,\r\n      0.0351\r\n    ],\r\n    [\r\n      0.0370003,\r\n      0.4693\r\n    ],\r\n    [\r\n      0.0370001,\r\n      0.2204\r\n    ],\r\n    [\r\n      0.037,\r\n      0.1\r\n    ],\r\n    [\r\n      0.0361103,\r\n      0.2225\r\n    ],\r\n    [\r\n      0.0361102,\r\n      6.0\r\n    ],\r\n    [\r\n      0.036,\r\n      0.1\r\n    ],\r\n    [\r\n      0.03589,\r\n      1.7876\r\n    ],\r\n    [\r\n      0.0357012,\r\n      1.6742\r\n    ],\r\n    [\r\n      0.0355374,\r\n      0.2136\r\n    ],\r\n    [\r\n      0.0354383,\r\n      0.2558\r\n    ],\r\n    [\r\n      0.035424,\r\n      0.087\r\n    ],\r\n    [\r\n      0.0353706,\r\n      3.2\r\n    ],\r\n    [\r\n      0.03537,\r\n      1.6981\r\n    ],\r\n    [\r\n      0.035,\r\n      0.1\r\n    ],\r\n    [\r\n      0.034,\r\n      0.1\r\n    ],\r\n    [\r\n      0.033,\r\n      0.1\r\n    ],\r\n    [\r\n      0.032,\r\n      0.421\r\n    ],\r\n    [\r\n      0.031,\r\n      0.1\r\n    ],\r\n    [\r\n      0.03,\r\n      0.9576\r\n    ],\r\n    [\r\n      0.029,\r\n      0.1\r\n    ],\r\n    [\r\n      0.028952,\r\n      2.5897\r\n    ],\r\n    [\r\n      0.028,\r\n      0.1\r\n    ],\r\n    [\r\n      0.027,\r\n      0.1\r\n    ],\r\n    [\r\n      0.026,\r\n      3.5116\r\n    ],\r\n    [\r\n      0.025,\r\n      0.1\r\n    ],\r\n    [\r\n      0.024,\r\n      0.1\r\n    ],\r\n    [\r\n      0.023,\r\n      0.1\r\n    ],\r\n    [\r\n      0.022,\r\n      0.7409\r\n    ],\r\n    [\r\n      0.021,\r\n      0.1\r\n    ],\r\n    [\r\n      0.02,\r\n      0.1\r\n    ],\r\n    [\r\n      0.01,\r\n      4.3\r\n    ],\r\n    [\r\n      0.009,\r\n      0.1\r\n    ],\r\n    [\r\n      0.008,\r\n      0.1\r\n    ],\r\n    [\r\n      0.007,\r\n      0.1\r\n    ],\r\n    [\r\n      0.0062904,\r\n      0.99\r\n    ],\r\n    [\r\n      0.006,\r\n      0.1\r\n    ],\r\n    [\r\n      0.00581,\r\n      4.8\r\n    ],\r\n    [\r\n      0.00573,\r\n      11.65\r\n    ],\r\n    [\r\n      0.00566,\r\n      7.0\r\n    ],\r\n    [\r\n      0.00555,\r\n      11.0\r\n    ],\r\n    [\r\n      0.00544,\r\n      9.7\r\n    ],\r\n    [\r\n      0.00538,\r\n      17.0\r\n    ],\r\n    [\r\n      0.00533,\r\n      12.0\r\n    ],\r\n    [\r\n      0.00528,\r\n      4.0\r\n    ],\r\n    [\r\n      0.00526,\r\n      8.0\r\n    ],\r\n    [\r\n      0.00522,\r\n      12.0\r\n    ],\r\n    [\r\n      0.00516,\r\n      14.0\r\n    ],\r\n    [\r\n      0.00512,\r\n      19.0\r\n    ],\r\n    [\r\n      0.00501,\r\n      5.0\r\n    ],\r\n    [\r\n      0.005,\r\n      11.2\r\n    ]\r\n  ],\r\n  \"asks\": [\r\n    [\r\n      0.0399345,\r\n      1.0\r\n    ],\r\n    [\r\n      0.0399376,\r\n      7.837\r\n    ],\r\n    [\r\n      0.04,\r\n      0.489\r\n    ],\r\n    [\r\n      0.0400678,\r\n      0.1291\r\n    ],\r\n    [\r\n      0.041,\r\n      0.1\r\n    ],\r\n    [\r\n      0.042,\r\n      0.9757\r\n    ],\r\n    [\r\n      0.043,\r\n      0.1\r\n    ],\r\n    [\r\n      0.0434389,\r\n      1.4562\r\n    ],\r\n    [\r\n      0.043439,\r\n      0.1816\r\n    ],\r\n    [\r\n      0.0434444,\r\n      6.9486\r\n    ],\r\n    [\r\n      0.0434551,\r\n      0.3286\r\n    ],\r\n    [\r\n      0.04382,\r\n      2.0\r\n    ],\r\n    [\r\n      0.043921,\r\n      4.0\r\n    ],\r\n    [\r\n      0.044,\r\n      0.1\r\n    ],\r\n    [\r\n      0.045,\r\n      0.1\r\n    ],\r\n    [\r\n      0.04582,\r\n      6.3009\r\n    ],\r\n    [\r\n      0.046,\r\n      0.1\r\n    ],\r\n    [\r\n      0.0465,\r\n      0.0095\r\n    ],\r\n    [\r\n      0.047,\r\n      0.1\r\n    ],\r\n    [\r\n      0.048,\r\n      0.6\r\n    ],\r\n    [\r\n      0.049,\r\n      0.1\r\n    ],\r\n    [\r\n      0.05,\r\n      10.6\r\n    ],\r\n    [\r\n      0.051,\r\n      3.6675\r\n    ],\r\n    [\r\n      0.0545,\r\n      0.01\r\n    ],\r\n    [\r\n      0.0552465,\r\n      0.8304\r\n    ],\r\n    [\r\n      0.0552944,\r\n      0.0543\r\n    ],\r\n    [\r\n      0.0568,\r\n      0.1068\r\n    ],\r\n    [\r\n      0.06,\r\n      4.2107\r\n    ],\r\n    [\r\n      0.063,\r\n      2.0677\r\n    ],\r\n    [\r\n      0.06375,\r\n      0.2872\r\n    ],\r\n    [\r\n      0.0644999,\r\n      0.51\r\n    ],\r\n    [\r\n      0.076,\r\n      0.218\r\n    ],\r\n    [\r\n      0.0774,\r\n      2.1251\r\n    ],\r\n    [\r\n      0.08,\r\n      18.147\r\n    ],\r\n    [\r\n      0.085,\r\n      0.02\r\n    ],\r\n    [\r\n      0.087,\r\n      0.2069\r\n    ],\r\n    [\r\n      0.0885051,\r\n      0.0333\r\n    ],\r\n    [\r\n      0.09,\r\n      0.1971\r\n    ],\r\n    [\r\n      0.1,\r\n      9.2293\r\n    ],\r\n    [\r\n      0.158,\r\n      1.0\r\n    ],\r\n    [\r\n      0.201,\r\n      0.3905\r\n    ]\r\n  ],\r\n  \"rawBids\": null,\r\n  \"rawAsks\": null,\r\n  \"id\": 0,\r\n  \"seq\": 0\r\n}"
+    }
+}]

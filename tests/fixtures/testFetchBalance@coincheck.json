@@ -220,4 +220,76 @@
         },
         "body": "{\"success\":true,\"jpy\":\"0\",\"btc\":\"0\",\"eth\":\"0\",\"etc\":\"0\",\"dao\":\"0\",\"lsk\":\"0\",\"fct\":\"0\",\"xmr\":\"0\",\"rep\":\"0\",\"xrp\":\"0\",\"zec\":\"0\",\"xem\":\"0\",\"ltc\":\"0\",\"dash\":\"0\",\"bch\":\"0\",\"jpy_reserved\":\"0.0\",\"btc_reserved\":\"0.0\",\"eth_reserved\":\"0.0\",\"etc_reserved\":\"0.0\",\"dao_reserved\":\"0.0\",\"lsk_reserved\":\"0.0\",\"fct_reserved\":\"0.0\",\"xmr_reserved\":\"0.0\",\"rep_reserved\":\"0.0\",\"xrp_reserved\":\"0.0\",\"zec_reserved\":\"0.0\",\"xem_reserved\":\"0.0\",\"ltc_reserved\":\"0.0\",\"dash_reserved\":\"0.0\",\"bch_reserved\":\"0.0\",\"jpy_lend_in_use\":\"0.0\",\"btc_lend_in_use\":\"0.0\",\"eth_lend_in_use\":\"0.0\",\"etc_lend_in_use\":\"0.0\",\"dao_lend_in_use\":\"0.0\",\"lsk_lend_in_use\":\"0.0\",\"fct_lend_in_use\":\"0.0\",\"xmr_lend_in_use\":\"0.0\",\"rep_lend_in_use\":\"0.0\",\"xrp_lend_in_use\":\"0.0\",\"zec_lend_in_use\":\"0.0\",\"xem_lend_in_use\":\"0.0\",\"ltc_lend_in_use\":\"0.0\",\"dash_lend_in_use\":\"0.0\",\"bch_lend_in_use\":\"0.0\",\"jpy_lent\":\"0.0\",\"btc_lent\":\"0.0\",\"eth_lent\":\"0.0\",\"etc_lent\":\"0.0\",\"dao_lent\":\"0.0\",\"lsk_lent\":\"0.0\",\"fct_lent\":\"0.0\",\"xmr_lent\":\"0.0\",\"rep_lent\":\"0.0\",\"xrp_lent\":\"0.0\",\"zec_lent\":\"0.0\",\"xem_lent\":\"0.0\",\"ltc_lent\":\"0.0\",\"dash_lent\":\"0.0\",\"bch_lent\":\"0.0\",\"jpy_debt\":\"0.0\",\"btc_debt\":\"0.0\",\"eth_debt\":\"0.0\",\"etc_debt\":\"0.0\",\"dao_debt\":\"0.0\",\"lsk_debt\":\"0.0\",\"fct_debt\":\"0.0\",\"xmr_debt\":\"0.0\",\"rep_debt\":\"0.0\",\"xrp_debt\":\"0.0\",\"zec_debt\":\"0.0\",\"xem_debt\":\"0.0\",\"ltc_debt\":\"0.0\",\"dash_debt\":\"0.0\",\"bch_debt\":\"0.0\"}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/coincheck.com\/api\/accounts\/balance",
+        "headers": {
+            "Host": "coincheck.com",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "ACCESS-KEY": "dCyzY2T6w0DFhaco",
+            "ACCESS-NONCE": "1513351812",
+            "ACCESS-SIGNATURE": "94122d05707bf09ef687b7aebe1f031db2f84437ca88fdd9bfbc84770132aefc"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "401",
+            "message": "Unauthorized"
+        },
+        "headers": {
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Date": "Fri, 15 Dec 2017 15:30:12 GMT",
+            "Server": "nginx",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "Cache-Control": "no-cache",
+            "Set-Cookie": "_coin_session2=9780f9b88b8ecadb2e812d724a2b3893; path=\/; expires=Thu, 15 Mar 2018 15:30:12 -0000; HttpOnly",
+            "X-Request-Id": "aade22b7-7bcb-4ec4-9a76-2a7e806a396f",
+            "X-Runtime": "0.007346",
+            "X-Cache": "Error from cloudfront",
+            "Via": "1.1 3ccfbae98f5816b531634c1e82e45259.cloudfront.net (CloudFront)",
+            "X-Amz-Cf-Id": "pKF0L3QofHFWj6mNpzsxfGKlL4xgbG8C0bEIgigu6Ohqm2v19OF0FQ=="
+        },
+        "body": "{\"success\":false,\"error\":\"Nonce must be incremented\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/coincheck.com\/api\/accounts\/balance",
+        "headers": {
+            "Host": "coincheck.com",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "ACCESS-KEY": "dCyzY2T6w0DFhaco",
+            "ACCESS-NONCE": "1513352069",
+            "ACCESS-SIGNATURE": "9274cfe2aad4f50756426f9e51bdc2ce7714d7a12e8862150522001990128329"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "401",
+            "message": "Unauthorized"
+        },
+        "headers": {
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Date": "Fri, 15 Dec 2017 15:34:29 GMT",
+            "Server": "nginx",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "Cache-Control": "no-cache",
+            "Set-Cookie": "_coin_session2=1c211fb7e727c7583fc21ec9dade45ca; path=\/; expires=Thu, 15 Mar 2018 15:34:29 -0000; HttpOnly",
+            "X-Request-Id": "59b7ae5f-0de3-4643-95ba-f31ce3034145",
+            "X-Runtime": "0.006722",
+            "X-Cache": "Error from cloudfront",
+            "Via": "1.1 a034346227db119f7e0813186ca2d2c2.cloudfront.net (CloudFront)",
+            "X-Amz-Cf-Id": "mNCztogxnQAwAib5v6D0X5xSNxTKLKqHF8T0Jqos6N4dCyykAHuwcw=="
+        },
+        "body": "{\"success\":false,\"error\":\"Nonce must be incremented\"}"
+    }
 }]

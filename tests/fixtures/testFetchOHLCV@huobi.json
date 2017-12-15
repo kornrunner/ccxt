@@ -1,0 +1,59 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.huobi.com\/staticmarket\/btc_kline_001_json.js",
+        "headers": {
+            "Host": "api.huobi.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "403",
+            "message": "Forbidden"
+        },
+        "headers": {
+            "Date": "Fri, 15 Dec 2017 15:23:18 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding",
+            "Set-Cookie": "__jsluid=dcf839dff6e06543af4ab57386d6c845; max-age=31536000; path=\/; HttpOnly",
+            "X-Cache": "bypass",
+            "Content-Encoding": "gzip"
+        },
+        "body": "<html>\r\n<head><title>403 Forbidden<\/title><\/head>\r\n<body bgcolor=\"white\">\r\n<center><h1>403 Forbidden<\/h1><\/center>\r\n<hr><center>nginx<\/center>\r\n<\/body>\r\n<\/html>\r\n"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/cors-anywhere.herokuapp.com\/http:\/\/api.huobi.com\/staticmarket\/btc_kline_001_json.js",
+        "headers": {
+            "Host": "cors-anywhere.herokuapp.com",
+            "Origin": "*"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "403",
+            "message": "Forbidden"
+        },
+        "headers": {
+            "Server": "Cowboy",
+            "Connection": "keep-alive",
+            "X-Request-Url": "http:\/\/api.huobi.com\/staticmarket\/btc_kline_001_json.js",
+            "Date": "Fri, 15 Dec 2017 15:26:57 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Vary": "Accept-Encoding",
+            "X-Cache": "bypass",
+            "Content-Encoding": "gzip",
+            "X-Final-Url": "http:\/\/api.huobi.com\/staticmarket\/btc_kline_001_json.js",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Expose-Headers": "date,content-type,transfer-encoding,connection,vary,x-cache,content-encoding,x-final-url,access-control-allow-origin",
+            "Via": "1.1 vegur"
+        },
+        "body": "<html>\r\n<head><title>403 Forbidden<\/title><\/head>\r\n<body bgcolor=\"white\">\r\n<center><h1>403 Forbidden<\/h1><\/center>\r\n<hr><center>nginx<\/center>\r\n<\/body>\r\n<\/html>\r\n"
+    }
+}]

@@ -201,4 +201,91 @@
         },
         "body": "{\"error\":\"API key is missing.\"}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/cex.io\/api\/balance\/",
+        "headers": {
+            "Host": "cex.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "key=X9IgdgEpB9rb6mxNEgFj4yEEA&signature=B31C0B6027C9250CEBDE88899E0EA5A603FA2105262A2591A1F5D9062ED67DA4&nonce=1513351811177"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Fri, 15 Dec 2017 15:30:11 GMT",
+            "Content-Type": "text\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d3c13aa11deb45edecd799f9506cce9dc1513351811; expires=Sat, 15-Dec-18 15:30:11 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3APYsDAZ8iOkWzYMTP01LIXZ2k.i5tVwgTFTc56kHGMUcKVOIUveKDjzv%2BbEGJSCMM1W6s; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+            "X-Frame-Options": "DENY",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cda71548c247c6c-BEG"
+        },
+        "body": "{\"error\":\"API key is missing.\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/cex.io\/api\/balance\/",
+        "headers": {
+            "Host": "cex.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "key=X9IgdgEpB9rb6mxNEgFj4yEEA&signature=E16D4279B1B341A5DE7A5F85AB5A9FE2F089F30E32B4D0128034C9C9F7E4AA33&nonce=1513352068952"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Fri, 15 Dec 2017 15:34:29 GMT",
+            "Content-Type": "text\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dead4300619ab565179100d5258a429ee1513352069; expires=Sat, 15-Dec-18 15:34:29 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3A-TXTJadGktlN2wCKBvqB3mx9.PxpkORVjxP8zogPU2P9%2Fc0clbsNsEuikUGRA8%2BYeR0M; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+            "X-Frame-Options": "DENY",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cda779f5ccf7c66-BEG"
+        },
+        "body": "{\"error\":\"API key is missing.\"}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/cex.io\/api\/balance\/",
+        "headers": {
+            "Host": "cex.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "key=X9IgdgEpB9rb6mxNEgFj4yEEA&signature=8D4BB59FE5BAA3B38C00DF21E7AA322CAFDACDF4C2202361D98A121C9AC7B82B&nonce=1513353928943"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Fri, 15 Dec 2017 16:05:29 GMT",
+            "Content-Type": "text\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=da4f2452dc2f9b0b6f11d1b18535735dd1513353929; expires=Sat, 15-Dec-18 16:05:29 GMT; path=\/; domain=.cex.io; HttpOnly, cex-prod-session=s%3ALoqYYWYcKXO8LfR76X3PeiZc.JLO4vVPD0FmO5wzOn956SsemMiAVmRwYdZvbilWLuX8; Domain=.cex.io; Path=\/; HttpOnly; Secure",
+            "X-Frame-Options": "DENY",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cdaa5086ca87c66-BEG"
+        },
+        "body": "{\"error\":\"API key is missing.\"}"
+    }
 }]
