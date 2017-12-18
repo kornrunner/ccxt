@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.kucoin.com\/v1\/open\/orders?symbol=KCS-BTC",
+        "headers": {
+            "Host": "api.kucoin.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "Date": "Mon, 18 Dec 2017 23:51:23 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "https:\/\/www.kucoin.com",
+            "Access-Control-Allow-Credentials": "true",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Accept-Language",
+            "Access-Control-Allow-Methods": "POST, GET, PUT, OPTIONS, DELETE, PATCH",
+            "Access-Control-Max-Age": "86400",
+            "KC-NODE": "unknown",
+            "Set-Cookie": "SESSION=06d11d8e-b78c-4ca5-855c-e901a73b9f37; Path=\/; HttpOnly"
+        },
+        "body": "{\"success\":true,\"code\":\"OK\",\"msg\":\"Operation succeeded.\",\"timestamp\":1513641082340,\"data\":{\"SELL\":[[4.399E-5,768.0502,0.03378653],[4.449E-5,20.0,8.898E-4],[4.498E-5,21141.6725,0.95095243],[4.499E-5,15.0,6.7485E-4],[4.5E-5,1344.111,0.060485],[4.568E-5,6.8795,3.1426E-4]],\"BUY\":[[4.375E-5,0.1,4.38E-6],[4.328E-5,4466.3965,0.19330564],[4.208E-5,197.3923,0.00830627],[4.207E-5,3591.6843,0.15110216],[4.206E-5,730.5254,0.0307259],[4.203E-5,0.4049,1.702E-5]]}}"
+    }
+}]

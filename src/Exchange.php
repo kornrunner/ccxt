@@ -650,8 +650,8 @@ abstract class Exchange {
     }
 
     public function raise_error ($exception_type, $url, $method = 'GET', $error = null, $details = null) {
-        $exception = '\\ccxt\\' . $exception_type;
-        throw new $exception (implode (' ', array (
+        $exception_class = __NAMESPACE__ . '\\' . $exception_type;
+        throw new $exception_class (implode (' ', array (
             $this->id,
             $method,
             $url,
@@ -1428,4 +1428,3 @@ abstract class Exchange {
         }
     }
 }
-

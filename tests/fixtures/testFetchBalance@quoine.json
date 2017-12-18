@@ -427,4 +427,90 @@
         },
         "body": "[{\"currency\":\"USD\",\"balance\":\"0.0\"},{\"currency\":\"QTUM\",\"balance\":\"0.0\"},{\"currency\":\"DASH\",\"balance\":\"0.0\"},{\"currency\":\"BCH\",\"balance\":\"0.0\"},{\"currency\":\"ETH\",\"balance\":\"0.0\"},{\"currency\":\"BTC\",\"balance\":\"0.0\"}]"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.quoine.com\/accounts\/balance",
+        "headers": {
+            "Host": "api.quoine.com",
+            "X-Quoine-API-Version": "2",
+            "Content-Type": "application\/json",
+            "X-Quoine-Auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoiL2FjY291bnRzL2JhbGFuY2UiLCJub25jZSI6IjE1MTM2NDEwMjA2NzIiLCJ0b2tlbl9pZCI6Ijg1NjI2IiwiaWF0IjoxNTEzNjQxMDIwfQ.pEAIDlqmKV-d6GmXhIBg4Yx9LlAiHM42s_slsQYA1VU"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Mon, 18 Dec 2017 23:50:51 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Length": "89",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d7cea9521b839d22ecd78cf0bdddfb7141513641050; expires=Tue, 18-Dec-18 23:50:50 GMT; path=\/; domain=.quoine.com; HttpOnly, _vax_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFVEkiJTIxYzkxZTU0MTQyNWFiNDk0OWE0MjUxOWM4ZjM5YTIxBjsAVEkiCWxhbmcGOwBGOgdlbkkiGXdhcmRlbi51c2VyLnVzZXIua2V5BjsAVFsHWwZpAgB5SSIiJDJhJDEwJEVGUWxyVHJyaUM0ZDZSL1JKalRCdGUGOwBU--b41c7f9d52cbdb588950484c910ead7eae51e029; path=\/; secure; HttpOnly",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "Content-Encoding": "gzip",
+            "Etag": "\"2eec29bb99edf7d5ba43e249cef5a1c8\"",
+            "Status": "200 OK",
+            "Strict-Transport-Security": "max-age=631152000; includeSubdomains",
+            "Vary": "Accept-Encoding",
+            "Via": "1.1 spaces-router (4e2fbae721c4)",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Powered-By": "Phusion Passenger 5.1.2",
+            "X-Rack-Cache": "miss",
+            "X-Request-Id": "87cf2be8-2784-ae8a-9835-ea4b08c459ad",
+            "X-Runtime": "0.037707",
+            "X-Ua-Compatible": "IE=Edge,chrome=1",
+            "X-Xss-Protection": "1; mode=block",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cf606d69c237c4e-BEG"
+        },
+        "body": "[{\"currency\":\"USD\",\"balance\":\"0.0\"},{\"currency\":\"QTUM\",\"balance\":\"0.0\"},{\"currency\":\"DASH\",\"balance\":\"0.0\"},{\"currency\":\"BCH\",\"balance\":\"0.0\"},{\"currency\":\"ETH\",\"balance\":\"0.0\"},{\"currency\":\"BTC\",\"balance\":\"0.0\"}]"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.quoine.com\/accounts\/balance",
+        "headers": {
+            "Host": "api.quoine.com",
+            "X-Quoine-API-Version": "2",
+            "Content-Type": "application\/json",
+            "X-Quoine-Auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoiL2FjY291bnRzL2JhbGFuY2UiLCJub25jZSI6IjE1MTM2NDEyMjMwNDIiLCJ0b2tlbl9pZCI6Ijg1NjI2IiwiaWF0IjoxNTEzNjQxMjIzfQ.tX64C_GGMH-ytM4GV3PIg_5FRHY6e20JMWLh27hGc3E"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Mon, 18 Dec 2017 23:54:14 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Length": "89",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dca41578a4061e24473f22692e7f8410e1513641253; expires=Tue, 18-Dec-18 23:54:13 GMT; path=\/; domain=.quoine.com; HttpOnly, _vax_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFVEkiJWYzYjczZmI1NjgxZmIwNDc1OGIwYjNhOTRkNTYxOGZmBjsAVEkiCWxhbmcGOwBGOgdlbkkiGXdhcmRlbi51c2VyLnVzZXIua2V5BjsAVFsHWwZpAgB5SSIiJDJhJDEwJEVGUWxyVHJyaUM0ZDZSL1JKalRCdGUGOwBU--71e00ab900f9af7008b2e523b6922f2e945e6063; path=\/; secure; HttpOnly",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "Content-Encoding": "gzip",
+            "Etag": "\"2eec29bb99edf7d5ba43e249cef5a1c8\"",
+            "Status": "200 OK",
+            "Strict-Transport-Security": "max-age=631152000; includeSubdomains",
+            "Vary": "Accept-Encoding",
+            "Via": "1.1 spaces-router (4e2fbae721c4)",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Powered-By": "Phusion Passenger 5.1.2",
+            "X-Rack-Cache": "miss",
+            "X-Request-Id": "c6b592f0-8100-d35a-fd6e-f20fb26f1dca",
+            "X-Runtime": "0.036065",
+            "X-Ua-Compatible": "IE=Edge,chrome=1",
+            "X-Xss-Protection": "1; mode=block",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cf60bc73d807c7e-BEG"
+        },
+        "body": "[{\"currency\":\"USD\",\"balance\":\"0.0\"},{\"currency\":\"QTUM\",\"balance\":\"0.0\"},{\"currency\":\"DASH\",\"balance\":\"0.0\"},{\"currency\":\"BCH\",\"balance\":\"0.0\"},{\"currency\":\"ETH\",\"balance\":\"0.0\"},{\"currency\":\"BTC\",\"balance\":\"0.0\"}]"
+    }
 }]

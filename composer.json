@@ -221,7 +221,9 @@
         "role": "Developer"
     }],
     "autoload": {
-        "classmap": ["src"]
+        "psr-4": {
+            "ccxt\\": "src"
+        }
     },
     "require": {
         "php": "^7.1"

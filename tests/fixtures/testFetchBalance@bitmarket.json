@@ -322,4 +322,40 @@
         },
         "body": "{\"success\":true,\"data\":{\"balances\":{\"available\":{\"PLN\":0.00000000,\"EUR\":0.00000000,\"BTC\":0.00000000,\"LTC\":0.00000000,\"BCC\":0.00000000,\"BTG\":0.00000000,\"DOGE\":0.00000000,\"LiteMineX\":0.00000000,\"PlnX\":0.00000000},\"blocked\":{\"PLN\":0.00000000,\"BTC\":0.00000000,\"EUR\":0.00000000,\"LTC\":0.00000000,\"BCC\":0.00000000,\"BTG\":0.00000000,\"LiteMineX\":0.00000000,\"PlnX\":0.00000000}},\"account\":{\"turnover\":0.0000,\"commissionMaker\":0.1500,\"commissionTaker\":0.4500},\"bank_deposit_fiat\":{\"PLN\":{\"seed\":1540102890000005,\"bank_name\":\"BOS BANK\",\"pay_to\":\"Agent BM\",\"acc_num\":\"\",\"transfer_title\":\"zasilenie konta w BM login igorkroitor\"},\"EUR\":{\"seed\":1540000500004600,\"bank_name\":\"BOS BANK\",\"swift_code\":\"EBOSPLPWXXX\",\"pay_to\":\"BM Agent\",\"acc_num\":\"\",\"transfer_title\":\"deposit in BM login igorkroitor\"}}},\"time\":1513353923,\"limit\":{\"used\":1,\"allowed\":100,\"expires\":1513354200}}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.bitmarket.pl\/api2\/",
+        "headers": {
+            "Host": "www.bitmarket.pl",
+            "API-Key": "2024227b532f27d7ced1987653029d91",
+            "API-Hash": "f3cb4f5b84d0348fd7cc427831dac636fbf206ee398b4f04171b9a03ec24da2fe10e33fa850ef0190146563b725d015fbc52834451f572b7d8a9bdbddba1e1d7"
+        },
+        "body": "tonce=1513641006&method=info"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Mon, 18 Dec 2017 23:50:37 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "78",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d03c9f628f9954abb2bd292fc0d770ffa1513641037; expires=Tue, 18-Dec-18 23:50:37 GMT; path=\/; domain=.bitmarket.pl; HttpOnly; Secure, PHPSESSID=lro3rep5ktnv74b0b2p0dm2551; path=\/",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Encoding": "gzip",
+            "Vary": "Accept-Encoding",
+            "Accept-Ranges": "bytes",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3cf606815f247c60-BEG"
+        },
+        "body": "{\"error\":503,\"errorMsg\":\"Invalid tonce value\",\"time\":1513641037}"
+    }
 }]
