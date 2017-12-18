@@ -105,6 +105,7 @@ class ExchangeTest extends TestCase {
             'huobicny',     // empty response
             'poloniex',     // travis
             'bitlish',      // travis
+            'allcoin',      // travis
         ],
     ];
 
