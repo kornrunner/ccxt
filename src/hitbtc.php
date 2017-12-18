@@ -686,7 +686,7 @@ class hitbtc extends Exchange {
     public function get_order_status ($status) {
         $statuses = array (
             'new' => 'open',
-            'partiallyFilled' => 'partial',
+            'partiallyFilled' => 'open',
             'filled' => 'closed',
             'canceled' => 'canceled',
             'rejected' => 'rejected',

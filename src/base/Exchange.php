@@ -98,6 +98,7 @@ abstract class Exchange {
         'itbit',
         'jubi',
         'kraken',
+        'kucoin',
         'kuna',
         'lakebtc',
         'liqui',
@@ -181,6 +182,53 @@ abstract class Exchange {
             // 48 bits for "node"
             mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
         );
+    }
+
+    public static function parse_timeframe ($timeframe) {
+        $amount = substr ($timeframe, 0, -1);
+        $unit = substr ($timeframe, -1);
+        $scale = 1;
+        switch ($unit) {
+            default:
+                throw new ExchangeError ("Unknown timeframe unit: '{$unit}'");
+            case 'M':
+                $scale *= 30;
+            case 'd':
+                $scale *= 24;
+            case 'h':
+                $scale *= 60;
+            case 'm':
+                $scale *= 60;
+        }
+        return $amount * $scale;
+    }
+
+    // given a sorted arrays of trades (recent first) and a timeframe builds an array of OHLCV candles
+    public static function build_ohlcv ($trades, $since = PHP_INT_MIN, $limits = PHP_INT_MAX, $timeframe = '1m') {
+        $ms = static::parseTimeframe ($timeframe) * 1000;
+        $ohlcvs = [];
+        list(/* $timestamp */, /* $open */, $high, $low, $close, $volume) = [0, 1, 2, 3, 4, 5];
+
+        for ($i = min(count($trades) - 1, $limits); $i >= 0; $i--) {
+            $trade = $trades[$i];
+            if ($trade['timestamp'] < $since) {
+                continue;
+            }
+            $openingTime = floor ($trade['timestamp'] / $ms) * $ms; // shift to the edge of m/h/d (but not M)
+            $j = count($ohlcvs);
+
+            if ($j == 0 || $openingTime >= $ohlcvs[$j-1][0] + $ms) {
+                // moved to a new timeframe -> create a new candle from opening trade
+                $ohlcvs[] = [$openingTime, $trade['price'], $trade['price'], $trade['price'], $trade['price'], $trade['amount']];
+            } else {
+                // still processing the same timeframe -> update opening trade
+                $ohlcvs[$j-1][$high] = max ($ohlcvs[$j-1][$high], $trade['price']);
+                $ohlcvs[$j-1][$low] = min ($ohlcvs[$j-1][$low], $trade['price']);
+                $ohlcvs[$j-1][$close] = $trade['price'];
+                $ohlcvs[$j-1][$volume] += $trade['amount'];
+            }
+        }
+        return $ohlcvs;
     }
 
     public static function capitalize ($string) {
@@ -407,7 +455,7 @@ abstract class Exchange {
         $keys = array_keys ($this->requiredCredentials);
         foreach ($this->requiredCredentials as $key => $value) {
             if ($value && (!$this->$key)) {
-                throw new \ccxt\AuthenticationError ($this->id . ' requires `' . $key . '`');
+                throw new AuthenticationError ($this->id . ' requires `' . $key . '`');
             }
         }
     }
@@ -1093,8 +1141,7 @@ abstract class Exchange {
     }
 
     public function fetch_tickers ($symbols, $params = array ()) { // stub
-        $exception = '\\ccxt\\NotSupported';
-        throw new $exception ($this->id . ' API does not allow to fetch all tickers at once with a single call to fetch_tickers () for now');
+        throw new NotSupported ($this->id . ' API does not allow to fetch all tickers at once with a single call to fetch_tickers () for now');
     }
 
     public function fetchTickers ($symbols, $params = array ()) {
@@ -1111,8 +1158,7 @@ abstract class Exchange {
     }
 
     public function fetch_order ($id, $symbol = null, $params = array ()) {
-        $exception = '\\ccxt\\NotSupported';
-        throw new $exception ($this->id . ' fetch_order() not implemented yet');
+        throw new NotSupported ($this->id . ' fetch_order() not implemented yet');
     }
 
     public function fetchOrder ($id, $symbol = null, $params = array ()) {
@@ -1120,8 +1166,7 @@ abstract class Exchange {
     }
 
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        $exception = '\\ccxt\\NotSupported';
-        throw new $exception ($this->id . ' fetch_orders() not implemented yet');
+        throw new NotSupported ($this->id . ' fetch_orders() not implemented yet');
     }
 
     public function fetchOrders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -1129,8 +1174,7 @@ abstract class Exchange {
     }
 
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        $exception = '\\ccxt\\NotSupported';
-        throw new $exception ($this->id . ' fetch_open_orders() not implemented yet');
+        throw new NotSupported ($this->id . ' fetch_open_orders() not implemented yet');
     }
 
     public function fetchOpenOrders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -1138,8 +1182,7 @@ abstract class Exchange {
     }
 
     public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        $exception = '\\ccxt\\NotSupported';
-        throw new $exception ($this->id . ' fetch_closed_orders() not implemented yet');
+        throw new NotSupported ($this->id . ' fetch_closed_orders() not implemented yet');
     }
 
     public function fetchClosedOrders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -1147,8 +1190,7 @@ abstract class Exchange {
     }
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        $exception = '\\ccxt\\NotSupported';
-        throw new $exception ($this->id . ' fetch_my_trades() not implemented yet');
+        throw new NotSupported ($this->id . ' fetch_my_trades() not implemented yet');
     }
 
     public function fetchMyTrades ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -1181,8 +1223,7 @@ abstract class Exchange {
     }
 
     public function fetch_ohlcv ($symbol, $timeframe = '1m', $since = null, $limit = null, $params = array ()) {
-        $exception = '\\ccxt\\NotSupported';
-        throw new $exception ($this->id . ' fetch_ohlcv() not suported or not implemented yet');
+        throw new NotSupported ($this->id . ' fetch_ohlcv() not suported or not implemented yet');
     }
 
     public function fetchOHLCV ($symbol, $timeframe = '1m', $since = null, $limit = null, $params = array ()) {
@@ -1203,8 +1244,7 @@ abstract class Exchange {
 
     public function edit_order ($id, $symbol, $type, $side, $amount, $price, $params = array ()) {
         if (!$this->enableRateLimit) {
-            $exception = '\\ccxt\\ExchangeError';
-            throw new $exception ($this->id . ' edit_order() requires enableRateLimit = true');
+            throw new ExchangeError ($this->id . ' edit_order() requires enableRateLimit = true');
         }
         $this->cancel_order ($id, $symbol, $params);
         return $this->create_order ($symbol, $type, $side, $amount, $price, $params);
