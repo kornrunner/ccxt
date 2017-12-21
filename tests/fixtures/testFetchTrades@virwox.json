@@ -334,4 +334,76 @@
         },
         "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513641243\"}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513892219&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 21 Dec 2017 21:36:59 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513892219\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513892390&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 21 Dec 2017 21:39:51 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513892390\"}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "http:\/\/api.virwox.com\/api\/json.php?method=getRawTradeData&id=1513892883&instrument=1&timespan=3600",
+        "headers": {
+            "Host": "api.virwox.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 21 Dec 2017 21:48:04 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Content-Length": "76",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*"
+        },
+        "body": "{\"result\":{\"errorCode\":\"NO_SUCH_INSTRUMENT\"},\"error\":null,\"id\":\"1513892883\"}"
+    }
 }]

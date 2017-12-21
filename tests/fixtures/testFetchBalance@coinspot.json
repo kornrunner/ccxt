@@ -416,4 +416,118 @@
         },
         "body": "{\"status\":\"ok\",\"balance\":{\"btc\":0,\"ltc\":0,\"doge\":0,\"ppc\":0,\"wdc\":0,\"xpm\":0,\"max\":0,\"lot\":0,\"qrk\":0,\"moon\":0,\"ftc\":0,\"drk\":0}}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.coinspot.com.au\/api\/my\/balances",
+        "headers": {
+            "Host": "www.coinspot.com.au",
+            "Content-Type": "application\/json",
+            "key": "f212d2519be1814dce6eb9cfe7f60f7b",
+            "sign": "55754a9e8cde1b9f90ec67d2fca4cc4a0337f1de1ad1c7ac58ac49fc138b1d1664c31f202a321a7a577276f8ae3fac375686102b999eec6f9befffd662092c07"
+        },
+        "body": "{\"nonce\":1513892199}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 21:36:42 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d60f5062ad7fbfb64f43a5003ff9180891513892200; expires=Fri, 21-Dec-18 21:36:40 GMT; path=\/; domain=.coinspot.com.au; HttpOnly; Secure",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "set-cookie": "_csrf=IZHDuS_WTPWV1_MIB3LGihkp; Path=\/",
+            "Cache-Control": "no-cache, no-store, must-revalidate, private",
+            "Pragma": "no-cache",
+            "Expires": "0",
+            "ETag": "W\/\"7d-7RbU6zoiT6GRa7jFldM3Or1sX3I\"",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0dfa6fab8b7c84-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"status\":\"ok\",\"balance\":{\"btc\":0,\"ltc\":0,\"doge\":0,\"ppc\":0,\"wdc\":0,\"xpm\":0,\"max\":0,\"lot\":0,\"qrk\":0,\"moon\":0,\"ftc\":0,\"drk\":0}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.coinspot.com.au\/api\/my\/balances",
+        "headers": {
+            "Host": "www.coinspot.com.au",
+            "Content-Type": "application\/json",
+            "key": "f212d2519be1814dce6eb9cfe7f60f7b",
+            "sign": "61663ff7bf16380158905fe0df47f61590adcf83e0e7897ea7132b3570292102d54c58d71730f79181e5e5a5a70e52948e129b1aee3fd90ec0d2b92f1fdb360a"
+        },
+        "body": "{\"nonce\":1513892368}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 21:39:29 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d110eda916b4d2fef2380fd0709ef5b541513892368; expires=Fri, 21-Dec-18 21:39:28 GMT; path=\/; domain=.coinspot.com.au; HttpOnly; Secure",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "set-cookie": "_csrf=ZnMLyA3MNhy4TOaBTg96D0Ok; Path=\/",
+            "Cache-Control": "no-cache, no-store, must-revalidate, private",
+            "Pragma": "no-cache",
+            "Expires": "0",
+            "ETag": "W\/\"7d-7RbU6zoiT6GRa7jFldM3Or1sX3I\"",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0dfe87790c7c48-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"status\":\"ok\",\"balance\":{\"btc\":0,\"ltc\":0,\"doge\":0,\"ppc\":0,\"wdc\":0,\"xpm\":0,\"max\":0,\"lot\":0,\"qrk\":0,\"moon\":0,\"ftc\":0,\"drk\":0}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.coinspot.com.au\/api\/my\/balances",
+        "headers": {
+            "Host": "www.coinspot.com.au",
+            "Content-Type": "application\/json",
+            "key": "f212d2519be1814dce6eb9cfe7f60f7b",
+            "sign": "037ea3e2e66d8af486436344f45fadd640a6e4c01960c3231b526adff0fce25ef756ee9631ccaf0c807c559e1bc831ff12e22c3f0a7838926030b2cafcb870c2"
+        },
+        "body": "{\"nonce\":1513892864}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 21:47:46 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d053fbd81a64932fc9870139095c134351513892864; expires=Fri, 21-Dec-18 21:47:44 GMT; path=\/; domain=.coinspot.com.au; HttpOnly; Secure",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "set-cookie": "_csrf=XTc7zjH5m9NPoF88m4Dj8Ftj; Path=\/",
+            "Cache-Control": "no-cache, no-store, must-revalidate, private",
+            "Pragma": "no-cache",
+            "Expires": "0",
+            "ETag": "W\/\"7d-7RbU6zoiT6GRa7jFldM3Or1sX3I\"",
+            "Vary": "Accept-Encoding",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e0aa6184b7c84-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"status\":\"ok\",\"balance\":{\"btc\":0,\"ltc\":0,\"doge\":0,\"ppc\":0,\"wdc\":0,\"xpm\":0,\"max\":0,\"lot\":0,\"qrk\":0,\"moon\":0,\"ftc\":0,\"drk\":0}}"
+    }
 }]

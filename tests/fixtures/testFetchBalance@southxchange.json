@@ -88,4 +88,32 @@
         },
         "body": "<!DOCTYPE HTML PUBLIC \"-\/\/W3C\/\/DTD HTML 4.01\/\/EN\"\"http:\/\/www.w3.org\/TR\/html4\/strict.dtd\">\r\n<HTML><HEAD><TITLE>Length Required<\/TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text\/html; charset=us-ascii\"><\/HEAD>\r\n<BODY><h2>Length Required<\/h2>\r\n<hr><p>HTTP Error 411. The request must be chunked or have a content length.<\/p>\r\n<\/BODY><\/HTML>\r\n"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.southxchange.com\/api\/listBalances",
+        "headers": {
+            "Host": "www.southxchange.com",
+            "Content-Type": "application\/json",
+            "Hash": "7e1a975adb1c098e651c5fc002c402643feb96c429078ed698d05bbc3f7d14b2a91877bd0e5c2d05f0b37df2f5f385dc014b0c19ef2a10a0f4eb7a9962c3b27a"
+        },
+        "body": "{\"key\":\"owpxVPAjPFGanKyBxLVsnYXXwsrmAg\",\"nonce\":1513892374}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "411",
+            "message": "Length Required"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 21:39:34 GMT",
+            "Content-Type": "text\/html; charset=us-ascii",
+            "Content-Length": "344",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dbffaf9794dd68c5fe5bdf30acfe140dd1513892374; expires=Fri, 21-Dec-18 21:39:34 GMT; path=\/; domain=.southxchange.com; HttpOnly",
+            "Server": "cloudflare",
+            "CF-RAY": "3d0dfeac2d6c7c5a-BEG"
+        },
+        "body": "<!DOCTYPE HTML PUBLIC \"-\/\/W3C\/\/DTD HTML 4.01\/\/EN\"\"http:\/\/www.w3.org\/TR\/html4\/strict.dtd\">\r\n<HTML><HEAD><TITLE>Length Required<\/TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text\/html; charset=us-ascii\"><\/HEAD>\r\n<BODY><h2>Length Required<\/h2>\r\n<hr><p>HTTP Error 411. The request must be chunked or have a content length.<\/p>\r\n<\/BODY><\/HTML>\r\n"
+    }
 }]

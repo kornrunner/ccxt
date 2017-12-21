@@ -78,4 +78,31 @@
             "CF-RAY": "3cd152d20d917c42-BEG"
         }
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/api.liqui.io\/tapi",
+        "headers": {
+            "Host": "api.liqui.io",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "Key": "3CCPNOH2-7W0SYD8F-UNEVV304-NDU3MVJE-Z43H2I05",
+            "Sign": "b5158e75b99e7056cc461a82ed0829af5704471ac6ffd3e0e7bbe50b9a2128349b5684501a73bf1dd78aae4a38a36b24669e29f2c915ad4bafe661dd6e9f62a4"
+        },
+        "body": "nonce=1513892372&method=getInfo"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "411",
+            "message": "Length Required"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 21:39:32 GMT",
+            "Content-Length": "0",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dd0eba80060f25e98f814915c4e3cccd41513892372; expires=Fri, 21-Dec-18 21:39:32 GMT; path=\/; domain=.liqui.io; HttpOnly; Secure",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0dfe9f5a347c7e-BEG"
+        }
+    }
 }]

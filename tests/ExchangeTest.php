@@ -23,7 +23,7 @@ class ExchangeTest extends TestCase {
             'yunbi',
         ],
         'testLoadMarkets' => [
-            'bter',     // array issue @63
+            'bter',     // bad response
             'flowbtc',  // bad offset in response
             'yunbi',    // not accessible
             'bitso',    // not accessible
@@ -39,7 +39,7 @@ class ExchangeTest extends TestCase {
             'bitfinex2',    // not accessible
             'bitlish',      // not accessible
             'btcx',         // bad offset in response
-            'bter',         // not countable @63
+            'bter',         // bad response
             'bxinth',       // no apiKey
             'chbtc',        // bad offset in response
             'coingi',       // not accessible
@@ -68,7 +68,7 @@ class ExchangeTest extends TestCase {
             'bitcoincoid',  // not accessible
             'bitstamp1',    // array to string @142
             'btcexchange',  // bad offset in response
-            'btctradeua',   // array issue @206
+            'bter',         // bad response
             'btcx',         // bad offset in response
             'coincheck',    // supports BTC/JPY only
             'coingi',       // not accessible
@@ -89,6 +89,8 @@ class ExchangeTest extends TestCase {
             'anxpro',       // not accessible
             'bitcoincoid',  // not accessible
             'bitstamp1',    // array to string @74
+            'bter',         // bad response
+            'chbtc',        // bad response
             'btcexchange',  // bad offset in response
             'btcx',         // bad offset in response
             'coincheck',    // supports BTC/JPY only
@@ -96,7 +98,6 @@ class ExchangeTest extends TestCase {
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
             'jubi',         // not accessible
-            'kraken',       // string instead of array @336
             'okcoincny',    // not accessible
             'virwox',       // not implemented
             'xbtce',        // travis

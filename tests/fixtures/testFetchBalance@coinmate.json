@@ -361,4 +361,103 @@
         },
         "body": "{\"error\":false,\"errorMessage\":null,\"data\":{\"EUR\":{\"currency\":\"EUR\",\"balance\":0,\"reserved\":0,\"available\":0},\"CZK\":{\"currency\":\"CZK\",\"balance\":0,\"reserved\":0,\"available\":0},\"BCH\":{\"currency\":\"BCH\",\"balance\":0,\"reserved\":0,\"available\":0},\"BTC\":{\"currency\":\"BTC\",\"balance\":0,\"reserved\":0,\"available\":0},\"LTC\":{\"currency\":\"LTC\",\"balance\":0,\"reserved\":0,\"available\":0}}}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/coinmate.io\/api\/balances",
+        "headers": {
+            "Host": "coinmate.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "clientId=12092&nonce=1513892198&publicKey=RK3tVw8CEmHfvx5qryeNa2lvvQovU4W31qXqBuQDObY&signature=2E0DC822CC3AFB9200BBBFC89D2A6069C31B1A9BBA56D6F0C05E79B04478758F"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 21:36:39 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d5d13fbf28d9696212303a80477c9fb8b1513892198; expires=Fri, 21-Dec-18 21:36:38 GMT; path=\/; domain=.coinmate.io; HttpOnly",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0dfa629c6a7c9c-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"error\":false,\"errorMessage\":null,\"data\":{\"EUR\":{\"currency\":\"EUR\",\"balance\":0,\"reserved\":0,\"available\":0},\"CZK\":{\"currency\":\"CZK\",\"balance\":0,\"reserved\":0,\"available\":0},\"BCH\":{\"currency\":\"BCH\",\"balance\":0,\"reserved\":0,\"available\":0},\"BTC\":{\"currency\":\"BTC\",\"balance\":0,\"reserved\":0,\"available\":0},\"LTC\":{\"currency\":\"LTC\",\"balance\":0,\"reserved\":0,\"available\":0}}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/coinmate.io\/api\/balances",
+        "headers": {
+            "Host": "coinmate.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "clientId=12092&nonce=1513892367&publicKey=RK3tVw8CEmHfvx5qryeNa2lvvQovU4W31qXqBuQDObY&signature=B3915B775169493C3A823328DD8AA948FD26B184ECFD889F96DD7DE4514A55EE"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 21:39:28 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d8fb7d18025c8e54faab5b39ee3aaa6c11513892368; expires=Fri, 21-Dec-18 21:39:28 GMT; path=\/; domain=.coinmate.io; HttpOnly",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0dfe842b9c7c90-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"error\":false,\"errorMessage\":null,\"data\":{\"EUR\":{\"currency\":\"EUR\",\"balance\":0,\"reserved\":0,\"available\":0},\"CZK\":{\"currency\":\"CZK\",\"balance\":0,\"reserved\":0,\"available\":0},\"BCH\":{\"currency\":\"BCH\",\"balance\":0,\"reserved\":0,\"available\":0},\"BTC\":{\"currency\":\"BTC\",\"balance\":0,\"reserved\":0,\"available\":0},\"LTC\":{\"currency\":\"LTC\",\"balance\":0,\"reserved\":0,\"available\":0}}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/coinmate.io\/api\/balances",
+        "headers": {
+            "Host": "coinmate.io",
+            "Content-Type": "application\/x-www-form-urlencoded"
+        },
+        "body": "clientId=12092&nonce=1513892864&publicKey=RK3tVw8CEmHfvx5qryeNa2lvvQovU4W31qXqBuQDObY&signature=811C967B9D7712FF43E5B9B4D128308498B26F0BB3B03EEC9F061A85F18C8702"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 21:47:44 GMT",
+            "Content-Type": "application\/json;charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d45898c5ccb4af9a021513964b382dcc91513892864; expires=Fri, 21-Dec-18 21:47:44 GMT; path=\/; domain=.coinmate.io; HttpOnly",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e0aa25fa77ca8-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"error\":false,\"errorMessage\":null,\"data\":{\"EUR\":{\"currency\":\"EUR\",\"balance\":0,\"reserved\":0,\"available\":0},\"CZK\":{\"currency\":\"CZK\",\"balance\":0,\"reserved\":0,\"available\":0},\"BCH\":{\"currency\":\"BCH\",\"balance\":0,\"reserved\":0,\"available\":0},\"BTC\":{\"currency\":\"BTC\",\"balance\":0,\"reserved\":0,\"available\":0},\"LTC\":{\"currency\":\"LTC\",\"balance\":0,\"reserved\":0,\"available\":0}}}"
+    }
 }]
