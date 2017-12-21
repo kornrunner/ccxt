@@ -60,6 +60,7 @@ class ExchangeTest extends TestCase {
             'virwox',       // travis
             'vaultoro',     // travis
             'bitso',        // travis
+            'xbtce',        // travis
             'bitbay',       // empty response
             'bitmarket',    // undefined index data
             'btcmarkets',   // bad timestamp
