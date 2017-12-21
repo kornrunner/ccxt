@@ -480,4 +480,100 @@
         },
         "body": "{\"success\":true,\"message\":\"\",\"result\":[{\"Currency\":\"BCC\",\"Balance\":0.05000000,\"Available\":0.05000000,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"BTC\",\"Balance\":0.02693636,\"Available\":0.02693636,\"Pending\":0.00000000,\"CryptoAddress\":\"1cL5M4HjjoGWMA4jgHC5v6GqcjfxeeNMy\"},{\"Currency\":\"BTG\",\"Balance\":0.00782823,\"Available\":0.00782823,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"EMC2\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":\"EYRKyCrqTNmVCpdVD1w49XvSKRP9N3EUyF\"},{\"Currency\":\"ETH\",\"Balance\":0.05325223,\"Available\":0.05325223,\"Pending\":0.00000000,\"CryptoAddress\":\"0x66a0f3e822c9d21957227d42c1680135dde87b88\"},{\"Currency\":\"SBD\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":\"c705d9f5dedf445797c\"},{\"Currency\":\"STEEM\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"USDT\",\"Balance\":0.00002077,\"Available\":0.00002077,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"WINGS\",\"Balance\":151.60000000,\"Available\":151.60000000,\"Pending\":0.00000000,\"CryptoAddress\":\"0x8c249eca548c402a28b19bc8c470d106aaff4f8d\"}]}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bittrex.com\/api\/v1.1\/account\/getbalances?nonce=1513895614&apikey=471b47a06c384e81b24072e9a8739064",
+        "headers": {
+            "Host": "bittrex.com",
+            "apisign": "ded9deaf46c5bd30fadba158b6e2f714d41fae27b36eaccb8c2585746635a3af1537e5f58f232a5a6a12906564a35acec8635db5ae884b51a5874b85f2872d05"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:33:35 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Length": "382",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dbe469a10594c361f619f66403ab828cb1513895614; expires=Fri, 21-Dec-18 22:33:34 GMT; path=\/; domain=.bittrex.com; HttpOnly",
+            "Cache-Control": "private",
+            "Content-Encoding": "gzip",
+            "Strict-Transport-Security": "max-age=15768000",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "X-Download-Options": "noopen",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e4dc8fddd7c42-BEG"
+        },
+        "body": "{\"success\":true,\"message\":\"\",\"result\":[{\"Currency\":\"BCC\",\"Balance\":0.05000000,\"Available\":0.05000000,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"BTC\",\"Balance\":0.02942804,\"Available\":0.02942804,\"Pending\":0.00000000,\"CryptoAddress\":\"1cL5M4HjjoGWMA4jgHC5v6GqcjfxeeNMy\"},{\"Currency\":\"BTG\",\"Balance\":0.00782823,\"Available\":0.00782823,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"EMC2\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":\"EYRKyCrqTNmVCpdVD1w49XvSKRP9N3EUyF\"},{\"Currency\":\"ETH\",\"Balance\":0.00325223,\"Available\":0.00325223,\"Pending\":0.00000000,\"CryptoAddress\":\"0x66a0f3e822c9d21957227d42c1680135dde87b88\"},{\"Currency\":\"SBD\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":\"c705d9f5dedf445797c\"},{\"Currency\":\"STEEM\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"USDT\",\"Balance\":0.00002077,\"Available\":0.00002077,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"WINGS\",\"Balance\":151.60000000,\"Available\":151.60000000,\"Pending\":0.00000000,\"CryptoAddress\":\"0x8c249eca548c402a28b19bc8c470d106aaff4f8d\"}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bittrex.com\/api\/v1.1\/account\/getbalances?nonce=1513895755&apikey=471b47a06c384e81b24072e9a8739064",
+        "headers": {
+            "Host": "bittrex.com",
+            "apisign": "13ade0f0d553b7d59e48ad491e675848e99830a0b1b7e844048f0eb7fa49de8c47333a8b2eaf3aa3cd9ce926ea72a664ca9844117a96363151f680ae640c3f9f"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:35:55 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Length": "382",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d9237e1876c0dd8b8476f1e9685243a091513895755; expires=Fri, 21-Dec-18 22:35:55 GMT; path=\/; domain=.bittrex.com; HttpOnly",
+            "Cache-Control": "private",
+            "Content-Encoding": "gzip",
+            "Strict-Transport-Security": "max-age=15768000",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "X-Download-Options": "noopen",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e5136cc9b7c9c-BEG"
+        },
+        "body": "{\"success\":true,\"message\":\"\",\"result\":[{\"Currency\":\"BCC\",\"Balance\":0.05000000,\"Available\":0.05000000,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"BTC\",\"Balance\":0.02942804,\"Available\":0.02942804,\"Pending\":0.00000000,\"CryptoAddress\":\"1cL5M4HjjoGWMA4jgHC5v6GqcjfxeeNMy\"},{\"Currency\":\"BTG\",\"Balance\":0.00782823,\"Available\":0.00782823,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"EMC2\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":\"EYRKyCrqTNmVCpdVD1w49XvSKRP9N3EUyF\"},{\"Currency\":\"ETH\",\"Balance\":0.00325223,\"Available\":0.00325223,\"Pending\":0.00000000,\"CryptoAddress\":\"0x66a0f3e822c9d21957227d42c1680135dde87b88\"},{\"Currency\":\"SBD\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":\"c705d9f5dedf445797c\"},{\"Currency\":\"STEEM\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"USDT\",\"Balance\":0.00002077,\"Available\":0.00002077,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"WINGS\",\"Balance\":151.60000000,\"Available\":151.60000000,\"Pending\":0.00000000,\"CryptoAddress\":\"0x8c249eca548c402a28b19bc8c470d106aaff4f8d\"}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/bittrex.com\/api\/v1.1\/account\/getbalances?nonce=1513895901&apikey=471b47a06c384e81b24072e9a8739064",
+        "headers": {
+            "Host": "bittrex.com",
+            "apisign": "df17cc41afb1ad46602ceac180dceac21d56ebfc41d720115998ee1346c227dd86f3a574daaf6a1349ec3df3d4147bd901361cbba241a756565d3e93bb5196ad"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:38:21 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Content-Length": "382",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=dab156f441b352859b4e1f7f846f14a4d1513895901; expires=Fri, 21-Dec-18 22:38:21 GMT; path=\/; domain=.bittrex.com; HttpOnly",
+            "Cache-Control": "private",
+            "Content-Encoding": "gzip",
+            "Strict-Transport-Security": "max-age=15768000",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "X-Download-Options": "noopen",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e54c90b977c96-BEG"
+        },
+        "body": "{\"success\":true,\"message\":\"\",\"result\":[{\"Currency\":\"BCC\",\"Balance\":0.05000000,\"Available\":0.05000000,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"BTC\",\"Balance\":0.02942804,\"Available\":0.02942804,\"Pending\":0.00000000,\"CryptoAddress\":\"1cL5M4HjjoGWMA4jgHC5v6GqcjfxeeNMy\"},{\"Currency\":\"BTG\",\"Balance\":0.00782823,\"Available\":0.00782823,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"EMC2\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":\"EYRKyCrqTNmVCpdVD1w49XvSKRP9N3EUyF\"},{\"Currency\":\"ETH\",\"Balance\":0.00325223,\"Available\":0.00325223,\"Pending\":0.00000000,\"CryptoAddress\":\"0x66a0f3e822c9d21957227d42c1680135dde87b88\"},{\"Currency\":\"SBD\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":\"c705d9f5dedf445797c\"},{\"Currency\":\"STEEM\",\"Balance\":0.00000000,\"Available\":0.00000000,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"USDT\",\"Balance\":0.00002077,\"Available\":0.00002077,\"Pending\":0.00000000,\"CryptoAddress\":null},{\"Currency\":\"WINGS\",\"Balance\":151.60000000,\"Available\":151.60000000,\"Pending\":0.00000000,\"CryptoAddress\":\"0x8c249eca548c402a28b19bc8c470d106aaff4f8d\"}]}"
+    }
 }]

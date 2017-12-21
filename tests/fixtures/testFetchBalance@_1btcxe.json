@@ -530,4 +530,118 @@
         },
         "body": "{\"balances-and-info\":{\"on_hold\":[],\"available\":{\"BTC\":0},\"usd_volume\":0,\"fee_bracket\":{\"maker\":\"0.00\",\"taker\":\"0.00\"},\"global_btc_volume\":0}}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/1btcxe.com\/api\/balances-and-info",
+        "headers": {
+            "Host": "1btcxe.com",
+            "Content-Type": "application\/json"
+        },
+        "body": "{\"api_key\":\"7SuUd4B6zfGAojPn\",\"nonce\":1513895612,\"signature\":\"14bb75f87bc7a3d02a8a8d4db58246b5e58a969531a9b5a569d3047610a7d3e7\"}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:33:32 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d5ca6d65c9f979a285f29d43ab815b5cc1513895612; expires=Fri, 21-Dec-18 22:33:32 GMT; path=\/; domain=.1btcxe.com; HttpOnly, KEY_PHPSESSID=62YXjDtOEyFU5cDYmphty3Mv2agRKP4DMZPgFxOY5Qc%3D%3AAtGmEuOcS7C2nZsKfhl7Qnlrlj4E8aIKBLHxMP1%2BGpc%3D; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=99ksrpe82vo7qiuuulvs5iqii2; path=\/; domain=.1btcxe.com; HttpOnly, KEY_PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=\/; domain=.1btcxe.com; httponly, KEY_PHPSESSID=iThz8rUjokiJlxBCMGnUASGJwmUmYKdiBIu4vynqS4A%3D%3AoAqstVPMFc%2BjBUV1fBl6SsOkUoq4SN9fq4L58bQvtoI%3D; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=e33qdfiu5cr7p6bagolf86gf11; path=\/; domain=.1btcxe.com; HttpOnly, PHPSESSID=8avtflvfkuvf82irqj2uknbo41; path=\/; domain=.1btcxe.com; HttpOnly",
+            "X-Powered-By": "WLOX",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "Vary": "Accept-Encoding",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Content-Type-Options": "nosniff",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e4db8cfc87c66-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"balances-and-info\":{\"on_hold\":[],\"available\":{\"BTC\":0},\"usd_volume\":0,\"fee_bracket\":{\"maker\":\"0.00\",\"taker\":\"0.00\"},\"global_btc_volume\":0}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/1btcxe.com\/api\/balances-and-info",
+        "headers": {
+            "Host": "1btcxe.com",
+            "Content-Type": "application\/json"
+        },
+        "body": "{\"api_key\":\"7SuUd4B6zfGAojPn\",\"nonce\":1513895752,\"signature\":\"221d5bed8420f94491a821b7c36f47122ec9f33a8a590ec24d65aba4e0b608e1\"}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:35:53 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d60155b859f660217a819f60ab5b094da1513895752; expires=Fri, 21-Dec-18 22:35:52 GMT; path=\/; domain=.1btcxe.com; HttpOnly, KEY_PHPSESSID=gdTpJ18sEPak1ghEyyZcte1GKzScmDGIajIHuh%2FPO8s%3D%3A%2BUgOriVkBnOYnnvZ9Jwezy5lrGaKawnSfvqPaPtBWYk%3D; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=gv9gk5737p14o1n69pr9fn74m2; path=\/; domain=.1btcxe.com; HttpOnly, KEY_PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=\/; domain=.1btcxe.com; httponly, KEY_PHPSESSID=UxwThmIbcimVptBWpUeyqAw1LQW9rh5cDzI3WMyDEwY%3D%3A99uqVHlOnRC0%2FWDmL4gUFP77nwZ9pLXmM4S9iS%2BaxkQ%3D; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=64f1h87rr8ko4e0o7lsibtm136; path=\/; domain=.1btcxe.com; HttpOnly, PHPSESSID=e6h607af9m4rarma33qne9pn37; path=\/; domain=.1btcxe.com; HttpOnly",
+            "X-Powered-By": "WLOX",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "Vary": "Accept-Encoding",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Content-Type-Options": "nosniff",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e51281c787c6c-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"balances-and-info\":{\"on_hold\":[],\"available\":{\"BTC\":0},\"usd_volume\":0,\"fee_bracket\":{\"maker\":\"0.00\",\"taker\":\"0.00\"},\"global_btc_volume\":0}}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/1btcxe.com\/api\/balances-and-info",
+        "headers": {
+            "Host": "1btcxe.com",
+            "Content-Type": "application\/json"
+        },
+        "body": "{\"api_key\":\"7SuUd4B6zfGAojPn\",\"nonce\":1513895899,\"signature\":\"0044a8adaf84e72f3e259f6504567692d230ce013276c7c88213f33f58505c6a\"}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:38:19 GMT",
+            "Content-Type": "text\/html",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d3ac6d81fe4b1612c25f7b99a48a9d9261513895899; expires=Fri, 21-Dec-18 22:38:19 GMT; path=\/; domain=.1btcxe.com; HttpOnly, KEY_PHPSESSID=Lou2u4f66QQQm5A0sioeXfn0TAhmNJAZP%2FY8x6a%2FQeo%3D%3AhNpdAbZZA3MhfYL%2FgIA8IBTIYByfxvYwfs9g1tLRf1U%3D; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=c8r1ij9n7qehujhqlaimbus1t6; path=\/; domain=.1btcxe.com; HttpOnly, KEY_PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=\/; domain=.1btcxe.com; httponly, KEY_PHPSESSID=aegPJfPTwwxWDXT5bUahgaen7tZLt28VpiBQPnGn%2BFw%3D%3AMqxD%2FqqCR7YtIk5gbc71GPUCgEe3IghVgVW9uGf%2BR7g%3D; path=\/; domain=.1btcxe.com; httponly, PHPSESSID=jdruce53o2g03mt62spvrakno3; path=\/; domain=.1btcxe.com; HttpOnly, PHPSESSID=7gh9squovl4mlfqlkec5u02bv0; path=\/; domain=.1btcxe.com; HttpOnly",
+            "X-Powered-By": "WLOX",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Pragma": "no-cache",
+            "Vary": "Accept-Encoding",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=2592000",
+            "X-Content-Type-Options": "nosniff",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e54ba3a4c7c48-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"balances-and-info\":{\"on_hold\":[],\"available\":{\"BTC\":0},\"usd_volume\":0,\"fee_bracket\":{\"maker\":\"0.00\",\"taker\":\"0.00\"},\"global_btc_volume\":0}}"
+    }
 }]

@@ -488,4 +488,109 @@
         },
         "body": "{\r\n  \"AVAILABLE_NIS\": 0.00,\r\n  \"NIS\": 0.0,\r\n  \"AVAILABLE_BTC\": 0.00000000,\r\n  \"BTC\": 0.0,\r\n  \"AVAILABLE_LTC\": 0.00000000,\r\n  \"LTC\": 0.0,\r\n  \"AVAILABLE_BCH\": 0.00000000,\r\n  \"BCH\": 0.0,\r\n  \"AVAILABLE_BTG\": 0.00000000,\r\n  \"BTG\": 0.0,\r\n  \"Fees\": {\r\n    \"BtcNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"LtcBtc\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"LtcNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"BchNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"BtgNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    }\r\n  }\r\n}"
     }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.bit2c.co.il\/Account\/Balance\/v2",
+        "headers": {
+            "Host": "www.bit2c.co.il",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "5296814c-b1dc-4201-a62a-9b2364e890da",
+            "sign": "oKVP6gftZ2YtRFCPE\/1aCbQJ6\/Z2WmML+5ZwaH6+HO46uuY0RMvCHT4GVl+yWR8T29oLds4wi4ykyvWOKfRGjQ=="
+        },
+        "body": "nonce=1513895613"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:33:33 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d13517b7544aa627c6dbe5e799efe5e091513895613; expires=Fri, 21-Dec-18 22:33:33 GMT; path=\/; domain=.bit2c.co.il; HttpOnly; Secure, .ASPXAUTH=560E3066ED5963108D711595949A3899DB3846F8337D2A4A03E224EC5B51B755DD1F94C25DF8415C088BF0D87362CF46674A650B6FE4FAE8C615426955D92DDEBAAF3FB72F8AAA552B03A97D2FEAB9C69D2CF7617E6D7B49D84E1689BD987648F06583660F156B9A5A4085CD24D8C1143DB540EAD54230FA24B8C4978C075F58D8F74A9AE7B95F70F9827D57B3FC66BB; path=\/; HttpOnly",
+            "Cache-Control": "private, s-maxage=0",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Strict-Transport-Security": "max-age=31536000;includeSubdomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e4dbfca0f7c42-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\r\n  \"AVAILABLE_NIS\": 0.00,\r\n  \"NIS\": 0.0,\r\n  \"AVAILABLE_BTC\": 0.00000000,\r\n  \"BTC\": 0.0,\r\n  \"AVAILABLE_LTC\": 0.00000000,\r\n  \"LTC\": 0.0,\r\n  \"AVAILABLE_BCH\": 0.00000000,\r\n  \"BCH\": 0.0,\r\n  \"AVAILABLE_BTG\": 0.00000000,\r\n  \"BTG\": 0.0,\r\n  \"Fees\": {\r\n    \"BtcNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"LtcBtc\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"LtcNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"BchNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"BtgNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    }\r\n  }\r\n}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.bit2c.co.il\/Account\/Balance\/v2",
+        "headers": {
+            "Host": "www.bit2c.co.il",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "5296814c-b1dc-4201-a62a-9b2364e890da",
+            "sign": "PkSDeo\/4aRfGhC5u9GOqVYZOAb7dxsxXkkaz2Csb1YW7cyv1ZlUlcdfl\/M2AnAhnb7R10Uf6JXkJ+NBuyKqWMw=="
+        },
+        "body": "nonce=1513895753"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:35:54 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=d6acede25f91db3145b1b84b456ef92781513895753; expires=Fri, 21-Dec-18 22:35:53 GMT; path=\/; domain=.bit2c.co.il; HttpOnly; Secure, .ASPXAUTH=58C1390DA160ADCC0496BF11E46618DEC274F65DEDC1F97DB14A0A372B111613E2045083E0BF952FB60FDC8DBFAB3AB4A1C17302EFDA16EF2DFD6D5942D251D4DFC9571BE5ABC6CE8F84BFA86DBC232144C6A4ADAA5418D77EFAEB61D31C0FBFCB0580FBFE964D265F8CFCE66041C4D5B6D6070AC483D827331FE7455E59007F07B79CA08F000AA90B810D050092A8D3; path=\/; HttpOnly",
+            "Cache-Control": "private, s-maxage=0",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Strict-Transport-Security": "max-age=31536000;includeSubdomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e512d89a37c7e-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\r\n  \"AVAILABLE_NIS\": 0.00,\r\n  \"NIS\": 0.0,\r\n  \"AVAILABLE_BTC\": 0.00000000,\r\n  \"BTC\": 0.0,\r\n  \"AVAILABLE_LTC\": 0.00000000,\r\n  \"LTC\": 0.0,\r\n  \"AVAILABLE_BCH\": 0.00000000,\r\n  \"BCH\": 0.0,\r\n  \"AVAILABLE_BTG\": 0.00000000,\r\n  \"BTG\": 0.0,\r\n  \"Fees\": {\r\n    \"BtcNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"LtcBtc\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"LtcNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"BchNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"BtgNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    }\r\n  }\r\n}"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/www.bit2c.co.il\/Account\/Balance\/v2",
+        "headers": {
+            "Host": "www.bit2c.co.il",
+            "Content-Type": "application\/x-www-form-urlencoded",
+            "key": "5296814c-b1dc-4201-a62a-9b2364e890da",
+            "sign": "+KRYYK6Tg47rys+08ljNx2dfslZ8r3GnkNudPzLlrqFRTJPtzXCt\/NCXGYwokIoafw0+zbpoQOB5y6RGYwFcFw=="
+        },
+        "body": "nonce=1513895900"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 21 Dec 2017 22:38:20 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Set-Cookie": "__cfduid=de339d3349749b7de9876caff911080861513895900; expires=Fri, 21-Dec-18 22:38:20 GMT; path=\/; domain=.bit2c.co.il; HttpOnly; Secure, .ASPXAUTH=B1F146A799EA678D41384D6B72F7A98496A39B3A76D440B23A8B06E6914328344D8CC072D579E5A3E904A3709DBC0B2A3E13C2BFB6155B22E7748BC23C963881C0FDDC34D34303ED12F56594A3EC26A3998E80E4C80BC885280BABD574ED59610733013E5DA29E626D8F08F5BFD09AA05601964F5E7A9CC2769C0161046229DC0D440134706040CAF16185BEB0E7EE6C; path=\/; HttpOnly",
+            "Cache-Control": "private, s-maxage=0",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1; mode=block",
+            "Strict-Transport-Security": "max-age=31536000;includeSubdomains",
+            "Server": "cloudflare-nginx",
+            "CF-RAY": "3d0e54bf9e7c7c96-BEG",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\r\n  \"AVAILABLE_NIS\": 0.00,\r\n  \"NIS\": 0.0,\r\n  \"AVAILABLE_BTC\": 0.00000000,\r\n  \"BTC\": 0.0,\r\n  \"AVAILABLE_LTC\": 0.00000000,\r\n  \"LTC\": 0.0,\r\n  \"AVAILABLE_BCH\": 0.00000000,\r\n  \"BCH\": 0.0,\r\n  \"AVAILABLE_BTG\": 0.00000000,\r\n  \"BTG\": 0.0,\r\n  \"Fees\": {\r\n    \"BtcNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"LtcBtc\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"LtcNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"BchNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    },\r\n    \"BtgNis\": {\r\n      \"FeeMaker\": 0.50,\r\n      \"FeeTaker\": 0.50\r\n    }\r\n  }\r\n}"
+    }
 }]

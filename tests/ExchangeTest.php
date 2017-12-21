@@ -67,11 +67,10 @@ class ExchangeTest extends TestCase {
         ],
         'testFetchTrades' => [
             'bitcoincoid',  // not accessible
-            'bitstamp1',    // array to string @142
             'btcexchange',  // bad offset in response
             'bter',         // bad response
             'btcx',         // bad offset in response
-            'coincheck',    // supports BTC/JPY only
+            'coincheck',    // not accessible
             'coingi',       // not accessible
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
@@ -81,6 +80,7 @@ class ExchangeTest extends TestCase {
             'bit2c',        // travis kills
             'fybse',        // travis kills
             // empty response:
+            'bitstamp1',
             'btcchina',
             'livecoin',
             'paymium',
@@ -89,12 +89,10 @@ class ExchangeTest extends TestCase {
         'testFetchOrderBook' => [
             'anxpro',       // not accessible
             'bitcoincoid',  // not accessible
-            'bitstamp1',    // array to string @74
             'bter',         // bad response
             'chbtc',        // bad response
             'btcexchange',  // bad offset in response
             'btcx',         // bad offset in response
-            'coincheck',    // supports BTC/JPY only
             'coingi',       // not accessible
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
@@ -222,7 +220,7 @@ class ExchangeTest extends TestCase {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
-            $market = current($markets);
+            $market = $this->getMarket($exchange, $markets);
 
             VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
             $trades = $exchange->fetch_trades($market);
@@ -246,7 +244,7 @@ class ExchangeTest extends TestCase {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
-            $market = current($markets);
+            $market = $this->getMarket($exchange, $markets);
 
             VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
             $order_book = $exchange->fetch_order_book($market);
@@ -270,7 +268,7 @@ class ExchangeTest extends TestCase {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
-            $market = current($markets);
+            $market = $this->getMarket($exchange, $markets);
 
             VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
             $ohlcv = $exchange->fetch_ohlcv($market);
@@ -310,5 +308,18 @@ class ExchangeTest extends TestCase {
             $classes[] = ["ccxt\\{$name}"];
         }
         return $classes;
+    }
+
+    private function getMarket (Exchange $exchange, array $markets) {
+        switch ($exchange->id) {
+            case 'bitstamp1':
+                return 'BTC/USD';
+
+            case 'coincheck':
+                return 'BTC/JPY';
+
+            default:
+                return current($markets);
+        }
     }
 }
