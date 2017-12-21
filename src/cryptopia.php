@@ -275,15 +275,14 @@ class cryptopia extends Exchange {
     }
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        if (!$symbol)
-            throw new ExchangeError ($this->id . ' fetchMyTrades requires a symbol');
         $this->load_markets();
-        $market = $this->market ($symbol);
-        $response = $this->privatePostGetTradeHistory (array_merge (array (
-            // 'Market' => $market['id'],
-            'TradePairId' => $market['id'], // Cryptopia identifier (not required if 'Market' supplied)
-            // 'Count' => 10, // max = 100
-        ), $params));
+        $request = array ();
+        $market = null;
+        if ($symbol) {
+            $market = $this->market ($symbol);
+            $request['TradePairId'] = $market['id'];
+        }
+        $response = $this->privatePostGetTradeHistory (array_merge ($request, $params));
         return $this->parse_trades($response['Data'], $market, $since, $limit);
     }
 
@@ -382,7 +381,7 @@ class cryptopia extends Exchange {
             }
             if (is_array ($response['Data']) && array_key_exists ('FilledOrders', $response['Data'])) {
                 $filledOrders = $response['Data']['FilledOrders'];
-                $filledOrdersLength = count ($filledOrders);
+                $filledOrdersLength = is_array ($filledOrders) ? count ($filledOrders) : 0;
                 if ($filledOrdersLength) {
                     $filled = null;
                 }
