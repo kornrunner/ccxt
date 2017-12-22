@@ -49,7 +49,6 @@ class ExchangeTest extends TestCase {
             'huobi',        // bad apiKey
             'huobipro',     // bad apiKey
             'jubi',         // not accessible
-            'liqui',        // null instead of array
             'okcoinusd',    // not accessible
             'okex',         // not accessible
             'southxchange', // not countable @71
@@ -62,8 +61,8 @@ class ExchangeTest extends TestCase {
             'bitso',        // travis
             'xbtce',        // travis
             'bitbay',       // empty response
-            'bitmarket',    // undefined index data
             'btcmarkets',   // bad timestamp
+            'coinmate'      // bad offset in response
         ],
         'testFetchTrades' => [
             'bitcoincoid',  // not accessible
