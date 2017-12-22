@@ -274,10 +274,7 @@ class bittrex extends Exchange {
             // to add support for multiple withdrawal/deposit methods and
             // differentiated fees for each particular method
             $code = $this->common_currency_code($id);
-            $precision = array (
-                'amount' => 8, // default $precision, todo => fix "magic constants"
-                'price' => 8,
-            );
+            $precision = 8; // default $precision, todo => fix "magic constants"
             $result[$code] = array (
                 'id' => $id,
                 'code' => $code,
@@ -289,12 +286,12 @@ class bittrex extends Exchange {
                 'precision' => $precision,
                 'limits' => array (
                     'amount' => array (
-                        'min' => pow (10, -$precision['amount']),
-                        'max' => pow (10, $precision['amount']),
+                        'min' => pow (10, -$precision),
+                        'max' => pow (10, $precision),
                     ),
                     'price' => array (
-                        'min' => pow (10, -$precision['price']),
-                        'max' => pow (10, $precision['price']),
+                        'min' => pow (10, -$precision),
+                        'max' => pow (10, $precision),
                     ),
                     'cost' => array (
                         'min' => null,
@@ -302,7 +299,7 @@ class bittrex extends Exchange {
                     ),
                     'withdraw' => array (
                         'min' => $currency['TxFee'],
-                        'max' => pow (10, $precision['amount']),
+                        'max' => pow (10, $precision),
                     ),
                 ),
             );
@@ -642,6 +639,8 @@ class bittrex extends Exchange {
                                 throw new InvalidOrder ($this->id . ' ' . $this->json ($response));
                             if ($response['message'] == 'APIKEY_INVALID')
                                 throw new AuthenticationError ($this->id . ' ' . $this->json ($response));
+                            if ($response['message'] == 'DUST_TRADE_DISALLOWED_MIN_VALUE_50K_SAT')
+                                throw new InvalidOrder ($this->id . ' order cost should be over 50k satoshi ' . $this->json ($response));
                         }
                         throw new ExchangeError ($this->id . ' ' . $this->json ($response));
                     }
