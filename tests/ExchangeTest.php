@@ -51,7 +51,7 @@ class ExchangeTest extends TestCase {
             'jubi',         // not accessible
             'okcoinusd',    // not accessible
             'okex',         // not accessible
-            'southxchange', // not countable @71
+            'southxchange', // bad response
             'virwox',       // no method parameter?!
             'yobit',        // bad apiKey
             'zaif',         // signature mismatch
