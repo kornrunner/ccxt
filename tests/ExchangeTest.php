@@ -219,10 +219,10 @@ class ExchangeTest extends TestCase {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
-            $market = $this->getMarket($exchange, $markets);
+            $symbol = $this->getSymbol($exchange, $markets);
 
             VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
-            $trades = $exchange->fetch_trades($market);
+            $trades = $exchange->fetch_trades($symbol);
             VCR::eject();
             $this->assertNotEmpty($trades);
         } else {
@@ -243,10 +243,10 @@ class ExchangeTest extends TestCase {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
-            $market = $this->getMarket($exchange, $markets);
+            $symbol = $this->getSymbol($exchange, $markets);
 
             VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
-            $order_book = $exchange->fetch_order_book($market);
+            $order_book = $exchange->fetch_order_book($symbol);
             VCR::eject();
             $this->assertNotEmpty($order_book);
         } else {
@@ -267,10 +267,10 @@ class ExchangeTest extends TestCase {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
-            $market = $this->getMarket($exchange, $markets);
+            $symbol = $this->getSymbol($exchange, $markets);
 
             VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
-            $ohlcv = $exchange->fetch_ohlcv($market);
+            $ohlcv = $exchange->fetch_ohlcv($symbol);
             VCR::eject();
             $this->assertNotEmpty($ohlcv);
         } else {
@@ -309,7 +309,7 @@ class ExchangeTest extends TestCase {
         return $classes;
     }
 
-    private function getMarket (Exchange $exchange, array $markets) {
+    private function getSymbol (Exchange $exchange, array $markets): string {
         switch ($exchange->id) {
             case 'bitstamp1':
                 return 'BTC/USD';
@@ -318,7 +318,7 @@ class ExchangeTest extends TestCase {
                 return 'BTC/JPY';
 
             default:
-                return current($markets);
+                return current($markets)['symbol'] ?? '';
         }
     }
 }
