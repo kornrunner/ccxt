@@ -403,7 +403,7 @@ class binance extends Exchange {
         }
         $tickersBySymbol = $this->index_by($tickers, 'symbol');
         // return all of them if no $symbols were passed in the first argument
-        if (!$symbols)
+        if ($symbols === null)
             return $tickersBySymbol;
         // otherwise filter by $symbol
         $result = array ();
@@ -738,12 +738,14 @@ class binance extends Exchange {
         if ($body[0] == "{") {
             $response = json_decode ($body, $as_associative_array = true);
             $error = $this->safe_value($response, 'code');
-            if ($error == -2010) {
-                throw new InsufficientFunds ($this->id . ' ' . $this->json ($response));
-            } else if ($error == -2011) {
-                throw new OrderNotFound ($this->id . ' ' . $this->json ($response));
-            } else if ($error < 0) {
-                throw new ExchangeError ($this->id . ' ' . $this->json ($response));
+            if ($error !== null) {
+                if ($error == -2010) {
+                    throw new InsufficientFunds ($this->id . ' ' . $this->json ($response));
+                } else if ($error == -2011) {
+                    throw new OrderNotFound ($this->id . ' ' . $this->json ($response));
+                } else if ($error < 0) {
+                    throw new ExchangeError ($this->id . ' ' . $this->json ($response));
+                }
             }
         }
     }
