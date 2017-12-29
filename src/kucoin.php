@@ -241,7 +241,7 @@ class kucoin extends Exchange {
         $amount = $this->safe_float($order, 'amount');
         $filled = $this->safe_float($order, 'dealAmount');
         $remaining = $this->safe_float($order, 'pendingAmount');
-        $side = strtolower ($order['type']);
+        $side = strtolower ($order['direction']);
         $result = array (
             'info' => $order,
             'id' => $this->safe_string($order, 'oid'),
@@ -296,11 +296,12 @@ class kucoin extends Exchange {
             throw new ExchangeError ($this->id . ' allows limit orders only');
         $this->load_markets();
         $market = $this->market ($symbol);
+        $base = $market['base'];
         $order = array (
             'symbol' => $market['id'],
             'type' => strtoupper ($side),
             'price' => $this->price_to_precision($symbol, $price),
-            'amount' => $this->amount_to_precision($symbol, $amount),
+            'amount' => $this->truncate ($amount, $this->currencies[$base]['precision']),
         );
         $response = $this->privatePostOrder (array_merge ($order, $params));
         return array (
@@ -458,9 +459,8 @@ class kucoin extends Exchange {
             $nonce = (string) $nonce;
             if ($query) {
                 $queryString = $this->rawencode ($this->keysort ($query));
-                if ($method == 'GET') {
-                    $url .= '?' . $queryString;
-                } else {
+                $url .= '?' . $queryString;
+                if ($method != 'GET') {
                     $body = $queryString;
                 }
             }
@@ -477,32 +477,38 @@ class kucoin extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
-        if ($code >= 400) {
-            if ($body && ($body[0] == "{")) {
-                $response = json_decode ($body, $as_associative_array = true);
-                if (is_array ($response) && array_key_exists ('success', $response)) {
-                    if (!$response['success']) {
-                        if (is_array ($response) && array_key_exists ('code', $response)) {
-                            if ($response['code'] == 'UNAUTH') {
-                                $message = $this->safe_string($response, 'msg');
-                                if ($message == 'Invalid nonce') {
-                                    throw new InvalidNonce ($this->id . ' ' . $message);
-                                }
-                                throw new AuthenticationError ($this->id . ' ' . $this->json ($response));
-                            }
-                        }
-                        throw new ExchangeError ($this->id . ' ' . $this->json ($response));
+    public function throw_exception_or_error_code ($response) {
+        if (is_array ($response) && array_key_exists ('success', $response)) {
+            if (!$response['success']) {
+                if (is_array ($response) && array_key_exists ('code', $response)) {
+                    $message = $this->safe_string($response, 'msg');
+                    if ($response['code'] == 'UNAUTH') {
+                        if ($message == 'Invalid nonce')
+                            throw new InvalidNonce ($this->id . ' ' . $message);
+                        throw new AuthenticationError ($this->id . ' ' . $this->json ($response));
+                    } else if ($response['code'] == 'ERROR') {
+                        if (mb_strpos ($message, 'precision of amount') !== false)
+                            throw new InvalidOrder ($this->id . ' ' . $message);
                     }
                 }
-            } else {
-                throw new ExchangeError ($this->id . ' ' . (string) $code . ' ' . $reason);
+                throw new ExchangeError ($this->id . ' ' . $this->json ($response));
             }
+        }
+    }
+
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+        if ($body && ($body[0] == "{")) {
+            $response = json_decode ($body, $as_associative_array = true);
+            $this->throw_exception_or_error_code ($response);
+        }
+        if ($code >= 400) {
+            throw new ExchangeError ($this->id . ' ' . (string) $code . ' ' . $reason);
         }
     }
 
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
+        $this->throw_exception_or_error_code ($response);
         return $response;
     }
 }
