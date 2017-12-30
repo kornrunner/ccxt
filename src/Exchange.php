@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.517';
+$version = '1.10.530';
 
 abstract class Exchange {
 
@@ -157,7 +157,7 @@ abstract class Exchange {
 
     public static function truncate ($number, $precision = 0) {
         $decimal_precision = pow (10, $precision);
-        return floatval ($number * $decimal_precision) / $decimal_precision;
+        return floor(floatval ($number * $decimal_precision)) / $decimal_precision;
     }
 
     public static function uuid () {
