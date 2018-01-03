@@ -57,8 +57,6 @@ class bitstamp extends Exchange {
                         'eth_address/',
                         'transfer-to-main/',
                         'transfer-from-main/',
-                        'ripple_withdrawal/',
-                        'ripple_address/',
                         'withdrawal/open/',
                         'withdrawal/status/',
                         'withdrawal/cancel/',
@@ -71,6 +69,8 @@ class bitstamp extends Exchange {
                         'bitcoin_deposit_address/',
                         'unconfirmed_btc/',
                         'bitcoin_withdrawal/',
+                        'ripple_withdrawal/',
+                        'ripple_address/',
                     ),
                 ),
             ),
@@ -370,7 +370,8 @@ class bitstamp extends Exchange {
             'amount' => $amount,
             'address' => $address,
         );
-        $method = ($code == 'BTC') ? 'v1' : 'private'; // v1 or v2
+        $v1 = ($code == 'BTC') || ($code == 'XRP');
+        $method = $v1 ? 'v1' : 'private'; // $v1 or v2
         $method .= 'Post' . $this->capitalize ($name) . 'Withdrawal';
         $query = $params;
         if ($code == 'XRP') {
