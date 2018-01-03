@@ -1,0 +1,28 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/hft-api.lykke.com\/api\/OrderBooks\/AUDUSD",
+        "headers": {
+            "Host": "hft-api.lykke.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.13.6",
+            "Date": "Wed, 03 Jan 2018 01:55:47 GMT",
+            "Content-Type": "application\/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Request-Context": "appId=cid-v1:43e62950-e4b6-473f-a795-908b111fa2ad",
+            "X-Rate-Limit-Limit": "1m",
+            "X-Rate-Limit-Remaining": "299",
+            "X-Rate-Limit-Reset": "2018-01-03T01:56:47.6083979Z"
+        },
+        "body": "[{\"AssetPair\":\"AUDUSD\",\"IsBuy\":false,\"Timestamp\":\"2018-01-03T01:55:44.805\",\"Prices\":[{\"Volume\":-50000.0,\"Price\":0.78243}]},{\"AssetPair\":\"AUDUSD\",\"IsBuy\":true,\"Timestamp\":\"2018-01-03T01:55:44.805\",\"Prices\":[{\"Volume\":50000.0,\"Price\":0.7824}]}]"
+    }
+}]
