@@ -27,6 +27,7 @@ class ExchangeTest extends TestCase {
             'flowbtc',  // bad offset in response
             'yunbi',    // not accessible
             'bitso',    // not accessible
+            'allcoin',  // not accessible
             'kraken',   // timeout
             'xbtce',    // travis
         ],
@@ -78,6 +79,7 @@ class ExchangeTest extends TestCase {
             'okcoincny',    // not accessible
             'bit2c',        // travis kills
             'fybse',        // travis kills
+            'allcoin',      // not accessible
             // empty response:
             'bitstamp1',
             'btcchina',
@@ -99,6 +101,8 @@ class ExchangeTest extends TestCase {
             'okcoincny',    // not accessible
             'virwox',       // not implemented
             'xbtce',        // travis
+            'allcoin',      // not accessible
+            'btctradeua',   // not accessible
         ],
         'testFetchOHLCV' => [
             'btcexchange',  // bad offset in response
