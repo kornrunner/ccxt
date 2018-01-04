@@ -14,7 +14,6 @@ class ExchangeTest extends TestCase {
             'ccex',
             'coingi',
             'dsx',
-            'gateio',
             'jubi',
             'southxchange',
             'qryptos',
