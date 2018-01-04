@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.558';
+$version = '1.10.561';
 
 abstract class Exchange {
 
@@ -159,6 +159,18 @@ abstract class Exchange {
     public static function truncate ($number, $precision = 0) {
         $decimal_precision = pow (10, $precision);
         return floor(floatval ($number * $decimal_precision)) / $decimal_precision;
+    }
+
+    public static function truncate_to_string ($number, $precision = 0) {
+        if ($precision > 0) {
+            $string = sprintf ('%.' . ($precision + 1) . 'f', floatval ($number));
+            list ($integer, $decimal) = explode ('.', $string);
+            $decimal = trim ('.' . substr ($decimal, 0, $precision), '0');
+            if (strlen ($decimal) < 2)
+                $decimal = '.0';
+            return $integer . $decimal;
+        }
+        return sprintf ('%d', floatval ($number));
     }
 
     public static function uuid () {
@@ -1375,6 +1387,10 @@ abstract class Exchange {
         return $this->truncate (floatval ($amount), $this->markets[$symbol]['precision']['amount']);
     }
 
+    public function amount_to_string ($symbol, $amount) {
+        return $this->truncate_to_string (floatval ($amount), $this->markets[$symbol]['precision']['amount']);
+    }
+
     public function amount_to_lots ($symbol, $amount) {
         $lot = $this->markets[$symbol]['lot'];
         return $this->amount_to_precision ($symbol, floor (floatval ($amount) / $lot) * $lot);
@@ -1382,6 +1398,10 @@ abstract class Exchange {
 
     public function amountToPrecision ($symbol, $amount) {
         return $this->amount_to_precision ($symbol, $amount);
+    }
+
+    public function amountToString ($symbol, $amount) {
+        return $this->amount_to_string ($symbol, $amount);
     }
 
     public function amountToLots ($symbol, $amount) {
