@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.573';
+$version = '1.10.579';
 
 abstract class Exchange {
 
@@ -1468,6 +1468,12 @@ abstract class Exchange {
             return !(is_object ($var) || is_resource ($var) || is_callable ($var));
         }));
         return $return;
+    }
+
+    public function __wakeup () {
+        $this->curl = curl_init ();
+        if ($this->api)
+            $this->define_rest_api ($this->api, 'request');
     }
 
 }
