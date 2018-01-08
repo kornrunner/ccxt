@@ -266,10 +266,17 @@ class cryptopia extends Exchange {
     public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $response = $this->publicGetMarketHistoryIdHours (array_merge (array (
+        $hours = 24; // the default
+        if ($since) {
+            $elapsed = $this->milliseconds () - $since;
+            $hour = 1000 * 60 * 60;
+            $hours = intval ($elapsed / $hour);
+        }
+        $request = array (
             'id' => $market['id'],
-            'hours' => 24, // default
-        ), $params));
+            'hours' => $hours,
+        );
+        $response = $this->publicGetMarketHistoryIdHours (array_merge ($request, $params));
         $trades = $response['Data'];
         return $this->parse_trades($trades, $market, $since, $limit);
     }
@@ -359,13 +366,15 @@ class cryptopia extends Exchange {
             throw new ExchangeError ($this->id . ' allows limit orders only');
         $this->load_markets();
         $market = $this->market ($symbol);
-        $price = floatval ($price);
-        $amount = floatval ($amount);
+        // $price = floatval ($price);
+        // $amount = floatval ($amount);
         $request = array (
             'TradePairId' => $market['id'],
             'Type' => $this->capitalize ($side),
-            'Rate' => $this->price_to_precision($symbol, $price),
-            'Amount' => $this->amount_to_precision($symbol, $amount),
+            // 'Rate' => $this->price_to_precision($symbol, $price),
+            // 'Amount' => $this->amount_to_precision($symbol, $amount),
+            'Rate' => $price,
+            'Amount' => $amount,
         );
         $response = $this->privatePostSubmitTrade (array_merge ($request, $params));
         if (!$response)

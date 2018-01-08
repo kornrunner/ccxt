@@ -95,6 +95,8 @@ class binance extends Exchange {
                         'ticker/24hr',
                         'ticker/allPrices',
                         'ticker/allBookTickers',
+                        'ticker/price',
+                        'ticker/bookTicker',
                     ),
                 ),
                 'private' => array (
@@ -450,7 +452,7 @@ class binance extends Exchange {
 
     public function fetch_tickers ($symbols = null, $params = array ()) {
         $this->load_markets();
-        $rawTickers = $this->publicGetTicker24hr ($params);
+        $rawTickers = $this->publicGetTickerBookTicker ($params);
         $tickers = array ();
         for ($i = 0; $i < count ($rawTickers); $i++) {
             $tickers[] = $this->parse_ticker($rawTickers[$i]);
@@ -798,6 +800,8 @@ class binance extends Exchange {
                     throw new InsufficientFunds ($this->id . ' ' . $this->json ($response));
                 } else if ($error == -2011) {
                     throw new OrderNotFound ($this->id . ' ' . $this->json ($response));
+                } else if ($error == -1013) { // Invalid quantity
+                    throw new InvalidOrder ($this->id . ' ' . $this->json ($response));
                 } else if ($error < 0) {
                     throw new ExchangeError ($this->id . ' ' . $this->json ($response));
                 }
