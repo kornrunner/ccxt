@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.594';
+$version = '1.10.599';
 
 abstract class Exchange {
 
@@ -57,6 +57,7 @@ abstract class Exchange {
         'bittrex',
         'bl3p',
         'bleutrade',
+        'braziliex',
         'btcbox',
         'btcchina',
         'btcexchange',
@@ -1459,7 +1460,7 @@ abstract class Exchange {
             return call_user_func_array ($this->$function, $params);
         else {
             /* handle errors */
-            throw new ExchangeError ( $function . ' not found');
+            throw new ExchangeError ($function . ' not found');
         }
     }
 
