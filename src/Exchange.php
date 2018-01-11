@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.639';
+$version = '1.10.646';
 
 abstract class Exchange {
 
@@ -1171,6 +1171,14 @@ abstract class Exchange {
 
     public function fetchTickers ($symbols, $params = array ()) {
         return $this->fetch_tickers ($symbols, $params);
+    }
+
+    public function fetch_full_tickers ($symbols, $params = array ()) { // stub
+        return $this->fetch_tickers ($symbols, $params);
+    }
+
+    public function fetchFullTickers ($symbols, $params = array ()) {
+        return $this->fetch_full_tickers ($symbols, $params);
     }
 
     public function fetch_order_status ($id, $market = null) {
