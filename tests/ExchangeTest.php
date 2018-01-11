@@ -107,6 +107,7 @@ class ExchangeTest extends TestCase {
             'btcexchange',  // bad offset in response
             'huobi',        // not accessible
             'okcoincny',    // not accessible
+            'kucoin',       // not accessible
             'huobicny',     // empty response
             'poloniex',     // travis
             'bitlish',      // travis
