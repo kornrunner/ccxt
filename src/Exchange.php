@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.653';
+$version = '1.10.665';
 
 abstract class Exchange {
 
@@ -72,6 +72,7 @@ abstract class Exchange {
         'chbtc',
         'chilebit',
         'coincheck',
+        'coinexchange',
         'coinfloor',
         'coingi',
         'coinmarketcap',
@@ -1242,6 +1243,10 @@ abstract class Exchange {
     public function fetchBalance () {
         return $this->fetch_balance ();
     }
+
+	public function fetch_balance ($params = array ()) {
+		throw new NotSupported ($this->id . ' fetch_balance() not implemented yet');
+	}
 
     public function fetchOrderBook ($symbol, $params = array ()) {
         return $this->fetch_order_book ($symbol, $params);
