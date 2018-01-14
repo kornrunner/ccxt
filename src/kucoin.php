@@ -16,7 +16,7 @@ class kucoin extends Exchange {
             // obsolete metainfo interface
             'hasFetchTickers' => true,
             'hasFetchOHLCV' => true,
-            'hasFetchOrder' => true,
+            'hasFetchOrder' => false,
             'hasFetchOrders' => true,
             'hasFetchClosedOrders' => true,
             'hasFetchOpenOrders' => true,
@@ -27,7 +27,7 @@ class kucoin extends Exchange {
             'has' => array (
                 'fetchTickers' => true,
                 'fetchOHLCV' => true, // see the method implementation below
-                'fetchOrder' => true,
+                'fetchOrder' => false,
                 'fetchOrders' => true,
                 'fetchClosedOrders' => true,
                 'fetchOpenOrders' => true,
@@ -293,11 +293,27 @@ class kucoin extends Exchange {
             $symbol = $order['coinType'] . '/' . $order['coinTypePair'];
         }
         $timestamp = $order['createdAt'];
-        $price = $order['price'];
-        $filled = $order['dealAmount'];
-        $remaining = $order['pendingAmount'];
-        $amount = $this->sum ($filled, $remaining);
+        $price = $this->safe_value($order, 'price');
+        if ($price === null)
+            $price = $this->safe_value($order, 'dealPrice');
+        $amount = $this->safe_value($order, 'amount');
+        $filled = $this->safe_value($order, 'dealAmount', 0);
+        $remaining = $this->safe_value($order, 'pendingAmount');
+        if ($amount === null)
+            if ($filled !== null)
+                if ($remaining !== null)
+                    $amount = $this->sum ($filled, $remaining);
         $side = strtolower ($order['direction']);
+        $fee = null;
+        if (is_array ($order) && array_key_exists ('fee', $order)) {
+            $fee = array (
+                'cost' => $this->safe_float($order, 'fee'),
+                'rate' => $this->safe_float($order, 'feeRate'),
+            );
+            if ($market)
+                $fee['currency'] = $market['base'];
+        }
+        $status = $this->safe_value($order, 'status');
         $result = array (
             'info' => $order,
             'id' => $this->safe_string($order, 'oid'),
@@ -311,8 +327,8 @@ class kucoin extends Exchange {
             'cost' => $price * $filled,
             'filled' => $filled,
             'remaining' => $remaining,
-            'status' => null,
-            'fee' => $this->safe_float($order, 'fee'),
+            'status' => $status,
+            'fee' => $fee,
         );
         return $result;
     }
@@ -327,7 +343,11 @@ class kucoin extends Exchange {
         );
         $response = $this->privateGetOrderActiveMap (array_merge ($request, $params));
         $orders = $this->array_concat($response['data']['SELL'], $response['data']['BUY']);
-        return $this->parse_orders($orders, $market, $since, $limit);
+        $result = array ();
+        for ($i = 0; $i < count ($orders); $i++) {
+            $result[] = array_merge ($orders[$i], array ( 'status' => 'open' ));
+        }
+        return $this->parse_orders($result, $market, $since, $limit);
     }
 
     public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -345,7 +365,12 @@ class kucoin extends Exchange {
             $request['limit'] = $limit;
         }
         $response = $this->privateGetOrderDealt (array_merge ($request, $params));
-        return $this->parse_orders($response['data']['datas'], $market, $since, $limit);
+        $orders = $response['data']['datas'];
+        $result = array ();
+        for ($i = 0; $i < count ($orders); $i++) {
+            $result[] = array_merge ($orders[$i], array ( 'status' => 'closed' ));
+        }
+        return $this->parse_orders($result, $market, $since, $limit);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {

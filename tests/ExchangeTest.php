@@ -8,6 +8,7 @@ class ExchangeTest extends TestCase {
 
     private static $skip = [
         'testFetchTicker' => [
+            'bibox',
             'bleutrade',
             'btcexchange',
             'bter',
@@ -22,6 +23,7 @@ class ExchangeTest extends TestCase {
             'yunbi',
         ],
         'testLoadMarkets' => [
+            'bibox',     // bad apiKey
             'bter',     // bad response
             'flowbtc',  // bad offset in response
             'yunbi',    // not accessible
@@ -33,6 +35,7 @@ class ExchangeTest extends TestCase {
         'testFetchBalance' => [
             'anxpro',       // not accessible
             'binance',      // bad apiKey
+            'bibox',        // bad apiKey
             'bitcoincoid',  // nonce
             'btctradeua',   // not accessible
             'bitfinex',     // nonce
@@ -67,6 +70,7 @@ class ExchangeTest extends TestCase {
         'testFetchTrades' => [
             'bitcoincoid',  // not accessible
             'btcexchange',  // bad offset in response
+            'bibox',        // bad apiKey
             'bter',         // bad response
             'btcx',         // bad offset in response
             'coincheck',    // not accessible
@@ -104,6 +108,7 @@ class ExchangeTest extends TestCase {
             'btctradeua',   // not accessible
         ],
         'testFetchOHLCV' => [
+            'bibox',        // bad apiKey
             'btcexchange',  // bad offset in response
             'huobi',        // not accessible
             'okcoincny',    // not accessible
