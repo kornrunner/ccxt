@@ -21,6 +21,8 @@ class ExchangeTest extends TestCase {
             'quoine',
             'xbtce',
             'yunbi',
+            'tidex',
+            'yobit',
         ],
         'testLoadMarkets' => [
             'bibox',     // bad apiKey
