@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.713';
+$version = '1.10.726';
 
 abstract class Exchange {
 
@@ -523,6 +523,7 @@ abstract class Exchange {
         $this->limits      = array ();
         $this->orders      = array ();
         $this->trades      = array ();
+        $this->exceptions  = array ();
         $this->verbose     = false;
         $this->apiKey      = '';
         $this->secret      = '';
