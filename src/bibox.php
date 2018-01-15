@@ -520,4 +520,8 @@ class bibox extends Exchange {
             throw new ExchangeError ($message);
         return $response['result'][0];
     }
+
+    public static function json ($input) {
+        return json_encode ($input);
+    }
 }
