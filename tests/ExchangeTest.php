@@ -51,6 +51,7 @@ class ExchangeTest extends TestCase {
             'chbtc',        // bad offset in response
             'coingi',       // not accessible
             'coincheck',    // bad apiKey
+            'coinspot',     // not accessible
             'dsx',          // bad apiKey
             'flowbtc',      // bad offset in response
             'huobi',        // bad apiKey
