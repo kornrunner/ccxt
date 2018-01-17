@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.753';
+$version = '1.10.757';
 
 abstract class Exchange {
 
@@ -532,6 +532,7 @@ abstract class Exchange {
         $this->twofa       = false;
         $this->marketsById = null;
         $this->markets_by_id = null;
+        $this->currencies_by_id = null;
         $this->userAgent   = null; // 'ccxt/' . $version . ' (+https://github.com/ccxt/ccxt) PHP/' . PHP_VERSION;
         $this->userAgents = array (
             'chrome' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36',
@@ -856,10 +857,16 @@ abstract class Exchange {
                 'not accessible from this location at the moment');
         }
 
-        if (in_array ($http_status_code, array (404, 409, 422, 500, 501, 502))) {
+        if (in_array ($http_status_code, array (404, 409, 500, 501, 502))) {
 
             $this->raise_error ('ExchangeNotAvailable', $url, $method, $http_status_code,
                 'not accessible from this location at the moment');
+        }
+
+        if (in_array ($http_status_code, array (422))) {
+
+            $this->raise_error ('ExchangeError', $url, $method, $http_status_code,
+                'Unprocessable Entity');
         }
 
         if (in_array ($http_status_code, array (408, 504))) {
@@ -977,6 +984,7 @@ abstract class Exchange {
             $currencies = $this->indexBy (array_merge ($base_currencies, $quote_currencies), 'code');
             $this->currencies = array_replace_recursive ($currencies, $this->currencies);
         }
+        $this->currencies_by_id = $this->indexBy (array_values ($this->currencies), 'id');
         return $this->markets;
     }
 
