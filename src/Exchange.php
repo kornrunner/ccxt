@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.739';
+$version = '1.10.750';
 
 abstract class Exchange {
 
@@ -118,7 +118,7 @@ abstract class Exchange {
         'poloniex',
         'qryptos',
         'quadrigacx',
-        'quoine',
+        'quoinex',
         'southxchange',
         'surbitcoin',
         'therock',
