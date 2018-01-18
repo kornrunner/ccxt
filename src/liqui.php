@@ -70,7 +70,12 @@ class liqui extends Exchange {
                     'maker' => 0.001,
                     'taker' => 0.0025,
                 ),
-                'funding' => 0.0,
+                'funding' => array (
+                    'tierBased' => false,
+                    'percentage' => false,
+                    'withdraw' => null,
+                    'deposit' => null,
+                ),
             ),
             'exceptions' => array (
                 '803' => '\\ccxt\\InvalidOrder', // "Count could not be less than 0.001." (selling below minAmount)
@@ -571,7 +576,7 @@ class liqui extends Exchange {
         return $this->parse_trades($trades, $market, $since, $limit);
     }
 
-    public function withdraw ($currency, $amount, $address, $params = array ()) {
+    public function withdraw ($currency, $amount, $address, $tag = null, $params = array ()) {
         $this->load_markets();
         $response = $this->privatePostWithdrawCoin (array_merge (array (
             'coinName' => $currency,
