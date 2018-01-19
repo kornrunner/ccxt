@@ -11,6 +11,7 @@ class ExchangeTest extends TestCase {
             'bibox',
             'bleutrade',
             'btcexchange',
+            'coinexchange',
             'bter',
             'ccex',
             'coingi',
@@ -27,6 +28,7 @@ class ExchangeTest extends TestCase {
         'testLoadMarkets' => [
             'bibox',     // bad apiKey
             'bter',     // bad response
+            'coinexchange',  // bad offset in response
             'flowbtc',  // bad offset in response
             'yunbi',    // not accessible
             'bitso',    // not accessible
@@ -100,6 +102,7 @@ class ExchangeTest extends TestCase {
             'bitcoincoid',  // not accessible
             'bter',         // bad response
             'chbtc',        // bad response
+            'coinexchange',  // bad offset in response
             'btcexchange',  // bad offset in response
             'btcx',         // bad offset in response
             'coingi',       // not accessible
