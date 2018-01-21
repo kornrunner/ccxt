@@ -10,18 +10,10 @@ class binance extends Exchange {
             'name' => 'Binance',
             'countries' => 'JP', // Japan
             'rateLimit' => 500,
-            'hasCORS' => false,
-            // obsolete metainfo interface
-            'hasFetchBidsAsks' => true,
-            'hasFetchTickers' => true,
-            'hasFetchOHLCV' => true,
-            'hasFetchMyTrades' => true,
-            'hasFetchOrder' => true,
-            'hasFetchOrders' => true,
-            'hasFetchOpenOrders' => true,
-            'hasWithdraw' => true,
             // new metainfo interface
             'has' => array (
+                'fetchDepositAddress' => true,
+                'CORS' => false,
                 'fetchBidsAsks' => true,
                 'fetchTickers' => true,
                 'fetchOHLCV' => true,
@@ -764,11 +756,12 @@ class binance extends Exchange {
     }
 
     public function withdraw ($currency, $amount, $address, $tag = null, $params = array ()) {
+        $name = mb_substr ($address, 0, 20);
         $request = array (
             'asset' => $this->currency_id ($currency),
             'address' => $address,
             'amount' => floatval ($amount),
-            'name' => $address,
+            'name' => $name,
         );
         if ($tag)
             $request['addressTag'] = $tag;
