@@ -75,6 +75,10 @@ class ExchangeTest extends TestCase {
             'coinmate'      // bad offset in response
         ],
         'testFetchTrades' => [
+            '_1broker',     // not implemeneted
+            'anxpro',       // not implemeneted
+            'coinmarketcap', // not implemeneted
+            'lykke',        // not implemeneted
             'bitcoincoid',  // not accessible
             'btcexchange',  // bad offset in response
             'bibox',        // bad apiKey
@@ -105,6 +109,7 @@ class ExchangeTest extends TestCase {
             'coinexchange',  // bad offset in response
             'btcexchange',  // bad offset in response
             'btcx',         // bad offset in response
+            'coinmarketcap', // not implemeneted
             'coingi',       // not accessible
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
@@ -118,6 +123,7 @@ class ExchangeTest extends TestCase {
         'testFetchOHLCV' => [
             'bibox',        // bad apiKey
             'btcexchange',  // bad offset in response
+            'coinmarketcap', // not implemeneted
             'huobi',        // not accessible
             'okcoincny',    // not accessible
             'kucoin',       // not accessible
