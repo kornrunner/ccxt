@@ -111,6 +111,7 @@ class ExchangeTest extends TestCase {
             'btcx',         // bad offset in response
             'coinmarketcap', // not implemeneted
             'coingi',       // not accessible
+            'coinspot',     // bad offset in response
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
             'jubi',         // not accessible
