@@ -45,9 +45,11 @@ class ExchangeTest extends TestCase {
             'bitfinex',     // nonce
             'bitfinex2',    // not accessible
             'bitlish',      // not accessible
+            'bittrex',      // invalid apiKey
             'bitmarket',    // not accessible
             'btcx',         // bad offset in response
             'bter',         // bad response
+            'bit2c',        // not accessible
             'bxinth',       // no apiKey
             'cex',          // no apiKey
             'chbtc',        // bad offset in response
@@ -58,6 +60,7 @@ class ExchangeTest extends TestCase {
             'flowbtc',      // bad offset in response
             'huobi',        // bad apiKey
             'huobipro',     // bad apiKey
+            'hitbtc',       // bad apiKey
             'jubi',         // not accessible
             'okcoinusd',    // not accessible
             'okex',         // not accessible

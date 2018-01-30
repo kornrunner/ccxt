@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.867';
+$version = '1.10.909';
 
 abstract class Exchange {
 
@@ -332,7 +332,7 @@ abstract class Exchange {
     }
 
     public static function extract_params ($string) {
-        if (preg_match_all ('/{([a-z0-9_]+?)}/ui', $string, $matches))
+        if (preg_match_all ('/{([\w-]+)}/u', $string, $matches))
             return $matches[1];
     }
 
@@ -463,8 +463,16 @@ abstract class Exchange {
         return $binary;
     }
 
-    public static function json ($input) {
-        return json_encode ($input, JSON_FORCE_OBJECT);
+    public static function json ($data, $params = array ()) {
+        $options = array (
+            'convertArraysToObjects' => JSON_FORCE_OBJECT,
+            // other flags if needed...
+        );
+        $flags = 0;
+        foreach ($options as $key => $value)
+            if (array_key_exists ($key, $params) && $params[$key])
+                $flags |= $options[$key];
+        return json_encode ($data, $flags);
     }
 
     public static function encode ($input) {
@@ -702,6 +710,10 @@ abstract class Exchange {
         }
     }
 
+    public function sign($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
+        throw new NotSupported ($this->id . ' sign() not implemented yet');
+    }
+
     public function fetch2 ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $request = $this->sign ($path, $api, $method, $params, $headers, $body);
         return $this->fetch ($request['url'], $request['method'], $request['headers'], $request['body']);
@@ -809,6 +821,7 @@ abstract class Exchange {
 
         */
 
+        curl_setopt ($this->curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt ($this->curl, CURLOPT_FAILONERROR, false);
 
         $response_headers = array ();
@@ -842,6 +855,13 @@ abstract class Exchange {
         // Reset curl opts
         curl_reset ($this->curl);
 
+        if ($this->verbose) {
+            print_r ("\nResponse:\n");
+            print_r (array ($method, $url, $http_status_code, $curl_error, $response_headers, $result));
+        }
+
+        $this->handle_errors ($http_status_code, $curl_error, $url, $method, $response_headers, $result ? $result : null);
+
         if ($result === false) {
 
             if ($curl_errno == 28) // CURLE_OPERATION_TIMEDOUT
@@ -852,8 +872,6 @@ abstract class Exchange {
             // all sorts of SSL problems, accessibility
             $this->raise_error ('ExchangeNotAvailable', $url, $method, $curl_errno, $curl_error);
         }
-
-        $this->handle_errors ($http_status_code, $curl_error, $url, $method, $response_headers, $result);
 
         if (in_array ($http_status_code, array (418, 429))) {
 
