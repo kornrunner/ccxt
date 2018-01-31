@@ -74,6 +74,7 @@ class gdax extends Exchange {
                         'accounts/{id}',
                         'accounts/{id}/holds',
                         'accounts/{id}/ledger',
+                        'accounts/{id}/transfers',
                         'coinbase-accounts',
                         'fills',
                         'funding',
@@ -263,20 +264,24 @@ class gdax extends Exchange {
         }
         if ($market)
             $symbol = $market['symbol'];
-        $fee = null;
-        if (is_array ($trade) && array_key_exists ('fill_fees', $trade)) {
-            $feeCurrency = null;
-            if ($market)
-                $feeCurrency = $market['quote'];
-            $fee = array (
-                'cost' => $this->safe_float($trade, 'fill_fees'),
-                'currency' => $feeCurrency,
-                'rate' => null,
-            );
+        $feeRate = null;
+        $feeCurrency = null;
+        if ($market) {
+            $feeCurrency = $market['quote'];
+            if (is_array ($trade) && array_key_exists ('liquidity', $trade)) {
+                $rateType = ($trade['liquidity'] === 'T') ? 'taker' : 'maker';
+                $feeRate = $market[$rateType];
+            }
         }
+        $feeCost = $this->safe_float($trade, 'fill_fees');
+        if ($feeCost === null)
+            $feeCost = $this->safe_float($trade, 'fee');
+        $fee = array (
+            'cost' => $feeCost,
+            'currency' => $feeCurrency,
+            'rate' => $feeRate,
+        );
         $type = null;
-        if (is_array ($trade) && array_key_exists ('liquidity', $trade))
-            $type = ($trade['liquidity'] === 'T') ? 'Taker' : 'Maker';
         $id = $this->safe_string($trade, 'trade_id');
         $orderId = $this->safe_string($trade, 'order_id');
         return array (
