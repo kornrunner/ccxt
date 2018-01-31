@@ -61,6 +61,7 @@ class ExchangeTest extends TestCase {
             'huobi',        // bad apiKey
             'huobipro',     // bad apiKey
             'hitbtc',       // bad apiKey
+            'liqui',        // bad apiKey
             'jubi',         // not accessible
             'okcoinusd',    // not accessible
             'okex',         // not accessible
