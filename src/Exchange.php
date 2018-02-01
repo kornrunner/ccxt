@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.964';
+$version = '1.10.967';
 
 abstract class Exchange {
 
@@ -446,11 +446,11 @@ abstract class Exchange {
         return $time;
     }
 
-    public static function Ymd ($timestamp, $infix = ' ') {
+    public static function ymd ($timestamp, $infix = ' ') {
         return gmdate ('Y-m-d', (int) round ($timestamp / 1000));
     }
 
-    public static function YmdHMS ($timestamp, $infix = ' ') {
+    public static function ymdhms ($timestamp, $infix = ' ') {
         return gmdate ('Y-m-d\\' . $infix . 'H:i:s', (int) round ($timestamp / 1000));
     }
 
