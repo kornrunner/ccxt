@@ -138,7 +138,7 @@ class qryptos extends Exchange {
         return $this->parse_balance($result);
     }
 
-    public function fetch_order_book ($symbol, $params = array ()) {
+    public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
         $this->load_markets();
         $orderbook = $this->publicGetProductsIdPriceLevels (array_merge (array (
             'id' => $this->market_id($symbol),
@@ -377,7 +377,7 @@ class qryptos extends Exchange {
     public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if ($code >= 200 && $code <= 299)
             return;
-        $messages = $this->exceptions.messages;
+        $messages = $this->exceptions['messages'];
         if ($code === 401) {
             // expected non-json $response
             if (is_array ($messages) && array_key_exists ($body, $messages))

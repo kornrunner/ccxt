@@ -76,6 +76,7 @@ class cryptopia extends Exchange {
     public function common_currency_code ($currency) {
         $currencies = array (
             'ACC' => 'AdCoin',
+            'BAT' => 'BatCoin',
             'CC' => 'CCX',
             'CMT' => 'Comet',
             'FCN' => 'Facilecoin',
@@ -93,6 +94,7 @@ class cryptopia extends Exchange {
     public function currency_id ($currency) {
         $currencies = array (
             'AdCoin' => 'ACC',
+            'BatCoin' => 'BAT',
             'CCX' => 'CC',
             'Comet' => 'CMT',
             'Cubits' => 'QBT',
@@ -158,7 +160,7 @@ class cryptopia extends Exchange {
         return $result;
     }
 
-    public function fetch_order_book ($symbol, $params = array ()) {
+    public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
         $this->load_markets();
         $response = $this->publicGetGetMarketOrdersId (array_merge (array (
             'id' => $this->market_id($symbol),

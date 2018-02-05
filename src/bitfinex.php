@@ -367,7 +367,7 @@ class bitfinex extends Exchange {
         return $this->parse_balance($result);
     }
 
-    public function fetch_order_book ($symbol, $params = array ()) {
+    public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
         $this->load_markets();
         $orderbook = $this->publicGetBookSymbol (array_merge (array (
             'symbol' => $this->market_id($symbol),
@@ -761,10 +761,10 @@ class bitfinex extends Exchange {
                     $message = $response['error'];
                 else
                     throw new ExchangeError ($feedback); // malformed (to our knowledge) $response
-                $exact = $this->exceptions.exact;
+                $exact = $this->exceptions['exact'];
                 if (is_array ($exact) && array_key_exists ($message, $exact))
                     throw new $exact[$message] ($feedback);
-                $broad = $this->exceptions.broad;
+                $broad = $this->exceptions['broad'];
                 $broadKey = $this->find_broadly_matched_key ($broad, $message);
                 if ($broadKey !== null)
                     throw new $broad[$broadKey] ($feedback);
