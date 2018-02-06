@@ -26,7 +26,8 @@ class ExchangeTest extends TestCase {
             'yobit',
         ],
         'testLoadMarkets' => [
-            'bibox',     // bad apiKey
+            '_1broker', // requires secret
+            'bibox',    // bad apiKey
             'bter',     // bad response
             'coinexchange',  // bad offset in response
             'flowbtc',  // bad offset in response
@@ -37,6 +38,7 @@ class ExchangeTest extends TestCase {
             'xbtce',    // travis
         ],
         'testFetchBalance' => [
+            '_1broker',     // requires secret
             'anxpro',       // not accessible
             'binance',      // bad apiKey
             'bibox',        // bad apiKey
@@ -56,6 +58,7 @@ class ExchangeTest extends TestCase {
             'coingi',       // not accessible
             'coincheck',    // bad apiKey
             'coinspot',     // not accessible
+            'coinsecure',   // requires secret
             'dsx',          // bad apiKey
             'flowbtc',      // bad offset in response
             'huobi',        // bad apiKey
@@ -106,6 +109,7 @@ class ExchangeTest extends TestCase {
             'xbtce',
         ],
         'testFetchOrderBook' => [
+            '_1broker',     // requires secret
             'anxpro',       // not accessible
             'bitcoincoid',  // not accessible
             'bter',         // bad response
