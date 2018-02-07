@@ -114,7 +114,7 @@ class livecoin extends Exchange {
                 'min' => pow (10, -$precision['price']),
                 'max' => pow (10, $precision['price']),
             );
-            $result[] = array_merge ($this->fees['trading'], array (
+            $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
                 'base' => $base,
@@ -122,7 +122,7 @@ class livecoin extends Exchange {
                 'precision' => $precision,
                 'limits' => $limits,
                 'info' => $market,
-            ));
+            );
         }
         return $result;
     }

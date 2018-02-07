@@ -180,7 +180,7 @@ class kucoin extends Exchange {
                 'price' => 8,
             );
             $active = $market['trading'];
-            $result[] = array_merge ($this->fees['trading'], array (
+            $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
                 'base' => $base,
@@ -199,7 +199,7 @@ class kucoin extends Exchange {
                         'max' => null,
                     ),
                 ),
-            ));
+            );
         }
         return $result;
     }
@@ -667,10 +667,18 @@ class kucoin extends Exchange {
     }
 
     public function throw_exception_on_error ($response) {
-        // array ( success => false, $code => "ERROR", msg => "Min price:100.0" )
-        // array ( success => true,  $code => "OK",    msg => "Operation succeeded." )
+        //
+        // API endpoints return the following formats
+        //     array ( success => false, $code => "ERROR", msg => "Min price:100.0" )
+        //     array ( success => true,  $code => "OK",    msg => "Operation succeeded." )
+        //
+        // Web OHLCV endpoint returns this:
+        //     array ( s => "ok", o => array (), h => array (), l => array (), c => array (), v => array () )
+        //
+        // This particular method handles API responses only
+        //
         if (!(is_array ($response) && array_key_exists ('success', $response)))
-            throw new ExchangeError ($this->id . ' => malformed $response => ' . $this->json ($response));
+            return;
         if ($response['success'] === true)
             return; // not an error
         if (!(is_array ($response) && array_key_exists ('code', $response)) || !(is_array ($response) && array_key_exists ('msg', $response)))

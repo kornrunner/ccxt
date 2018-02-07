@@ -207,14 +207,6 @@ class bitfinex extends Exchange {
                         'ZRX' => 5.6442,
                         'TNB' => 87.511,
                         'SNT' => 32.736,
-                        'QSH' => null,
-                        'TRX' => null,
-                        'RCN' => null,
-                        'RLC' => null,
-                        'AID' => null,
-                        'SNG' => null,
-                        'REP' => null,
-                        'ELF' => null,
                     ),
                 ),
             ),
@@ -627,15 +619,19 @@ class bitfinex extends Exchange {
             'LTC' => 'litecoin',
             'ETH' => 'ethereum',
             'ETC' => 'ethereumc',
-            'OMNI' => 'mastercoin', // left by previous author, now throws array ("message":"Unknown method")
+            'OMNI' => 'mastercoin',
             'ZEC' => 'zcash',
             'XMR' => 'monero',
-            'USD' => 'wire', // left by previous author, now throws array ("message":"Unknown method")
+            'USD' => 'wire',
             'DASH' => 'dash',
             'XRP' => 'ripple',
             'EOS' => 'eos',
-            'BCH' => 'bcash',
-            'USDT' => 'tetheruso',
+            'BCH' => 'bcash', // undocumented
+            'USDT' => 'tetheruso', // undocumented
+            'NEO' => 'neo', // #1811
+            'AVT' => 'aventus', // #1811
+            'QTUM' => 'qtum', // #1811
+            'EDO' => 'eidoo', // #1811
         );
         if (is_array ($names) && array_key_exists ($currency, $names))
             return $names[$currency];

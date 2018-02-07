@@ -147,7 +147,7 @@ class lykke extends Exchange {
                 'amount' => $market['Accuracy'],
                 'price' => $market['InvertedAccuracy'],
             );
-            $result[] = array_merge ($this->fees['trading'], array (
+            $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
                 'base' => $base,
@@ -166,7 +166,7 @@ class lykke extends Exchange {
                         'max' => pow (10, $precision['price']),
                     ),
                 ),
-            ));
+            );
         }
         return $result;
     }

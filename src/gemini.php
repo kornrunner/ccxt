@@ -58,6 +58,11 @@ class gemini extends Exchange {
                     ),
                 ),
             ),
+            'fees' => array (
+                'trading' => array (
+                    'taker' => 0.0025,
+                ),
+            ),
         ));
     }
 
@@ -77,7 +82,6 @@ class gemini extends Exchange {
                 'base' => $base,
                 'quote' => $quote,
                 'info' => $market,
-                'taker' => 0.0025,
             );
         }
         return $result;
