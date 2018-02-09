@@ -502,15 +502,17 @@ class bibox extends Exchange {
     public function withdraw ($code, $amount, $address, $tag = null, $params = array ()) {
         $this->load_markets();
         $currency = $this->currency ($code);
-        $response = $this->privatePostTransfer (array (
+        $request = array (
             'cmd' => 'transfer/transferOut',
             'body' => array_merge (array (
                 'coin_symbol' => $currency,
                 'amount' => $amount,
                 'addr' => $address,
-                'addr_remark' => '',
             ), $params),
-        ));
+        );
+        if ($tag !== null)
+            $request['body']['address_remark'] = $tag;
+        $response = $this->privatePostTransfer ($request);
         return array (
             'info' => $response,
             'id' => null,
@@ -521,14 +523,10 @@ class bibox extends Exchange {
         $url = $this->urls['api'] . '/' . $this->version . '/' . $path;
         $cmds = $this->json (array ( $params ));
         if ($api === 'public') {
-            if ($method === 'GET') {
-                if ($params)
-                    $url .= '?' . $this->urlencode ($params);
-            } else {
-                $body = array (
-                    'cmds' => $cmds,
-                );
-            }
+            if ($method !== 'GET')
+                $body = array ( 'cmds' => $cmds );
+            else if ($params)
+                $url .= '?' . $this->urlencode ($params);
         } else {
             $this->check_required_credentials();
             $body = array (
@@ -537,8 +535,10 @@ class bibox extends Exchange {
                 'sign' => $this->hmac ($this->encode ($cmds), $this->encode ($this->secret), 'md5'),
             );
         }
+        if ($body !== null)
+            $body = $this->json ($body, array ( 'convertArraysToObjects' => true ));
         $headers = array ( 'Content-Type' => 'application/json' );
-        return array ( 'url' => $url, 'method' => $method, 'body' => $this->json ($body), 'headers' => $headers );
+        return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {

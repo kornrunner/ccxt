@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.1054';
+$version = '1.10.1067';
 
 abstract class Exchange {
 
@@ -626,7 +626,7 @@ abstract class Exchange {
         $this->last_http_response = null;
         $this->last_json_response = null;
 
-        $options = array_merge_recursive ($this->describe(), $options);
+        $options = array_replace_recursive ($this->describe(), $options);
 
         if ($options)
             foreach ($options as $key => $value)
@@ -718,7 +718,7 @@ abstract class Exchange {
         $elapsed = $now - $this->lastRestRequestTimestamp;
         if ($elapsed < $this->rateLimit) {
             $delay = $this->rateLimit - $elapsed;
-            usleep ($delay * 1000.0);
+              usleep ((int)($delay * 1000.0));
         }
     }
 
