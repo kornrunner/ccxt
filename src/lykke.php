@@ -15,6 +15,9 @@ class lykke extends Exchange {
                 'CORS' => false,
                 'fetchOHLCV' => false,
                 'fetchTrades' => false,
+                'fetchOpenOrders' => true,
+                'fetchClosedOrders' => true,
+                'fetchOrders' => true,
             ),
             'requiredCredentials' => array (
                 'apiKey' => true,

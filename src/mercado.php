@@ -14,6 +14,7 @@ class mercado extends Exchange {
             'has' => array (
                 'CORS' => true,
                 'createMarketOrder' => false,
+                'fetchOrder' => true,
                 'withdraw' => true,
             ),
             'urls' => array (
