@@ -153,7 +153,7 @@ class _1broker extends Exchange {
     }
 
     public function fetch_trades ($symbol) {
-        throw new ExchangeError ($this->id . ' fetchTrades () method not implemented yet');
+        throw new NotSupported ($this->id . ' fetchTrades () method not implemented yet');
     }
 
     public function fetch_ticker ($symbol, $params = array ()) {
