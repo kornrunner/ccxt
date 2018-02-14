@@ -71,9 +71,8 @@ class bibox extends Exchange {
                 'funding' => array (
                     'tierBased' => false,
                     'percentage' => false,
-                    'withdraw' => array (
-                    ),
-                    'deposit' => 0.0,
+                    'withdraw' => array (),
+                    'deposit' => array (),
                 ),
             ),
         ));
