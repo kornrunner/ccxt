@@ -13,7 +13,7 @@ class bitstamp extends Exchange {
             'version' => 'v2',
             'has' => array (
                 'CORS' => true,
-                'fetchOrder' => true,
+                'fetchOpenOrders' => true,
                 'fetchMyTrades' => true,
                 'withdraw' => true,
             ),
@@ -427,14 +427,14 @@ class bitstamp extends Exchange {
         );
     }
 
-    public function fetch_order ($id, $symbol = null, $params = array ()) {
-        $this->load_markets();
-        $response = $this->privatePostOrderStatus (array_merge (array (
-            'id' => (string) $id,
-        ), $params));
+    public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        $market = null;
+        if ($symbol !== null) {
+            $this->load_markets();
+            $market = $this->market ($symbol);
+        }
         $orders = $this->privatePostOpenOrdersAll ();
-        $order = $this->filter_by($orders, 'id', (string) $id);
-        return $this->parse_order(array_merge ($response, $order['0']));
+        return $this->parse_orders($orders, $market, $since, $limit);
     }
 
     public function get_currency_name ($code) {
