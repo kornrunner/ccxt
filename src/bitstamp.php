@@ -13,6 +13,7 @@ class bitstamp extends Exchange {
             'version' => 'v2',
             'has' => array (
                 'CORS' => true,
+                'fetchOrder' => true,
                 'fetchOpenOrders' => true,
                 'fetchMyTrades' => true,
                 'withdraw' => true,
@@ -229,6 +230,37 @@ class bitstamp extends Exchange {
         );
     }
 
+    public function get_market_from_trade ($trade) {
+        $trade = $this->omit ($trade, array (
+            'fee',
+            'price',
+            'datetime',
+            'tid',
+            'type',
+            'order_id',
+        ));
+        $currencyIds = is_array ($trade) ? array_keys ($trade) : array ();
+        $numCurrencyIds = is_array ($currencyIds) ? count ($currencyIds) : 0;
+        if ($numCurrencyIds === 2) {
+            $marketId = $currencyIds[0] . $currencyIds[1];
+            if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id))
+                return $this->markets_by_id[$marketId];
+            $marketId = $currencyIds[1] . $currencyIds[0];
+            if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id))
+                return $this->markets_by_id[$marketId];
+        }
+        return null;
+    }
+
+    public function get_market_from_trades ($trades) {
+        $tradesBySymbol = $this->index_by($trades, 'symbol');
+        $symbols = is_array ($tradesBySymbol) ? array_keys ($tradesBySymbol) : array ();
+        $numSymbols = is_array ($symbols) ? count ($symbols) : 0;
+        if ($numSymbols === 1)
+            return $this->markets[$symbols[0]];
+        return null;
+    }
+
     public function parse_trade ($trade, $market = null) {
         $timestamp = null;
         $symbol = null;
@@ -237,11 +269,8 @@ class bitstamp extends Exchange {
         } else if (is_array ($trade) && array_key_exists ('datetime', $trade)) {
             $timestamp = $this->parse8601 ($trade['datetime']);
         }
-        // if overrided externally
+        // only if overrided externally
         $side = $this->safe_string($trade, 'side');
-        // only if not overrided externally
-        if ($side === null)
-            $side = ($trade['type'] === '0') ? 'buy' : 'sell';
         $orderId = $this->safe_string($trade, 'order_id');
         $price = $this->safe_float($trade, 'price');
         $amount = $this->safe_float($trade, 'amount');
@@ -256,6 +285,10 @@ class bitstamp extends Exchange {
                         $market = $this->markets_by_id[$marketId];
                 }
             }
+            // if the $market is still not defined
+            // try to deduce it from used $keys
+            if ($market === null)
+                $market = $this->get_market_from_trade ($trade);
         }
         $feeCost = $this->safe_float($trade, 'fee');
         $feeCurrency = null;
@@ -265,6 +298,10 @@ class bitstamp extends Exchange {
             $feeCurrency = $market['quote'];
             $symbol = $market['symbol'];
         }
+        $cost = null;
+        if ($price !== null)
+            if ($amount !== null)
+                $cost = $price * $amount;
         return array (
             'id' => $id,
             'info' => $trade,
@@ -276,6 +313,7 @@ class bitstamp extends Exchange {
             'side' => $side,
             'price' => $price,
             'amount' => $amount,
+            'cost' => $cost,
             'fee' => array (
                 'cost' => $feeCost,
                 'currency' => $feeCurrency,
@@ -348,17 +386,26 @@ class bitstamp extends Exchange {
         return $order['status'];
     }
 
-    public function fetch_order_status ($id, $symbol = null) {
+    public function fetch_order_status ($id, $symbol = null, $params = array ()) {
         $this->load_markets();
-        $response = $this->privatePostOrderStatus (array ( 'id' => $id ));
+        $response = $this->privatePostOrderStatus (array_merge (array ( 'id' => $id ), $params));
         return $this->parse_order_status($response);
+    }
+
+    public function fetch_order ($id, $symbol = null, $params = array ()) {
+        $this->load_markets();
+        $market = null;
+        if ($symbol !== null)
+            $market = $this->market ($symbol);
+        $response = $this->privatePostOrderStatus (array_merge (array ( 'id' => $id ), $params));
+        return $this->parse_order($response, $market);
     }
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
-        $market = null;
         $request = array ();
         $method = 'privatePostUserTransactions';
+        $market = null;
         if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['pair'] = $market['id'];
@@ -369,10 +416,14 @@ class bitstamp extends Exchange {
     }
 
     public function parse_order ($order, $market = null) {
+        $id = $this->safe_string($order, 'id');
         $timestamp = null;
+        $iso8601 = null;
         $datetimeString = $this->safe_string($order, 'datetime');
-        if ($datetimeString !== null)
+        if ($datetimeString !== null) {
             $timestamp = $this->parse8601 ($datetimeString);
+            $iso8601 = $this->iso8601 ($timestamp);
+        }
         $symbol = null;
         if ($market === null) {
             if (is_array ($order) && array_key_exists ('currency_pair', $order)) {
@@ -381,36 +432,63 @@ class bitstamp extends Exchange {
                     $market = $this->markets_by_id[$marketId];
             }
         }
-        if ($market !== null)
-            $symbol = $market['symbol'];
-        $status = $this->safe_string($order, 'status');
-        if (($status === 'In Queue') || ($status === 'Open'))
-            $status = 'open';
-        else if ($status === 'Finished')
-            $status = 'closed';
         $amount = $this->safe_float($order, 'amount');
-        $filled = 0;
+        $filled = 0.0;
         $trades = array ();
         $transactions = $this->safe_value($order, 'transactions');
+        $feeCost = null;
+        $cost = null;
         if ($transactions !== null) {
             if (gettype ($transactions) === 'array' && count (array_filter (array_keys ($transactions), 'is_string')) == 0) {
                 for ($i = 0; $i < count ($transactions); $i++) {
-                    $trade = $this->parse_trade($transactions[$i], $market);
+                    $trade = $this->parse_trade(array_merge (array ( 'order_id' => $id ), $transactions[$i]), $market);
                     $filled .= $trade['amount'];
+                    if ($feeCost === null)
+                        $feeCost = 0.0;
+                    $feeCost .= $trade['fee']['cost'];
+                    if ($cost === null)
+                        $cost = 0.0;
+                    $cost .= $trade['cost'];
                     $trades[] = $trade;
                 }
             }
         }
-        $remaining = $amount - $filled;
+        $status = $this->safe_string($order, 'status');
+        if (($status === 'In Queue') || ($status === 'Open'))
+            $status = 'open';
+        else if ($status === 'Finished') {
+            $status = 'closed';
+            if ($amount === null)
+                $amount = $filled;
+        }
+        $remaining = null;
+        if ($amount !== null)
+            $remaining = $amount - $filled;
         $price = $this->safe_float($order, 'price');
         $side = $this->safe_string($order, 'type');
         if ($side !== null)
             $side = ($side === '1') ? 'sell' : 'buy';
-        $fee = null;
-        $cost = null;
+        if ($market === null)
+            $market = $this->get_market_from_trades ($trades);
+        $feeCurrency = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+            $feeCurrency = $market['quote'];
+        }
+        if ($cost === null) {
+            if ($price !== null)
+                $cost = $price * $filled;
+        } else if ($price === null) {
+            if ($filled > 0)
+                $price = $cost / $filled;
+        }
+        $fee = array (
+            'cost' => $feeCost,
+            'currency' => $feeCurrency,
+        );
         return array (
-            'id' => $order['id'],
-            'datetime' => $this->iso8601 ($timestamp),
+            'id' => $id,
+            'datetime' => $iso8601,
             'timestamp' => $timestamp,
             'status' => $status,
             'symbol' => $symbol,
