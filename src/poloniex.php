@@ -161,7 +161,7 @@ class poloniex extends Exchange {
             $ohlcv['high'],
             $ohlcv['low'],
             $ohlcv['close'],
-            $ohlcv['volume'],
+            $ohlcv['quoteVolume'],
         ];
     }
 

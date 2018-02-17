@@ -103,8 +103,8 @@ class kucoin extends Exchange {
             ),
             'fees' => array (
                 'trading' => array (
-                    'maker' => 0.0010,
-                    'taker' => 0.0010,
+                    'maker' => 0.001,
+                    'taker' => 0.001,
                 ),
                 'funding' => array (
                     'tierBased' => false,
@@ -189,6 +189,8 @@ class kucoin extends Exchange {
                 'base' => $base,
                 'quote' => $quote,
                 'active' => $active,
+                'taker' => $this->safe_float($market, 'feeRate'),
+                'maker' => $this->safe_float($market, 'feeRate'),
                 'info' => $market,
                 'lot' => pow (10, -$precision['amount']),
                 'precision' => $precision,
