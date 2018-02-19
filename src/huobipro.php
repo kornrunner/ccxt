@@ -158,13 +158,28 @@ class huobipro extends Exchange {
             $timestamp = $ticker['ts'];
         $bid = null;
         $ask = null;
+        $bidVolume = null;
+        $askVolume = null;
         if (is_array ($ticker) && array_key_exists ('bid', $ticker)) {
-            if ($ticker['bid'])
+            if (gettype ($ticker['bid']) === 'array' && count (array_filter (array_keys ($ticker['bid']), 'is_string')) == 0) {
                 $bid = $this->safe_float($ticker['bid'], 0);
+                $bidVolume = $this->safe_float($ticker['bid'], 1);
+            }
         }
         if (is_array ($ticker) && array_key_exists ('ask', $ticker)) {
-            if ($ticker['ask'])
+            if (gettype ($ticker['ask']) === 'array' && count (array_filter (array_keys ($ticker['ask']), 'is_string')) == 0) {
                 $ask = $this->safe_float($ticker['ask'], 0);
+                $askVolume = $this->safe_float($ticker['ask'], 1);
+            }
+        }
+        $open = $this->safe_float($ticker, 'open');
+        $close = $this->safe_float($ticker, 'close');
+        $change = null;
+        $percentage = null;
+        if (($open !== null) && ($close !== null)) {
+            $change = $close - $open;
+            if (($last !== null) && ($last > 0))
+                $percentage = ($change / $last) * 100;
         }
         return array (
             'symbol' => $symbol,
@@ -173,14 +188,16 @@ class huobipro extends Exchange {
             'high' => $ticker['high'],
             'low' => $ticker['low'],
             'bid' => $bid,
+            'bidVolume' => $bidVolume,
             'ask' => $ask,
+            'askVolume' => $askVolume,
             'vwap' => null,
             'open' => $ticker['open'],
             'close' => $ticker['close'],
             'first' => null,
             'last' => $last,
-            'change' => null,
-            'percentage' => null,
+            'change' => $change,
+            'percentage' => $percentage,
             'average' => null,
             'baseVolume' => floatval ($ticker['amount']),
             'quoteVolume' => $ticker['vol'],
