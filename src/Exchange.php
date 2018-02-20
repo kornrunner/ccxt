@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.1152';
+$version = '1.10.1163';
 
 abstract class Exchange {
 
@@ -222,7 +222,7 @@ abstract class Exchange {
 
     // given a sorted arrays of trades (recent first) and a timeframe builds an array of OHLCV candles
     public static function build_ohlcv ($trades, $since = PHP_INT_MIN, $limits = PHP_INT_MAX, $timeframe = '1m') {
-        $ms = static::parseTimeframe ($timeframe) * 1000;
+        $ms = static::parse_timeframe ($timeframe) * 1000;
         $ohlcvs = [];
         list(/* $timestamp */, /* $open */, $high, $low, $close, $volume) = [0, 1, 2, 3, 4, 5];
 
@@ -435,6 +435,8 @@ abstract class Exchange {
     }
 
     public static function iso8601 ($timestamp) {
+        if (!isset ($timestamp))
+            return $timestamp;
         $result = date ('c', (int) round ($timestamp / 1000));
         $msec = (int) $timestamp % 1000;
         return str_replace ('+', sprintf (".%03d+", $msec), $result);
