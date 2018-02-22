@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.1169';
+$version = '1.10.1178';
 
 abstract class Exchange {
 
@@ -1246,6 +1246,14 @@ abstract class Exchange {
 
     public function fetchOrder ($id, $symbol = null, $params = array ()) {
         return $this->fetch_order ($id, $symbol, $params);
+    }
+
+    public function fetch_order_trades ($id, $symbol = null, $params = array ()) {
+        throw new NotSupported ($this->id . ' fetch_order_trades() not implemented yet');
+    }
+
+    public function fetchOrderTrades ($id, $symbol = null, $params = array ()) {
+        return $this->fetch_order_trades ($id, $symbol, $params);
     }
 
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {

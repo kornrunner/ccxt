@@ -17,6 +17,10 @@ class cobinhood extends Exchange {
                 'fetchClosedOrders' => true,
                 'fetchOrder' => true,
             ),
+            'requiredCredentials' => array (
+                'apiKey' => true,
+                'secret' => false,
+            ),
             'timeframes' => array (
                 // the first two don't seem to work at all
                 '1m' => '1m',
@@ -368,7 +372,7 @@ class cobinhood extends Exchange {
         $price = floatval ($order['price']);
         $amount = floatval ($order['size']);
         $filled = floatval ($order['filled']);
-        $remaining = $this->amount_to_precision($symbol, $amount - $filled);
+        $remaining = $amount - $filled;
         // new, queued, open, partially_filled, $filled, cancelled
         $status = $order['state'];
         if ($status === 'filled') {
@@ -385,8 +389,7 @@ class cobinhood extends Exchange {
             'timestamp' => $timestamp,
             'status' => $status,
             'symbol' => $symbol,
-            // $market, limit, stop, stop_limit, trailing_stop, fill_or_kill
-            'type' => $order['type'],
+            'type' => $order['type'], // $market, limit, stop, stop_limit, trailing_stop, fill_or_kill
             'side' => $side,
             'price' => $price,
             'cost' => $price * $amount,
@@ -408,7 +411,7 @@ class cobinhood extends Exchange {
             // $market, limit, stop, stop_limit
             'type' => $type,
             'side' => $side,
-            'size' => $this->amount_to_precision($symbol, $amount),
+            'size' => $this->amount_to_string($symbol, $amount),
         );
         if ($type !== 'market')
             $request['price'] = $this->price_to_precision($symbol, $price);
@@ -439,7 +442,8 @@ class cobinhood extends Exchange {
         $response = $this->privateGetTradingOrdersOrderIdTrades (array_merge (array (
             'order_id' => $id,
         ), $params));
-        return $this->parse_trades($response['result']);
+        $market = ($symbol === null) ? null : $this->market ($symbol);
+        return $this->parse_trades($response['result'], $market);
     }
 
     public function create_deposit_address ($code, $params = array ()) {
@@ -496,11 +500,9 @@ class cobinhood extends Exchange {
         $headers = array ();
         if ($api === 'private') {
             $this->check_required_credentials();
-            $headers['device_id'] = $this->apiKey;
-            $headers['nonce'] = $this->nonce ();
-            $headers['Authorization'] = $this->jwt ($query, $this->secret);
-            // convert it to string after computing JWT
-            $headers['nonce'] = (string) $headers['nonce'];
+            // $headers['device_id'] = $this->apiKey;
+            $headers['nonce'] = (string) $this->nonce ();
+            $headers['Authorization'] = $this->apiKey;
         }
         if ($method === 'GET') {
             $query = $this->urlencode ($query);
