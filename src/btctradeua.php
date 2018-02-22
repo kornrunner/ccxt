@@ -142,7 +142,9 @@ class btctradeua extends Exchange {
             'ask' => null,
             'vwap' => null,
             'open' => null,
+            'close' => null,
             'last' => null,
+            'previousClose' => null,
             'change' => null,
             'percentage' => null,
             'average' => null,
@@ -168,6 +170,7 @@ class btctradeua extends Exchange {
             }
             $last = $tickerLength - 1;
             $result['last'] = $ticker[$last][4];
+            $result['close'] = $result['last'];
             $result['baseVolume'] = -1 * $result['baseVolume'];
         }
         return $result;

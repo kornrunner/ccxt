@@ -19,6 +19,7 @@ class huobipro extends Exchange {
                 'CORS' => false,
                 'fetchOHCLV' => true,
                 'fetchOrders' => true,
+                'fetchOrder' => true,
                 'fetchOpenOrders' => true,
                 'withdraw' => true,
             ),
@@ -170,12 +171,14 @@ class huobipro extends Exchange {
             }
         }
         $open = $this->safe_float($ticker, 'open');
-        $last = $this->safe_float($ticker, 'close');
+        $close = $this->safe_float($ticker, 'close');
         $change = null;
         $percentage = null;
-        if (($open !== null) && ($last !== null)) {
-            $change = $last - $open;
-            if (($last !== null) && ($last > 0))
+        $average = null;
+        if (($open !== null) && ($close !== null)) {
+            $change = $close - $open;
+            $average = ($open . $close) / 2;
+            if (($close !== null) && ($close > 0))
                 $percentage = ($change / $open) * 100;
         }
         $baseVolume = $this->safe_float($ticker, 'amount');
@@ -195,10 +198,11 @@ class huobipro extends Exchange {
             'askVolume' => $askVolume,
             'vwap' => $vwap,
             'open' => $open,
-            'last' => $last,
+            'close' => $close,
+            'last' => $close,
             'change' => $change,
             'percentage' => $percentage,
-            'average' => ($open . $last) / 2,
+            'average' => $average,
             'baseVolume' => $baseVolume,
             'quoteVolume' => $quoteVolume,
             'info' => $ticker,
@@ -370,6 +374,14 @@ class huobipro extends Exchange {
         ), $params));
     }
 
+    public function fetch_order ($id, $symbol = null, $params = array ()) {
+        $this->load_markets();
+        $response = $this->privateGetOrderOrdersId (array_merge (array (
+            'id' => $id,
+        ), $params));
+        return $this->parse_order($response);
+    }
+
     public function parse_order_status ($status) {
         if ($status === 'partial-filled') {
             return 'open';
@@ -415,7 +427,7 @@ class huobipro extends Exchange {
             $average = floatval ($cost / $filled);
         $result = array (
             'info' => $order,
-            'id' => $order['id'],
+            'id' => (string) $order['id'],
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
