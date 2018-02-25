@@ -382,7 +382,7 @@ class cobinhood extends Exchange {
         } else {
             $status = 'open';
         }
-        $side = $order['side'] === 'bid' ? 'buy' : 'sell';
+        $side = ($order['side'] === 'bid') ? 'buy' : 'sell';
         return array (
             'id' => $order['id'],
             'datetime' => $this->iso8601 ($timestamp),
