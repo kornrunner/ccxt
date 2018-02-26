@@ -810,12 +810,14 @@ class poloniex extends Exchange {
             $feedback = $this->id . ' ' . $this->json ($response);
             if ($error === 'Invalid order number, or you are not the person who placed the order.') {
                 throw new OrderNotFound ($feedback);
+            } else if ($error === 'Invalid API key/secret pair.') {
+                throw new AuthenticationError ($feedback);
             } else if (mb_strpos ($error, 'Total must be at least') !== false) {
                 throw new InvalidOrder ($feedback);
             } else if (mb_strpos ($error, 'Not enough') !== false) {
                 throw new InsufficientFunds ($feedback);
             } else if (mb_strpos ($error, 'Nonce must be greater') !== false) {
-                throw new ExchangeNotAvailable ($feedback);
+                throw new InvalidNonce ($feedback);
             } else if (mb_strpos ($error, 'You have already called cancelOrder or moveOrder on this order.') !== false) {
                 throw new CancelPending ($feedback);
             } else {
