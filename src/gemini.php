@@ -16,7 +16,6 @@ class gemini extends Exchange {
                 'CORS' => false,
                 'fetchBidsAsks' => false,
                 'fetchTickers' => false,
-                'fetchOHLCV' => false,
                 'fetchMyTrades' => true,
                 'fetchOrder' => false,
                 'fetchOrders' => false,

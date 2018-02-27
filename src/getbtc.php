@@ -18,6 +18,7 @@ class getbtc extends _1btcxe {
             ),
             'has' => array (
                 'fetchTrades' => false,
+                'fetchOHLCV' => false,
             ),
             'fees' => array (
                 'trading' => array (

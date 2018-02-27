@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.1227';
+$version = '1.10.1237';
 
 abstract class Exchange {
 
@@ -443,6 +443,14 @@ abstract class Exchange {
         return str_replace ('+', sprintf (".%03d+", $msec), $result);
     }
 
+    public static function parse_date ($timestamp) {
+        if (!isset ($timestamp))
+            return $timestamp;
+        if (strstr ($timestamp, 'GMT'))
+            return strtotime ($timestamp) * 1000;
+        return static::parse8601 ($timestamp);
+    }
+
     public static function parse8601 ($timestamp) {
         $time = strtotime ($timestamp) * 1000;
         if (preg_match ('/\.(?<milliseconds>[0-9]{1,3})/', $timestamp, $match)) {
@@ -565,26 +573,6 @@ abstract class Exchange {
         $this->timeframes = null;
         $this->parseJsonResponse = true;
 
-        $this->hasPublicAPI         = true;
-        $this->hasPrivateAPI        = true;
-        $this->hasCORS              = false;
-        $this->hasDeposit           = false;
-        $this->hasFetchBalance      = true;
-        $this->hasFetchClosedOrders = false;
-        $this->hasFetchCurrencies   = false;
-        $this->hasFetchMyTrades     = false;
-        $this->hasFetchOHLCV        = false;
-        $this->hasFetchOpenOrders   = false;
-        $this->hasFetchOrder        = false;
-        $this->hasFetchOrderBook    = true;
-        $this->hasFetchOrders       = false;
-        $this->hasFetchTicker       = true;
-        $this->hasFetchTickers      = false;
-        $this->hasFetchTrades       = true;
-        $this->hasWithdraw          = false;
-        $this->hasCreateOrder       = $this->hasPrivateAPI;
-        $this->hasCancelOrder       = $this->hasPrivateAPI;
-
         $this->requiredCredentials = array (
             'apiKey' => true,
             'secret' => true,
@@ -595,12 +583,15 @@ abstract class Exchange {
 
         // API methods metainfo
         $this->has = array (
-            'cancelOrder' => $this->hasPrivateAPI,
+            'CORS' => false,
+            'publicAPI' => true,
+            'privateAPI' => true,
+            'cancelOrder' => true,
             'cancelOrders' => false,
             'createDepositAddress' => false,
-            'createOrder' => $this->hasPrivateAPI,
-            'createMarketOrder' => $this->hasPrivateAPI,
-            'createLimitOrder' => $this->hasPrivateAPI,
+            'createOrder' => true,
+            'createMarketOrder' => true,
+            'createLimitOrder' => true,
             'deposit' => false,
             'fetchBalance' => true,
             'fetchClosedOrders' => false,

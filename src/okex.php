@@ -12,7 +12,6 @@ class okex extends okcoinusd {
             'has' => array (
                 'CORS' => false,
                 'futures' => true,
-                'hasFetchTickers' => true,
                 'fetchTickers' => true,
             ),
             'urls' => array (

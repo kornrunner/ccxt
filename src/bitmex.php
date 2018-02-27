@@ -286,7 +286,7 @@ class bitmex extends Exchange {
             'previousClose' => null,
             'change' => $change,
             'percentage' => $change / $open * 100,
-            'average' => ($open . $close) / 2,
+            'average' => $this->sum ($open, $close) / 2,
             'baseVolume' => floatval ($ticker['homeNotional']),
             'quoteVolume' => floatval ($ticker['foreignNotional']),
             'info' => $ticker,
