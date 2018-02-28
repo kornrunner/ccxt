@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.1242';
+$version = '1.10.1253';
 
 abstract class Exchange {
 
@@ -64,6 +64,7 @@ abstract class Exchange {
         'btcchina',
         'btcexchange',
         'btcmarkets',
+        'btctradeim',
         'btctradeua',
         'btcturk',
         'btcx',
@@ -74,6 +75,7 @@ abstract class Exchange {
         'chilebit',
         'cobinhood',
         'coincheck',
+        'coinegg',
         'coinexchange',
         'coinfloor',
         'coingi',
@@ -81,6 +83,7 @@ abstract class Exchange {
         'coinmate',
         'coinsecure',
         'coinspot',
+        'coolcoin',
         'cryptopia',
         'dsx',
         'exmo',
@@ -1039,7 +1042,8 @@ abstract class Exchange {
     }
 
     public function parse_ohlcv ($ohlcv, $market = null, $timeframe = 60, $since = null, $limit = null) {
-        return $ohlcv;
+        return (gettype ($ohlcv) === 'array' && count (array_filter (array_keys ($ohlcv), 'is_string')) == 0) ?
+            array_slice ($ohlcv, 0, 6) : $ohlcv;
     }
 
     public function parseOHLCV ($ohlcv, $market = null, $timeframe = 60, $since = null, $limit = null) {

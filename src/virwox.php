@@ -211,10 +211,11 @@ class virwox extends Exchange {
         return $this->parse_trades($trades, $symbol);
     }
 
-    public function create_order ($market, $type, $side, $amount, $price = null, $params = array ()) {
+    public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
+        $market = $this->market ($symbol);
         $order = array (
-            'instrument' => $this->symbol ($market),
+            'instrument' => $market['symbol'],
             'orderType' => strtoupper ($side),
             'amount' => $amount,
         );
@@ -223,7 +224,7 @@ class virwox extends Exchange {
         $response = $this->privatePostPlaceOrder (array_merge ($order, $params));
         return array (
             'info' => $response,
-            'id' => (string) $response['orderID'],
+            'id' => (string) $response['result']['orderID'],
         );
     }
 
