@@ -189,7 +189,7 @@ class ExchangeTest extends TestCase {
             return $this->markTestSkipped("{$exchange->id}: fetch ticker skipped");
         }
 
-        if ($exchange->hasFetchTickers) {
+        if ($exchange->has('FetchTickers')) {
             VCR::insertCassette(__FUNCTION__ . '@' . $exchange->id . '.json');
             $tickers = $exchange->fetch_tickers();
             VCR::eject();
@@ -200,7 +200,7 @@ class ExchangeTest extends TestCase {
             $this->assertArrayHasKey('baseVolume', $ticker);
             $this->assertArrayHasKey('info', $ticker);
         } else {
-            $this->assertFalse($exchange->hasFetchTickers);
+            $this->assertFalse($exchange->has('FetchTickers'));
         }
     }
 
@@ -247,7 +247,7 @@ class ExchangeTest extends TestCase {
             return $this->markTestSkipped("{$exchange->id}: fetch trades skipped");
         }
 
-        if ($exchange->hasFetchTrades) {
+        if ($exchange->has('FetchTrades')) {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
@@ -258,7 +258,7 @@ class ExchangeTest extends TestCase {
             VCR::eject();
             $this->assertNotEmpty($trades);
         } else {
-            $this->assertFalse($exchange->hasFetchTrades);
+            $this->assertFalse($exchange->has('FetchTrades'));
         }
     }
 
@@ -271,7 +271,7 @@ class ExchangeTest extends TestCase {
             return $this->markTestSkipped("{$exchange->id}: fetch order book skipped");
         }
 
-        if ($exchange->hasFetchOrderBook) {
+        if ($exchange->has('FetchOrderBook')) {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
@@ -282,7 +282,7 @@ class ExchangeTest extends TestCase {
             VCR::eject();
             $this->assertNotEmpty($order_book);
         } else {
-            $this->assertFalse($exchange->hasFetchOrderBook);
+            $this->assertFalse($exchange->has('FetchOrderBook'));
         }
     }
 
@@ -295,7 +295,7 @@ class ExchangeTest extends TestCase {
             return $this->markTestSkipped("{$exchange->id}: fetch OHLCV skipped");
         }
 
-        if ($exchange->hasFetchOHLCV) {
+        if ($exchange->has('FetchOHLCV')) {
             VCR::insertCassette('testLoadMarkets@' . $exchange->id . '.json');
             $markets = $exchange->load_markets();
             VCR::eject();
@@ -306,7 +306,7 @@ class ExchangeTest extends TestCase {
             VCR::eject();
             $this->assertNotEmpty($ohlcv);
         } else {
-            $this->assertFalse($exchange->hasFetchOHLCV);
+            $this->assertFalse($exchange->has('FetchOHLCV'));
         }
     }
 
