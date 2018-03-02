@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.10.1265';
+$version = '1.10.1269';
 
 abstract class Exchange {
 
@@ -1542,14 +1542,15 @@ abstract class Exchange {
 
     }
 
-    public function find_symbol ($string) {
+    public function find_symbol ($string, $market = null) {
 
-        $market = $this->find_market ($string);
+        if (!isset ($market))
+            $market = $this->find_market ($string);
 
         if (gettype ($market) === 'array' && count (array_filter (array_keys ($market), 'is_string')) !== 0)
             return $market['symbol'];
 
-        return $market;
+        return $string;
     }
 
     public function market ($symbol) {
