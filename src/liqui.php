@@ -557,7 +557,7 @@ class liqui extends Exchange {
         $this->load_markets();
         $request = array ();
         $market = null;
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['pair'] = $market['id'];
         }
@@ -567,7 +567,7 @@ class liqui extends Exchange {
         if (is_array ($response) && array_key_exists ('return', $response))
             $openOrders = $this->parse_orders($response['return'], $market);
         $allOrders = $this->update_cached_orders ($openOrders, $symbol);
-        $result = $this->filter_orders_by_symbol($allOrders, $symbol);
+        $result = $this->filter_by_symbol($allOrders, $symbol);
         return $this->filter_by_since_limit($result, $since, $limit);
     }
 
