@@ -184,6 +184,7 @@ class quadrigacx extends Exchange {
             $address = $response;
             $status = 'ok';
         }
+        $this->check_address($address);
         return array (
             'currency' => $currency,
             'address' => $address,
