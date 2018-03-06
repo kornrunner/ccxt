@@ -96,6 +96,7 @@ class coinmarketcap extends Exchange {
             // we change just the Coinmarketcap instead of changing them all
             'MIOTA' => 'IOTA',
             'Maggie' => 'Maggie',
+            'BlazeCoin' => 'BlazeCoin',
         );
         if (is_array ($currencies) && array_key_exists ($name, $currencies))
             return $currencies[$name];
@@ -116,7 +117,7 @@ class coinmarketcap extends Exchange {
                 $baseId = $market['id'];
                 $base = $this->currency_code ($market['symbol'], $market['name']);
                 $symbol = $base . '/' . $quote;
-                $id = $baseId . '/' . $quote;
+                $id = $baseId . '/' . $quoteId;
                 $result[] = array (
                     'id' => $id,
                     'symbol' => $symbol,

@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.11.10';
+$version = '1.11.26';
 
 abstract class Exchange {
 
@@ -208,8 +208,12 @@ abstract class Exchange {
         $amount = substr ($timeframe, 0, -1);
         $unit = substr ($timeframe, -1);
         $scale = 1;
-        if ($unit === 'M')
+        if ($unit === 'y')
+            $scale = 60 * 60 * 24 * 365;
+        else if ($unit === 'M')
             $scale = 60 * 60 * 24 * 30;
+        else if ($unit === 'w')
+            $scale = 60 * 60 * 24 * 7;
         else if ($unit === 'd')
             $scale = 60 * 60 * 24;
         else if ($unit === 'h')
@@ -923,7 +927,7 @@ abstract class Exchange {
 
         if (in_array ($http_status_code, array (400, 403, 405, 503, 520, 521, 522, 525, 530))) {
 
-            if (preg_match ('#cloudflare|incapsula#i', $result)) {
+            if (preg_match ('#cloudflare|incapsula|overload|ddos#i', $result)) {
 
                 $this->raise_error ('DDoSProtection', $url, $method, $http_status_code,
                     'not accessible from this location at the moment');
@@ -1179,11 +1183,13 @@ abstract class Exchange {
     }
 
     public function parse_trades ($trades, $market = null, $since = null, $limit = null) {
-        $result = array ();
         $array = is_array ($trades) ? array_values ($trades) : array ();
+        $result = array ();
         foreach ($array as $trade)
             $result[] = $this->parse_trade ($trade, $market);
-        return $this->filter_by_since_limit ($result, $since, $limit);
+        $result = $this->sort_by ($result, 'timestamp');
+        $symbol = isset ($market) ? $market['symbol'] : null;
+        return $this->filter_by_symbol_since_limit ($result, $symbol, $since, $limit);
     }
 
     public function parseTrades ($trades, $market = null, $since = null, $limit = null) {
@@ -1191,10 +1197,13 @@ abstract class Exchange {
     }
 
     public function parse_orders ($orders, $market = null, $since = null, $limit = null) {
+        $array = is_array ($orders) ? array_values ($orders) : array ();
         $result = array ();
-        foreach ($orders as $order)
+        foreach ($array as $order)
             $result[] = $this->parse_order ($order, $market);
-        return $this->filter_by_since_limit ($result, $since, $limit);
+        $result = $this->sort_by ($result, 'timestamp');
+        $symbol = isset ($market) ? $market['symbol'] : null;
+        return $this->filter_by_symbol_since_limit ($result, $symbol, $since, $limit);
     }
 
     public function parseOrders ($orders, $market = null, $since = null, $limit = null) {
@@ -1219,12 +1228,10 @@ abstract class Exchange {
         $symbolIsSet = isset ($symbol);
         $sinceIsSet = isset ($since);
         $array = array_filter ($array, function ($element) use ($symbolIsSet, $symbol, $sinceIsSet, $since) {
-            return (($symbolIsSet ? ($element['symbol'] === $symbol) : true) &&
+            return (($symbolIsSet ? ($element['symbol'] === $symbol)  : true) &&
                     ($sinceIsSet  ? ($element['timestamp'] >= $since) : true));
         });
-        if (isset ($limit))
-            $array = array_slice ($array, 0, $limit);
-        return $array;
+        return array_slice ($array, 0, isset ($limit) ? $limit : count ($array));
     }
 
     public function filterBySymbolSinceLimit ($array, $symbol = null, $since = null, $limit = null) {
