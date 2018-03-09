@@ -30,6 +30,7 @@ class ExchangeTest extends TestCase {
             '_1broker', // requires secret
             'bibox',    // bad apiKey
             'bter',     // bad response
+            'bleutrade', // bad offset in response
             'coinexchange',  // bad offset in response
             'flowbtc',  // bad offset in response
             'yunbi',    // not accessible
@@ -89,6 +90,7 @@ class ExchangeTest extends TestCase {
             'coinmarketcap', // not implemeneted
             'lykke',        // not implemeneted
             'bitcoincoid',  // not accessible
+            'bleutrade',    // bad offset in response
             'btcexchange',  // bad offset in response
             'bibox',        // bad apiKey
             'bter',         // bad response
@@ -167,6 +169,7 @@ class ExchangeTest extends TestCase {
             'livecoin',     // empty response
             'virwox',       // empty response
             'kuna',         // not supported
+            'southxchange', // bad offset in response
         ],
     ];
 
