@@ -36,6 +36,7 @@ class ExchangeTest extends TestCase {
             'allcoin',  // not accessible
             'kraken',   // timeout
             'xbtce',    // travis
+            'coinegg',  // failed for btc?
         ],
         'testFetchBalance' => [
             '_1broker',     // requires secret
@@ -92,6 +93,7 @@ class ExchangeTest extends TestCase {
             'bter',         // bad response
             'btcx',         // bad offset in response
             'coincheck',    // not accessible
+            'coinegg',      // no balance?
             'coingi',       // not accessible
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
@@ -104,22 +106,29 @@ class ExchangeTest extends TestCase {
             // empty response:
             'bitstamp1',
             'btcchina',
+            'coinsecure',
             'livecoin',
             'paymium',
             'xbtce',
+            'virwox',
         ],
         'testFetchOrderBook' => [
             '_1broker',     // requires secret
             'anxpro',       // not accessible
             'bitcoincoid',  // not accessible
-            'bter',         // bad response
-            'chbtc',        // bad response
-            'coinexchange',  // bad offset in response
+            'btctradeim',   // no balance?
+            'bleutrade',    // bad offset in response
             'btcexchange',  // bad offset in response
             'btcx',         // bad offset in response
+            'bter',         // bad response
+            'ccex',         // not accessible
+            'chbtc',        // bad response
+            'coinexchange',  // bad offset in response
             'coinmarketcap', // not implemeneted
+            'coinegg',      // no balance?
             'coingi',       // not accessible
             'coinspot',     // bad offset in response
+            'coolcoin',     // failed?
             'huobi',        // not accessible
             'huobicny',     // bad offset in response
             'jubi',         // not accessible
@@ -131,15 +140,32 @@ class ExchangeTest extends TestCase {
         ],
         'testFetchOHLCV' => [
             'bibox',        // bad apiKey
+            'bit2c',        // not accessible
+            'bitstamp1',    // not accessible
+            'bleutrade',    // bad response
+            'btcchina',     // empty response
+            'btcx',         // bad offset in response
             'btcexchange',  // bad offset in response
             'coinmarketcap', // not implemeneted
+            'cobinhood',    // candle not found?!
+            'ccex',         // not accessible
+            'chbtc',        // 'server busy'
+            'coinegg',      // no balance?
+            'coinspot',     // bad offset in response
+            'coinsecure',   // empty response
             'huobi',        // not accessible
+            'jubi',         // not allowed
             'okcoincny',    // not accessible
             'kucoin',       // not accessible
             'huobicny',     // empty response
             'poloniex',     // travis
             'bitlish',      // travis
             'allcoin',      // travis
+            'zb',           // not accessible
+            'nova',         // no such market?
+            'livecoin',     // empty response
+            'virwox',       // empty response
+            'kuna',         // not supported
         ],
     ];
 
