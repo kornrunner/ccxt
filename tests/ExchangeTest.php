@@ -24,6 +24,7 @@ class ExchangeTest extends TestCase {
             'yunbi',
             'tidex',
             'yobit',
+            'gatecoin',
         ],
         'testLoadMarkets' => [
             '_1broker', // requires secret
