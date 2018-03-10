@@ -71,6 +71,7 @@ class hitbtc extends Exchange {
                     ),
                 ),
             ),
+            // hardcoded fees are deprecated and should only be used when there's no other way to get fee info
             'fees' => array (
                 'trading' => array (
                     'tierBased' => false,
