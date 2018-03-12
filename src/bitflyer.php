@@ -16,6 +16,8 @@ class bitflyer extends Exchange {
                 'withdraw' => true,
                 'fetchOrders' => true,
                 'fetchOrder' => true,
+                'fetchOpenOrders' => 'emulated',
+                'fetchClosedOrders' => 'emulated',
             ),
             'urls' => array (
                 'logo' => 'https://user-images.githubusercontent.com/1294454/28051642-56154182-660e-11e7-9b0d-6042d1e6edd8.jpg',
@@ -310,6 +312,11 @@ class bitflyer extends Exchange {
 
     public function fetch_open_orders ($symbol = null, $since = null, $limit = 100, $params = array ()) {
         $params['child_order_state'] = 'ACTIVE';
+        return $this->fetch_orders($symbol, $since, $limit, $params);
+    }
+
+    public function fetch_closed_orders ($symbol = null, $since = null, $limit = 100, $params = array ()) {
+        $params['child_order_state'] = 'COMPLETED';
         return $this->fetch_orders($symbol, $since, $limit, $params);
     }
 
