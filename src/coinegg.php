@@ -129,10 +129,12 @@ class coinegg extends Exchange {
             $bases = $this->webGetQuoteAllcoin (array (
                 'quote' => $quoteId,
             ));
+            if ($bases === null)
+                throw new ExchangeNotAvailable ($this->id . ' fetchMarkets() for "' . $quoteId . '" returned => "' . $this->json ($bases) . '"');
             $baseIds = is_array ($bases) ? array_keys ($bases) : array ();
             $numBaseIds = is_array ($baseIds) ? count ($baseIds) : 0;
             if ($numBaseIds < 1)
-                throw new ExchangeError ($this->id . ' fetchMarkets() failed for ' . $quoteId);
+                throw new ExchangeNotAvailable ($this->id . ' fetchMarkets() for "' . $quoteId . '" returned => "' . $this->json ($bases) . '"');
             for ($i = 0; $i < count ($baseIds); $i++) {
                 $baseId = $baseIds[$i];
                 $market = $bases[$baseId];
@@ -448,7 +450,7 @@ class coinegg extends Exchange {
                 'key' => $this->apiKey,
                 'nonce' => $this->nonce (),
             ), $query));
-            $secret = $this->hash ($this->secret);
+            $secret = $this->hash ($this->encode ($this->secret));
             $signature = $this->hmac ($this->encode ($query), $this->encode ($secret));
             $query .= '&' . 'signature=' . $signature;
             if ($method === 'GET') {
