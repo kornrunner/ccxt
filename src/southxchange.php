@@ -112,6 +112,7 @@ class southxchange extends Exchange {
         $symbol = null;
         if ($market)
             $symbol = $market['symbol'];
+        $last = $this->safe_float($ticker, 'Last');
         return array (
             'symbol' => $symbol,
             'timestamp' => $timestamp,
@@ -119,12 +120,14 @@ class southxchange extends Exchange {
             'high' => null,
             'low' => null,
             'bid' => $this->safe_float($ticker, 'Bid'),
+            'bidVolume' => null,
             'ask' => $this->safe_float($ticker, 'Ask'),
+            'askVolume' => null,
             'vwap' => null,
             'open' => null,
-            'close' => null,
-            'first' => null,
-            'last' => $this->safe_float($ticker, 'Last'),
+            'close' => $last,
+            'last' => $last,
+            'previousClose' => null,
             'change' => $this->safe_float($ticker, 'Variation24Hr'),
             'percentage' => null,
             'average' => null,

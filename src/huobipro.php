@@ -202,6 +202,7 @@ class huobipro extends Exchange {
             'open' => $open,
             'close' => $close,
             'last' => $close,
+            'previousClose' => null,
             'change' => $change,
             'percentage' => $percentage,
             'average' => $average,

@@ -146,6 +146,7 @@ class btcmarkets extends Exchange {
         $symbol = null;
         if ($market)
             $symbol = $market['symbol'];
+        $last = floatval ($ticker['lastPrice']);
         return array (
             'symbol' => $symbol,
             'timestamp' => $timestamp,
@@ -153,12 +154,14 @@ class btcmarkets extends Exchange {
             'high' => null,
             'low' => null,
             'bid' => floatval ($ticker['bestBid']),
+            'bidVolume' => null,
             'ask' => floatval ($ticker['bestAsk']),
+            'askVolume' => null,
             'vwap' => null,
             'open' => null,
-            'close' => null,
-            'first' => null,
-            'last' => floatval ($ticker['lastPrice']),
+            'close' => $last,
+            'last' => $last,
+            'previousClose' => null,
             'change' => null,
             'percentage' => null,
             'average' => null,

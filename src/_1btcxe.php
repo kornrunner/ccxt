@@ -122,7 +122,9 @@ class _1btcxe extends Exchange {
             'high' => floatval ($ticker['max']),
             'low' => floatval ($ticker['min']),
             'bid' => floatval ($ticker['bid']),
+            'bidVolume' => null,
             'ask' => floatval ($ticker['ask']),
+            'askVolume' => null,
             'vwap' => null,
             'open' => floatval ($ticker['open']),
             'close' => $last,
@@ -133,6 +135,7 @@ class _1btcxe extends Exchange {
             'average' => null,
             'baseVolume' => null,
             'quoteVolume' => floatval ($ticker['total_btc_traded']),
+            'info' => $ticker,
         );
     }
 

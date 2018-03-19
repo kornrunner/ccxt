@@ -268,6 +268,7 @@ class gatecoin extends Exchange {
         $baseVolume = floatval ($ticker['volume']);
         $vwap = floatval ($ticker['vwap']);
         $quoteVolume = $baseVolume * $vwap;
+        $last = floatval ($ticker['last']);
         return array (
             'symbol' => $symbol,
             'timestamp' => $timestamp,
@@ -275,12 +276,14 @@ class gatecoin extends Exchange {
             'high' => floatval ($ticker['high']),
             'low' => floatval ($ticker['low']),
             'bid' => floatval ($ticker['bid']),
+            'bidVolume' => null,
             'ask' => floatval ($ticker['ask']),
+            'askVolume' => null,
             'vwap' => $vwap,
             'open' => floatval ($ticker['open']),
-            'close' => null,
-            'first' => null,
-            'last' => floatval ($ticker['last']),
+            'close' => $last,
+            'last' => $last,
+            'previousClose' => null,
             'change' => null,
             'percentage' => null,
             'average' => null,
