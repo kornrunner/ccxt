@@ -28,6 +28,7 @@ class ExchangeTest extends TestCase {
             'yobit',
             'gatecoin',
             'ethfinex',
+            'kuna',
         ],
         'testLoadMarkets' => [
             '_1broker', // requires secret
@@ -44,6 +45,7 @@ class ExchangeTest extends TestCase {
             'coinegg',  // failed for btc?
             'coolcoin', // bad offset in response
             'ethfinex', // bad offset in response
+            'kuna',     // bad offset in response
         ],
         'testFetchBalance' => [
             '_1broker',     // requires secret
