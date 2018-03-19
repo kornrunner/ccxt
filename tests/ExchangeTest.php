@@ -12,6 +12,8 @@ class ExchangeTest extends TestCase {
             'bleutrade',
             'btcexchange',
             'coinexchange',
+            'coinegg',
+            'coolcoin',
             'bter',
             'ccex',
             'coingi',
@@ -39,6 +41,7 @@ class ExchangeTest extends TestCase {
             'kraken',   // timeout
             'xbtce',    // travis
             'coinegg',  // failed for btc?
+            'coolcoin', // bad offset in response
         ],
         'testFetchBalance' => [
             '_1broker',     // requires secret
@@ -106,6 +109,7 @@ class ExchangeTest extends TestCase {
             'bit2c',        // travis kills
             'fybse',        // travis kills
             'allcoin',      // not accessible
+            'coolcoin',     // bad offset in response
             // empty response:
             'bitstamp1',
             'btcchina',
@@ -170,6 +174,13 @@ class ExchangeTest extends TestCase {
             'virwox',       // empty response
             'kuna',         // not supported
             'southxchange', // bad offset in response
+            'chilebit',     // not accessible
+            'foxbit',       // not accessible
+            'surbitcoin',   // not accessible
+            'urdubit',      // not accessible
+            'vbtc',         // not accessible
+            'bitstamp',     // empty response
+            'coolcoin',     // bad offset in response
         ],
     ];
 
