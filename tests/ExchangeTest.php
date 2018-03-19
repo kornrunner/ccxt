@@ -43,6 +43,7 @@ class ExchangeTest extends TestCase {
             'xbtce',    // travis
             'coinegg',  // failed for btc?
             'coolcoin', // bad offset in response
+            'ethfinex', // bad offset in response
         ],
         'testFetchBalance' => [
             '_1broker',     // requires secret
@@ -111,6 +112,7 @@ class ExchangeTest extends TestCase {
             'fybse',        // travis kills
             'allcoin',      // not accessible
             'coolcoin',     // bad offset in response
+            'ethfinex',     // bad offset in response
             // empty response:
             'bitstamp1',
             'btcchina',
@@ -145,6 +147,7 @@ class ExchangeTest extends TestCase {
             'xbtce',        // travis
             'allcoin',      // not accessible
             'btctradeua',   // not accessible
+            'ethfinex',     // bad offset in response
         ],
         'testFetchOHLCV' => [
             'bibox',        // bad apiKey
@@ -183,6 +186,7 @@ class ExchangeTest extends TestCase {
             'bitstamp',     // empty response
             'coolcoin',     // bad offset in response
             'ethfinex',     // bad offset in response
+            'fybsg',        // bad offset in response
         ],
     ];
 
