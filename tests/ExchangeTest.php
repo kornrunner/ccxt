@@ -47,6 +47,7 @@ class ExchangeTest extends TestCase {
             'coolcoin', // bad offset in response
             'ethfinex', // bad offset in response
             'kuna',     // bad offset in response
+            'livecoin', // bad offset in response
         ],
         'testFetchBalance' => [
             '_1broker',     // requires secret
