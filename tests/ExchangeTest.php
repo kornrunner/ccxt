@@ -27,6 +27,7 @@ class ExchangeTest extends TestCase {
             'tidex',
             'yobit',
             'gatecoin',
+            'ethfinex',
         ],
         'testLoadMarkets' => [
             '_1broker', // requires secret
@@ -181,6 +182,7 @@ class ExchangeTest extends TestCase {
             'vbtc',         // not accessible
             'bitstamp',     // empty response
             'coolcoin',     // bad offset in response
+            'ethfinex',     // bad offset in response
         ],
     ];
 
