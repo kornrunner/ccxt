@@ -191,6 +191,7 @@ class ExchangeTest extends TestCase {
             'coolcoin',     // bad offset in response
             'ethfinex',     // bad offset in response
             'fybsg',        // bad offset in response
+            'liqui',        // bad offset in response
         ],
     ];
 
