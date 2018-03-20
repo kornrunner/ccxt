@@ -120,6 +120,7 @@ class livecoin extends Exchange {
                 'symbol' => $symbol,
                 'base' => $base,
                 'quote' => $quote,
+                'active' => true,
                 'precision' => $precision,
                 'limits' => $limits,
                 'info' => $market,
