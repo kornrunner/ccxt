@@ -30,6 +30,7 @@ class ExchangeTest extends TestCase {
             'ethfinex',
             'kuna',
             'cryptopia',
+            'exx',
         ],
         'testLoadMarkets' => [
             '_1broker', // requires secret
