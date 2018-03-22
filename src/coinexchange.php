@@ -536,8 +536,10 @@ class coinexchange extends Exchange {
             'commonCurrencies' => array (
                 'BON' => 'BonPeKaO',
                 'ETN' => 'Ethernex',
+                'GDC' => 'GoldenCryptoCoin',
                 'HNC' => 'Huncoin',
                 'MARS' => 'MarsBux',
+                'RUB' => 'RubbleCoin',
             ),
         ));
     }
