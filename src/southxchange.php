@@ -53,6 +53,9 @@ class southxchange extends Exchange {
                     'taker' => 0.2 / 100,
                 ),
             ),
+            'commonCurrencies' => array (
+                'SMT' => 'SmartNode',
+            ),
         ));
     }
 
@@ -61,8 +64,10 @@ class southxchange extends Exchange {
         $result = array ();
         for ($p = 0; $p < count ($markets); $p++) {
             $market = $markets[$p];
-            $base = $market[0];
-            $quote = $market[1];
+            $baseId = $market[0];
+            $quoteId = $market[1];
+            $base = $this->common_currency_code($baseId);
+            $quote = $this->common_currency_code($quoteId);
             $symbol = $base . '/' . $quote;
             $id = $symbol;
             $result[] = array (
@@ -70,6 +75,8 @@ class southxchange extends Exchange {
                 'symbol' => $symbol,
                 'base' => $base,
                 'quote' => $quote,
+                'baseId' => $baseId,
+                'quoteId' => $quoteId,
                 'info' => $market,
             );
         }
@@ -84,8 +91,10 @@ class southxchange extends Exchange {
         $result = array ( 'info' => $balances );
         for ($b = 0; $b < count ($balances); $b++) {
             $balance = $balances[$b];
-            $currency = $balance['Currency'];
-            $uppercase = strtoupper ($currency);
+            $currencyId = $balance['Currency'];
+            $uppercase = strtoupper ($currencyId);
+            $currency = $this->currencies_by_id[$uppercase];
+            $code = $currency['code'];
             $free = floatval ($balance['Available']);
             $used = floatval ($balance['Unconfirmed']);
             $total = $this->sum ($free, $used);
@@ -94,7 +103,7 @@ class southxchange extends Exchange {
                 'used' => $used,
                 'total' => $total,
             );
-            $result[$uppercase] = $account;
+            $result[$code] = $account;
         }
         return $this->parse_balance($result);
     }
