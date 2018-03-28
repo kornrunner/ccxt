@@ -15,7 +15,7 @@ class livecoin extends Exchange {
                 'CORS' => false,
                 'fetchTickers' => true,
                 'fetchCurrencies' => true,
-                'fetchFees' => true,
+                'fetchTradingFees' => true,
                 'fetchOrders' => true,
                 'fetchOpenOrders' => true,
                 'fetchClosedOrders' => true,
@@ -80,6 +80,7 @@ class livecoin extends Exchange {
             ),
             'commonCurrencies' => array (
                 'CRC' => 'CryCash',
+                'XBT' => 'Bricktox',
             ),
         ));
     }
@@ -235,13 +236,6 @@ class livecoin extends Exchange {
             $result[$currency] = $account;
         }
         return $this->parse_balance($result);
-    }
-
-    public function fetch_fees ($params = array ()) {
-        $tradingFees = $this->fetch_trading_fees($params);
-        return array_merge ($tradingFees, array (
-            'withdraw' => array (),
-        ));
     }
 
     public function fetch_trading_fees ($params = array ()) {
@@ -414,12 +408,11 @@ class livecoin extends Exchange {
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = null;
-        if ($symbol)
-            $market = $this->market ($symbol);
-        $pair = $market ? $market['id'] : null;
         $request = array ();
-        if ($pair)
-            $request['currencyPair'] = $pair;
+        if ($symbol !== null) {
+            $market = $this->market ($symbol);
+            $request['currencyPair'] = $market['id'];
+        }
         if ($since !== null)
             $request['issuedFrom'] = intval ($since);
         if ($limit !== null)

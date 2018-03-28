@@ -16,7 +16,6 @@ class cex extends Exchange {
                 'fetchOHLCV' => true,
                 'fetchOpenOrders' => true,
                 'fetchClosedOrders' => true,
-                'fetchOrders' => true,
                 'fetchDepositAddress' => true,
             ),
             'timeframes' => array (

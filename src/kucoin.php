@@ -350,7 +350,7 @@ class kucoin extends Exchange {
             }
         }
         $symbol = null;
-        if ($market) {
+        if ($market !== null) {
             $symbol = $market['symbol'];
         } else {
             $symbol = $order['coinType'] . '/' . $order['coinTypePair'];
@@ -418,7 +418,7 @@ class kucoin extends Exchange {
                         $cost = $amount * $price;
         }
         $feeCurrency = null;
-        if ($market) {
+        if ($market !== null) {
             $feeCurrency = ($side === 'sell') ? $market['quote'] : $market['base'];
         } else {
             $feeCurrencyField = ($side === 'sell') ? 'coinTypePair' : 'coinType';
@@ -487,10 +487,10 @@ class kucoin extends Exchange {
             'symbol' => $market['id'],
         );
         $response = $this->privateGetOrderActiveMap (array_merge ($request, $params));
-        $sell = $response['data']['SELL'];
+        $sell = $this->safe_value($response['data'], 'SELL');
         if ($sell === null)
             $sell = array ();
-        $buy = $response['data']['BUY'];
+        $buy = $this->safe_value($response['data'], 'BUY');
         if ($buy === null)
             $buy = array ();
         $orders = $this->array_concat($sell, $buy);
@@ -559,6 +559,7 @@ class kucoin extends Exchange {
             'id' => $orderId,
             'timestamp' => null,
             'datetime' => null,
+            'symbol' => $market['id'],
             'type' => $type,
             'side' => $side,
             'amount' => $amount,
@@ -778,7 +779,7 @@ class kucoin extends Exchange {
         return $this->parse_trades($response['data']['datas'], $market, $since, $limit);
     }
 
-    public function parse_trading_view_ohlcvs ($ohlcvs, $market = null, $timeframe = '1m', $since = null, $limit = null) {
+    public function parse_trading_view_ohlc_vs ($ohlcvs, $market = null, $timeframe = '1m', $since = null, $limit = null) {
         $result = array ();
         for ($i = 0; $i < count ($ohlcvs['t']); $i++) {
             $result[] = [
@@ -828,7 +829,7 @@ class kucoin extends Exchange {
             'to' => $end,
         );
         $response = $this->publicGetOpenChartHistory (array_merge ($request, $params));
-        return $this->parse_trading_view_ohlcvs ($response, $market, $timeframe, $since, $limit);
+        return $this->parse_trading_view_ohlc_vs ($response, $market, $timeframe, $since, $limit);
     }
 
     public function withdraw ($code, $amount, $address, $tag = null, $params = array ()) {

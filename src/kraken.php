@@ -14,6 +14,7 @@ class kraken extends Exchange {
             'has' => array (
                 'createDepositAddress' => true,
                 'fetchDepositAddress' => true,
+                'fetchTradingFees' => true,
                 'CORS' => false,
                 'fetchCurrencies' => true,
                 'fetchTickers' => true,
