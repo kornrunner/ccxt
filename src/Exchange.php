@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.12.28';
+$version = '1.12.35';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -88,11 +88,13 @@ abstract class Exchange {
         'cobinhood',
         'coincheck',
         'coinegg',
+        'coinex',
         'coinexchange',
         'coinfloor',
         'coingi',
         'coinmarketcap',
         'coinmate',
+        'coinnest',
         'coinone',
         'coinsecure',
         'coinspot',
@@ -111,6 +113,7 @@ abstract class Exchange {
         'gdax',
         'gemini',
         'getbtc',
+        'hadax',
         'hitbtc',
         'hitbtc2',
         'huobi',
@@ -125,6 +128,7 @@ abstract class Exchange {
         'kucoin',
         'kuna',
         'lakebtc',
+        'lbank',
         'liqui',
         'livecoin',
         'luno',
