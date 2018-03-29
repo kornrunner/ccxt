@@ -17,6 +17,7 @@ class huobipro extends Exchange {
             'hostname' => 'api.huobipro.com',
             'has' => array (
                 'CORS' => false,
+                'fetchTradingLimits' => true,
                 'fetchOHCLV' => true,
                 'fetchOrders' => true,
                 'fetchOrder' => true,
@@ -58,6 +59,7 @@ class huobipro extends Exchange {
                         'common/symbols', // 查询系统支持的所有交易对
                         'common/currencys', // 查询系统支持的所有币种
                         'common/timestamp', // 查询系统当前时间
+                        'common/exchange', // order limits
                     ),
                 ),
                 'private' => array (
@@ -148,6 +150,44 @@ class huobipro extends Exchange {
             );
         }
         return $result;
+    }
+
+    public function load_trading_limits_on_demand ($symbol, $reload = false, $params = array ()) {
+        if ($this->options['loadTradingLimitsOnDemand'])
+            return $this->load_trading_limits ($symbol, $reload, $params);
+        return null;
+    }
+
+    public function load_trading_limits ($symbol, $reload = false, $params = array ()) {
+        if ($reload || !(is_array ($this->markets[$symbol]) && array_key_exists ('loaded', $this->markets[$symbol]))) {
+            $limits = $this->fetch_trading_limits ($symbol);
+            $this->markets[$symbol] = array_merge ($this->markets[$symbol], array (
+                'limits' => $limits,
+                'loaded' => true,
+            ));
+        }
+        return $this->markets[$symbol]['limits'];
+    }
+
+    public function fetch_trading_limits ($symbol, $params = array ()) {
+        $market = $this->market ($symbol);
+        $response = $this->publicGetCommonExchange (array_merge (array (
+            'symbol' => $market['id'],
+        )));
+        return $this->parseLimits ($response);
+    }
+
+    public function parse_trading_limits ($response, $symbol = null, $params = array ()) {
+        $data = $response['data'];
+        if ($data === null) {
+            return null;
+        }
+        return array (
+            'amount' => array (
+                'min' => $data['limit-order-must-greater-than'],
+                'max' => $data['limit-order-must-less-than'],
+            ),
+        );
     }
 
     public function fetch_markets () {
@@ -492,10 +532,14 @@ class huobipro extends Exchange {
         );
     }
 
+    public function fee_to_precision ($currency, $fee) {
+        return floatval ($this->decimalToPrecision ($fee, 0, $this->currencies[$currency]['precision']));
+    }
+
     public function calculate_fee ($symbol, $type, $side, $amount, $price, $takerOrMaker = 'taker', $params = array ()) {
         $market = $this->markets[$symbol];
         $rate = $market[$takerOrMaker];
-        $cost = floatval ($this->cost_to_precision($symbol, $amount * $rate));
+        $cost = $amount * $rate;
         $key = 'quote';
         if ($side === 'sell') {
             $cost *= $price;
@@ -506,7 +550,7 @@ class huobipro extends Exchange {
             'type' => $takerOrMaker,
             'currency' => $market[$key],
             'rate' => $rate,
-            'cost' => floatval ($this->fee_to_precision($symbol, $cost)),
+            'cost' => floatval ($this->fee_to_precision($market[$key], $cost)),
         );
     }
 
