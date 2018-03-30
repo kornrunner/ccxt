@@ -152,29 +152,43 @@ class huobipro extends Exchange {
         return $result;
     }
 
-    public function load_trading_limits_on_demand ($symbol, $reload = false, $params = array ()) {
-        if ($this->options['loadTradingLimitsOnDemand'])
-            return $this->load_trading_limits ($symbol, $reload, $params);
-        return null;
-    }
-
-    public function load_trading_limits ($symbol, $reload = false, $params = array ()) {
-        if ($reload || !(is_array ($this->markets[$symbol]) && array_key_exists ('loaded', $this->markets[$symbol]))) {
-            $limits = $this->fetch_trading_limits ($symbol);
-            $this->markets[$symbol] = array_merge ($this->markets[$symbol], array (
-                'limits' => $limits,
-                'loaded' => true,
-            ));
+    public function load_trading_limits ($symbols = null, $reload = false, $params = array ()) {
+        if ($reload || !(is_array ($this->options) && array_key_exists ('limitsLoaded', $this->options))) {
+            $response = $this->fetch_trading_limits ($symbols);
+            $limits = $response['limits'];
+            $keys = is_array ($limits) ? array_keys ($limits) : array ();
+            for ($i = 0; $i < count ($keys); $i++) {
+                $symbol = $keys[$i];
+                $this->markets[$symbol] = array_merge ($this->markets[$symbol], array (
+                    'limits' => $limits[$symbol],
+                ));
+            }
         }
-        return $this->markets[$symbol]['limits'];
+        return $this->markets;
     }
 
-    public function fetch_trading_limits ($symbol, $params = array ()) {
-        $market = $this->market ($symbol);
-        $response = $this->publicGetCommonExchange (array_merge (array (
-            'symbol' => $market['id'],
-        )));
-        return $this->parseLimits ($response);
+    public function fetch_trading_limits ($symbols = null, $params = array ()) {
+        //  by default it will try load withdrawal fees of all currencies (with separate requests)
+        //  however if you define codes = array ( 'ETH', 'BTC' ) in args it will only load those
+        $this->load_markets();
+        $info = array ();
+        $limits = array ();
+        if ($symbols === null)
+            $symbols = $this->symbols;
+        for ($i = 0; $i < count ($symbols); $i++) {
+            $symbol = $symbols[$i];
+            $market = $this->market ($symbol);
+            $response = $this->publicGetCommonExchange (array_merge (array (
+                'symbol' => $market['id'],
+            )));
+            $limits = $this->parse_trading_limits ($response);
+            $info[$symbol] = $response;
+            $limits[$symbol] = $limits;
+        }
+        return array (
+            'limits' => $limits,
+            'info' => $info,
+        );
     }
 
     public function parse_trading_limits ($response, $symbol = null, $params = array ()) {
@@ -272,6 +286,18 @@ class huobipro extends Exchange {
             return $this->parse_order_book($response['tick'], $response['tick']['ts']);
         }
         throw new ExchangeError ($this->id . ' fetchOrderBook() returned unrecognized $response => ' . $this->json ($response));
+    }
+
+    public function parse_order_book ($orderbook, $timestamp = null, $bidsKey = 'bids', $asksKey = 'asks', $priceKey = 0, $amountKey = 1) {
+        $bids = (is_array ($orderbook) && array_key_exists ($bidsKey, $orderbook)) ? $this->parse_bids_asks($orderbook[$bidsKey], $priceKey, $amountKey) : array ();
+        $asks = (is_array ($orderbook) && array_key_exists ($asksKey, $orderbook)) ? $this->parse_bids_asks($orderbook[$asksKey], $priceKey, $amountKey) : array ();
+        return array (
+            'bids' => $this->sort_by($bids, 0, true),
+            'asks' => $this->sort_by($asks, 0),
+            'timestamp' => $timestamp,
+            'datetime' => ($timestamp !== null) ? $this->iso8601 ($timestamp) : null,
+            'nonce' => $orderbook['version'],
+        );
     }
 
     public function fetch_ticker ($symbol, $params = array ()) {
