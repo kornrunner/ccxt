@@ -152,6 +152,9 @@ class okcoinusd extends Exchange {
             'ETC/USD' => true,
             'ETH/USD' => true,
             'LTC/USD' => true,
+            'XRP/USD' => true,
+            'EOS/USD' => true,
+            'BTG/USD' => true,
         );
         for ($i = 0; $i < count ($markets); $i++) {
             $id = $markets[$i]['symbol'];
