@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class wex extends liqui {
 
     public function describe () {
@@ -13,6 +15,7 @@ class wex extends liqui {
             'has' => array (
                 'CORS' => false,
                 'fetchTickers' => true,
+                'fetchDepositAddress' => true,
             ),
             'urls' => array (
                 'logo' => 'https://user-images.githubusercontent.com/1294454/30652751-d74ec8f8-9e31-11e7-98c5-71469fcef03e.jpg',
@@ -79,6 +82,9 @@ class wex extends liqui {
                     'external service unavailable' => '\\ccxt\\DDoSProtection',
                 ),
             ),
+            'commonCurrencies' => array (
+                'RUR' => 'RUB',
+            ),
         ));
     }
 
@@ -109,6 +115,18 @@ class wex extends liqui {
             'baseVolume' => $this->safe_float($ticker, 'vol_cur'),
             'quoteVolume' => $this->safe_float($ticker, 'vol'),
             'info' => $ticker,
+        );
+    }
+
+    public function fetch_deposit_address ($code, $params = array ()) {
+        $request = array ( 'coinName' => $this->common_currency_code($code) );
+        $response = $this->privatePostCoinDepositAddress (array_merge ($request, $params));
+        return array (
+            'currency' => $code,
+            'address' => $response['return']['address'],
+            'tag' => null,
+            'status' => 'ok',
+            'info' => $response,
         );
     }
 

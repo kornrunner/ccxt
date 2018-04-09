@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class hitbtc extends Exchange {
 
     public function describe () {

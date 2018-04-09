@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class bitso extends Exchange {
 
     public function describe () {

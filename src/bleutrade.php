@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class bleutrade extends bittrex {
 
     public function describe () {

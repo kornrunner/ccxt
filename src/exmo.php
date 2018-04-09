@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class exmo extends Exchange {
 
     public function describe () {
@@ -93,6 +95,7 @@ class exmo extends Exchange {
                 '40005' => '\\ccxt\\AuthenticationError', // Authorization error, incorrect signature
                 '40009' => '\\ccxt\\InvalidNonce', //
                 '40015' => '\\ccxt\\ExchangeError', // API function do not exist
+                '40016' => '\\ccxt\\ExchangeNotAvailable', // Maintenance work in progress
                 '40017' => '\\ccxt\\AuthenticationError', // Wrong API Key
                 '50052' => '\\ccxt\\InsufficientFunds',
                 '50054' => '\\ccxt\\InsufficientFunds',
@@ -295,19 +298,22 @@ class exmo extends Exchange {
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
-        $prefix = ($type === 'market') ? 'market_' : '';
+        $prefix = ($type === 'market') ? ($type . '_') : '';
         $market = $this->market ($symbol);
+        if (($type === 'market') && ($price === null)) {
+            $price = 0;
+        }
         $request = array (
             'pair' => $market['id'],
             'quantity' => $this->amount_to_string($symbol, $amount),
-            'price' => $this->price_to_precision($symbol, $price),
             'type' => $prefix . $side,
+            'price' => $this->price_to_precision($symbol, $price),
         );
         $response = $this->privatePostOrderCreate (array_merge ($request, $params));
         $id = $this->safe_string($response, 'order_id');
         $timestamp = $this->milliseconds ();
-        $price = floatval ($price);
         $amount = floatval ($amount);
+        $price = floatval ($price);
         $status = 'open';
         $order = array (
             'id' => $id,
@@ -354,8 +360,13 @@ class exmo extends Exchange {
     }
 
     public function fetch_order_trades ($id, $symbol = null, $since = null, $limit = null, $params = array ()) {
-        $order = $this->fetch_order($id, $symbol, $params);
-        return $this->filter_by_symbol_since_limit($order['trades'], $symbol, $since, $limit);
+        $market = null;
+        if ($symbol !== null)
+            $market = $this->market ($symbol);
+        $response = $this->privatePostOrderTrades (array (
+            'order_id' => (string) $id,
+        ));
+        return $this->parse_trades($response, $market, $since, $limit);
     }
 
     public function update_cached_orders ($openOrders, $symbol) {
@@ -412,7 +423,7 @@ class exmo extends Exchange {
             $parsedOrders = $this->parse_orders($response[$marketId], $market);
             $orders = $this->array_concat($orders, $parsedOrders);
         }
-        $this->update_cached_orders ($orders);
+        $this->update_cached_orders ($orders, $symbol);
         return $this->filter_by_symbol_since_limit($this->orders, $symbol, $since, $limit);
     }
 

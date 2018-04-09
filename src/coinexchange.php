@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class coinexchange extends Exchange {
 
     public function describe () {
@@ -537,9 +539,12 @@ class coinexchange extends Exchange {
                 'BON' => 'BonPeKaO',
                 'ETN' => 'Ethernex',
                 'GDC' => 'GoldenCryptoCoin',
+                'GTC' => 'GlobalTourCoin',
                 'HNC' => 'Huncoin',
                 'MARS' => 'MarsBux',
+                'MER' => 'TheMermaidCoin',
                 'RUB' => 'RubbleCoin',
+                'UP' => 'UpscaleToken',
             ),
         ));
     }

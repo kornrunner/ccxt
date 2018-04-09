@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class bit2c extends Exchange {
 
     public function describe () {

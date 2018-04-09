@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class bitfinex2 extends bitfinex {
 
     public function describe () {

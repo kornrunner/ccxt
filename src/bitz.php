@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class bitz extends Exchange {
 
     public function describe () {
@@ -293,10 +295,16 @@ class bitz extends Exchange {
             if ($side !== null)
                 $side = ($side === 'in') ? 'buy' : 'sell';
         }
+        $timestamp = null;
+        $iso8601 = null;
+        if (is_array ($order) && array_key_exists ('datetime', $order)) {
+            $timestamp = $this->parse8601 ($order['datetime']);
+            $iso8601 = $this->iso8601 ($timestamp);
+        }
         return array (
             'id' => $order['id'],
-            'datetime' => null,
-            'timestamp' => null,
+            'datetime' => $iso8601,
+            'timestamp' => $timestamp,
             'status' => 'open',
             'symbol' => $symbol,
             'type' => 'limit',
@@ -349,7 +357,7 @@ class bitz extends Exchange {
         $response = $this->privatePostOpenOrders (array_merge (array (
             'coin' => $market['id'],
         ), $params));
-        return $this->parse_orders($response['data'], $market);
+        return $this->parse_orders($response['data'], $market, $since, $limit);
     }
 
     public function nonce () {

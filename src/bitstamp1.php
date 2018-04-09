@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class bitstamp1 extends Exchange {
 
     public function describe () {

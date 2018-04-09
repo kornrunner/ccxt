@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class vbtc extends foxbit {
 
     public function describe () {

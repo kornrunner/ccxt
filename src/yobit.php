@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class yobit extends liqui {
 
     public function describe () {
@@ -62,10 +64,13 @@ class yobit extends liqui {
                 'AIR' => 'AirCoin',
                 'ANI' => 'ANICoin',
                 'ANT' => 'AntsCoin',
+                'AST' => 'Astral',
                 'ATM' => 'Autumncoin',
                 'BCC' => 'BCH',
                 'BCS' => 'BitcoinStake',
+                'BLN' => 'Bulleon',
                 'BTS' => 'Bitshares2',
+                'CS' => 'CryptoSpots',
                 'DCT' => 'Discount',
                 'DGD' => 'DarkGoldCoin',
                 'ICN' => 'iCoin',
@@ -75,7 +80,10 @@ class yobit extends liqui {
                 'NAV' => 'NavajoCoin',
                 'OMG' => 'OMGame',
                 'PAY' => 'EPAY',
+                'PLC' => 'Platin Coin',
                 'REP' => 'Republicoin',
+                'RUR' => 'RUB',
+                'XIN' => 'XINCoin',
             ),
             'options' => array (
                 'fetchOrdersRequiresSymbol' => true,

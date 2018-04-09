@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class okcoincny extends okcoinusd {
 
     public function describe () {

@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class livecoin extends Exchange {
 
     public function describe () {
@@ -10,6 +12,7 @@ class livecoin extends Exchange {
             'name' => 'LiveCoin',
             'countries' => array ( 'US', 'UK', 'RU' ),
             'rateLimit' => 1000,
+            'userAgent' => $this->userAgents['chrome'],
             'has' => array (
                 'fetchDepositAddress' => true,
                 'CORS' => false,
@@ -80,6 +83,8 @@ class livecoin extends Exchange {
             ),
             'commonCurrencies' => array (
                 'CRC' => 'CryCash',
+                'ORE' => 'Orectic',
+                'RUR' => 'RUB',
                 'XBT' => 'Bricktox',
             ),
             'exceptions' => array (

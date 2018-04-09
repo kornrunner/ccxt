@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class cryptopia extends Exchange {
 
     public function describe () {
@@ -73,12 +75,14 @@ class cryptopia extends Exchange {
                 'ACC' => 'AdCoin',
                 'BAT' => 'BatCoin',
                 'BLZ' => 'BlazeCoin',
+                'BTG' => 'Bitgem',
                 'CC' => 'CCX',
                 'CMT' => 'Comet',
                 'FCN' => 'Facilecoin',
-                'NET' => 'NetCoin',
-                'BTG' => 'Bitgem',
                 'FUEL' => 'FC2', // FuelCoin != FUEL
+                'HAV' => 'Havecoin',
+                'LDC' => 'LADACoin',
+                'NET' => 'NetCoin',
                 'QBT' => 'Cubits',
                 'WRC' => 'WarCoin',
             ),
@@ -320,6 +324,9 @@ class cryptopia extends Exchange {
         if ($symbol) {
             $market = $this->market ($symbol);
             $request['TradePairId'] = $market['id'];
+        }
+        if ($limit !== null) {
+            $request['Count'] = $limit; // default 100
         }
         $response = $this->privatePostGetTradeHistory (array_merge ($request, $params));
         return $this->parse_trades($response['Data'], $market, $since, $limit);

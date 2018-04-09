@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class qryptos extends Exchange {
 
     public function describe () {
@@ -83,6 +85,9 @@ class qryptos extends Exchange {
                     'Order not found' => '\\ccxt\\OrderNotFound',
                     'user' => array (
                         'not_enough_free_balance' => '\\ccxt\\InsufficientFunds',
+                    ),
+                    'price' => array (
+                        'must_be_positive' => '\\ccxt\\InvalidOrder',
                     ),
                     'quantity' => array (
                         'less_than_order_size' => '\\ccxt\\InvalidOrder',
@@ -236,7 +241,18 @@ class qryptos extends Exchange {
     }
 
     public function parse_trade ($trade, $market) {
+        // {             id =>  12345,
+        //         quantity => "6.789",
+        //            price => "98765.4321",
+        //       taker_side => "sell",
+        //       created_at =>  1512345678,
+        //          my_side => "buy"           }
         $timestamp = $trade['created_at'] * 1000;
+        // 'taker_side' gets filled for both fetchTrades and fetchMyTrades
+        $takerSide = $this->safe_string($trade, 'taker_side');
+        // 'my_side' gets filled for fetchMyTrades only and may differ from 'taker_side'
+        $mySide = $this->safe_string($trade, 'my_side');
+        $side = ($mySide !== null) ? $mySide : $takerSide;
         return array (
             'info' => $trade,
             'id' => (string) $trade['id'],
@@ -245,7 +261,7 @@ class qryptos extends Exchange {
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $market['symbol'],
             'type' => null,
-            'side' => $trade['taker_side'],
+            'side' => $side,
             'price' => floatval ($trade['price']),
             'amount' => floatval ($trade['quantity']),
         );
@@ -450,7 +466,7 @@ class qryptos extends Exchange {
             // array ( "$errors" => { "quantity" => ["less_than_order_size"] )}
             if (is_array ($response) && array_key_exists ('errors', $response)) {
                 $errors = $response['errors'];
-                $errorTypes = ['user', 'quantity'];
+                $errorTypes = ['user', 'quantity', 'price'];
                 for ($i = 0; $i < count ($errorTypes); $i++) {
                     $errorType = $errorTypes[$i];
                     if (is_array ($errors) && array_key_exists ($errorType, $errors)) {

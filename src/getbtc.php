@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class getbtc extends _1btcxe {
 
     public function describe () {

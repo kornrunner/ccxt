@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class coinone extends Exchange {
 
     public function describe () {
@@ -97,6 +99,9 @@ class coinone extends Exchange {
                         ],
                     ),
                 ),
+            ),
+            'exceptions' => array (
+                '405' => '\\ccxt\\ExchangeNotAvailable',
             ),
         ));
     }
@@ -253,8 +258,19 @@ class coinone extends Exchange {
             $response = json_decode ($body, $as_associative_array = true);
             if (is_array ($response) && array_key_exists ('result', $response)) {
                 $result = $response['result'];
-                if ($result !== 'success')
-                    throw new ExchangeError ($this->id . ' ' . $body);
+                if ($result !== 'success') {
+                    //
+                    //    array (  "errorCode" => "405",  "status" => "maintenance",  "$result" => "error")
+                    //
+                    $code = $this->safe_string($response, 'errorCode');
+                    $feedback = $this->id . ' ' . $this->json ($response);
+                    $exceptions = $this->exceptions;
+                    if (is_array ($exceptions) && array_key_exists ($code, $exceptions)) {
+                        throw new $exceptions[$code] ($feedback);
+                    } else {
+                        throw new ExchangeError ($feedback);
+                    }
+                }
             } else {
                 throw new ExchangeError ($this->id . ' ' . $body);
             }

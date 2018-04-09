@@ -2,6 +2,8 @@
 
 namespace ccxt;
 
+use Exception as Exception; // a common import
+
 class southxchange extends Exchange {
 
     public function describe () {
@@ -221,8 +223,8 @@ class southxchange extends Exchange {
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
-            'type' => $orderType,
-            'side' => null,
+            'type' => 'limit',
+            'side' => $orderType,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
