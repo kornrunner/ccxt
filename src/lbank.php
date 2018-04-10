@@ -15,6 +15,8 @@ class lbank extends Exchange {
             'has' => array (
                 'fetchTickers' => true,
                 'fetchOHLCV' => true,
+                'fetchOrder' => true,
+                'fetchOrders' => true,
                 'fetchOpenOrders' => true,
                 'fetchClosedOrders' => true,
             ),
