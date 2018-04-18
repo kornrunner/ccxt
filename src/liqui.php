@@ -31,6 +31,10 @@ class liqui extends Exchange {
                 'api' => array (
                     'public' => 'https://api.liqui.io/api',
                     'private' => 'https://api.liqui.io/tapi',
+                    'web' => 'https://liqui.io',
+                    'cacheapi' => 'https://cacheapi.liqui.io/Market',
+                    'webapi' => 'https://webapi.liqui.io/Market',
+                    'charts' => 'https://charts.liqui.io/chart',
                 ),
                 'www' => 'https://liqui.io',
                 'doc' => 'https://liqui.io/api',
@@ -57,6 +61,37 @@ class liqui extends Exchange {
                         'WithdrawCoin',
                         'CreateCoupon',
                         'RedeemCoupon',
+                    ),
+                ),
+                'web' => array (
+                    'get' => array (
+                        'User/Balances',
+                    ),
+                    'post' => array (
+                        'User/Login/',
+                        'User/Session/Activate/',
+                    ),
+                ),
+                'cacheapi' => array (
+                    'get' => array (
+                        'Pairs',
+                        'Currencies',
+                        'depth', // ?id=228
+                        'Tickers',
+                    ),
+                ),
+                'webapi' => array (
+                    'get' => array (
+                        'Last', // ?id=228
+                        'Info',
+                    ),
+                ),
+                'charts' => array (
+                    'get' => array (
+                        'config',
+                        'history', // ?symbol=228&resolution=15&from=1524002997&to=1524011997'
+                        'symbols', // ?symbol=228
+                        'time',
                     ),
                 ),
             ),
@@ -644,10 +679,25 @@ class liqui extends Exchange {
                 'Key' => $this->apiKey,
                 'Sign' => $signature,
             );
-        } else {
+        } else if ($api === 'public') {
             $url .= $this->get_version_string() . '/' . $this->implode_params($path, $params);
-            if ($query)
+            if ($query) {
                 $url .= '?' . $this->urlencode ($query);
+            }
+        } else {
+            $url .= '/' . $this->implode_params($path, $params);
+            if ($method === 'GET') {
+                if ($query) {
+                    $url .= '?' . $this->urlencode ($query);
+                }
+            } else {
+                if ($query) {
+                    $body = $this->json ($query);
+                    $headers = array (
+                        'Content-Type' => 'application/json',
+                    );
+                }
+            }
         }
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
