@@ -268,6 +268,7 @@ class zaif extends Exchange {
             'id' => (string) $order['id'],
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
+            'lastTradeTimestamp' => null,
             'status' => 'open',
             'symbol' => $market['symbol'],
             'type' => 'limit',

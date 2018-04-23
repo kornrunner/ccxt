@@ -105,6 +105,7 @@ class huobipro extends Exchange {
                 'order-limitorder-amount-min-error' => '\\ccxt\\InvalidOrder', // limit order amount error, min => `0.001`
                 'order-orderstate-error' => '\\ccxt\\OrderNotFound', // canceling an already canceled order
                 'order-queryorder-invalid' => '\\ccxt\\OrderNotFound', // querying a non-existent order
+                'order-update-error' => '\\ccxt\\ExchangeNotAvailable', // undocumented error
             ),
             'options' => array (
                 'fetchMarketsMethod' => 'publicGetCommonSymbols',
@@ -196,6 +197,7 @@ class huobipro extends Exchange {
                 'base' => $base,
                 'quote' => $quote,
                 'lot' => $lot,
+                'active' => true,
                 'precision' => $precision,
                 'taker' => $taker,
                 'maker' => $maker,
@@ -575,6 +577,7 @@ class huobipro extends Exchange {
             'id' => (string) $order['id'],
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
+            'lastTradeTimestamp' => null,
             'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
@@ -603,9 +606,24 @@ class huobipro extends Exchange {
         if ($type === 'limit')
             $order['price'] = $this->price_to_precision($symbol, $price);
         $response = $this->privatePostOrderOrdersPlace (array_merge ($order, $params));
+        $timestamp = $this->milliseconds ();
         return array (
             'info' => $response,
             'id' => $response['data'],
+            'timestamp' => $timestamp,
+            'datetime' => $this->iso8601 ($timestamp),
+            'lastTradeTimestamp' => null,
+            'status' => null,
+            'symbol' => $symbol,
+            'type' => $type,
+            'side' => $side,
+            'price' => $price,
+            'amount' => $amount,
+            'filled' => null,
+            'remaining' => null,
+            'cost' => null,
+            'trades' => null,
+            'fee' => null,
         );
     }
 

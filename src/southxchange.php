@@ -224,6 +224,7 @@ class southxchange extends Exchange {
             'id' => (string) $order['Code'],
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
+            'lastTradeTimestamp' => null,
             'symbol' => $symbol,
             'type' => 'limit',
             'side' => $orderType,

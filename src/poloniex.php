@@ -122,6 +122,7 @@ class poloniex extends Exchange {
             'commonCurrencies' => array (
                 'BTM' => 'Bitmark',
                 'STR' => 'XLM',
+                'BCC' => 'BTCtalkcoin',
             ),
         ));
     }
@@ -519,6 +520,7 @@ class poloniex extends Exchange {
             'id' => $order['orderNumber'],
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
+            'lastTradeTimestamp' => null,
             'status' => $order['status'],
             'symbol' => $symbol,
             'type' => $order['type'],

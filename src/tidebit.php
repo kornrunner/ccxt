@@ -4,21 +4,21 @@ namespace ccxt;
 
 use Exception as Exception; // a common import
 
-class acx extends Exchange {
+class tidebit extends Exchange {
 
     public function describe () {
         return array_replace_recursive (parent::describe (), array (
-            'id' => 'acx',
-            'name' => 'ACX',
-            'countries' => 'AU',
+            'id' => 'tidebit',
+            'name' => 'TideBit',
+            'countries' => 'HK',
             'rateLimit' => 1000,
             'version' => 'v2',
             'has' => array (
+                'fetchDepositAddress' => true,
                 'CORS' => true,
                 'fetchTickers' => true,
                 'fetchOHLCV' => true,
                 'withdraw' => true,
-                'fetchOrder' => true,
             ),
             'timeframes' => array (
                 '1m' => '1',
@@ -34,46 +34,40 @@ class acx extends Exchange {
                 '1w' => '10080',
             ),
             'urls' => array (
-                'logo' => 'https://user-images.githubusercontent.com/1294454/30247614-1fe61c74-9621-11e7-9e8c-f1a627afa279.jpg',
-                'extension' => '.json',
-                'api' => 'https://acx.io/api',
-                'www' => 'https://acx.io',
-                'doc' => 'https://acx.io/documents/api_v2',
+                'logo' => 'https://user-images.githubusercontent.com/1294454/39034921-e3acf016-4480-11e8-9945-a6086a1082fe.jpg',
+                'api' => 'https://www.tidebit.com/api',
+                'www' => 'https://www.tidebit.com',
+                'doc' => 'https://www.tidebit.com/documents/api_v2',
             ),
             'api' => array (
                 'public' => array (
                     'get' => array (
-                        'depth', // Get depth or specified market Both asks and bids are sorted from highest price to lowest.
-                        'k_with_pending_trades', // Get K data with pending trades, which are the trades not included in K data yet, because there's delay between trade generated and processed by K data generator
-                        'k', // Get OHLC(k line) of specific market
-                        'markets', // Get all available markets
-                        'order_book', // Get the order book of specified market
-                        'order_book/{market}',
-                        'tickers', // Get ticker of all markets
-                        'tickers/{market}', // Get ticker of specific market
-                        'timestamp', // Get server current time, in seconds since Unix epoch
-                        'trades', // Get recent trades on market, each trade is included only once Trades are sorted in reverse creation order.
-                        'trades/{market}',
+                        'v2/markets', // V2MarketsJson
+                        'v2/tickers', // V2TickersJson
+                        'v2/tickers/{market}', // V2TickersMarketJson
+                        'v2/trades', // V2TradesJson
+                        'v2/trades/{market}', // V2TradesMarketJson
+                        'v2/order_book', // V2OrderBookJson
+                        'v2/order', // V2OrderJson
+                        'v2/k_with_pending_trades', // V2KWithPendingTradesJson
+                        'v2/k', // V2KJson
+                        'v2/depth', // V2DepthJson
                     ),
+                    'post' => array (),
                 ),
                 'private' => array (
                     'get' => array (
-                        'members/me', // Get your profile and accounts info
-                        'deposits', // Get your deposits history
-                        'deposit', // Get details of specific deposit
-                        'deposit_address', // Where to deposit The address field could be empty when a new address is generating (e.g. for bitcoin), you should try again later in that case.
-                        'orders', // Get your orders, results is paginated
-                        'order', // Get information of specified order
-                        'trades/my', // Get your executed trades Trades are sorted in reverse creation order.
-                        'withdraws', // Get your cryptocurrency withdraws
-                        'withdraw', // Get your cryptocurrency withdraw
+                        'v2/deposits', // V2DepositsJson
+                        'v2/deposit_address', // V2DepositAddressJson
+                        'v2/deposit', // V2DepositJson
+                        'v2/members/me', // V2MembersMeJson
+                        'v2/addresses/{address}', // V2AddressesAddressJson
                     ),
                     'post' => array (
-                        'orders', // Create a Sell/Buy order
-                        'orders/multi', // Create multiple sell/buy orders
-                        'orders/clear', // Cancel all my orders
-                        'order/delete', // Cancel an order
-                        'withdraw', // Create a withdraw
+                        'v2/order/delete', // V2OrderDeleteJson
+                        'v2/order', // V2OrderJson
+                        'v2/order/multi', // V2OrderMultiJson
+                        'v2/order/clear', // V2OrderClearJson
                     ),
                 ),
             ),
@@ -97,21 +91,44 @@ class acx extends Exchange {
         ));
     }
 
+    public function fetch_deposit_address ($code, $params = array ()) {
+        $this->load_markets();
+        $currency = $this->currency ($code);
+        $response = $this->privateGetV2DepositAddress (array_merge (array (
+            'currency' => $currency['id'],
+        ), $params));
+        if (is_array ($response) && array_key_exists ('success', $response)) {
+            if ($response['success']) {
+                $address = $this->safe_string($response, 'address');
+                $tag = $this->safe_string($response, 'addressTag');
+                return array (
+                    'currency' => $code,
+                    'address' => $this->check_address($address),
+                    'tag' => $tag,
+                    'status' => 'ok',
+                    'info' => $response,
+                );
+            }
+        }
+    }
+
     public function fetch_markets () {
-        $markets = $this->publicGetMarkets ();
+        $markets = $this->publicGetV2Markets ();
         $result = array ();
         for ($p = 0; $p < count ($markets); $p++) {
             $market = $markets[$p];
             $id = $market['id'];
             $symbol = $market['name'];
-            list ($base, $quote) = explode ('/', $symbol);
-            $base = $this->common_currency_code($base);
-            $quote = $this->common_currency_code($quote);
+            list ($baseId, $quoteId) = explode ('/', $symbol);
+            $base = $this->common_currency_code($baseId);
+            $quote = $this->common_currency_code($quoteId);
             $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
                 'base' => $base,
                 'quote' => $quote,
+                'baseId' => $baseId,
+                'quoteId' => $quoteId,
                 'info' => $market,
             );
         }
@@ -120,20 +137,22 @@ class acx extends Exchange {
 
     public function fetch_balance ($params = array ()) {
         $this->load_markets();
-        $response = $this->privateGetMembersMe ();
+        $response = $this->privateGetV2Deposits ();
         $balances = $response['accounts'];
         $result = array ( 'info' => $balances );
         for ($b = 0; $b < count ($balances); $b++) {
             $balance = $balances[$b];
-            $currency = $balance['currency'];
-            $uppercase = strtoupper ($currency);
+            $currencyId = $balance['currency'];
+            $code = strtoupper ($currencyId);
+            if (is_array ($this->currencies_by_id) && array_key_exists ($currencyId, $this->currencies_by_id))
+                $code = $this->currencies_by_id[$currencyId]['code'];
             $account = array (
                 'free' => floatval ($balance['balance']),
                 'used' => floatval ($balance['locked']),
                 'total' => 0.0,
             );
             $account['total'] = $this->sum ($account['free'], $account['used']);
-            $result[$uppercase] = $account;
+            $result[$code] = $account;
         }
         return $this->parse_balance($result);
     }
@@ -144,9 +163,10 @@ class acx extends Exchange {
         $request = array (
             'market' => $market['id'],
         );
-        if ($limit !== null)
+        if ($limit === null)
             $request['limit'] = $limit; // default = 300
-        $orderbook = $this->publicGetDepth (array_merge ($request, $params));
+        $request['market'] = $market['id'];
+        $orderbook = $this->publicGetV2Depth (array_merge ($request, $params));
         $timestamp = $orderbook['timestamp'] * 1000;
         return $this->parse_order_book($orderbook, $timestamp);
     }
@@ -155,7 +175,7 @@ class acx extends Exchange {
         $timestamp = $ticker['at'] * 1000;
         $ticker = $ticker['ticker'];
         $symbol = null;
-        if ($market)
+        if ($market !== null)
             $symbol = $market['symbol'];
         $last = $this->safe_float($ticker, 'last');
         return array (
@@ -165,16 +185,16 @@ class acx extends Exchange {
             'high' => $this->safe_float($ticker, 'high'),
             'low' => $this->safe_float($ticker, 'low'),
             'bid' => $this->safe_float($ticker, 'buy'),
-            'bidVolume' => null,
             'ask' => $this->safe_float($ticker, 'sell'),
+            'bidVolume' => null,
             'askVolume' => null,
             'vwap' => null,
-            'open' => $this->safe_float($ticker, 'open'),
+            'open' => null,
             'close' => $last,
             'last' => $last,
-            'previousClose' => null,
             'change' => null,
             'percentage' => null,
+            'previousClose' => null,
             'average' => null,
             'baseVolume' => $this->safe_float($ticker, 'vol'),
             'quoteVolume' => null,
@@ -184,7 +204,7 @@ class acx extends Exchange {
 
     public function fetch_tickers ($symbols = null, $params = array ()) {
         $this->load_markets();
-        $tickers = $this->publicGetTickers ($params);
+        $tickers = $this->publicGetV2Tickers ($params);
         $ids = is_array ($tickers) ? array_keys ($tickers) : array ();
         $result = array ();
         for ($i = 0; $i < count ($ids); $i++) {
@@ -212,7 +232,7 @@ class acx extends Exchange {
     public function fetch_ticker ($symbol, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $response = $this->publicGetTickersMarket (array_merge (array (
+        $response = $this->publicGetV2TickersMarket (array_merge (array (
             'market' => $market['id'],
         ), $params));
         return $this->parse_ticker($response, $market);
@@ -237,7 +257,7 @@ class acx extends Exchange {
     public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $response = $this->publicGetTrades (array_merge (array (
+        $response = $this->publicGetV2Trades (array_merge (array (
             'market' => $market['id'],
         ), $params));
         return $this->parse_trades($response, $market, $since, $limit);
@@ -258,15 +278,18 @@ class acx extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         if (!$limit)
-            $limit = 500; // default is 30
+            $limit = 30; // default is 30
         $request = array (
             'market' => $market['id'],
             'period' => $this->timeframes[$timeframe],
             'limit' => $limit,
         );
-        if ($since !== null)
+        if ($since !== null) {
             $request['timestamp'] = $since;
-        $response = $this->publicGetK (array_merge ($request, $params));
+        } else {
+            $request['timestamp'] = 1800000;
+        }
+        $response = $this->publicGetV2K (array_merge ($request, $params));
         return $this->parse_ohlcvs($response, $market, $timeframe, $since, $limit);
     }
 
@@ -307,14 +330,6 @@ class acx extends Exchange {
         );
     }
 
-    public function fetch_order ($id, $symbol = null, $params = array ()) {
-        $this->load_markets();
-        $response = $this->privateGetOrder (array_merge (array (
-            'id' => intval ($id),
-        ), $params));
-        return $this->parse_order($response);
-    }
-
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
         $order = array (
@@ -326,14 +341,14 @@ class acx extends Exchange {
         if ($type === 'limit') {
             $order['price'] = (string) $price;
         }
-        $response = $this->privatePostOrders (array_merge ($order, $params));
+        $response = $this->privatePostV2Order (array_merge ($order, $params));
         $market = $this->markets_by_id[$response['market']];
         return $this->parse_order($response, $market);
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
         $this->load_markets();
-        $result = $this->privatePostOrderDelete (array ( 'id' => $id ));
+        $result = $this->privatePostV2OrderDelete (array ( 'id' => $id ));
         $order = $this->parse_order($result);
         $status = $order['status'];
         if ($status === 'closed' || $status === 'canceled') {
@@ -361,29 +376,13 @@ class acx extends Exchange {
     }
 
     public function encode_params ($params) {
-        if (is_array ($params) && array_key_exists ('orders', $params)) {
-            $orders = $params['orders'];
-            $query = $this->urlencode ($this->keysort ($this->omit ($params, 'orders')));
-            for ($i = 0; $i < count ($orders); $i++) {
-                $order = $orders[$i];
-                $keys = is_array ($order) ? array_keys ($order) : array ();
-                for ($k = 0; $k < count ($keys); $k++) {
-                    $key = $keys[$k];
-                    $value = $order[$key];
-                    $query .= '&$orders%5B%5D%5B' . $key . '%5D=' . (string) $value;
-                }
-            }
-            return $query;
-        }
         return $this->urlencode ($this->keysort ($params));
     }
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
-        $request = '/api' . '/' . $this->version . '/' . $this->implode_params($path, $params);
-        if (is_array ($this->urls) && array_key_exists ('extension', $this->urls))
-            $request .= $this->urls['extension'];
+        $request = $this->implode_params($path, $params) . '.json';
         $query = $this->omit ($params, $this->extract_params($path));
-        $url = $this->urls['api'] . $request;
+        $url = $this->urls['api'] . '/' . $request;
         if ($api === 'public') {
             if ($query) {
                 $url .= '?' . $this->urlencode ($query);
@@ -391,12 +390,12 @@ class acx extends Exchange {
         } else {
             $this->check_required_credentials();
             $nonce = (string) $this->nonce ();
-            $query = $this->encode_params (array_merge (array (
+            $query = $this->urlencode (array_merge (array (
                 'access_key' => $this->apiKey,
                 'tonce' => $nonce,
             ), $params));
-            $auth = $method . '|' . $request . '|' . $query;
-            $signature = $this->hmac ($this->encode ($auth), $this->encode ($this->secret));
+            $payload = $method . '|' . $request . '|' . $query;
+            $signature = $this->hmac ($this->encode ($payload), $this->encode ($this->secret));
             $suffix = $query . '&$signature=' . $signature;
             if ($method === 'GET') {
                 $url .= '?' . $suffix;
