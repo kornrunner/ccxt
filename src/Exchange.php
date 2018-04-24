@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.13.32';
+$version = '1.13.38';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -365,6 +365,10 @@ abstract class Exchange {
 
     public static function array_concat () {
         return call_user_func_array ('array_merge', array_filter(func_get_args(), 'is_array'));
+    }
+
+    public static function in_array ($needle, $haystack) {
+        return in_array ($needle, $haystack);
     }
 
     public static function keysort ($array) {

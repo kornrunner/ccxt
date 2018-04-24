@@ -82,6 +82,7 @@ class cryptopia extends Exchange {
                 'FUEL' => 'FC2', // FuelCoin != FUEL
                 'HAV' => 'Havecoin',
                 'LDC' => 'LADACoin',
+                'MARKS' => 'Bitmark',
                 'NET' => 'NetCoin',
                 'QBT' => 'Cubits',
                 'WRC' => 'WarCoin',
