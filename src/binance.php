@@ -522,6 +522,9 @@ class binance extends Exchange {
                 'currency' => $this->common_currency_code($trade['commissionAsset']),
             );
         }
+        $takerOrMaker = null;
+        if (is_array ($trade) && array_key_exists ('isMaker', $trade))
+            $takerOrMaker = $trade['isMaker'] ? 'maker' : 'taker';
         return array (
             'info' => $trade,
             'timestamp' => $timestamp,
@@ -530,6 +533,7 @@ class binance extends Exchange {
             'id' => $id,
             'order' => $order,
             'type' => null,
+            'takerOrMaker' => $takerOrMaker,
             'side' => $side,
             'price' => $price,
             'cost' => $price * $amount,

@@ -159,6 +159,7 @@ class yobit extends liqui {
     }
 
     public function fetch_deposit_address ($code, $params = array ()) {
+        $this->load_markets();
         $currency = $this->currency ($code);
         $request = array (
             'coinName' => $currency['id'],
@@ -175,11 +176,12 @@ class yobit extends liqui {
         );
     }
 
-    public function withdraw ($currency, $amount, $address, $tag = null, $params = array ()) {
+    public function withdraw ($code, $amount, $address, $tag = null, $params = array ()) {
         $this->check_address($address);
         $this->load_markets();
+        $currency = $this->currency ($code);
         $response = $this->privatePostWithdrawCoinsToAddress (array_merge (array (
-            'coinName' => $currency,
+            'coinName' => $currency['id'],
             'amount' => $amount,
             'address' => $address,
         ), $params));
