@@ -328,7 +328,7 @@ class huobipro extends Exchange {
         );
     }
 
-    public function fetch_trades ($symbol, $since = null, $limit = 2000, $params = array ()) {
+    public function fetch_trades ($symbol, $since = null, $limit = 1000, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
         $request = array (
@@ -361,7 +361,7 @@ class huobipro extends Exchange {
         ];
     }
 
-    public function fetch_ohlcv ($symbol, $timeframe = '1m', $since = null, $limit = 2000, $params = array ()) {
+    public function fetch_ohlcv ($symbol, $timeframe = '1m', $since = null, $limit = 1000, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
         $request = array (
