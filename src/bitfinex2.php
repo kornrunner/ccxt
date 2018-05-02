@@ -112,6 +112,7 @@ class bitfinex2 extends bitfinex {
                         'auth/w/alert/set',
                         'auth/w/alert/{type}:{symbol}:{price}/del',
                         'auth/calc/order/avail',
+                        'auth/r/ledgers/{symbol}/hist',
                     ),
                 ),
             ),
