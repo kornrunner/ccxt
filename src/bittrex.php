@@ -13,7 +13,6 @@ class bittrex extends Exchange {
             'countries' => 'US',
             'version' => 'v1.1',
             'rateLimit' => 1500,
-            'hasAlreadyAuthenticatedSuccessfully' => false, // a workaround for APIKEY_INVALID
             // new metainfo interface
             'has' => array (
                 'CORS' => true,
@@ -135,7 +134,8 @@ class bittrex extends Exchange {
                 ),
             ),
             'exceptions' => array (
-                'Call to Cancel was throttled. Try again in 60 seconds.' => '\\ccxt\\DDoSProtection',
+                // 'Call to Cancel was throttled. Try again in 60 seconds.' => '\\ccxt\\DDoSProtection',
+                // 'Call to GetBalances was throttled. Try again in 60 seconds.' => '\\ccxt\\DDoSProtection',
                 'APISIGN_NOT_PROVIDED' => '\\ccxt\\AuthenticationError',
                 'INVALID_SIGNATURE' => '\\ccxt\\AuthenticationError',
                 'INVALID_CURRENCY' => '\\ccxt\\ExchangeError',
@@ -150,6 +150,7 @@ class bittrex extends Exchange {
             ),
             'options' => array (
                 'parseOrderStatus' => false,
+                'hasAlreadyAuthenticatedSuccessfully' => false, // a workaround for APIKEY_INVALID
             ),
         ));
     }
@@ -713,8 +714,10 @@ class bittrex extends Exchange {
                 $exceptions = $this->exceptions;
                 if (is_array ($exceptions) && array_key_exists ($message, $exceptions))
                     throw new $exceptions[$message] ($feedback);
+                if (($message !== null) && (mb_strpos ($message, 'throttled. Try again') !== false))
+                    throw new DDoSProtection ($feedback);
                 if ($message === 'APIKEY_INVALID') {
-                    if ($this->hasAlreadyAuthenticatedSuccessfully) {
+                    if ($this->options['hasAlreadyAuthenticatedSuccessfully']) {
                         throw new DDoSProtection ($feedback);
                     } else {
                         throw new AuthenticationError ($feedback);
@@ -731,7 +734,7 @@ class bittrex extends Exchange {
         $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
         // a workaround for APIKEY_INVALID
         if (($api === 'account') || ($api === 'market'))
-            $this->hasAlreadyAuthenticatedSuccessfully = true;
+            $this->options['hasAlreadyAuthenticatedSuccessfully'] = true;
         return $response;
     }
 }
