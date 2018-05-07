@@ -122,13 +122,13 @@ class vaultoro extends Exchange {
         $response = $this->publicGetMarkets ($params);
         $ticker = $response['data'];
         $timestamp = $this->milliseconds ();
-        $last = floatval ($ticker['LastPrice']);
+        $last = $this->safe_float($ticker, 'LastPrice');
         return array (
             'symbol' => $symbol,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'high' => floatval ($ticker['24hHigh']),
-            'low' => floatval ($ticker['24hLow']),
+            'high' => $this->safe_float($ticker, '24hHigh'),
+            'low' => $this->safe_float($ticker, '24hLow'),
             'bid' => $bid[0],
             'bidVolume' => null,
             'ask' => $ask[0],
@@ -142,7 +142,7 @@ class vaultoro extends Exchange {
             'percentage' => null,
             'average' => null,
             'baseVolume' => null,
-            'quoteVolume' => floatval ($ticker['24hVolume']),
+            'quoteVolume' => $this->safe_float($ticker, '24hVolume'),
             'info' => $ticker,
         );
     }

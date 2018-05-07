@@ -209,16 +209,16 @@ class exmo extends Exchange {
         $symbol = null;
         if ($market)
             $symbol = $market['symbol'];
-        $last = floatval ($ticker['last_trade']);
+        $last = $this->safe_float($ticker, 'last_trade');
         return array (
             'symbol' => $symbol,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'high' => floatval ($ticker['high']),
-            'low' => floatval ($ticker['low']),
-            'bid' => floatval ($ticker['buy_price']),
+            'high' => $this->safe_float($ticker, 'high'),
+            'low' => $this->safe_float($ticker, 'low'),
+            'bid' => $this->safe_float($ticker, 'buy_price'),
             'bidVolume' => null,
-            'ask' => floatval ($ticker['sell_price']),
+            'ask' => $this->safe_float($ticker, 'sell_price'),
             'askVolume' => null,
             'vwap' => null,
             'open' => null,
@@ -227,9 +227,9 @@ class exmo extends Exchange {
             'previousClose' => null,
             'change' => null,
             'percentage' => null,
-            'average' => floatval ($ticker['avg']),
-            'baseVolume' => floatval ($ticker['vol']),
-            'quoteVolume' => floatval ($ticker['vol_curr']),
+            'average' => $this->safe_float($ticker, 'avg'),
+            'baseVolume' => $this->safe_float($ticker, 'vol'),
+            'quoteVolume' => $this->safe_float($ticker, 'vol_curr'),
             'info' => $ticker,
         );
     }
@@ -267,8 +267,8 @@ class exmo extends Exchange {
             'order' => $this->safe_string($trade, 'order_id'),
             'type' => null,
             'side' => $trade['type'],
-            'price' => floatval ($trade['price']),
-            'amount' => floatval ($trade['quantity']),
+            'price' => $this->safe_float($trade, 'price'),
+            'amount' => $this->safe_float($trade, 'quantity'),
             'cost' => $this->safe_float($trade, 'amount'),
         );
     }

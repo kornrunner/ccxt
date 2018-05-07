@@ -120,7 +120,7 @@ class cryptopia extends Exchange {
                 'amount' => $amountLimits,
                 'price' => $priceLimits,
                 'cost' => array (
-                    'min' => $priceLimits['min'] * $amountLimits['min'],
+                    'min' => $market['MinimumBaseTrade'],
                     'max' => null,
                 ),
             );
@@ -128,6 +128,7 @@ class cryptopia extends Exchange {
             $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
+                'label' => $market['Label'],
                 'base' => $base,
                 'quote' => $quote,
                 'baseId' => $baseId,
@@ -141,6 +142,7 @@ class cryptopia extends Exchange {
                 'limits' => $limits,
             );
         }
+        $this->options['marketsByLabel'] = $this->index_by($result, 'label');
         return $result;
     }
 
@@ -211,11 +213,11 @@ class cryptopia extends Exchange {
             'info' => $ticker,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'high' => floatval ($ticker['High']),
-            'low' => floatval ($ticker['Low']),
-            'bid' => floatval ($ticker['BidPrice']),
+            'high' => $this->safe_float($ticker, 'High'),
+            'low' => $this->safe_float($ticker, 'Low'),
+            'bid' => $this->safe_float($ticker, 'BidPrice'),
             'bidVolume' => null,
-            'ask' => floatval ($ticker['AskPrice']),
+            'ask' => $this->safe_float($ticker, 'AskPrice'),
             'askVolume' => null,
             'vwap' => $vwap,
             'open' => $open,
@@ -223,7 +225,7 @@ class cryptopia extends Exchange {
             'last' => $last,
             'previousClose' => null,
             'change' => $change,
-            'percentage' => floatval ($ticker['Change']),
+            'percentage' => $this->safe_float($ticker, 'Change'),
             'average' => $this->sum ($last, $open) / 2,
             'baseVolume' => $baseVolume,
             'quoteVolume' => $quoteVolume,
@@ -492,6 +494,11 @@ class cryptopia extends Exchange {
             if (is_array ($this->markets_by_id) && array_key_exists ($id, $this->markets_by_id)) {
                 $market = $this->markets_by_id[$id];
                 $symbol = $market['symbol'];
+            } else {
+                if (is_array ($this->options['marketsByLabel']) && array_key_exists ($id, $this->options['marketsByLabel'])) {
+                    $market = $this->options['marketsByLabel'][$id];
+                    $symbol = $market['symbol'];
+                }
             }
         }
         $timestamp = $this->parse8601 ($order['TimeStamp']);
@@ -519,15 +526,18 @@ class cryptopia extends Exchange {
     }
 
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        if (!$symbol)
-            throw new ExchangeError ($this->id . ' fetchOrders requires a $symbol param');
         $this->load_markets();
-        $market = $this->market ($symbol);
-        $response = $this->privatePostGetOpenOrders (array (
+        $market = null;
+        $request = array (
             // 'Market' => $market['id'],
-            'TradePairId' => $market['id'], // Cryptopia identifier (not required if 'Market' supplied)
+            // 'TradePairId' => $market['id'], // Cryptopia identifier (not required if 'Market' supplied)
             // 'Count' => 100, // default = 100
-        ), $params);
+        );
+        if ($symbol !== null) {
+            $market = $this->market ($symbol);
+            $request['TradePairId'] = $market['id'];
+        }
+        $response = $this->privatePostGetOpenOrders (array_merge ($request, $params));
         $orders = array ();
         for ($i = 0; $i < count ($response['Data']); $i++) {
             $orders[] = array_merge ($response['Data'][$i], array ( 'status' => 'open' ));
@@ -546,16 +556,18 @@ class cryptopia extends Exchange {
             } else {
                 $order = $this->orders[$id];
                 if ($order['status'] === 'open') {
-                    $this->orders[$id] = array_merge ($order, array (
-                        'status' => 'closed',
-                        'cost' => $order['amount'] * $order['price'],
-                        'filled' => $order['amount'],
-                        'remaining' => 0.0,
-                    ));
+                    if (($symbol === null) || ($order['symbol'] === $symbol)) {
+                        $this->orders[$id] = array_merge ($order, array (
+                            'status' => 'closed',
+                            'cost' => $order['amount'] * $order['price'],
+                            'filled' => $order['amount'],
+                            'remaining' => 0.0,
+                        ));
+                    }
                 }
             }
             $order = $this->orders[$id];
-            if ($order['symbol'] === $symbol)
+            if (($symbol === null) || ($order['symbol'] === $symbol))
                 $result[] = $order;
         }
         return $this->filter_by_since_limit($result, $since, $limit);

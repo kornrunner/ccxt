@@ -47,7 +47,7 @@ class kucoin extends Exchange {
                     'kitchen' => 'https://kitchen.kucoin.com',
                     'kitchen-2' => 'https://kitchen-2.kucoin.com',
                 ),
-                'www' => 'https://kucoin.com',
+                'www' => 'https://www.kucoin.com/#/?r=E5wkqe',
                 'doc' => 'https://kucoinapidocs.docs.apiary.io',
                 'fees' => 'https://news.kucoin.com/en/fee',
             ),
@@ -956,6 +956,8 @@ class kucoin extends Exchange {
                 throw new InvalidOrder ($feedback); // amount < limits.amount.min
             if (mb_strpos ($message, 'Min price:') !== false)
                 throw new InvalidOrder ($feedback); // price < limits.price.min
+            if (mb_strpos ($message, 'Max price:') !== false)
+                throw new InvalidOrder ($feedback); // price > limits.price.max
             if (mb_strpos ($message, 'The precision of price') !== false)
                 throw new InvalidOrder ($feedback); // price violates precision.price
         } else if ($code === 'NO_BALANCE') {

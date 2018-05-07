@@ -153,7 +153,7 @@ class ice3x extends Exchange {
     public function parse_ticker ($ticker, $market = null) {
         $timestamp = $this->milliseconds ();
         $symbol = $market['symbol'];
-        $last = floatval ($ticker['last_price']);
+        $last = $this->safe_float($ticker, 'last_price');
         return array (
             'symbol' => $symbol,
             'timestamp' => $timestamp,
@@ -173,7 +173,7 @@ class ice3x extends Exchange {
             'percentage' => null,
             'average' => $this->safe_float($ticker, 'avg'),
             'baseVolume' => null,
-            'quoteVolume' => floatval ($ticker['vol']),
+            'quoteVolume' => $this->safe_float($ticker, 'vol'),
             'info' => $ticker,
         );
     }
@@ -212,8 +212,8 @@ class ice3x extends Exchange {
 
     public function parse_trade ($trade, $market = null) {
         $timestamp = intval ($trade['created']) * 1000;
-        $price = floatval ($trade['price']);
-        $amount = floatval ($trade['volume']);
+        $price = $this->safe_float($trade, 'price');
+        $amount = $this->safe_float($trade, 'volume');
         $symbol = $market['symbol'];
         $cost = floatval ($this->cost_to_precision($symbol, $price * $amount));
         $fee = $this->safe_float($trade, 'fee');
@@ -278,7 +278,7 @@ class ice3x extends Exchange {
             $symbol = $market['symbol'];
         }
         $timestamp = $this->safe_integer($order, 'created') * 1000;
-        $price = floatval ($order['price']);
+        $price = $this->safe_float($order, 'price');
         $amount = $this->safe_float($order, 'volume');
         $status = $this->safe_integer($order, 'active');
         $remaining = $this->safe_float($order, 'remaining');
