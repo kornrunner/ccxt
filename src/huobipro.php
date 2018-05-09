@@ -108,6 +108,7 @@ class huobipro extends Exchange {
                 ),
             ),
             'exceptions' => array (
+                'account-frozen-balance-insufficient-error' => '\\ccxt\\InsufficientFunds', // array ("status":"error","err-code":"account-frozen-balance-insufficient-error","err-msg":"trade account balance is not enough, left => `0.0027`","data":null)
                 'order-limitorder-amount-min-error' => '\\ccxt\\InvalidOrder', // limit order amount error, min => `0.001`
                 'order-orderstate-error' => '\\ccxt\\OrderNotFound', // canceling an already canceled order
                 'order-queryorder-invalid' => '\\ccxt\\OrderNotFound', // querying a non-existent order
@@ -127,7 +128,7 @@ class huobipro extends Exchange {
             $keys = is_array ($limits) ? array_keys ($limits) : array ();
             for ($i = 0; $i < count ($keys); $i++) {
                 $symbol = $keys[$i];
-                $this->markets[$symbol] = array_merge ($this->markets[$symbol], array (
+                $this->markets[$symbol] = array_replace_recursive ($this->markets[$symbol], array (
                     'limits' => $limits[$symbol],
                 ));
             }
