@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.13.126';
+$version = '1.13.129';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -1084,6 +1084,7 @@ abstract class Exchange {
             $base_currencies = array_map (function ($market) {
                 return array (
                     'id' => array_key_exists ('baseId', $market) ? $market['baseId'] : $market['base'],
+                    'numericId' => array_key_exists ('baseNumericId', $market) ? $market['baseNumericId'] : null,
                     'code' => $market['base'],
                 );
             }, array_filter ($values, function ($market) {
@@ -1092,6 +1093,7 @@ abstract class Exchange {
             $quote_currencies = array_map (function ($market) {
                 return array (
                     'id' => array_key_exists ('quoteId', $market) ? $market['quoteId'] : $market['quote'],
+                    'numericId' => array_key_exists ('quoteNumericId', $market) ? $market['quoteNumericId'] : null,
                     'code' => $market['quote'],
                 );
             }, array_filter ($values, function ($market) {
