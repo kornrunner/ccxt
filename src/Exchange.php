@@ -30,7 +30,7 @@ SOFTWARE.
 
 namespace ccxt;
 
-$version = '1.13.129';
+$version = '1.13.133';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -185,7 +185,7 @@ abstract class Exchange {
     }
 
     public static function safe_value ($object, $key, $default_value = null) {
-        return (is_array ($object) && array_key_exists ($key, $object) && $object[$key]) ? $object[$key] : $default_value;
+        return (is_array ($object) && array_key_exists ($key, $object)) ? $object[$key] : $default_value;
     }
 
     public static function truncate ($number, $precision = 0) {
@@ -1086,6 +1086,10 @@ abstract class Exchange {
                     'id' => array_key_exists ('baseId', $market) ? $market['baseId'] : $market['base'],
                     'numericId' => array_key_exists ('baseNumericId', $market) ? $market['baseNumericId'] : null,
                     'code' => $market['base'],
+                    'precision' => array_key_exists ('precision', $market) ? (
+                        array_key_exists ('base', $market['precision']) ? $market['precision']['base'] : (
+                            array_key_exists ('amount', $market['precision']) ? $market['precision']['amount'] : null
+                        )) : 8,
                 );
             }, array_filter ($values, function ($market) {
                 return array_key_exists ('base', $market);
@@ -1095,6 +1099,10 @@ abstract class Exchange {
                     'id' => array_key_exists ('quoteId', $market) ? $market['quoteId'] : $market['quote'],
                     'numericId' => array_key_exists ('quoteNumericId', $market) ? $market['quoteNumericId'] : null,
                     'code' => $market['quote'],
+                    'precision' => array_key_exists ('precision', $market) ? (
+                        array_key_exists ('quote', $market['precision']) ? $market['precision']['quote'] : (
+                            array_key_exists ('price', $market['precision']) ? $market['precision']['price'] : null
+                        )) : 8,
                 );
             }, array_filter ($values, function ($market) {
                 return array_key_exists ('quote', $market);
