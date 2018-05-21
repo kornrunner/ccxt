@@ -139,11 +139,14 @@ class coinegg extends Exchange {
                 '404' => 'IP restriction does not request the resource',
                 '405' => 'Currency transactions are temporarily closed',
             ),
+            'options' => array (
+                'quoteIds' => array ( 'btc', 'eth', 'usc' ),
+            ),
         ));
     }
 
     public function fetch_markets () {
-        $quoteIds = array ( 'btc', 'usc' );
+        $quoteIds = $this->options['quoteIds'];
         $result = array ();
         for ($b = 0; $b < count ($quoteIds); $b++) {
             $quoteId = $quoteIds[$b];
@@ -241,7 +244,7 @@ class coinegg extends Exchange {
 
     public function fetch_tickers ($symbols = null, $params = array ()) {
         $this->load_markets();
-        $quoteIds = array ( 'btc', 'usc' );
+        $quoteIds = $this->options['quoteIds'];
         $result = array ();
         for ($b = 0; $b < count ($quoteIds); $b++) {
             $quoteId = $quoteIds[$b];

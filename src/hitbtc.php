@@ -113,7 +113,7 @@ class hitbtc extends Exchange {
                         'AVT' => 1.9,
                         'BAS' => 113,
                         'BCN' => 0.1,
-                        'BET' => 124,
+                        'DAO Casino' => 124, // id = 'BET'
                         'BKB' => 46,
                         'BMC' => 32,
                         'BMT' => 100,
@@ -308,7 +308,7 @@ class hitbtc extends Exchange {
                         'AVT' => 0,
                         'BAS' => 0,
                         'BCN' => 0,
-                        'BET' => 0,
+                        'DAO Casino' => 0, // id = 'BET'
                         'BKB' => 0,
                         'BMC' => 0,
                         'BMT' => 0,
@@ -481,11 +481,16 @@ class hitbtc extends Exchange {
             ),
             'commonCurrencies' => array (
                 'BCC' => 'BCC',
-                'XBT' => 'BTC',
-                'DRK' => 'DASH',
+                'BET' => 'DAO Casino',
                 'CAT' => 'BitClave',
-                'USD' => 'USDT',
+                'DRK' => 'DASH',
                 'EMGO' => 'MGO',
+                'GET' => 'Themis',
+                'USD' => 'USDT',
+                'XBT' => 'BTC',
+            ),
+            'options' => array (
+                'defaultTimeInForce' => 'FOK',
             ),
         ));
     }
@@ -725,7 +730,7 @@ class hitbtc extends Exchange {
         if ($type === 'limit') {
             $order['price'] = $this->price_to_precision($symbol, $price);
         } else {
-            $order['timeInForce'] = 'FOK';
+            $order['timeInForce'] = $this->options['defaultTimeInForce'];
         }
         $response = $this->tradingPostNewOrder (array_merge ($order, $params));
         return $this->parse_order($response['ExecutionReport'], $market);
@@ -774,12 +779,16 @@ class hitbtc extends Exchange {
         $cost = null;
         $amountDefined = ($amount !== null);
         $remainingDefined = ($remaining !== null);
-        if ($market) {
+        if ($market !== null) {
             $symbol = $market['symbol'];
             if ($amountDefined)
                 $amount *= $market['lot'];
             if ($remainingDefined)
                 $remaining *= $market['lot'];
+        } else {
+            $marketId = $this->safe_string($order, 'symbol');
+            if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id))
+                $market = $this->markets_by_id[$marketId];
         }
         if ($amountDefined) {
             if ($remainingDefined) {
@@ -787,6 +796,17 @@ class hitbtc extends Exchange {
                 $cost = $averagePrice * $filled;
             }
         }
+        $feeCost = $this->safe_float($order, 'fee');
+        $feeCurrency = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+            $feeCurrency = $market['quote'];
+        }
+        $fee = array (
+            'cost' => $feeCost,
+            'currency' => $feeCurrency,
+            'rate' => null,
+        );
         return array (
             'id' => (string) $order['clientOrderId'],
             'info' => $order,
@@ -802,7 +822,7 @@ class hitbtc extends Exchange {
             'amount' => $amount,
             'filled' => $filled,
             'remaining' => $remaining,
-            'fee' => null,
+            'fee' => $fee,
         );
     }
 

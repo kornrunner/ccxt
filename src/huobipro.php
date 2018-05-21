@@ -115,6 +115,7 @@ class huobipro extends Exchange {
                 'order-update-error' => '\\ccxt\\ExchangeNotAvailable', // undocumented error
             ),
             'options' => array (
+                'createMarketBuyOrderRequiresPrice' => true,
                 'fetchMarketsMethod' => 'publicGetCommonSymbols',
                 'language' => 'en-US',
             ),
@@ -610,6 +611,15 @@ class huobipro extends Exchange {
             'symbol' => $market['id'],
             'type' => $side . '-' . $type,
         );
+        if ($this->options['createMarketBuyOrderRequiresPrice']) {
+            if (($type === 'market') && ($side === 'buy')) {
+                if ($price === null) {
+                    throw new InvalidOrder ($this->id . " $market buy $order requires $price argument to calculate cost (total $amount of quote currency to spend for buying, $amount * $price). To switch off this warning exception and specify cost in the $amount argument, set .options['createMarketBuyOrderRequiresPrice'] = false. Make sure you know what you're doing.");
+                } else {
+                    $order['amount'] = $this->price_to_precision($symbol, floatval ($amount) * floatval ($price));
+                }
+            }
+        }
         if ($type === 'limit')
             $order['price'] = $this->price_to_precision($symbol, $price);
         $response = $this->privatePostOrderOrdersPlace (array_merge ($order, $params));
@@ -683,9 +693,9 @@ class huobipro extends Exchange {
         $request = array (
             'address' => $address, // only supports existing addresses in your withdraw $address list
             'amount' => $amount,
-            'currency' => $currency['id'],
+            'currency' => strtolower ($currency['id']),
         );
-        if ($tag)
+        if ($tag !== null)
             $request['addr-tag'] = $tag; // only for XRP?
         $response = $this->privatePostDwWithdrawApiCreate (array_merge ($request, $params));
         $id = null;

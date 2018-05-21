@@ -182,7 +182,7 @@ class cointiger extends huobipro {
             }
             $orderbook = $data['tick'];
             $timestamp = $data['ts'];
-            return $this->parse_order_book($orderbook, $timestamp);
+            return $this->parse_order_book($orderbook, $timestamp, 'buys');
         }
         throw new ExchangeError ($this->id . ' fetchOrderBook() returned unrecognized $response => ' . $this->json ($response));
     }
@@ -464,8 +464,15 @@ class cointiger extends huobipro {
             }
             $order['volume'] = $this->amount_to_precision($symbol, $amount * $price);
         }
-        if ($type === 'limit')
+        if ($type === 'limit') {
             $order['price'] = $this->price_to_precision($symbol, $price);
+        } else {
+            if ($price === null) {
+                $order['price'] = $this->price_to_precision($symbol, 0);
+            } else {
+                $order['price'] = $this->price_to_precision($symbol, $price);
+            }
+        }
         $response = $this->privatePostOrder (array_merge ($order, $params));
         //
         //     array ("order_id":34343)

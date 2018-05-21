@@ -25,6 +25,7 @@ class poloniex extends Exchange {
                 'fetchOpenOrders' => true,
                 'fetchClosedOrders' => 'emulated',
                 'fetchTickers' => true,
+                'fetchTradingFees' => true,
                 'fetchCurrencies' => true,
                 'withdraw' => true,
             ),
@@ -235,7 +236,7 @@ class poloniex extends Exchange {
         return $this->parse_balance($result);
     }
 
-    public function fetch_fees ($params = array ()) {
+    public function fetch_trading_fees ($params = array ()) {
         $this->load_markets();
         $fees = $this->privatePostReturnFeeInfo ();
         return array (

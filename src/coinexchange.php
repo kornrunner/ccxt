@@ -538,6 +538,7 @@ class coinexchange extends Exchange {
             'commonCurrencies' => array (
                 'BON' => 'BonPeKaO',
                 'ETN' => 'Ethernex',
+                'GET' => 'GreenEnergyToken',
                 'GDC' => 'GoldenCryptoCoin',
                 'GTC' => 'GlobalTourCoin',
                 'HNC' => 'Huncoin',

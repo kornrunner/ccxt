@@ -78,9 +78,11 @@ class cryptopia extends Exchange {
                 'BTG' => 'Bitgem',
                 'CC' => 'CCX',
                 'CMT' => 'Comet',
+                'EPC' => 'ExperienceCoin',
                 'FCN' => 'Facilecoin',
                 'FUEL' => 'FC2', // FuelCoin != FUEL
                 'HAV' => 'Havecoin',
+                'LBTC' => 'LiteBitcoin',
                 'LDC' => 'LADACoin',
                 'MARKS' => 'Bitmark',
                 'NET' => 'NetCoin',
@@ -168,16 +170,10 @@ class cryptopia extends Exchange {
 
     public function fetch_order_books ($symbols = null, $params = array ()) {
         $this->load_markets();
-        $ids = null;
-        if (!$symbols) {
-            $numIds = is_array ($this->ids) ? count ($this->ids) : 0;
-            // max URL length is 2083 characters, including http schema, hostname, tld, etc...
-            if ($numIds > 2048)
-                throw new ExchangeError ($this->id . ' has ' . (string) $numIds . ' $symbols exceeding max URL length, you are required to specify a list of $symbols in the first argument to fetchOrderBooks');
-            $ids = $this->join_market_ids ($this->ids);
-        } else {
-            $ids = $this->join_market_ids ($this->market_ids($symbols));
+        if ($symbols === null) {
+            throw new ExchangeError ($this->id . ' fetchOrderBooks requires the $symbols argument as of May 2018 (up to 5 $symbols at max)');
         }
+        $ids = $this->join_market_ids ($this->market_ids($symbols));
         $response = $this->publicGetGetMarketOrderGroupsIds (array_merge (array (
             'ids' => $ids,
         ), $params));
@@ -607,6 +603,7 @@ class cryptopia extends Exchange {
     }
 
     public function fetch_deposit_address ($code, $params = array ()) {
+        $this->load_markets();
         $currency = $this->currency ($code);
         $response = $this->privatePostGetDepositAddress (array_merge (array (
             'Currency' => $currency['id'],
@@ -624,6 +621,7 @@ class cryptopia extends Exchange {
     }
 
     public function withdraw ($code, $amount, $address, $tag = null, $params = array ()) {
+        $this->load_markets();
         $currency = $this->currency ($code);
         $this->check_address($address);
         $request = array (

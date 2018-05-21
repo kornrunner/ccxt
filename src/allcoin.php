@@ -53,7 +53,6 @@ class allcoin extends okcoinusd {
                     ),
                 ),
             ),
-            'markets' => null,
         ));
     }
 

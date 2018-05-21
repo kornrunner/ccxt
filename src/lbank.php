@@ -142,7 +142,7 @@ class lbank extends Exchange {
 
     public function parse_ticker ($ticker, $market = null) {
         $symbol = $market['symbol'];
-        $timestamp = $ticker['timestamp'];
+        $timestamp = $this->safe_integer($ticker, 'timestamp');
         $info = $ticker;
         $ticker = $info['ticker'];
         $last = $this->safe_float($ticker, 'latest');
@@ -165,7 +165,7 @@ class lbank extends Exchange {
             'percentage' => null,
             'average' => null,
             'baseVolume' => $this->safe_float($ticker, 'vol'),
-            'quoteVolume' => null,
+            'quoteVolume' => $this->safe_float($ticker, 'turnover'),
             'info' => $info,
         );
     }
