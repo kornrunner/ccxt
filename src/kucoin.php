@@ -327,6 +327,7 @@ class kucoin extends Exchange {
         $market = $this->market ($symbol);
         $response = $this->publicGetOpenOrders (array_merge (array (
             'symbol' => $market['id'],
+            'limit' => $limit,
         ), $params));
         $dataInResponse = (is_array ($response) && array_key_exists ('data', $response));
         $orderbook = null;
@@ -825,6 +826,7 @@ class kucoin extends Exchange {
         $market = $this->market ($symbol);
         $response = $this->publicGetOpenDealOrders (array_merge (array (
             'symbol' => $market['id'],
+            'limit' => $limit,
         ), $params));
         return $this->parse_trades($response['data'], $market, $since, $limit);
     }
