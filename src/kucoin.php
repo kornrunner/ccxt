@@ -47,7 +47,8 @@ class kucoin extends Exchange {
                     'kitchen' => 'https://kitchen.kucoin.com',
                     'kitchen-2' => 'https://kitchen-2.kucoin.com',
                 ),
-                'www' => 'https://www.kucoin.com/?r=E5wkqe',
+                'www' => 'https://www.kucoin.com',
+                'referral' => 'https://www.kucoin.com/?r=E5wkqe',
                 'doc' => 'https://kucoinapidocs.docs.apiary.io',
                 'fees' => 'https://news.kucoin.com/en/fee',
             ),
@@ -299,8 +300,6 @@ class kucoin extends Exchange {
     public function fetch_balance ($params = array ()) {
         $this->load_markets();
         $response = $this->privateGetAccountBalance (array_merge (array (
-            'limit' => 20, // default 12, max 20
-            'page' => 1,
         ), $params));
         $balances = $response['data'];
         $result = array ( 'info' => $balances );
