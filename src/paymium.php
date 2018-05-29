@@ -163,7 +163,7 @@ class paymium extends Exchange {
             'direction' => $side,
             'amount' => $amount,
         );
-        if ($type === 'market')
+        if ($type !== 'market')
             $order['price'] = $price;
         $response = $this->privatePostUserOrders (array_merge ($order, $params));
         return array (
@@ -173,8 +173,8 @@ class paymium extends Exchange {
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
-        return $this->privatePostCancelOrder (array_merge (array (
-            'orderNumber' => $id,
+        return $this->privateDeleteUserOrdersUUIDCancel (array_merge (array (
+            'UUID' => $id,
         ), $params));
     }
 
