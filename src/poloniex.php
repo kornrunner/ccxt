@@ -125,6 +125,18 @@ class poloniex extends Exchange {
                 'STR' => 'XLM',
                 'BCC' => 'BTCtalkcoin',
             ),
+            'options' => array (
+                'limits' => array (
+                    'cost' => array (
+                        'min' => array (
+                            'BTC' => 0.0001,
+                            'ETH' => 0.0001,
+                            'XMR' => 0.0001,
+                            'USDT' => 1.0,
+                        ),
+                    ),
+                ),
+            ),
         ));
     }
 
@@ -184,6 +196,7 @@ class poloniex extends Exchange {
             $base = $this->common_currency_code($base);
             $quote = $this->common_currency_code($quote);
             $symbol = $base . '/' . $quote;
+            $minCost = $this->safe_float($this->options['limits']['cost']['min'], $quote, 0.0);
             $result[] = array_merge ($this->fees['trading'], array (
                 'id' => $id,
                 'symbol' => $symbol,
@@ -204,7 +217,7 @@ class poloniex extends Exchange {
                         'max' => 1000000000,
                     ),
                     'cost' => array (
-                        'min' => 0.00000000,
+                        'min' => $minCost,
                         'max' => 1000000000,
                     ),
                 ),
