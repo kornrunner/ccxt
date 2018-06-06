@@ -111,6 +111,17 @@ class gateio extends Exchange {
                 '20' => 'Your order size is too small',
                 '21' => 'You don\'t have enough fund',
             ),
+            'options' => array (
+                'limits' => array (
+                    'cost' => array (
+                        'min' => array (
+                            'BTC' => 0.0001,
+                            'ETH' => 0.001,
+                            'USDT' => 1,
+                        ),
+                    ),
+                ),
+            ),
         ));
     }
 
@@ -143,8 +154,10 @@ class gateio extends Exchange {
                 'min' => pow (10, -$details['decimal_places']),
                 'max' => null,
             );
+            $defaultCost = $amountLimits['min'] * $priceLimits['min'];
+            $minCost = $this->safe_float($this->options['limits']['cost']['min'], $quote, $defaultCost);
             $costLimits = array (
-                'min' => $amountLimits['min'] * $priceLimits['min'],
+                'min' => $minCost,
                 'max' => null,
             );
             $limits = array (
