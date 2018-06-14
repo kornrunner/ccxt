@@ -49,6 +49,9 @@ class braziliex extends Exchange {
                     ),
                 ),
             ),
+            'commonCurrencies' => array (
+                'EPC' => 'Epacoin',
+            ),
             'fees' => array (
                 'trading' => array (
                     'maker' => 0.005,
