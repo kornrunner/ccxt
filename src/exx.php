@@ -78,6 +78,9 @@ class exx extends Exchange {
                     ),
                 ),
             ),
+            'commonCurrencies' => array (
+                'CAN' => 'Content and AD Network',
+            ),
         ));
     }
 

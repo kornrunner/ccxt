@@ -391,6 +391,7 @@ class livecoin extends Exchange {
             'OPEN' => 'open',
             'PARTIALLY_FILLED' => 'open',
             'EXECUTED' => 'closed',
+            'CANCELLED' => 'canceled',
             'PARTIALLY_FILLED_AND_CANCELLED' => 'canceled',
         );
         if (is_array ($statuses) && array_key_exists ($status, $statuses))
@@ -450,7 +451,7 @@ class livecoin extends Exchange {
         }
         $feeRate = $this->safe_float($order, 'commission_rate');
         $feeCost = null;
-        if ($cost !== null) {
+        if ($cost !== null && $feeRate !== null) {
             $feeCost = $cost * $feeRate;
         }
         $feeCurrency = null;

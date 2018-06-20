@@ -284,7 +284,7 @@ class bittrex extends Exchange {
             'ask' => $this->safe_float($ticker, 'Ask'),
             'askVolume' => null,
             'vwap' => null,
-            'open' => null,
+            'open' => $previous,
             'close' => $last,
             'last' => $last,
             'previousClose' => null,
