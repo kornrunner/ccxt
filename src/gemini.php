@@ -303,7 +303,6 @@ class gemini extends Exchange {
         return array (
             'currency' => $code,
             'address' => $address,
-            'status' => 'ok',
             'info' => $response,
         );
     }

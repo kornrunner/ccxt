@@ -291,7 +291,6 @@ class southxchange extends Exchange {
             'currency' => $code,
             'address' => $address,
             'tag' => $tag,
-            'status' => 'ok',
             'info' => $response,
         );
     }

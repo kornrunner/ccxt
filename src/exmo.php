@@ -545,7 +545,6 @@ class exmo extends Exchange {
         $this->load_markets();
         $response = $this->privatePostDepositAddress ($params);
         $depositAddress = $this->safe_string($response, $code);
-        $status = 'ok';
         $address = null;
         $tag = null;
         if ($depositAddress) {
@@ -561,7 +560,6 @@ class exmo extends Exchange {
             'currency' => $code,
             'address' => $address,
             'tag' => $tag,
-            'status' => $status,
             'info' => $response,
         );
     }

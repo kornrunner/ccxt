@@ -347,7 +347,6 @@ class kraken extends Exchange {
                 'info' => $currency,
                 'name' => $code,
                 'active' => true,
-                'status' => 'ok',
                 'fee' => null,
                 'precision' => $precision,
                 'limits' => array (
@@ -813,7 +812,6 @@ class kraken extends Exchange {
         return array (
             'currency' => $code,
             'address' => $address,
-            'status' => 'ok',
             'info' => $response,
         );
     }
@@ -847,7 +845,6 @@ class kraken extends Exchange {
         return array (
             'currency' => $code,
             'address' => $address,
-            'status' => 'ok',
             'info' => $response,
         );
     }

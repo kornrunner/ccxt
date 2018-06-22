@@ -612,10 +612,9 @@ class hitbtc2 extends hitbtc {
             $payout = $this->safe_value($currency, 'payoutEnabled');
             $transfer = $this->safe_value($currency, 'transferEnabled');
             $active = $payin && $payout && $transfer;
-            $status = 'ok';
             if (is_array ($currency) && array_key_exists ('disabled', $currency))
                 if ($currency['disabled'])
-                    $status = 'disabled';
+                    $active = false;
             $type = 'fiat';
             if ((is_array ($currency) && array_key_exists ('crypto', $currency)) && $currency['crypto'])
                 $type = 'crypto';
@@ -629,7 +628,6 @@ class hitbtc2 extends hitbtc {
                 'info' => $currency,
                 'name' => $currency['fullName'],
                 'active' => $active,
-                'status' => $status,
                 'fee' => $this->safe_float($currency, 'payoutFee'), // todo => redesign
                 'precision' => $precision,
                 'limits' => array (
@@ -1054,7 +1052,6 @@ class hitbtc2 extends hitbtc {
             'currency' => $currency,
             'address' => $address,
             'tag' => $tag,
-            'status' => 'ok',
             'info' => $response,
         );
     }
@@ -1072,7 +1069,6 @@ class hitbtc2 extends hitbtc {
             'currency' => $currency['code'],
             'address' => $address,
             'tag' => $tag,
-            'status' => 'ok',
             'info' => $response,
         );
     }

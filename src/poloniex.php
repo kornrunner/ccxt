@@ -340,17 +340,13 @@ class poloniex extends Exchange {
             // differentiated fees for each particular method
             $precision = 8; // default $precision, todo => fix "magic constants"
             $code = $this->common_currency_code($id);
-            $active = ($currency['delisted'] === 0);
-            $status = ($currency['disabled']) ? 'disabled' : 'ok';
-            if ($status !== 'ok')
-                $active = false;
+            $active = ($currency['delisted'] === 0) && !$currency['disabled'];
             $result[$code] = array (
                 'id' => $id,
                 'code' => $code,
                 'info' => $currency,
                 'name' => $currency['name'],
                 'active' => $active,
-                'status' => $status,
                 'fee' => $this->safe_float($currency, 'txFee'), // todo => redesign
                 'precision' => $precision,
                 'limits' => array (
@@ -769,7 +765,7 @@ class poloniex extends Exchange {
         return array (
             'currency' => $code,
             'address' => $address,
-            'status' => 'ok',
+            'tag' => null,
             'info' => $response,
         );
     }
@@ -780,11 +776,10 @@ class poloniex extends Exchange {
         $currencyId = $currency['id'];
         $address = $this->safe_string($response, $currencyId);
         $this->check_address($address);
-        $status = $address ? 'ok' : 'none';
         return array (
             'currency' => $code,
             'address' => $address,
-            'status' => $status,
+            'tag' => null,
             'info' => $response,
         );
     }

@@ -772,7 +772,6 @@ class bitfinex extends Exchange {
         return array (
             'currency' => $currency,
             'address' => $address,
-            'status' => 'ok',
             'info' => $response['info'],
         );
     }
@@ -796,7 +795,6 @@ class bitfinex extends Exchange {
             'currency' => $currency,
             'address' => $address,
             'tag' => $tag,
-            'status' => 'ok',
             'info' => $response,
         );
     }

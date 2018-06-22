@@ -153,6 +153,9 @@ class bittrex extends Exchange {
                 'parseOrderStatus' => false,
                 'hasAlreadyAuthenticatedSuccessfully' => false, // a workaround for APIKEY_INVALID
             ),
+            'commonCurrencies' => array (
+                'BITS' => 'SWIFT',
+            ),
         ));
     }
 
@@ -318,7 +321,6 @@ class bittrex extends Exchange {
                 'type' => $currency['CoinType'],
                 'name' => $currency['CurrencyLong'],
                 'active' => $currency['IsActive'],
-                'status' => 'ok',
                 'fee' => $this->safe_float($currency, 'TxFee'), // todo => redesign
                 'precision' => $precision,
                 'limits' => array (
@@ -656,9 +658,8 @@ class bittrex extends Exchange {
         ), $params));
         $address = $this->safe_string($response['result'], 'Address');
         $message = $this->safe_string($response, 'message');
-        $status = 'ok';
         if (!$address || $message === 'ADDRESS_GENERATING')
-            $status = 'pending';
+            throw new AddressPending ($this->id . ' the $address for ' . $code . ' is being generated (pending, not ready yet, retry again later)');
         $tag = null;
         if (($code === 'XRP') || ($code === 'XLM')) {
             $tag = $address;
@@ -669,7 +670,6 @@ class bittrex extends Exchange {
             'currency' => $code,
             'address' => $address,
             'tag' => $tag,
-            'status' => $status,
             'info' => $response,
         );
     }
