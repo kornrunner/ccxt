@@ -19,6 +19,7 @@ class poloniex extends Exchange {
                 'editOrder' => true,
                 'createMarketOrder' => false,
                 'fetchOHLCV' => true,
+                'fetchOrderTrades' => true,
                 'fetchMyTrades' => true,
                 'fetchOrder' => 'emulated',
                 'fetchOrders' => 'emulated',
