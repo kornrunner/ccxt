@@ -35,7 +35,7 @@ class tidebit extends Exchange {
             ),
             'urls' => array (
                 'logo' => 'https://user-images.githubusercontent.com/1294454/39034921-e3acf016-4480-11e8-9945-a6086a1082fe.jpg',
-                'api' => 'https://www.tidebit.com/api',
+                'api' => 'https://www.tidebit.com',
                 'www' => 'https://www.tidebit.com',
                 'doc' => 'https://www.tidebit.com/documents/api_v2',
             ),
@@ -379,9 +379,9 @@ class tidebit extends Exchange {
     }
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
-        $request = $this->implode_params($path, $params) . '.json';
+        $request = '/' . 'api/' . $this->implode_params($path, $params) . '.json';
         $query = $this->omit ($params, $this->extract_params($path));
-        $url = $this->urls['api'] . '/' . $request;
+        $url = $this->urls['api'] . $request;
         if ($api === 'public') {
             if ($query) {
                 $url .= '?' . $this->urlencode ($query);
@@ -389,10 +389,11 @@ class tidebit extends Exchange {
         } else {
             $this->check_required_credentials();
             $nonce = (string) $this->nonce ();
-            $query = $this->urlencode (array_merge (array (
+            $sortedByKey = $this->keysort (array_merge (array (
                 'access_key' => $this->apiKey,
                 'tonce' => $nonce,
             ), $params));
+            $query = $this->urlencode ($sortedByKey);
             $payload = $method . '|' . $request . '|' . $query;
             $signature = $this->hmac ($this->encode ($payload), $this->encode ($this->secret));
             $suffix = $query . '&$signature=' . $signature;
