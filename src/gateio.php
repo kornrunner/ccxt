@@ -479,7 +479,7 @@ class gateio extends Exchange {
         if (($address !== null) && (mb_strpos ($address, 'address') !== false))
             throw new InvalidAddress ($this->id . ' queryDepositAddress ' . $address);
         if ($code === 'XRP') {
-            $parts = $address->split ('/', 2);
+            $parts = explode (' ', $address);
             $address = $parts[0];
             $tag = $parts[1];
         }

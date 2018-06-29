@@ -133,7 +133,7 @@ class bitmex extends Exchange {
                 'Access Denied' => '\\ccxt\\PermissionDenied',
             ),
             'options' => array (
-                'fetchTickerQuotes' => true,
+                'fetchTickerQuotes' => false,
             ),
         ));
     }
