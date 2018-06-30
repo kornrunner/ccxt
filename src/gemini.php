@@ -10,7 +10,7 @@ class gemini extends Exchange {
         return array_replace_recursive (parent::describe (), array (
             'id' => 'gemini',
             'name' => 'Gemini',
-            'countries' => 'US',
+            'countries' => array ( 'US' ),
             'rateLimit' => 1500, // 200 for private API
             'version' => 'v1',
             'has' => array (
@@ -304,7 +304,9 @@ class gemini extends Exchange {
             'symbol' => $market['id'],
         );
         if ($limit !== null)
-            $request['limit'] = $limit;
+            $request['limit_trades'] = $limit;
+        if ($since !== null)
+            $request['timestamp'] = intval ($since / 1000);
         $response = $this->privatePostMytrades (array_merge ($request, $params));
         return $this->parse_trades($response, $market, $since, $limit);
     }

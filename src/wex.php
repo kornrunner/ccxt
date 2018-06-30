@@ -10,7 +10,7 @@ class wex extends liqui {
         return array_replace_recursive (parent::describe (), array (
             'id' => 'wex',
             'name' => 'WEX',
-            'countries' => 'NZ', // New Zealand
+            'countries' => array ( 'NZ' ), // New Zealand
             'version' => '3',
             'has' => array (
                 'CORS' => false,

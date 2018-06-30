@@ -11,7 +11,7 @@ class cryptopia extends Exchange {
             'id' => 'cryptopia',
             'name' => 'Cryptopia',
             'rateLimit' => 1500,
-            'countries' => 'NZ', // New Zealand
+            'countries' => array ( 'NZ' ), // New Zealand
             'has' => array (
                 'CORS' => false,
                 'createMarketOrder' => false,
