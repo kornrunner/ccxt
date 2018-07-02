@@ -767,6 +767,7 @@ class poloniex extends Exchange {
     }
 
     public function create_deposit_address ($code, $params = array ()) {
+        $this->load_markets();
         $currency = $this->currency ($code);
         $response = $this->privatePostGenerateNewAddress (array (
             'currency' => $currency['id'],
@@ -784,6 +785,7 @@ class poloniex extends Exchange {
     }
 
     public function fetch_deposit_address ($code, $params = array ()) {
+        $this->load_markets();
         $currency = $this->currency ($code);
         $response = $this->privatePostReturnDepositAddresses ();
         $currencyId = $currency['id'];

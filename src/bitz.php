@@ -126,6 +126,7 @@ class bitz extends Exchange {
                 'lastNonceTimestamp' => 0,
             ),
             'commonCurrencies' => array (
+                'XRB' => 'NANO',
                 'PXC' => 'Pixiecoin',
             ),
         ));
