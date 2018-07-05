@@ -785,7 +785,7 @@ class hitbtc2 extends hitbtc {
     public function parse_trade ($trade, $market = null) {
         $timestamp = $this->parse8601 ($trade['timestamp']);
         $symbol = null;
-        if ($market) {
+        if ($market !== null) {
             $symbol = $market['symbol'];
         } else {
             $id = $trade['symbol'];
@@ -972,7 +972,7 @@ class hitbtc2 extends hitbtc {
         $this->load_markets();
         $market = null;
         $request = array ();
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['symbol'] = $market['id'];
         }
@@ -984,7 +984,7 @@ class hitbtc2 extends hitbtc {
         $this->load_markets();
         $market = null;
         $request = array ();
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['symbol'] = $market['id'];
         }
@@ -1010,7 +1010,7 @@ class hitbtc2 extends hitbtc {
             // 'offset' => 0,
         );
         $market = null;
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['symbol'] = $market['id'];
         }

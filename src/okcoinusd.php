@@ -257,7 +257,7 @@ class okcoinusd extends Exchange {
     public function parse_ticker ($ticker, $market = null) {
         $timestamp = $ticker['timestamp'];
         $symbol = null;
-        if (!$market) {
+        if ($market === null) {
             if (is_array ($ticker) && array_key_exists ('symbol', $ticker)) {
                 $marketId = $ticker['symbol'];
                 if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id))
@@ -465,7 +465,7 @@ class okcoinusd extends Exchange {
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
-        if (!$symbol)
+        if ($symbol === null)
             throw new ExchangeError ($this->id . ' cancelOrder() requires a $symbol argument');
         $this->load_markets();
         $market = $this->market ($symbol);
@@ -533,7 +533,7 @@ class okcoinusd extends Exchange {
         }
         $status = $this->parse_order_status($order['status']);
         $symbol = null;
-        if (!$market) {
+        if ($market === null) {
             if (is_array ($order) && array_key_exists ('symbol', $order))
                 if (is_array ($this->markets_by_id) && array_key_exists ($order['symbol'], $this->markets_by_id))
                     $market = $this->markets_by_id[$order['symbol']];
@@ -588,7 +588,7 @@ class okcoinusd extends Exchange {
     }
 
     public function fetch_order ($id, $symbol = null, $params = array ()) {
-        if (!$symbol)
+        if ($symbol === null)
             throw new ExchangeError ($this->id . ' fetchOrder requires a $symbol parameter');
         $this->load_markets();
         $market = $this->market ($symbol);
@@ -614,7 +614,7 @@ class okcoinusd extends Exchange {
     }
 
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        if (!$symbol)
+        if ($symbol === null)
             throw new ExchangeError ($this->id . ' fetchOrders requires a $symbol parameter');
         $this->load_markets();
         $market = $this->market ($symbol);

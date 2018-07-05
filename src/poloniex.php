@@ -185,7 +185,7 @@ class poloniex extends Exchange {
     public function fetch_ohlcv ($symbol, $timeframe = '5m', $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        if (!$since)
+        if ($since === null)
             $since = 0;
         $request = array (
             'currencyPair' => $market['id'],
@@ -409,7 +409,7 @@ class poloniex extends Exchange {
                 $symbol = $base . '/' . $quote;
             }
         }
-        if ($market) {
+        if ($market !== null) {
             $symbol = $market['symbol'];
             $base = $market['base'];
             $quote = $market['quote'];
@@ -470,7 +470,7 @@ class poloniex extends Exchange {
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = null;
-        if ($symbol)
+        if ($symbol !== null)
             $market = $this->market ($symbol);
         $pair = $market ? $market['id'] : 'all';
         $request = array ( 'currencyPair' => $pair );
@@ -479,11 +479,11 @@ class poloniex extends Exchange {
             $request['end'] = $this->seconds ();
         }
         // $limit is disabled (does not really work as expected)
-        if ($limit)
+        if ($limit !== null)
             $request['limit'] = intval ($limit);
         $response = $this->privatePostReturnTradeHistory (array_merge ($request, $params));
         $result = array ();
-        if ($market) {
+        if ($market !== null) {
             $result = $this->parse_trades($response, $market);
         } else {
             if ($response) {
@@ -575,14 +575,14 @@ class poloniex extends Exchange {
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = null;
-        if ($symbol)
+        if ($symbol !== null)
             $market = $this->market ($symbol);
         $pair = $market ? $market['id'] : 'all';
         $response = $this->privatePostReturnOpenOrders (array_merge (array (
             'currencyPair' => $pair,
         )));
         $openOrders = array ();
-        if ($market) {
+        if ($market !== null) {
             $openOrders = $this->parse_open_orders ($response, $market, $openOrders);
         } else {
             $marketIds = is_array ($response) ? array_keys ($response) : array ();
@@ -620,7 +620,7 @@ class poloniex extends Exchange {
                 }
             }
             $order = $this->orders[$id];
-            if ($market) {
+            if ($market !== null) {
                 if ($order['symbol'] === $symbol)
                     $result[] = $order;
             } else {
@@ -714,7 +714,7 @@ class poloniex extends Exchange {
             $result = array_merge ($this->orders[$newid], array ( 'info' => $response ));
         } else {
             $market = null;
-            if ($symbol)
+            if ($symbol !== null)
                 $market = $this->market ($symbol);
             $result = $this->parse_order($response, $market);
             $this->orders[$result['id']] = $result;

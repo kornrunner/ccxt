@@ -251,7 +251,7 @@ class gdax extends Exchange {
         if ($timestamp !== null)
             $iso8601 = $this->iso8601 ($timestamp);
         $symbol = null;
-        if (!$market) {
+        if ($market === null) {
             if (is_array ($trade) && array_key_exists ('product_id', $trade)) {
                 $marketId = $trade['product_id'];
                 if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id))
@@ -262,7 +262,7 @@ class gdax extends Exchange {
             $symbol = $market['symbol'];
         $feeRate = null;
         $feeCurrency = null;
-        if ($market) {
+        if ($market !== null) {
             $feeCurrency = $market['quote'];
             if (is_array ($trade) && array_key_exists ('liquidity', $trade)) {
                 $rateType = ($trade['liquidity'] === 'T') ? 'taker' : 'maker';
@@ -372,7 +372,7 @@ class gdax extends Exchange {
     public function parse_order ($order, $market = null) {
         $timestamp = $this->parse8601 ($order['created_at']);
         $symbol = null;
-        if (!$market) {
+        if ($market === null) {
             if (is_array ($this->markets_by_id) && array_key_exists ($order['product_id'], $this->markets_by_id))
                 $market = $this->markets_by_id[$order['product_id']];
         }
@@ -429,7 +429,7 @@ class gdax extends Exchange {
             'status' => 'all',
         );
         $market = null;
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['product_id'] = $market['id'];
         }
@@ -441,7 +441,7 @@ class gdax extends Exchange {
         $this->load_markets();
         $request = array ();
         $market = null;
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['product_id'] = $market['id'];
         }
@@ -455,7 +455,7 @@ class gdax extends Exchange {
             'status' => 'done',
         );
         $market = null;
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['product_id'] = $market['id'];
         }

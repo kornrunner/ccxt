@@ -302,7 +302,7 @@ class zaif extends Exchange {
             // 'is_token' => false,
             // 'is_token_both' => false,
         );
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['currency_pair'] = $market['id'];
         }
@@ -323,7 +323,7 @@ class zaif extends Exchange {
             // 'end' => 1503821051,
             // 'is_token' => false,
         );
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['currency_pair'] = $market['id'];
         }

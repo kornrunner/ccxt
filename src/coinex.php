@@ -422,7 +422,7 @@ class coinex extends Exchange {
         $request = array (
             'market' => $market['id'],
         );
-        if ($limit)
+        if ($limit !== null)
             $request['limit'] = $limit;
         $response = $this->privateGetOrderPending (array_merge ($request, $params));
         return $this->parse_orders($response['data']['data'], $market);
@@ -434,7 +434,7 @@ class coinex extends Exchange {
         $request = array (
             'market' => $market['id'],
         );
-        if ($limit)
+        if ($limit !== null)
             $request['limit'] = $limit;
         $response = $this->privateGetOrderFinished (array_merge ($request, $params));
         return $this->parse_orders($response['data']['data'], $market);

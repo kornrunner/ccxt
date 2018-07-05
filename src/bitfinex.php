@@ -664,13 +664,13 @@ class bitfinex extends Exchange {
             $status = 'closed';
         }
         $symbol = null;
-        if (!$market) {
+        if ($market === null) {
             $exchange = strtoupper ($order['symbol']);
             if (is_array ($this->markets_by_id) && array_key_exists ($exchange, $this->markets_by_id)) {
                 $market = $this->markets_by_id[$exchange];
             }
         }
-        if ($market)
+        if ($market !== null)
             $symbol = $market['symbol'];
         $orderType = $order['type'];
         $exchange = mb_strpos ($orderType, 'exchange ') !== false;
@@ -706,7 +706,7 @@ class bitfinex extends Exchange {
                 throw new ExchangeError ($this->id . ' has no $symbol ' . $symbol);
         $response = $this->privatePostOrders ($params);
         $orders = $this->parse_orders($response, null, $since, $limit);
-        if ($symbol)
+        if ($symbol !== null)
             $orders = $this->filter_by($orders, 'symbol', $symbol);
         return $orders;
     }

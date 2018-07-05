@@ -446,7 +446,7 @@ class bittrex extends Exchange {
         $this->load_markets();
         $request = array ();
         $market = null;
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['market'] = $market['id'];
         }
@@ -564,7 +564,7 @@ class bittrex extends Exchange {
             );
             if ($market !== null) {
                 $fee['currency'] = $market['quote'];
-            } else if ($symbol) {
+            } else if ($symbol !== null) {
                 $currencyIds = explode ('/', $symbol);
                 $quoteCurrencyId = $currencyIds[1];
                 if (is_array ($this->currencies_by_id) && array_key_exists ($quoteCurrencyId, $this->currencies_by_id))
@@ -640,13 +640,13 @@ class bittrex extends Exchange {
         $this->load_markets();
         $request = array ();
         $market = null;
-        if ($symbol) {
+        if ($symbol !== null) {
             $market = $this->market ($symbol);
             $request['market'] = $market['id'];
         }
         $response = $this->accountGetOrderhistory (array_merge ($request, $params));
         $orders = $this->parse_orders($response['result'], $market, $since, $limit);
-        if ($symbol)
+        if ($symbol !== null)
             return $this->filter_by_symbol($orders, $symbol);
         return $orders;
     }
