@@ -150,6 +150,10 @@ class bittrex extends Exchange {
                 'WHITELIST_VIOLATION_IP' => '\\ccxt\\PermissionDenied',
             ),
             'options' => array (
+                // price precision by quote currency code
+                'pricePrecisionByCode' => array (
+                    'USD' => 3,
+                ),
                 'parseOrderStatus' => false,
                 'hasAlreadyAuthenticatedSuccessfully' => false, // a workaround for APIKEY_INVALID
             ),
@@ -179,9 +183,12 @@ class bittrex extends Exchange {
             $base = $this->common_currency_code($baseId);
             $quote = $this->common_currency_code($quoteId);
             $symbol = $base . '/' . $quote;
+            $pricePrecision = 8;
+            if (is_array ($this->options['pricePrecisionByCode']) && array_key_exists ($quote, $this->options['pricePrecisionByCode']))
+                $pricePrecision = $this->options['pricePrecisionByCode'][$quote];
             $precision = array (
                 'amount' => 8,
-                'price' => 8,
+                'price' => $pricePrecision,
             );
             $active = $market['IsActive'] || $market['IsActive'] === 'true';
             $result[] = array (

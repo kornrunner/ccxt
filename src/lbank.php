@@ -93,6 +93,9 @@ class lbank extends Exchange {
                     ),
                 ),
             ),
+            'commonCurrencies' => array (
+                'VET_ERC20' => 'VEN',
+            ),
         ));
     }
 
@@ -101,7 +104,18 @@ class lbank extends Exchange {
         $result = array ();
         for ($i = 0; $i < count ($markets); $i++) {
             $id = $markets[$i];
-            list ($baseId, $quoteId) = explode ('_', $id);
+            $parts = explode ('_', $id);
+            $baseId = null;
+            $quoteId = null;
+            $numParts = is_array ($parts) ? count ($parts) : 0;
+            // lbank will return symbols like "vet_erc20_usdt"
+            if ($numParts > 2) {
+                $baseId = $parts[0] . '_' . $parts[1];
+                $quoteId = $parts[2];
+            } else {
+                $baseId = $parts[0];
+                $quoteId = $parts[1];
+            }
             $base = $this->common_currency_code(strtoupper ($baseId));
             $quote = $this->common_currency_code(strtoupper ($quoteId));
             $symbol = $base . '/' . $quote;
@@ -109,7 +123,6 @@ class lbank extends Exchange {
                 'amount' => 8,
                 'price' => 8,
             );
-            $lot = pow (10, -$precision['amount']);
             $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
@@ -118,11 +131,10 @@ class lbank extends Exchange {
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
                 'active' => true,
-                'lot' => $lot,
                 'precision' => $precision,
                 'limits' => array (
                     'amount' => array (
-                        'min' => $lot,
+                        'min' => pow (10, -$precision['amount']),
                         'max' => null,
                     ),
                     'price' => array (
@@ -141,7 +153,30 @@ class lbank extends Exchange {
     }
 
     public function parse_ticker ($ticker, $market = null) {
-        $symbol = $market['symbol'];
+        $symbol = null;
+        if ($market === null) {
+            $marketId = $this->safe_string($ticker, 'symbol');
+            if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id)) {
+                $market = $this->marketsById[$marketId];
+                $symbol = $market['symbol'];
+            } else {
+                $parts = explode ('_', $marketId);
+                $baseId = null;
+                $quoteId = null;
+                $numParts = is_array ($parts) ? count ($parts) : 0;
+                // lbank will return symbols like "vet_erc20_usdt"
+                if ($numParts > 2) {
+                    $baseId = $parts[0] . '_' . $parts[1];
+                    $quoteId = $parts[2];
+                } else {
+                    $baseId = $parts[0];
+                    $quoteId = $parts[1];
+                }
+                $base = $this->common_currency_code(strtoupper ($baseId));
+                $quote = $this->common_currency_code(strtoupper ($quoteId));
+                $symbol = $base . '/' . $quote;
+            }
+        }
         $timestamp = $this->safe_integer($ticker, 'timestamp');
         $info = $ticker;
         $ticker = $info['ticker'];
@@ -151,6 +186,8 @@ class lbank extends Exchange {
         $open = $last / $this->sum (1, $relativeChange);
         $change = $last - $open;
         $average = $this->sum ($last, $open) / 2;
+        if ($market !== null)
+            $symbol = $market['symbol'];
         return array (
             'symbol' => $symbol,
             'timestamp' => $timestamp,
@@ -191,13 +228,9 @@ class lbank extends Exchange {
         ), $params));
         $result = array ();
         for ($i = 0; $i < count ($tickers); $i++) {
-            $ticker = $tickers[$i];
-            $id = $ticker['symbol'];
-            if (is_array ($this->marketsById) && array_key_exists ($id, $this->marketsById)) {
-                $market = $this->marketsById[$id];
-                $symbol = $market['symbol'];
-                $result[$symbol] = $this->parse_ticker($ticker, $market);
-            }
+            $ticker = $this->parse_ticker($tickers[$i]);
+            $symbol = $ticker['symbol'];
+            $result[$symbol] = $ticker;
         }
         return $result;
     }
