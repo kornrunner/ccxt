@@ -131,6 +131,9 @@ class cobinhood extends Exchange {
                 'invalid_nonce' => '\\ccxt\\InvalidNonce',
                 'unauthorized_scope' => '\\ccxt\\PermissionDenied',
             ),
+            'commonCurrencies' => array (
+                'SMT' => 'SocialMedia.Market',
+            ),
         ));
     }
 
