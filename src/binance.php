@@ -66,6 +66,7 @@ class binance extends Exchange {
                 'web' => array (
                     'get' => array (
                         'exchange/public/product',
+                        'assetWithdraw/getAllAsset.html',
                     ),
                 ),
                 'wapi' => array (
@@ -73,6 +74,7 @@ class binance extends Exchange {
                         'withdraw',
                     ),
                     'get' => array (
+                        'getAllAsset',
                         'depositHistory',
                         'withdrawHistory',
                         'depositAddress',
