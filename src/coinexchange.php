@@ -552,6 +552,7 @@ class coinexchange extends Exchange {
                 'IBC' => 'RCoin',
                 'MARS' => 'MarsBux',
                 'MER' => 'TheMermaidCoin',
+                'OC' => 'occnetwork',
                 'PUT' => 'PutinCoin',
                 'RUB' => 'RubbleCoin',
                 'UP' => 'UpscaleToken',
