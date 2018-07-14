@@ -14,7 +14,6 @@ class xbtce extends Exchange {
             'rateLimit' => 2000, // responses are cached every 2 seconds
             'version' => 'v1',
             'has' => array (
-                'publicAPI' => false,
                 'CORS' => false,
                 'fetchTickers' => true,
                 'createMarketOrder' => false,
