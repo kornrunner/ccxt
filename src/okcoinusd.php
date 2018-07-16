@@ -44,6 +44,7 @@ class okcoinusd extends Exchange {
                     'get' => array (
                         'spot/markets/currencies',
                         'spot/markets/products',
+                        'spot/markets/tickers',
                     ),
                 ),
                 'public' => array (
