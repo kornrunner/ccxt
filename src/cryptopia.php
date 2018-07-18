@@ -127,13 +127,14 @@ class cryptopia extends Exchange {
         $markets = $response['Data'];
         for ($i = 0; $i < count ($markets); $i++) {
             $market = $markets[$i];
-            $id = $market['Id'];
-            $symbol = $market['Label'];
+            $numericId = $market['Id'];
+            // $symbol = $market['Label'];
             $baseId = $market['Symbol'];
             $quoteId = $market['BaseSymbol'];
             $base = $this->common_currency_code($baseId);
             $quote = $this->common_currency_code($quoteId);
             $symbol = $base . '/' . $quote;
+            $id = $baseId . '_' . $quoteId;
             $precision = array (
                 'amount' => 8,
                 'price' => 8,
@@ -159,7 +160,7 @@ class cryptopia extends Exchange {
             $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
-                'label' => $market['Label'],
+                'numericId' => $numericId,
                 'base' => $base,
                 'quote' => $quote,
                 'baseId' => $baseId,
@@ -210,7 +211,7 @@ class cryptopia extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         $request = array (
-            'tradePairId' => $market['id'],
+            'tradePairId' => $market['numericId'],
             'dataRange' => $dataRange,
             'dataGroup' => $this->timeframes[$timeframe],
         );
@@ -248,7 +249,7 @@ class cryptopia extends Exchange {
         $result = array ();
         for ($i = 0; $i < count ($orderbooks); $i++) {
             $orderbook = $orderbooks[$i];
-            $id = $this->safe_integer($orderbook, 'TradePairId');
+            $id = $this->safe_string($orderbook, 'Market');
             $symbol = $id;
             if (is_array ($this->markets_by_id) && array_key_exists ($id, $this->markets_by_id)) {
                 $market = $this->markets_by_id[$id];
@@ -262,7 +263,7 @@ class cryptopia extends Exchange {
     public function parse_ticker ($ticker, $market = null) {
         $timestamp = $this->milliseconds ();
         $symbol = null;
-        if ($market)
+        if ($market !== null)
             $symbol = $market['symbol'];
         $open = $this->safe_float($ticker, 'Open');
         $last = $this->safe_float($ticker, 'LastPrice');
@@ -315,7 +316,7 @@ class cryptopia extends Exchange {
         $tickers = $response['Data'];
         for ($i = 0; $i < count ($tickers); $i++) {
             $ticker = $tickers[$i];
-            $id = $ticker['TradePairId'];
+            $id = str_replace ('/', '_', $ticker['Label']);
             $recognized = (is_array ($this->markets_by_id) && array_key_exists ($id, $this->markets_by_id));
             if (!$recognized) {
                 if ($this->options['fetchTickersErrors'])
@@ -342,9 +343,11 @@ class cryptopia extends Exchange {
         $cost = $this->safe_float($trade, 'Total');
         $id = $this->safe_string($trade, 'TradeId');
         if ($market === null) {
-            if (is_array ($trade) && array_key_exists ('TradePairId', $trade))
-                if (is_array ($this->markets_by_id) && array_key_exists ($trade['TradePairId'], $this->markets_by_id))
-                    $market = $this->markets_by_id[$trade['TradePairId']];
+            $marketId = $this->safe_string($trade, 'Market');
+            $marketId = str_replace ('/', '_', $marketId);
+            if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id)) {
+                $market = $this->markets_by_id[$marketId];
+            }
         }
         $symbol = null;
         $fee = null;
@@ -397,7 +400,7 @@ class cryptopia extends Exchange {
         $market = null;
         if ($symbol !== null) {
             $market = $this->market ($symbol);
-            $request['TradePairId'] = $market['id'];
+            $request['Market'] = $market['id'];
         }
         if ($limit !== null) {
             $request['Count'] = $limit; // default 100
@@ -482,7 +485,7 @@ class cryptopia extends Exchange {
         // $price = floatval ($price);
         // $amount = floatval ($amount);
         $request = array (
-            'TradePairId' => $market['id'],
+            'Market' => $market['id'],
             'Type' => $this->capitalize ($side),
             // 'Rate' => $this->price_to_precision($symbol, $price),
             // 'Amount' => $this->amount_to_precision($symbol, $amount),
@@ -620,7 +623,7 @@ class cryptopia extends Exchange {
         );
         if ($symbol !== null) {
             $market = $this->market ($symbol);
-            $request['TradePairId'] = $market['id'];
+            $request['Market'] = $market['id'];
         }
         $response = $this->privatePostGetOpenOrders (array_merge ($request, $params));
         $orders = array ();
