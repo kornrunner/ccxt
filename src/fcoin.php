@@ -376,13 +376,17 @@ class fcoin extends Exchange {
         $filled = $this->safe_float($order, 'filled_amount');
         $remaining = null;
         $price = $this->safe_float($order, 'price');
-        $cost = null;
+        $cost = $this->safe_float($order, 'executed_value');
         if ($filled !== null) {
             if ($amount !== null) {
                 $remaining = $amount - $filled;
             }
-            if ($price !== null) {
-                $cost = $price * $filled;
+            if ($cost === null) {
+                if ($price !== null) {
+                    $cost = $price * $filled;
+                }
+            } else if (($cost > 0) && ($filled > 0)) {
+                $price = $cost / $filled;
             }
         }
         $feeCurrency = null;
@@ -450,7 +454,7 @@ class fcoin extends Exchange {
 
     public function parse_ohlcv ($ohlcv, $market = null, $timeframe = '1m', $since = null, $limit = null) {
         return [
-            $ohlcv['seq'],
+            $ohlcv['id'] * 1000,
             $ohlcv['open'],
             $ohlcv['high'],
             $ohlcv['low'],
