@@ -13,6 +13,7 @@ class kraken extends Exchange {
             'countries' => array ( 'US' ),
             'version' => '0',
             'rateLimit' => 3000,
+            'certified' => true,
             'has' => array (
                 'createDepositAddress' => true,
                 'fetchDepositAddress' => true,
@@ -209,13 +210,14 @@ class kraken extends Exchange {
 
     public function fetch_min_order_sizes () {
         $html = null;
+        $oldParseJsonResponse = $this->parseJsonResponse;
         try {
             $this->parseJsonResponse = false;
             $html = $this->zendeskGet205893708WhatIsTheMinimumOrderSize ();
-            $this->parseJsonResponse = true;
+            $this->parseJsonResponse = $oldParseJsonResponse;
         } catch (Exception $e) {
             // ensure parseJsonResponse is restored no matter what
-            $this->parseJsonResponse = true;
+            $this->parseJsonResponse = $oldParseJsonResponse;
             throw $e;
         }
         $parts = explode ('ul>', $html);

@@ -12,6 +12,7 @@ class bitfinex2 extends bitfinex {
             'name' => 'Bitfinex v2',
             'countries' => array ( 'VG' ),
             'version' => 'v2',
+            'certified' => false,
             // new metainfo interface
             'has' => array (
                 'CORS' => true,
