@@ -1028,6 +1028,10 @@ class theocean extends Exchange {
             $request['baseTokenAddress'] = $market['baseId'];
             $request['quoteTokenAddress'] = $market['quoteId'];
         }
+        if ($limit !== null) {
+            // $request['start'] = 0; // offset
+            $request['limit'] = $limit;
+        }
         $response = $this->privateGetUserHistory (array_merge ($request, $params));
         //
         //     array (

@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.17.10';
+$version = '1.17.17';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.17.10';
+    const VERSION = '1.17.17';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -139,7 +139,6 @@ class Exchange {
         'coinone',
         'coinsecure',
         'coinspot',
-        'cointiger',
         'coolcoin',
         'crypton',
         'cryptopia',
@@ -1756,12 +1755,22 @@ class Exchange {
     }
 
     public function currency_id ($commonCode) {
+
+        if (!$this->currencies) {
+            throw new ExchangeError ($this->id . ' currencies not loaded');
+        }
+
+        if (array_key_exists ($commonCode, $this->currencies)) {
+            return $this->currencies[$commonCode]['id'];
+        }
+
         $currencyIds = array ();
         $distinct = is_array ($this->commonCurrencies) ? array_keys ($this->commonCurrencies) : array ();
         for ($i = 0; $i < count ($distinct); $i++) {
             $k = $distinct[$i];
             $currencyIds[$this->commonCurrencies[$k]] = $k;
         }
+
         return $this->safe_string($currencyIds, $commonCode, $commonCode);
     }
 

@@ -36,14 +36,14 @@ class coinfalcon extends Exchange {
                 'private' => array (
                     'get' => array (
                         'user/accounts',
-                        'user/orders',
+                        'user/orders/{id}',
                         'user/trades',
                     ),
                     'post' => array (
                         'user/orders',
                     ),
                     'delete' => array (
-                        'user/orders',
+                        'user/orders/{id}',
                     ),
                 ),
             ),
