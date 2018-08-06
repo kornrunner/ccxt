@@ -105,7 +105,6 @@ class exx extends Exchange {
                 'amount' => intval ($market['amountScale']),
                 'price' => intval ($market['priceScale']),
             );
-            $lot = pow (10, -$precision['amount']);
             $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
@@ -114,11 +113,10 @@ class exx extends Exchange {
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
                 'active' => $active,
-                'lot' => $lot,
                 'precision' => $precision,
                 'limits' => array (
                     'amount' => array (
-                        'min' => $lot,
+                        'min' => pow (10, -$precision['amount']),
                         'max' => pow (10, $precision['amount']),
                     ),
                     'price' => array (

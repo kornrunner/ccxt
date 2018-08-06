@@ -190,7 +190,6 @@ class huobipro extends Exchange {
                 'amount' => $market['amount-precision'],
                 'price' => $market['price-precision'],
             );
-            $lot = pow (10, -$precision['amount']);
             $maker = ($base === 'OMG') ? 0 : 0.2 / 100;
             $taker = ($base === 'OMG') ? 0 : 0.2 / 100;
             $result[] = array (
@@ -200,14 +199,13 @@ class huobipro extends Exchange {
                 'quote' => $quote,
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
-                'lot' => $lot,
                 'active' => true,
                 'precision' => $precision,
                 'taker' => $taker,
                 'maker' => $maker,
                 'limits' => array (
                     'amount' => array (
-                        'min' => $lot,
+                        'min' => pow (10, -$precision['amount']),
                         'max' => pow (10, $precision['amount']),
                     ),
                     'price' => array (

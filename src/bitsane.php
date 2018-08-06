@@ -147,7 +147,6 @@ class bitsane extends Exchange {
                 'amount' => intval ($market['precision']),
                 'price' => 8,
             );
-            $lot = pow (10, -$precision['amount']);
             $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
@@ -156,7 +155,6 @@ class bitsane extends Exchange {
                 'baseId' => $market['base'],
                 'quoteId' => $market['quote'],
                 'active' => true,
-                'lot' => $lot,
                 'precision' => $precision,
                 'limits' => array (
                     'amount' => array (
