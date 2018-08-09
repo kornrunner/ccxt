@@ -95,6 +95,7 @@ class bibox extends Exchange {
             ),
             'commonCurrencies' => array (
                 'KEY' => 'Bihu',
+                'PAI' => 'PCHAIN',
             ),
         ));
     }
