@@ -97,12 +97,13 @@ class cryptopia extends Exchange {
                 'BEAN' => 'BITB', // rebranding, see issue #3380
                 'BLZ' => 'BlazeCoin',
                 'BTG' => 'Bitgem',
-                'CAN' => 'CanYa',
+                'CAN' => 'CanYaCoin',
                 'CAT' => 'Catcoin',
                 'CC' => 'CCX',
                 'CMT' => 'Comet',
                 'EPC' => 'ExperienceCoin',
                 'FCN' => 'Facilecoin',
+                'FT' => 'Fabric Token',
                 'FUEL' => 'FC2', // FuelCoin != FUEL
                 'HAV' => 'Havecoin',
                 'KARM' => 'KARMA',
