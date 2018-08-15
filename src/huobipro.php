@@ -594,6 +594,7 @@ class huobipro extends Exchange {
     }
 
     public function parse_order ($order, $market = null) {
+        $id = $this->safe_string($order, 'id');
         $side = null;
         $type = null;
         $status = null;
@@ -601,7 +602,7 @@ class huobipro extends Exchange {
             $orderType = explode ('-', $order['type']);
             $side = $orderType[0];
             $type = $orderType[1];
-            $status = $this->parse_order_status($order['state']);
+            $status = $this->parse_order_status($this->safe_string($order, 'state'));
         }
         $symbol = null;
         if ($market === null) {
@@ -615,20 +616,26 @@ class huobipro extends Exchange {
         if ($market !== null) {
             $symbol = $market['symbol'];
         }
-        $timestamp = $order['created-at'];
+        $timestamp = $this->safe_integer($order, 'created-at');
         $amount = $this->safe_float($order, 'amount');
-        $filled = floatval ($order['field-amount']);
-        $remaining = $amount - $filled;
+        $filled = $this->safe_float($order, 'field-amount'); // typo in their API, $filled $amount
         $price = $this->safe_float($order, 'price');
-        $cost = floatval ($order['field-cash-amount']);
-        $average = 0;
-        // if $filled is defined and is not zero
-        if ($filled) {
-            $average = floatval ($cost / $filled);
+        $cost = $this->safe_float($order, 'field-cash-amount'); // same typo
+        $remaining = null;
+        $average = null;
+        if ($filled !== null) {
+            $average = 0;
+            if ($amount !== null) {
+                $remaining = $amount - $filled;
+            }
+            // if $cost is defined and $filled is not zero
+            if (($cost !== null) && ($filled > 0)) {
+                $average = $cost / $filled;
+            }
         }
         $result = array (
             'info' => $order,
-            'id' => (string) $order['id'],
+            'id' => $id,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'lastTradeTimestamp' => null,
@@ -693,7 +700,17 @@ class huobipro extends Exchange {
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
-        return $this->privatePostOrderOrdersIdSubmitcancel (array ( 'id' => $id ));
+        $response = $this->privatePostOrderOrdersIdSubmitcancel (array ( 'id' => $id ));
+        //
+        //     $response = array (
+        //         'status' => 'ok',
+        //         'data' => '10138899000',
+        //     );
+        //
+        return array_merge ($this->parse_order($response), array (
+            'id' => $id,
+            'status' => 'canceled',
+        ));
     }
 
     public function fetch_deposit_address ($code, $params = array ()) {
