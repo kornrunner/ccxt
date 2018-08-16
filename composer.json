@@ -231,8 +231,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^6.5",
-        "satooshi/php-coveralls": "~2",
-        "php-vcr/phpunit-testlistener-vcr": "^3.0"
+        "php-vcr/phpunit-testlistener-vcr": "^3.0",
+        "php-coveralls/php-coveralls": "^2.1"
     },
     "archive": {
         "exclude": ["/vendor", "/tests"]
