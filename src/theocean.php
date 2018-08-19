@@ -28,6 +28,9 @@ class theocean extends Exchange {
                 'fetchTickers' => true,
                 'fetchOHLCV' => false,
                 'fetchOrder' => true,
+                'fetchOrders' => true,
+                'fetchOpenOrders' => true,
+                'fetchClosedOrders' => true,
             ),
             'urls' => array (
                 'logo' => 'https://user-images.githubusercontent.com/1294454/43103756-d56613ce-8ed7-11e8-924e-68f9d4bcacab.jpg',
@@ -39,6 +42,7 @@ class theocean extends Exchange {
             'api' => array (
                 'public' => array (
                     'get' => array (
+                        'fee_components',
                         'token_pairs',
                         'ticker',
                         'tickers',
@@ -75,7 +79,6 @@ class theocean extends Exchange {
             ),
             'options' => array (
                 'fetchOrderMethod' => 'fetch_order_from_history',
-                'filledField' => 'confirmed',
             ),
         ));
     }
@@ -226,6 +229,9 @@ class theocean extends Exchange {
     }
 
     public function fetch_balance_by_code ($code, $params = array ()) {
+        if (!$this->walletAddress || (mb_strpos ($this->walletAddress, '0x') !== 0)) {
+            throw new InvalidAddress ($this->id . ' checkWalletAddress() requires the .walletAddress to be a "0x"-prefixed hexstring like "0xbF2d65B3b2907214EEA3562f21B80f6Ed7220377"');
+        }
         $this->load_markets();
         $currency = $this->currency ($code);
         $request = array (
@@ -242,16 +248,19 @@ class theocean extends Exchange {
         return array (
             'free' => $balance,
             'used' => 0,
-            'total' => $balance,
+            'total' => null,
         );
     }
 
     public function fetch_balance ($params = array ()) {
-        $this->load_markets();
+        if (!$this->walletAddress || (mb_strpos ($this->walletAddress, '0x') !== 0)) {
+            throw new InvalidAddress ($this->id . ' checkWalletAddress() requires the .walletAddress to be a "0x"-prefixed hexstring like "0xbF2d65B3b2907214EEA3562f21B80f6Ed7220377"');
+        }
         $codes = $this->safe_value($params, 'codes');
         if (($codes === null) || (!gettype ($codes) === 'array' && count (array_filter (array_keys ($codes), 'is_string')) == 0)) {
             throw new ExchangeError ($this->id . ' fetchBalance requires a `$codes` parameter (an array of currency $codes)');
         }
+        $this->load_markets();
         $result = array ();
         for ($i = 0; $i < count ($codes); $i++) {
             $code = $codes[$i];
@@ -480,10 +489,16 @@ class theocean extends Exchange {
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
-        $this->load_markets();
-        if (!($this->walletAddress && $this->privateKey)) {
-            throw new ExchangeError ($this->id . ' createOrder() requires `exchange.walletAddress` and `exchange.privateKey`. The .walletAddress should be a hex-string like "0xbF2d65B3b2907214EEA3562f21B80f6Ed7220377". The .privateKey for that wallet should be a hex string like "0xe4f40d465efa94c98aec1a51f574329344c772c1bce33be07fa20a56795fdd09".');
+        $errorMessage = $this->id . ' createOrder() requires `exchange.walletAddress` and `exchange.privateKey`. The .walletAddress should be a "0x"-prefixed hexstring like "0xbF2d65B3b2907214EEA3562f21B80f6Ed7220377". The .privateKey for that wallet should be a "0x"-prefixed hexstring like "0xe4f40d465efa94c98aec1a51f574329344c772c1bce33be07fa20a56795fdd09".';
+        if (!$this->walletAddress || (mb_strpos ($this->walletAddress, '0x') !== 0)) {
+            throw new InvalidAddress ($errorMessage);
         }
+        if (!$this->privateKey || (mb_strpos ($this->privateKey, '0x') !== 0)) {
+            throw new InvalidAddress ($errorMessage);
+        }
+        $this->checkWalletAddress ();
+        $this->checkPrivateKey ();
+        $this->load_markets();
         $makerOrTaker = $this->safe_string($params, 'makerOrTaker');
         $isMarket = ($type === 'market');
         $isLimit = ($type === 'limit');
@@ -719,7 +734,13 @@ class theocean extends Exchange {
         //       }
         //     }
         //
-        return $response;
+        $market = null;
+        if ($symbol !== null) {
+            $market = $this->market ($symbol);
+        }
+        return array_merge ($this->parse_order($response['canceledOrder'], $market), array (
+            'status' => 'canceled',
+        ));
     }
 
     public function cancel_all_orders ($params = array ()) {
@@ -823,6 +844,8 @@ class theocean extends Exchange {
         //                                        txHash => "0x043488fdc3f995bf9e632a32424441ed126de90f8cb340a1ff006c2a74ca8336",
         //                                   blockNumber => "8094822",
         //                                     $timestamp => "1532261686"                                                          }  ) }
+        //
+        //
         //
         $zeroExOrder = $this->safe_value($order, 'zeroExOrder');
         $id = $this->safe_string($order, 'orderHash');
@@ -1058,6 +1081,17 @@ class theocean extends Exchange {
         //     )
         //
         return $this->parse_orders($response, null, $since, $limit);
+    }
+
+    public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        return $this->fetch_orders($symbol, $since, $limit, array_merge (array (
+            'openAmount' => $this->fromWei ('1'),
+        ), $params));
+    }
+
+    public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        $orders = $this->fetch_orders($symbol, $since, $limit, $params);
+        return $this->filter_by($orders, 'status', 'closed');
     }
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
