@@ -12,7 +12,6 @@ class bitforex extends Exchange {
             'name' => 'Bitforex',
             'countries' => array ( 'CN' ),
             'version' => 'v1',
-            'rateLimit' => 10000,
             'has' => array (
                 'fetchBalance' => true,
                 'fetchMarkets' => true,
