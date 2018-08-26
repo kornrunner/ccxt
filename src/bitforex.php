@@ -330,7 +330,7 @@ class bitforex extends Exchange {
             $result[$code]['free'] = $this->safe_float($current, 'active');
             $result[$code]['total'] = $this->safe_float($current, 'fix');
         }
-        return $result;
+        return $this->parse_balance($result);
     }
 
     public function fetch_ticker ($symbol, $params = array ()) {
@@ -533,7 +533,7 @@ class bitforex extends Exchange {
             }
             // $message = '/' . 'api/' . $this->version . '/' . $path . '?' . $payload;
             $message = '/' . $path . '?' . $payload;
-            $signature = $this->hmac ($message, $this->secret);
+            $signature = $this->hmac ($this->encode ($message), $this->encode ($this->secret));
             $body = $payload . '&signData=' . $signature;
             $headers = array (
                 'Content-Type' => 'application/x-www-form-urlencoded',

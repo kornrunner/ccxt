@@ -426,10 +426,10 @@ class bcex extends Exchange {
             $this->check_required_credentials();
             $payload = $this->urlencode (array ( 'api_key' => $this->apiKey ));
             if ($query) {
-                $payload .= $this->urlencode ($this->keysort ($query));
+                $payload .= '&' . $this->urlencode ($this->keysort ($query));
             }
             $auth = $payload . '&secret_key=' . $this->secret;
-            $signature = $this->hash ($auth);
+            $signature = $this->hash ($this->encode ($auth));
             $body = $payload . '&sign=' . $signature;
             $headers = array (
                 'Content-Type' => 'application/x-www-form-urlencoded',
