@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.17.240';
+$version = '1.17.269';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.17.240';
+    const VERSION = '1.17.269';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -961,6 +961,20 @@ class Exchange {
 
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         return $this->fetch2 ($path, $api, $method, $params, $headers, $body);
+    }
+
+    public function findBroadlyMatchedKey ($broad, $string) {
+        return $this->find_broadly_matched_key ($broad, $string);
+    }
+
+    public function find_broadly_matched_key ($broad, $string) {
+        $keys = is_array ($broad) ? array_keys ($broad) : array ();
+        for ($i = 0; $i < count ($keys); $i++) {
+            $key = $keys[$i];
+            if (mb_strpos ($string, $key) !== false)
+                return $key;
+        }
+        return null;
     }
 
     public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
@@ -1905,15 +1919,15 @@ class Exchange {
     }
 
     public function cost_to_precision ($symbol, $cost) {
-        return sprintf ('%.' . $this->markets[$symbol]['precision']['price'] . 'f', floatval ($cost));
+        return self::decimal_to_precision ($cost, ROUND, $this->markets[$symbol]['precision']['price'], $this->precisionMode);
     }
 
     public function costToPrecision ($symbol, $cost) {
-        return $this->price_to_precision ($symbol, $cost);
+        return $this->cost_to_precision ($symbol, $cost);
     }
 
     public function price_to_precision ($symbol, $price) {
-        return sprintf ('%.' . $this->markets[$symbol]['precision']['price'] . 'f', floatval ($price));
+        return self::decimal_to_precision ($price, ROUND, $this->markets[$symbol]['precision']['price'], $this->precisionMode);
     }
 
     public function priceToPrecision ($symbol, $price) {
@@ -1921,23 +1935,15 @@ class Exchange {
     }
 
     public function amount_to_precision ($symbol, $amount) {
-        return $this->truncate (floatval ($amount), $this->markets[$symbol]['precision']['amount']);
-    }
-
-    public function amount_to_string ($symbol, $amount) {
-        return $this->truncate_to_string (floatval ($amount), $this->markets[$symbol]['precision']['amount']);
+        return self::decimal_to_precision ($amount, TRUNCATE, $this->markets[$symbol]['precision']['amount'], $this->precisionMode);
     }
 
     public function amountToPrecision ($symbol, $amount) {
         return $this->amount_to_precision ($symbol, $amount);
     }
 
-    public function amountToString ($symbol, $amount) {
-        return $this->amount_to_string ($symbol, $amount);
-    }
-
     public function fee_to_precision ($symbol, $fee) {
-        return sprintf ('%.' . $this->markets[$symbol]['precision']['price'] . 'f', floatval ($fee));
+        return self::decimalToPrecision ($fee, ROUND, $this->markets[$symbol]['precision']['price'], $this->precisionMode);
     }
 
     public function feeToPrecision ($symbol, $fee) {
@@ -2083,36 +2089,51 @@ class Exchange {
         $result = '';
         if ($roundingMode === ROUND) {
             if ($countingMode === DECIMAL_PLACES) {
-                $result = (string) round ($x, $numPrecisionDigits, PHP_ROUND_HALF_EVEN);
+                $result = (string) round ($x, $numPrecisionDigits, PHP_ROUND_HALF_UP);
             } elseif ($countingMode === SIGNIFICANT_DIGITS) {
                 $significantPosition = log (abs ($x), 10) % 10;
                 if ($significantPosition > 0) {
                     $significantPosition += 1;
                 }
-                $result = (string) round ($x, $numPrecisionDigits - $significantPosition, PHP_ROUND_HALF_EVEN);
+                $result = (string) round ($x, $numPrecisionDigits - $significantPosition, PHP_ROUND_HALF_UP);
             }
         } elseif ($roundingMode === TRUNCATE) {
-            $dotPosition = strpos ($x, '.') ?: 0;
+            $dotIndex = strpos ($x, '.');
+            $dotPosition = $dotIndex ?: 0;
             if ($countingMode === DECIMAL_PLACES) {
-                $result = substr ($x, 0, ($dotPosition ? $dotPosition + 1 : 0) + $numPrecisionDigits);
+                if ($dotIndex) {
+                    list ($before, $after) = explode ('.', $x);
+                    $result = $before . '.' . substr ($after, 0, $numPrecisionDigits);
+                } else {
+                    $result = $x;
+                }
             } elseif ($countingMode === SIGNIFICANT_DIGITS) {
+                if ($numPrecisionDigits === 0) {
+                    return '0';
+                }
                 $significantPosition = log (abs ($x), 10) % 10;
                 $start = $dotPosition - $significantPosition;
                 $end   = $start + $numPrecisionDigits;
                 if ($dotPosition >= $end) {
                     $end -= 1;
                 }
-                if ($significantPosition < 0) {
-                    $end += 1;
+                if ($numPrecisionDigits >= (strlen ($x) - ($dotPosition ? 1 : 0))) {
+                    $result = (string) $x;
+                } else {
+                    if ($significantPosition < 0) {
+                        $end += 1;
+                    }
+                    $result = str_pad (substr ($x, 0, $end), $dotPosition, '0');
                 }
-                $result = str_pad (substr ($x, 0, $end), $dotPosition, '0');
             }
+            $result = rtrim ($result, '.');
         }
 
         $hasDot = strpos ($result, '.') !== false;
         if ($paddingMode === NO_PADDING) {
-            if ($result === '' && $numPrecisionDigits === 0)
+            if ($result === '' && $numPrecisionDigits === 0) {
                 return '0';
+            }
             if ($hasDot) {
                 $result = rtrim ($result, '0.');
             }

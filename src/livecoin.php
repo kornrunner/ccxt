@@ -405,7 +405,6 @@ class livecoin extends Exchange {
 
     public function parse_order ($order, $market = null) {
         $timestamp = null;
-        $datetime = null;
         if (is_array ($order) && array_key_exists ('lastModificationTime', $order)) {
             $timestamp = $this->safe_string($order, 'lastModificationTime');
             if ($timestamp !== null) {
@@ -416,15 +415,10 @@ class livecoin extends Exchange {
                 }
             }
         }
-        if ($timestamp) {
-            $datetime = $this->iso8601 ($timestamp);
-        }
         // TODO currently not supported by livecoin
         // $trades = $this->parse_trades($order['trades'], $market, since, limit);
         $trades = null;
-        $status = $this->safe_string($order, 'status');
-        $status = $this->safe_string($order, 'orderStatus', $status);
-        $status = $this->parse_order_status($status);
+        $status = $this->parse_order_status($this->safe_string_2($order, 'status', 'orderStatus'));
         $symbol = null;
         if ($market === null) {
             $marketId = $this->safe_string($order, 'currencyPair');
@@ -467,7 +461,7 @@ class livecoin extends Exchange {
             'info' => $order,
             'id' => $order['id'],
             'timestamp' => $timestamp,
-            'datetime' => $datetime,
+            'datetime' => $this->iso8601 ($timestamp),
             'lastTradeTimestamp' => null,
             'status' => $status,
             'symbol' => $symbol,
@@ -584,7 +578,7 @@ class livecoin extends Exchange {
         if ($tag !== null)
             $wallet .= '::' . $tag;
         $withdrawal = array (
-            'amount' => $this->truncate ($amount, $this->currencies[$currency]['precision']), // throws an error when $amount is too precise
+            'amount' => $this->decimal_to_precision($amount, TRUNCATE, $this->currencies[$currency]['precision'], DECIMAL_PLACES),
             'currency' => $this->common_currency_code($currency),
             'wallet' => $wallet,
         );

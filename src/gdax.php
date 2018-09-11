@@ -242,22 +242,11 @@ class gdax extends Exchange {
     }
 
     public function parse_trade ($trade, $market = null) {
-        $timestamp = null;
-        if (is_array ($trade) && array_key_exists ('time', $trade)) {
-            $timestamp = $this->parse8601 ($trade['time']);
-        } else if (is_array ($trade) && array_key_exists ('created_at', $trade)) {
-            $timestamp = $this->parse8601 ($trade['created_at']);
-        }
-        $iso8601 = null;
-        if ($timestamp !== null)
-            $iso8601 = $this->iso8601 ($timestamp);
+        $timestamp = $this->parse8601 ($this->safe_string_2($trade, 'time', 'created_at'));
         $symbol = null;
         if ($market === null) {
-            if (is_array ($trade) && array_key_exists ('product_id', $trade)) {
-                $marketId = $trade['product_id'];
-                if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id))
-                    $market = $this->markets_by_id[$marketId];
-            }
+            $marketId = $this->safe_string($trade, 'product_id');
+            $market = $this->safe_value($this->markets_by_id, $marketId);
         }
         if ($market)
             $symbol = $market['symbol'];
@@ -292,7 +281,7 @@ class gdax extends Exchange {
             'order' => $orderId,
             'info' => $trade,
             'timestamp' => $timestamp,
-            'datetime' => $iso8601,
+            'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
@@ -382,7 +371,7 @@ class gdax extends Exchange {
             if (is_array ($this->markets_by_id) && array_key_exists ($order['product_id'], $this->markets_by_id))
                 $market = $this->markets_by_id[$order['product_id']];
         }
-        $status = $this->parse_order_status($order['status']);
+        $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $price = $this->safe_float($order, 'price');
         $amount = $this->safe_float($order, 'size');
         if ($amount === null)
@@ -606,10 +595,6 @@ class gdax extends Exchange {
 
     public function parse_transaction ($transaction, $currency = null) {
         $timestamp = $this->safe_integer($transaction, 'created_at');
-        $datetime = null;
-        if ($timestamp !== null) {
-            $datetime = $this->iso8601 ($timestamp);
-        }
         $code = null;
         $currencyId = $this->safe_string($transaction, 'currency');
         if (is_array ($this->currencies_by_id) && array_key_exists ($currencyId, $this->currencies_by_id)) {
@@ -618,22 +603,20 @@ class gdax extends Exchange {
         if ($currency !== null) {
             $code = $currency['code'];
         }
+        $fee = null;
         return array (
             'info' => $transaction,
             'id' => $this->safe_string($transaction, 'id'),
             'txid' => $this->safe_string($transaction['details'], 'crypto_transaction_hash'),
             'timestamp' => $timestamp,
-            'datetime' => $datetime,
+            'datetime' => $this->iso8601 ($timestamp),
             'address' => null, // or is it defined?
             'type' => $this->safe_string($transaction, 'type'), // direction of the $transaction, ('deposit' | 'withdraw')
             'amount' => $this->safe_float($transaction, 'amount'),
             'currency' => $code,
             'status' => $this->parse_transaction_status ($transaction),
             'updated' => null,
-            'fee' => array (
-                'cost' => null,
-                'rate' => null,
-            ),
+            'fee' => $fee,
         );
     }
 

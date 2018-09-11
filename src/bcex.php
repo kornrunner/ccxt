@@ -356,7 +356,9 @@ class bcex extends Exchange {
                 $cost = $amount * $price;
             }
         }
-        $side = $this->safe_string($trade, 'type');
+        $side = $this->safe_string($trade, 'side');
+        if ($side === 'sale')
+            $side = 'sell';
         return array (
             'info' => $trade,
             'id' => $id,
@@ -503,7 +505,7 @@ class bcex extends Exchange {
         $response = $this->privatePostApiOrderOrderInfo (array_merge ($request, $params));
         $order = $response['data'];
         $timestamp = $this->safe_integer($order, 'created') * 1000;
-        $status = $this->parse_order_status($order['status']);
+        $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $side = $this->safe_string($order, 'flag');
         if ($side === 'sale')
             $side = 'sell';
@@ -532,7 +534,6 @@ class bcex extends Exchange {
     public function parse_order ($order, $market = null) {
         $id = $this->safe_string($order, 'id');
         $timestamp = $this->safe_integer($order, 'datetime') * 1000;
-        $iso8601 = $this->iso8601 ($timestamp);
         $symbol = $market['symbol'];
         $type = null;
         $side = $this->safe_string($order, 'type');
@@ -543,15 +544,14 @@ class bcex extends Exchange {
         $amount = $this->safe_float($order, 'amount');
         $remaining = $this->safe_float($order, 'amount_outstanding');
         $filled = $amount - $remaining;
-        $status = $this->safe_string($order, 'status');
-        $status = $this->parse_order_status($status);
+        $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $cost = $filled * $price;
         $fee = null;
         $result = array (
             'info' => $order,
             'id' => $id,
             'timestamp' => $timestamp,
-            'datetime' => $iso8601,
+            'datetime' => $this->iso8601 ($timestamp),
             'lastTradeTimestamp' => null,
             'symbol' => $symbol,
             'type' => $type,

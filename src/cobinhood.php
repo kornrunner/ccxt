@@ -506,7 +506,7 @@ class cobinhood extends Exchange {
             'trading_pair_id' => $market['id'],
             'type' => $type, // $market, limit, stop, stop_limit
             'side' => $side,
-            'size' => $this->amount_to_string($symbol, $amount),
+            'size' => $this->amount_to_precision($symbol, $amount),
         );
         if ($type !== 'market')
             $request['price'] = $this->price_to_precision($symbol, $price);
@@ -521,7 +521,7 @@ class cobinhood extends Exchange {
         $response = $this->privatePutTradingOrdersOrderId (array_merge (array (
             'order_id' => $id,
             'price' => $this->price_to_precision($symbol, $price),
-            'size' => $this->amount_to_string($symbol, $amount),
+            'size' => $this->amountToString ($symbol, $amount),
         ), $params));
         return $this->parse_order(array_merge ($response, array (
             'id' => $id,
@@ -658,20 +658,16 @@ class cobinhood extends Exchange {
             'tx_pending' => 'pending',
             'tx_sent' => 'pending',
             'tx_cancelled' => 'canceled',
-            'tx_timeout' => 'error',
-            'tx_invalid' => 'error',
-            'tx_rejected' => 'error',
+            'tx_timeout' => 'failed',
+            'tx_invalid' => 'failed',
+            'tx_rejected' => 'failed',
             'tx_confirmed' => 'ok',
         );
-        return (is_array ($statuses) && array_key_exists ($status, $statuses)) ? $statuses[$status] : strtolower ($status);
+        return (is_array ($statuses) && array_key_exists ($status, $statuses)) ? $statuses[$status] : $status;
     }
 
     public function parse_transaction ($transaction, $currency = null) {
         $timestamp = $this->safe_integer($transaction, 'created_at');
-        $datetime = null;
-        if ($timestamp !== null) {
-            $datetime = $this->iso8601 ($timestamp);
-        }
         $code = null;
         if ($currency === null) {
             $currencyId = $this->safe_string($transaction, 'currency');
@@ -694,7 +690,7 @@ class cobinhood extends Exchange {
             'id' => $this->safe_string($transaction, 'withdrawal_id'),
             'txid' => $this->safe_string($transaction, 'txhash'),
             'timestamp' => $timestamp,
-            'datetime' => $datetime,
+            'datetime' => $this->iso8601 ($timestamp),
             'address' => null, // or is it defined?
             'type' => $type, // direction of the $transaction, ('deposit' | 'withdrawal')
             'amount' => $this->safe_float($transaction, 'amount'),

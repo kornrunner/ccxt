@@ -56,6 +56,7 @@ class uex extends Exchange {
                 ),
                 'private' => array (
                     'get' => array (
+                        'deposit_list',
                         'user/account',
                         'market', // an assoc array of market ids to corresponding prices traded most recently (prices of last trades per market)
                         'order_info',
@@ -139,18 +140,6 @@ class uex extends Exchange {
                 ),
             ),
         ));
-    }
-
-    public function cost_to_precision ($symbol, $cost) {
-        return $this->decimal_to_precision($cost, ROUND, $this->markets[$symbol]['precision']['price']);
-    }
-
-    public function price_to_precision ($symbol, $price) {
-        return $this->decimal_to_precision($price, ROUND, $this->markets[$symbol]['precision']['price']);
-    }
-
-    public function amount_to_precision ($symbol, $amount) {
-        return $this->decimal_to_precision($amount, TRUNCATE, $this->markets[$symbol]['precision']['amount']);
     }
 
     public function calculate_fee ($symbol, $type, $side, $amount, $price, $takerOrMaker = 'taker', $params = array ()) {
@@ -566,7 +555,6 @@ class uex extends Exchange {
         if ($type === 'limit') {
             $priceToPrecision = $this->price_to_precision($symbol, $price);
             $request['price'] = $priceToPrecision;
-            $priceToPrecision = floatval ($priceToPrecision);
         }
         $response = $this->privatePostCreateOrder (array_merge ($request, $params));
         //
@@ -581,7 +569,7 @@ class uex extends Exchange {
             'type' => $type,
             'side' => $side,
             'status' => 'open',
-            'price' => $priceToPrecision,
+            'price' => floatval ($priceToPrecision),
             'amount' => floatval ($amountToPrecision),
         ));
     }

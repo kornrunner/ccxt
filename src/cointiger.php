@@ -101,7 +101,7 @@ class cointiger extends huobipro {
                 //    array ("code":"1","msg":"系统错误","data":null)
                 //    array ("code":"1","msg":"Balance insufficient,余额不足","data":null)
                 '1' => '\\ccxt\\ExchangeError',
-                '2' => '\\ccxt\\ExchangeError',
+                '2' => '\\ccxt\\BadRequest', // array ("code":"2","msg":"Parameter error","data":null)
                 '5' => '\\ccxt\\InvalidOrder',
                 '6' => '\\ccxt\\InvalidOrder',
                 '8' => '\\ccxt\\OrderNotFound',
@@ -597,9 +597,8 @@ class cointiger extends huobipro {
         $side = $this->safe_string($order, 'side');
         $type = null;
         $orderType = $this->safe_string($order, 'type');
-        $status = $this->safe_string($order, 'status');
-        $timestamp = $this->safe_integer($order, 'created_at');
-        $timestamp = $this->safe_integer($order, 'ctime', $timestamp);
+        $status = $this->parse_order_status($this->safe_string($order, 'status'));
+        $timestamp = $this->safe_integer_2($order, 'created_at', 'ctime');
         $lastTradeTimestamp = $this->safe_integer_2($order, 'mtime', 'finished-at');
         $symbol = null;
         if ($market === null) {
@@ -651,7 +650,6 @@ class cointiger extends huobipro {
                     );
                 }
             }
-            $status = $this->parse_order_status($status);
         }
         if ($amount !== null) {
             if ($remaining !== null) {
@@ -689,18 +687,6 @@ class cointiger extends huobipro {
         return $result;
     }
 
-    public function cost_to_precision ($symbol, $cost) {
-        return $this->decimal_to_precision($cost, ROUND, $this->markets[$symbol]['precision']['price']);
-    }
-
-    public function price_to_precision ($symbol, $price) {
-        return $this->decimal_to_precision($price, ROUND, $this->markets[$symbol]['precision']['price']);
-    }
-
-    public function amount_to_precision ($symbol, $amount) {
-        return $this->decimal_to_precision($amount, TRUNCATE, $this->markets[$symbol]['precision']['amount']);
-    }
-
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
         if (!$this->password)
@@ -719,7 +705,7 @@ class cointiger extends huobipro {
             if ($price === null) {
                 throw new InvalidOrder ($this->id . ' createOrder requires $price argument for $market buy orders to calculate total cost according to exchange rules');
             }
-            $order['volume'] = $this->amount_to_precision($symbol, $amount * $price);
+            $order['volume'] = $this->amount_to_precision($symbol, floatval ($amount) * floatval ($price));
         }
         if ($type === 'limit') {
             $order['price'] = $this->price_to_precision($symbol, $price);
@@ -856,7 +842,7 @@ class cointiger extends huobipro {
                                 if ($message === 'offsetNot Null') {
                                     throw new ExchangeError ($feedback);
                                 } else if ($message === 'Parameter error') {
-                                    throw new ExchangeError ($feedback);
+                                    throw new BadRequest ($feedback);
                                 }
                             }
                             throw new $exceptions[$code] ($feedback);

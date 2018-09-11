@@ -118,18 +118,6 @@ class coinex extends Exchange {
         ));
     }
 
-    public function cost_to_precision ($symbol, $cost) {
-        return $this->decimal_to_precision($cost, ROUND, $this->markets[$symbol]['precision']['price']);
-    }
-
-    public function price_to_precision ($symbol, $price) {
-        return $this->decimal_to_precision($price, ROUND, $this->markets[$symbol]['precision']['price']);
-    }
-
-    public function amount_to_precision ($symbol, $amount) {
-        return $this->decimal_to_precision($amount, TRUNCATE, $this->markets[$symbol]['precision']['amount']);
-    }
-
     public function fetch_markets () {
         $response = $this->webGetResMarket ();
         $markets = $response['data']['market_info'];
@@ -379,8 +367,8 @@ class coinex extends Exchange {
         $amount = $this->safe_float($order, 'amount');
         $filled = $this->safe_float($order, 'deal_amount');
         $symbol = $market['symbol'];
-        $remaining = $this->amount_to_precision($symbol, $amount - $filled);
-        $status = $this->parse_order_status($order['status']);
+        $remaining = floatval ($this->amount_to_precision($symbol, $amount - $filled));
+        $status = $this->parse_order_status($this->safe_string($order, 'status'));
         return array (
             'id' => $this->safe_string($order, 'id'),
             'datetime' => $this->iso8601 ($timestamp),
