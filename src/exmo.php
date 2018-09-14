@@ -28,6 +28,7 @@ class exmo extends Exchange {
                 'fetchTradingFees' => true,
                 'fetchFundingFees' => true,
                 'fetchCurrencies' => true,
+                'fetchTransactions' => true,
             ),
             'urls' => array (
                 'logo' => 'https://user-images.githubusercontent.com/1294454/27766491-1b0ea956-5eda-11e7-9225-40d67b481b8d.jpg',
@@ -919,17 +920,19 @@ class exmo extends Exchange {
             }
         }
         return array (
+            'info' => $transaction,
             'id' => null,
             'currency' => $code,
             'amount' => $amount,
             'address' => $address,
+            'tag' => null, // refix it properly
             'status' => $status,
             'type' => $type,
             'updated' => null,
             'txid' => $txid,
             'timestamp' => $timestamp,
+            'datetime' => $this->iso8601 ($timestamp),
             'fee' => $fee,
-            'info' => $transaction,
         );
     }
 

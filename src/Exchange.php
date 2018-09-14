@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.17.269';
+$version = '1.17.291';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.17.269';
+    const VERSION = '1.17.291';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -631,13 +631,13 @@ class Exchange {
     }
 
     public static function parse_if_json_encoded_object ($input) {
-        if ((gettype ($body) !== 'string') || (strlen ($body) < 2)) {
+        if ((gettype ($input) !== 'string') || (strlen ($input) < 2)) {
             return $input;
         }
-        if ($body[0] === '{') {
-            return json_decode ($result, $as_associative_array = true);
-        } else if ($body[1] === '[') {
-            return json_decode ($result);
+        if ($input[0] === '{') {
+            return json_decode ($input, $as_associative_array = true);
+        } else if ($input[1] === '[') {
+            return json_decode ($input);
         }
         return $input;
     }
@@ -834,6 +834,9 @@ class Exchange {
         $this->restRequestQueue         = null;
         $this->restPollerLoopIsRunning  = false;
         $this->enableRateLimit          = false;
+        $this->enableLastJsonResponse = true;
+        $this->enableLastHttpResponse = true;
+        $this->enableLastResponseHeaders = true;
         $this->last_http_response = null;
         $this->last_json_response = null;
         $this->last_response_headers = null;
@@ -1101,17 +1104,27 @@ class Exchange {
         $result = curl_exec ($this->curl);
 
         $this->lastRestRequestTimestamp = $this->milliseconds ();
-        $this->last_http_response = $result;
-        $this->last_response_headers = $response_headers;
+
+        if ($this->enableLastHttpResponse) {
+            $this->last_http_response = $result;
+        }
+
+        if ($this->enableLastResponseHeaders) {
+            $this->last_response_headers = $response_headers;
+        }
+
+        $json_response = null;
 
         if ($this->parseJsonResponse) {
 
-            $this->last_json_response =
+            $json_response =
                 ((gettype ($result) == 'string') &&  (strlen ($result) > 1)) ?
                     json_decode ($result, $as_associative_array = true) : null;
 
+            if ($this->enableLastJsonResponse) {
+                $this->last_json_response = $json_response;
+            }
         }
-
 
         $curl_errno = curl_errno ($this->curl);
         $curl_error = curl_error ($this->curl);
@@ -1201,7 +1214,7 @@ class Exchange {
         }
 
 
-        if ($this->parseJsonResponse && !$this->last_json_response) {
+        if ($this->parseJsonResponse && !$json_response) {
 
             if (preg_match ('#offline|busy|retry|wait|unavailable|maintain|maintenance|maintenancing#i', $result)) {
 
@@ -1222,7 +1235,7 @@ class Exchange {
             }
         }
 
-        return $this->parseJsonResponse ? $this->last_json_response : $result;
+        return $this->parseJsonResponse ? $json_response : $result;
     }
 
     public function set_markets ($markets, $currencies = null) {

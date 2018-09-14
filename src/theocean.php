@@ -53,6 +53,7 @@ class theocean extends Exchange {
                 ),
                 'private' => array (
                     'get' => array (
+                        'balance',
                         'available_balance',
                         'user_history',
                     ),
@@ -243,17 +244,17 @@ class theocean extends Exchange {
             'walletAddress' => strtolower ($this->walletAddress),
             'tokenAddress' => $currency['id'],
         );
-        $response = $this->privateGetAvailableBalance (array_merge ($request, $params));
+        $response = $this->privateGetBalance (array_merge ($request, $params));
         //
-        //     {
-        //       "availableBalance" => "1001006594219628829207"
-        //     }
+        //     array ("available":"0","committed":"0","$total":"0")
         //
-        $balance = $this->fromWei ($this->safe_string($response, 'availableBalance'));
+        $free = $this->fromWei ($this->safe_string($response, 'available'));
+        $used = $this->fromWei ($this->safe_string($response, 'committed'));
+        $total = $this->fromWei ($this->safe_string($response, 'total'));
         return array (
-            'free' => $balance,
-            'used' => 0,
-            'total' => null,
+            'free' => $free,
+            'used' => $used,
+            'total' => $total,
         );
     }
 
@@ -261,7 +262,9 @@ class theocean extends Exchange {
         if (!$this->walletAddress || (mb_strpos ($this->walletAddress, '0x') !== 0)) {
             throw new InvalidAddress ($this->id . ' fetchBalance() requires the .walletAddress to be a "0x"-prefixed hexstring like "0xbF2d65B3b2907214EEA3562f21B80f6Ed7220377"');
         }
-        $codes = $this->safe_value($params, 'codes');
+        $codes = $this->safe_value($this->options, 'fetchBalanceCurrencies');
+        if ($codes === null)
+            $codes = $this->safe_value($params, 'codes');
         if (($codes === null) || (!gettype ($codes) === 'array' && count (array_filter (array_keys ($codes), 'is_string')) == 0)) {
             throw new ExchangeError ($this->id . ' fetchBalance() requires a `$codes` parameter (an array of currency $codes)');
         }

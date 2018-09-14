@@ -829,33 +829,62 @@ class binance extends Exchange {
 
     public function fetch_deposits ($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
-        if ($code === null) {
-            throw new ExchangeError ($this->id . ' fetchDeposits() requires a $currency $code arguemnt');
+        $currency = null;
+        $request = array ();
+        if ($code !== null) {
+            $currency = $this->currency ($code);
+            $request['asset'] = $currency['id'];
         }
-        $currency = $this->currency ($code);
-        $request = array (
-            'asset' => $currency['id'],
-        );
         if ($since !== null) {
             $request['startTime'] = $since;
         }
         $response = $this->wapiGetDepositHistory (array_merge ($request, $params));
+        //
+        //     {     success =>    true,
+        //       depositList => array ( { insertTime =>  1517425007000,
+        //                            amount =>  0.3,
+        //                           address => "0x0123456789abcdef",
+        //                        addressTag => "",
+        //                              txId => "0x0123456789abcdef",
+        //                             asset => "ETH",
+        //                            status =>  1                                                                    } ) }
+        //
         return $this->parseTransactions ($response['depositList'], $currency, $since, $limit);
     }
 
     public function fetch_withdrawals ($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
-        if ($code === null) {
-            throw new ExchangeError ($this->id . ' fetchWithdrawals() requires a $currency $code arguemnt');
+        $currency = null;
+        $request = array ();
+        if ($code !== null) {
+            $currency = $this->currency ($code);
+            $request['asset'] = $currency['id'];
         }
-        $currency = $this->currency ($code);
-        $request = array (
-            'asset' => $currency['id'],
-        );
         if ($since !== null) {
             $request['startTime'] = $since;
         }
         $response = $this->wapiGetWithdrawHistory (array_merge ($request, $params));
+        //
+        //     { withdrawList => array ( array (      amount =>  14,
+        //                             address => "0x0123456789abcdef...",
+        //                         successTime =>  1514489710000,
+        //                          addressTag => "",
+        //                                txId => "0x0123456789abcdef...",
+        //                                  id => "0123456789abcdef...",
+        //                               asset => "ETH",
+        //                           applyTime =>  1514488724000,
+        //                              status =>  6                       ),
+        //                       {      amount =>  7600,
+        //                             address => "0x0123456789abcdef...",
+        //                         successTime =>  1515323226000,
+        //                          addressTag => "",
+        //                                txId => "0x0123456789abcdef...",
+        //                                  id => "0123456789abcdef...",
+        //                               asset => "ICN",
+        //                           applyTime =>  1515322539000,
+        //                              status =>  6                       }  ),
+        //            success =>    true                                         }
+        //
         return $this->parseTransactions ($response['withdrawList'], $currency, $since, $limit);
     }
 
@@ -869,30 +898,51 @@ class binance extends Exchange {
                 '1' => 'ok',
             ),
             'withdrawal' => array (
-                '0' => 'pending',
-                '1' => 'canceled', // different from 1 = ok in deposits
-                '2' => 'pending',
-                '3' => 'failed',
-                '4' => 'pending',
-                '5' => 'failed',
-                '6' => 'ok',
+                '0' => 'pending', // Email Sent
+                '1' => 'canceled', // Cancelled (different from 1 = ok in deposits)
+                '2' => 'pending', // Awaiting Approval
+                '3' => 'failed', // Rejected
+                '4' => 'pending', // Processing
+                '5' => 'failed', // Failure
+                '6' => 'ok', // Completed
             ),
         );
         return (is_array ($statuses[$type]) && array_key_exists ($status, $statuses[$type])) ? $statuses[$type][$status] : $status;
     }
 
     public function parse_transaction ($transaction, $currency = null) {
-        // $addressTag = $this->safe_string($transaction, 'addressTag'); // set but unused
+        //
+        // fetchDeposits
+        //      { $insertTime =>  1517425007000,
+        //            $amount =>  0.3,
+        //           $address => "0x0123456789abcdef",
+        //        addressTag => "",
+        //              txId => "0x0123456789abcdef",
+        //             asset => "ETH",
+        //            $status =>  1                                                                    }
+        //
+        // fetchWithdrawals
+        //
+        //       {      $amount =>  14,
+        //             $address => "0x0123456789abcdef...",
+        //         successTime =>  1514489710000,
+        //          addressTag => "",
+        //                txId => "0x0123456789abcdef...",
+        //                  $id => "0123456789abcdef...",
+        //               asset => "ETH",
+        //           $applyTime =>  1514488724000,
+        //              $status =>  6                       }
+        //
+        $id = $this->safe_string($transaction, 'id');
         $address = $this->safe_string($transaction, 'address');
+        $tag = $this->safe_string($transaction, 'addressTag'); // set but unused
         $txid = $this->safe_value($transaction, 'txId');
         $code = null;
-        if ($currency === null) {
-            $currencyId = $this->safe_string($transaction, 'currency');
-            if (is_array ($this->currencies_by_id) && array_key_exists ($currencyId, $this->currencies_by_id)) {
-                $currency = $this->currencies_by_id[$currencyId];
-            } else {
-                $code = $this->common_currency_code($currencyId);
-            }
+        $currencyId = $this->safe_string($transaction, 'asset');
+        if (is_array ($this->currencies_by_id) && array_key_exists ($currencyId, $this->currencies_by_id)) {
+            $currency = $this->currencies_by_id[$currencyId];
+        } else {
+            $code = $this->common_currency_code($currencyId);
         }
         if ($currency !== null) {
             $code = $currency['code'];
@@ -915,11 +965,12 @@ class binance extends Exchange {
         $fee = null;
         return array (
             'info' => $transaction,
-            'id' => null,
+            'id' => $id,
             'txid' => $txid,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'address' => $address,
+            'tag' => $tag,
             'type' => $type,
             'amount' => $amount,
             'currency' => $code,
@@ -1041,7 +1092,7 @@ class binance extends Exchange {
             if (mb_strpos ($body, 'LOT_SIZE') !== false)
                 throw new InvalidOrder ($this->id . ' order amount should be evenly divisible by lot size ' . $body);
             if (mb_strpos ($body, 'PRICE_FILTER') !== false)
-                throw new InvalidOrder ($this->id . ' order price exceeds allowed price precision or invalid, use $this->price_to_precision(symbol, amount) ' . $body);
+                throw new InvalidOrder ($this->id . ' order price is invalid, i.e. exceeds allowed price precision, exceeds min price or max price limits or is invalid float value in general, use $this->price_to_precision(symbol, amount) ' . $body);
         }
         if (strlen ($body) > 0) {
             if ($body[0] === '{') {

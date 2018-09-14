@@ -279,7 +279,7 @@ class bitforex extends Exchange {
                 $cost = $amount * $price;
             }
         }
-        $sideId = $this->safe_string($trade, 'direction');
+        $sideId = $this->safe_integer($trade, 'direction');
         $side = $this->parse_side ($sideId);
         return array (
             'info' => $trade,
