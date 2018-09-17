@@ -11,13 +11,13 @@ class cointiger extends huobipro {
             'id' => 'cointiger',
             'name' => 'CoinTiger',
             'countries' => array ( 'CN' ),
-            'hostname' => 'api.cointiger.pro',
+            'hostname' => 'cointiger.pro',
             'has' => array (
                 'fetchCurrencies' => false,
                 'fetchTickers' => true,
                 'fetchTradingLimits' => false,
                 'fetchOrder' => true,
-                'fetchOrders' => false,
+                'fetchOrders' => true,
                 'fetchOpenOrders' => true,
                 'fetchClosedOrders' => true,
                 'fetchOrderTrades' => false, // not tested yet
@@ -29,11 +29,11 @@ class cointiger extends huobipro {
             'urls' => array (
                 'logo' => 'https://user-images.githubusercontent.com/1294454/39797261-d58df196-5363-11e8-9880-2ec78ec5bd25.jpg',
                 'api' => array (
-                    'public' => 'https://api.cointiger.pro/exchange/trading/api/market',
-                    'private' => 'https://api.cointiger.pro/exchange/trading/api',
-                    'exchange' => 'https://www.cointiger.pro/exchange',
-                    'v2public' => 'https://api.cointiger.pro/exchange/trading/api/v2',
-                    'v2' => 'https://api.cointiger.pro/exchange/trading/api/v2',
+                    'public' => 'https://api.{hostname}/exchange/trading/api/market',
+                    'private' => 'https://api.{hostname}/exchange/trading/api',
+                    'exchange' => 'https://www.{hostname}/exchange',
+                    'v2public' => 'https://api.{hostname}/exchange/trading/api/v2',
+                    'v2' => 'https://api.{hostname}/exchange/trading/api/v2',
                 ),
                 'www' => 'https://www.cointiger.pro',
                 'referral' => 'https://www.cointiger.pro/exchange/register.html?refCode=FfvDtt',
@@ -479,7 +479,7 @@ class cointiger extends huobipro {
         return $this->parse_trades($response['data'], $market, $since, $limit);
     }
 
-    public function fetch_orders_by_status ($status = null, $symbol = null, $since = null, $limit = null, $params = array ()) {
+    public function fetch_orders_by_status_v1 ($status = null, $symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null)
             throw new ExchangeError ($this->id . ' fetchOrders requires a $symbol argument');
         $this->load_markets();
@@ -503,12 +503,42 @@ class cointiger extends huobipro {
         return $result;
     }
 
+    public function fetch_open_orders_v1 ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        return $this->fetch_orders_by_status_v1 ('open', $symbol, $since, $limit, $params);
+    }
+
+    public function fetch_orders_v1 ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        return $this->fetch_orders_by_status_v1 (null, $symbol, $since, $limit, $params);
+    }
+
+    public function fetch_orders_by_states_v2 ($states, $symbol = null, $since = null, $limit = null, $params = array ()) {
+        if ($symbol === null)
+            throw new ArgumentsRequired ($this->id . ' fetchOrders requires a $symbol argument');
+        $this->load_markets();
+        $market = $this->market ($symbol);
+        if ($limit === null)
+            $limit = 50;
+        $response = $this->v2GetOrderOrders (array_merge (array (
+            'symbol' => $market['id'],
+            // 'types' => 'buy-$market,sell-$market,buy-$limit,sell-limit',
+            'states' => $states, // 'new,part_filled,filled,canceled,expired'
+            // 'from' => '0', // id
+            'direct' => 'next', // or 'prev'
+            'size' => $limit,
+        ), $params));
+        return $this->parse_orders($response['data'], $market, $since, $limit);
+    }
+
+    public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        return $this->fetch_orders_by_states_v2 ('new,part_filled,filled,canceled,expired', $symbol, $since, $limit, $params);
+    }
+
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        return $this->fetch_orders_by_status ('open', $symbol, $since, $limit, $params);
+        return $this->fetch_orders_by_states_v2 ('new,part_filled', $symbol, $since, $limit, $params);
     }
 
     public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        return $this->fetch_orders_by_status ('closed', $symbol, $since, $limit, $params);
+        return $this->fetch_orders_by_states_v2 ('filled,canceled', $symbol, $since, $limit, $params);
     }
 
     public function fetch_order ($id, $symbol = null, $params = array ()) {
@@ -662,8 +692,11 @@ class cointiger extends huobipro {
             }
         }
         if ($status === null) {
-            if (($remaining !== null) && ($remaining > 0))
-                $status = 'open';
+            if ($remaining !== null) {
+                if ($remaining === 0) {
+                    $status = 'closed';
+                }
+            }
         }
         $result = array (
             'info' => $order,
@@ -689,8 +722,9 @@ class cointiger extends huobipro {
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
-        if (!$this->password)
+        if (!$this->password) {
             throw new AuthenticationError ($this->id . ' createOrder requires exchange.password to be set to user trading password (not login password!)');
+        }
         $this->check_required_credentials();
         $market = $this->market ($symbol);
         $orderType = ($type === 'limit') ? 1 : 2;
@@ -776,7 +810,10 @@ class cointiger extends huobipro {
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $this->check_required_credentials();
-        $url = $this->urls['api'][$api] . '/' . $this->implode_params($path, $params);
+        $url = $this->implode_params($this->urls['api'][$api], array (
+            'hostname' => $this->hostname,
+        ));
+        $url .= '/' . $this->implode_params($path, $params);
         if ($api === 'private' || $api === 'v2') {
             $timestamp = (string) $this->milliseconds ();
             $query = $this->keysort (array_merge (array (

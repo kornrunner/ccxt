@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.17.291';
+$version = '1.17.303';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.17.291';
+    const VERSION = '1.17.303';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -731,6 +731,7 @@ class Exchange {
         $this->proxy     = '';
         $this->origin    = '*'; // CORS origin
         $this->headers   = array ();
+        $this->hostname  = null; // in case of inaccessibility of the "main" domain
 
         $this->options   = array (); // exchange-specific options if any
 
@@ -757,6 +758,29 @@ class Exchange {
         $this->trades        = array ();
         $this->transactions  = array ();
         $this->exceptions    = array ();
+        $this->httpExceptions = array (
+            '422' => 'ExchangeError',
+            '418' => 'DDoSProtection',
+            '429' => 'DDoSProtection',
+            '404' => 'ExchangeNotAvailable',
+            '409' => 'ExchangeNotAvailable',
+            '500' => 'ExchangeNotAvailable',
+            '501' => 'ExchangeNotAvailable',
+            '502' => 'ExchangeNotAvailable',
+            '520' => 'ExchangeNotAvailable',
+            '521' => 'ExchangeNotAvailable',
+            '522' => 'ExchangeNotAvailable',
+            '525' => 'ExchangeNotAvailable',
+            '400' => 'ExchangeNotAvailable',
+            '403' => 'ExchangeNotAvailable',
+            '405' => 'ExchangeNotAvailable',
+            '503' => 'ExchangeNotAvailable',
+            '530' => 'ExchangeNotAvailable',
+            '408' => 'RequestTimeout',
+            '504' => 'RequestTimeout',
+            '401' => 'AuthenticationError',
+            '511' => 'AuthenticationError',
+        );
         $this->verbose       = false;
         $this->apiKey        = '';
         $this->secret        = '';
@@ -1151,68 +1175,28 @@ class Exchange {
             $this->raise_error ('ExchangeNotAvailable', $url, $method, $curl_errno, $curl_error);
         }
 
-        if (in_array ($http_status_code, array (418, 429))) {
+        $string_code = (string) $http_status_code;
 
-            $this->raise_error ('DDoSProtection', $url, $method, $http_status_code,
-                'not accessible from this location at the moment');
-        }
-
-        if (in_array ($http_status_code, array (404, 409, 500, 501, 502))) {
-
-            $this->raise_error ('ExchangeNotAvailable', $url, $method, $http_status_code,
-                'not accessible from this location at the moment');
-        }
-
-        if (in_array ($http_status_code, array (422))) {
-
-            $this->raise_error ('ExchangeError', $url, $method, $http_status_code,
-                'Unprocessable Entity');
-        }
-
-        if (in_array ($http_status_code, array (408, 504))) {
-
-            $this->raise_error ('RequestTimeout', $url, $method, $http_status_code,
-                'not accessible from this location at the moment');
-        }
-
-        if (in_array ($http_status_code, array (401, 511))) {
-
-            $details = '(possible reasons: ' . implode (', ', array (
-                'invalid API keys',
-                'bad or old nonce',
-                'exchange is down or offline',
-                'on maintenance',
-                'DDoS protection',
-                'rate-limiting in effect',
-            )) . ')';
-
-            $this->raise_error ('AuthenticationError', $url, $method, $http_status_code,
-                $this->last_http_response, $details);
-        }
-
-        if (in_array ($http_status_code, array (400, 403, 405, 503, 520, 521, 522, 525, 530))) {
-
-            if (preg_match ('#cloudflare|incapsula|overload|ddos#i', $result)) {
-
-                $this->raise_error ('DDoSProtection', $url, $method, $http_status_code,
-                    'not accessible from this location at the moment');
-
+        if (array_key_exists ($string_code, $this->httpExceptions)) {
+            $error_class = $this->httpExceptions[$string_code];
+            if ($error_class === 'ExchangeNotAvailable') {
+                if (preg_match ('#cloudflare|incapsula|overload|ddos#i', $result)) {
+                    $error_class = 'DDoSProtection';
+                } else {
+                    $details = '(possible reasons: ' . implode (', ', array (
+                        'invalid API keys',
+                        'bad or old nonce',
+                        'exchange is down or offline',
+                        'on maintenance',
+                        'DDoS protection',
+                        'rate-limiting in effect',
+                    )) . ')';
+                    $this->raise_error ($error_class, $url, $method, $http_status_code, $result, $details);
+                }
             } else {
-
-                $details = '(possible reasons: ' . implode (', ', array (
-                    'invalid API keys',
-                    'bad or old nonce',
-                    'exchange is down or offline',
-                    'on maintenance',
-                    'DDoS protection',
-                    'rate-limiting in effect',
-                )) . ')';
-
-                $this->raise_error ('ExchangeNotAvailable', $url, $method, $http_status_code,
-                    $this->last_http_response, $details);
+                $this->raise_error ($error_class, $url, $method, $http_status_code, $result);
             }
         }
-
 
         if ($this->parseJsonResponse && !$json_response) {
 
@@ -1544,7 +1528,7 @@ class Exchange {
     }
 
     public function filter_by_currency_since_limit ($array, $code = null, $since = null, $limit = null) {
-        return $this->filter_by_currency_since_limit ($array, 'currency', $code, $since, $limit);
+        return $this->filter_by_value_since_limit ($array, 'currency', $code, $since, $limit);
     }
 
     public function filterByCurrencySinceLimit ($array, $code = null, $since = null, $limit = null) {
@@ -2071,9 +2055,20 @@ class Exchange {
             return $new_feature_map[$feature];
         }
 
-        $old_feature_map = array_change_key_case (array_filter (get_object_vars ($this), function ($key) {
-            return strpos($key, 'has') !== false && $key !== 'has';
-        }, ARRAY_FILTER_USE_KEY), CASE_LOWER);
+        // PHP 5.6+ only:
+        // $old_feature_map = array_change_key_case (array_filter (get_object_vars ($this), function ($key) {
+        //     return strpos($key, 'has') !== false && $key !== 'has';
+        // }, ARRAY_FILTER_USE_KEY), CASE_LOWER);
+
+        // the above rewritten for PHP 5.3+
+        $nonfiltered = get_object_vars ($this);
+        $filtered = array ();
+        foreach ($nonfiltered as $key => $value) {
+            if ((strpos ($key, 'has') !== false) && ($key !== 'has')) {
+                $filtered[$key] = $value;
+            }
+        }
+        $old_feature_map = array_change_key_case ($filtered, CASE_LOWER);
 
         $old_feature = "has{$feature}";
         return array_key_exists ($old_feature, $old_feature_map) ? $old_feature_map[$old_feature] : false;
