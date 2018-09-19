@@ -776,7 +776,7 @@ class uex extends Exchange {
 
     public function fetch_orders_with_method ($method, $symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ExchangeError ($this->id . ' fetchOrdersWithMethod() requires a $symbol argument');
+            throw new ArgumentsRequired ($this->id . ' fetchOrdersWithMethod() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market ($symbol);
@@ -882,7 +882,7 @@ class uex extends Exchange {
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ExchangeError ($this->id . ' fetchMyTrades requires a $symbol argument');
+            throw new ArgumentsRequired ($this->id . ' fetchMyTrades requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market ($symbol);

@@ -385,7 +385,7 @@ class cointiger extends huobipro {
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null)
-            throw new ExchangeError ($this->id . ' fetchMyTrades requires a $symbol argument');
+            throw new ArgumentsRequired ($this->id . ' fetchMyTrades requires a $symbol argument');
         $this->load_markets();
         $market = $this->market ($symbol);
         if ($limit === null)
@@ -451,7 +451,7 @@ class cointiger extends huobipro {
 
     public function fetch_order_trades ($id, $symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ExchangeError ($this->id . ' fetchOrderTrades requires a $symbol argument');
+            throw new ArgumentsRequired ($this->id . ' fetchOrderTrades requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market ($symbol);
@@ -481,7 +481,7 @@ class cointiger extends huobipro {
 
     public function fetch_orders_by_status_v1 ($status = null, $symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null)
-            throw new ExchangeError ($this->id . ' fetchOrders requires a $symbol argument');
+            throw new ArgumentsRequired ($this->id . ' fetchOrders requires a $symbol argument');
         $this->load_markets();
         $market = $this->market ($symbol);
         if ($limit === null)
@@ -561,7 +561,7 @@ class cointiger extends huobipro {
         //                    status =>  2              } }
         //
         if ($symbol === null) {
-            throw new ExchangeError ($this->id . ' fetchOrder requires a $symbol argument');
+            throw new ArgumentsRequired ($this->id . ' fetchOrder requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market ($symbol);
@@ -778,7 +778,7 @@ class cointiger extends huobipro {
     public function cancel_order ($id, $symbol = null, $params = array ()) {
         $this->load_markets();
         if ($symbol === null)
-            throw new ExchangeError ($this->id . ' cancelOrder requires a $symbol argument');
+            throw new ArgumentsRequired ($this->id . ' cancelOrder requires a $symbol argument');
         $market = $this->market ($symbol);
         $response = $this->privateDeleteOrder (array_merge (array (
             'symbol' => $market['id'],
@@ -794,7 +794,7 @@ class cointiger extends huobipro {
     public function cancel_orders ($ids, $symbol = null, $params = array ()) {
         $this->load_markets();
         if ($symbol === null)
-            throw new ExchangeError ($this->id . ' cancelOrders requires a $symbol argument');
+            throw new ArgumentsRequired ($this->id . ' cancelOrders requires a $symbol argument');
         $market = $this->market ($symbol);
         $marketId = $market['id'];
         $orderIdList = array ();

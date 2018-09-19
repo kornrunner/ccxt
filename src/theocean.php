@@ -147,8 +147,8 @@ class theocean extends Exchange {
             $symbol = $base . '/' . $quote;
             $id = $baseId . '/' . $quoteId;
             $precision = array (
-                'amount' => $this->safe_integer($baseToken, 'precision'),
-                'price' => $this->safe_integer($quoteToken, 'precision'),
+                'amount' => -$this->safe_integer($baseToken, 'precision'),
+                'price' => -$this->safe_integer($quoteToken, 'precision'),
             );
             $amountLimits = array (
                 'min' => $this->fromWei ($this->safe_string($baseToken, 'minAmount')),
@@ -869,14 +869,10 @@ class theocean extends Exchange {
         $timestamp = $this->safe_integer($order, 'created');
         $timestamp = ($timestamp !== null) ? $timestamp * 1000 : $timestamp;
         $symbol = null;
-        if ($market === null) {
-            $baseId = $this->safe_string($order, 'baseTokenAddress');
-            $quoteId = $this->safe_string($order, 'quoteTokenAddress');
-            $marketId = $baseId . '/' . $quoteId;
-            if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id)) {
-                $market = $this->markets_by_id[$marketId];
-            }
-        }
+        $baseId = $this->safe_string($order, 'baseTokenAddress');
+        $quoteId = $this->safe_string($order, 'quoteTokenAddress');
+        $marketId = $baseId . '/' . $quoteId;
+        $market = $this->safe_value($this->markets_by_id, $marketId);
         if ($market !== null) {
             $symbol = $market['symbol'];
         }
@@ -898,11 +894,10 @@ class theocean extends Exchange {
         $lastTradeTimestamp = null;
         $timeline = $this->safe_value($order, 'timeline');
         $trades = null;
-        $status = 'open';
         if ($timeline !== null) {
             $numEvents = is_array ($timeline) ? count ($timeline) : 0;
             if ($numEvents > 0) {
-                $status = $this->parse_order_status($this->safe_string($timeline[$numEvents - 1], 'action'));
+                // $status = $this->parse_order_status($this->safe_string($timeline[$numEvents - 1], 'action'));
                 $timelineEventsGroupedByAction = $this->group_by($timeline, 'action');
                 if (is_array ($timelineEventsGroupedByAction) && array_key_exists ('placed', $timelineEventsGroupedByAction)) {
                     $placeEvents = $this->safe_value($timelineEventsGroupedByAction, 'placed');
@@ -970,6 +965,15 @@ class theocean extends Exchange {
                 'сost' => $feeCost,
                 'сurrency' => $feeCurrency,
             );
+        }
+        $status = null;
+        $amountPrecision = $market ? $market['precision']['amount'] : 8;
+        if ($remaining !== null) {
+            $status = 'open';
+            $rest = $remaining - $failedAmount - $deadAmount - $prunedAmount;
+            if ($rest < pow (10, -$amountPrecision)) {
+                $status = ($filled < $amount) ? 'canceled' : 'closed';
+            }
         }
         $result = array (
             'info' => $order,
