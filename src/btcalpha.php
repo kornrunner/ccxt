@@ -270,6 +270,7 @@ class btcalpha extends Exchange {
         $trades = $this->safe_value($order, 'trades');
         if ($trades)
             $trades = $this->parse_trades($trades, $market);
+        $side = $this->safe_string_2($order, 'my_side', 'type');
         return array (
             'id' => $id,
             'datetime' => $this->iso8601 ($timestamp),
@@ -277,7 +278,7 @@ class btcalpha extends Exchange {
             'status' => $this->safe_string($statuses, $status),
             'symbol' => $symbol,
             'type' => 'limit',
-            'side' => $order['type'],
+            'side' => $side,
             'price' => $price,
             'cost' => null,
             'amount' => $amount,
