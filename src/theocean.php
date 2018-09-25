@@ -27,6 +27,7 @@ class theocean extends Exchange {
                 'CORS' => false, // ?
                 'fetchTickers' => true,
                 'fetchOHLCV' => false,
+                'fetchOrders' => true,
                 'fetchOpenOrders' => true,
                 'fetchClosedOrders' => true,
             ),
@@ -284,7 +285,10 @@ class theocean extends Exchange {
         return $this->parse_balance($result);
     }
 
-    public function parse_market_bid_ask ($market, $bidask, $priceKey = 0, $amountKey = 1) {
+    public function parse_bid_ask ($bidask, $priceKey = 0, $amountKey = 1, $market = null) {
+        if ($market === null) {
+            throw new ArgumentsRequired ($this->id . ' parseBidAsk requires a $market argument');
+        }
         $price = floatval ($bidask[$priceKey]);
         $amountDecimals = $this->safe_integer($this->options['decimals'], $market['base'], 18);
         $amount = $this->fromWei ($bidask[$amountKey], 'ether', $amountDecimals);
@@ -292,7 +296,7 @@ class theocean extends Exchange {
         return array ( $price, $amount );
     }
 
-    public function parse_market_order_book ($market, $orderbook, $timestamp = null, $bidsKey = 'bids', $asksKey = 'asks', $priceKey = 0, $amountKey = 1) {
+    public function parse_order_book ($orderbook, $timestamp = null, $bidsKey = 'bids', $asksKey = 'asks', $priceKey = 0, $amountKey = 1, $market = null) {
         $result = array (
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
@@ -304,7 +308,7 @@ class theocean extends Exchange {
             $orders = array ();
             $bidasks = $this->safe_value($orderbook, $side);
             for ($k = 0; $k < count ($bidasks); $k++) {
-                $orders[] = $this->parse_market_bid_ask ($market, $bidasks[$k], $priceKey, $amountKey);
+                $orders[] = $this->parse_bid_ask($bidasks[$k], $priceKey, $amountKey, $market);
             }
             $result[$side] = $orders;
         }
@@ -346,7 +350,7 @@ class theocean extends Exchange {
         //       )
         //     }
         //
-        return $this->parse_market_order_book ($market, $response, null, 'bids', 'asks', 'price', 'availableAmount');
+        return $this->parse_order_book($response, null, 'bids', 'asks', 'price', 'availableAmount', $market);
     }
 
     public function parse_ticker ($ticker, $market = null) {
