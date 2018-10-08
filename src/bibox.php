@@ -220,7 +220,8 @@ class bibox extends Exchange {
         $response = $this->publicGetMdata (array_merge (array (
             'cmd' => 'marketAll',
         ), $params));
-        return $this->parse_tickers ($response['result'], $symbols);
+        $tickers = $this->parse_tickers ($response['result'], $symbols);
+        return $this->index_by($tickers, 'symbol');
     }
 
     public function parse_trade ($trade, $market = null) {
