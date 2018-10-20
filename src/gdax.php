@@ -374,6 +374,7 @@ class gdax extends Exchange {
             'open' => 'open',
             'done' => 'closed',
             'canceled' => 'canceled',
+            'canceling' => 'open',
         );
         return $this->safe_string($statuses, $status, $status);
     }
