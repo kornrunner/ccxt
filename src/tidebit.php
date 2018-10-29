@@ -37,37 +37,61 @@ class tidebit extends Exchange {
                 'logo' => 'https://user-images.githubusercontent.com/1294454/39034921-e3acf016-4480-11e8-9945-a6086a1082fe.jpg',
                 'api' => 'https://www.tidebit.com',
                 'www' => 'https://www.tidebit.com',
-                'doc' => 'https://www.tidebit.com/documents/api_v2',
+                'doc' => array (
+                    'https://www.tidebit.com/documents/api/guide',
+                    'https://www.tidebit.com/swagger/#/default',
+                ),
             ),
             'api' => array (
                 'public' => array (
                     'get' => array (
-                        'v2/markets', // V2MarketsJson
-                        'v2/tickers', // V2TickersJson
-                        'v2/tickers/{market}', // V2TickersMarketJson
-                        'v2/trades', // V2TradesJson
-                        'v2/trades/{market}', // V2TradesMarketJson
-                        'v2/order_book', // V2OrderBookJson
-                        'v2/order', // V2OrderJson
-                        'v2/k_with_pending_trades', // V2KWithPendingTradesJson
-                        'v2/k', // V2KJson
-                        'v2/depth', // V2DepthJson
+                        'markets',
+                        'tickers',
+                        'tickers/{market}',
+                        'timestamp',
+                        'trades',
+                        'trades/{market}',
+                        'order_book',
+                        'order',
+                        'k_with_pending_trades',
+                        'k',
+                        'depth',
                     ),
                     'post' => array (),
                 ),
                 'private' => array (
                     'get' => array (
-                        'v2/deposits', // V2DepositsJson
-                        'v2/deposit_address', // V2DepositAddressJson
-                        'v2/deposit', // V2DepositJson
-                        'v2/members/me', // V2MembersMeJson
-                        'v2/addresses/{address}', // V2AddressesAddressJson
+                        'addresses/{address}',
+                        'deposits/history',
+                        'deposits/get_deposit',
+                        'deposits/deposit_address',
+                        'historys/orders',
+                        'historys/vouchers',
+                        'historys/accounts',
+                        'historys/snapshots',
+                        'linkage/get_status',
+                        'members/me',
+                        'order',
+                        'orders',
+                        'partners/orders/{id}/trades',
+                        'referral_commissions/get_undeposited',
+                        'referral_commissions/get_graph_data',
+                        'trades/my',
+                        'withdraws/bind_account_list',
+                        'withdraws/get_withdraw_account',
+                        'withdraws/fetch_bind_info',
                     ),
                     'post' => array (
-                        'v2/order/delete', // V2OrderDeleteJson
-                        'v2/order', // V2OrderJson
-                        'v2/order/multi', // V2OrderMultiJson
-                        'v2/order/clear', // V2OrderClearJson
+                        'deposits/deposit_cash',
+                        'favorite_markets/update',
+                        'order/delete',
+                        'orders',
+                        'orders/multi',
+                        'orders/clear',
+                        'referral_commissions/deposit',
+                        'withdraws/apply',
+                        'withdraws/bind_bank',
+                        'withdraws/bind_address',
                     ),
                 ),
             ),
@@ -94,7 +118,7 @@ class tidebit extends Exchange {
     public function fetch_deposit_address ($code, $params = array ()) {
         $this->load_markets();
         $currency = $this->currency ($code);
-        $response = $this->privateGetV2DepositAddress (array_merge (array (
+        $response = $this->privateGetDepositAddress (array_merge (array (
             'currency' => $currency['id'],
         ), $params));
         if (is_array ($response) && array_key_exists ('success', $response)) {
@@ -112,7 +136,7 @@ class tidebit extends Exchange {
     }
 
     public function fetch_markets () {
-        $markets = $this->publicGetV2Markets ();
+        $markets = $this->publicGetMarkets ();
         $result = array ();
         for ($p = 0; $p < count ($markets); $p++) {
             $market = $markets[$p];
@@ -136,7 +160,7 @@ class tidebit extends Exchange {
 
     public function fetch_balance ($params = array ()) {
         $this->load_markets();
-        $response = $this->privateGetV2MembersMe ();
+        $response = $this->privateGetMembersMe ();
         $balances = $response['accounts'];
         $result = array ( 'info' => $balances );
         for ($b = 0; $b < count ($balances); $b++) {
@@ -165,7 +189,7 @@ class tidebit extends Exchange {
         if ($limit === null)
             $request['limit'] = $limit; // default = 300
         $request['market'] = $market['id'];
-        $orderbook = $this->publicGetV2Depth (array_merge ($request, $params));
+        $orderbook = $this->publicGetDepth (array_merge ($request, $params));
         $timestamp = $orderbook['timestamp'] * 1000;
         return $this->parse_order_book($orderbook, $timestamp);
     }
@@ -203,7 +227,7 @@ class tidebit extends Exchange {
 
     public function fetch_tickers ($symbols = null, $params = array ()) {
         $this->load_markets();
-        $tickers = $this->publicGetV2Tickers ($params);
+        $tickers = $this->publicGetTickers ($params);
         $ids = is_array ($tickers) ? array_keys ($tickers) : array ();
         $result = array ();
         for ($i = 0; $i < count ($ids); $i++) {
@@ -231,7 +255,7 @@ class tidebit extends Exchange {
     public function fetch_ticker ($symbol, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $response = $this->publicGetV2TickersMarket (array_merge (array (
+        $response = $this->publicGetTickersMarket (array_merge (array (
             'market' => $market['id'],
         ), $params));
         return $this->parse_ticker($response, $market);
@@ -256,7 +280,7 @@ class tidebit extends Exchange {
     public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $response = $this->publicGetV2Trades (array_merge (array (
+        $response = $this->publicGetTrades (array_merge (array (
             'market' => $market['id'],
         ), $params));
         return $this->parse_trades($response, $market, $since, $limit);
@@ -288,7 +312,7 @@ class tidebit extends Exchange {
         } else {
             $request['timestamp'] = 1800000;
         }
-        $response = $this->publicGetV2K (array_merge ($request, $params));
+        $response = $this->publicGetK (array_merge ($request, $params));
         return $this->parse_ohlcvs($response, $market, $timeframe, $since, $limit);
     }
 
@@ -331,23 +355,23 @@ class tidebit extends Exchange {
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
-        $order = array (
+        $request = array (
             'market' => $this->market_id($symbol),
             'side' => $side,
             'volume' => (string) $amount,
             'ord_type' => $type,
         );
         if ($type === 'limit') {
-            $order['price'] = (string) $price;
+            $request['price'] = (string) $price;
         }
-        $response = $this->privatePostV2Order (array_merge ($order, $params));
+        $response = $this->privatePostOrders (array_merge ($request, $params));
         $market = $this->markets_by_id[$response['market']];
         return $this->parse_order($response, $market);
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
         $this->load_markets();
-        $result = $this->privatePostV2OrderDelete (array ( 'id' => $id ));
+        $result = $this->privatePostOrderDelete (array ( 'id' => $id ));
         $order = $this->parse_order($result);
         $status = $order['status'];
         if ($status === 'closed' || $status === 'canceled') {
@@ -356,14 +380,25 @@ class tidebit extends Exchange {
         return $order;
     }
 
-    public function withdraw ($currency, $amount, $address, $tag = null, $params = array ()) {
+    public function withdraw ($code, $amount, $address, $tag = null, $params = array ()) {
         $this->check_address($address);
         $this->load_markets();
-        $result = $this->privatePostWithdraw (array_merge (array (
+        $currency = $this->currency ($code);
+        $id = $this->safe_string($params, 'id');
+        if ($id === null) {
+            throw new ExchangeError ($this->id . ' withdraw() requires an extra $id param (withdraw account $id according to withdraws/bind_account_list endpoint');
+        }
+        $request = array (
+            'id' => $id,
+            'currency_type' => 'coin', // or 'cash'
             'currency' => strtolower ($currency),
-            'sum' => $amount,
-            'address' => $address,
-        ), $params));
+            'body' => $amount,
+            // 'address' => $address, // they don't allow withdrawing to direct addresses?
+        );
+        if ($tag !== null) {
+            $request['memo'] = $tag;
+        }
+        $result = $this->privatePostWithdrawsApply (array_merge ($request, $params));
         return array (
             'info' => $result,
             'id' => null,
@@ -379,7 +414,7 @@ class tidebit extends Exchange {
     }
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
-        $request = '/' . 'api/' . $this->implode_params($path, $params) . '.json';
+        $request = '/' . 'api/' . $this->version . '/' . $this->implode_params($path, $params) . '.json';
         $query = $this->omit ($params, $this->extract_params($path));
         $url = $this->urls['api'] . $request;
         if ($api === 'public') {
