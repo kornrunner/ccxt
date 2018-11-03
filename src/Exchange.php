@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.17.441';
+$version = '1.17.459';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.17.441';
+    const VERSION = '1.17.459';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -80,7 +80,6 @@ class Exchange {
     );
 
     public static $exchanges = array (
-        '_1broker',
         '_1btcxe',
         'acx',
         'allcoin',
@@ -120,7 +119,6 @@ class Exchange {
         'btctradeim',
         'btctradeua',
         'btcturk',
-        'btcx',
         'buda',
         'bxinth',
         'ccex',
@@ -142,10 +140,10 @@ class Exchange {
         'coinmate',
         'coinnest',
         'coinone',
-        'coinsecure',
         'coinspot',
         'cointiger',
         'coolcoin',
+        'crex24',
         'crypton',
         'cryptopia',
         'deribit',
@@ -327,7 +325,7 @@ class Exchange {
     // given a sorted arrays of trades (recent first) and a timeframe builds an array of OHLCV candles
     public static function build_ohlcv ($trades, $timeframe = '1m', $since = PHP_INT_MIN, $limits = PHP_INT_MAX) {
         if (empty ($trades) || !is_array ($trades)) {
-            return [];
+            return array ();
         }
         if (!is_numeric ($since)) {
             $since = PHP_INT_MIN;
@@ -336,8 +334,8 @@ class Exchange {
             $limits = PHP_INT_MAX;
         }
         $ms = static::parse_timeframe ($timeframe) * 1000;
-        $ohlcvs = [];
-        list(/* $timestamp */, /* $open */, $high, $low, $close, $volume) = [0, 1, 2, 3, 4, 5];
+        $ohlcvs = array ();
+        list(/* $timestamp */, /* $open */, $high, $low, $close, $volume) = array (0, 1, 2, 3, 4, 5);
         for ($i = 0; $i < min (count($trades), $limits); $i++) {
             $trade = $trades[$i];
             if ($trade['timestamp'] < $since)
@@ -347,14 +345,14 @@ class Exchange {
 
             if ($j == 0 || $openingTime >= $ohlcvs[$j-1][0] + $ms) {
                 // moved to a new timeframe -> create a new candle from opening trade
-                $ohlcvs[] = [
+                $ohlcvs[] = array (
                     $openingTime,
                     $trade['price'],
                     $trade['price'],
                     $trade['price'],
                     $trade['price'],
                     $trade['amount']
-                ];
+                );
             } else {
                 // still processing the same timeframe -> update opening trade
                 $ohlcvs[$j-1][$high] = max ($ohlcvs[$j-1][$high], $trade['price']);
@@ -385,7 +383,7 @@ class Exchange {
     }
 
     public static function pluck ($array, $key) {
-        $result = [];
+        $result = array ();
         foreach ($array as $element)
             if (isset ($key, $element))
                 $result[] = $element[$key];
@@ -436,8 +434,8 @@ class Exchange {
 
     public static function flatten ($array) {
         return array_reduce ($array, function ($acc, $item) {
-            return array_merge ($acc, is_array ($item) ? static::flatten ($item) : [$item]);
-        }, []);
+            return array_merge ($acc, is_array ($item) ? static::flatten ($item) : array ($item));
+        }, array ());
     }
 
     public static function array_concat () {
@@ -1118,7 +1116,7 @@ class Exchange {
                     return $length;
                 $name = strtolower (trim ($header[0]));
                 if (!array_key_exists ($name, $response_headers))
-                    $response_headers[$name] = [trim ($header[1])];
+                    $response_headers[$name] = array (trim ($header[1]));
                 else
                     $response_headers[$name][] = trim ($header[1]);
                 return $length;
@@ -1733,14 +1731,14 @@ class Exchange {
     public function convert_trading_view_to_ohlcv ($ohlcvs) {
         $result = array ();
         for ($i = 0; $i < count ($ohlcvs['t']); $i++) {
-            $result[] = [
+            $result[] = array (
                 $ohlcvs['t'][$i] * 1000,
                 $ohlcvs['o'][$i],
                 $ohlcvs['h'][$i],
                 $ohlcvs['l'][$i],
                 $ohlcvs['c'][$i],
                 $ohlcvs['v'][$i],
-            ];
+            );
         }
         return $result;
     }

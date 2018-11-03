@@ -494,7 +494,7 @@ class exmo extends Exchange {
             } else if (($side === 'sell') && ($cost !== null)) {
                 $fee = array (
                     'currency' => $market['quote'],
-                    'cost' => $amount * $market['taker'],
+                    'cost' => $cost * $market['taker'],
                     'rate' => $market['taker'],
                 );
             }

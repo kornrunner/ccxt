@@ -81,6 +81,7 @@ class dsx extends liqui {
                 'fetchOrderMethod' => 'privatePostOrderStatus',
                 'fetchMyTradesMethod' => 'privatePostHistoryTrades',
                 'cancelOrderMethod' => 'privatePostOrderCancel',
+                'fetchTickersMaxLength' => 250,
             ),
         ));
     }
