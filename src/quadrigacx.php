@@ -307,7 +307,8 @@ class quadrigacx extends Exchange {
         $rate = $this->safe_float($trade, 'rate');
         for ($i = 0; $i < count ($keys); $i++) {
             $marketId = $keys[$i];
-            if ($trade[$marketId] === $rate) {
+            $floatValue = $this->safe_float($trade, $marketId);
+            if ($floatValue === $rate) {
                 if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id)) {
                     $market = $this->markets_by_id[$marketId];
                 } else {
@@ -345,7 +346,8 @@ class quadrigacx extends Exchange {
                 $cost = abs ($cost);
             }
             if ($side === null) {
-                if ($this->safe_float($trade, $market['base']) > 0) {
+                $baseValue = $this->safe_float($trade, $market['baseId']);
+                if (($baseValue !== null) && ($baseValue > 0)) {
                     $side = 'buy';
                 } else {
                     $side = 'sell';
