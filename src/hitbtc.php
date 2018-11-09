@@ -488,6 +488,7 @@ class hitbtc extends Exchange {
                 'DRK' => 'DASH',
                 'EMGO' => 'MGO',
                 'GET' => 'Themis',
+                'HSR' => 'HC',
                 'LNC' => 'LinkerCoin',
                 'UNC' => 'Unigame',
                 'USD' => 'USDT',
