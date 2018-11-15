@@ -93,7 +93,6 @@ class binance extends Exchange {
                 ),
                 'public' => array (
                     'get' => array (
-                        'exchangeInfo',
                         'ping',
                         'time',
                         'depth',
