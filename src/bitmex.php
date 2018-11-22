@@ -132,6 +132,7 @@ class bitmex extends Exchange {
                 'exact' => array (
                     'Invalid API Key.' => '\\ccxt\\AuthenticationError',
                     'Access Denied' => '\\ccxt\\PermissionDenied',
+                    'Duplicate clOrdID' => '\\ccxt\\InvalidOrder',
                 ),
                 'broad' => array (
                     'overloaded' => '\\ccxt\\ExchangeNotAvailable',
@@ -591,6 +592,9 @@ class bitmex extends Exchange {
                     $broadKey = $this->findBroadlyMatchedKey ($broad, $message);
                     if ($broadKey !== null) {
                         throw new $broad[$broadKey] ($feedback);
+                    }
+                    if ($code === 400) {
+                        throw new BadRequest ($feedback);
                     }
                     throw new ExchangeError ($feedback); // unknown $message
                 }
