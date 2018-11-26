@@ -104,7 +104,7 @@ class lbank extends Exchange {
         ));
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetAccuracy ();
         $result = array ();
         for ($i = 0; $i < count ($markets); $i++) {

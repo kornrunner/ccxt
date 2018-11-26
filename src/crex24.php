@@ -135,7 +135,7 @@ class crex24 extends Exchange {
         return $this->milliseconds ();
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $response = $this->publicGetInstruments ();
         //
         //     [ array (              $symbol =>   "$PAC-BTC",
@@ -1180,7 +1180,7 @@ class crex24 extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if (!$this->is_json_encoded_object($body)) {
             return; // fallback to default error handler
         }

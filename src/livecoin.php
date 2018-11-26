@@ -30,6 +30,7 @@ class livecoin extends Exchange {
                 'api' => 'https://api.livecoin.net',
                 'www' => 'https://www.livecoin.net',
                 'doc' => 'https://www.livecoin.net/api?lang=en',
+                'referral' => 'https://livecoin.net/?from=Livecoin-CQ1hfx44',
             ),
             'api' => array (
                 'public' => array (
@@ -118,7 +119,7 @@ class livecoin extends Exchange {
         ));
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetExchangeTicker ();
         $restrictions = $this->publicGetExchangeRestrictions ();
         $restrictionsById = $this->index_by($restrictions['restrictions'], 'currencyPair');
@@ -639,7 +640,7 @@ class livecoin extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if (gettype ($body) !== 'string')
             return;
         if ($body[0] === '{') {

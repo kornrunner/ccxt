@@ -327,7 +327,7 @@ class exmo extends Exchange {
         return $result;
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $fees = $this->fetch_trading_fees();
         $markets = $this->publicGetPairSettings ();
         $keys = is_array ($markets) ? array_keys ($markets) : array ();
@@ -1018,7 +1018,7 @@ class exmo extends Exchange {
         return $this->milliseconds ();
     }
 
-    public function handle_errors ($httpCode, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($httpCode, $reason, $url, $method, $headers, $body, $response = null) {
         if (gettype ($body) !== 'string')
             return; // fallback to default error handler
         if (strlen ($body) < 2)

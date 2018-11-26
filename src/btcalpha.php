@@ -103,7 +103,7 @@ class btcalpha extends Exchange {
         ));
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetPairs ();
         $result = array ();
         for ($i = 0; $i < count ($markets); $i++) {
@@ -399,7 +399,7 @@ class btcalpha extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if ($code < 400)
             return;
         if (gettype ($body) !== 'string')

@@ -225,7 +225,7 @@ class poloniex extends Exchange {
         return $this->parse_ohlcvs($response, $market, $timeframe, $since, $limit);
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetReturnTicker ();
         $keys = is_array ($markets) ? array_keys ($markets) : array ();
         $result = array ();
@@ -1105,8 +1105,7 @@ class poloniex extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
-        $response = null;
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         try {
             $response = json_decode ($body, $as_associative_array = true);
         } catch (Exception $e) {

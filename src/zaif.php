@@ -106,7 +106,7 @@ class zaif extends Exchange {
         ));
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetCurrencyPairsAll ();
         $result = array ();
         for ($p = 0; $p < count ($markets); $p++) {
@@ -406,7 +406,7 @@ class zaif extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($httpCode, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($httpCode, $reason, $url, $method, $headers, $body, $response = null) {
         if (!$this->is_json_encoded_object($body))
             return; // fallback to default $error handler
         $response = json_decode ($body, $as_associative_array = true);

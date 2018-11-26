@@ -145,7 +145,7 @@ class gdax extends Exchange {
         ));
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetProducts ();
         $result = array ();
         for ($p = 0; $p < count ($markets); $p++) {
@@ -718,7 +718,7 @@ class gdax extends Exchange {
         );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if (($code === 400) || ($code === 404)) {
             if ($body[0] === '{') {
                 $response = json_decode ($body, $as_associative_array = true);

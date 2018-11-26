@@ -56,7 +56,7 @@ class btcturk extends Exchange {
         ));
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $response = $this->publicGetTicker ();
         $result = array ();
         for ($i = 0; $i < count ($response); $i++) {

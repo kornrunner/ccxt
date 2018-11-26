@@ -144,7 +144,7 @@ class bitmex extends Exchange {
         ));
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetInstrumentActiveAndIndices ();
         $result = array ();
         for ($p = 0; $p < count ($markets); $p++) {
@@ -574,7 +574,7 @@ class bitmex extends Exchange {
         );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if ($code === 429)
             throw new DDoSProtection ($this->id . ' ' . $body);
         if ($code >= 400) {

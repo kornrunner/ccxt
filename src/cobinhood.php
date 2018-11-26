@@ -235,7 +235,7 @@ class cobinhood extends Exchange {
         return $result;
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $response = $this->publicGetMarketTradingPairs ();
         $markets = $response['result']['trading_pairs'];
         $result = array ();
@@ -795,7 +795,7 @@ class cobinhood extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if ($code < 400 || $code >= 600) {
             return;
         }

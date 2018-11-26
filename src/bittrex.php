@@ -179,7 +179,7 @@ class bittrex extends Exchange {
         return $this->decimal_to_precision($fee, TRUNCATE, $this->markets[$symbol]['precision']['price'], DECIMAL_PLACES);
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $response = $this->v2GetMarketsGetMarketSummaries ();
         $result = array ();
         for ($i = 0; $i < count ($response['result']); $i++) {
@@ -925,7 +925,7 @@ class bittrex extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if ($body[0] === '{') {
             $response = json_decode ($body, $as_associative_array = true);
             // array ( $success => false, $message => "$message" )

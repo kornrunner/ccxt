@@ -62,7 +62,7 @@ class coinfalcon extends Exchange {
         ));
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $response = $this->publicGetMarkets ();
         $markets = $response['data'];
         $result = array ();
@@ -358,7 +358,7 @@ class coinfalcon extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if ($code < 400) {
             return;
         }

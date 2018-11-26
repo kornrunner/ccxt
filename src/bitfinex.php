@@ -404,7 +404,7 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function fetch_markets () {
+    public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetSymbolsDetails ();
         $result = array ();
         for ($p = 0; $p < count ($markets); $p++) {
@@ -975,7 +975,7 @@ class bitfinex extends Exchange {
         return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body) {
+    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response = null) {
         if (strlen ($body) < 2)
             return;
         if ($code >= 400) {
