@@ -554,6 +554,7 @@ class cobinhood extends Exchange {
     }
 
     public function edit_order ($id, $symbol, $type, $side, $amount, $price, $params = array ()) {
+        $this->load_markets();
         $response = $this->privatePutTradingOrdersOrderId (array_merge (array (
             'order_id' => $id,
             'price' => $this->price_to_precision($symbol, $price),
@@ -565,6 +566,7 @@ class cobinhood extends Exchange {
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
+        $this->load_markets();
         $response = $this->privateDeleteTradingOrdersOrderId (array_merge (array (
             'order_id' => $id,
         ), $params));
