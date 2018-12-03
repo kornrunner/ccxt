@@ -134,6 +134,7 @@ class yobit extends liqui {
             ),
             'options' => array (
                 'fetchOrdersRequiresSymbol' => true,
+                'fetchTickersMaxLength' => 512,
             ),
         ));
     }
