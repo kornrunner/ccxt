@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce6988fb824019ba0ca0d265275a9190",
+    "content-hash": "c3326bfab50da6cf10b7ee3576606dc6",
     "packages": [
+        {
+            "name": "kornrunner/ethereum-util",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kornrunner/php-ethereum-util.git",
+                "reference": "2068474206bcb94c976f094c4c8bf7e64f6cf20b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kornrunner/php-ethereum-util/zipball/2068474206bcb94c976f094c4c8bf7e64f6cf20b",
+                "reference": "2068474206bcb94c976f094c4c8bf7e64f6cf20b",
+                "shasum": ""
+            },
+            "require": {
+                "kornrunner/keccak": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "kornrunner\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Boris Momcilovic",
+                    "homepage": "https://github.com/kornrunner/php-ethereum-util"
+                }
+            ],
+            "description": "Pure PHP implementation of Ethereum Utils",
+            "keywords": [
+                "ethereum"
+            ],
+            "time": "2017-12-08T00:21:20+00:00"
+        },
         {
             "name": "kornrunner/keccak",
             "version": "1.0.3",

@@ -227,7 +227,8 @@
     },
     "require": {
         "php": "^7.1",
-        "kornrunner/solidity": "^0.1.0"
+        "kornrunner/solidity": "^0.1.3",
+        "kornrunner/ethereum-util": "^0.0.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.5",
