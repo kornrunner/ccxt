@@ -1137,8 +1137,8 @@ class kucoin extends Exchange {
             } else if ($trade[1] === 'SELL') {
                 $side = 'sell';
             }
-            $price = $trade[2];
-            $amount = $trade[3];
+            $price = $this->safe_float($trade, 2);
+            $amount = $this->safe_float($trade, 3);
             $id = $trade[5];
         } else {
             $timestamp = $this->safe_value($trade, 'createdAt');
