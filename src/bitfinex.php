@@ -201,6 +201,7 @@ class bitfinex extends Exchange {
                         'AID' => 8.08,
                         'MNA' => 16.617,
                         'NEC' => 1.6504,
+                        'XTZ' => 0.2,
                     ),
                     'withdraw' => array (
                         'BTC' => 0.0004,
@@ -242,6 +243,7 @@ class bitfinex extends Exchange {
                         'AID' => 8.08,
                         'MNA' => 16.617,
                         'NEC' => 1.6504,
+                        'XTZ' => 0.2,
                     ),
                 ),
             ),
@@ -257,7 +259,6 @@ class bitfinex extends Exchange {
                 'DAD' => 'DADI',
                 'DAT' => 'DATA',
                 'DSH' => 'DASH',
-                'EUR' => 'EURT',
                 'HOT' => 'Hydro Protocol',
                 'IOS' => 'IOST',
                 'IOT' => 'IOTA',
@@ -274,7 +275,6 @@ class bitfinex extends Exchange {
                 'SPK' => 'SPANK',
                 'STJ' => 'STORJ',
                 'YYW' => 'YOYOW',
-                'USD' => 'USDT',
                 'UTN' => 'UTNP',
             ),
             'exceptions' => array (
@@ -367,6 +367,7 @@ class bitfinex extends Exchange {
                     'YOYOW' => 'yoyow',
                     'ZEC' => 'zcash',
                     'ZRX' => 'zrx',
+                    'XTZ' => 'tezos',
                 ),
             ),
         ));
