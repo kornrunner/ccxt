@@ -337,7 +337,7 @@ class binance extends Exchange {
                         'max' => null,
                     ),
                     'price' => array (
-                        'min' => pow (10, -$precision['price']),
+                        'min' => null,
                         'max' => null,
                     ),
                     'cost' => array (
@@ -348,11 +348,18 @@ class binance extends Exchange {
             );
             if (is_array ($filters) && array_key_exists ('PRICE_FILTER', $filters)) {
                 $filter = $filters['PRICE_FILTER'];
+                // PRICE_FILTER reports zero values for minPrice and maxPrice
+                // since they updated $filter types in November 2018
+                // https://github.com/ccxt/ccxt/issues/4286
+                // therefore limits['price']['min'] and limits['price']['max]
+                // don't have any meaningful value except null
+                //
+                //     $entry['limits']['price'] = array (
+                //         'min' => $this->safe_float($filter, 'minPrice'),
+                //         'max' => $this->safe_float($filter, 'maxPrice'),
+                //     );
+                //
                 $entry['precision']['price'] = $this->precision_from_string($filter['tickSize']);
-                $entry['limits']['price'] = array (
-                    'min' => $this->safe_float($filter, 'minPrice'),
-                    'max' => $this->safe_float($filter, 'maxPrice'),
-                );
             }
             if (is_array ($filters) && array_key_exists ('LOT_SIZE', $filters)) {
                 $filter = $filters['LOT_SIZE'];
@@ -601,6 +608,9 @@ class binance extends Exchange {
             'PARTIALLY_FILLED' => 'open',
             'FILLED' => 'closed',
             'CANCELED' => 'canceled',
+            'PENDING_CANCEL' => 'canceling', // currently unused
+            'REJECTED' => 'rejected',
+            'EXPIRED' => 'expired',
         );
         return (is_array ($statuses) && array_key_exists ($status, $statuses)) ? $statuses[$status] : $status;
     }

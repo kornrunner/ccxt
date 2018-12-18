@@ -232,9 +232,9 @@ class poloniex extends Exchange {
         for ($p = 0; $p < count ($keys); $p++) {
             $id = $keys[$p];
             $market = $markets[$id];
-            list ($quote, $base) = explode ('_', $id);
-            $base = $this->common_currency_code($base);
-            $quote = $this->common_currency_code($quote);
+            list ($quoteId, $baseId) = explode ('_', $id);
+            $base = $this->common_currency_code($baseId);
+            $quote = $this->common_currency_code($quoteId);
             $symbol = $base . '/' . $quote;
             $minCost = $this->safe_float($this->options['limits']['cost']['min'], $quote, 0.0);
             $precision = array (
@@ -244,6 +244,8 @@ class poloniex extends Exchange {
             $result[] = array_merge ($this->fees['trading'], array (
                 'id' => $id,
                 'symbol' => $symbol,
+                'baseId' => $baseId,
+                'quoteId' => $quoteId,
                 'base' => $base,
                 'quote' => $quote,
                 'active' => true,

@@ -318,7 +318,7 @@ class okcoinusd extends Exchange {
                     'NEO' => true,
                     'QTUM' => true,
                     'USDT' => true,
-                    'XUC' => true,
+                    'XRP' => true,
                 ),
             ),
         ));

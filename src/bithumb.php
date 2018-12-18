@@ -91,13 +91,19 @@ class bithumb extends Exchange {
                 $base = $id;
                 $quote = 'KRW';
                 $symbol = $id . '/' . $quote;
+                $active = true;
+                if (gettype ($market) === 'array' && count (array_filter (array_keys ($market), 'is_string')) == 0) {
+                    if (strlen ($market) === 0) {
+                        $active = false;
+                    }
+                }
                 $result[] = array (
                     'id' => $id,
                     'symbol' => $symbol,
                     'base' => $base,
                     'quote' => $quote,
                     'info' => $market,
-                    'active' => true,
+                    'active' => $active,
                     'precision' => array (
                         'amount' => null,
                         'price' => null,
@@ -239,7 +245,7 @@ class bithumb extends Exchange {
         $timestamp -= 9 * 3600000; // they report UTC . 9 hours (is_array (Korean timezone) && array_key_exists (server, Korean timezone))
         $side = ($trade['type'] === 'ask') ? 'sell' : 'buy';
         return array (
-            'id' => null,
+            'id' => $this->safe_string($trade, 'cont_no'),
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),

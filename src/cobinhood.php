@@ -361,7 +361,12 @@ class cobinhood extends Exchange {
         $price = $this->safe_float($trade, 'price');
         $amount = $this->safe_float($trade, 'size');
         $cost = $price * $amount;
-        $side = ($trade['maker_side'] === 'bid') ? 'sell' : 'buy';
+        // you can't determine your $side from maker/taker $side and vice versa
+        // you can't determine if your order/$trade was a maker or a taker based
+        // on just the $side of your order/$trade
+        // https://github.com/ccxt/ccxt/issues/4300
+        // $side = ($trade['maker_side'] === 'bid') ? 'sell' : 'buy';
+        $side = null;
         return array (
             'info' => $trade,
             'timestamp' => $timestamp,
@@ -587,9 +592,20 @@ class cobinhood extends Exchange {
         $this->load_markets();
         $result = $this->privateGetTradingOrders ($params);
         $orders = $this->parse_orders($result['result']['orders'], null, $since, $limit);
-        if ($symbol !== null)
-            return $this->filter_by_symbol($orders, $symbol);
-        return $orders;
+        if ($symbol !== null) {
+            return $this->filter_by_symbol_since_limit($orders, $symbol, $since, $limit);
+        }
+        return $this->filter_by_since_limit($orders, $since, $limit);
+    }
+
+    public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        $this->load_markets();
+        $result = $this->privateGetTradingOrderHistory ($params);
+        $orders = $this->parse_orders($result['result']['orders'], null, $since, $limit);
+        if ($symbol !== null) {
+            return $this->filter_by_symbol_since_limit($orders, $symbol, $since, $limit);
+        }
+        return $this->filter_by_since_limit($orders, $since, $limit);
     }
 
     public function fetch_order_trades ($id, $symbol = null, $since = null, $limit = null, $params = array ()) {
