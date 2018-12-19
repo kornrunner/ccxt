@@ -630,7 +630,7 @@ class bitmex extends Exchange {
                 $headers['api-expires'] = $expires;
             } else {
                 $auth .= $nonce;
-                $headers['api-nonce'] = $this->nonce ();
+                $headers['api-nonce'] = $nonce;
             }
             if ($method === 'POST' || $method === 'PUT') {
                 if ($params) {
