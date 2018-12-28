@@ -93,7 +93,8 @@ class bithumb extends Exchange {
                 $symbol = $id . '/' . $quote;
                 $active = true;
                 if (gettype ($market) === 'array' && count (array_filter (array_keys ($market), 'is_string')) == 0) {
-                    if (strlen ($market) === 0) {
+                    $numElements = is_array ($market) ? count ($market) : 0;
+                    if ($numElements === 0) {
                         $active = false;
                     }
                 }
@@ -359,7 +360,7 @@ class bithumb extends Exchange {
                 'endpoint' => $endpoint,
             ), $query));
             $nonce = (string) $this->nonce ();
-            $auth = $endpoint . '\0' . $body . '\0' . $nonce;
+            $auth = $endpoint . "\0" . $body . "\0" . $nonce; // eslint-disable-line quotes
             $signature = $this->hmac ($this->encode ($auth), $this->encode ($this->secret), 'sha512');
             $signature64 = $this->decode (base64_encode ($this->encode ($signature)));
             $headers = array (
@@ -379,7 +380,6 @@ class bithumb extends Exchange {
         if (strlen ($body) < 2)
             return; // fallback to default error handler
         if (($body[0] === '{') || ($body[0] === '[')) {
-            $response = json_decode ($body, $as_associative_array = true);
             if (is_array ($response) && array_key_exists ('status', $response)) {
                 //
                 //     array ("$status":"5100","$message":"After May 23th, recent_transactions is no longer, hence users will not be able to connect to recent_transactions")
