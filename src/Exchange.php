@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.80';
+$version = '1.18.102';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.80';
+    const VERSION = '1.18.102';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -574,7 +574,7 @@ class Exchange {
         $timestamp = (int) $timestamp;
         if ($timestamp < 0)
             return null;
-        $result = date ('c', (int) round ($timestamp / 1000));
+        $result = date ('c', (int) floor ($timestamp / 1000));
         $msec = (int) $timestamp % 1000;
         $result = str_replace ('+00:00', sprintf (".%03dZ", $msec), $result);
         return $result;
@@ -634,18 +634,6 @@ class Exchange {
             if (array_key_exists ($key, $params) && $params[$key])
                 $flags |= $options[$key];
         return json_encode ($data, $flags);
-    }
-
-    public static function parse_if_json_encoded_object ($input) {
-        if ((gettype ($input) !== 'string') || (strlen ($input) < 2)) {
-            return $input;
-        }
-        if ($input[0] === '{') {
-            return json_decode ($input, $as_associative_array = true);
-        } else if ($input[1] === '[') {
-            return json_decode ($input);
-        }
-        return $input;
     }
 
     public static function is_json_encoded_object ($input) {
