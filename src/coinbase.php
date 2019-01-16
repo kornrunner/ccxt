@@ -33,6 +33,7 @@ class coinbase extends Exchange {
                 'fetchOpenOrders' => false,
                 'fetchOrder' => false,
                 'fetchOrderBook' => false,
+                'fetchL2OrderBook' => false,
                 'fetchOrders' => false,
                 'fetchTicker' => true,
                 'fetchTickers' => false,
