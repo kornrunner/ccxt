@@ -253,7 +253,6 @@ class binance extends Exchange {
             ),
             'commonCurrencies' => array (
                 'YOYO' => 'YOYOW',
-                'BCC' => 'BCH',
             ),
             // exchange-specific options
             'options' => array (
