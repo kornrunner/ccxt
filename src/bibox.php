@@ -72,7 +72,7 @@ class bibox extends Exchange {
                     'tierBased' => false,
                     'percentage' => true,
                     'taker' => 0.001,
-                    'maker' => 0.0,
+                    'maker' => 0.001,
                 ),
                 'funding' => array (
                     'tierBased' => false,

@@ -159,7 +159,7 @@ class coinbase extends Exchange {
         return $this->parse8601 ($data['iso']);
     }
 
-    public function load_accounts ($reload = false) {
+    public function load_accounts ($reload = false, $params = array ()) {
         if ($reload) {
             $this->accounts = $this->fetch_accounts ();
         } else {
@@ -173,9 +173,9 @@ class coinbase extends Exchange {
         return $this->accounts;
     }
 
-    public function fetch_accounts () {
+    public function fetch_accounts ($params = array ()) {
         $this->load_markets();
-        $response = $this->privateGetAccounts ();
+        $response = $this->privateGetAccounts ($params);
         return $response['data'];
     }
 
