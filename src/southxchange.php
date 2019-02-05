@@ -80,7 +80,7 @@ class southxchange extends Exchange {
                 'quote' => $quote,
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
-                'active' => true,
+                'active' => null,
                 'info' => $market,
             );
         }
