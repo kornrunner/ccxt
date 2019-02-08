@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.199';
+$version = '1.18.210';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.199';
+    const VERSION = '1.18.210';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -1256,7 +1256,7 @@ class Exchange {
             }
         }
 
-        return $json_response ? $json_response : $result;
+        return isset ($json_response) ? $json_response : $result;
     }
 
     public function set_markets ($markets, $currencies = null) {
