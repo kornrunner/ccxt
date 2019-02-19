@@ -36,8 +36,8 @@ class zaif extends Exchange {
             'fees' => array (
                 'trading' => array (
                     'percentage' => true,
-                    'taker' => -0.0001,
-                    'maker' => -0.0005,
+                    'taker' => 0.1 / 100,
+                    'maker' => 0,
                 ),
             ),
             'api' => array (
@@ -96,6 +96,16 @@ class zaif extends Exchange {
                     ),
                 ),
             ),
+            'options' => array (
+                // zaif schedule defines several market-specific fees
+                'fees' => array (
+                    'BTC/JPY' => array ( 'maker' => 0, 'taker' => 0 ),
+                    'BCH/JPY' => array ( 'maker' => 0, 'taker' => 0.3 / 100 ),
+                    'BCH/BTC' => array ( 'maker' => 0, 'taker' => 0.3 / 100 ),
+                    'PEPECASH/JPY' => array ( 'maker' => 0, 'taker' => 0.01 / 100 ),
+                    'PEPECASH/BT' => array ( 'maker' => 0, 'taker' => 0.01 / 100 ),
+                ),
+            ),
             'exceptions' => array (
                 'exact' => array (
                     'unsupported currency_pair' => '\\ccxt\\BadRequest', // array ("error" => "unsupported currency_pair")
@@ -118,6 +128,9 @@ class zaif extends Exchange {
                 'amount' => -log10 ($market['item_unit_step']),
                 'price' => $market['aux_unit_point'],
             );
+            $fees = $this->safe_value($this->options['fees'], $symbol, $this->fees['trading']);
+            $taker = $fees['taker'];
+            $maker = $fees['maker'];
             $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
@@ -125,6 +138,8 @@ class zaif extends Exchange {
                 'quote' => $quote,
                 'active' => true, // can trade or not
                 'precision' => $precision,
+                'taker' => $taker,
+                'maker' => $maker,
                 'limits' => array (
                     'amount' => array (
                         'min' => $this->safe_float($market, 'item_unit_min'),

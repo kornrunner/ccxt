@@ -591,7 +591,7 @@ class buda extends Exchange {
         }
         $addressPoolLength = is_array ($addressPool) ? count ($addressPool) : 0;
         if ($addressPoolLength < 1) {
-            throw new AddressPending ($this->name . ' => there are no addresses ready for receiving ' . $code . ', retry again later)');
+            throw new AddressPending ($this->id . ' => there are no addresses ready for receiving ' . $code . ', retry again later)');
         }
         $address = $addressPool[0];
         return array (
@@ -606,7 +606,7 @@ class buda extends Exchange {
         $this->load_markets();
         $currency = $this->currency ($code);
         if ($this->is_fiat ($code))
-            throw new NotSupported ($this->name . ' => fiat fetchDepositAddress() for ' . $code . ' is not supported');
+            throw new NotSupported ($this->id . ' => fiat fetchDepositAddress() for ' . $code . ' is not supported');
         $response = $this->privatePostCurrenciesCurrencyReceiveAddresses (array_merge (array (
             'currency' => $currency['id'],
         ), $params));
@@ -675,7 +675,7 @@ class buda extends Exchange {
     public function fetch_deposits ($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         if ($code === null)
-            throw new ExchangeError ($this->name . ' => fetchDeposits() requires a $currency $code argument');
+            throw new ExchangeError ($this->id . ' => fetchDeposits() requires a $currency $code argument');
         $currency = $this->currency ($code);
         $response = $this->privateGetCurrenciesCurrencyDeposits (array_merge (array (
             'currency' => $currency['id'],
@@ -688,7 +688,7 @@ class buda extends Exchange {
     public function fetch_withdrawals ($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         if ($code === null)
-            throw new ExchangeError ($this->name . ' => fetchDeposits() requires a $currency $code argument');
+            throw new ExchangeError ($this->id . ' => fetchDeposits() requires a $currency $code argument');
         $currency = $this->currency ($code);
         $response = $this->privateGetCurrenciesCurrencyWithdrawals (array_merge (array (
             'currency' => $currency['id'],
@@ -756,7 +756,7 @@ class buda extends Exchange {
         if ($code >= 400) {
             $errorCode = $this->safe_string($response, 'code');
             $message = $this->safe_string($response, 'message', $body);
-            $feedback = $this->name . ' => ' . $message;
+            $feedback = $this->id . ' ' . $message;
             $exceptions = $this->exceptions;
             if ($errorCode !== null) {
                 if (is_array ($exceptions) && array_key_exists ($errorCode, $exceptions)) {
