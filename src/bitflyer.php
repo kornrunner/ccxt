@@ -48,6 +48,7 @@ class bitflyer extends Exchange {
                         'getbalance',
                         'getbalancehistory',
                         'getcollateral',
+                        'getcollateralhistory',
                         'getcollateralaccounts',
                         'getaddresses',
                         'getcoinins',

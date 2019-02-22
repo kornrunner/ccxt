@@ -19,11 +19,13 @@ class kucoin2 extends Exchange {
                 'fetchMarkets' => true,
                 'fetchCurrencies' => true,
                 'fetchTicker' => true,
+                'fetchTickers' => true,
                 'fetchOrderBook' => true,
                 'fetchOrder' => true,
                 'fetchClosedOrders' => true,
                 'fetchOpenOrders' => true,
                 'fetchDepositAddress' => true,
+                'createDepositAddress' => true,
                 'withdraw' => true,
                 'fetchDeposits' => true,
                 'fetchWithdrawals' => true,
@@ -62,6 +64,7 @@ class kucoin2 extends Exchange {
                     'get' => array (
                         'timestamp',
                         'symbols',
+                        'market/allTickers',
                         'market/orderbook/level{level}',
                         'market/histories',
                         'market/candles',
@@ -140,6 +143,20 @@ class kucoin2 extends Exchange {
                 '500000' => '\\ccxt\\ExchangeError',
                 'order_not_exist' => '\\ccxt\\OrderNotFound',  // array ("code":"order_not_exist","msg":"order_not_exist") ¯\_(ツ)_/¯
             ),
+            'fees' => array (
+                'trading' => array (
+                    'tierBased' => false,
+                    'percentage' => true,
+                    'taker' => 0.001,
+                    'maker' => 0.001,
+                ),
+                'funding' => array (
+                    'tierBased' => false,
+                    'percentage' => false,
+                    'withdraw' => array (),
+                    'deposit' => array (),
+                ),
+            ),
             'options' => array (
                 'version' => 'v1',
                 'symbolSeparator' => '-',
@@ -164,45 +181,49 @@ class kucoin2 extends Exchange {
         //
         // { quoteCurrency => 'BTC',
         //   $symbol => 'KCS-BTC',
-        //   quoteMaxSize => '9999999',
-        //   quoteIncrement => '0.000001',
-        //   baseMinSize => '0.01',
-        //   quoteMinSize => '0.00001',
+        //   $quoteMaxSize => '9999999',
+        //   $quoteIncrement => '0.000001',
+        //   $baseMinSize => '0.01',
+        //   $quoteMinSize => '0.00001',
         //   enableTrading => true,
-        //   $priceIncrement => '0.00000001',
+        //   priceIncrement => '0.00000001',
         //   name => 'KCS-BTC',
         //   baseIncrement => '0.01',
-        //   baseMaxSize => '9999999',
+        //   $baseMaxSize => '9999999',
         //   baseCurrency => 'KCS' }
         //
-        $responseData = $response['data'];
+        $data = $response['data'];
         $result = array ();
-        for ($i = 0; $i < count ($responseData); $i++) {
-            $entry = $responseData[$i];
-            $id = $entry['name'];
-            $baseId = $entry['baseCurrency'];
-            $quoteId = $entry['quoteCurrency'];
+        for ($i = 0; $i < count ($data); $i++) {
+            $market = $data[$i];
+            $id = $market['name'];
+            $baseId = $market['baseCurrency'];
+            $quoteId = $market['quoteCurrency'];
             $base = $this->common_currency_code($baseId);
             $quote = $this->common_currency_code($quoteId);
             $symbol = $base . '/' . $quote;
-            $active = $entry['enableTrading'];
-            $baseMax = $this->safe_float($entry, 'baseMaxSize');
-            $baseMin = $this->safe_float($entry, 'baseMinSize');
-            $quoteMax = $this->safe_float($entry, 'quoteMaxSize');
-            $quoteMin = $this->safe_float($entry, 'quoteMinSize');
-            $priceIncrement = $this->safe_float($entry, 'priceIncrement');
+            $active = $market['enableTrading'];
+            $baseMaxSize = $this->safe_float($market, 'baseMaxSize');
+            $baseMinSize = $this->safe_float($market, 'baseMinSize');
+            $quoteMaxSize = $this->safe_float($market, 'quoteMaxSize');
+            $quoteMinSize = $this->safe_float($market, 'quoteMinSize');
+            $quoteIncrement = $this->safe_float($market, 'quoteIncrement');
             $precision = array (
-                'amount' => -log10 ($this->safe_float($entry, 'quoteIncrement')),
-                'price' => -log10 ($priceIncrement),
+                'amount' => $this->precision_from_string($this->safe_string($market, 'baseIncrement')),
+                'price' => $this->precision_from_string($this->safe_string($market, 'priceIncrement')),
             );
             $limits = array (
                 'amount' => array (
-                    'min' => $quoteMin,
-                    'max' => $quoteMax,
+                    'min' => $baseMinSize,
+                    'max' => $baseMaxSize,
                 ),
                 'price' => array (
-                    'min' => max ($baseMin / $quoteMax, $priceIncrement),
-                    'max' => $baseMax / $quoteMin,
+                    'min' => max ($baseMinSize / $quoteMaxSize, $quoteIncrement),
+                    'max' => $baseMaxSize / $quoteMinSize,
+                ),
+                'cost' => array (
+                    'min' => $quoteMinSize,
+                    'max' => $quoteMaxSize,
                 ),
             );
             $result[$symbol] = array (
@@ -215,7 +236,7 @@ class kucoin2 extends Exchange {
                 'active' => $active,
                 'precision' => $precision,
                 'limits' => $limits,
-                'info' => $entry,
+                'info' => $market,
             );
         }
         return $result;
@@ -303,50 +324,99 @@ class kucoin2 extends Exchange {
     public function parse_ticker ($ticker, $market = null) {
         //
         //     {
-        //         "$symbol" => "ETH-BTC",
-        //         "$high" => "0.1",
-        //         "vol" => "3891.5909166",
-        //         "$low" => "0.024",
-        //         "changePrice" => "0.031809",
-        //         "changeRate" => "31809",
-        //         "close" => "0.03181",
-        //         "volValue" => "119.5545894397034",
-        //         "$open" => "0.000001",
+        //         'buy' => '0.00001168',
+        //         'changePrice' => '-0.00000018',
+        //         'changeRate' => '-0.0151',
+        //         'datetime' => 1550661146316,
+        //         'high' => '0.0000123',
+        //         'last' => '0.00001169',
+        //         'low' => '0.00001159',
+        //         'sell' => '0.00001182',
+        //         'symbol' => 'LOOM-BTC',
+        //         'vol' => '44399.5669'
         //     }
         //
-        $change = $this->safe_float($ticker, 'changePrice');
         $percentage = $this->safe_float($ticker, 'changeRate');
-        $open = $this->safe_float($ticker, 'open');
-        $last = $this->safe_float($ticker, 'close');
-        $high = $this->safe_float($ticker, 'high');
-        $low = $this->safe_float($ticker, 'low');
-        $baseVolume = $this->safe_float($ticker, 'vol');
-        $quoteVolume = $this->safe_float($ticker, 'volValue');
+        if ($percentage !== null) {
+            $percentage = $percentage * 100;
+        }
+        $last = $this->safe_float($ticker, 'last');
         $symbol = null;
-        if ($market)
-            $symbol = $market['symbol'];
+        $marketId = $this->safe_string($ticker, 'symbol');
+        if ($marketId !== null) {
+            if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id)) {
+                $market = $this->markets_by_id[$marketId];
+                $symbol = $market['symbol'];
+            } else {
+                list ($baseId, $quoteId) = explode ('-', $marketId);
+                $base = $this->common_currency_code($baseId);
+                $quote = $this->common_currency_code($quoteId);
+                $symbol = $base . '/' . $quote;
+            }
+        }
+        if ($symbol === null) {
+            if ($market !== null) {
+                $symbol = $market['symbol'];
+            }
+        }
         return array (
             'symbol' => $symbol,
             'timestamp' => null,
             'datetime' => null,
-            'high' => $high,
-            'low' => $low,
-            'bid' => $this->safe_float($ticker, 'bid'),
+            'high' => $this->safe_float($ticker, 'high'),
+            'low' => $this->safe_float($ticker, 'low'),
+            'bid' => $this->safe_float($ticker, 'buy'),
             'bidVolume' => null,
-            'ask' => $this->safe_float($ticker, 'ask'),
+            'ask' => $this->safe_float($ticker, 'sell'),
             'askVolume' => null,
             'vwap' => null,
-            'open' => $open,
+            'open' => $this->safe_float($ticker, 'open'),
             'close' => $last,
             'last' => $last,
             'previousClose' => null,
-            'change' => $change,
+            'change' => $this->safe_float($ticker, 'changePrice'),
             'percentage' => $percentage,
             'average' => null,
-            'baseVolume' => $baseVolume,
-            'quoteVolume' => $quoteVolume,
+            'baseVolume' => $this->safe_float($ticker, 'vol'),
+            'quoteVolume' => $this->safe_float($ticker, 'volValue'),
             'info' => $ticker,
         );
+    }
+
+    public function fetch_tickers ($symbols = null, $params = array ()) {
+        $this->load_markets();
+        $response = $this->publicGetMarketAllTickers ($params);
+        //
+        //     {
+        //         "code" => "200000",
+        //         "$data" => array (
+        //             "date" => 1550661940645,
+        //             "$ticker" => array (
+        //                 'buy' => '0.00001168',
+        //                 'changePrice' => '-0.00000018',
+        //                 'changeRate' => '-0.0151',
+        //                 'datetime' => 1550661146316,
+        //                 'high' => '0.0000123',
+        //                 'last' => '0.00001169',
+        //                 'low' => '0.00001159',
+        //                 'sell' => '0.00001182',
+        //                 'symbol' => 'LOOM-BTC',
+        //                 'vol' => '44399.5669'
+        //             ),
+        //         )
+        //     }
+        //
+        $data = $this->safe_value($response, 'data', array ());
+        $tickers = $this->safe_value($data, 'ticker', array ());
+        $result = array ();
+        for ($i = 0; $i < count ($tickers); $i++) {
+            $ticker = $this->parse_ticker($tickers[$i]);
+            $symbol = $this->safe_string($ticker, 'symbol');
+            if ($symbol !== null) {
+                $result[$symbol] = $ticker;
+            }
+        }
+        return $result;
     }
 
     public function fetch_ticker ($symbol, $params = array ()) {
@@ -360,15 +430,16 @@ class kucoin2 extends Exchange {
         //     {
         //         "code" => "200000",
         //         "data" => array (
-        //             "$symbol" => "ETH-BTC",
-        //             "high" => "0.1",
-        //             "vol" => "3891.5909166",
-        //             "low" => "0.024",
-        //             "changePrice" => "0.031809",
-        //             "changeRate" => "31809",
-        //             "close" => "0.03181",
-        //             "volValue" => "119.5545894397034",
-        //             "open" => "0.000001",
+        //             'buy' => '0.00001168',
+        //             'changePrice' => '-0.00000018',
+        //             'changeRate' => '-0.0151',
+        //             'datetime' => 1550661146316,
+        //             'high' => '0.0000123',
+        //             'last' => '0.00001169',
+        //             'low' => '0.00001159',
+        //             'sell' => '0.00001182',
+        //             'symbol' => 'LOOM-BTC',
+        //             'vol' => '44399.5669'
         //         ),
         //     }
         //
@@ -414,13 +485,38 @@ class kucoin2 extends Exchange {
         return $this->parse_ohlcvs($responseData, $market, $timeframe, $since, $limit);
     }
 
+    public function create_deposit_address ($code, $params = array ()) {
+        $this->load_markets();
+        $currencyId = $this->currencyId ($code);
+        $request = array ( 'currency' => $currencyId );
+        $response = $this->privatePostDepositAddresses (array_merge ($request, $params));
+        // BCH array ("$code":"200000","$data":{"$address":"bitcoincash:qza3m4nj9rx7l9r0cdadfqxts6f92shvhvr5ls4q7z","memo":"")}
+        // BTC array ("$code":"200000","$data":{"$address":"36SjucKqQpQSvsak9A7h6qzFjrVXpRNZhE","memo":"")}
+        $data = $this->safe_value($response, 'data', array ());
+        $address = $this->safe_string($data, 'address');
+        // BCH/BSV is returned with a "bitcoincash:" prefix, which we cut off here and only keep the $address
+        $address = str_replace ('bitcoincash:', '', $address);
+        $tag = $this->safe_string($data, 'memo');
+        $this->check_address($address);
+        return array (
+            'info' => $response,
+            'currency' => $code,
+            'address' => $address,
+            'tag' => $tag,
+        );
+    }
+
     public function fetch_deposit_address ($code, $params = array ()) {
         $this->load_markets();
         $currencyId = $this->currencyId ($code);
         $request = array ( 'currency' => $currencyId );
         $response = $this->privateGetDepositAddresses (array_merge ($request, $params));
-        $data = $this->safe_value($response, 'data');
+        // BCH array ("$code":"200000","$data":{"$address":"bitcoincash:qza3m4nj9rx7l9r0cdadfqxts6f92shvhvr5ls4q7z","memo":"")}
+        // BTC array ("$code":"200000","$data":{"$address":"36SjucKqQpQSvsak9A7h6qzFjrVXpRNZhE","memo":"")}
+        $data = $this->safe_value($response, 'data', array ());
         $address = $this->safe_string($data, 'address');
+        // BCH/BSV is returned with a "bitcoincash:" prefix, which we cut off here and only keep the $address
+        $address = str_replace ('bitcoincash:', '', $address);
         $tag = $this->safe_string($data, 'memo');
         $this->check_address($address);
         return array (
@@ -434,16 +530,20 @@ class kucoin2 extends Exchange {
     public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
         $this->load_markets();
         $marketId = $this->market_id($symbol);
-        $request = array ( 'symbol' => $marketId, 'level' => 3 );
-        $response = $this->publicGetMarketOrderbookLevelLevel (array_merge ($request, $params));
+        $request = array_merge (array ( 'symbol' => $marketId, 'level' => 2 ), $params);
+        $response = $this->publicGetMarketOrderbookLevelLevel ($request);
         //
         // { sequence => '1547731421688',
         //   asks => array ( array ( '5c419328ef83c75456bd615c', '0.9', '0.09' ), ... ),
         //   bids => array ( array ( '5c419328ef83c75456bd615c', '0.9', '0.09' ), ... ), }
         //
-        $responseData = $response['data'];
-        $timestamp = $this->safe_integer($responseData, 'sequence');
-        return $this->parse_order_book($responseData, $timestamp, 'bids', 'asks', 1, 2);
+        $data = $response['data'];
+        $timestamp = $this->safe_integer($data, 'sequence');
+        // $level can be a string such as 2_20 or 2_100
+        $levelString = $this->safe_string($request, 'level');
+        $levelParts = explode ('_', $levelString);
+        $level = intval ($levelParts[0]);
+        return $this->parse_order_book($data, $timestamp, 'bids', 'asks', $level - 2, $level - 1);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
@@ -574,21 +674,22 @@ class kucoin2 extends Exchange {
         }
         $orderId = $this->safe_string($order, 'id');
         $type = $this->safe_string($order, 'type');
-        $timestamp = $this->safe_string($order, 'createdAt');
+        $timestamp = $this->safe_integer($order, 'createdAt');
         $datetime = $this->iso8601 ($timestamp);
         $price = $this->safe_float($order, 'price');
         $side = $this->safe_string($order, 'side');
         $feeCurrencyId = $this->safe_string($order, 'feeCurrency');
         $feeCurrency = $this->common_currency_code($feeCurrencyId);
-        $fee = $this->safe_float($order, 'fee');
+        $feeCost = $this->safe_float($order, 'fee');
         $amount = $this->safe_float($order, 'size');
         $filled = $this->safe_float($order, 'dealSize');
+        $cost = $this->safe_float($order, 'dealFunds');
         $remaining = $amount - $filled;
         // bool
         $status = $order['isActive'] ? 'open' : 'closed';
-        $fees = array (
+        $fee = array (
             'currency' => $feeCurrency,
-            'cost' => $fee,
+            'cost' => $feeCost,
         );
         return array (
             'id' => $orderId,
@@ -597,11 +698,12 @@ class kucoin2 extends Exchange {
             'side' => $side,
             'amount' => $amount,
             'price' => $price,
+            'cost' => $cost,
             'filled' => $filled,
             'remaining' => $remaining,
             'timestamp' => $timestamp,
             'datetime' => $datetime,
-            'fee' => $fees,
+            'fee' => $fee,
             'status' => $status,
             'info' => $order,
         );
@@ -967,10 +1069,9 @@ class kucoin2 extends Exchange {
         }
         //
         // bad
-        // array ("$code":"400100","msg":"validation.createOrder.clientOidIsRequired")
+        //     array ( "$code" => "400100", "msg" => "validation.createOrder.clientOidIsRequired" )
         // good
-        // { $code => '200000',
-        //   data => array (...), }
+        //     array ( $code => '200000', data => { ... )}
         //
         $errorCode = $this->safe_string($response, 'code');
         if (is_array ($this->exceptions) && array_key_exists ($errorCode, $this->exceptions)) {
