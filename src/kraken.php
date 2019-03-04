@@ -536,7 +536,7 @@ class kraken extends Exchange {
             'interval' => $this->timeframes[$timeframe],
         );
         if ($since !== null)
-            $request['since'] = intval ($since / 1000);
+            $request['since'] = intval (($since - 1) / 1000);
         $response = $this->publicGetOHLC (array_merge ($request, $params));
         $ohlcvs = $response['result'][$market['id']];
         return $this->parse_ohlcvs($ohlcvs, $market, $timeframe, $since, $limit);
