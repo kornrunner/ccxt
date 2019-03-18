@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.360';
+$version = '1.18.372';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.360';
+    const VERSION = '1.18.372';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -158,7 +158,6 @@ class Exchange {
         'foxbit',
         'fybse',
         'fybsg',
-        'gatecoin',
         'gateio',
         'gdax',
         'gemini',
@@ -1343,10 +1342,10 @@ class Exchange {
             }
             return $this->markets;
         }
-        $markets = $this->fetch_markets ($params);
         $currencies = null;
         if (array_key_exists ('fetchCurrencies', $this->has) && $this->has['fetchCurrencies'])
             $currencies = $this->fetch_currencies ();
+        $markets = $this->fetch_markets ($params);
         return $this->set_markets ($markets, $currencies);
     }
 
