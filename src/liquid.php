@@ -48,6 +48,7 @@ class liquid extends Exchange {
                     'get' => array (
                         'accounts/balance',
                         'accounts/main_asset',
+                        'accounts/{id}',
                         'crypto_accounts',
                         'executions/me',
                         'fiat_accounts',
