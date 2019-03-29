@@ -789,9 +789,12 @@ class bitmex extends Exchange {
                 $remaining = max ($amount - $filled, 0.0);
             }
         }
+        $average = $this->safe_float($order, 'avgPx');
         $cost = null;
-        if ($price !== null) {
-            if ($filled !== null) {
+        if ($filled !== null) {
+            if ($average !== null) {
+                $cost = $average * $filled;
+            } else if ($price !== null) {
                 $cost = $price * $filled;
             }
         }
@@ -807,6 +810,7 @@ class bitmex extends Exchange {
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'average' => $average,
             'filled' => $filled,
             'remaining' => $remaining,
             'status' => $status,
