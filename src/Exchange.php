@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.433';
+$version = '1.18.450';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.433';
+    const VERSION = '1.18.450';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -186,6 +186,7 @@ class Exchange {
         'livecoin',
         'luno',
         'lykke',
+        'mandala',
         'mercado',
         'mixcoins',
         'negociecoins',
@@ -2220,7 +2221,7 @@ class Exchange {
 
         // Special handling for negative precision
         if ($numPrecisionDigits < 0) {
-            $toNearest = 10 ** abs ($numPrecisionDigits);
+            $toNearest = pow (10, abs ($numPrecisionDigits));
             if ($roundingMode === ROUND) {
                 $result = (string) ($toNearest * static::decimal_to_precision ($x / $toNearest, $roundingMode, 0, DECIMAL_PLACES, $paddingMode));
             }

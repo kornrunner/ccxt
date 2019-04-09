@@ -41,6 +41,7 @@ class stronghold extends Exchange {
                 'createDepositAddress' => true,
                 'withdraw' => true,
                 'fetchTicker' => false,
+                'fetchTickers' => false,
                 'fetchAccounts' => true,
             ),
             'api' => array (
