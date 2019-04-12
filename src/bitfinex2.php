@@ -24,7 +24,7 @@ class bitfinex2 extends bitfinex {
                 'fetchDepositAddress' => false,
                 'fetchClosedOrders' => false,
                 'fetchFundingFees' => false,
-                'fetchMyTrades' => false,
+                'fetchMyTrades' => false, // has to be false https://github.com/ccxt/ccxt/issues/4971
                 'fetchOHLCV' => true,
                 'fetchOpenOrders' => false,
                 'fetchOrder' => true,
@@ -548,11 +548,12 @@ class bitfinex2 extends bitfinex {
     }
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        // $this->has['fetchMyTrades'] is set to false
+        // https://github.com/ccxt/ccxt/issues/4971
         $this->load_markets();
         $market = null;
         $request = array (
             'end' => $this->milliseconds (),
-            '_bfx' => 1,
         );
         if ($since !== null) {
             $request['start'] = $since;
