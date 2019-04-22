@@ -43,6 +43,7 @@ class stronghold extends Exchange {
                 'fetchTicker' => false,
                 'fetchTickers' => false,
                 'fetchAccounts' => true,
+                'fetchTransactions' => true,
             ),
             'api' => array (
                 'public' => array (
@@ -109,6 +110,7 @@ class stronghold extends Exchange {
                     'XLM' => 'stellar',
                     'XRP' => 'ripple',
                     'LTC' => 'litecoin',
+                    'SHX' => 'stellar',
                 ),
             ),
             'exceptions' => array (
@@ -424,6 +426,7 @@ class stronghold extends Exchange {
     public function parse_transaction_status ($status) {
         $statuses = array (
             'queued' => 'pending',
+            'settling' => 'pending',
         );
         return $this->safe_string($statuses, $status, $status);
     }
@@ -463,7 +466,10 @@ class stronghold extends Exchange {
             $feeRate = $feeCost / $amount;
         }
         $direction = $this->safe_string($transaction, 'direction');
-        $type = ($direction === 'outgoing') ? 'withdraw' : 'deposit';
+        $datetime = $this->safe_string($transaction, 'requestedAt');
+        $timestamp = $this->parse8601 ($datetime);
+        $updated = $this->parse8601 ($this->safe_string($transaction, 'updatedAt'));
+        $type = ($direction === 'outgoing' || $direction === 'withdrawal') ? 'withdrawal' : 'deposit';
         $fee = array (
             'cost' => $feeCost,
             'rate' => $feeRate,
@@ -477,11 +483,11 @@ class stronghold extends Exchange {
             'fee' => $fee,
             'tag' => null,
             'type' => $type,
-            'updated' => null,
+            'updated' => $updated,
             'address' => null,
             'txid' => null,
-            'timestamp' => null,
-            'datetime' => null,
+            'timestamp' => $timestamp,
+            'datetime' => $datetime,
         );
     }
 
