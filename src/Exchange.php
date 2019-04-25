@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.486';
+$version = '1.18.489';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.486';
+    const VERSION = '1.18.489';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -2175,7 +2175,10 @@ class Exchange {
             $this->define_rest_api ($this->api, 'request');
     }
 
-    public function has ($feature) {
+    public function has ($feature = null) {
+        if (!$feature) {
+            return $this->has;
+        }
         $feature = strtolower ($feature);
         $new_feature_map = array_change_key_case ($this->has, CASE_LOWER);
         if (array_key_exists ($feature, $new_feature_map)) {
