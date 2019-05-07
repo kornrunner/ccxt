@@ -36,7 +36,7 @@ class gateio extends Exchange {
                 '5m' => '300',
                 '10m' => '600',
                 '15m' => '900',
-                '30m' => '1200',
+                '30m' => '1800',
                 '1h' => '3600',
                 '2h' => '7200',
                 '4h' => '14400',
@@ -325,8 +325,8 @@ class gateio extends Exchange {
             'change' => $change,
             'percentage' => $percentage,
             'average' => $average,
-            'baseVolume' => $this->safe_float($ticker, 'quoteVolume'),
-            'quoteVolume' => $this->safe_float($ticker, 'baseVolume'),
+            'baseVolume' => $this->safe_float($ticker, 'baseVolume'),
+            'quoteVolume' => $this->safe_float($ticker, 'quoteVolume'),
             'info' => $ticker,
         );
     }

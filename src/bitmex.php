@@ -135,6 +135,9 @@ class bitmex extends Exchange {
                     'Access Denied' => '\\ccxt\\PermissionDenied',
                     'Duplicate clOrdID' => '\\ccxt\\InvalidOrder',
                     'Signature not valid' => '\\ccxt\\AuthenticationError',
+                    'orderQty is invalid' => '\\ccxt\\InvalidOrder',
+                    'Invalid price' => '\\ccxt\\InvalidOrder',
+                    'Invalid stopPx for ordType' => '\\ccxt\\InvalidOrder',
                 ),
                 'broad' => array (
                     'overloaded' => '\\ccxt\\ExchangeNotAvailable',
@@ -975,9 +978,17 @@ class bitmex extends Exchange {
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $query = '/api/' . $this->version . '/' . $path;
-        if ($method !== 'PUT')
-            if ($params)
+        if ($method === 'GET') {
+            if ($params) {
                 $query .= '?' . $this->urlencode ($params);
+            }
+        } else {
+            $format = $this->safe_string($params, '_format');
+            if ($format !== null) {
+                $query .= '?' . $this->urlencode (array ( '_format' => $format ));
+                $params = $this->omit ($params, '_format');
+            }
+        }
         $url = $this->urls['api'] . $query;
         if ($api === 'private') {
             $this->check_required_credentials();
@@ -991,7 +1002,7 @@ class bitmex extends Exchange {
             $expires = (string) $expires;
             $auth .= $expires;
             $headers['api-expires'] = $expires;
-            if ($method === 'POST' || $method === 'PUT') {
+            if ($method === 'POST' || $method === 'PUT' || $method === 'DELETE') {
                 if ($params) {
                     $body = $this->json ($params);
                     $auth .= $body;
