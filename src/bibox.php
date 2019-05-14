@@ -444,7 +444,9 @@ class bibox extends Exchange {
             $request['symbol'] = $currency['id'];
         }
         if ($limit !== null) {
-            $request['size'] = $limit; // default = 100
+            $request['size'] = $limit;
+        } else {
+            $request['size'] = 100;
         }
         $response = $this->privatePostTransfer (array (
             'cmd' => 'transfer/transferInList',
@@ -468,7 +470,9 @@ class bibox extends Exchange {
             $request['symbol'] = $currency['id'];
         }
         if ($limit !== null) {
-            $request['size'] = $limit; // default = 100
+            $request['size'] = $limit;
+        } else {
+            $request['size'] = 100;
         }
         $response = $this->privatePostTransfer (array (
             'cmd' => 'transfer/transferOutList',
