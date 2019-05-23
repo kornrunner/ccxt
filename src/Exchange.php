@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.557';
+$version = '1.18.570';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -50,7 +50,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.557';
+    const VERSION = '1.18.570';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -472,7 +472,7 @@ class Exchange {
     public static function implode_params ($string, $params) {
         foreach ($params as $key => $value) {
             if (gettype ($value) !== 'array') {
-                $string = implode ($value, mb_split ('{' . $key . '}', $string));
+                $string = implode ($value, mb_split ('{' . preg_quote ($key) . '}', $string));
             }
 
         }
@@ -805,6 +805,8 @@ class Exchange {
         $this->uid           = '';
         $this->privateKey    = '';
         $this->walletAddress = '';
+        $this->token = ''; // reserved for HTTP auth in some cases
+
 
         $this->twofa         = null;
         $this->marketsById   = null;
@@ -828,6 +830,7 @@ class Exchange {
             'twofa' => false, // 2-factor authentication (one-time password key)
             'privateKey' => false,
             'walletAddress' => false,
+            'token' => false, // reserved for HTTP auth in some cases
         );
 
         // API methods metainfo
