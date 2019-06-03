@@ -19,6 +19,7 @@ class yobit extends liqui {
                 'fetchDeposits' => false,
                 'fetchWithdrawals' => false,
                 'fetchTransactions' => false,
+                'fetchTickers' => false,
                 'CORS' => false,
                 'withdraw' => true,
             ),

@@ -95,6 +95,7 @@ class liquid extends Exchange {
             ),
             'commonCurrencies' => array (
                 'WIN' => 'WCOIN',
+                'HOT' => 'HOT Token',
             ),
             'options' => array (
                 'cancelOrderException' => true,
