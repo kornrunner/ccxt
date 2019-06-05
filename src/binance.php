@@ -60,7 +60,10 @@ class binance extends Exchange {
                 ),
                 'www' => 'https://www.binance.com',
                 'referral' => 'https://www.binance.com/?ref=10205187',
-                'doc' => 'https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md',
+                'doc' => array (
+                    'https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md',
+                    'https://github.com/binance-exchange/binance-official-api-docs/blob/master/wapi-api.md',
+                ),
                 'fees' => 'https://www.binance.com/en/fee/schedule',
             ),
             'api' => array (
@@ -1105,11 +1108,6 @@ class binance extends Exchange {
         }
         $status = $this->parse_transaction_status_by_type ($this->safe_string($transaction, 'status'), $type);
         $amount = $this->safe_float($transaction, 'amount');
-        $feeCost = null;
-        $fee = array (
-            'cost' => $feeCost,
-            'currency' => $code,
-        );
         return array (
             'info' => $transaction,
             'id' => $id,
@@ -1123,7 +1121,7 @@ class binance extends Exchange {
             'currency' => $code,
             'status' => $status,
             'updated' => null,
-            'fee' => $fee,
+            'fee' => null,
         );
     }
 
