@@ -75,11 +75,11 @@ class btcchina extends Exchange {
                 ),
             ),
             'markets' => array (
-                'BTC/CNY' => array ( 'id' => 'btccny', 'symbol' => 'BTC/CNY', 'base' => 'BTC', 'quote' => 'CNY', 'api' => 'public', 'plus' => false ),
-                'LTC/CNY' => array ( 'id' => 'ltccny', 'symbol' => 'LTC/CNY', 'base' => 'LTC', 'quote' => 'CNY', 'api' => 'public', 'plus' => false ),
-                'LTC/BTC' => array ( 'id' => 'ltcbtc', 'symbol' => 'LTC/BTC', 'base' => 'LTC', 'quote' => 'BTC', 'api' => 'public', 'plus' => false ),
-                'BCH/CNY' => array ( 'id' => 'bcccny', 'symbol' => 'BCH/CNY', 'base' => 'BCH', 'quote' => 'CNY', 'api' => 'plus', 'plus' => true ),
-                'ETH/CNY' => array ( 'id' => 'ethcny', 'symbol' => 'ETH/CNY', 'base' => 'ETH', 'quote' => 'CNY', 'api' => 'plus', 'plus' => true ),
+                'BTC/CNY' => array( 'id' => 'btccny', 'symbol' => 'BTC/CNY', 'base' => 'BTC', 'quote' => 'CNY', 'api' => 'public', 'plus' => false ),
+                'LTC/CNY' => array( 'id' => 'ltccny', 'symbol' => 'LTC/CNY', 'base' => 'LTC', 'quote' => 'CNY', 'api' => 'public', 'plus' => false ),
+                'LTC/BTC' => array( 'id' => 'ltcbtc', 'symbol' => 'LTC/BTC', 'base' => 'LTC', 'quote' => 'BTC', 'api' => 'public', 'plus' => false ),
+                'BCH/CNY' => array( 'id' => 'bcccny', 'symbol' => 'BCH/CNY', 'base' => 'BCH', 'quote' => 'CNY', 'api' => 'plus', 'plus' => true ),
+                'ETH/CNY' => array( 'id' => 'ethcny', 'symbol' => 'ETH/CNY', 'base' => 'ETH', 'quote' => 'CNY', 'api' => 'plus', 'plus' => true ),
             ),
         ));
     }
@@ -88,17 +88,17 @@ class btcchina extends Exchange {
         $markets = $this->publicGetTicker (array (
             'market' => 'all',
         ));
-        $result = array ();
-        $keys = is_array ($markets) ? array_keys ($markets) : array ();
+        $result = array();
+        $keys = is_array($markets) ? array_keys($markets) : array();
         for ($p = 0; $p < count ($keys); $p++) {
             $key = $keys[$p];
             $market = $markets[$key];
-            $parts = explode ('_', $key);
+            $parts = explode('_', $key);
             $id = $parts[1];
             $base = mb_substr ($id, 0, 3);
             $quote = mb_substr ($id, 3, 6);
-            $base = strtoupper ($base);
-            $quote = strtoupper ($quote);
+            $base = strtoupper($base);
+            $quote = strtoupper($quote);
             $symbol = $base . '/' . $quote;
             $result[] = array (
                 'id' => $id,
@@ -115,15 +115,15 @@ class btcchina extends Exchange {
         $this->load_markets();
         $response = $this->privatePostGetAccountInfo ();
         $balances = $response['result'];
-        $result = array ( 'info' => $balances );
-        $currencies = is_array ($this->currencies) ? array_keys ($this->currencies) : array ();
+        $result = array( 'info' => $balances );
+        $currencies = is_array($this->currencies) ? array_keys($this->currencies) : array();
         for ($i = 0; $i < count ($currencies); $i++) {
             $currency = $currencies[$i];
-            $lowercase = strtolower ($currency);
+            $lowercase = strtolower($currency);
             $account = $this->account ();
-            if (is_array ($balances['balance']) && array_key_exists ($lowercase, $balances['balance']))
+            if (is_array($balances['balance']) && array_key_exists($lowercase, $balances['balance']))
                 $account['total'] = floatval ($balances['balance'][$lowercase]['amount']);
-            if (is_array ($balances['frozen']) && array_key_exists ($lowercase, $balances['frozen']))
+            if (is_array($balances['frozen']) && array_key_exists($lowercase, $balances['frozen']))
                 $account['used'] = floatval ($balances['frozen'][$lowercase]['amount']);
             $account['free'] = $account['total'] - $account['used'];
             $result[$currency] = $account;
@@ -132,7 +132,7 @@ class btcchina extends Exchange {
     }
 
     public function create_market_request ($market) {
-        $request = array ();
+        $request = array();
         $field = ($market['plus']) ? 'symbol' : 'market';
         $request[$field] = $market['id'];
         return $request;
@@ -233,14 +233,14 @@ class btcchina extends Exchange {
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $market['symbol'],
             'type' => null,
-            'side' => strtolower ($trade['side']),
+            'side' => strtolower($trade['side']),
             'price' => $trade['price'],
             'amount' => $trade['size'],
         );
     }
 
     public function parse_trades_plus ($trades, $market = null) {
-        $result = array ();
+        $result = array();
         for ($i = 0; $i < count ($trades); $i++) {
             $result[] = $this->parse_trade_plus ($trades[$i], $market);
         }
@@ -270,8 +270,8 @@ class btcchina extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         $method = 'privatePost' . $this->capitalize ($side) . 'Order2';
-        $order = array ();
-        $id = strtoupper ($market['id']);
+        $order = array();
+        $id = strtoupper($market['id']);
         if ($type === 'market') {
             $order['params'] = array ( null, $amount, $id );
         } else {
@@ -300,8 +300,8 @@ class btcchina extends Exchange {
         $url = $this->urls['api'][$api] . '/' . $path;
         if ($api === 'private') {
             $this->check_required_credentials();
-            $p = array ();
-            if (is_array ($params) && array_key_exists ('params', $params))
+            $p = array();
+            if (is_array($params) && array_key_exists('params', $params))
                 $p = $params['params'];
             $nonce = $this->nonce ();
             $request = array (
@@ -309,12 +309,12 @@ class btcchina extends Exchange {
                 'id' => $nonce,
                 'params' => $p,
             );
-            $p = implode (',', $p);
+            $p = implode(',', $p);
             $body = $this->json ($request);
             $query = (
                 'tonce=' . $nonce +
                 '&accesskey=' . $this->apiKey +
-                '&requestmethod=' . strtolower ($method) +
+                '&requestmethod=' . strtolower($method) +
                 '&id=' . $nonce +
                 '&$method=' . $path +
                 '&$params=' . $p
@@ -329,6 +329,6 @@ class btcchina extends Exchange {
             if ($params)
                 $url .= '?' . $this->urlencode ($params);
         }
-        return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
+        return array( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 }

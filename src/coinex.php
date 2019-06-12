@@ -124,8 +124,8 @@ class coinex extends Exchange {
     public function fetch_markets ($params = array ()) {
         $response = $this->webGetResMarket ();
         $markets = $response['data']['market_info'];
-        $result = array ();
-        $keys = is_array ($markets) ? array_keys ($markets) : array ();
+        $result = array();
+        $keys = is_array($markets) ? array_keys($markets) : array();
         for ($i = 0; $i < count ($keys); $i++) {
             $key = $keys[$i];
             $market = $markets[$key];
@@ -212,8 +212,8 @@ class coinex extends Exchange {
         $data = $response['data'];
         $timestamp = $data['date'];
         $tickers = $data['ticker'];
-        $ids = is_array ($tickers) ? array_keys ($tickers) : array ();
-        $result = array ();
+        $ids = is_array($tickers) ? array_keys($tickers) : array();
+        $result = array();
         for ($i = 0; $i < count ($ids); $i++) {
             $id = $ids[$i];
             $market = $this->markets_by_id[$id];
@@ -348,9 +348,9 @@ class coinex extends Exchange {
         //       "message" => "Ok"
         //     }
         //
-        $result = array ( 'info' => $response );
+        $result = array( 'info' => $response );
         $balances = $response['data'];
-        $currencies = is_array ($balances) ? array_keys ($balances) : array ();
+        $currencies = is_array($balances) ? array_keys($balances) : array();
         for ($i = 0; $i < count ($currencies); $i++) {
             $id = $currencies[$i];
             $balance = $balances[$id];
@@ -373,7 +373,7 @@ class coinex extends Exchange {
             'done' => 'closed',
             'cancel' => 'canceled',
         );
-        if (is_array ($statuses) && array_key_exists ($status, $statuses))
+        if (is_array($statuses) && array_key_exists($status, $statuses))
             return $statuses[$status];
         return $status;
     }
@@ -459,7 +459,7 @@ class coinex extends Exchange {
             if ($side === 'buy') {
                 if ($this->options['createMarketBuyOrderRequiresPrice']) {
                     if ($price === null) {
-                        throw new InvalidOrder ($this->id . " createOrder() requires the $price argument with $market buy orders to calculate total $order cost ($amount to spend), where cost = $amount * $price-> Supply a $price argument to createOrder() call if you want the cost to be calculated for you from $price and $amount, or, alternatively, add .options['createMarketBuyOrderRequiresPrice'] = false to supply the cost in the $amount argument (the exchange-specific behaviour)");
+                        throw new InvalidOrder($this->id . " createOrder() requires the $price argument with $market buy orders to calculate total $order cost ($amount to spend), where cost = $amount * $price-> Supply a $price argument to createOrder() call if you want the cost to be calculated for you from $price and $amount, or, alternatively, add .options['createMarketBuyOrderRequiresPrice'] = false to supply the cost in the $amount argument (the exchange-specific behaviour)");
                     } else {
                         $price = floatval ($price); // this line is deprecated
                         $amount = $amount * $price;
@@ -498,7 +498,7 @@ class coinex extends Exchange {
 
     public function fetch_order ($id, $symbol = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired ($this->id . ' fetchOrder requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' fetchOrder requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market ($symbol);
@@ -612,7 +612,7 @@ class coinex extends Exchange {
         //         "message" => "Ok"
         //     }
         //
-        $transaction = $this->safe_value($response, 'data', array ());
+        $transaction = $this->safe_value($response, 'data', array());
         return $this->parse_transaction ($transaction, $currency);
     }
 
@@ -686,7 +686,7 @@ class coinex extends Exchange {
         }
         $code = null;
         $currencyId = $this->safe_string($transaction, 'coin_type');
-        if (is_array ($this->currencies_by_id) && array_key_exists ($currencyId, $this->currencies_by_id)) {
+        if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
             $currency = $this->currencies_by_id[$currencyId];
         } else {
             $code = $this->common_currency_code($currencyId);
@@ -698,7 +698,7 @@ class coinex extends Exchange {
         if ($timestamp !== null) {
             $timestamp = $timestamp * 1000;
         }
-        $type = (is_array ($transaction) && array_key_exists ('coin_withdraw_id', $transaction)) ? 'withdraw' : 'deposit';
+        $type = (is_array($transaction) && array_key_exists('coin_withdraw_id', $transaction)) ? 'withdraw' : 'deposit';
         $status = $this->parse_transaction_status ($this->safe_string($transaction, 'status'), $type);
         $amount = $this->safe_float($transaction, 'amount');
         $feeCost = $this->safe_float($transaction, 'tx_fee');
@@ -728,7 +728,7 @@ class coinex extends Exchange {
 
     public function fetch_withdrawals ($code = null, $since = null, $limit = null, $params = array ()) {
         if ($code === null) {
-            throw new ArgumentsRequired ($this->id . ' fetchWithdrawals requires a $currency $code argument');
+            throw new ArgumentsRequired($this->id . ' fetchWithdrawals requires a $currency $code argument');
         }
         $currency = $this->currency ($code);
         $request = array (
@@ -787,7 +787,7 @@ class coinex extends Exchange {
 
     public function fetch_deposits ($code = null, $since = null, $limit = null, $params = array ()) {
         if ($code === null) {
-            throw new ArgumentsRequired ($this->id . ' fetchDeposits requires a $currency $code argument');
+            throw new ArgumentsRequired($this->id . ' fetchDeposits requires a $currency $code argument');
         }
         $currency = $this->currency ($code);
         $request = array (
@@ -853,7 +853,7 @@ class coinex extends Exchange {
             $urlencoded = $this->urlencode ($query);
             $signature = $this->hash ($this->encode ($urlencoded . '&secret_key=' . $this->secret));
             $headers = array (
-                'Authorization' => strtoupper ($signature),
+                'Authorization' => strtoupper($signature),
                 'Content-Type' => 'application/json',
             );
             if (($method === 'GET') || ($method === 'DELETE')) {
@@ -862,7 +862,7 @@ class coinex extends Exchange {
                 $body = $this->json ($query);
             }
         }
-        return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
+        return array( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
@@ -880,7 +880,7 @@ class coinex extends Exchange {
                 '606' => '\\ccxt\\InvalidOrder',
             );
             $ErrorClass = $this->safe_value($responseCodes, $code, '\\ccxt\\ExchangeError');
-            throw new $ErrorClass ($response['message']);
+            throw new $ErrorClass($response['message']);
         }
         return $response;
     }

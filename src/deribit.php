@@ -24,7 +24,7 @@ class deribit extends Exchange {
                 'fetchMyTrades' => true,
                 'fetchTickers' => false,
             ),
-            'timeframes' => array (),
+            'timeframes' => array(),
             'urls' => array (
                 'test' => 'https://test.deribit.com',
                 'logo' => 'https://user-images.githubusercontent.com/1294454/41933112-9e2dd65a-798b-11e8-8440-5bab2959fcb8.jpg',
@@ -135,7 +135,7 @@ class deribit extends Exchange {
     public function fetch_markets ($params = array ()) {
         $marketsResponse = $this->publicGetGetinstruments ();
         $markets = $marketsResponse['result'];
-        $result = array ();
+        $result = array();
         for ($p = 0; $p < count ($markets); $p++) {
             $market = $markets[$p];
             $id = $market['instrumentName'];
@@ -346,14 +346,14 @@ class deribit extends Exchange {
         //         "message":""
         //     }
         //
-        $result = $this->safe_value($response, 'result', array ());
+        $result = $this->safe_value($response, 'result', array());
         return $this->parse_trades($result, $market, $since, $limit);
     }
 
     public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $response = $this->publicGetGetorderbook (array ( 'instrument' => $market['id'] ));
+        $response = $this->publicGetGetorderbook (array( 'instrument' => $market['id'] ));
         $timestamp = intval ($response['usOut'] / 1000);
         $orderbook = $this->parse_order_book($response['result'], $timestamp, 'bids', 'asks', 'price', 'quantity');
         return array_merge ($orderbook, array (
@@ -367,7 +367,7 @@ class deribit extends Exchange {
             'cancelled' => 'canceled',
             'filled' => 'closed',
         );
-        if (is_array ($statuses) && array_key_exists ($status, $statuses)) {
+        if (is_array($statuses) && array_key_exists($status, $statuses)) {
             return $statuses[$status];
         }
         return $status;
@@ -395,7 +395,7 @@ class deribit extends Exchange {
         //         "tstamp" => 1494492913288,     // $timestamp of the last $order state change, documented, but may be missing in the actual response
         //         "modified" => 1494492913289,   // $timestamp of the last db write operation, e.g. trade that doesn't change $order $status, documented, but may missing in the actual response
         //         "adv" => false                 // advanced $type (false, or "usd" or "implv")
-        //         "trades" => array (),                // not documented, injected from the outside of the parseOrder method into the $order
+        //         "trades" => array(),                // not documented, injected from the outside of the parseOrder method into the $order
         //     }
         //
         $timestamp = $this->safe_integer($order, 'created');
@@ -426,7 +426,7 @@ class deribit extends Exchange {
         $status = $this->parse_order_status($this->safe_string($order, 'state'));
         $side = $this->safe_string($order, 'direction');
         if ($side !== null) {
-            $side = strtolower ($side);
+            $side = strtolower($side);
         }
         $feeCost = $this->safe_float($order, 'commission');
         if ($feeCost !== null) {
@@ -439,7 +439,7 @@ class deribit extends Exchange {
         $type = $this->safe_string($order, 'type');
         $marketId = $this->safe_string($order, 'instrument');
         $symbol = null;
-        if (is_array ($this->markets_by_id) && array_key_exists ($marketId, $this->markets_by_id)) {
+        if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
             $market = $this->markets_by_id[$marketId];
             $symbol = $market['symbol'];
         }
@@ -466,10 +466,10 @@ class deribit extends Exchange {
 
     public function fetch_order ($id, $symbol = null, $params = array ()) {
         $this->load_markets();
-        $response = $this->privateGetOrderstate (array ( 'orderId' => $id ));
+        $response = $this->privateGetOrderstate (array( 'orderId' => $id ));
         $result = $this->safe_value($response, 'result');
         if ($result === null) {
-            throw new OrderNotFound ($this->id . ' fetchOrder() ' . $this->json ($response));
+            throw new OrderNotFound($this->id . ' fetchOrder() ' . $this->json ($response));
         }
         return $this->parse_order($result);
     }
@@ -509,13 +509,13 @@ class deribit extends Exchange {
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
         $this->load_markets();
-        $response = $this->privatePostCancel (array_merge (array ( 'orderId' => $id ), $params));
+        $response = $this->privatePostCancel (array_merge (array( 'orderId' => $id ), $params));
         return $this->parse_order($response['result']['order']);
     }
 
     public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired ($this->id . ' fetchClosedOrders() requires a `$symbol` argument');
+            throw new ArgumentsRequired($this->id . ' fetchClosedOrders() requires a `$symbol` argument');
         }
         $this->load_markets();
         $market = $this->market ($symbol);
@@ -528,7 +528,7 @@ class deribit extends Exchange {
 
     public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired ($this->id . ' fetchClosedOrders() requires a `$symbol` argument');
+            throw new ArgumentsRequired($this->id . ' fetchClosedOrders() requires a `$symbol` argument');
         }
         $this->load_markets();
         $market = $this->market ($symbol);
@@ -580,7 +580,7 @@ class deribit extends Exchange {
         //         "has_more":true
         //     }
         //
-        $trades = $this->safe_value($response, 'result', array ());
+        $trades = $this->safe_value($response, 'result', array());
         return $this->parse_trades($trades, $market, $since, $limit);
     }
 
@@ -615,7 +615,7 @@ class deribit extends Exchange {
                 $url .= '?' . $this->urlencode ($params);
             }
         }
-        return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
+        return array( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
     public function handle_errors ($httpCode, $reason, $url, $method, $headers, $body, $response) {
@@ -623,16 +623,16 @@ class deribit extends Exchange {
             return; // fallback to default $error handler
         }
         //
-        //     array ("usOut":1535877098645376,"usIn":1535877098643364,"usDiff":2012,"testnet":false,"success":false,"message":"order_not_found","$error":10004)
+        //     array("usOut":1535877098645376,"usIn":1535877098643364,"usDiff":2012,"testnet":false,"success":false,"message":"order_not_found","$error":10004)
         //
         $error = $this->safe_string($response, 'error');
         if (($error !== null) && ($error !== '0')) {
             $feedback = $this->id . ' ' . $body;
             $exceptions = $this->exceptions;
-            if (is_array ($exceptions) && array_key_exists ($error, $exceptions)) {
-                throw new $exceptions[$error] ($feedback);
+            if (is_array($exceptions) && array_key_exists($error, $exceptions)) {
+                throw new $exceptions[$error]($feedback);
             }
-            throw new ExchangeError ($feedback); // unknown message
+            throw new ExchangeError($feedback); // unknown message
         }
     }
 }

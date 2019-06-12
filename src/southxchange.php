@@ -64,7 +64,7 @@ class southxchange extends Exchange {
 
     public function fetch_markets ($params = array ()) {
         $markets = $this->publicGetMarkets ();
-        $result = array ();
+        $result = array();
         for ($p = 0; $p < count ($markets); $p++) {
             $market = $markets[$p];
             $baseId = $market[0];
@@ -91,12 +91,12 @@ class southxchange extends Exchange {
         $this->load_markets();
         $balances = $this->privatePostListBalances ();
         if (!$balances)
-            throw new ExchangeError ($this->id . ' fetchBalance got an unrecognized response');
-        $result = array ( 'info' => $balances );
+            throw new ExchangeError($this->id . ' fetchBalance got an unrecognized response');
+        $result = array( 'info' => $balances );
         for ($b = 0; $b < count ($balances); $b++) {
             $balance = $balances[$b];
             $currencyId = $balance['Currency'];
-            $uppercase = strtoupper ($currencyId);
+            $uppercase = strtoupper($currencyId);
             $currency = $this->currencies_by_id[$uppercase];
             $code = $currency['code'];
             $free = floatval ($balance['Available']);
@@ -156,13 +156,13 @@ class southxchange extends Exchange {
         $this->load_markets();
         $response = $this->publicGetPrices ($params);
         $tickers = $this->index_by($response, 'Market');
-        $ids = is_array ($tickers) ? array_keys ($tickers) : array ();
-        $result = array ();
+        $ids = is_array($tickers) ? array_keys($tickers) : array();
+        $result = array();
         for ($i = 0; $i < count ($ids); $i++) {
             $id = $ids[$i];
             $symbol = $id;
             $market = null;
-            if (is_array ($this->markets_by_id) && array_key_exists ($id, $this->markets_by_id)) {
+            if (is_array($this->markets_by_id) && array_key_exists($id, $this->markets_by_id)) {
                 $market = $this->markets_by_id[$id];
                 $symbol = $market['symbol'];
             }
@@ -220,7 +220,7 @@ class southxchange extends Exchange {
             if ($remaining !== null)
                 $filled = $amount - $remaining;
         }
-        $orderType = strtolower ($order['Type']);
+        $orderType = strtolower($order['Type']);
         $result = array (
             'info' => $order,
             'id' => (string) $order['Code'],
@@ -281,7 +281,7 @@ class southxchange extends Exchange {
         $response = $this->privatePostGeneratenewaddress (array_merge (array (
             'currency' => $currency['id'],
         ), $params));
-        $parts = explode ('|', $response);
+        $parts = explode('|', $response);
         $numParts = is_array ($parts) ? count ($parts) : 0;
         $address = $parts[0];
         $this->check_address($address);
@@ -331,6 +331,6 @@ class southxchange extends Exchange {
                 'Hash' => $this->hmac ($this->encode ($body), $this->encode ($this->secret), 'sha512'),
             );
         }
-        return array ( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
+        return array( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 }
