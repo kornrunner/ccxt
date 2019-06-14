@@ -203,8 +203,9 @@ class zaif extends Exchange {
         $vwap = $ticker['vwap'];
         $baseVolume = $ticker['volume'];
         $quoteVolume = null;
-        if ($baseVolume !== null && $vwap !== null)
+        if ($baseVolume !== null && $vwap !== null) {
             $quoteVolume = $baseVolume * $vwap;
+        }
         $last = $ticker['last'];
         return array (
             'symbol' => $symbol,
@@ -237,8 +238,9 @@ class zaif extends Exchange {
         $id = $this->safe_string($trade, 'tid', $id);
         $price = $this->safe_float($trade, 'price');
         $amount = $this->safe_float($trade, 'amount');
-        if (!$market)
+        if (!$market) {
             $market = $this->markets_by_id[$trade['currency_pair']];
+        }
         return array (
             'id' => (string) $id,
             'info' => $trade,
@@ -270,8 +272,9 @@ class zaif extends Exchange {
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
-        if ($type === 'market')
+        if ($type !== 'limit') {
             throw new ExchangeError($this->id . ' allows limit orders only');
+        }
         $response = $this->privatePostTrade (array_merge (array (
             'currency_pair' => $this->market_id($symbol),
             'action' => ($side === 'buy') ? 'bid' : 'ask',
@@ -293,8 +296,9 @@ class zaif extends Exchange {
     public function parse_order ($order, $market = null) {
         $side = ($order['action'] === 'bid') ? 'buy' : 'sell';
         $timestamp = intval ($order['timestamp']) * 1000;
-        if (!$market)
+        if (!$market) {
             $market = $this->markets_by_id[$order['currency_pair']];
+        }
         $price = $order['price'];
         $amount = $order['amount'];
         return array (
