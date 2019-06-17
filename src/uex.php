@@ -171,7 +171,7 @@ class uex extends Exchange {
     }
 
     public function fetch_markets ($params = array ()) {
-        $response = $this->publicGetCommonSymbols ();
+        $response = $this->publicGetCommonSymbols ($params);
         //
         //     { code =>   "0",
         //        msg =>   "suc",
@@ -198,10 +198,8 @@ class uex extends Exchange {
             $id = $market['symbol'];
             $baseId = $market['base_coin'];
             $quoteId = $market['count_coin'];
-            $base = strtoupper($baseId);
-            $quote = strtoupper($quoteId);
-            $base = $this->common_currency_code($base);
-            $quote = $this->common_currency_code($quote);
+            $base = $this->common_currency_code(strtoupper($baseId));
+            $quote = $this->common_currency_code(strtoupper($quoteId));
             $symbol = $base . '/' . $quote;
             $precision = array (
                 'amount' => $market['amount_precision'],

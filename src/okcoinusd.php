@@ -456,7 +456,7 @@ class okcoinusd extends Exchange {
                     $active = $market['online'] !== 0;
                 } else {
                     $contractId = $this->safe_string($contract, 'id');
-                    $symbol = $base . '-' . $quote . '-' . mb_substr ($contractId, 2, 8);
+                    $symbol = $base . '-' . $quote . '-' . mb_substr($contractId, 2, 8 - 2);
                     $contractType = $this->safe_string($this->options['contractTypes'], $type);
                     $type = 'future';
                     $spot = false;
@@ -523,7 +523,10 @@ class okcoinusd extends Exchange {
         $request = array();
         $response = $this->publicGetTickers (array_merge ($request, $params));
         $tickers = $response['tickers'];
-        $timestamp = intval ($response['date']) * 1000;
+        $timestamp = $this->safe_integer($response, 'date');
+        if ($timestamp !== null) {
+            $timestamp *= 1000;
+        }
         $result = array();
         for ($i = 0; $i < count ($tickers); $i++) {
             $ticker = $tickers[$i];
@@ -538,7 +541,7 @@ class okcoinusd extends Exchange {
         $this->load_markets();
         $request = array();
         $response = $this->webGetSpotMarketsTickers (array_merge ($request, $params));
-        $tickers = $response['data'];
+        $tickers = $this->safe_value($response, 'data');
         $result = array();
         for ($i = 0; $i < count ($tickers); $i++) {
             $ticker = $this->parse_ticker($tickers[$i]);
