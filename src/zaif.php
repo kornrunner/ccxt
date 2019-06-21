@@ -168,13 +168,19 @@ class zaif extends Exchange {
     public function fetch_balance ($params = array ()) {
         $this->load_markets();
         $response = $this->privatePostGetInfo ($params);
-        $balances = $response['return'];
-        $result = array( 'info' => $balances );
-        $currencies = is_array($balances['funds']) ? array_keys($balances['funds']) : array();
-        for ($i = 0; $i < count ($currencies); $i++) {
-            $currencyId = $currencies[$i];
-            $balance = $this->safe_value($balances['funds'], $currencyId);
-            $code = $this->common_currency_code(strtoupper($currencyId));
+        $balances = $this->safe_value($response, 'return', array());
+        $result = array( 'info' => $response );
+        $funds = $this->safe_value($balances, 'funds', array());
+        $currencyIds = is_array($funds) ? array_keys($funds) : array();
+        for ($i = 0; $i < count ($currencyIds); $i++) {
+            $currencyId = $currencyIds[$i];
+            $balance = $this->safe_value($funds, $currencyId);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code(strtoupper($currencyId));
+            }
             $account = array (
                 'free' => $balance,
                 'used' => 0.0,
@@ -272,9 +278,12 @@ class zaif extends Exchange {
             'symbol' => $symbol,
             'type' => null,
             'side' => $side,
+            'order' => null,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 

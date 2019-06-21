@@ -273,26 +273,26 @@ class lbank extends Exchange {
         $cost = null;
         if ($price !== null) {
             if ($amount !== null) {
-                $cost = $this->cost_to_precision($symbol, $price * $amount);
-                $cost = floatval ($cost);
+                $cost = floatval ($this->cost_to_precision($symbol, $price * $amount));
             }
         }
         $id = $this->safe_string($trade, 'tid');
         $type = null;
         $side = $this->safe_string($trade, 'type');
         return array (
+            'id' => $id,
+            'info' => $this->safe_value($trade, 'info', $trade),
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
-            'id' => $id,
             'order' => null,
             'type' => $type,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
             'fee' => null,
-            'info' => $this->safe_value($trade, 'info', $trade),
         );
     }
 
@@ -346,20 +346,46 @@ class lbank extends Exchange {
     public function fetch_balance ($params = array ()) {
         $this->load_markets();
         $response = $this->privatePostUserInfo ($params);
+        //
+        //     {
+        //         "$result":"true",
+        //         "$info":{
+        //             "$freeze":array (
+        //                 "iog":"0.00000000",
+        //                 "ssc":"0.00000000",
+        //                 "eon":"0.00000000",
+        //             ),
+        //             "$asset":array (
+        //                 "iog":"0.00000000",
+        //                 "ssc":"0.00000000",
+        //                 "eon":"0.00000000",
+        //             ),
+        //             "$free":array (
+        //                 "iog":"0.00000000",
+        //                 "ssc":"0.00000000",
+        //                 "eon":"0.00000000",
+        //             ),
+        //         }
+        //     }
+        //
         $result = array( 'info' => $response );
         $info = $this->safe_value($response, 'info', array());
         $free = $this->safe_value($info, 'free', array());
         $freeze = $this->safe_value($info, 'freeze', array());
-        $ids = is_array(array_merge ($free, $freeze)) ? array_keys(array_merge ($free, $freeze)) : array();
-        for ($i = 0; $i < count ($ids); $i++) {
-            $id = $ids[$i];
-            $code = $this->common_currency_code(strtoupper($id));
-            $account = array (
-                'free' => $this->safe_float($free, $id, 0.0),
-                'used' => $this->safe_float($freeze, $id, 0.0),
-                'total' => null,
-            );
-            $account['total'] = $this->sum ($account['free'], $account['used']);
+        $asset = $this->safe_value($info, 'asset', array());
+        $currencyIds = is_array($free) ? array_keys($free) : array();
+        for ($i = 0; $i < count ($currencyIds); $i++) {
+            $currencyId = $currencyIds[$i];
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code(strtoupper($currencyId));
+            }
+            $account = $this->account ();
+            $account['free'] = $this->safe_float($free, $currencyId);
+            $account['used'] = $this->safe_float($freeze, $currencyId);
+            $account['total'] = $this->safe_float($asset, $currencyId);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

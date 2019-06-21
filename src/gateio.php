@@ -23,7 +23,7 @@ class gateio extends Exchange {
                 'fetchTransactions' => true,
                 'createDepositAddress' => true,
                 'fetchDepositAddress' => true,
-                'fetchClosedOrders' => true,
+                'fetchClosedOrders' => false,
                 'fetchOHLCV' => true,
                 'fetchOpenOrders' => true,
                 'fetchOrderTrades' => true,
@@ -221,18 +221,15 @@ class gateio extends Exchange {
         $this->load_markets();
         $response = $this->privatePostBalances ($params);
         $result = array( 'info' => $response );
-        $codes = is_array($this->currencies) ? array_keys($this->currencies) : array();
         $available = $this->safe_value($response, 'available', array());
         $locked = $this->safe_value($response, 'locked', array());
-        for ($i = 0; $i < count ($codes); $i++) {
-            $code = $codes[$i];
-            $currency = $this->currencies[$code];
-            $currencyId = $currency['id'];
-            $uppercaseId = strtoupper($currencyId);
+        $currencyIds = is_array($available) ? array_keys($available) : array();
+        for ($i = 0; $i < count ($currencyIds); $i++) {
+            $currencyId = $currencyIds[$i];
+            $code = $this->common_currency_code(strtoupper($currencyId));
             $account = $this->account ();
-            $account['free'] = $this->safe_float($available, $uppercaseId);
-            $account['used'] = $this->safe_float($locked, $uppercaseId);
-            $account['total'] = $this->sum ($account['free'], $account['used']);
+            $account['free'] = $this->safe_float($available, $currencyId);
+            $account['used'] = $this->safe_float($locked, $currencyId);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -392,11 +389,8 @@ class gateio extends Exchange {
         return $this->parse_ticker($ticker, $market);
     }
 
-    public function parse_trade ($trade, $market) {
-        // public fetchTrades
-        $timestamp = $this->safe_integer($trade, 'timestamp');
-        // private fetchMyTrades
-        $timestamp = $this->safe_integer($trade, 'time_unix', $timestamp);
+    public function parse_trade ($trade, $market = null) {
+        $timestamp = $this->safe_integer_2($trade, 'timestamp', 'time_unix');
         if ($timestamp !== null) {
             $timestamp *= 1000;
         }
@@ -412,15 +406,20 @@ class gateio extends Exchange {
                 $cost = $price * $amount;
             }
         }
+        $symbol = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+        }
         return array (
             'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'symbol' => $market['symbol'],
+            'symbol' => $symbol,
             'order' => $orderId,
             'type' => null,
             'side' => $type,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,

@@ -113,16 +113,18 @@ class luno extends Exchange {
         for ($i = 0; $i < count ($wallets); $i++) {
             $wallet = $wallets[$i];
             $currencyId = $this->safe_string($wallet, 'asset');
-            $code = $this->common_currency_code($currencyId);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($currencyId);
+            }
             $reserved = $this->safe_float($wallet, 'reserved');
             $unconfirmed = $this->safe_float($wallet, 'unconfirmed');
             $balance = $this->safe_float($wallet, 'balance');
-            $account = array (
-                'free' => 0.0,
-                'used' => $this->sum ($reserved, $unconfirmed),
-                'total' => $this->sum ($balance, $unconfirmed),
-            );
-            $account['free'] = $account['total'] - $account['used'];
+            $account = $this->account ();
+            $account['used'] = $this->sum ($reserved, $unconfirmed);
+            $account['total'] = $this->sum ($balance, $unconfirmed);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

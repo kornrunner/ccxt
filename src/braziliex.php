@@ -362,19 +362,21 @@ class braziliex extends Exchange {
         $orderId = $this->safe_string($trade, 'order_number');
         $type = 'limit';
         $side = $this->safe_string($trade, 'type');
+        $id = $this->safe_string($trade, '_id');
         return array (
+            'id' => $id,
+            'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
-            'id' => $this->safe_string($trade, '_id'),
             'order' => $orderId,
             'type' => $type,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
             'fee' => null,
-            'info' => $trade,
         );
     }
 
@@ -397,12 +399,9 @@ class braziliex extends Exchange {
             $currencyId = $currencyIds[$i];
             $balance = $balances[$currencyId];
             $code = $this->common_currency_code($currencyId);
-            $account = array (
-                'free' => $this->safe_float($balance, 'available'),
-                'used' => 0.0,
-                'total' => $this->safe_float($balance, 'total'),
-            );
-            $account['used'] = $account['total'] - $account['free'];
+            $account = $this->account ();
+            $account['free'] = $this->safe_float($balance, 'available');
+            $account['total'] = $this->safe_float($balance, 'total');
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -569,6 +568,9 @@ class braziliex extends Exchange {
 
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
+        if ((gettype ($response) === 'string') && (strlen ($response) < 1)) {
+            throw new ExchangeError($this->id . ' returned empty response');
+        }
         if (is_array($response) && array_key_exists('success', $response)) {
             $success = $this->safe_integer($response, 'success');
             if ($success === 0) {

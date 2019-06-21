@@ -36,7 +36,7 @@ class cointiger extends huobipro {
                     'v2' => 'https://api.{hostname}/exchange/trading/api/v2',
                 ),
                 'www' => 'https://www.cointiger.pro',
-                'referral' => 'https://www.cointiger.pro/exchange/register.html?refCode=FfvDtt',
+                'referral' => 'https://www.cointiger.one/#/register?refCode=FfvDtt',
                 'doc' => 'https://github.com/cointiger/api-docs-en/wiki',
             ),
             'api' => array (
@@ -367,14 +367,15 @@ class cointiger extends huobipro {
             $symbol = $market['symbol'];
         }
         return array (
-            'info' => $trade,
             'id' => $id,
+            'info' => $trade,
             'order' => $orderId,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
@@ -485,16 +486,16 @@ class cointiger extends huobipro {
         $result = array( 'info' => $response );
         for ($i = 0; $i < count ($balances); $i++) {
             $balance = $balances[$i];
-            $id = $balance['coin'];
-            $code = strtoupper($id);
-            $code = $this->common_currency_code($code);
-            if (is_array($this->currencies_by_id) && array_key_exists($id, $this->currencies_by_id)) {
-                $code = $this->currencies_by_id[$id]['code'];
+            $currencyId = $this->safe_string($balance, 'coin');
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = strtoupper($currencyId);
             }
             $account = $this->account ();
             $account['used'] = $this->safe_float($balance, 'lock');
             $account['free'] = $this->safe_float($balance, 'normal');
-            $account['total'] = $this->sum ($account['used'], $account['free']);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

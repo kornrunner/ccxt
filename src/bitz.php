@@ -577,6 +577,7 @@ class bitz extends Exchange {
             'order' => null,
             'type' => 'limit',
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,

@@ -159,16 +159,19 @@ class bitflyer extends Exchange {
         //     )
         //
         $result = array( 'info' => $response );
-        $balances = array();
         for ($i = 0; $i < count ($response); $i++) {
             $balance = $response[$i];
             $currencyId = $this->safe_string($balance, 'currency_code');
-            $code = $this->common_currency_code($currencyId);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($currencyId);
+            }
             $account = $this->account ();
             $account['total'] = $this->safe_float($balance, 'amount');
             $account['free'] = $this->safe_float($balance, 'available');
-            $account['used'] = $account['total'] - $account['free'];
-            $balances[$code] = $account;
+            $result[$code] = $account;
         }
         return $this->parse_balance($result);
     }
@@ -225,7 +228,7 @@ class bitflyer extends Exchange {
         }
         $order = null;
         if ($side !== null) {
-            $side = strtolower($trade['side']);
+            $side = strtolower($side);
             $id = $side . '_child_order_acceptance_id';
             if (is_array($trade) && array_key_exists($id, $trade)) {
                 $order = $trade[$id];
@@ -257,9 +260,11 @@ class bitflyer extends Exchange {
             'order' => $order,
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 

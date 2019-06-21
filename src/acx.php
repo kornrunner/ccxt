@@ -142,14 +142,15 @@ class acx extends Exchange {
         for ($i = 0; $i < count ($balances); $i++) {
             $balance = $balances[$i];
             $currencyId = $this->safe_string($balance, 'currency');
-            $code = strtoupper($currencyId);
-            $code = $this->common_currency_code($code);
-            $account = array (
-                'free' => $this->safe_float($balance, 'balance'),
-                'used' => $this->safe_float($balance, 'locked'),
-                'total' => 0.0,
-            );
-            $account['total'] = $this->sum ($account['free'], $account['used']);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code(strtoupper($currencyId));
+            }
+            $account = $this->account ();
+            $account['free'] = $this->safe_float($balance, 'balance');
+            $account['used'] = $this->safe_float($balance, 'locked');
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -246,17 +247,24 @@ class acx extends Exchange {
     public function parse_trade ($trade, $market = null) {
         $timestamp = $this->parse8601 ($this->safe_string($trade, 'created_at'));
         $id = $this->safe_string($trade, 'tid');
+        $symbol = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+        }
         return array (
+            'info' => $trade,
             'id' => $id,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'symbol' => $market['symbol'],
+            'symbol' => $symbol,
             'type' => null,
             'side' => null,
+            'order' => null,
+            'takerOrMaker' => null,
             'price' => $this->safe_float($trade, 'price'),
             'amount' => $this->safe_float($trade, 'volume'),
             'cost' => $this->safe_float($trade, 'funds'),
-            'info' => $trade,
+            'fee' => null,
         );
     }
 

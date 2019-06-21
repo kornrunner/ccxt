@@ -327,18 +327,19 @@ class rightbtc extends Exchange {
             $side = 'sell';
         }
         return array (
+            'id' => $id,
+            'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
-            'id' => $id,
             'order' => $orderId,
             'type' => 'limit',
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
             'fee' => null,
-            'info' => $trade,
         );
     }
 
@@ -400,31 +401,20 @@ class rightbtc extends Exchange {
         //     }
         //
         $result = array( 'info' => $response );
-        $balances = $response['result'];
+        $balances = $this->safe_value($response, 'result', array());
         for ($i = 0; $i < count ($balances); $i++) {
             $balance = $balances[$i];
-            $currencyId = $balance['asset'];
-            $code = $this->common_currency_code($currencyId);
+            $currencyId = $this->safe_string($balance, 'asset');
+            $code = $currencyId;
             if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
                 $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($currencyId);
             }
-            $free = $this->divide_safe_float ($balance, 'balance', 1e8);
-            $used = $this->divide_safe_float ($balance, 'frozen', 1e8);
-            $total = $this->sum ($free, $used);
-            //
+            $account = $this->account ();
             // https://github.com/ccxt/ccxt/issues/3873
-            //
-            //     if ($total !== null) {
-            //         if ($used !== null) {
-            //             $free = $total - $used;
-            //         }
-            //     }
-            //
-            $account = array (
-                'free' => $free,
-                'used' => $used,
-                'total' => $total,
-            );
+            $account['free'] = $this->divide_safe_float ($balance, 'balance', 1e8);
+            $account['used'] = $this->divide_safe_float ($balance, 'frozen', 1e8);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

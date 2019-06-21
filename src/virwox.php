@@ -195,7 +195,7 @@ class virwox extends Exchange {
         );
     }
 
-    public function parse_trade ($trade, $symbol = null) {
+    public function parse_trade ($trade, $market = null) {
         $timestamp = $this->safe_integer($trade, 'time');
         if ($timestamp !== null) {
             $timestamp *= 1000;
@@ -209,6 +209,10 @@ class virwox extends Exchange {
                 $cost = $price * $amount;
             }
         }
+        $symbol = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+        }
         return array (
             'id' => $id,
             'timestamp' => $timestamp,
@@ -217,6 +221,7 @@ class virwox extends Exchange {
             'symbol' => $symbol,
             'type' => null,
             'side' => null,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
@@ -228,13 +233,14 @@ class virwox extends Exchange {
     public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $response = $this->publicGetGetRawTradeData (array_merge (array (
+        $request = array (
             'instrument' => $symbol,
             'timespan' => 3600,
-        ), $params));
+        );
+        $response = $this->publicGetGetRawTradeData (array_merge ($request, $params));
         $result = $this->safe_value($response, 'result', array());
         $trades = $this->safe_value($result, 'data', array());
-        return $this->parse_trades($trades, $market);
+        return $this->parse_trades($trades, $market, $since, $limit);
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {

@@ -697,13 +697,15 @@ class hitbtc2 extends hitbtc {
         for ($i = 0; $i < count ($response); $i++) {
             $balance = $response[$i];
             $currencyId = $this->safe_string($balance, 'currency');
-            $code = $this->common_currency_code($currencyId);
-            $account = array (
-                'free' => floatval ($balance['available']),
-                'used' => floatval ($balance['reserved']),
-                'total' => 0.0,
-            );
-            $account['total'] = $this->sum ($account['free'], $account['used']);
+            $code = strtoupper($currencyId);
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($code);
+            }
+            $account = $this->account ();
+            $account['free'] = $this->safe_float($balance, 'available');
+            $account['used'] = $this->safe_float($balance, 'reserved');
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -883,6 +885,7 @@ class hitbtc2 extends hitbtc {
             'symbol' => $symbol,
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,

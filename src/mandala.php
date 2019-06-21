@@ -477,18 +477,20 @@ class mandala extends Exchange {
         //         ),
         //     }
         //
-        $data = $this->safe_value($response, 'Data');
+        $data = $this->safe_value($response, 'Data', array());
         $result = array( 'info' => $response );
         for ($i = 0; $i < count ($data); $i++) {
             $balance = $data[$i];
-            $code = $this->common_currency_code($this->safe_string($balance, 'currency'));
+            $currencyId = $this->safe_string($balance, 'currency');
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($currencyId);
+            }
             $account = $this->account ();
-            $free = $this->safe_float($balance, 'balance', 0);
-            $used = $this->safe_float($balance, 'balanceInTrade', 0);
-            $total = $this->sum ($free, $used);
-            $account['free'] = $free;
-            $account['used'] = $used;
-            $account['total'] = $total;
+            $account['free'] = $this->safe_float($balance, 'balance');
+            $account['used'] = $this->safe_float($balance, 'balanceInTrade');
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -719,15 +721,15 @@ class mandala extends Exchange {
             );
         }
         return array (
+            'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
-            'id' => $id,
             'order' => $orderId,
             'type' => null,
-            'takerOrMaker' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,

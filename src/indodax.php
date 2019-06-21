@@ -108,17 +108,22 @@ class indodax extends Exchange {
     public function fetch_balance ($params = array ()) {
         $this->load_markets();
         $response = $this->privatePostGetInfo ($params);
-        $balance = $response['return'];
-        $result = array( 'info' => $balance );
-        $codes = is_array($this->currencies) ? array_keys($this->currencies) : array();
-        for ($i = 0; $i < count ($codes); $i++) {
-            $code = $codes[$i];
-            $currency = $this->currencies[$code];
-            $lowercase = $currency['id'];
+        $balances = $this->safe_value($response, 'return', array());
+        $free = $this->safe_value($balances, 'balance', array());
+        $used = $this->safe_value($balances, 'balance_hold', array());
+        $result = array( 'info' => $response );
+        $currencyIds = is_array($free) ? array_keys($free) : array();
+        for ($i = 0; $i < count ($currencyIds); $i++) {
+            $currencyId = $currencyIds[$i];
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($code, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code(strtoupper($currencyId));
+            }
             $account = $this->account ();
-            $account['free'] = $this->safe_float($balance['balance'], $lowercase, 0.0);
-            $account['used'] = $this->safe_float($balance['balance_hold'], $lowercase, 0.0);
-            $account['total'] = $this->sum ($account['free'], $account['used']);
+            $account['free'] = $this->safe_float($free, $currencyId);
+            $account['used'] = $this->safe_float($used, $currencyId);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -169,18 +174,40 @@ class indodax extends Exchange {
         );
     }
 
-    public function parse_trade ($trade, $market) {
-        $timestamp = intval ($trade['date']) * 1000;
+    public function parse_trade ($trade, $market = null) {
+        $timestamp = $this->safe_integer($trade, 'date');
+        if ($timestamp !== null) {
+            $timestamp *= 1000;
+        }
+        $id = $this->safe_string($trade, 'tid');
+        $symbol = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+        }
+        $type = null;
+        $side = $this->safe_string($trade, 'type');
+        $price = $this->safe_float($trade, 'price');
+        $amount = $this->safe_float($trade, 'amount');
+        $cost = null;
+        if ($price !== null) {
+            if ($amount !== null) {
+                $cost = $price * $amount;
+            }
+        }
         return array (
-            'id' => $trade['tid'],
+            'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'symbol' => $market['symbol'],
-            'type' => null,
-            'side' => $trade['type'],
-            'price' => $this->safe_float($trade, 'price'),
-            'amount' => $this->safe_float($trade, 'amount'),
+            'symbol' => $symbol,
+            'type' => $type,
+            'side' => $side,
+            'order' => null,
+            'takerOrMaker' => null,
+            'price' => $price,
+            'amount' => $amount,
+            'cost' => $cost,
+            'fee' => null,
         );
     }
 

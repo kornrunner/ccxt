@@ -274,7 +274,12 @@ class livecoin extends Exchange {
         for ($i = 0; $i < count ($response); $i++) {
             $balance = $response[$i];
             $currencyId = $this->safe_string($balance, 'currency');
-            $code = $this->common_currency_code($currencyId);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($currencyId);
+            }
             $account = null;
             if (is_array($result) && array_key_exists($code, $result)) {
                 $account = $result[$code];
@@ -383,7 +388,7 @@ class livecoin extends Exchange {
         return $this->parse_ticker($ticker, $market);
     }
 
-    public function parse_trade ($trade, $market) {
+    public function parse_trade ($trade, $market = null) {
         //
         // fetchTrades (public)
         //
@@ -401,7 +406,7 @@ class livecoin extends Exchange {
         //         "datetime" => 1435844369,
         //         "$id" => 30651619,
         //         "type" => "sell",
-        //         "symbol" => "BTC/EUR",
+        //         "$symbol" => "BTC/EUR",
         //         "$price" => 230,
         //         "quantity" => 0.1,
         //         "commission" => 0,
@@ -434,15 +439,20 @@ class livecoin extends Exchange {
                 $cost = $amount * $price;
             }
         }
+        $symbol = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+        }
         return array (
+            'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'symbol' => $market['symbol'],
-            'id' => $id,
+            'symbol' => $symbol,
             'order' => $orderId,
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,

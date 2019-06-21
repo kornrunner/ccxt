@@ -21,6 +21,7 @@ class bit2c extends Exchange {
                 'logo' => 'https://user-images.githubusercontent.com/1294454/27766119-3593220e-5ece-11e7-8b3a-5a041f6bcc3f.jpg',
                 'api' => 'https://bit2c.co.il',
                 'www' => 'https://www.bit2c.co.il',
+                'referral' => 'https://bit2c.co.il/Aff/63bfed10-e359-420c-ab5a-ad368dab0baf',
                 'doc' => array (
                     'https://www.bit2c.co.il/home/api',
                     'https://github.com/OferE/bit2c',
@@ -136,12 +137,11 @@ class bit2c extends Exchange {
         for ($i = 0; $i < count ($codes); $i++) {
             $code = $codes[$i];
             $account = $this->account ();
-            $currency = $this->currency ($code);
-            $uppercase = strtoupper($currency['id']);
+            $currencyId = $this->currencyId ($code);
+            $uppercase = strtoupper($currencyId);
             if (is_array($balance) && array_key_exists($uppercase, $balance)) {
                 $account['free'] = $this->safe_float($balance, 'AVAILABLE_' . $uppercase);
                 $account['total'] = $this->safe_float($balance, $uppercase);
-                $account['used'] = $account['total'] - $account['free'];
             }
             $result[$code] = $account;
         }
@@ -298,7 +298,6 @@ class bit2c extends Exchange {
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = null;
-        $method = 'privateGetOrderOrderhistory';
         $request = array();
         if ($limit !== null) {
             $request['take'] = $limit;
@@ -312,7 +311,7 @@ class bit2c extends Exchange {
             $market = $this->market ($symbol);
             $request['pair'] = $market['id'];
         }
-        $response = $this->$method (array_merge ($request, $params));
+        $response = $this->privateGetOrderOrderHistory (array_merge ($request, $params));
         return $this->parse_trades($response, $market, $since, $limit);
     }
 

@@ -108,12 +108,15 @@ class independentreserve extends Exchange {
         for ($i = 0; $i < count ($balances); $i++) {
             $balance = $balances[$i];
             $currencyId = $this->safe_string($balance, 'CurrencyCode');
-            $uppercase = strtoupper($currencyId);
-            $code = $this->common_currency_code($uppercase);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code(strtoupper($currencyId));
+            }
             $account = $this->account ();
-            $account['free'] = $balance['AvailableBalance'];
-            $account['total'] = $balance['TotalBalance'];
-            $account['used'] = $account['total'] - $account['free'];
+            $account['free'] = $this->safe_float($balance, 'AvailableBalance');
+            $account['total'] = $this->safe_float($balance, 'TotalBalance');
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -293,6 +296,12 @@ class independentreserve extends Exchange {
         $orderId = $this->safe_string($trade, 'OrderGuid');
         $price = $this->safe_float_2($trade, 'Price', 'SecondaryCurrencyTradePrice');
         $amount = $this->safe_float_2($trade, 'VolumeTraded', 'PrimaryCurrencyAmount');
+        $cost = null;
+        if ($price !== null) {
+            if ($amount !== null) {
+                $cost = $price * $amount;
+            }
+        }
         $symbol = null;
         if ($market !== null) {
             $symbol = $market['symbol'];
@@ -314,8 +323,10 @@ class independentreserve extends Exchange {
             'order' => $orderId,
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
+            'cost' => $cost,
             'fee' => null,
         );
     }

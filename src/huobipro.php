@@ -53,7 +53,7 @@ class huobipro extends Exchange {
                     'zendesk' => 'https://huobiglobal.zendesk.com/hc/en-us/articles',
                 ),
                 'www' => 'https://www.huobi.pro',
-                'referral' => 'https://www.huobi.br.com/en-us/topic/invited/?invite_code=rwrd3',
+                'referral' => 'https://www.huobi.co/en-us/topic/invited/?invite_code=rwrd3',
                 'doc' => 'https://github.com/huobiapi/API_Docs/wiki/REST_api_reference',
                 'fees' => 'https://www.huobi.pro/about/fee/',
             ),
@@ -442,15 +442,17 @@ class huobipro extends Exchange {
                 'currency' => $feeCurrency,
             );
         }
+        $id = $this->safe_string($trade, 'id');
         return array (
+            'id' => $id,
             'info' => $trade,
-            'id' => $this->safe_string($trade, 'id'),
             'order' => $order,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
@@ -605,13 +607,17 @@ class huobipro extends Exchange {
             'id' => $this->accounts[0]['id'],
         );
         $response = $this->$method (array_merge ($request, $params));
-        $balances = $this->safe_value($response['data'], 'list');
+        $balances = $this->safe_value($response['data'], 'list', array());
         $result = array( 'info' => $response );
         for ($i = 0; $i < count ($balances); $i++) {
             $balance = $balances[$i];
             $currencyId = $this->safe_string($balance, 'currency');
-            $uppercase = strtoupper($currencyId);
-            $code = $this->common_currency_code($uppercase);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code(strtoupper($currencyId));
+            }
             $account = null;
             if (is_array($result) && array_key_exists($code, $result)) {
                 $account = $result[$code];
@@ -624,7 +630,6 @@ class huobipro extends Exchange {
             if ($balance['type'] === 'frozen') {
                 $account['used'] = $this->safe_float($balance, 'balance');
             }
-            $account['total'] = $this->sum ($account['free'], $account['used']);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

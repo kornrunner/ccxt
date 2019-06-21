@@ -235,7 +235,6 @@ class zb extends Exchange {
             }
             $account['free'] = $this->safe_float($balance, 'available');
             $account['used'] = $this->safe_float($balance, 'freez');
-            $account['total'] = $this->sum ($account['free'], $account['used']);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -384,9 +383,12 @@ class zb extends Exchange {
             'symbol' => $symbol,
             'type' => null,
             'side' => $side,
+            'order' => null,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 

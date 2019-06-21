@@ -18,6 +18,7 @@ class bitbay extends Exchange {
                 'fetchMyTrades' => true,
             ),
             'urls' => array (
+                'referral' => 'https://auth.bitbay.net/ref/jHlbB4mIkdS1',
                 'logo' => 'https://user-images.githubusercontent.com/1294454/27766132-978a7bd8-5ece-11e7-9540-bc96d1e9bbb8.jpg',
                 'www' => 'https://bitbay.net',
                 'api' => array (
@@ -252,19 +253,18 @@ class bitbay extends Exchange {
         if ($balances === null) {
             throw new ExchangeError($this->id . ' empty $balance $response ' . $this->json ($response));
         }
-        $balance = $response['balances'];
-        $result = array( 'info' => $balance );
+        $result = array( 'info' => $response );
         $codes = is_array($this->currencies) ? array_keys($this->currencies) : array();
         for ($i = 0; $i < count ($codes); $i++) {
             $code = $codes[$i];
-            $currency = $this->currencies[$code];
-            $currencyId = $currency['id'];
-            $account = $this->account ();
-            $balance = $this->safe_value($balances, $currencyId, array());
-            $account['free'] = $this->safe_float($balance, 'available');
-            $account['used'] = $this->safe_float($balance, 'locked');
-            $account['total'] = $this->sum ($account['free'], $account['used']);
-            $result[$code] = $account;
+            $currencyId = $this->currencyId ($code);
+            $balance = $this->safe_value($balances, $currencyId);
+            if ($balance !== null) {
+                $account = $this->account ();
+                $account['free'] = $this->safe_float($balance, 'available');
+                $account['used'] = $this->safe_float($balance, 'locked');
+                $result[$code] = $account;
+            }
         }
         return $this->parse_balance($result);
     }
@@ -383,6 +383,15 @@ class bitbay extends Exchange {
     }
 
     public function parse_public_trade ($trade, $market = null) {
+        //
+        //     {
+        //         "date":1459608665,
+        //         "$price":0.02722571,
+        //         "$type":"sell",
+        //         "$amount":1.08112001,
+        //         "tid":"0"
+        //     }
+        //
         $timestamp = $this->safe_integer($trade, 'date');
         if ($timestamp !== null) {
             $timestamp *= 1000;
@@ -390,8 +399,8 @@ class bitbay extends Exchange {
         $id = $this->safe_string($trade, 'tid');
         $type = null;
         $side = $this->safe_string($trade, 'type');
-        $price = $this->safe_string($trade, 'price');
-        $amount = $this->safe_string($trade, 'amount');
+        $price = $this->safe_float($trade, 'price');
+        $amount = $this->safe_float($trade, 'amount');
         $cost = null;
         if ($amount !== null) {
             if ($price !== null) {
@@ -410,9 +419,12 @@ class bitbay extends Exchange {
             'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
+            'order' => null,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 
@@ -423,6 +435,31 @@ class bitbay extends Exchange {
             'id' => $market['id'],
         );
         $response = $this->publicGetIdTrades (array_merge ($request, $params));
+        //
+        //     array (
+        //         array (
+        //             "date":1459608665,
+        //             "price":0.02722571,
+        //             "type":"sell",
+        //             "amount":1.08112001,
+        //             "tid":"0"
+        //         ),
+        //         array (
+        //             "date":1459698930,
+        //             "price":0.029,
+        //             "type":"buy",
+        //             "amount":0.444188,
+        //             "tid":"1"
+        //         ),
+        //         {
+        //             "date":1459726670,
+        //             "price":0.029,
+        //             "type":"buy",
+        //             "amount":0.25459599,
+        //             "tid":"2"
+        //         }
+        //     )
+        //
         return $this->parse_trades($response, $market, $since, $limit);
     }
 

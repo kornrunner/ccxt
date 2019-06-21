@@ -663,17 +663,31 @@ class okcoinusd extends Exchange {
             $symbol = $market['symbol'];
         }
         $timestamp = $this->safe_integer($trade, 'date_ms');
+        $id = $this->safe_string($trade, 'tid');
+        $type = null;
+        $side = $this->safe_string($trade, 'type');
+        $price = $this->safe_float($trade, 'price');
+        $amount = $this->safe_float($trade, 'amount');
+        $cost = null;
+        if ($price !== null) {
+            if ($amount !== null) {
+                $cost = $price * $amount;
+            }
+        }
         return array (
+            'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
-            'id' => $this->safe_string($trade, 'tid'),
             'order' => null,
-            'type' => null,
-            'side' => $trade['type'],
-            'price' => $this->safe_float($trade, 'price'),
-            'amount' => $this->safe_float($trade, 'amount'),
+            'type' => $type,
+            'side' => $side,
+            'takerOrMaker' => null,
+            'price' => $price,
+            'amount' => $amount,
+            'cost' => $cost,
+            'fee' => null,
         );
     }
 
@@ -746,9 +760,8 @@ class okcoinusd extends Exchange {
                 $code = $this->common_currency_code($code);
             }
             $account = $this->account ();
-            $account['free'] = $this->safe_float($balances['free'], $id, 0.0);
-            $account['used'] = $this->safe_float($balances[$usedField], $id, 0.0);
-            $account['total'] = $this->sum ($account['free'], $account['used']);
+            $account['free'] = $this->safe_float($balances['free'], $id);
+            $account['used'] = $this->safe_float($balances[$usedField], $id);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

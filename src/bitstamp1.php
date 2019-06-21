@@ -142,18 +142,24 @@ class bitstamp1 extends Exchange {
                 $cost = $price * $amount;
             }
         }
+        $symbol = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+        }
         return array (
             'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'symbol' => $market['symbol'],
+            'symbol' => $symbol,
             'order' => $orderId,
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 
@@ -178,13 +184,10 @@ class bitstamp1 extends Exchange {
             $code = $codes[$i];
             $currency = $this->currency ($code);
             $currencyId = $currency['id'];
-            $total = $currencyId . '_balance';
-            $free = $currencyId . '_available';
-            $used = $currencyId . '_reserved';
             $account = $this->account ();
-            $account['free'] = $this->safe_float($balance, $free, 0.0);
-            $account['used'] = $this->safe_float($balance, $used, 0.0);
-            $account['total'] = $this->safe_float($balance, $total, 0.0);
+            $account['free'] = $this->safe_float($balance, $currencyId . '_available', 0.0);
+            $account['used'] = $this->safe_float($balance, $currencyId . '_reserved', 0.0);
+            $account['total'] = $this->safe_float($balance, $currencyId . '_balance', 0.0);
             $result[$currency] = $account;
         }
         return $this->parse_balance($result);

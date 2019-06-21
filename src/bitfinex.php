@@ -550,7 +550,6 @@ class bitfinex extends Exchange {
                     $account = $this->account ();
                     $account['free'] = $this->safe_float($balance, 'available');
                     $account['total'] = $this->safe_float($balance, 'amount');
-                    $account['used'] = $account['total'] - $account['free'];
                     $result[$code] = $account;
                 }
             }
@@ -685,6 +684,7 @@ class bitfinex extends Exchange {
             'type' => $type,
             'order' => $orderId,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,

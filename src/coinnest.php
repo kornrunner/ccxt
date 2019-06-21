@@ -180,24 +180,39 @@ class coinnest extends Exchange {
     }
 
     public function parse_trade ($trade, $market = null) {
-        $timestamp = $this->safe_integer($trade, 'date') * 1000;
+        $timestamp = $this->safe_integer($trade, 'date');
+        if ($timestamp !== null) {
+            $timestamp *= 1000;
+        }
         $price = $this->safe_float($trade, 'price');
         $amount = $this->safe_float($trade, 'amount');
-        $symbol = $market['symbol'];
-        $cost = $this->price_to_precision($symbol, $amount * $price);
+        $cost = null;
+        if ($price !== null) {
+            if ($amount !== null) {
+                $cost = $amount * $price;
+            }
+        }
+        $symbol = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+        }
+        $type = 'limit';
+        $side = $this->safe_string($trade, 'type');
+        $id = $this->safe_string($trade, 'tid');
         return array (
+            'id' => $id,
+            'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
-            'id' => $this->safe_string($trade, 'tid'),
             'order' => null,
-            'type' => 'limit',
-            'side' => $trade['type'],
+            'type' => $type,
+            'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
-            'cost' => floatval ($cost),
+            'cost' => $cost,
             'fee' => null,
-            'info' => $trade,
         );
     }
 
@@ -231,11 +246,7 @@ class coinnest extends Exchange {
             $uppercase = strtoupper($currencyId);
             $code = $this->common_currency_code($uppercase);
             if (!(is_array($result) && array_key_exists($code, $result))) {
-                $result[$code] = array (
-                    'free' => 0.0,
-                    'used' => 0.0,
-                    'total' => 0.0,
-                );
+                $result[$code] = $this->account ();
             }
             $type = ($type === 'reserved' ? 'used' : 'free');
             $result[$code][$type] = $this->safe_float($response, $key);

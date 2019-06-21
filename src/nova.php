@@ -154,17 +154,19 @@ class nova extends Exchange {
             }
         }
         return array (
+            'id' => null,
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'symbol' => $symbol,
-            'id' => null,
             'order' => null,
             'type' => $type,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 
@@ -186,7 +188,12 @@ class nova extends Exchange {
         for ($i = 0; $i < count ($balances); $i++) {
             $balance = $balances[$i];
             $currencyId = $this->safe_string($balance, 'currency');
-            $code = $this->common_currency_code($currencyId);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($currencyId);
+            }
             $lockbox = $this->safe_float($balance, 'amount_lockbox');
             $trades = $this->safe_float($balance, 'amount_trades');
             $account = array (

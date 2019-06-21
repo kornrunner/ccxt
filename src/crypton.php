@@ -200,8 +200,6 @@ class crypton extends Exchange {
         $marketId = $this->safe_string($trade, 'market');
         if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
             $market = $this->markets_by_id[$marketId];
-        } else {
-            $symbol = $this->parse_symbol ($marketId);
         }
         if ($symbol === null) {
             if ($market !== null) {
@@ -220,6 +218,15 @@ class crypton extends Exchange {
         }
         $id = $this->safe_string($trade, 'id');
         $side = $this->safe_string($trade, 'side');
+        $orderId = $this->safe_string($trade, 'orderId');
+        $price = $this->safe_float($trade, 'price');
+        $amount = $this->safe_float($trade, 'size');
+        $cost = null;
+        if ($price !== null) {
+            if ($amount !== null) {
+                $cost = $amount * $price;
+            }
+        }
         return array (
             'id' => $id,
             'info' => $trade,
@@ -228,9 +235,11 @@ class crypton extends Exchange {
             'symbol' => $symbol,
             'type' => null,
             'side' => $side,
-            'price' => $this->safe_float($trade, 'price'),
-            'amount' => $this->safe_float($trade, 'size'),
-            'order' => $this->safe_string($trade, 'orderId'),
+            'order' => $orderId,
+            'takerOrMaker' => null,
+            'price' => $price,
+            'amount' => $amount,
+            'cost' => $cost,
             'fee' => $fee,
         );
     }
@@ -245,6 +254,20 @@ class crypton extends Exchange {
             $request['limit'] = $limit;
         }
         $response = $this->publicGetMarketsIdTrades (array_merge ($request, $params));
+        //
+        //     {
+        //         "result":array (
+        //             {
+        //                 "id":4256381,
+        //                 "price":7901.56,
+        //                 "side":"buy",
+        //                 "size":0.75708114,
+        //                 "time":"2019-05-14T16:15:46.781653+00:00"
+        //             }
+        //         ),
+        //         "success":true
+        //     }
+        //
         return $this->parse_trades($response['result'], $market, $since, $limit);
     }
 

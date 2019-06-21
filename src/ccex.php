@@ -287,9 +287,11 @@ class ccex extends Exchange {
             'symbol' => $market['symbol'],
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 

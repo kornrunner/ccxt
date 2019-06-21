@@ -205,7 +205,12 @@ class negociecoins extends Exchange {
         for ($i = 0; $i < count ($balances); $i++) {
             $balance = $balances[$i];
             $currencyId = $this->safe_string($balance, 'name');
-            $code = $this->common_currency_code($currencyId);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($currencyId);
+            }
             $openOrders = $this->safe_float($balance, 'openOrders');
             $withdraw = $this->safe_float($balance, 'withdraw');
             $account = array (
@@ -213,7 +218,6 @@ class negociecoins extends Exchange {
                 'used' => $this->sum ($openOrders, $withdraw),
                 'total' => $this->safe_float($balance, 'available'),
             );
-            $account['used'] = $account['total'] - $account['free'];
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

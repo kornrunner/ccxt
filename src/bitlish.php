@@ -267,9 +267,11 @@ class bitlish extends Exchange {
             'order' => null,
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 
@@ -289,13 +291,16 @@ class bitlish extends Exchange {
         $currencyIds = is_array($response) ? array_keys($response) : array();
         for ($i = 0; $i < count ($currencyIds); $i++) {
             $currencyId = $currencyIds[$i];
-            $code = strtoupper($currencyId);
-            $code = $this->common_currency_code($code);
+            $code = $currencyId;
+            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
+                $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code(strtoupper($currencyId));
+            }
             $account = $this->account ();
             $balance = $this->safe_value($response, $currencyId, array());
             $account['free'] = $this->safe_float($balance, 'funds');
             $account['used'] = $this->safe_float($balance, 'holded');
-            $account['total'] = $this->sum ($account['free'], $account['used']);
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

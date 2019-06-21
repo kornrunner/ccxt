@@ -49,6 +49,7 @@ class cobinhood extends Exchange {
                 '1M' => '1M',
             ),
             'urls' => array (
+                'referral' => 'https://cobinhood.com?referrerId=a9d57842-99bb-4d7c-b668-0479a15a458b',
                 'logo' => 'https://user-images.githubusercontent.com/1294454/35755576-dee02e5c-0878-11e8-989f-1595d80ba47f.jpg',
                 'api' => 'https://api.cobinhood.com',
                 'www' => 'https://cobinhood.com',
@@ -388,6 +389,7 @@ class cobinhood extends Exchange {
             'order' => null,
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
@@ -457,12 +459,12 @@ class cobinhood extends Exchange {
             $code = $currencyId;
             if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
                 $code = $this->currencies_by_id[$currencyId]['code'];
+            } else {
+                $code = $this->common_currency_code($currencyId);
             }
-            $account = array (
-                'used' => floatval ($balance['on_order']),
-                'total' => floatval ($balance['total']),
-            );
-            $account['free'] = floatval ($account['total'] - $account['used']);
+            $account = $this->account ();
+            $account['used'] = $this->safe_float($balance, 'on_order');
+            $account['total'] = $this->safe_float($balance, 'total');
             $result[$code] = $account;
         }
         return $this->parse_balance($result);

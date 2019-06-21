@@ -112,12 +112,9 @@ class bxinth extends Exchange {
             $currencyId = $currencyIds[$i];
             $code = $this->common_currency_code($currencyId);
             $balance = $this->safe_value($balances, $currencyId, array());
-            $account = array (
-                'free' => $this->safe_float($balance, 'available'),
-                'used' => 0.0,
-                'total' => $this->safe_float($balance, 'total'),
-            );
-            $account['used'] = $account['total'] - $account['free'];
+            $account = $this->account ();
+            $account['free'] = $this->safe_float($balance, 'available');
+            $account['total'] = $this->safe_float($balance, 'total');
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -190,7 +187,7 @@ class bxinth extends Exchange {
         return $this->parse_ticker($ticker, $market);
     }
 
-    public function parse_trade ($trade, $market) {
+    public function parse_trade ($trade, $market = null) {
         $date = $this->safe_string($trade, 'trade_date');
         $timestamp = null;
         if ($date !== null) {
@@ -208,18 +205,24 @@ class bxinth extends Exchange {
                 $cost = $amount * $price;
             }
         }
+        $symbol = null;
+        if ($market !== null) {
+            $symbol = $market['symbol'];
+        }
         return array (
             'id' => $id,
             'info' => $trade,
             'order' => $orderId,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'symbol' => $market['symbol'],
+            'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
             'price' => $price,
+            'takerOrMaker' => null,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 

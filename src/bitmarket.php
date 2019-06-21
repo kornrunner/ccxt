@@ -173,6 +173,13 @@ class bitmarket extends Exchange {
                     ),
                 ),
             ),
+            'exceptions' => array (
+                'exact' => array (
+                    '501' => '\\ccxt\\AuthenticationError', // array("error":501,"errorMsg":"Invalid API key","time":1560869976)
+                ),
+                'broad' => array (
+                ),
+            ),
         ));
     }
 
@@ -183,17 +190,18 @@ class bitmarket extends Exchange {
         $balances = $this->safe_value($data, 'balances', array());
         $available = $this->safe_value($balances, 'available', array());
         $blocked = $this->safe_value($balances, 'blocked', array());
-        $result = array( 'info' => $data );
+        $result = array( 'info' => $response );
         $codes = is_array($this->currencies) ? array_keys($this->currencies) : array();
         for ($i = 0; $i < count ($codes); $i++) {
             $code = $codes[$i];
-            $currency = $this->currency ($code);
-            $currencyId = $currency['id'];
-            $account = $this->account ();
-            $account['free'] = $this->safe_float($available, $currencyId);
-            $account['used'] = $this->safe_float($blocked, $currencyId);
-            $account['total'] = $this->sum ($account['free'], $account['used']);
-            $result[$code] = $account;
+            $currencyId = $this->currencyId ($code);
+            $free = $this->safe_float($available, $currencyId);
+            if ($free !== null) {
+                $account = $this->account ();
+                $account['free'] = $this->safe_float($available, $currencyId);
+                $account['used'] = $this->safe_float($blocked, $currencyId);
+                $result[$code] = $account;
+            }
         }
         return $this->parse_balance($result);
     }
@@ -273,9 +281,11 @@ class bitmarket extends Exchange {
             'order' => null,
             'type' => null,
             'side' => $side,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
+            'fee' => null,
         );
     }
 
@@ -402,5 +412,29 @@ class bitmarket extends Exchange {
             );
         }
         return array( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
+    }
+
+    public function handle_errors ($httpCode, $reason, $url, $method, $headers, $body, $response) {
+        if ($response === null) {
+            return; // fallback to default error handler
+        }
+        //
+        //     array("error":501,"errorMsg":"Invalid API key","time":1560869976)
+        //
+        $code = $this->safe_string($response, 'error');
+        $message = $this->safe_string($response, 'errorMsg');
+        $feedback = $this->id . ' ' . $this->json ($response);
+        $exact = $this->exceptions['exact'];
+        if (is_array($exact) && array_key_exists($code, $exact)) {
+            throw new $exact[$code]($feedback);
+        } else if (is_array($exact) && array_key_exists($message, $exact)) {
+            throw new $exact[$message]($feedback);
+        }
+        $broad = $this->exceptions['broad'];
+        $broadKey = $this->findBroadlyMatchedKey ($broad, $message);
+        if ($broadKey !== null) {
+            throw new $broad[$broadKey]($feedback);
+        }
+        // throw new ExchangeError($feedback); // unknown message
     }
 }

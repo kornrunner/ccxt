@@ -52,7 +52,7 @@ class bibox extends Exchange {
                     'https://github.com/Biboxcom/api_reference/wiki/api_reference',
                 ),
                 'fees' => 'https://bibox.zendesk.com/hc/en-us/articles/115004417013-Fee-Structure-on-Bibox',
-                'referral' => 'https://www.bibox.com/signPage?id=11114745&lang=en',
+                'referral' => 'https://www.bibox.com/signPage?id=11468678&lang=en',
             ),
             'api' => array (
                 'public' => array (
@@ -402,7 +402,7 @@ class bibox extends Exchange {
     public function fetch_balance ($params = array ()) {
         $this->load_markets();
         $request = array (
-            'cmd' => 'transfer/assets',
+            'cmd' => 'transfer/mainAssets',
             'body' => array_merge (array (
                 'select' => 1,
             ), $params),
@@ -436,7 +436,6 @@ class bibox extends Exchange {
             } else {
                 $account['free'] = $this->safe_float($balance, 'balance');
                 $account['used'] = $this->safe_float($balance, 'freeze');
-                $account['total'] = $this->sum ($account['free'], $account['used']);
             }
             $result[$code] = $account;
         }
@@ -620,7 +619,8 @@ class bibox extends Exchange {
         $request = array (
             'cmd' => 'orderpending/order',
             'body' => array_merge (array (
-                'id' => $id,
+                'id' => (string) $id,
+                'account_type' => 0, // 0 = spot account
             ), $params),
         );
         $response = $this->privatePostOrderpending ($request);
@@ -838,7 +838,7 @@ class bibox extends Exchange {
             $code = $codes[$i];
             $currency = $this->currency ($code);
             $request = array (
-                'cmd' => 'transfer/transferOutInfo',
+                'cmd' => 'transfer/coinConfig',
                 'body' => array_merge (array (
                     'coin_symbol' => $currency['id'],
                 ), $params),
