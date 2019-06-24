@@ -120,8 +120,8 @@ class theocean extends Exchange {
         $result = array();
         for ($i = 0; $i < count ($markets); $i++) {
             $market = $markets[$i];
-            $baseToken = $this->safe_string($market, 'baseToken');
-            $quoteToken = $this->safe_string($market, 'quoteToken');
+            $baseToken = $this->safe_value($market, 'baseToken', array());
+            $quoteToken = $this->safe_value($market, 'quoteToken', array());
             $baseId = $this->safe_string($baseToken, 'address');
             $quoteId = $this->safe_string($quoteToken, 'address');
             $base = $this->common_currency_code($this->safe_string($baseToken, 'symbol'));
@@ -442,6 +442,9 @@ class theocean extends Exchange {
         //         $timestamp => "1532261686"                                                          }
         //
         $timestamp = $this->safe_integer($trade, 'lastUpdated');
+        if ($timestamp !== null) {
+            $timestamp /= 1000;
+        }
         $price = $this->safe_float($trade, 'price');
         $id = $this->safe_string($trade, 'id');
         $side = $this->safe_string($trade, 'side');

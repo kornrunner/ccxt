@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.771';
+$version = '1.18.804';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -51,7 +51,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.771';
+    const VERSION = '1.18.804';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -100,7 +100,6 @@ class Exchange {
         'bitflyer',
         'bitforex',
         'bithumb',
-        'bitibu',
         'bitkk',
         'bitlish',
         'bitmarket',
@@ -124,7 +123,6 @@ class Exchange {
         'btcturk',
         'buda',
         'bxinth',
-        'ccex',
         'cex',
         'chbtc',
         'chilebit',
@@ -164,7 +162,6 @@ class Exchange {
         'gateio',
         'gdax',
         'gemini',
-        'getbtc',
         'hadax',
         'hitbtc',
         'hitbtc2',
@@ -206,7 +203,6 @@ class Exchange {
         'therock',
         'tidebit',
         'tidex',
-        'uex',
         'upbit',
         'urdubit',
         'vaultoro',

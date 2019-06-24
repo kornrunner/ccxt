@@ -656,7 +656,7 @@ class hitbtc extends Exchange {
         }
         $side = null;
         $tradeLength = is_array ($trade) ? count ($trade) : 0;
-        if ($tradeLength > 3) {
+        if ($tradeLength > 4) {
             $side = $trade[4];
         }
         $price = floatval ($trade[1]);
