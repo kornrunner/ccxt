@@ -1120,7 +1120,7 @@ class poloniex extends Exchange {
         $response = $this->privatePostWithdraw (array_merge ($request, $params));
         return array (
             'info' => $response,
-            'id' => $response['response'],
+            'id' => $this->safe_string($response, 'withdrawalNumber'),
         );
     }
 
