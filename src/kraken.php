@@ -573,21 +573,28 @@ class kraken extends Exchange {
     }
 
     public function parse_ledger_entry ($item, $currency = null) {
-        // { 'LTFK7F-N2CUX-PNY4SX' => array (   refid => "TSJTGT-DT7WN-GPPQMJ",
-        //                               $time =>  1520102320.555,
-        //                               $type => "trade",
-        //                             aclass => "$currency",
-        //                              asset => "XETH",
-        //                             $amount => "0.1087194600",
-        //                                $fee => "0.0000000000",
-        //                            balance => "0.2855851000"         ), ... }
+        //
+        //     {
+        //         'LTFK7F-N2CUX-PNY4SX' => array (
+        //             refid => "TSJTGT-DT7WN-GPPQMJ",
+        //             $time =>  1520102320.555,
+        //             $type => "trade",
+        //             aclass => "$currency",
+        //             asset => "XETH",
+        //             $amount => "0.1087194600",
+        //             $fee => "0.0000000000",
+        //             balance => "0.2855851000"
+        //         ),
+        //         ...
+        //     }
+        //
         $id = $this->safe_string($item, 'id');
         $direction = null;
         $account = null;
         $referenceId = $this->safe_string($item, 'refid');
         $referenceAccount = null;
         $type = $this->parse_ledger_entry_type ($this->safe_string($item, 'type'));
-        $code = $this->safeCurrencyCode ($item, 'asset', $currency);
+        $code = $this->safe_currency_code($this->safe_string($item, 'asset'), $currency);
         $amount = $this->safe_float($item, 'amount');
         if ($amount < 0) {
             $direction = 'out';

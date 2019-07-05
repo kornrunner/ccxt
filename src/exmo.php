@@ -449,7 +449,7 @@ class exmo extends Exchange {
         $items = $groupsByGroup['crypto']['items'];
         for ($i = 0; $i < count ($items); $i++) {
             $item = $items[$i];
-            $code = $this->common_currency_code($this->safe_string($item, 'prov'));
+            $code = $this->safe_currency_code($this->safe_string($item, 'prov'));
             $withdrawalFee = $this->safe_string($item, 'wd');
             $depositFee = $this->safe_string($item, 'dep');
             if ($withdrawalFee !== null) {
@@ -466,7 +466,7 @@ class exmo extends Exchange {
         // sets fiat fees to null
         $fiatGroups = $this->to_array($this->omit ($groupsByGroup, 'crypto'));
         for ($i = 0; $i < count ($fiatGroups); $i++) {
-            $code = $this->common_currency_code($this->safe_string($fiatGroups[$i], 'title'));
+            $code = $this->safe_currency_code($this->safe_string($fiatGroups[$i], 'title'));
             $withdraw[$code] = null;
             $deposit[$code] = null;
         }
@@ -496,8 +496,8 @@ class exmo extends Exchange {
             $marketId = $marketIds[$i];
             $limit = $limitsByMarketId[$marketId];
             list($baseId, $quoteId) = explode('/', $marketId);
-            $base = $this->common_currency_code($baseId);
-            $quote = $this->common_currency_code($quoteId);
+            $base = $this->safe_currency_code($baseId);
+            $quote = $this->safe_currency_code($quoteId);
             $maxAmount = $this->safe_float($limit, 'max_q');
             $maxPrice = $this->safe_float($limit, 'max_p');
             $maxCost = $this->safe_float($limit, 'max_a');
@@ -514,7 +514,7 @@ class exmo extends Exchange {
         $result = array();
         for ($i = 0; $i < count ($ids); $i++) {
             $id = $ids[$i];
-            $code = $this->common_currency_code($id);
+            $code = $this->safe_currency_code($id);
             $fee = $this->safe_value($fees['withdraw'], $code);
             $active = true;
             $result[$code] = array (
@@ -554,8 +554,8 @@ class exmo extends Exchange {
             $market = $response[$id];
             $symbol = str_replace('_', '/', $id);
             list($baseId, $quoteId) = explode('/', $symbol);
-            $base = $this->common_currency_code($baseId);
-            $quote = $this->common_currency_code($quoteId);
+            $base = $this->safe_currency_code($baseId);
+            $quote = $this->safe_currency_code($quoteId);
             $result[] = array (
                 'id' => $id,
                 'symbol' => $symbol,
@@ -1213,15 +1213,8 @@ class exmo extends Exchange {
         $status = $this->parse_transaction_status ($this->safe_string($transaction, 'status'));
         $txid = $this->safe_string($transaction, 'txid');
         $type = $this->safe_string($transaction, 'type');
-        $code = $this->safe_string($transaction, 'curr');
-        if ($currency === null) {
-            $currency = $this->safe_value($this->currencies_by_id, $code);
-        }
-        if ($currency !== null) {
-            $code = $currency['code'];
-        } else {
-            $code = $this->common_currency_code($code);
-        }
+        $currencyId = $this->safe_string($transaction, 'curr');
+        $code = $this->safe_currency_code($currencyId, $currency);
         $address = $this->safe_string($transaction, 'account');
         if ($address !== null) {
             $parts = explode(':', $address);

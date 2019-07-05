@@ -165,8 +165,8 @@ class bitmex extends Exchange {
             $baseId = $market['underlying'];
             $quoteId = $market['quoteCurrency'];
             $basequote = $baseId . $quoteId;
-            $base = $this->common_currency_code($baseId);
-            $quote = $this->common_currency_code($quoteId);
+            $base = $this->safe_currency_code($baseId);
+            $quote = $this->safe_currency_code($quoteId);
             $swap = ($id === $basequote);
             // 'positionCurrency' may be empty ("", as Bitmex currently returns for ETHUSD)
             // so let's take the $quote currency first and then adjust if needed
@@ -174,7 +174,7 @@ class bitmex extends Exchange {
             $type = null;
             $future = false;
             $prediction = false;
-            $position = $this->common_currency_code($positionId);
+            $position = $this->safe_currency_code($positionId);
             $symbol = $id;
             if ($swap) {
                 $type = 'swap';
@@ -250,12 +250,7 @@ class bitmex extends Exchange {
         for ($i = 0; $i < count ($response); $i++) {
             $balance = $response[$i];
             $currencyId = $this->safe_string($balance, 'currency');
-            $code = $currencyId;
-            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
-                $code = $this->currencies_by_id[$currencyId]['code'];
-            } else {
-                $code = $this->common_currency_code(strtoupper($currencyId));
-            }
+            $code = $this->safe_currency_code($currencyId);
             $account = $this->account ();
             $account['free'] = $this->safe_float($balance, 'availableMargin');
             $account['total'] = $this->safe_float($balance, 'marginBalance');
@@ -470,11 +465,7 @@ class bitmex extends Exchange {
         $referenceAccount = null;
         $type = $this->parse_ledger_entry_type ($this->safe_string($item, 'transactType'));
         $currencyId = $this->safe_string($item, 'currency');
-        $code = null;
-        if ($currencyId !== null) {
-            $currencyId = strtoupper($currencyId);
-            $code = $this->common_currency_code($currencyId);
-        }
+        $code = $this->safe_currency_code($currencyId, $currency);
         $amount = $this->safe_float($item, 'amount');
         if ($amount !== null) {
             $amount = $amount * 1e-8;
@@ -502,8 +493,10 @@ class bitmex extends Exchange {
         }
         $status = $this->parse_transaction_status ($this->safe_string($item, 'transactStatus'));
         return array (
-            'info' => $item,
             'id' => $id,
+            'info' => $item,
+            'timestamp' => $timestamp,
+            'datetime' => $this->iso8601 ($timestamp),
             'direction' => $direction,
             'account' => $account,
             'referenceId' => $referenceId,
@@ -514,8 +507,6 @@ class bitmex extends Exchange {
             'before' => $before,
             'after' => $after,
             'status' => $status,
-            'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
             'fee' => $fee,
         );
     }
@@ -972,8 +963,7 @@ class bitmex extends Exchange {
             $feeCost = $this->safe_float($trade, 'execComm');
             $feeCost = $feeCost / 100000000;
             $currencyId = $this->safe_string($trade, 'settlCurrency');
-            $currencyId = strtoupper($currencyId);
-            $feeCurrency = $this->common_currency_code($currencyId);
+            $feeCurrency = $this->safe_currency_code($currencyId);
             $feeRate = $this->safe_float($trade, 'commission');
             $fee = array (
                 'cost' => $feeCost,

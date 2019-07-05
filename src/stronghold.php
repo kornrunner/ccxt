@@ -196,8 +196,8 @@ class stronghold extends Exchange {
             $quoteId = $this->safe_string($entry, 'counterAssetId');
             $baseAssetId = explode('/', $baseId)[0];
             $quoteAssetId = explode('/', $quoteId)[0];
-            $base = $this->common_currency_code($baseAssetId);
-            $quote = $this->common_currency_code($quoteAssetId);
+            $base = $this->safe_currency_code($baseAssetId);
+            $quote = $this->safe_currency_code($quoteAssetId);
             $symbol = $base . '/' . $quote;
             $limits = array (
                 'amount' => array (
@@ -266,7 +266,7 @@ class stronghold extends Exchange {
             $entry = $data[$i];
             $assetId = $this->safe_string($entry, 'id');
             $currencyId = $this->safe_string($entry, 'code');
-            $code = $this->common_currency_code($currencyId);
+            $code = $this->safe_currency_code($currencyId);
             $precision = $this->safe_integer($entry, 'displayDecimalsFull');
             $result[$code] = array (
                 'code' => $code,
@@ -452,7 +452,7 @@ class stronghold extends Exchange {
         $code = null;
         if ($assetId !== null) {
             $currencyId = explode('/', $assetId)[0];
-            $code = $this->common_currency_code($currencyId);
+            $code = $this->safe_currency_code($currencyId);
         } else {
             if ($currency !== null) {
                 $code = $currency['code'];
@@ -619,12 +619,7 @@ class stronghold extends Exchange {
             $assetId = $this->safe_string($balance, 'assetId');
             if ($assetId !== null) {
                 $currencyId = explode('/', $assetId)[0];
-                $code = $currencyId;
-                if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
-                    $code = $this->currencies_by_id[$currencyId]['code'];
-                } else {
-                    $code = $this->common_currency_code($currencyId);
-                }
+                $code = $this->safe_currency_code($currencyId);
                 $account = array();
                 $account['total'] = $this->safe_float($balance, 'amount');
                 $account['free'] = $this->safe_float($balance, 'availableForTrade');
