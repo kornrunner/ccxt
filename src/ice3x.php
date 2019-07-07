@@ -91,9 +91,8 @@ class ice3x extends Exchange {
         for ($i = 0; $i < count ($currencies); $i++) {
             $currency = $currencies[$i];
             $id = $this->safe_string($currency, 'currency_id');
-            $code = $this->safe_string($currency, 'iso');
-            $code = strtoupper($code);
-            $code = $this->common_currency_code($code);
+            $currencyId = $this->safe_string($currency, 'iso');
+            $code = $this->safe_currency_code($currencyId);
             $result[$code] = array (
                 'id' => $id,
                 'code' => $code,
@@ -121,10 +120,10 @@ class ice3x extends Exchange {
     }
 
     public function fetch_markets ($params = array ()) {
-        if (!$this->currencies) {
+        if (!$this->currencies_by_id) {
             $this->currencies = $this->fetch_currencies();
+            $this->currencies_by_id = $this->index_by($this->currencies, 'id');
         }
-        $this->currencies_by_id = $this->index_by($this->currencies, 'id');
         $response = $this->publicGetPairList ($params);
         $markets = $this->safe_value($response['response'], 'entities');
         $result = array();
@@ -135,8 +134,8 @@ class ice3x extends Exchange {
             $quoteId = $this->safe_string($market, 'currency_id_to');
             $baseCurrency = $this->currencies_by_id[$baseId];
             $quoteCurrency = $this->currencies_by_id[$quoteId];
-            $base = $this->common_currency_code($baseCurrency['code']);
-            $quote = $this->common_currency_code($quoteCurrency['code']);
+            $base = $baseCurrency['code'];
+            $quote = $quoteCurrency['code'];
             $symbol = $base . '/' . $quote;
             $result[] = array (
                 'id' => $id,
@@ -145,7 +144,7 @@ class ice3x extends Exchange {
                 'quote' => $quote,
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
-                'active' => true,
+                'active' => null,
                 'info' => $market,
             );
         }

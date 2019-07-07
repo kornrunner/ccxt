@@ -548,8 +548,8 @@ class okex3 extends Exchange {
             }
         }
         $quoteId = $this->safe_string($market, 'quote_currency');
-        $base = $this->common_currency_code($baseId);
-        $quote = $this->common_currency_code($quoteId);
+        $base = $this->safe_currency_code($baseId);
+        $quote = $this->safe_currency_code($quoteId);
         $symbol = $spot ? ($base . '/' . $quote) : $id;
         $amountPrecision = $this->safe_string($market, 'size_increment');
         if ($amountPrecision !== null) {
@@ -671,7 +671,7 @@ class okex3 extends Exchange {
         for ($i = 0; $i < count ($response); $i++) {
             $currency = $response[$i];
             $id = $this->safe_string($currency, 'currency');
-            $code = $this->common_currency_code($id);
+            $code = $this->safe_currency_code($id);
             $precision = 8; // default $precision, todo => fix "magic constants"
             $name = $this->safe_string($currency, 'name');
             $canDeposit = $this->safe_integer($currency, 'can_deposit');
@@ -755,10 +755,8 @@ class okex3 extends Exchange {
             $numParts = is_array ($parts) ? count ($parts) : 0;
             if ($numParts === 2) {
                 list($baseId, $quoteId) = $parts;
-                $base = strtoupper($baseId);
-                $quote = strtoupper($quoteId);
-                $base = $this->common_currency_code($base);
-                $quote = $this->common_currency_code($quote);
+                $base = $this->safe_currency_code($baseId);
+                $quote = $this->safe_currency_code($quoteId);
                 $symbol = $base . '/' . $quote;
             } else {
                 $symbol = $marketId;
@@ -1140,12 +1138,7 @@ class okex3 extends Exchange {
         for ($i = 0; $i < count ($response); $i++) {
             $balance = $response[$i];
             $currencyId = $this->safe_string($balance, 'currency');
-            $code = $currencyId;
-            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
-                $code = $this->currencies_by_id[$currencyId]['code'];
-            } else {
-                $code = $this->common_currency_code($currencyId);
-            }
+            $code = $this->safe_currency_code($currencyId);
             $account = $this->account ();
             $account['total'] = $this->safe_float($balance, 'balance');
             $account['used'] = $this->safe_float($balance, 'hold');
@@ -1194,8 +1187,8 @@ class okex3 extends Exchange {
             $symbol = null;
             if ($market === null) {
                 list($baseId, $quoteId) = explode('-', $marketId);
-                $base = $this->common_currency_code($baseId);
-                $quote = $this->common_currency_code($quoteId);
+                $base = $this->safe_currency_code($baseId);
+                $quote = $this->safe_currency_code($quoteId);
                 $symbol = $base . '/' . $quote;
             } else {
                 $symbol = $market['symbol'];
@@ -1215,12 +1208,7 @@ class okex3 extends Exchange {
                 if (mb_strpos($key, ':') !== false) {
                     $parts = explode(':', $key);
                     $currencyId = $parts[1];
-                    $code = $currencyId;
-                    if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
-                        $code = $this->currencies_by_id[$currencyId]['code'];
-                    } else {
-                        $code = $this->common_currency_code($currencyId);
-                    }
+                    $code = $this->safe_currency_code($currencyId);
                     $account = $this->account ();
                     $account['total'] = $this->safe_float($marketBalance, 'balance');
                     $account['used'] = $this->safe_float($marketBalance, 'hold');
@@ -1271,12 +1259,11 @@ class okex3 extends Exchange {
         // their root field name is "$info", so our $info will contain their $info
         $result = array( 'info' => $response );
         $info = $this->safe_value($response, 'info', array());
-        $lowercaseIds = is_array($info) ? array_keys($info) : array();
-        for ($i = 0; $i < count ($lowercaseIds); $i++) {
-            $lowercaseId = $lowercaseIds[$i];
-            $id = strtoupper($lowercaseId);
-            $code = $this->common_currency_code($id);
-            $balance = $this->safe_value($info, $lowercaseId, array());
+        $ids = is_array($info) ? array_keys($info) : array();
+        for ($i = 0; $i < count ($ids); $i++) {
+            $id = $ids[$i];
+            $code = $this->safe_currency_code($id);
+            $balance = $this->safe_value($info, $id, array());
             $account = $this->account ();
             // it may be incorrect to use total, free and used for swap accounts
             $account['total'] = $this->safe_float($balance, 'equity');
@@ -2021,10 +2008,7 @@ class okex3 extends Exchange {
         $tag = $this->safe_string_2($depositAddress, 'tag', 'payment_id');
         $tag = $this->safe_string($depositAddress, 'memo', $tag);
         $currencyId = $this->safe_string($depositAddress, 'currency');
-        $code = null;
-        if ($currencyId !== null) {
-            $code = $this->common_currency_code(strtoupper($currencyId));
-        }
+        $code = $this->safe_currency_code($currencyId);
         $this->check_address($address);
         return array (
             'currency' => $code,
@@ -2218,17 +2202,7 @@ class okex3 extends Exchange {
             $address = $addressFrom;
         }
         $currencyId = $this->safe_string($transaction, 'currency');
-        $code = null;
-        if ($currencyId !== null) {
-            $uppercaseId = $currencyId;
-            $currencyId = strtolower($currencyId);
-            if (is_array($this->currencies_by_id) && array_key_exists($currencyId, $this->currencies_by_id)) {
-                $currency = $this->currencies_by_id[$currencyId];
-                $code = $currency['code'];
-            } else {
-                $code = $this->common_currency_code($uppercaseId);
-            }
-        }
+        $code = $this->safe_currency_code($currencyId);
         $amount = $this->safe_float($transaction, 'amount');
         $status = $this->parse_transaction_status ($this->safe_string($transaction, 'status'));
         $txid = $this->safe_string($transaction, 'txid');
