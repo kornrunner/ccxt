@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.902';
+$version = '1.18.911';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -51,7 +51,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.902';
+    const VERSION = '1.18.911';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -582,7 +582,7 @@ class Exchange {
         if ($timestamp < 0) {
             return null;
         }
-        $result = date('c', (int) floor($timestamp / 1000));
+        $result = gmdate('c', (int) floor($timestamp / 1000));
         $msec = (int) $timestamp % 1000;
         $result = str_replace('+00:00', sprintf('.%03dZ', $msec), $result);
         return $result;
