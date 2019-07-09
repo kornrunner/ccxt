@@ -2666,9 +2666,8 @@ class okex3 extends Exchange {
                 }
             } else {
                 if ($query) {
-                    $jsonQuery = $this->json ($query);
-                    $body = $jsonQuery;
-                    $auth .= $jsonQuery;
+                    $body = $this->json ($query);
+                    $auth .= $body;
                 }
                 $headers['Content-Type'] = 'application/json';
             }
