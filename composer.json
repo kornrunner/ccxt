@@ -223,7 +223,8 @@
     "autoload": {
         "psr-4": {
             "ccxt\\": "src"
-        }
+        },
+        "files": [ "src/errors.php" ]
     },
     "require": {
         "php": "^7.1",
