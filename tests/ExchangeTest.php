@@ -211,12 +211,12 @@ class ExchangeTest extends TestCase {
 
     private static $config = [];
 
-    public static function tearDownAfterClass() {
+    public static function tearDownAfterClass(): void {
         parent::tearDownAfterClass();
         VCR::turnOff();
     }
 
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
 
         $keys_global = __DIR__ . '/keys.dist.json';
