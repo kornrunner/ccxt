@@ -34,7 +34,7 @@ use kornrunner\Eth;
 use kornrunner\Secp256k1;
 use kornrunner\Solidity;
 
-$version = '1.18.916';
+$version = '1.18.919';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -51,7 +51,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.916';
+    const VERSION = '1.18.919';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -1311,7 +1311,9 @@ class Exchange {
                     )) . ')';
                 throw new ExchangeNotAvailable(implode(' ', array($url, $method, $http_status_code, $result, $details)));
             }
-            $error_class = __NAMESPACE__ . '\\'  . $error_class;
+            if (substr($error_class, 0, 6) !== '\\ccxt\\') {
+                $error_class = '\\ccxt\\' . $error_class;
+            }
             throw new $error_class(implode(' ', array($url, $method, $http_status_code, $result)));
         }
 
@@ -1331,7 +1333,9 @@ class Exchange {
                 $error_class = 'DDosProtection';
             }
             if ($error_class !== null) {
-                $error_class = __NAMESPACE__ . '\\' . $error_class;
+                if (substr($error_class, 0, 6) !== '\\ccxt\\') {
+                    $error_class = '\\ccxt\\' . $error_class;
+                }
                 throw new $error_class(implode(' ', array($url, $method, $http_status_code, 'not accessible from this location at the moment', $details)));
             }
         }
