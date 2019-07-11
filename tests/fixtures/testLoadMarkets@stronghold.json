@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.stronghold.co\/v1\/venues\/trade-public\/assets",
+        "headers": {
+            "Host": "api.stronghold.co"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "403",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:26:23 GMT",
+            "content-type": "text\/html; charset=UTF-8",
+            "set-cookie": "__cfduid=dd6b97b9dce460018be04a227db2a54da1562837183; expires=Fri, 10-Jul-20 09:26:23 GMT; path=\/; domain=.stronghold.co; HttpOnly",
+            "cache-control": "max-age=15",
+            "expires": "Thu, 11 Jul 2019 09:26:38 GMT",
+            "x-frame-options": "SAMEORIGIN",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "vary": "Accept-Encoding",
+            "server": "cloudflare",
+            "cf-ray": "4f49bc4dbe317c58-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-js ie8 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class=\"no-js\" lang=\"en-US\"> <!--<![endif]-->\n<head>\n<title>Access denied | api.stronghold.co used Cloudflare to restrict access<\/title>\n<meta charset=\"UTF-8\" \/>\n<meta http-equiv=\"Content-Type\" content=\"text\/html; charset=UTF-8\" \/>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\" \/>\n<meta name=\"robots\" content=\"noindex, nofollow\" \/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1\" \/>\n<link rel=\"stylesheet\" id=\"cf_styles-css\" href=\"\/cdn-cgi\/styles\/cf.errors.css\" type=\"text\/css\" media=\"screen,projection\" \/>\n<!--[if lt IE 9]><link rel=\"stylesheet\" id='cf_styles-ie-css' href=\"\/cdn-cgi\/styles\/cf.errors.ie.css\" type=\"text\/css\" media=\"screen,projection\" \/><![endif]-->\n<style type=\"text\/css\">body{margin:0;padding:0}<\/style>\n\n\n<!--[if gte IE 10]><!--><script type=\"text\/javascript\" src=\"\/cdn-cgi\/scripts\/zepto.min.js\"><\/script><!--<![endif]-->\n<!--[if gte IE 10]><!--><script type=\"text\/javascript\" src=\"\/cdn-cgi\/scripts\/cf.common.js\"><\/script><!--<![endif]-->\n\n\n\n<\/head>\n<body>\n  <div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.<\/div>\n    <div id=\"cf-error-details\" class=\"cf-error-details-wrapper\">\n      <div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1>\n          <span class=\"cf-error-type\" data-translate=\"error\">Error<\/span>\n          <span class=\"cf-error-code\">1020<\/span>\n          <small class=\"heading-ray-id\">Ray ID: 4f49bc4dbe317c58 &bull; 2019-07-11 09:26:23 UTC<\/small>\n        <\/h1>\n        <h2 class=\"cf-subheadline\">Access denied<\/h2>\n      <\/div><!-- \/.header -->\n\n      <section><\/section><!-- spacer -->\n\n      <div class=\"cf-section cf-wrapper\">\n        <div class=\"cf-columns two\">\n          <div class=\"cf-column\">\n            <h2 data-translate=\"what_happened\">What happened?<\/h2>\n            <p>This website is using a security service to protect itself from online attacks.<\/p>\n          <\/div>\n\n          \n        <\/div>\n      <\/div><!-- \/.section -->\n\n      <div class=\"cf-error-footer cf-wrapper\">\n  <p>\n    <span class=\"cf-footer-item\">Cloudflare Ray ID: <strong>4f49bc4dbe317c58<\/strong><\/span>\n    <span class=\"cf-footer-separator\">&bull;<\/span>\n    <span class=\"cf-footer-item\"><span>Your IP<\/span>: 178.148.31.94<\/span>\n    <span class=\"cf-footer-separator\">&bull;<\/span>\n    <span class=\"cf-footer-item\"><span>Performance &amp; security by<\/span> <a href=\"https:\/\/www.cloudflare.com\/5xx-error-landing?utm_source=error_footer\" id=\"brand_link\" target=\"_blank\">Cloudflare<\/a><\/span>\n    \n  <\/p>\n<\/div><!-- \/.error-footer -->\n\n\n    <\/div><!-- \/#cf-error-details -->\n  <\/div><!-- \/#cf-wrapper -->\n\n  <script type=\"text\/javascript\">\n  window._cf_translation = {};\n  \n  \n<\/script>\n\n<\/body>\n<\/html>\n"
+    }
+}]

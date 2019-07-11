@@ -1,0 +1,41 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.liquid.com\/executions?product_id=35",
+        "headers": {
+            "Host": "api.liquid.com",
+            "X-Quoine-API-Version": "2",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:27:41 GMT",
+            "content-type": "application\/json; charset=utf-8",
+            "content-length": "64",
+            "set-cookie": "__cfduid=de480914c557e246bf7067c4eadedfcc61562837261; expires=Fri, 10-Jul-20 09:27:41 GMT; path=\/; domain=.liquid.com; HttpOnly; Secure, _vax_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJWY0ZGJjYmE5MWRhODQzYzliNTFjZTBkYjliY2RmY2ZmBjsAVEkiCWxhbmcGOwBGOgdlbg%3D%3D--68f050d284d389d69ad9a04518458cad3d567f23; path=\/; secure; HttpOnly",
+            "content-encoding": "gzip",
+            "cache-control": "max-age=0, private, must-revalidate",
+            "cf-ray": "4f49be3269147c76-BEG",
+            "accept-ranges": "bytes",
+            "etag": "\"d863824adcd2bd156b577d7c02990c56\"",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "status": "200 OK",
+            "strict-transport-security": "max-age=631152000; includeSubdomains",
+            "vary": "Accept-Encoding",
+            "via": "1.1 spaces-router (c7665a42a791)",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-request-id": "f6ffd8f2-c31f-e995-47ab-94b26412dc5e",
+            "x-ua-compatible": "IE=Edge,chrome=1",
+            "x-xss-protection": "1; mode=block",
+            "server": "cloudflare"
+        },
+        "body": "{\"current_page\":1,\"total_pages\":1,\"models\":[]}"
+    }
+}]

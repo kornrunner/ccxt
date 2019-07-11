@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "POST",
+        "url": "https:\/\/acl.dx.exchange",
+        "headers": {
+            "Host": "acl.dx.exchange",
+            "Content-Type": "application\/json-rpc"
+        },
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"1562837303368\",\"method\":\"OrderManagement.GetOrderBook\",\"params\":[{\"instrumentId\":1007}]}"
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Date": "Thu, 11 Jul 2019 09:28:23 GMT",
+            "Content-Type": "application\/json-rpc",
+            "Content-Length": "1561",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Test-Token",
+            "Set-Cookie": "f5avrbbbbbbbbbbbbbbbb=ALCGHFHHMCDDGCOBNJEDBAIMEMIDCGLBPLICDHNOEOBAFEDOOBIENKMPBLPKIFNKILNLEECACGEDIBOHMNADGJALGIOAOKINLANNMFJOGADLEGEKNADMOOKIKIHCNEAB; HttpOnly; secure, TS0147caf9=01be2e3b0050b2d3f73171f878c6038ff3a5663e901556f5f5d13b1c9514a1b0e8ac87d2cbcb6f3a4449783c07c5413ac0db571e8fd9205fb005b336efaa9aa7b7aeca134a; Path=\/; Domain=.acl.dx.exchange, visid_incap_1926871=FhmeY89mRG+QqAWpE3EPrDgBJ10AAAAAQUIPAAAAAADN4z2R8E9Jbs4uJI53W2aA; expires=Thu, 09 Jul 2020 15:54:47 GMT; path=\/; Domain=.dx.exchange, incap_ses_728_1926871=J6mPf6hIehiOeDAZEmEaCjgBJ10AAAAA9kI6rMI3iCCep1dao8lANg==; path=\/; Domain=.dx.exchange",
+            "X-Iinfo": "7-25196709-25196718 NNNN CT(6 8 0) RT(1562837303395 127) q(0 0 0 -1) r(6 6) U6",
+            "X-CDN": "Incapsula"
+        },
+        "body": "{\"id\":\"1562837303368\",\"result\":{\"sell\":[{\"price\":{\"value\":1138079,\"decimals\":2},\"qty\":{\"value\":323667,\"decimals\":6}},{\"price\":{\"value\":1142254,\"decimals\":2},\"qty\":{\"value\":95017,\"decimals\":6}},{\"price\":{\"value\":8005,\"decimals\":0},\"qty\":{\"value\":5348,\"decimals\":6}},{\"price\":{\"value\":9500,\"decimals\":0},\"qty\":{\"value\":75381,\"decimals\":6}},{\"price\":{\"value\":10005,\"decimals\":0},\"qty\":{\"value\":2139,\"decimals\":6}},{\"price\":{\"value\":113319,\"decimals\":1},\"qty\":{\"value\":77911,\"decimals\":6}},{\"price\":{\"value\":11407,\"decimals\":0},\"qty\":{\"value\":313235,\"decimals\":6}},{\"price\":{\"value\":1000116,\"decimals\":2},\"qty\":{\"value\":4,\"decimals\":2}},{\"price\":{\"value\":113092,\"decimals\":1},\"qty\":{\"value\":22905,\"decimals\":6}},{\"price\":{\"value\":1134193,\"decimals\":2},\"qty\":{\"value\":36502,\"decimals\":6}},{\"price\":{\"value\":1137675,\"decimals\":2},\"qty\":{\"value\":112702,\"decimals\":6}}],\"buy\":[{\"price\":{\"value\":1159191,\"decimals\":2},\"qty\":{\"value\":24978,\"decimals\":6}},{\"price\":{\"value\":1161371,\"decimals\":2},\"qty\":{\"value\":64035,\"decimals\":6}},{\"price\":{\"value\":13650,\"decimals\":0},\"qty\":{\"value\":1,\"decimals\":2}},{\"price\":{\"value\":1150697,\"decimals\":2},\"qty\":{\"value\":244153,\"decimals\":6}},{\"price\":{\"value\":1153445,\"decimals\":2},\"qty\":{\"value\":388882,\"decimals\":6}},{\"price\":{\"value\":1155237,\"decimals\":2},\"qty\":{\"value\":3009,\"decimals\":4}},{\"price\":{\"value\":1156434,\"decimals\":2},\"qty\":{\"value\":168244,\"decimals\":6}},{\"price\":{\"value\":1162965,\"decimals\":2},\"qty\":{\"value\":60011,\"decimals\":6}},{\"price\":{\"value\":13100,\"decimals\":0},\"qty\":{\"value\":125,\"decimals\":5}}]},\"error\":null}\n"
+    }
+}]

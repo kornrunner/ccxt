@@ -1,0 +1,23 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.fybse.se\/api\/SEK\/trades.json",
+        "headers": {
+            "Host": "www.fybse.se"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "404",
+            "message": "Not Found"
+        },
+        "headers": {
+            "Content-Type": "text\/html",
+            "Content-Length": "345",
+            "Date": "Thu, 11 Jul 2019 09:29:35 GMT",
+            "Server": "lighttpd\/1.4.45"
+        },
+        "body": "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html PUBLIC \"-\/\/W3C\/\/DTD XHTML 1.0 Transitional\/\/EN\"\n         \"http:\/\/www.w3.org\/TR\/xhtml1\/DTD\/xhtml1-transitional.dtd\">\n<html xmlns=\"http:\/\/www.w3.org\/1999\/xhtml\" xml:lang=\"en\" lang=\"en\">\n <head>\n  <title>404 - Not Found<\/title>\n <\/head>\n <body>\n  <h1>404 - Not Found<\/h1>\n <\/body>\n<\/html>\n"
+    }
+}]

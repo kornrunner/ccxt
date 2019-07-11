@@ -1,0 +1,23 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.btctrade.im\/coin\/symbol\/ticker?right_coin=btc",
+        "headers": {
+            "Host": "api.btctrade.im"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "500",
+            "message": "Internal Server Error"
+        },
+        "headers": {
+            "Server": "2.0.0.2.2.a70c311",
+            "Date": "Thu, 11 Jul 2019 09:25:33 GMT",
+            "Content-Type": "text\/html; charset=UTF-8",
+            "Transfer-Encoding": "chunked",
+            "Set-Cookie": "HWWAFSESID=bbadcd0e5b28032e4b; path=\/, HWWAFSESTIME=1562837131735; path=\/, lang=zh_CN; expires=Sun, 08-Jul-2029 09:25:36 GMT; Max-Age=315360000; path=\/"
+        }
+    }
+}]

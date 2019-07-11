@@ -1,0 +1,24 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.okcoin.cn\/api\/v1\/tickers.do",
+        "headers": {
+            "Host": "www.okcoin.cn"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "404",
+            "message": "Not Found"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 11 Jul 2019 09:24:53 GMT",
+            "Content-Type": "text\/html",
+            "Content-Length": "162",
+            "Connection": "keep-alive"
+        },
+        "body": "<html>\r\n<head><title>404 Not Found<\/title><\/head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404 Not Found<\/h1><\/center>\r\n<hr><center>nginx<\/center>\r\n<\/body>\r\n<\/html>\r\n"
+    }
+}]

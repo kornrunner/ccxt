@@ -1,0 +1,28 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.exx.com\/data\/v1\/depth?currency=qbt_usdt",
+        "headers": {
+            "Host": "api.exx.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:28:25 GMT",
+            "content-type": "text\/javascript;charset=utf-8",
+            "set-cookie": "__cfduid=d5fcf90c6a7215291f46925fd8c18f53e1562837304; expires=Fri, 10-Jul-20 09:28:24 GMT; path=\/; domain=.exx.com; HttpOnly",
+            "vary": "Accept-Encoding",
+            "cndserver": "cache_server_1",
+            "content-encoding": "gzip",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49bf428c427c7c-BEG"
+        },
+        "body": "{\"asks\":[[\"146.00\",\"6.00\"],[\"50.00\",\"45.59\"],[\"3.88\",\"129.87\"],[\"3.00\",\"2.67\"],[\"2.71\",\"212.00\"],[\"1.79\",\"400.00\"],[\"1.78\",\"70.10\"],[\"1.75\",\"87.61\"],[\"0.90\",\"1593.90\"],[\"0.60\",\"398.57\"],[\"0.55\",\"35.48\"],[\"0.54\",\"0.99\"],[\"0.44\",\"1000.78\"],[\"0.43\",\"1080.32\"],[\"0.19\",\"43.95\"],[\"0.05\",\"253.11\"],[\"0.03\",\"9768.04\"]],\"bids\":[[\"0.01\",\"1192.45\"]],\"timestamp\":1562837304}"
+    }
+}]

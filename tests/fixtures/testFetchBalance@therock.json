@@ -607,4 +607,65 @@
         },
         "body": "{\"balances\":[{\"currency\":\"BTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"LTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"NMC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"PPC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"DOGE\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"XRP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"Linden\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ETH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EUR\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"USD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"CAD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"GBP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ZEC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"BCH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EURN\",\"balance\":0.0,\"trading_balance\":0.0}]}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.therocktrading.com\/v1\/funds",
+        "headers": {
+            "Host": "api.therocktrading.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.10.3",
+            "Date": "Thu, 11 Jul 2019 09:26:53 GMT",
+            "Content-Type": "application\/json; charset=utf-8; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"eed63278565b86cf27443c655b2fcfa3\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "bb71a2b6-cd97-4a8f-b9f1-0e6973e7d776",
+            "X-Runtime": "0.018145"
+        },
+        "body": "{\"funds\":[{\"id\":\"BTCEUR\",\"description\":\"Trade Bitcoin with Euro\",\"type\":\"currency\",\"base_currency\":\"EUR\",\"trade_currency\":\"BTC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.0005,\"base_currency_decimals\":2,\"trade_currency_decimals\":4,\"leverages\":[]},{\"id\":\"LTCEUR\",\"description\":\"Trade Litecoin with Euro\",\"type\":\"currency\",\"base_currency\":\"EUR\",\"trade_currency\":\"LTC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.01,\"base_currency_decimals\":2,\"trade_currency_decimals\":2,\"leverages\":[]},{\"id\":\"LTCBTC\",\"description\":\"Trade Litecoin with Bitcoin\",\"type\":\"currency\",\"base_currency\":\"BTC\",\"trade_currency\":\"LTC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.00000001,\"minimum_quantity_offer\":0.01,\"base_currency_decimals\":8,\"trade_currency_decimals\":2,\"leverages\":[]},{\"id\":\"BTCXRP\",\"description\":\"Trade Bitcoin with XRP\",\"type\":\"currency\",\"base_currency\":\"XRP\",\"trade_currency\":\"BTC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.0005,\"base_currency_decimals\":2,\"trade_currency_decimals\":4,\"leverages\":[]},{\"id\":\"EURXRP\",\"description\":\"Trade Euro with XRP\",\"type\":\"currency\",\"base_currency\":\"XRP\",\"trade_currency\":\"EUR\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.01,\"base_currency_decimals\":2,\"trade_currency_decimals\":2,\"leverages\":[]},{\"id\":\"PPCEUR\",\"description\":\"Trade Peercoin with Euro\",\"type\":\"currency\",\"base_currency\":\"EUR\",\"trade_currency\":\"PPC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.05,\"base_currency_decimals\":2,\"trade_currency_decimals\":2,\"leverages\":[]},{\"id\":\"PPCBTC\",\"description\":\"Trade Peercoin with Bitcoin\",\"type\":\"currency\",\"base_currency\":\"BTC\",\"trade_currency\":\"PPC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.00000001,\"minimum_quantity_offer\":0.05,\"base_currency_decimals\":8,\"trade_currency_decimals\":2,\"leverages\":[]},{\"id\":\"ETHEUR\",\"description\":\"Trade Ether with Euro\",\"type\":\"currency\",\"base_currency\":\"EUR\",\"trade_currency\":\"ETH\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.005,\"base_currency_decimals\":2,\"trade_currency_decimals\":3,\"leverages\":[]},{\"id\":\"ETHBTC\",\"description\":\"Trade Ether with Bitcoin\",\"type\":\"currency\",\"base_currency\":\"BTC\",\"trade_currency\":\"ETH\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.00000001,\"minimum_quantity_offer\":0.005,\"base_currency_decimals\":8,\"trade_currency_decimals\":3,\"leverages\":[]},{\"id\":\"ZECBTC\",\"description\":\"Trade Zcash with Bitcoin\",\"type\":\"currency\",\"base_currency\":\"BTC\",\"trade_currency\":\"ZEC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.00000001,\"minimum_quantity_offer\":0.005,\"base_currency_decimals\":8,\"trade_currency_decimals\":3,\"leverages\":[]},{\"id\":\"ZECEUR\",\"description\":\"Trade Zcash with Euro\",\"type\":\"currency\",\"base_currency\":\"EUR\",\"trade_currency\":\"ZEC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.005,\"base_currency_decimals\":2,\"trade_currency_decimals\":3,\"leverages\":[]},{\"id\":\"BCHBTC\",\"description\":\"Trade Bitcoin Cash with Bitcoin\",\"type\":\"currency\",\"base_currency\":\"BTC\",\"trade_currency\":\"BCH\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.00000001,\"minimum_quantity_offer\":0.005,\"base_currency_decimals\":8,\"trade_currency_decimals\":3,\"leverages\":[]},{\"id\":\"NOKUETH\",\"description\":\"Trade NOKU Master with Ethereum\",\"type\":\"currency\",\"base_currency\":\"ETH\",\"trade_currency\":\"NOKU\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.000000001,\"minimum_quantity_offer\":1.0,\"base_currency_decimals\":9,\"trade_currency_decimals\":3,\"leverages\":[]},{\"id\":\"FDZETH\",\"description\":\"Trade Friendz with Ethereum\",\"type\":\"currency\",\"base_currency\":\"ETH\",\"trade_currency\":\"FDZ\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.000000001,\"minimum_quantity_offer\":1.0,\"base_currency_decimals\":9,\"trade_currency_decimals\":0,\"leverages\":[]},{\"id\":\"BCHEUR\",\"description\":\"Trade Bitcoin Cash with EUR\",\"type\":\"currency\",\"base_currency\":\"EUR\",\"trade_currency\":\"BCH\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.005,\"base_currency_decimals\":2,\"trade_currency_decimals\":3,\"leverages\":[]},{\"id\":\"BTCGUSD\",\"description\":\"Trade Bitcoin with Gemini dollar\",\"type\":\"currency\",\"base_currency\":\"GUSD\",\"trade_currency\":\"BTC\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.0005,\"base_currency_decimals\":2,\"trade_currency_decimals\":4,\"leverages\":[]},{\"id\":\"GUSDEUR\",\"description\":\"Trade Gemini Dollar with EUR\",\"type\":\"currency\",\"base_currency\":\"EUR\",\"trade_currency\":\"GUSD\",\"buy_fee\":0.2,\"sell_fee\":0.2,\"minimum_price_offer\":0.01,\"minimum_quantity_offer\":0.01,\"base_currency_decimals\":2,\"trade_currency_decimals\":2,\"leverages\":[]}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.therocktrading.com\/v1\/balances",
+        "headers": {
+            "Host": "api.therocktrading.com",
+            "X-TRT-KEY": "a521b8c93466ccf5fdcd2dcad1bb1b287e41ec2b",
+            "X-TRT-NONCE": "1562837213",
+            "X-TRT-SIGN": "f7ed6533f28eb94559d8786445a237a237b2ff0c43da1abd594b5c3b3bd15113b8cf0232db6faf79c1bb284e3bac7c0d8b6ff41d886585c48897d73c7654063c"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.10.3",
+            "Date": "Thu, 11 Jul 2019 09:26:54 GMT",
+            "Content-Type": "application\/json; charset=utf-8; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"d5d402b2240f651086b950b1e83cdf59\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "00f98be2-2bce-4d38-8d39-adb1565e264a",
+            "X-Runtime": "0.051307"
+        },
+        "body": "{\"balances\":[{\"currency\":\"BTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"LTC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"NMC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"PPC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"DOGE\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"XRP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"Linden\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ETH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EUR\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"USD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"CAD\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"GBP\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"ZEC\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"BCH\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"EURN\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"NOKU\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"FDZ\",\"balance\":0.0,\"trading_balance\":0.0},{\"currency\":\"GUSD\",\"balance\":0.0,\"trading_balance\":0.0}]}"
+    }
 }]

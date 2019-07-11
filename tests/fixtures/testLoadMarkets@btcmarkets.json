@@ -1,1 +1,26 @@
-[]
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.btcmarkets.net\/v2\/market\/active",
+        "headers": {
+            "Host": "api.btcmarkets.net"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:25:35 GMT",
+            "content-type": "application\/json;charset=UTF-8",
+            "set-cookie": "__cfduid=d0a1a77d4b8fbacccc97931df4ebcbd3d1562837133; expires=Fri, 10-Jul-20 09:25:33 GMT; path=\/; domain=.btcmarkets.net; HttpOnly",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49bb145e1d7c4c-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"success\":true,\"errorCode\":null,\"errorMessage\":null,\"markets\":[{\"instrument\":\"BTC\",\"currency\":\"AUD\"},{\"instrument\":\"LTC\",\"currency\":\"AUD\"},{\"instrument\":\"LTC\",\"currency\":\"BTC\"},{\"instrument\":\"ETH\",\"currency\":\"BTC\"},{\"instrument\":\"ETH\",\"currency\":\"AUD\"},{\"instrument\":\"ETC\",\"currency\":\"AUD\"},{\"instrument\":\"ETC\",\"currency\":\"BTC\"},{\"instrument\":\"XRP\",\"currency\":\"AUD\"},{\"instrument\":\"XRP\",\"currency\":\"BTC\"},{\"instrument\":\"POWR\",\"currency\":\"AUD\"},{\"instrument\":\"POWR\",\"currency\":\"BTC\"},{\"instrument\":\"OMG\",\"currency\":\"AUD\"},{\"instrument\":\"OMG\",\"currency\":\"BTC\"},{\"instrument\":\"BCHABC\",\"currency\":\"AUD\"},{\"instrument\":\"BCHABC\",\"currency\":\"BTC\"},{\"instrument\":\"BCHSV\",\"currency\":\"AUD\"},{\"instrument\":\"BCHSV\",\"currency\":\"BTC\"},{\"instrument\":\"GNT\",\"currency\":\"AUD\"},{\"instrument\":\"GNT\",\"currency\":\"BTC\"},{\"instrument\":\"BAT\",\"currency\":\"AUD\"},{\"instrument\":\"BAT\",\"currency\":\"BTC\"},{\"instrument\":\"XLM\",\"currency\":\"AUD\"},{\"instrument\":\"XLM\",\"currency\":\"BTC\"}]}"
+    }
+}]

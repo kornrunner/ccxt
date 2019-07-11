@@ -1,0 +1,27 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/cors-anywhere.herokuapp.com\/https:\/\/www.allcoin.com\/Home\/MarketOverViewDetail\/",
+        "headers": {
+            "Host": "cors-anywhere.herokuapp.com",
+            "Origin": "*"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "429",
+            "message": "Too Many Requests"
+        },
+        "headers": {
+            "Server": "Cowboy",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Expose-Headers": "access-control-allow-origin",
+            "Date": "Thu, 11 Jul 2019 09:23:27 GMT",
+            "Transfer-Encoding": "chunked",
+            "Via": "1.1 vegur"
+        },
+        "body": "The origin \"*\" has sent too many requests.\nThe number of requests is limited to 200 per 60 minutes. Please self-host CORS Anywhere if you need more quota. See https:\/\/github.com\/Rob--W\/cors-anywhere#demo-server"
+    }
+}]

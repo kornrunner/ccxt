@@ -1,1 +1,42 @@
-[]
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.btcturk.com\/api\/ticker",
+        "headers": {
+            "Host": "www.btcturk.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:25:37 GMT",
+            "content-type": "application\/json; charset=utf-8",
+            "set-cookie": "__cfduid=d92733bb09e3ed55daccc762351886cf71562837137; expires=Fri, 10-Jul-20 09:25:37 GMT; path=\/; domain=.btcturk.com; HttpOnly, UtmBtcCampaign=https:\/\/www.btcturk.com\/api\/ticker|; expires=Thu, 11-Jul-2024 09:25:37 GMT; path=\/; secure",
+            "cache-control": "no-cache",
+            "pragma": "no-cache",
+            "content-encoding": "gzip",
+            "expires": "-1",
+            "etag": "\"bbd98f53-d694-4743-b871-8e4e5382933c\"",
+            "vary": "Accept-Encoding,Accept-Encoding",
+            "ratelimit-limit": "10",
+            "ratelimit-remaining": "9",
+            "request-context": "appId=cid-v1:a9f3018e-b6dd-4e10-9045-d03d7337be46",
+            "strict-transport-security": "max-age=31536000",
+            "x-frame-options": "SAMEORIGIN",
+            "x-content-type-options": "nosniff",
+            "x-xss-protection": "1;mode=block",
+            "content-security-policy": "script-src 'self' * www.googletagmanager.com download.zohopublic.com use.fontawesome.com www.googleadservices.com fontawesome.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.youtube.com i.ytimg.com  www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';frame-ancestors 'self';style-src 'self' download.zohopublic.com salesiq.zohopublic.com css.zohostatic.com dyjgaef5vuq51.cloudfront.net fontawesome.com ping.typekit.net www.youtube.com i.ytimg.com p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' download.zohopublic.com salesiq.zoho.com img.zohostatic.com salesiq.zohopublic.com fontawesome.com www.googleadservices.com www.youtube.com i.ytimg.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com fontawesome.com az732725.vo.msecnd.net data:;object-src 'self' fontawesome.com ping.typekit.net p.typekit.net www.youtube.com i.ytimg.com use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "x-content-security-policy": "script-src 'self' * www.googletagmanager.com download.zohopublic.com use.fontawesome.com www.googleadservices.com fontawesome.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.youtube.com i.ytimg.com  www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';frame-ancestors 'self';style-src 'self' download.zohopublic.com salesiq.zohopublic.com css.zohostatic.com dyjgaef5vuq51.cloudfront.net fontawesome.com ping.typekit.net www.youtube.com i.ytimg.com p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' download.zohopublic.com salesiq.zoho.com img.zohostatic.com salesiq.zohopublic.com fontawesome.com www.googleadservices.com www.youtube.com i.ytimg.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com fontawesome.com az732725.vo.msecnd.net data:;object-src 'self' fontawesome.com ping.typekit.net p.typekit.net www.youtube.com i.ytimg.com use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "x-webkit-csp": "script-src 'self' * www.googletagmanager.com download.zohopublic.com use.fontawesome.com www.googleadservices.com fontawesome.com connect.facebook.net stats.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net www.google.com www.youtube.com i.ytimg.com  www.google-analytics.com ajax.googleapis.com www.gstatic.com apis.google.com az732725.vo.msecnd.net bam.nr-data.net 'unsafe-inline' 'unsafe-eval';frame-ancestors 'self';style-src 'self' download.zohopublic.com salesiq.zohopublic.com css.zohostatic.com dyjgaef5vuq51.cloudfront.net fontawesome.com ping.typekit.net www.youtube.com i.ytimg.com p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net fonts.googleapis.com az732725.vo.msecnd.net 'unsafe-inline';img-src 'self' download.zohopublic.com salesiq.zoho.com img.zohostatic.com salesiq.zohopublic.com fontawesome.com www.googleadservices.com www.youtube.com i.ytimg.com www.facebook.com www.google.com.tr stats.g.doubleclick.net googleads.g.doubleclick.net ping.typekit.net p.typekit.net use.typekit.net cdnbtctrader.blob.core.windows.net www.google-analytics.com www.google.com ssl.gstatic.com fontawesome.com az732725.vo.msecnd.net data:;object-src 'self' fontawesome.com ping.typekit.net p.typekit.net www.youtube.com i.ytimg.com use.typekit.net cdnbtctrader.blob.core.windows.net pusher.com;",
+            "access-control-allow-origin": "*",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49bb2cab2d7c94-BEG"
+        },
+        "body": "[{\"pair\":\"BTCTRY\",\"high\":75000.0,\"last\":65807.0,\"timestamp\":1562837136.0,\"bid\":65807.0,\"volume\":1109.59,\"low\":64005.0,\"ask\":65899.0,\"open\":74144.0,\"average\":69891.16,\"daily\":-8245.0,\"dailyPercent\":-11.12,\"denominatorsymbol\":\"TRY\",\"numeratorsymbol\":\"BTC\"},{\"pair\":\"ETHTRY\",\"high\":1779.0,\"last\":1566.0,\"timestamp\":1562837136.0,\"bid\":1566.0,\"volume\":4911.19,\"low\":1522.0,\"ask\":1573.0,\"open\":1765.0,\"average\":1644.32,\"daily\":-192.0,\"dailyPercent\":-10.87,\"denominatorsymbol\":\"TRY\",\"numeratorsymbol\":\"ETH\"},{\"pair\":\"XRPTRY\",\"high\":2.26,\"last\":1.93,\"timestamp\":1562837136.0,\"bid\":1.92,\"volume\":8633936.79,\"low\":1.85,\"ask\":1.93,\"open\":2.25,\"average\":2.03,\"daily\":-0.32,\"dailyPercent\":-14.22,\"denominatorsymbol\":\"TRY\",\"numeratorsymbol\":\"XRP\"},{\"pair\":\"LTCTRY\",\"high\":686.99,\"last\":586.11,\"timestamp\":1562837136.0,\"bid\":584.12,\"volume\":9844.78,\"low\":540.01,\"ask\":586.1,\"open\":680.0,\"average\":610.41,\"daily\":-93.9,\"dailyPercent\":-13.8,\"denominatorsymbol\":\"TRY\",\"numeratorsymbol\":\"LTC\"},{\"pair\":\"USDTTRY\",\"high\":5.82,\"last\":5.8,\"timestamp\":1562837136.0,\"bid\":5.76,\"volume\":1147808.81,\"low\":5.71,\"ask\":5.8,\"open\":5.74,\"average\":5.75,\"daily\":0.06,\"dailyPercent\":1.05,\"denominatorsymbol\":\"TRY\",\"numeratorsymbol\":\"USDT\"},{\"pair\":\"BTCUSDT\",\"high\":13150.0,\"last\":11607.0,\"timestamp\":1562837136.0,\"bid\":11352.0,\"volume\":48.36,\"low\":11180.0,\"ask\":11530.0,\"open\":12950.0,\"average\":12198.23,\"daily\":-1420.0,\"dailyPercent\":-10.96,\"denominatorsymbol\":\"USDT\",\"numeratorsymbol\":\"BTC\"},{\"pair\":\"XLMTRY\",\"high\":0.5736,\"last\":0.5083,\"timestamp\":1562837136.0,\"bid\":0.5083,\"volume\":4259411.9446,\"low\":0.4952,\"ask\":0.511,\"open\":0.5651,\"average\":0.54,\"daily\":-0.0541,\"dailyPercent\":-9.5735,\"denominatorsymbol\":\"TRY\",\"numeratorsymbol\":\"XLM\"}]"
+    }
+}]

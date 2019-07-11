@@ -25,4 +25,32 @@
         },
         "body": "{\"status\": \"success\", \"buyorders\": [{\"currency\": \"SNGLS\", \"amount\": \"1000.00000000\", \"price\": \"0.00000028\", \"basecurrency\": \"BTC\", \"baseamount\": \"0.00028000\"}], \"sellorders\": [{\"currency\": \"SNGLS\", \"amount\": \"11.99201822\", \"price\": \"0.00100000\", \"basecurrency\": \"BTC\", \"baseamount\": \"0.01199202\"}]}"
     }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/novaexchange.com\/remote\/v2\/market\/openorders\/BTC_INGT\/both\/",
+        "headers": {
+            "Host": "novaexchange.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "301",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:28:39 GMT",
+            "content-type": "text\/html",
+            "set-cookie": "__cfduid=dd8f363946c93ceb602d1b12a4d753b5c1562837319; expires=Fri, 10-Jul-20 09:28:39 GMT; path=\/; domain=.novaexchange.com; HttpOnly; Secure",
+            "location": "https:\/\/novaexchange.com\/remote\/v2\/market\/openorders\/BTC_INGT\/BOTH\/",
+            "cf-ray": "4f49bfa14e4c7c7c-BEG",
+            "allow": "GET",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "strict-transport-security": "max-age=15552000; preload",
+            "vary": "Accept-Encoding",
+            "server": "cloudflare"
+        },
+        "body": "HTTP\/2 200 \r\ndate: Thu, 11 Jul 2019 09:28:40 GMT\r\ncontent-type: application\/json\r\nset-cookie: __cfduid=dd8f363946c93ceb602d1b12a4d753b5c1562837319; expires=Fri, 10-Jul-20 09:28:39 GMT; path=\/; domain=.novaexchange.com; HttpOnly; Secure\r\ncf-ray: 4f49bfa1ae997c7c-BEG\r\nallow: GET\r\nexpect-ct: max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"\r\nstrict-transport-security: max-age=15552000; preload\r\nvary: Accept-Encoding\r\nserver: cloudflare\r\ncontent-encoding: gzip\r\n\r\n{\"message\":\"No such market listed\",\"status\":\"error\"}\n"
+    }
 }]

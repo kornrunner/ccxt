@@ -1,0 +1,35 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/btc-alpha.com\/api\/v1\/exchanges\/?pair=AC3_BTC",
+        "headers": {
+            "Host": "btc-alpha.com",
+            "Accept": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:27:06 GMT",
+            "content-type": "application\/json; charset=utf-8",
+            "set-cookie": "__cfduid=d04362c79c5fc63d1a45dc378be65854a1562837226; expires=Fri, 10-Jul-20 09:27:06 GMT; path=\/; domain=.btc-alpha.com; HttpOnly; Secure",
+            "vary": "Accept, Accept-Language, Cookie",
+            "allow": "GET, HEAD, OPTIONS",
+            "content-language": "en",
+            "etag": "W\/\"861ffe13403a626094b2d2983427edbd\"",
+            "strict-transport-security": "max-age=15768000",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-xss-protection": "1; mode=block",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49bd574e447c7c-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "[{\"id\":31675217,\"timestamp\":1562834802.8071660995,\"pair\":\"AC3_BTC\",\"price\":\"0.00000019\",\"amount\":\"972.73929823\",\"type\":\"buy\"},{\"id\":31675216,\"timestamp\":1562834802.8071660995,\"pair\":\"AC3_BTC\",\"price\":\"0.00000018\",\"amount\":\"369.83333334\",\"type\":\"buy\"},{\"id\":31616950,\"timestamp\":1562802710.5523879528,\"pair\":\"AC3_BTC\",\"price\":\"0.00000018\",\"amount\":\"39075.72222222\",\"type\":\"buy\"},{\"id\":31616714,\"timestamp\":1562802610.2395169735,\"pair\":\"AC3_BTC\",\"price\":\"0.00000018\",\"amount\":\"554.44444444\",\"type\":\"buy\"},{\"id\":31552101,\"timestamp\":1562768448.9502151012,\"pair\":\"AC3_BTC\",\"price\":\"0.00000019\",\"amount\":\"69.85809800\",\"type\":\"buy\"},{\"id\":31552071,\"timestamp\":1562768430.417773962,\"pair\":\"AC3_BTC\",\"price\":\"0.00000019\",\"amount\":\"164.23960000\",\"type\":\"buy\"},{\"id\":31551983,\"timestamp\":1562768373.5777490139,\"pair\":\"AC3_BTC\",\"price\":\"0.00000020\",\"amount\":\"14329.93270000\",\"type\":\"buy\"},{\"id\":31551968,\"timestamp\":1562768372.1662800312,\"pair\":\"AC3_BTC\",\"price\":\"0.00000020\",\"amount\":\"3280.20000000\",\"type\":\"buy\"},{\"id\":31551967,\"timestamp\":1562768372.1662800312,\"pair\":\"AC3_BTC\",\"price\":\"0.00000019\",\"amount\":\"4700.00000000\",\"type\":\"buy\"},{\"id\":31551828,\"timestamp\":1562768306.3336889744,\"pair\":\"AC3_BTC\",\"price\":\"0.00000019\",\"amount\":\"102.55700000\",\"type\":\"buy\"},{\"id\":31551822,\"timestamp\":1562768299.1682710648,\"pair\":\"AC3_BTC\",\"price\":\"0.00000018\",\"amount\":\"103777.29411765\",\"type\":\"sell\"},{\"id\":31551782,\"timestamp\":1562768286.4375119209,\"pair\":\"AC3_BTC\",\"price\":\"0.00000017\",\"amount\":\"143777.29411765\",\"type\":\"sell\"},{\"id\":31551747,\"timestamp\":1562768272.5236589909,\"pair\":\"AC3_BTC\",\"price\":\"0.00000016\",\"amount\":\"160715.81250000\",\"type\":\"sell\"},{\"id\":31551746,\"timestamp\":1562768272.5236589909,\"pair\":\"AC3_BTC\",\"price\":\"0.00000016\",\"amount\":\"2999.99990900\",\"type\":\"sell\"},{\"id\":31490586,\"timestamp\":1562718446.8243849277,\"pair\":\"AC3_BTC\",\"price\":\"0.00000020\",\"amount\":\"100.00000000\",\"type\":\"buy\"},{\"id\":31490514,\"timestamp\":1562718393.7815659046,\"pair\":\"AC3_BTC\",\"price\":\"0.00000019\",\"amount\":\"33610.52640679\",\"type\":\"buy\"},{\"id\":31490513,\"timestamp\":1562718393.7815659046,\"pair\":\"AC3_BTC\",\"price\":\"0.00000019\",\"amount\":\"3157.89464584\",\"type\":\"buy\"},{\"id\":31490371,\"timestamp\":1562718258.8576760292,\"pair\":\"AC3_BTC\",\"price\":\"0.00000019\",\"amount\":\"36842.10526316\",\"type\":\"buy\"},{\"id\":31460963,\"timestamp\":1562693408.1869449615,\"pair\":\"AC3_BTC\",\"price\":\"0.00000020\",\"amount\":\"188.00000000\",\"type\":\"buy\"},{\"id\":31460944,\"timestamp\":1562693397.8628070354,\"pair\":\"AC3_BTC\",\"price\":\"0.00000017\",\"amount\":\"388754.23529412\",\"type\":\"sell\"}]"
+    }
+}]

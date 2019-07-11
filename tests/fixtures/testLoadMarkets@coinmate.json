@@ -1,1 +1,31 @@
-[]
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/coinmate.io\/api\/tradingPairs",
+        "headers": {
+            "Host": "coinmate.io"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:25:45 GMT",
+            "content-type": "application\/json;charset=UTF-8",
+            "set-cookie": "__cfduid=d59946aa052f18384896e8f28f832d52c1562837145; expires=Fri, 10-Jul-20 09:25:45 GMT; path=\/; domain=.coinmate.io; HttpOnly",
+            "x-frame-options": "SAMEORIGIN",
+            "x-content-type-options": "nosniff",
+            "x-xss-protection": "1; mode=block",
+            "access-control-allow-origin": "*",
+            "strict-transport-security": "max-age=15552000; includeSubDomains",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49bb5eda0c7c8e-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"error\":false,\"errorMessage\":null,\"data\":[{\"name\":\"BTC_EUR\",\"firstCurrency\":\"BTC\",\"secondCurrency\":\"EUR\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.0002,\"tradesWebSocketChannelId\":\"trades-BTC_EUR\",\"orderBookWebSocketChannelId\":\"order_book-BTC_EUR\",\"tradeStatisticsWebSocketChannelId\":\"statistics-BTC_EUR\"},{\"name\":\"BTC_CZK\",\"firstCurrency\":\"BTC\",\"secondCurrency\":\"CZK\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.0002,\"tradesWebSocketChannelId\":\"trades-BTC_CZK\",\"orderBookWebSocketChannelId\":\"order_book-BTC_CZK\",\"tradeStatisticsWebSocketChannelId\":\"statistics-BTC_CZK\"},{\"name\":\"LTC_EUR\",\"firstCurrency\":\"LTC\",\"secondCurrency\":\"EUR\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.01,\"tradesWebSocketChannelId\":\"trades-LTC_EUR\",\"orderBookWebSocketChannelId\":\"order_book-LTC_EUR\",\"tradeStatisticsWebSocketChannelId\":\"statistics-LTC_EUR\"},{\"name\":\"LTC_CZK\",\"firstCurrency\":\"LTC\",\"secondCurrency\":\"CZK\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.01,\"tradesWebSocketChannelId\":\"trades-LTC_CZK\",\"orderBookWebSocketChannelId\":\"order_book-LTC_CZK\",\"tradeStatisticsWebSocketChannelId\":\"statistics-LTC_CZK\"},{\"name\":\"LTC_BTC\",\"firstCurrency\":\"LTC\",\"secondCurrency\":\"BTC\",\"priceDecimals\":5,\"lotDecimals\":8,\"minAmount\":0.01,\"tradesWebSocketChannelId\":\"trades-LTC_BTC\",\"orderBookWebSocketChannelId\":\"order_book-LTC_BTC\",\"tradeStatisticsWebSocketChannelId\":\"statistics-LTC_BTC\"},{\"name\":\"ETH_EUR\",\"firstCurrency\":\"ETH\",\"secondCurrency\":\"EUR\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.01,\"tradesWebSocketChannelId\":\"trades-ETH_EUR\",\"orderBookWebSocketChannelId\":\"order_book-ETH_EUR\",\"tradeStatisticsWebSocketChannelId\":\"statistics-ETH_EUR\"},{\"name\":\"ETH_CZK\",\"firstCurrency\":\"ETH\",\"secondCurrency\":\"CZK\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.01,\"tradesWebSocketChannelId\":\"trades-ETH_CZK\",\"orderBookWebSocketChannelId\":\"order_book-ETH_CZK\",\"tradeStatisticsWebSocketChannelId\":\"statistics-ETH_CZK\"},{\"name\":\"ETH_BTC\",\"firstCurrency\":\"ETH\",\"secondCurrency\":\"BTC\",\"priceDecimals\":5,\"lotDecimals\":8,\"minAmount\":0.01,\"tradesWebSocketChannelId\":\"trades-ETH_BTC\",\"orderBookWebSocketChannelId\":\"order_book-ETH_BTC\",\"tradeStatisticsWebSocketChannelId\":\"statistics-ETH_BTC\"},{\"name\":\"XRP_EUR\",\"firstCurrency\":\"XRP\",\"secondCurrency\":\"EUR\",\"priceDecimals\":5,\"lotDecimals\":8,\"minAmount\":1,\"tradesWebSocketChannelId\":\"trades-XRP_EUR\",\"orderBookWebSocketChannelId\":\"order_book-XRP_EUR\",\"tradeStatisticsWebSocketChannelId\":\"statistics-XRP_EUR\"},{\"name\":\"XRP_CZK\",\"firstCurrency\":\"XRP\",\"secondCurrency\":\"CZK\",\"priceDecimals\":5,\"lotDecimals\":8,\"minAmount\":1,\"tradesWebSocketChannelId\":\"trades-XRP_CZK\",\"orderBookWebSocketChannelId\":\"order_book-XRP_CZK\",\"tradeStatisticsWebSocketChannelId\":\"statistics-XRP_CZK\"},{\"name\":\"XRP_BTC\",\"firstCurrency\":\"XRP\",\"secondCurrency\":\"BTC\",\"priceDecimals\":8,\"lotDecimals\":8,\"minAmount\":1,\"tradesWebSocketChannelId\":\"trades-XRP_BTC\",\"orderBookWebSocketChannelId\":\"order_book-XRP_BTC\",\"tradeStatisticsWebSocketChannelId\":\"statistics-XRP_BTC\"},{\"name\":\"DASH_EUR\",\"firstCurrency\":\"DASH\",\"secondCurrency\":\"EUR\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.001,\"tradesWebSocketChannelId\":\"trades-DASH_EUR\",\"orderBookWebSocketChannelId\":\"order_book-DASH_EUR\",\"tradeStatisticsWebSocketChannelId\":\"statistics-DASH_EUR\"},{\"name\":\"DASH_CZK\",\"firstCurrency\":\"DASH\",\"secondCurrency\":\"CZK\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.001,\"tradesWebSocketChannelId\":\"trades-DASH_CZK\",\"orderBookWebSocketChannelId\":\"order_book-DASH_CZK\",\"tradeStatisticsWebSocketChannelId\":\"statistics-DASH_CZK\"},{\"name\":\"DASH_BTC\",\"firstCurrency\":\"DASH\",\"secondCurrency\":\"BTC\",\"priceDecimals\":5,\"lotDecimals\":8,\"minAmount\":0.001,\"tradesWebSocketChannelId\":\"trades-DASH_BTC\",\"orderBookWebSocketChannelId\":\"order_book-DASH_BTC\",\"tradeStatisticsWebSocketChannelId\":\"statistics-DASH_BTC\"},{\"name\":\"BCH_EUR\",\"firstCurrency\":\"BCH\",\"secondCurrency\":\"EUR\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.001,\"tradesWebSocketChannelId\":\"trades-BCH_EUR\",\"orderBookWebSocketChannelId\":\"order_book-BCH_EUR\",\"tradeStatisticsWebSocketChannelId\":\"statistics-BCH_EUR\"},{\"name\":\"BCH_CZK\",\"firstCurrency\":\"BCH\",\"secondCurrency\":\"CZK\",\"priceDecimals\":2,\"lotDecimals\":8,\"minAmount\":0.001,\"tradesWebSocketChannelId\":\"trades-BCH_CZK\",\"orderBookWebSocketChannelId\":\"order_book-BCH_CZK\",\"tradeStatisticsWebSocketChannelId\":\"statistics-BCH_CZK\"},{\"name\":\"BCH_BTC\",\"firstCurrency\":\"BCH\",\"secondCurrency\":\"BTC\",\"priceDecimals\":5,\"lotDecimals\":8,\"minAmount\":0.001,\"tradesWebSocketChannelId\":\"trades-BCH_BTC\",\"orderBookWebSocketChannelId\":\"order_book-BCH_BTC\",\"tradeStatisticsWebSocketChannelId\":\"statistics-BCH_BTC\"}]}"
+    }
+}]

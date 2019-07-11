@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/kkex.com\/api\/v1\/kline?symbol=ENUBTC&type=1min",
+        "headers": {
+            "Host": "kkex.com",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 11 Jul 2019 09:29:46 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "2",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Language, Cookie",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Language": "en",
+            "Set-Cookie": "sessionid=0u80h0yju27xpr7r1nnpquf4qlbkrs1p; httponly; Path=\/, django_language=en; Path=\/",
+            "Strict-Transport-Security": "max-age=63072000; includeSubdomains; preload, max-age=63072000; includeSubdomains; preload"
+        },
+        "body": "[]"
+    }
+}]

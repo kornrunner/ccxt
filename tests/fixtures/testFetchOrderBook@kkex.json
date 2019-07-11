@@ -1,0 +1,31 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/kkex.com\/api\/v1\/depth?symbol=ENUBTC",
+        "headers": {
+            "Host": "kkex.com",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 11 Jul 2019 09:28:32 GMT",
+            "Content-Type": "application\/json",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Vary": "Accept-Encoding, Accept-Language, Cookie",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Language": "en",
+            "Set-Cookie": "sessionid=8xd9jj6wfsjmdckig8186a7hzoco2qij; httponly; Path=\/, django_language=en; Path=\/",
+            "Strict-Transport-Security": "max-age=63072000; includeSubdomains; preload, max-age=63072000; includeSubdomains; preload",
+            "Content-Encoding": "gzip"
+        },
+        "body": "{\"bids\": [[\"0.00000029\", \"38604.394142\"], [\"0.00000028\", \"495198.407652\"], [\"0.00000026\", \"126953.161770\"], [\"0.00000025\", \"798.400000\"], [\"0.00000024\", \"3068.850000\"]], \"result\": true, \"asks\": [[\"0.00000036\", \"6000.000000\"], [\"0.00000037\", \"340460.968173\"], [\"0.00000039\", \"101300.000000\"], [\"0.00000040\", \"111611.539937\"], [\"0.00000041\", \"1000.000000\"]]}"
+    }
+}]

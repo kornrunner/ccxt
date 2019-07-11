@@ -1,0 +1,23 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.fcoinjp.com\/v2\/public\/symbols",
+        "headers": {
+            "Host": "api.fcoinjp.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:25:56 GMT",
+            "content-type": "application\/json",
+            "content-length": "266",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"status\":0,\"data\":[{\"name\":\"etcusdt\",\"base_currency\":\"etc\",\"quote_currency\":\"usdt\",\"price_decimal\":3,\"amount_decimal\":4,\"tradable\":true},{\"name\":\"lskusdt\",\"base_currency\":\"lsk\",\"quote_currency\":\"usdt\",\"price_decimal\":4,\"amount_decimal\":2,\"tradable\":true},{\"name\":\"ethbtc\",\"base_currency\":\"eth\",\"quote_currency\":\"btc\",\"price_decimal\":5,\"amount_decimal\":4,\"tradable\":false},{\"name\":\"fjusdt\",\"base_currency\":\"fj\",\"quote_currency\":\"usdt\",\"price_decimal\":6,\"amount_decimal\":2,\"tradable\":true},{\"name\":\"xrpusdt\",\"base_currency\":\"xrp\",\"quote_currency\":\"usdt\",\"price_decimal\":4,\"amount_decimal\":2,\"tradable\":true},{\"name\":\"monausdt\",\"base_currency\":\"mona\",\"quote_currency\":\"usdt\",\"price_decimal\":4,\"amount_decimal\":2,\"tradable\":true},{\"name\":\"bsvusdt\",\"base_currency\":\"bsv\",\"quote_currency\":\"usdt\",\"price_decimal\":2,\"amount_decimal\":4,\"tradable\":true},{\"name\":\"xemusdt\",\"base_currency\":\"xem\",\"quote_currency\":\"usdt\",\"price_decimal\":4,\"amount_decimal\":2,\"tradable\":true},{\"name\":\"bchusdt\",\"base_currency\":\"bch\",\"quote_currency\":\"usdt\",\"price_decimal\":1,\"amount_decimal\":4,\"tradable\":true},{\"name\":\"eosusdt\",\"base_currency\":\"eos\",\"quote_currency\":\"usdt\",\"price_decimal\":3,\"amount_decimal\":4,\"tradable\":true},{\"name\":\"ltcusdt\",\"base_currency\":\"ltc\",\"quote_currency\":\"usdt\",\"price_decimal\":2,\"amount_decimal\":4,\"tradable\":true},{\"name\":\"ethusdt\",\"base_currency\":\"eth\",\"quote_currency\":\"usdt\",\"price_decimal\":2,\"amount_decimal\":4,\"tradable\":true},{\"name\":\"btcusdt\",\"base_currency\":\"btc\",\"quote_currency\":\"usdt\",\"price_decimal\":1,\"amount_decimal\":4,\"tradable\":true}]}"
+    }
+}]

@@ -1,0 +1,27 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.deribit.com\/api\/v1\/public\/getlasttrades?instrument=BTC-12JUL19-8000-C&limit=10000",
+        "headers": {
+            "Host": "www.deribit.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 11 Jul 2019 09:29:22 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "249",
+            "Connection": "keep-alive",
+            "content-encoding": "gzip",
+            "Strict-Transport-Security": "max-age=15768000",
+            "X-Frame-Options": "SAMEORIGIN"
+        },
+        "body": "{\"usOut\":1562837362373561,\"usIn\":1562837362373498,\"usDiff\":63,\"testnet\":false,\"success\":true,\"result\":[{\"tradeId\":30344032,\"instrument\":\"BTC-12JUL19-8000-C\",\"tradeSeq\":1,\"timeStamp\":1562629254307,\"quantity\":1.0,\"amount\":1.0,\"price\":0.352,\"direction\":\"buy\",\"tickDirection\":1,\"indexPrice\":12329.92,\"iv\":136.3}],\"message\":\"\"}"
+    }
+}]

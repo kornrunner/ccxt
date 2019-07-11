@@ -1,0 +1,27 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/dsx.uk\/mapi\/trades\/btgusd",
+        "headers": {
+            "Host": "dsx.uk"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "server": "nginx",
+            "date": "Thu, 11 Jul 2019 09:29:22 GMT",
+            "content-type": "application\/json",
+            "vary": "Accept-Encoding",
+            "access-control-allow-origin": "https:\/\/dsx.uk",
+            "access-control-allow-credentials": "true",
+            "referrer-policy": "origin-when-cross-origin",
+            "content-encoding": "gzip"
+        },
+        "body": "{\n  \"btgusd\" : [ {\n    \"amount\" : 0.37496246,\n    \"price\" : 25.90010,\n    \"timestamp\" : 1562836415,\n    \"tid\" : 37146684,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 0.12746248,\n    \"price\" : 25.90001,\n    \"timestamp\" : 1562793314,\n    \"tid\" : 37143389,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 5.36457369,\n    \"price\" : 26.00000,\n    \"timestamp\" : 1562789720,\n    \"tid\" : 37143139,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.55324024,\n    \"price\" : 26.00000,\n    \"timestamp\" : 1562789720,\n    \"tid\" : 37143138,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.10889999,\n    \"price\" : 26.90001,\n    \"timestamp\" : 1562764157,\n    \"tid\" : 37140407,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 0.81986291,\n    \"price\" : 26.90001,\n    \"timestamp\" : 1562760012,\n    \"tid\" : 37140214,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 0.17013709,\n    \"price\" : 27.90000,\n    \"timestamp\" : 1562760012,\n    \"tid\" : 37140213,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 0.18296293,\n    \"price\" : 27.90000,\n    \"timestamp\" : 1562758676,\n    \"tid\" : 37140110,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 1.038,\n    \"price\" : 27.90000,\n    \"timestamp\" : 1562756294,\n    \"tid\" : 37140051,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 0.10889998,\n    \"price\" : 27.90000,\n    \"timestamp\" : 1562750025,\n    \"tid\" : 37139731,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 0.421,\n    \"price\" : 29.70000,\n    \"timestamp\" : 1562737757,\n    \"tid\" : 37139293,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.44529938,\n    \"price\" : 29.00000,\n    \"timestamp\" : 1562735243,\n    \"tid\" : 37139194,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.33907496,\n    \"price\" : 26.90001,\n    \"timestamp\" : 1562735131,\n    \"tid\" : 37139191,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 8.35615605,\n    \"price\" : 29.45311,\n    \"timestamp\" : 1562707988,\n    \"tid\" : 37138315,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 4.66280245,\n    \"price\" : 29.45201,\n    \"timestamp\" : 1562707988,\n    \"tid\" : 37138314,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.2227257,\n    \"price\" : 29.41623,\n    \"timestamp\" : 1562707988,\n    \"tid\" : 37138313,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.139,\n    \"price\" : 29.00000,\n    \"timestamp\" : 1562707988,\n    \"tid\" : 37138312,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.843,\n    \"price\" : 29.00000,\n    \"timestamp\" : 1562705229,\n    \"tid\" : 37138235,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 1.5,\n    \"price\" : 28.90000,\n    \"timestamp\" : 1562705229,\n    \"tid\" : 37138234,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.297,\n    \"price\" : 28.89000,\n    \"timestamp\" : 1562705229,\n    \"tid\" : 37138233,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 3.41,\n    \"price\" : 27.00001,\n    \"timestamp\" : 1562698793,\n    \"tid\" : 37137932,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 0.072,\n    \"price\" : 28.10000,\n    \"timestamp\" : 1562694534,\n    \"tid\" : 37137727,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.5,\n    \"price\" : 28.09000,\n    \"timestamp\" : 1562694534,\n    \"tid\" : 37137726,\n    \"type\" : \"bid\"\n  }, {\n    \"amount\" : 0.11323124,\n    \"price\" : 26.00001,\n    \"timestamp\" : 1562672967,\n    \"tid\" : 37136561,\n    \"type\" : \"ask\"\n  }, {\n    \"amount\" : 0.12306798,\n    \"price\" : 24.60001,\n    \"timestamp\" : 1562662736,\n    \"tid\" : 37135797,\n    \"type\" : \"ask\"\n  } ]\n}"
+    }
+}]

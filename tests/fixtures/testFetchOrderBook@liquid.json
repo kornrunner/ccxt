@@ -1,0 +1,43 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.liquid.com\/products\/35\/price_levels",
+        "headers": {
+            "Host": "api.liquid.com",
+            "X-Quoine-API-Version": "2",
+            "Content-Type": "application\/json"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:28:36 GMT",
+            "content-type": "application\/json; charset=utf-8",
+            "content-length": "58",
+            "set-cookie": "__cfduid=d9b58e1166b62ca0263a08410bfd8b30e1562837315; expires=Fri, 10-Jul-20 09:28:35 GMT; path=\/; domain=.liquid.com; HttpOnly; Secure",
+            "content-encoding": "gzip",
+            "cf-cache-status": "MISS",
+            "cache-control": "public, max-age=30",
+            "cf-ray": "4f49bf88cd9e7c5e-BEG",
+            "accept-ranges": "bytes",
+            "etag": "\"7390a62b48570cca8d5c8b01c814ff6d\"",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "expires": "Thu, 11 Jul 2019 09:29:06 GMT",
+            "status": "200 OK",
+            "strict-transport-security": "max-age=631152000; includeSubdomains",
+            "vary": "Accept-Encoding",
+            "via": "1.1 spaces-router (c7665a42a791)",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-request-id": "462c311f-bfa2-25ec-0093-aecb110b733c",
+            "x-ua-compatible": "IE=Edge,chrome=1",
+            "x-xss-protection": "1; mode=block",
+            "server": "cloudflare"
+        },
+        "body": "{\"buy_price_levels\":[], \"sell_price_levels\":[]}"
+    }
+}]

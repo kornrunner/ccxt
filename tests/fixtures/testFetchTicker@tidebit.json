@@ -1,0 +1,73 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.tidebit.com\/api\/v2\/markets.json",
+        "headers": {
+            "Host": "www.tidebit.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:25:10 GMT",
+            "content-type": "application\/json",
+            "set-cookie": "__cfduid=d34c9a11b132fcb8b0053dbc7ef2d56871562837109; expires=Fri, 10-Jul-20 09:25:09 GMT; path=\/; domain=.tidebit.com; HttpOnly; Secure",
+            "access-control-allow-origin": "*",
+            "cache-control": "max-age=0, private, must-revalidate",
+            "cf-railgun": "direct (starting new WAN connection)",
+            "etag": "W\/\"b1c2aa0c0d9b385a591e3319282823c0\"",
+            "status": "200 OK",
+            "strict-transport-security": "max-age=31536000, max-age=63072000; includeSubDomains",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-powered-by": "Phusion Passenger 6.0.2",
+            "x-request-id": "38502f74-0f2e-4c44-9338-ed0acd0e2ba5",
+            "x-runtime": "0.009839",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49ba7e3d8d7c76-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "[{\"id\":\"btchkd\",\"name\":\"BTC\/HKD\",\"bid_fixed\":2,\"ask_fixed\":3,\"price_group_fixed\":null},{\"id\":\"ethhkd\",\"name\":\"ETH\/HKD\",\"bid_fixed\":2,\"ask_fixed\":3,\"price_group_fixed\":null},{\"id\":\"btcusd\",\"name\":\"BTC\/USD\",\"bid_fixed\":2,\"ask_fixed\":3,\"price_group_fixed\":null},{\"id\":\"bchhkx\",\"name\":\"BCH\/HKX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"ltchkx\",\"name\":\"LTC\/HKX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"etchkx\",\"name\":\"ETC\/HKX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"cnxhkx\",\"name\":\"CNX\/HKX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"cnxusx\",\"name\":\"CNX\/USX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"xtpusx\",\"name\":\"XTP\/USX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"ethusd\",\"name\":\"ETH\/USD\",\"bid_fixed\":2,\"ask_fixed\":3,\"price_group_fixed\":null},{\"id\":\"hkxhkd\",\"name\":\"HKX\/HKD\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":4},{\"id\":\"eoshkd\",\"name\":\"EOS\/HKD\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"xpaeth\",\"name\":\"XPA\/ETH\",\"bid_fixed\":8,\"ask_fixed\":2,\"price_group_fixed\":8},{\"id\":\"neohkd\",\"name\":\"NEO\/HKD\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"usxusd\",\"name\":\"USX\/USD\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":4},{\"id\":\"usxhkx\",\"name\":\"USX\/HKX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":4},{\"id\":\"btchkx\",\"name\":\"BTC\/HKX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"ethhkx\",\"name\":\"ETH\/HKX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"xpahkx\",\"name\":\"XPA\/HKX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"cbthkx\",\"name\":\"CBT\/HKX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"eoshkx\",\"name\":\"EOS\/HKX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"eosusx\",\"name\":\"EOS\/USX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"btcusx\",\"name\":\"BTC\/USX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"likehkx\",\"name\":\"LIKE\/HKX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"cbteth\",\"name\":\"CBT\/ETH\",\"bid_fixed\":8,\"ask_fixed\":4,\"price_group_fixed\":8},{\"id\":\"ethusx\",\"name\":\"ETH\/USX\",\"bid_fixed\":2,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"xpausx\",\"name\":\"XPA\/USX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"cbtusx\",\"name\":\"CBT\/USX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"euxusx\",\"name\":\"EUX\/USX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"eurusx\",\"name\":\"EUR\/USX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null},{\"id\":\"tryusx\",\"name\":\"TRY\/USX\",\"bid_fixed\":4,\"ask_fixed\":4,\"price_group_fixed\":null}]"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.tidebit.com\/api\/v2\/tickers.json",
+        "headers": {
+            "Host": "www.tidebit.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:25:12 GMT",
+            "content-type": "application\/json",
+            "set-cookie": "__cfduid=df6030897c726ca6c64ec714c943c57d71562837110; expires=Fri, 10-Jul-20 09:25:10 GMT; path=\/; domain=.tidebit.com; HttpOnly; Secure",
+            "access-control-allow-origin": "*",
+            "cache-control": "max-age=0, private, must-revalidate",
+            "cf-railgun": "direct (starting new WAN connection)",
+            "etag": "W\/\"1423ca26fdb3c4fc2a5226a62e4d11b7\"",
+            "status": "200 OK",
+            "strict-transport-security": "max-age=31536000, max-age=63072000; includeSubDomains",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-powered-by": "Phusion Passenger 6.0.2",
+            "x-request-id": "b3fc5883-d360-4433-9075-4fded4ddae86",
+            "x-runtime": "0.019962",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49ba87a98b7c76-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"btchkd\":{\"at\":1562837111,\"ticker\":{\"buy\":91500.0,\"sell\":92550.0,\"low\":90010.0,\"high\":104000.0,\"last\":91500.0,\"open\":103200.0,\"vol\":88.706}},\"ethhkd\":{\"at\":1562837111,\"ticker\":{\"buy\":2157.0,\"sell\":2300.0,\"low\":2130.47,\"high\":2469.21,\"last\":2157.0,\"open\":2451.89,\"vol\":198.282}},\"btcusd\":{\"at\":1562837112,\"ticker\":{\"buy\":8550.0,\"sell\":13500.0,\"low\":11003.3,\"high\":12485.0,\"last\":11015.0,\"open\":11015.0,\"vol\":0.0}},\"ethusd\":{\"at\":1562837112,\"ticker\":{\"buy\":220.0,\"sell\":590.0,\"low\":0.0,\"high\":0.0,\"last\":210.0,\"open\":210.0,\"vol\":0.0}},\"xpaeth\":{\"at\":1562837112,\"ticker\":{\"buy\":3.12e-05,\"sell\":7.246e-05,\"low\":3.111e-05,\"high\":3.451e-05,\"last\":3.111e-05,\"open\":3.111e-05,\"vol\":0.0}},\"neohkd\":{\"at\":1562837112,\"ticker\":{\"buy\":123.8,\"sell\":149.0,\"low\":149.0,\"high\":149.0,\"last\":149.0,\"open\":149.0,\"vol\":0.0}},\"cbteth\":{\"at\":1562837112,\"ticker\":{\"buy\":0.00010103,\"sell\":0.00028488,\"low\":0.0,\"high\":0.0,\"last\":0.000384,\"open\":0.000384,\"vol\":0.0}},\"hkxhkd\":{\"at\":1562837112,\"ticker\":{\"buy\":0.9999,\"sell\":1.0,\"low\":0.9999,\"high\":0.9999,\"last\":0.9999,\"open\":0.9999,\"vol\":0.0}},\"usxusd\":{\"at\":1562837112,\"ticker\":{\"buy\":1.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":1.0,\"open\":1.0,\"vol\":0.0}},\"usxhkx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":7.85,\"open\":7.85,\"vol\":0.0}},\"btchkx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.01,\"sell\":280000.0,\"low\":0.0,\"high\":0.0,\"last\":61888.88,\"open\":61888.88,\"vol\":0.0}},\"ethhkx\":{\"at\":1562837112,\"ticker\":{\"buy\":2302.0,\"sell\":10000.0,\"low\":2302.0,\"high\":2302.0,\"last\":2302.0,\"open\":2302.0,\"vol\":0.0}},\"xpahkx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":2.0,\"low\":0.0,\"high\":0.0,\"last\":0.59,\"open\":0.59,\"vol\":0.0}},\"cbthkx\":{\"at\":1562837112,\"ticker\":{\"buy\":10.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":5.0,\"open\":5.0,\"vol\":0.0}},\"btcusx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":6406.07,\"open\":6406.07,\"vol\":0.0}},\"ethusx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":200.67,\"open\":200.67,\"vol\":0.0}},\"xpausx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.043,\"low\":0.0,\"high\":0.0,\"last\":0.043,\"open\":0.043,\"vol\":0.0}},\"cbtusx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.071,\"open\":0.071,\"vol\":0.0}},\"eoshkd\":{\"at\":1562837112,\"ticker\":{\"buy\":40.0,\"sell\":50.0,\"low\":40.0,\"high\":46.5,\"last\":40.0,\"open\":46.0,\"vol\":590.8226}},\"eoshkx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.01,\"sell\":110.0,\"low\":0.0,\"high\":0.0,\"last\":30.0,\"open\":30.0,\"vol\":0.0}},\"eosusx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.0,\"open\":0.0,\"vol\":0.0}},\"likehkx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0101,\"sell\":0.0294,\"low\":0.0295,\"high\":0.0295,\"last\":0.0295,\"open\":0.0295,\"vol\":0.0}},\"bchhkx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.01,\"sell\":3750.0,\"low\":3750.0,\"high\":3750.0,\"last\":3750.0,\"open\":3750.0,\"vol\":0.0014}},\"ltchkx\":{\"at\":1562837112,\"ticker\":{\"buy\":800.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.0,\"open\":0.0,\"vol\":0.0}},\"etchkx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.01,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":119.99,\"open\":119.99,\"vol\":0.0}},\"cnxhkx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.1,\"open\":0.1,\"vol\":0.0}},\"cnxusx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.0,\"open\":0.0,\"vol\":0.0}},\"xtpusx\":{\"at\":1562837112,\"ticker\":{\"buy\":100.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.0,\"open\":0.0,\"vol\":0.0}},\"euxusx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.0,\"open\":0.0,\"vol\":0.0}},\"eurusx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.0,\"open\":0.0,\"vol\":0.0}},\"tryusx\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.0,\"open\":0.0,\"vol\":0.0}},\"pcthkd\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.0,\"low\":0.0,\"high\":0.0,\"last\":0.1,\"open\":0.1,\"vol\":0.0}},\"sskhkd\":{\"at\":1562837112,\"ticker\":{\"buy\":0.0,\"sell\":0.1,\"low\":0.0,\"high\":0.0,\"last\":0.0,\"open\":0.0,\"vol\":0.0}}}"
+    }
+}]

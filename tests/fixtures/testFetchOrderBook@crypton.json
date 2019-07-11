@@ -1,0 +1,29 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.cryptonbtc.com\/markets\/BCH-BTC\/orderbook",
+        "headers": {
+            "Host": "api.cryptonbtc.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:28:21 GMT",
+            "content-type": "application\/json",
+            "set-cookie": "__cfduid=d326bf3ae3f6afbef495c2a57f83a8ae31562837301; expires=Fri, 10-Jul-20 09:28:21 GMT; path=\/; domain=.cryptonbtc.com; HttpOnly; Secure",
+            "cache-control": "public, no-cache, must-revalidate",
+            "strict-transport-security": "max-age=15552000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49bf2c9e137c94-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"result\":{\"asks\":[],\"bids\":[]},\"success\":true}\n"
+    }
+}]

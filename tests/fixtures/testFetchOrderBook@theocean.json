@@ -1,0 +1,26 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.theocean.trade\/v1\/order_book?baseTokenAddress=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2&quoteTokenAddress=0x0000000000085d4780b73119b644ae5ecd22b376",
+        "headers": {
+            "Host": "api.theocean.trade"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:28:45 GMT",
+            "content-type": "application\/json; charset=utf-8",
+            "server": "nginx\/1.17.0",
+            "x-powered-by": "Express",
+            "access-control-allow-origin": "*",
+            "etag": "W\/\"15-JgM\/Us+smN6zC4elJTXo6\/J\/hhc\"",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"bids\":[],\"asks\":[]}"
+    }
+}]

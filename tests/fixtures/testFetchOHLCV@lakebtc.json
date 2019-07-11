@@ -1,0 +1,31 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.lakebtc.com\/api_v2\/bctrades?symbol=btcusd",
+        "headers": {
+            "Host": "api.lakebtc.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx",
+            "Date": "Thu, 11 Jul 2019 09:29:50 GMT",
+            "Content-Type": "application\/json",
+            "Content-Length": "1031",
+            "Connection": "keep-alive",
+            "Status": "200 OK",
+            "Access-Control-Allow-Origin": "*",
+            "X-Request-Id": "0b38e2b8-3bf9-4aee-b52e-1c0fbfeda43b",
+            "ETag": "\"b047c487fb86318b4760814b4d9a3d0f\"",
+            "X-Runtime": "21.565855",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Cache-Control": "public"
+        },
+        "body": "[{\"date\":1562836728,\"price\":\"11806.98\",\"amount\":\"2.0122\",\"tid\":1562836728},{\"date\":1562836808,\"price\":\"11805.27\",\"amount\":\"4.1605\",\"tid\":1562836808},{\"date\":1562836820,\"price\":\"11806.46\",\"amount\":\"0.011765\",\"tid\":1562836820},{\"date\":1562836823,\"price\":\"11804.86\",\"amount\":\"0.015815\",\"tid\":1562836823},{\"date\":1562836826,\"price\":\"11803.94\",\"amount\":\"0.019485\",\"tid\":1562836826},{\"date\":1562836827,\"price\":\"11802.12\",\"amount\":\"0.007311\",\"tid\":1562836827},{\"date\":1562836935,\"price\":\"11794.62\",\"amount\":\"0.185\",\"tid\":1562836935},{\"date\":1562836952,\"price\":\"11794.99\",\"amount\":\"0.71\",\"tid\":1562836952},{\"date\":1562837061,\"price\":\"11790.44\",\"amount\":\"1.11\",\"tid\":1562837061},{\"date\":1562837186,\"price\":\"11790.98\",\"amount\":\"0.2\",\"tid\":1562837186},{\"date\":1562837265,\"price\":\"11789.14\",\"amount\":\"0.475\",\"tid\":1562837265},{\"date\":1562837277,\"price\":\"11798.54\",\"amount\":\"0.5\",\"tid\":1562837277},{\"date\":1562837297,\"price\":\"11802.82\",\"amount\":\"0.71\",\"tid\":1562837297},{\"date\":1562837313,\"price\":\"11803.37\",\"amount\":\"1.2614\",\"tid\":1562837313}]"
+    }
+}]

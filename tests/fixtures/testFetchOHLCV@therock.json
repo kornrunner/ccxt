@@ -1,0 +1,30 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.therocktrading.com\/v1\/funds\/BTCEUR\/trades",
+        "headers": {
+            "Host": "api.therocktrading.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "1.1",
+            "code": "200",
+            "message": "OK"
+        },
+        "headers": {
+            "Server": "nginx\/1.10.3",
+            "Date": "Thu, 11 Jul 2019 09:30:19 GMT",
+            "Content-Type": "application\/json; charset=utf-8; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-XSS-Protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "ETag": "W\/\"29d7d9923609def4773c6829ed9d8bf2\"",
+            "Cache-Control": "max-age=0, private, must-revalidate",
+            "X-Request-Id": "658b627e-812c-4da8-98b0-7053abaf5adf",
+            "X-Runtime": "0.032082"
+        },
+        "body": "{\"trades\":[{\"id\":5774647,\"fund_id\":\"BTCEUR\",\"amount\":0.005,\"price\":10217.87,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:29:04.588Z\"},{\"id\":5774646,\"fund_id\":\"BTCEUR\",\"amount\":0.172,\"price\":10207.7,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:29:00.475Z\"},{\"id\":5774645,\"fund_id\":\"BTCEUR\",\"amount\":0.06,\"price\":10215.0,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:29:00.440Z\"},{\"id\":5774644,\"fund_id\":\"BTCEUR\",\"amount\":0.005,\"price\":10217.87,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:29:00.419Z\"},{\"id\":5774643,\"fund_id\":\"BTCEUR\",\"amount\":0.925,\"price\":10220.0,\"side\":\"sell\",\"dark\":true,\"date\":\"2019-07-11T09:29:00.346Z\"},{\"id\":5774642,\"fund_id\":\"BTCEUR\",\"amount\":0.065,\"price\":10220.0,\"side\":\"sell\",\"dark\":true,\"date\":\"2019-07-11T09:28:56.339Z\"},{\"id\":5774641,\"fund_id\":\"BTCEUR\",\"amount\":0.005,\"price\":10220.0,\"side\":\"sell\",\"dark\":true,\"date\":\"2019-07-11T09:28:51.927Z\"},{\"id\":5774640,\"fund_id\":\"BTCEUR\",\"amount\":0.005,\"price\":10220.0,\"side\":\"sell\",\"dark\":true,\"date\":\"2019-07-11T09:28:40.797Z\"},{\"id\":5774639,\"fund_id\":\"BTCEUR\",\"amount\":0.656,\"price\":10235.46,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:28:05.956Z\"},{\"id\":5774636,\"fund_id\":\"BTCEUR\",\"amount\":0.0075,\"price\":10215.91,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:25:34.663Z\"},{\"id\":5774635,\"fund_id\":\"BTCEUR\",\"amount\":0.0009,\"price\":10215.91,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:25:33.494Z\"},{\"id\":5774633,\"fund_id\":\"BTCEUR\",\"amount\":0.002,\"price\":10220.2,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:20:18.088Z\"},{\"id\":5774632,\"fund_id\":\"BTCEUR\",\"amount\":0.0066,\"price\":10221.04,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:20:10.221Z\"},{\"id\":5774631,\"fund_id\":\"BTCEUR\",\"amount\":0.0019,\"price\":10221.2,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:20:10.205Z\"},{\"id\":5774627,\"fund_id\":\"BTCEUR\",\"amount\":0.01,\"price\":10269.43,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:15:51.491Z\"},{\"id\":5774625,\"fund_id\":\"BTCEUR\",\"amount\":0.01,\"price\":10287.19,\"side\":\"buy\",\"dark\":false,\"date\":\"2019-07-11T09:14:29.442Z\"},{\"id\":5774624,\"fund_id\":\"BTCEUR\",\"amount\":0.0008,\"price\":10269.09,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:13:38.798Z\"},{\"id\":5774623,\"fund_id\":\"BTCEUR\",\"amount\":0.01,\"price\":10276.7,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:09:38.158Z\"},{\"id\":5774622,\"fund_id\":\"BTCEUR\",\"amount\":0.003,\"price\":10261.27,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:09:31.107Z\"},{\"id\":5774621,\"fund_id\":\"BTCEUR\",\"amount\":0.0075,\"price\":10258.23,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:08:42.171Z\"},{\"id\":5774620,\"fund_id\":\"BTCEUR\",\"amount\":0.0005,\"price\":10276.61,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:08:42.153Z\"},{\"id\":5774619,\"fund_id\":\"BTCEUR\",\"amount\":0.053,\"price\":10276.59,\"side\":\"buy\",\"dark\":false,\"date\":\"2019-07-11T09:08:39.678Z\"},{\"id\":5774615,\"fund_id\":\"BTCEUR\",\"amount\":0.0535,\"price\":10278.15,\"side\":\"sell\",\"dark\":false,\"date\":\"2019-07-11T09:03:50.125Z\"},{\"id\":5774614,\"fund_id\":\"BTCEUR\",\"amount\":0.1,\"price\":10275.0,\"side\":\"buy\",\"dark\":false,\"date\":\"2019-07-11T09:03:49.792Z\"},{\"id\":5774610,\"fund_id\":\"BTCEUR\",\"amount\":0.0027,\"price\":10220.0,\"side\":\"sell\",\"dark\":true,\"date\":\"2019-07-11T09:02:35.276Z\"}],\"meta\":{\"total_count\":null,\"first\":{\"page\":1,\"href\":\"https:\/\/api.therocktrading.com\/v1\/funds\/BTCEUR\/trades?page=1\"},\"previous\":null,\"current\":{\"page\":1,\"href\":\"https:\/\/api.therocktrading.com\/v1\/funds\/BTCEUR\/trades?page=1\"},\"next\":{\"page\":2,\"href\":\"https:\/\/api.therocktrading.com\/v1\/funds\/BTCEUR\/trades?page=2\"},\"last\":null}}"
+    }
+}]

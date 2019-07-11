@@ -1,0 +1,34 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/broker.negociecoins.com.br\/api\/v3\/b2xbrl\/trades\/0",
+        "headers": {
+            "Host": "broker.negociecoins.com.br"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:30:10 GMT",
+            "content-type": "application\/json; charset=utf-8",
+            "content-length": "2",
+            "set-cookie": "__cfduid=df321e44e7098de461b3f6ae12d01fb9b1562837409; expires=Fri, 10-Jul-20 09:30:09 GMT; path=\/; domain=.negociecoins.com.br; HttpOnly, ASP.NET_SessionId=zqqbe3zfwlcgcqwmbwco233z; domain=broker.negociecoins.com.br; path=\/; secure; HttpOnly",
+            "cache-control": "public, max-age=10",
+            "expires": "Thu, 11 Jul 2019 09:30:20 GMT",
+            "last-modified": "Thu, 11 Jul 2019 09:30:10 GMT",
+            "vary": "*",
+            "x-powered-by": "ASP.NET",
+            "access-control-allow-origin": "*",
+            "access-control-allow-headers": "Content-Type",
+            "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49c1d28a367c40-BEG"
+        },
+        "body": "[]"
+    }
+}]

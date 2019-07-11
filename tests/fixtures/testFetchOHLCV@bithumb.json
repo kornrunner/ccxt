@@ -1,0 +1,29 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.bithumb.com\/public\/transaction_history\/BTC?",
+        "headers": {
+            "Host": "api.bithumb.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:28:56 GMT",
+            "content-type": "application\/json",
+            "set-cookie": "__cfduid=d161e53585c389b8639c6498b304d12811562837335; expires=Fri, 10-Jul-20 09:28:55 GMT; path=\/; domain=.bithumb.com; HttpOnly, WMONID=jBJkjlHN5DA; expires=Fri, 10-Jul-2020 09:28:56 GMT; Max-Age=31536000; path=\/, ci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%22e0de19f865f420393923e6fa748f1524%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A13%3A%22178.148.31.94%22%3Bs%3A10%3A%22user_agent%22%3Bb%3A0%3Bs%3A13%3A%22last_activity%22%3Bi%3A1562837336%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D2aca81501b7f3b298041aeab0a5c322a2f15885c; expires=Thu, 11-Jul-2019 11:28:56 GMT; Max-Age=7200; path=\/",
+            "access-control-allow-origin": "*",
+            "access-control-allow-methods": "*",
+            "access-control-allow-headers": "*",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49c000aedf7c4c-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"status\":\"0000\",\"data\":[{\"cont_no\":\"37393876\",\"transaction_date\":\"2019-07-11 18:28:50\",\"type\":\"bid\",\"units_traded\":\"0.0013\",\"price\":\"13871000\",\"total\":\"18032\"},{\"cont_no\":\"37393875\",\"transaction_date\":\"2019-07-11 18:28:50\",\"type\":\"ask\",\"units_traded\":\"0.0423\",\"price\":\"13860000\",\"total\":\"586278\"},{\"cont_no\":\"37393874\",\"transaction_date\":\"2019-07-11 18:28:49\",\"type\":\"ask\",\"units_traded\":\"0.1477\",\"price\":\"13860000\",\"total\":\"2047122\"},{\"cont_no\":\"37393873\",\"transaction_date\":\"2019-07-11 18:28:49\",\"type\":\"ask\",\"units_traded\":\"0.0961\",\"price\":\"13860000\",\"total\":\"1331946\"},{\"cont_no\":\"37393872\",\"transaction_date\":\"2019-07-11 18:28:49\",\"type\":\"ask\",\"units_traded\":\"0.0711\",\"price\":\"13860000\",\"total\":\"985446\"},{\"cont_no\":\"37393871\",\"transaction_date\":\"2019-07-11 18:28:44\",\"type\":\"ask\",\"units_traded\":\"0.0289\",\"price\":\"13860000\",\"total\":\"400554\"},{\"cont_no\":\"37393870\",\"transaction_date\":\"2019-07-11 18:28:44\",\"type\":\"ask\",\"units_traded\":\"0.0134\",\"price\":\"13863000\",\"total\":\"185764\"},{\"cont_no\":\"37393869\",\"transaction_date\":\"2019-07-11 18:28:34\",\"type\":\"ask\",\"units_traded\":\"0.0219\",\"price\":\"13863000\",\"total\":\"303600\"},{\"cont_no\":\"37393868\",\"transaction_date\":\"2019-07-11 18:28:34\",\"type\":\"ask\",\"units_traded\":\"0.0194\",\"price\":\"13869000\",\"total\":\"269059\"},{\"cont_no\":\"37393867\",\"transaction_date\":\"2019-07-11 18:28:34\",\"type\":\"ask\",\"units_traded\":\"0.0248\",\"price\":\"13869000\",\"total\":\"343951\"},{\"cont_no\":\"37393866\",\"transaction_date\":\"2019-07-11 18:28:34\",\"type\":\"ask\",\"units_traded\":\"0.0175\",\"price\":\"13869000\",\"total\":\"242708\"},{\"cont_no\":\"37393865\",\"transaction_date\":\"2019-07-11 18:28:29\",\"type\":\"bid\",\"units_traded\":\"0.0251\",\"price\":\"13885000\",\"total\":\"348514\"},{\"cont_no\":\"37393864\",\"transaction_date\":\"2019-07-11 18:28:29\",\"type\":\"bid\",\"units_traded\":\"0.005\",\"price\":\"13875000\",\"total\":\"69375\"},{\"cont_no\":\"37393863\",\"transaction_date\":\"2019-07-11 18:28:29\",\"type\":\"bid\",\"units_traded\":\"0.005\",\"price\":\"13874000\",\"total\":\"69370\"},{\"cont_no\":\"37393862\",\"transaction_date\":\"2019-07-11 18:28:29\",\"type\":\"ask\",\"units_traded\":\"0.0402\",\"price\":\"13869000\",\"total\":\"557534\"},{\"cont_no\":\"37393861\",\"transaction_date\":\"2019-07-11 18:28:28\",\"type\":\"ask\",\"units_traded\":\"0.0423\",\"price\":\"13869000\",\"total\":\"586659\"},{\"cont_no\":\"37393860\",\"transaction_date\":\"2019-07-11 18:28:26\",\"type\":\"ask\",\"units_traded\":\"0.0109\",\"price\":\"13870000\",\"total\":\"151183\"},{\"cont_no\":\"37393859\",\"transaction_date\":\"2019-07-11 18:28:26\",\"type\":\"ask\",\"units_traded\":\"0.153\",\"price\":\"13872000\",\"total\":\"2122416\"},{\"cont_no\":\"37393858\",\"transaction_date\":\"2019-07-11 18:28:26\",\"type\":\"ask\",\"units_traded\":\"0.0234\",\"price\":\"13873000\",\"total\":\"324628\"},{\"cont_no\":\"37393857\",\"transaction_date\":\"2019-07-11 18:28:26\",\"type\":\"ask\",\"units_traded\":\"0.3723\",\"price\":\"13874000\",\"total\":\"5165290\"}]}"
+    }
+}]

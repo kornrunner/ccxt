@@ -1,0 +1,31 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/coinmate.io\/api\/transactions?currencyPair=BTC_EUR&minutesIntoHistory=10",
+        "headers": {
+            "Host": "coinmate.io"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:29:17 GMT",
+            "content-type": "application\/json;charset=UTF-8",
+            "set-cookie": "__cfduid=df1d9be06a1bd3aeffc7a30f4420300881562837357; expires=Fri, 10-Jul-20 09:29:17 GMT; path=\/; domain=.coinmate.io; HttpOnly",
+            "x-frame-options": "SAMEORIGIN",
+            "x-content-type-options": "nosniff",
+            "x-xss-protection": "1; mode=block",
+            "access-control-allow-origin": "*",
+            "strict-transport-security": "max-age=15552000; includeSubDomains",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49c08cde807ca6-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"error\":false,\"errorMessage\":null,\"data\":[{\"timestamp\":1562836916155,\"transactionId\":\"4288006\",\"price\":10205.76,\"amount\":0.00292511,\"currencyPair\":\"BTC_EUR\",\"tradeType\":\"BUY\"},{\"timestamp\":1562836916141,\"transactionId\":\"4288005\",\"price\":10205.7,\"amount\":0.0008,\"currencyPair\":\"BTC_EUR\",\"tradeType\":\"BUY\"},{\"timestamp\":1562836911213,\"transactionId\":\"4288004\",\"price\":10182,\"amount\":0.00613742,\"currencyPair\":\"BTC_EUR\",\"tradeType\":\"SELL\"},{\"timestamp\":1562836911203,\"transactionId\":\"4288003\",\"price\":10182.01,\"amount\":0.00741,\"currencyPair\":\"BTC_EUR\",\"tradeType\":\"SELL\"},{\"timestamp\":1562836911190,\"transactionId\":\"4288002\",\"price\":10184,\"amount\":0.0021406,\"currencyPair\":\"BTC_EUR\",\"tradeType\":\"SELL\"},{\"timestamp\":1562836911181,\"transactionId\":\"4288001\",\"price\":10186,\"amount\":0.0021401,\"currencyPair\":\"BTC_EUR\",\"tradeType\":\"SELL\"},{\"timestamp\":1562836911167,\"transactionId\":\"4288000\",\"price\":10187.13,\"amount\":0.00646588,\"currencyPair\":\"BTC_EUR\",\"tradeType\":\"SELL\"}]}"
+    }
+}]

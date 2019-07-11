@@ -1,0 +1,69 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.buda.com\/api\/v2\/currencies",
+        "headers": {
+            "Host": "www.buda.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:25:38 GMT",
+            "content-type": "application\/json; charset=utf-8",
+            "set-cookie": "__cfduid=d273131e8ddbe4d9374257ed05bac1d4a1562837138; expires=Fri, 10-Jul-20 09:25:38 GMT; path=\/; domain=.buda.com; HttpOnly",
+            "x-frame-options": "SAMEORIGIN",
+            "x-xss-protection": "1; mode=block",
+            "x-content-type-options": "nosniff",
+            "etag": "W\/\"3191cfecf3312e3c614d75bc5580f3d5\"",
+            "cache-control": "max-age=0, private, must-revalidate",
+            "x-runtime": "0.073700",
+            "x-request-id": "90d3fc3f-ba03-4191-8bd7-9a8aaf1bc81e",
+            "via": "1.1 google",
+            "alt-svc": "clear",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49bb315c7c7c3a-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"currencies\":[{\"id\":\"BTC\",\"symbol\":\"BTC \",\"managed\":true,\"input_decimals\":8,\"display_decimals\":6,\"deposit_minimum\":[\"0.0\",\"BTC\"],\"withdrawal_minimum\":[\"0.00001\",\"BTC\"]},{\"id\":\"BCH\",\"symbol\":\"BCH \",\"managed\":true,\"input_decimals\":8,\"display_decimals\":6,\"deposit_minimum\":[\"0.0\",\"BCH\"],\"withdrawal_minimum\":[\"0.001\",\"BCH\"]},{\"id\":\"ETH\",\"symbol\":\"ETH \",\"managed\":true,\"input_decimals\":9,\"display_decimals\":6,\"deposit_minimum\":[\"0.0\",\"ETH\"],\"withdrawal_minimum\":[\"0.01\",\"ETH\"]},{\"id\":\"LTC\",\"symbol\":\"LTC \",\"managed\":true,\"input_decimals\":8,\"display_decimals\":6,\"deposit_minimum\":[\"0.0\",\"LTC\"],\"withdrawal_minimum\":[\"0.001\",\"LTC\"]},{\"id\":\"CLP\",\"symbol\":\"CLP$\",\"managed\":true,\"input_decimals\":0,\"display_decimals\":0,\"deposit_minimum\":[\"0.0\",\"CLP\"],\"withdrawal_minimum\":[\"2000.0\",\"CLP\"]},{\"id\":\"COP\",\"symbol\":\"COP $\",\"managed\":true,\"input_decimals\":2,\"display_decimals\":0,\"deposit_minimum\":[\"4000.0\",\"COP\"],\"withdrawal_minimum\":[\"9000.0\",\"COP\"]},{\"id\":\"PEN\",\"symbol\":\"PEN $\",\"managed\":true,\"input_decimals\":2,\"display_decimals\":2,\"deposit_minimum\":[\"5.0\",\"PEN\"],\"withdrawal_minimum\":[\"10.0\",\"PEN\"]},{\"id\":\"ARS\",\"symbol\":\"ARS $\",\"managed\":true,\"input_decimals\":2,\"display_decimals\":2,\"deposit_minimum\":[\"50.0\",\"ARS\"],\"withdrawal_minimum\":[\"100.0\",\"ARS\"]},{\"id\":\"USD\",\"symbol\":\"USD$\",\"managed\":false,\"input_decimals\":2,\"display_decimals\":1,\"deposit_minimum\":[\"0.0\",\"USD\"],\"withdrawal_minimum\":[\"0.0\",\"USD\"]},{\"id\":\"CNY\",\"symbol\":\"\u00a5\",\"managed\":false,\"input_decimals\":2,\"display_decimals\":0,\"deposit_minimum\":[\"0.0\",\"CNY\"],\"withdrawal_minimum\":[\"0.0\",\"CNY\"]}]}"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/www.buda.com\/api\/v2\/markets",
+        "headers": {
+            "Host": "www.buda.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:25:39 GMT",
+            "content-type": "application\/json; charset=utf-8",
+            "set-cookie": "__cfduid=d1ea2de17b89e760d82ab06f569ef9ac51562837138; expires=Fri, 10-Jul-20 09:25:38 GMT; path=\/; domain=.buda.com; HttpOnly",
+            "x-frame-options": "SAMEORIGIN",
+            "x-xss-protection": "1; mode=block",
+            "x-content-type-options": "nosniff",
+            "etag": "W\/\"fd82be12abc25bc3eb4b110f316559cb\"",
+            "cache-control": "max-age=0, private, must-revalidate",
+            "x-runtime": "0.155597",
+            "x-request-id": "a08cc374-4d49-4095-aac0-ce4804d37eb1",
+            "via": "1.1 google",
+            "alt-svc": "clear",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49bb341c9f7c5e-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"markets\":[{\"id\":\"BTC-CLP\",\"name\":\"btc-clp\",\"base_currency\":\"BTC\",\"quote_currency\":\"CLP\",\"minimum_order_amount\":[\"0.00002\",\"BTC\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"BTC-COP\",\"name\":\"btc-cop\",\"base_currency\":\"BTC\",\"quote_currency\":\"COP\",\"minimum_order_amount\":[\"0.00002\",\"BTC\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"ETH-CLP\",\"name\":\"eth-clp\",\"base_currency\":\"ETH\",\"quote_currency\":\"CLP\",\"minimum_order_amount\":[\"0.001\",\"ETH\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"ETH-BTC\",\"name\":\"eth-btc\",\"base_currency\":\"ETH\",\"quote_currency\":\"BTC\",\"minimum_order_amount\":[\"0.001\",\"ETH\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"BTC-PEN\",\"name\":\"btc-pen\",\"base_currency\":\"BTC\",\"quote_currency\":\"PEN\",\"minimum_order_amount\":[\"0.00002\",\"BTC\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"ETH-PEN\",\"name\":\"eth-pen\",\"base_currency\":\"ETH\",\"quote_currency\":\"PEN\",\"minimum_order_amount\":[\"0.001\",\"ETH\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"ETH-COP\",\"name\":\"eth-cop\",\"base_currency\":\"ETH\",\"quote_currency\":\"COP\",\"minimum_order_amount\":[\"0.001\",\"ETH\"],\"disabled\":true,\"illiquid\":false},{\"id\":\"BCH-BTC\",\"name\":\"bch-btc\",\"base_currency\":\"BCH\",\"quote_currency\":\"BTC\",\"minimum_order_amount\":[\"0.001\",\"BCH\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"BCH-CLP\",\"name\":\"bch-clp\",\"base_currency\":\"BCH\",\"quote_currency\":\"CLP\",\"minimum_order_amount\":[\"0.001\",\"BCH\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"BCH-COP\",\"name\":\"bch-cop\",\"base_currency\":\"BCH\",\"quote_currency\":\"COP\",\"minimum_order_amount\":[\"0.001\",\"BCH\"],\"disabled\":true,\"illiquid\":false},{\"id\":\"BCH-PEN\",\"name\":\"bch-pen\",\"base_currency\":\"BCH\",\"quote_currency\":\"PEN\",\"minimum_order_amount\":[\"0.001\",\"BCH\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"BTC-ARS\",\"name\":\"btc-ars\",\"base_currency\":\"BTC\",\"quote_currency\":\"ARS\",\"minimum_order_amount\":[\"0.00002\",\"BTC\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"ETH-ARS\",\"name\":\"eth-ars\",\"base_currency\":\"ETH\",\"quote_currency\":\"ARS\",\"minimum_order_amount\":[\"0.001\",\"ETH\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"BCH-ARS\",\"name\":\"bch-ars\",\"base_currency\":\"BCH\",\"quote_currency\":\"ARS\",\"minimum_order_amount\":[\"0.001\",\"BCH\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"LTC-BTC\",\"name\":\"ltc-btc\",\"base_currency\":\"LTC\",\"quote_currency\":\"BTC\",\"minimum_order_amount\":[\"0.003\",\"LTC\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"LTC-CLP\",\"name\":\"ltc-clp\",\"base_currency\":\"LTC\",\"quote_currency\":\"CLP\",\"minimum_order_amount\":[\"0.003\",\"LTC\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"LTC-COP\",\"name\":\"ltc-cop\",\"base_currency\":\"LTC\",\"quote_currency\":\"COP\",\"minimum_order_amount\":[\"0.003\",\"LTC\"],\"disabled\":true,\"illiquid\":false},{\"id\":\"LTC-PEN\",\"name\":\"ltc-pen\",\"base_currency\":\"LTC\",\"quote_currency\":\"PEN\",\"minimum_order_amount\":[\"0.003\",\"LTC\"],\"disabled\":false,\"illiquid\":false},{\"id\":\"LTC-ARS\",\"name\":\"ltc-ars\",\"base_currency\":\"LTC\",\"quote_currency\":\"ARS\",\"minimum_order_amount\":[\"0.003\",\"LTC\"],\"disabled\":false,\"illiquid\":false}]}"
+    }
+}]

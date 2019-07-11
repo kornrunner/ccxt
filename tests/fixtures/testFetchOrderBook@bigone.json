@@ -1,0 +1,34 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/big.one\/api\/v2\/markets\/GXC-USDT\/depth",
+        "headers": {
+            "Host": "big.one"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:27:58 GMT",
+            "content-type": "application\/json; charset=UTF-8",
+            "set-cookie": "__cfduid=dd9015cec791446166328cca4cfee899d1562837278; expires=Fri, 10-Jul-20 09:27:58 GMT; path=\/; domain=.big.one; HttpOnly; Secure",
+            "access-control-allow-origin": "*",
+            "vary": "Origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-xss-protection": "1; mode=block",
+            "via": "1.1 google",
+            "alt-svc": "clear",
+            "strict-transport-security": "max-age=2592000; includeSubDomains",
+            "expect-ct": "max-age=604800, report-uri=\"https:\/\/report-uri.cloudflare.com\/cdn-cgi\/beacon\/expect-ct\"",
+            "server": "cloudflare",
+            "cf-ray": "4f49be9dfc7c7c58-BEG",
+            "content-encoding": "gzip"
+        },
+        "body": "{\"data\":{\"market_uuid\":\"02b6c7b5-8588-4a33-8bc7-30457123e8e1\",\"market_id\":\"GXC-USDT\",\"bids\":[{\"price\":\"1.6536\",\"order_count\":1,\"amount\":\"13.89\"},{\"price\":\"1.51\",\"order_count\":1,\"amount\":\"522.88\"},{\"price\":\"1.5002\",\"order_count\":1,\"amount\":\"200\"},{\"price\":\"1.2\",\"order_count\":1,\"amount\":\"363.4\"},{\"price\":\"1.045\",\"order_count\":1,\"amount\":\"35.85\"},{\"price\":\"1.04\",\"order_count\":2,\"amount\":\"69.5\"},{\"price\":\"1\",\"order_count\":1,\"amount\":\"200\"}],\"asks\":[{\"price\":\"1.6733\",\"order_count\":1,\"amount\":\"12\"},{\"price\":\"1.6734\",\"order_count\":1,\"amount\":\"21.55\"},{\"price\":\"1.6789\",\"order_count\":1,\"amount\":\"8.15\"},{\"price\":\"1.6853\",\"order_count\":1,\"amount\":\"20.02\"},{\"price\":\"1.6921\",\"order_count\":1,\"amount\":\"18.73\"},{\"price\":\"1.6982\",\"order_count\":1,\"amount\":\"21.41\"},{\"price\":\"1.705\",\"order_count\":1,\"amount\":\"17.85\"},{\"price\":\"1.7107\",\"order_count\":1,\"amount\":\"17.83\"},{\"price\":\"1.7178\",\"order_count\":1,\"amount\":\"19.18\"},{\"price\":\"1.8538\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.866\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.8723\",\"order_count\":1,\"amount\":\"20\"},{\"price\":\"1.8783\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.8905\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.9028\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.915\",\"order_count\":1,\"amount\":\"0.07\"},{\"price\":\"1.9272\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.9395\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.9517\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.964\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.9762\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.9859\",\"order_count\":1,\"amount\":\"46.44\"},{\"price\":\"1.9885\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"1.9991\",\"order_count\":1,\"amount\":\"46.44\"},{\"price\":\"2.0007\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"2.0086\",\"order_count\":1,\"amount\":\"1.18\"},{\"price\":\"2.0123\",\"order_count\":1,\"amount\":\"46.44\"},{\"price\":\"2.0129\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"2.021\",\"order_count\":1,\"amount\":\"0.51\"},{\"price\":\"2.0252\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"2.0255\",\"order_count\":1,\"amount\":\"46.44\"},{\"price\":\"2.0374\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"2.0386\",\"order_count\":2,\"amount\":\"52.02\"},{\"price\":\"2.0421\",\"order_count\":1,\"amount\":\"0.51\"},{\"price\":\"2.0497\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"2.0518\",\"order_count\":1,\"amount\":\"46.44\"},{\"price\":\"2.0545\",\"order_count\":1,\"amount\":\"14.54\"},{\"price\":\"2.0619\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"2.0631\",\"order_count\":1,\"amount\":\"0.51\"},{\"price\":\"2.065\",\"order_count\":1,\"amount\":\"46.44\"},{\"price\":\"2.0741\",\"order_count\":2,\"amount\":\"14.75\"},{\"price\":\"2.0782\",\"order_count\":1,\"amount\":\"46.44\"},{\"price\":\"2.0827\",\"order_count\":2,\"amount\":\"29.79\"},{\"price\":\"2.0842\",\"order_count\":1,\"amount\":\"0.51\"},{\"price\":\"2.0864\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"2.0913\",\"order_count\":1,\"amount\":\"46.44\"},{\"price\":\"2.0931\",\"order_count\":1,\"amount\":\"3.62\"},{\"price\":\"2.0937\",\"order_count\":1,\"amount\":\"14.54\"},{\"price\":\"2.0986\",\"order_count\":1,\"amount\":\"0.78\"},{\"price\":\"2.0991\",\"order_count\":2,\"amount\":\"28.74\"}]}}\n"
+    }
+}]

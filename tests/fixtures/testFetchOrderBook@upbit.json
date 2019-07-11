@@ -1,0 +1,32 @@
+[{
+    "request": {
+        "method": "GET",
+        "url": "https:\/\/api.upbit.com\/v1\/orderbook?markets=KRW-BTC",
+        "headers": {
+            "Host": "api.upbit.com"
+        }
+    },
+    "response": {
+        "status": {
+            "http_version": "2",
+            "code": "200",
+            "message": ""
+        },
+        "headers": {
+            "date": "Thu, 11 Jul 2019 09:28:48 GMT",
+            "content-type": "application\/json;charset=UTF-8",
+            "limit-by-ip": "Yes",
+            "remaining-req": "group=orderbook; min=599; sec=9",
+            "etag": "\"09de43c384df117c9b6c76eb3704e53ae\"",
+            "x-content-type-options": "nosniff",
+            "x-xss-protection": "1; mode=block",
+            "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+            "pragma": "no-cache",
+            "expires": "0",
+            "x-frame-options": "DENY",
+            "content-encoding": "gzip",
+            "vary": "Accept-Encoding"
+        },
+        "body": "[{\"market\":\"KRW-BTC\",\"timestamp\":1562837327533,\"total_ask_size\":10.82119741,\"total_bid_size\":9.24555577,\"orderbook_units\":[{\"ask_price\":1.3865E7,\"bid_price\":1.3861E7,\"ask_size\":0.448,\"bid_size\":2.27038186},{\"ask_price\":1.3866E7,\"bid_price\":1.386E7,\"ask_size\":2.14334208,\"bid_size\":0.03081469},{\"ask_price\":1.3867E7,\"bid_price\":1.3859E7,\"ask_size\":0.15594037,\"bid_size\":3.96862635},{\"ask_price\":1.3873E7,\"bid_price\":1.3854E7,\"ask_size\":2.09,\"bid_size\":0.23576164},{\"ask_price\":1.3876E7,\"bid_price\":1.3853E7,\"ask_size\":0.00007218,\"bid_size\":0.00056991},{\"ask_price\":1.3877E7,\"bid_price\":1.3852E7,\"ask_size\":0.00007215,\"bid_size\":0.26959263},{\"ask_price\":1.3883E7,\"bid_price\":1.3846E7,\"ask_size\":0.3069,\"bid_size\":0.07222302},{\"ask_price\":1.3884E7,\"bid_price\":1.3844E7,\"ask_size\":1.51460241,\"bid_size\":0.00816545},{\"ask_price\":1.3886E7,\"bid_price\":1.3841E7,\"ask_size\":0.2973,\"bid_size\":0.56539278},{\"ask_price\":1.3888E7,\"bid_price\":1.384E7,\"ask_size\":0.461,\"bid_size\":0.10820079},{\"ask_price\":1.3889E7,\"bid_price\":1.3836E7,\"ask_size\":0.26290106,\"bid_size\":0.2973},{\"ask_price\":1.389E7,\"bid_price\":1.3832E7,\"ask_size\":0.2919,\"bid_size\":0.32118065},{\"ask_price\":1.3891E7,\"bid_price\":1.383E7,\"ask_size\":0.49076744,\"bid_size\":0.59391982},{\"ask_price\":1.3894E7,\"bid_price\":1.3829E7,\"ask_size\":2.05,\"bid_size\":0.15433015},{\"ask_price\":1.3895E7,\"bid_price\":1.3828E7,\"ask_size\":0.30839972,\"bid_size\":0.34909603}]}]"
+    }
+}]
