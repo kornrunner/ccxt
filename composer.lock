@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f91d21f3b4da5d4bd7c0fbe376ee17d",
+    "content-hash": "8bcf88ea2ecbf4524d00adfd440af8b6",
     "packages": [
         {
             "name": "kornrunner/ethereum-util",
@@ -2136,7 +2136,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1"
+        "php": "^7.2"
     },
     "platform-dev": []
 }
