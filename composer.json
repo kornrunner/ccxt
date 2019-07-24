@@ -233,8 +233,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^8",
-        "php-vcr/phpunit-testlistener-vcr": "^3.0",
-        "php-coveralls/php-coveralls": "^2.1"
+        "php-vcr/phpunit-testlistener-vcr": "^3.0"
     },
     "archive": {
         "exclude": ["/vendor", "/tests"]

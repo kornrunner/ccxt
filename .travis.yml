@@ -14,5 +14,6 @@ script:
   - mkdir -p build/logs
   - phpdbg -qrr vendor/bin/phpunit -c phpunit.xml.dist
 
-after_script:
+after_success:
+  - composer require php-coveralls/php-coveralls
   - travis_retry vendor/bin/php-coveralls -v
