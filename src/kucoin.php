@@ -1062,10 +1062,18 @@ class kucoin extends Exchange {
         }
         $response = $this->privatePostWithdrawals (array_merge ($request, $params));
         //
-        // array( "withdrawalId" => "5bffb63303aa675e8bbe18f9" )
+        // https://github.com/ccxt/ccxt/issues/5558
         //
+        //     {
+        //         "$code" =>  200000,
+        //         "$data" => {
+        //             "withdrawalId" =>  "abcdefghijklmnopqrstuvwxyz"
+        //         }
+        //     }
+        //
+        $data = $this->safe_value($response, 'data', array());
         return array (
-            'id' => $this->safe_string($response, 'withdrawalId'),
+            'id' => $this->safe_string($data, 'withdrawalId'),
             'info' => $response,
         );
     }
@@ -1480,7 +1488,9 @@ class kucoin extends Exchange {
         // the v2 URL is https://openapi-v2.kucoin.com/api/v1/endpoint
         //                                †                 ↑
         //
-        $endpoint = '/api/' . $this->options['version'] . '/' . $this->implode_params($path, $params);
+        $version = $this->safe_string($params, 'version', $this->options['version']);
+        $params = $this->omit ($params, 'version');
+        $endpoint = '/api/' . $version . '/' . $this->implode_params($path, $params);
         $query = $this->omit ($params, $this->extract_params($path));
         $endpart = '';
         $headers = $headers !== null ? $headers : array();
