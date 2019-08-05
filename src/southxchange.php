@@ -240,10 +240,7 @@ class southxchange extends Exchange {
             }
         }
         $type = 'limit';
-        $side = $this->safe_string($order, 'Type');
-        if ($side !== null) {
-            $side = strtolower($side);
-        }
+        $side = $this->safe_string_lower($order, 'Type');
         $id = $this->safe_string($order, 'Code');
         $result = array (
             'info' => $order,

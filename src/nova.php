@@ -170,10 +170,7 @@ class nova extends Exchange {
             $symbol = $market['symbol'];
         }
         $type = null;
-        $side = $this->safe_string($trade, 'tradetype');
-        if ($side !== null) {
-            $side = strtolower($side);
-        }
+        $side = $this->safe_string_lower($trade, 'tradetype');
         $price = $this->safe_float($trade, 'price');
         $amount = $this->safe_float($trade, 'amount');
         $feeCost = $this->safe_float($trade, 'fee');
@@ -382,10 +379,7 @@ class nova extends Exchange {
             $timestamp *= 1000;
         }
         $amount = $this->safe_float($order, 'fromamount');
-        $side = $this->safe_string($order, 'ordertype');
-        if ($side !== null) {
-            $side = strtolower($side);
-        }
+        $side = $this->safe_string_lower($order, 'ordertype');
         return array (
             'id' => $orderId,
             'symbol' => $symbol,
