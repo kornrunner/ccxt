@@ -117,10 +117,7 @@ class mercado extends Exchange {
         );
         $response = $this->publicGetCoinTicker (array_merge ($request, $params));
         $ticker = $this->safe_value($response, 'ticker', array());
-        $timestamp = $this->safe_integer($ticker, 'date');
-        if ($timestamp !== null) {
-            $timestamp *= 1000;
-        }
+        $timestamp = $this->safe_timestamp($ticker, 'date');
         $last = $this->safe_float($ticker, 'last');
         return array (
             'symbol' => $symbol,
@@ -147,10 +144,7 @@ class mercado extends Exchange {
     }
 
     public function parse_trade ($trade, $market = null) {
-        $timestamp = $this->safe_integer($trade, 'date');
-        if ($timestamp !== null) {
-            $timestamp *= 1000;
-        }
+        $timestamp = $this->safe_timestamp($trade, 'date');
         $symbol = null;
         if ($market !== null) {
             $symbol = $market['symbol'];
@@ -340,10 +334,7 @@ class mercado extends Exchange {
         if ($market !== null) {
             $symbol = $market['symbol'];
         }
-        $timestamp = $this->safe_integer($order, 'created_timestamp');
-        if ($timestamp !== null) {
-            $timestamp = $timestamp * 1000;
-        }
+        $timestamp = $this->safe_timestamp($order, 'created_timestamp');
         $fee = array (
             'cost' => $this->safe_float($order, 'fee'),
             'currency' => $market['quote'],
@@ -355,10 +346,7 @@ class mercado extends Exchange {
         $filled = $this->safe_float($order, 'executed_quantity');
         $remaining = $amount - $filled;
         $cost = $filled * $average;
-        $lastTradeTimestamp = $this->safe_integer($order, 'updated_timestamp');
-        if ($lastTradeTimestamp !== null) {
-            $lastTradeTimestamp = $lastTradeTimestamp * 1000;
-        }
+        $lastTradeTimestamp = $this->safe_timestamp($order, 'updated_timestamp');
         return array (
             'info' => $order,
             'id' => $id,
@@ -433,12 +421,8 @@ class mercado extends Exchange {
     }
 
     public function parse_ohlcv ($ohlcv, $market = null, $timeframe = '1m', $since = null, $limit = null) {
-        $timestamp = $this->safe_integer($ohlcv, 'timestamp');
-        if ($timestamp !== null) {
-            $timestamp = $timestamp * 1000;
-        }
         return array (
-            $timestamp,
+            $this->safe_timestamp($ohlcv, 'timestamp'),
             $this->safe_float($ohlcv, 'open'),
             $this->safe_float($ohlcv, 'high'),
             $this->safe_float($ohlcv, 'low'),

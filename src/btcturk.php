@@ -132,10 +132,7 @@ class btcturk extends Exchange {
             'pairSymbol' => $market['id'],
         );
         $response = $this->publicGetOrderbook (array_merge ($request, $params));
-        $timestamp = $this->safe_integer($response, 'timestamp');
-        if ($timestamp !== null) {
-            $timestamp *= 1000;
-        }
+        $timestamp = $this->safe_timestamp($response, 'timestamp');
         return $this->parse_order_book($response, $timestamp);
     }
 
@@ -144,10 +141,7 @@ class btcturk extends Exchange {
         if ($market) {
             $symbol = $market['symbol'];
         }
-        $timestamp = $this->safe_integer($ticker, 'timestamp');
-        if ($timestamp !== null) {
-            $timestamp *= 1000;
-        }
+        $timestamp = $this->safe_timestamp($ticker, 'timestamp');
         $last = $this->safe_float($ticker, 'last');
         return array (
             'symbol' => $symbol,
@@ -199,10 +193,7 @@ class btcturk extends Exchange {
     }
 
     public function parse_trade ($trade, $market = null) {
-        $timestamp = $this->safe_integer($trade, 'date');
-        if ($timestamp !== null) {
-            $timestamp *= 1000;
-        }
+        $timestamp = $this->safe_timestamp($trade, 'date');
         $id = $this->safe_string($trade, 'tid');
         $price = $this->safe_float($trade, 'price');
         $amount = $this->safe_float($trade, 'amount');

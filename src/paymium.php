@@ -105,10 +105,7 @@ class paymium extends Exchange {
             'id' => $this->market_id($symbol),
         );
         $ticker = $this->publicGetDataIdTicker (array_merge ($request, $params));
-        $timestamp = $this->safe_integer($ticker, 'at');
-        if ($timestamp !== null) {
-            $timestamp *= 1000;
-        }
+        $timestamp = $this->safe_timestamp($ticker, 'at');
         $vwap = $this->safe_float($ticker, 'vwap');
         $baseVolume = $this->safe_float($ticker, 'volume');
         $quoteVolume = null;
@@ -141,10 +138,7 @@ class paymium extends Exchange {
     }
 
     public function parse_trade ($trade, $market) {
-        $timestamp = $this->safe_integer($trade, 'created_at_int');
-        if ($timestamp !== null) {
-            $timestamp *= 1000;
-        }
+        $timestamp = $this->safe_timestamp($trade, 'created_at_int');
         $id = $this->safe_string($trade, 'uuid');
         $symbol = null;
         if ($market !== null) {

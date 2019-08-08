@@ -412,7 +412,7 @@ class cex extends Exchange {
             $request['depth'] = $limit;
         }
         $response = $this->publicGetOrderBookPair (array_merge ($request, $params));
-        $timestamp = $response['timestamp'] * 1000;
+        $timestamp = $this->safe_timestamp($response, 'timestamp');
         return $this->parse_order_book($response, $timestamp);
     }
 
@@ -457,10 +457,7 @@ class cex extends Exchange {
     }
 
     public function parse_ticker ($ticker, $market = null) {
-        $timestamp = null;
-        if (is_array($ticker) && array_key_exists('timestamp', $ticker)) {
-            $timestamp = intval ($ticker['timestamp']) * 1000;
-        }
+        $timestamp = $this->safe_timestamp($ticker, 'timestamp');
         $volume = $this->safe_float($ticker, 'volume');
         $high = $this->safe_float($ticker, 'high');
         $low = $this->safe_float($ticker, 'low');
@@ -524,10 +521,7 @@ class cex extends Exchange {
     }
 
     public function parse_trade ($trade, $market = null) {
-        $timestamp = $this->safe_integer($trade, 'date');
-        if ($timestamp !== null) {
-            $timestamp *= 1000;
-        }
+        $timestamp = $this->safe_timestamp($trade, 'date');
         $id = $this->safe_string($trade, 'tid');
         $type = null;
         $side = $this->safe_string($trade, 'type');

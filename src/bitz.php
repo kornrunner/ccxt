@@ -545,10 +545,7 @@ class bitz extends Exchange {
         //       s => "buy"         ),
         //
         $id = $this->safe_string($trade, 'id');
-        $timestamp = $this->safe_integer($trade, 'T');
-        if ($timestamp !== null) {
-            $timestamp = $timestamp * 1000;
-        }
+        $timestamp = $this->safe_timestamp($trade, 'T');
         $symbol = null;
         if ($market !== null) {
             $symbol = $market['symbol'];
@@ -736,10 +733,7 @@ class bitz extends Exchange {
         $filled = $this->safe_float($order, 'numberDeal');
         $timestamp = $this->safe_integer($order, 'timestamp');
         if ($timestamp === null) {
-            $timestamp = $this->safe_integer($order, 'created');
-            if ($timestamp !== null) {
-                $timestamp = $timestamp * 1000;
-            }
+            $timestamp = $this->safe_timestamp($order, 'created');
         }
         $cost = $this->safe_float($order, 'orderTotalPrice');
         if ($price !== null) {
