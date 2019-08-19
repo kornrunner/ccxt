@@ -448,6 +448,7 @@ class okex3 extends Exchange {
                 'HSR' => 'HC',
                 'MAG' => 'Maggie',
                 'YOYO' => 'YOYOW',
+                'WIN' => 'WinToken', // https://github.com/ccxt/ccxt/issues/5701
             ),
         ));
     }
