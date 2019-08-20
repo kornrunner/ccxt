@@ -80,7 +80,6 @@ class liquid extends Exchange {
                     ),
                 ),
             ),
-            'skipJsonOnStatusCodes' => [401],
             'exceptions' => array (
                 'API rate limit exceeded. Please retry after 300s' => '\\ccxt\\DDoSProtection',
                 'API Authentication failed' => '\\ccxt\\AuthenticationError',
