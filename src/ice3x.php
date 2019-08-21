@@ -120,7 +120,7 @@ class ice3x extends Exchange {
     }
 
     public function fetch_markets ($params = array ()) {
-        if (!$this->currencies_by_id) {
+        if ($this->currencies_by_id === null) {
             $this->currencies = $this->fetch_currencies();
             $this->currencies_by_id = $this->index_by($this->currencies, 'id');
         }
