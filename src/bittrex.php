@@ -247,7 +247,7 @@ class bittrex extends Exchange {
             ),
             'commonCurrencies' => array (
                 'BITS' => 'SWIFT',
-                'CPC' => 'CapriCoin',
+                'CPC' => 'Capricoin',
             ),
         ));
     }

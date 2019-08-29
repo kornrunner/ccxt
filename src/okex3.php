@@ -2207,7 +2207,9 @@ class okex3 extends Exchange {
             if ($currencyId !== null) {
                 $feeWithCurrencyId = $this->safe_string($transaction, 'fee');
                 if ($feeWithCurrencyId !== null) {
-                    $feeWithoutCurrencyId = str_replace($currencyId, '', $feeWithCurrencyId);
+                    // https://github.com/ccxt/ccxt/pull/5748
+                    $lowercaseCurrencyId = strtolower($currencyId);
+                    $feeWithoutCurrencyId = str_replace($lowercaseCurrencyId, '', $feeWithCurrencyId);
                     $feeCost = floatval ($feeWithoutCurrencyId);
                 }
             }
