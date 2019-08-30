@@ -34,7 +34,7 @@ use kornrunner\Keccak;
 use kornrunner\Solidity;
 use Elliptic\EC;
 
-$version = '1.18.1107';
+$version = '1.18.1108';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -53,7 +53,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.1107';
+    const VERSION = '1.18.1108';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -1983,8 +1983,8 @@ class Exchange {
         return $this->fetch_currencies();
     }
 
-    public function fetchBalance() {
-        return $this->fetch_balance();
+    public function fetchBalance($params = array()) {
+        return $this->fetch_balance($params);
     }
 
     public function fetch_balance($params = array()) {
