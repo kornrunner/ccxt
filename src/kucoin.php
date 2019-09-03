@@ -170,6 +170,7 @@ class kucoin extends Exchange {
             ),
             'commonCurrencies' => array (
                 'HOT' => 'HOTNOW',
+                'EDGE' => 'DADI', // https://github.com/ccxt/ccxt/issues/5756
             ),
             'options' => array (
                 'version' => 'v1',
@@ -211,7 +212,7 @@ class kucoin extends Exchange {
         $result = array();
         for ($i = 0; $i < count ($data); $i++) {
             $market = $data[$i];
-            $id = $this->safe_string($market, 'name');
+            $id = $this->safe_string($market, 'symbol');
             $baseId = $this->safe_string($market, 'baseCurrency');
             $quoteId = $this->safe_string($market, 'quoteCurrency');
             $base = $this->safe_currency_code($baseId);

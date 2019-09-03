@@ -34,7 +34,7 @@ use kornrunner\Keccak;
 use kornrunner\Solidity;
 use Elliptic\EC;
 
-$version = '1.18.1108';
+$version = '1.18.1115';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -53,7 +53,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.1108';
+    const VERSION = '1.18.1115';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -239,7 +239,7 @@ class Exchange {
     }
 
     public static function safe_integer_product($object, $key, $factor, $default_value = null) {
-        return (isset($object[$key]) && is_numeric($object[$key])) ? (intval($object[$key]) * $factor) : $default_value;
+        return (isset($object[$key]) && is_numeric($object[$key])) ? (intval($object[$key] * $factor)) : $default_value;
     }
 
     public static function safe_timestamp($object, $key, $default_value = null) {
