@@ -39,6 +39,7 @@ class southxchange extends Exchange {
                     'post' => array (
                         'cancelMarketOrders',
                         'cancelOrder',
+                        'getOrder',
                         'generatenewaddress',
                         'listOrders',
                         'listBalances',

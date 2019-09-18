@@ -141,6 +141,7 @@ class kucoin extends Exchange {
                 '230003' => '\\ccxt\\InsufficientFunds', // array("code":"230003","msg":"Balance insufficient!")
                 '260100' => '\\ccxt\\InsufficientFunds', // array("code":"260100","msg":"account.noBalance")
                 '300000' => '\\ccxt\\InvalidOrder',
+                '400000' => '\\ccxt\\BadSymbol',
                 '400001' => '\\ccxt\\AuthenticationError',
                 '400002' => '\\ccxt\\InvalidNonce',
                 '400003' => '\\ccxt\\AuthenticationError',
@@ -272,7 +273,7 @@ class kucoin extends Exchange {
         $result = array();
         for ($i = 0; $i < count ($responseData); $i++) {
             $entry = $responseData[$i];
-            $id = $this->safe_string($entry, 'name');
+            $id = $this->safe_string($entry, 'currency');
             $name = $this->safe_string($entry, 'fullName');
             $code = $this->safe_currency_code($id);
             $precision = $this->safe_integer($entry, 'precision');
@@ -597,15 +598,32 @@ class kucoin extends Exchange {
             $request['price'] = $this->price_to_precision($symbol, $price);
         }
         $response = $this->privatePostOrders (array_merge ($request, $params));
-        $responseData = $response['data'];
+        //
+        //     {
+        //         code => '200000',
+        //         $data => {
+        //             "orderId" => "5bd6e9286d99522a52e458de"
+        //         }
+        //    }
+        //
+        $data = $this->safe_value($response, 'data', array());
+        $timestamp = $this->milliseconds ();
         return array (
-            'id' => $responseData['orderId'],
+            'id' => $this->safe_string($data, 'orderId'),
             'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
+            'amount' => $amount,
+            'price' => $price,
+            'cost' => null,
+            'filled' => null,
+            'remaining' => null,
+            'timestamp' => $timestamp,
+            'datetime' => $this->iso8601 ($timestamp),
+            'fee' => null,
             'status' => 'open',
             'clientOid' => $clientOid,
-            'info' => $responseData,
+            'info' => $data,
         );
     }
 

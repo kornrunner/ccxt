@@ -434,20 +434,23 @@ class gdax extends Exchange {
     }
 
     public function parse_order ($order, $market = null) {
-        $timestamp = $this->parse8601 ($order['created_at']);
+        $timestamp = $this->parse8601 ($this->safe_string($order, 'created_at'));
         $symbol = null;
-        if ($market === null) {
-            $marketId = $this->safe_string($order, 'product_id');
+        $marketId = $this->safe_string($order, 'product_id');
+        $quote = null;
+        if ($marketId !== null) {
             if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
                 $market = $this->markets_by_id[$marketId];
+            } else {
+                list($baseId, $quoteId) = explode('-', $marketId);
+                $base = $this->safe_currency_code($baseId);
+                $quote = $this->safe_currency_code($quoteId);
+                $symbol = $base . '/' . $quote;
             }
         }
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $price = $this->safe_float($order, 'price');
-        $amount = $this->safe_float_2($order, 'size', 'funds');
-        if ($amount === null) {
-            $amount = $this->safe_float($order, 'specified_funds');
-        }
+        $amount = $this->safe_float($order, 'size');
         $filled = $this->safe_float($order, 'filled_size');
         $remaining = null;
         if ($amount !== null) {
@@ -462,6 +465,8 @@ class gdax extends Exchange {
             $feeCurrencyCode = null;
             if ($market !== null) {
                 $feeCurrencyCode = $market['quote'];
+            } else if ($quote !== null) {
+                $feeCurrencyCode = $quote;
             }
             $fee = array (
                 'cost' => $feeCost,
@@ -469,7 +474,7 @@ class gdax extends Exchange {
                 'rate' => null,
             );
         }
-        if ($market !== null) {
+        if (($symbol === null) && ($market !== null)) {
             $symbol = $market['symbol'];
         }
         $id = $this->safe_string($order, 'id');

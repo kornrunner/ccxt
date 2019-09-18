@@ -130,6 +130,9 @@ class binance extends Exchange {
                 ),
                 'private' => array (
                     'get' => array (
+                        'allOrderList', // oco
+                        'openOrderList', // oco
+                        'orderList', // oco
                         'order',
                         'openOrders',
                         'allOrders',
@@ -137,10 +140,12 @@ class binance extends Exchange {
                         'myTrades',
                     ),
                     'post' => array (
+                        'order/oco',
                         'order',
                         'order/test',
                     ),
                     'delete' => array (
+                        'orderList', // oco
                         'order',
                     ),
                 ),
