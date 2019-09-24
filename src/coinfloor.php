@@ -329,8 +329,8 @@ class coinfloor extends Exchange {
                 );
             }
             return array (
-                array_merge ($result, array( 'currency' => $base, 'amount' => abs ($baseAmount), 'direction' => $baseAmount > 0 ? 'in' : 'out' )),
-                array_merge ($result, array( 'currency' => $quote, 'amount' => abs ($quoteAmount), 'direction' => $quoteAmount > 0 ? 'in' : 'out', 'fee' => $fee )),
+                array_merge ($result, array( 'currency' => $base, 'amount' => abs ($baseAmount), 'direction' => ($baseAmount > 0) ? 'in' : 'out' )),
+                array_merge ($result, array( 'currency' => $quote, 'amount' => abs ($quoteAmount), 'direction' => ($quoteAmount > 0) ? 'in' : 'out', 'fee' => $fee )),
             );
             //
             // if $fee is $base or $quote depending on buy/sell side
@@ -338,15 +338,15 @@ class coinfloor extends Exchange {
             //     $baseFee = ($baseAmount > 0) ? array( 'currency' => $base, 'cost' => $feeCost ) : null;
             //     $quoteFee = ($quoteAmount > 0) ? array( 'currency' => $quote, 'cost' => $feeCost ) : null;
             //     return array (
-            //         array_merge ($result, array( 'currency' => $base, 'amount' => $baseAmount, 'direction' => $baseAmount > 0 ? 'in' : 'out', 'fee' => $baseFee )),
-            //         array_merge ($result, array( 'currency' => $quote, 'amount' => $quoteAmount, 'direction' => $quoteAmount > 0 ? 'in' : 'out', 'fee' => $quoteFee )),
+            //         array_merge ($result, array( 'currency' => $base, 'amount' => $baseAmount, 'direction' => ($baseAmount > 0) ? 'in' : 'out', 'fee' => $baseFee )),
+            //         array_merge ($result, array( 'currency' => $quote, 'amount' => $quoteAmount, 'direction' => ($quoteAmount > 0) ? 'in' : 'out', 'fee' => $quoteFee )),
             //     );
             //
             // $fee as the 3rd $item
             //
             //     return array (
-            //         array_merge ($result, array( 'currency' => $base, 'amount' => $baseAmount, 'direction' => $baseAmount > 0 ? 'in' : 'out' )),
-            //         array_merge ($result, array( 'currency' => $quote, 'amount' => $quoteAmount, 'direction' => $quoteAmount > 0 ? 'in' : 'out' )),
+            //         array_merge ($result, array( 'currency' => $base, 'amount' => $baseAmount, 'direction' => ($baseAmount > 0) ? 'in' : 'out' )),
+            //         array_merge ($result, array( 'currency' => $quote, 'amount' => $quoteAmount, 'direction' => ($quoteAmount > 0) ? 'in' : 'out' )),
             //         array_merge ($result, array( 'currency' => feeCurrency, 'amount' => $feeCost, 'direction' => 'out', 'type' => 'fee' )),
             //     );
             //
@@ -354,8 +354,8 @@ class coinfloor extends Exchange {
             //
             // it's a regular transaction (deposit or withdrawal)
             //
-            $amount = $baseAmount === 0 ? $quoteAmount : $baseAmount;
-            $code = $baseAmount === 0 ? $quote : $base;
+            $amount = ($baseAmount === 0) ? $quoteAmount : $baseAmount;
+            $code = ($baseAmount === 0) ? $quote : $base;
             $direction = ($amount > 0) ? 'in' : 'out';
             if ($feeCost !== null) {
                 $fee = array (

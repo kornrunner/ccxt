@@ -338,7 +338,9 @@ class bitfinex extends Exchange {
                     'ANT' => 'ant',
                     'AVT' => 'aventus', // #1811
                     'BAT' => 'bat',
-                    'BCH' => 'bcash', // undocumented
+                    // https://github.com/ccxt/ccxt/issues/5833
+                    'BCH' => 'bab', // undocumented
+                    // 'BCH' => 'bcash', // undocumented
                     'BCI' => 'bci',
                     'BFT' => 'bft',
                     'BTC' => 'bitcoin',
@@ -359,6 +361,9 @@ class bitfinex extends Exchange {
                     'GNT' => 'golem',
                     'IOST' => 'ios',
                     'IOTA' => 'iota',
+                    // https://github.com/ccxt/ccxt/issues/5833
+                    'LEO' => 'let', // ETH chain
+                    // 'LEO' => 'les', // EOS chain
                     'LRC' => 'lrc',
                     'LTC' => 'litecoin',
                     'LYM' => 'lym',
@@ -385,6 +390,7 @@ class bitfinex extends Exchange {
                     'TNB' => 'tnb',
                     'TRX' => 'trx',
                     'USD' => 'wire',
+                    'USDC' => 'udc', // https://github.com/ccxt/ccxt/issues/5833
                     'UTK' => 'utk',
                     'USDT' => 'tetheruso', // undocumented
                     'VEE' => 'vee',

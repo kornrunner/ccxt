@@ -34,7 +34,7 @@ use kornrunner\Keccak;
 use kornrunner\Solidity;
 use Elliptic\EC;
 
-$version = '1.18.1163';
+$version = '1.18.1187';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -53,7 +53,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.1163';
+    const VERSION = '1.18.1187';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -2387,7 +2387,7 @@ class Exchange {
         $nonfiltered = get_object_vars($this);
         $filtered = array();
         foreach ($nonfiltered as $key => $value) {
-            if ((strpos($key, 'has') !== false) && (key !== 'has')) {
+            if ((strpos($key, 'has') !== false) && ($key !== 'has')) {
                 $filtered[$key] = $value;
             }
         }

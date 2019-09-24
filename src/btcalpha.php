@@ -100,6 +100,9 @@ class btcalpha extends Exchange {
                     ),
                 ),
             ),
+            'commonCurrencies' => array (
+                'CBC' => 'Cashbery',
+            ),
         ));
     }
 
