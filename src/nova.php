@@ -70,6 +70,9 @@ class nova extends Exchange {
                     'taker' => 0.2 / 100,
                 ),
             ),
+            'commonCurrencies' => array (
+                'FAIR' => 'FairCoin',
+            ),
         ));
     }
 
