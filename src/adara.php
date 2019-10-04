@@ -142,8 +142,8 @@ class adara extends Exchange {
         //                                            name => "XRPUSD",
         //                                        takerFee => "0.0250",
         //                                       updatedAt => "2018-10-23T09:31:06.830Z"  ),
-        //                     $relationships => array( from => { data => array ( $id => "XRP", type => "currency" ) ),
-        //                                        to => array( data => array ( $id => "USD", type => "currency" ) }  } ),
+        //                     $relationships => array( from => array( data => array ( $id => "XRP", type => "currency" ) ),
+        //                                        to => array( data => array( $id => "USD", type => "currency" ) )  } ),
         //                   {            $id =>   "XRPETH",
         //                              type =>   "$symbol",
         //                        $attributes => array ( allowTrade =>  true,
@@ -154,8 +154,8 @@ class adara extends Exchange {
         //                                            name => "XRPETH",
         //                                        takerFee => "0.0025",
         //                                       updatedAt => "2018-10-09T22:34:28.268Z"  ),
-        //                     $relationships => array( from => { data => array ( $id => "XRP", type => "currency" ) ),
-        //                                        to => array( data => { $id => "ETH", type => "currency" ) }  } }  ),
+        //                     $relationships => array( from => array( data => { $id => "XRP", type => "currency" ) ),
+        //                                        to => array( data => array( $id => "ETH", type => "currency" ) )  } }  ),
         //       $included => array ( array (            $id =>   "XRP",
         //                              type =>   "currency",
         //                        $attributes => array (               accuracy =>  4,
@@ -351,8 +351,8 @@ class adara extends Exchange {
         //                                          normalizedOnOrders => 0,
         //                                                  percentage => 3.004116443856034,
         //                                                serializedAt => 1543324487949      ),
-        //                     $relationships => array(           currency => { $data => array ( type => "currency", id => "ETH" ) ),
-        //                                      normalizedCurrency => array( $data => { type => "currency", id => "BTC" ) }  } }  ),
+        //                     $relationships => array(           currency => array( $data => { type => "currency", id => "ETH" ) ),
+        //                                      normalizedCurrency => array( $data => array( type => "currency", id => "BTC" ) )  } }  ),
         //       included => array ( array (          type =>   "currency",
         //                                id =>   "BTC",
         //                        $attributes => array (          name => "Bitcoin",
@@ -475,7 +475,7 @@ class adara extends Exchange {
         //                               $change => 0,
         //                        percentChange => 0,
         //                         serializedAt => 1543109275996 ),
-        //       relationships => array( $symbol => { data => { type => "$symbol", id => "ETHBTC" ) } } }
+        //       relationships => array( $symbol => array( data => array( type => "$symbol", id => "ETHBTC" ) ) ) }
         //
         $symbol = $this->get_symbol_from_market_id ($this->safe_string($ticker, 'id'), $market);
         $attributes = $this->safe_value($ticker, 'attributes', array());
@@ -528,7 +528,7 @@ class adara extends Exchange {
         //                                             change => 0,
         //                                      percentChange => 0,
         //                                       serializedAt => 1543109275996 ),
-        //                     relationships => array( $symbol => { $data => { type => "$symbol", id => "ETHBTC" ) } } }  ),
+        //                     relationships => array( $symbol => array( $data => array( type => "$symbol", id => "ETHBTC" ) ) ) }  ),
         //       included => array ( array (          type =>   "currency",
         //                                id =>   "XRP",
         //                        attributes => array (          name => "Ripple",
@@ -547,8 +547,8 @@ class adara extends Exchange {
         //                                            digits =>  8,
         //                                        allowTrade =>  true,
         //                                      serializedAt =>  1543109275996 ),
-        //                     relationships => array( from => { $data => array ( type => "currency", id => "XRP" ) ),
-        //                                        to => array( $data => { type => "currency", id => "ETH" ) }  } }  )    }
+        //                     relationships => array( from => array( $data => { type => "currency", id => "XRP" ) ),
+        //                                        to => array( $data => array( type => "currency", id => "ETH" ) )  } }  )    }
         //
         $result = array();
         for ($t = 0; $t < count ($data); $t++) {
@@ -595,8 +595,8 @@ class adara extends Exchange {
         //                                            digits =>  6,
         //                                        allowTrade =>  true,
         //                                      serializedAt =>  1543111444033 ),
-        //                     relationships => array( from => { data => array ( type => "currency", id => "ETH" ) ),
-        //                                        to => array( data => { type => "currency", id => "BTC" ) }  } } ),
+        //                     relationships => array( from => array( data => { type => "currency", id => "ETH" ) ),
+        //                                        to => array( data => array( type => "currency", id => "BTC" ) )  } } ),
         //           data => {          type =>   "quote",
         //                              id =>   "ETHBTC",
         //                      attributes => array (  currentPrice => 34,
@@ -607,7 +607,7 @@ class adara extends Exchange {
         //                                           change => 0,
         //                                    percentChange => 0,
         //                                     serializedAt => 1543111444033 ),
-        //                   relationships => array( $symbol => { data => { type => "$symbol", id => "ETHBTC" ) } } }    } (fetchTicker @ adara.js:546)
+        //                   relationships => array( $symbol => array( data => array( type => "$symbol", id => "ETHBTC" ) ) ) }    } (fetchTicker @ adara.js:546)
         //
         return $this->parse_ticker($response['data']);
     }
@@ -625,7 +625,7 @@ class adara extends Exchange {
         //                             operation => "buy",
         //                             createdAt => "2018-11-23T16:02:44.359Z",
         //                          serializedAt =>  1543112364995              ),
-        //         $relationships => array( $symbol => { data => { type => "$symbol", $id => "ETHBTC" ) } } } ],
+        //         $relationships => array( $symbol => array( data => array( type => "$symbol", $id => "ETHBTC" ) ) ) } ],
         //
         $id = $this->safe_string($trade, 'id', 'uuid');
         $attributes = $this->safe_value($trade, 'attributes', array());
@@ -705,7 +705,7 @@ class adara extends Exchange {
         //                                         operation => "buy",
         //                                         createdAt => "2018-11-23T16:02:44.359Z",
         //                                      serializedAt =>  1543112364995              ),
-        //                     relationships => array( $symbol => { data => { type => "$symbol", id => "ETHBTC" ) } } } ),
+        //                     relationships => array( $symbol => array( data => array( type => "$symbol", id => "ETHBTC" ) ) ) } ),
         //       included => [ array (          type =>   "currency",
         //                                id =>   "ETH",
         //                        attributes => array (          name => "Ethereum",
@@ -730,8 +730,8 @@ class adara extends Exchange {
         //                                            digits =>  6,
         //                                        allowTrade =>  true,
         //                                      serializedAt =>  1543112364995 ),
-        //                     relationships => array( from => { data => array ( type => "currency", id => "ETH" ) ),
-        //                                        to => array( data => { type => "currency", id => "BTC" ) }  } } }
+        //                     relationships => array( from => array( data => { type => "currency", id => "ETH" ) ),
+        //                                        to => array( data => array( type => "currency", id => "BTC" ) )  } } }
         //
         return $this->parse_trades($response['data'], $market, $since, $limit);
     }
@@ -794,8 +794,8 @@ class adara extends Exchange {
         //                                            digits =>  6,
         //                                        allowTrade =>  true,
         //                                      serializedAt =>  1543434477449 ),
-        //                     relationships => array( from => { data => array ( $type => "currency", id => "XLM" ) ),
-        //                                        to => array( data => { $type => "currency", id => "BTC" ) }  } } ),
+        //                     relationships => array( from => array( data => { $type => "currency", id => "XLM" ) ),
+        //                                        to => array( data => array( $type => "currency", id => "BTC" ) )  } } ),
         //           data => {          $type =>   "order",
         //                              id =>   "34793",
         //                      attributes => array ( serializedAt =>    1543434477449,
@@ -811,7 +811,7 @@ class adara extends Exchange {
         //                                          status =>   "open",
         //                                          filled =>    0,
         //                                           flags => array()                                        ),
-        //                   relationships => array( $symbol => { data => { $type => "$symbol", id => "XLMBTC" ) } }       } }
+        //                   relationships => array( $symbol => array( data => array( $type => "$symbol", id => "XLMBTC" ) ) )       } }
         //
         return $this->parse_order($response['data']);
     }
@@ -856,8 +856,8 @@ class adara extends Exchange {
         //                                            digits =>  6,
         //                                        allowTrade =>  true,
         //                                      serializedAt =>  1543437874742 ),
-        //                     relationships => array( from => { data => array ( type => "currency", $id => "XLM" ) ),
-        //                                        to => array( data => { type => "currency", $id => "BTC" ) }  } } ),
+        //                     relationships => array( from => array( data => { type => "currency", $id => "XLM" ) ),
+        //                                        to => array( data => array( type => "currency", $id => "BTC" ) )  } } ),
         //           data => {          type =>   "order",
         //                              $id =>   "34794",
         //                      attributes => array ( serializedAt =>    1543437874742,
@@ -873,7 +873,7 @@ class adara extends Exchange {
         //                                          status =>   "canceled",
         //                                          filled =>    0,
         //                                           flags => array()                                        ),
-        //                   relationships => array( $symbol => { data => { type => "$symbol", $id => "XLMBTC" ) } }       } }
+        //                   relationships => array( $symbol => array( data => array( type => "$symbol", $id => "XLMBTC" ) ) )       } }
         //
         return $this->parse_order($response['data']);
     }
@@ -904,7 +904,7 @@ class adara extends Exchange {
         //                                  $status => "closed",
         //                                  $filled =>  220,
         //                                   flags =>  null                                   ),
-        //           $relationships => array( $symbol => { data => { $type => "$symbol", $id => "XLMBTC" ) } } }
+        //           $relationships => array( $symbol => array( data => array( $type => "$symbol", $id => "XLMBTC" ) ) ) }
         //
         $id = $this->safe_string($order, 'id');
         $attributes = $this->safe_value($order, 'attributes', array());
@@ -1014,8 +1014,8 @@ class adara extends Exchange {
         //                                            status => "closed",
         //                                            filled =>  220,
         //                                             flags =>  null                       ),
-        //                     relationships => array( $symbol => { data => array ( type => "$symbol", id => "XLMBTC" ) ),
-        //                                      trades => array( data => [{ type => "trade", id => "34789_34793" )] } } } ],
+        //                     relationships => array( $symbol => array( data => { type => "$symbol", id => "XLMBTC" ) ),
+        //                                      trades => array( data => [array( type => "trade", id => "34789_34793" )] ) } } ],
         //       included => array ( {       type =>   "currency",
         //                             id =>   "XLM",
         //                     attributes => array (          name => "Stellar",
@@ -1044,8 +1044,8 @@ class adara extends Exchange {
         //                                            digits =>  6,
         //                                        allowTrade =>  true,
         //                                      serializedAt =>  1543436770259 ),
-        //                     relationships => array( from => { data => array ( type => "currency", id => "XLM" ) ),
-        //                                        to => array( data => array ( type => "currency", id => "BTC" ) }  } ),
+        //                     relationships => array( from => array( data => array ( type => "currency", id => "XLM" ) ),
+        //                                        to => array( data => array( type => "currency", id => "BTC" ) )  } ),
         //                   {       type =>   "trade",
         //                             id =>   "34789_34793",
         //                     attributes => {       fee =>  0.0001925,
@@ -1147,8 +1147,8 @@ class adara extends Exchange {
         //                                            digits =>  6,
         //                                        allowTrade =>  true,
         //                                      serializedAt =>  1543436451996 ),
-        //                     relationships => array( from => { $data => array ( type => "currency", $id => "XLM" ) ),
-        //                                        to => array( $data => array ( type => "currency", $id => "BTC" ) }  } ),
+        //                     relationships => array( from => array( $data => array ( type => "currency", $id => "XLM" ) ),
+        //                                        to => array( $data => array( type => "currency", $id => "BTC" ) )  } ),
         //                   {       type =>   "trade",
         //                             $id =>   "34789_34793",
         //                     attributes => {       fee =>  0.0001925,
@@ -1172,8 +1172,8 @@ class adara extends Exchange {
         //                                          status => "closed",
         //                                          filled =>  220,
         //                                           flags =>  null                                   ),
-        //                   relationships => array( $symbol => { $data => array ( type => "$symbol", $id => "XLMBTC" ) ),
-        //                                    trades => array( $data => [{ type => "trade", $id => "34789_34793" )] } } } }
+        //                   relationships => array( $symbol => array( $data => { type => "$symbol", $id => "XLMBTC" ) ),
+        //                                    trades => array( $data => [array( type => "trade", $id => "34789_34793" )] ) } } }
         //
         $data = $this->safe_value($response, 'data');
         $response['data'] = array();
