@@ -952,7 +952,7 @@ class upbit extends Exchange {
         //         ...,
         //     )
         //
-        return $this->parseTransactions ($response, $currency, $since, $limit);
+        return $this->parse_transactions($response, $currency, $since, $limit);
     }
 
     public function fetch_withdrawals ($code = null, $since = null, $limit = null, $params = array ()) {
@@ -986,7 +986,7 @@ class upbit extends Exchange {
         //         ...,
         //     )
         //
-        return $this->parseTransactions ($response, $currency, $since, $limit);
+        return $this->parse_transactions($response, $currency, $since, $limit);
     }
 
     public function parse_transaction_status ($status) {
@@ -1454,7 +1454,7 @@ class upbit extends Exchange {
         //         "krw_amount" => "80420.0"
         //     }
         //
-        return $this->parse_transaction ($response);
+        return $this->parse_transaction($response);
     }
 
     public function nonce () {

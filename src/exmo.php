@@ -1327,7 +1327,7 @@ class exmo extends Exchange {
         //       ],
         //     }
         //
-        return $this->parseTransactions ($response['history'], $currency, $since, $limit);
+        return $this->parse_transactions($response['history'], $currency, $since, $limit);
     }
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {

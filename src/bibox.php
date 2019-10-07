@@ -497,7 +497,7 @@ class bibox extends Exchange {
         for ($i = 0; $i < count ($deposits); $i++) {
             $deposits[$i]['type'] = 'deposit';
         }
-        return $this->parseTransactions ($deposits, $currency, $since, $limit);
+        return $this->parse_transactions($deposits, $currency, $since, $limit);
     }
 
     public function fetch_withdrawals ($code = null, $since = null, $limit = null, $params = array ()) {
@@ -523,7 +523,7 @@ class bibox extends Exchange {
         for ($i = 0; $i < count ($withdrawals); $i++) {
             $withdrawals[$i]['type'] = 'withdrawal';
         }
-        return $this->parseTransactions ($withdrawals, $currency, $since, $limit);
+        return $this->parse_transactions($withdrawals, $currency, $since, $limit);
     }
 
     public function parse_transaction ($transaction, $currency = null) {

@@ -909,7 +909,7 @@ class hitbtc2 extends hitbtc {
             $request['startTime'] = $since;
         }
         $response = $this->privateGetAccountTransactions (array_merge ($request, $params));
-        return $this->parseTransactions ($response, $currency, $since, $limit);
+        return $this->parse_transactions($response, $currency, $since, $limit);
     }
 
     public function parse_transaction ($transaction, $currency = null) {

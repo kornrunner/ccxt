@@ -619,7 +619,7 @@ class huobipro extends Exchange {
 
     public function fetch_balance ($params = array ()) {
         $this->load_markets();
-        $this->loadAccounts ();
+        $this->load_accounts();
         $method = $this->options['fetchBalanceMethod'];
         $request = array (
             'id' => $this->accounts[0]['id'],
@@ -716,7 +716,7 @@ class huobipro extends Exchange {
         $accountId = $this->safe_string($params, 'account-id');
         if ($accountId === null) {
             // pick the first $account
-            $this->loadAccounts ();
+            $this->load_accounts();
             for ($i = 0; $i < count ($this->accounts); $i++) {
                 $account = $this->accounts[$i];
                 if ($account['type'] === 'spot') {
@@ -882,7 +882,7 @@ class huobipro extends Exchange {
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
-        $this->loadAccounts ();
+        $this->load_accounts();
         $market = $this->market ($symbol);
         $request = array (
             'account-id' => $this->accounts[0]['id'],
@@ -1079,7 +1079,7 @@ class huobipro extends Exchange {
         }
         $response = $this->privateGetQueryDepositWithdraw (array_merge ($request, $params));
         // return $response
-        return $this->parseTransactions ($response['data'], $currency, $since, $limit);
+        return $this->parse_transactions($response['data'], $currency, $since, $limit);
     }
 
     public function fetch_withdrawals ($code = null, $since = null, $limit = null, $params = array ()) {
@@ -1103,7 +1103,7 @@ class huobipro extends Exchange {
         }
         $response = $this->privateGetQueryDepositWithdraw (array_merge ($request, $params));
         // return $response
-        return $this->parseTransactions ($response['data'], $currency, $since, $limit);
+        return $this->parse_transactions($response['data'], $currency, $since, $limit);
     }
 
     public function parse_transaction ($transaction, $currency = null) {
