@@ -28,7 +28,7 @@ class crex24 extends Exchange {
                 'fetchOHLCV' => true,
                 'fetchOpenOrders' => true,
                 'fetchOrder' => true,
-                'fetchOrders' => false,
+                'fetchOrders' => true,
                 'fetchOrderTrades' => true,
                 'fetchTickers' => true,
                 'fetchTradingFee' => false, // actually, true, but will be implemented later
@@ -71,6 +71,7 @@ class crex24 extends Exchange {
                 'trading' => array (
                     'get' => array (
                         'orderStatus',
+                        'orderTrades',
                         'activeOrders',
                         'orderHistory',
                         'tradeHistory',
@@ -121,6 +122,8 @@ class crex24 extends Exchange {
             ),
             // exchange-specific options
             'options' => array (
+                'fetchOrdersMethod' => 'tradingGetOrderHistory', // or 'tradingGetActiveOrders'
+                'fetchClosedOrdersMethod' => 'tradingGetOrderHistory', // or 'tradingGetActiveOrders'
                 'fetchTickersMethod' => 'publicGetTicker24hr',
                 'defaultTimeInForce' => 'GTC', // 'GTC' = Good To Cancel (default), 'IOC' = Immediate Or Cancel
                 'defaultLimitOrderType' => 'limit', // or 'limit_maker'
@@ -802,6 +805,45 @@ class crex24 extends Exchange {
         return $this->parse_order($response[0]);
     }
 
+    public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        $this->load_markets();
+        $request = array();
+        if ($since !== null) {
+            $request['from'] = $this->ymdhms ($since, 'T');
+        }
+        if ($limit !== null) {
+            $request['limit'] = $limit;
+        }
+        if ($symbol !== null) {
+            $market = $this->market ($symbol);
+            $request['instrument'] = $market['id'];
+        }
+        $method = $this->safe_string($this->options, 'fetchOrdersMethod', 'tradingGetOrderHistory');
+        $response = $this->$method (array_merge ($request, $params));
+        //
+        //     array (
+        //         {
+        //             "id" => 468535711,
+        //             "timestamp" => "2018-06-02T16:42:40Z",
+        //             "instrument" => "BTC-EUR",
+        //             "side" => "sell",
+        //             "type" => "$limit",
+        //             "status" => "submitting",
+        //             "cancellationReason" => null,
+        //             "timeInForce" => "GTC",
+        //             "volume" => 0.00770733,
+        //             "price" => 6724.9,
+        //             "stopPrice" => null,
+        //             "remainingVolume" => 0.00770733,
+        //             "lastUpdate" => "2018-06-02T16:42:40Z",
+        //             "parentOrderId" => null,
+        //             "childOrderId" => null
+        //         }
+        //     )
+        //
+        return $this->parse_orders($response);
+    }
+
     public function fetch_orders_by_ids ($ids = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $request = array (
@@ -897,7 +939,8 @@ class crex24 extends Exchange {
         if ($limit !== null) {
             $request['limit'] = $limit; // min 1, max 1000, default 100
         }
-        $response = $this->tradingGetActiveOrders (array_merge ($request, $params));
+        $method = $this->safe_string($this->options, 'fetchClosedOrdersMethod', 'tradingGetOrderHistory');
+        $response = $this->$method (array_merge ($request, $params));
         //     array (
         //         array (
         //             "id" => 468535711,
