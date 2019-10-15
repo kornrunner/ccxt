@@ -34,7 +34,7 @@ use kornrunner\Keccak;
 use kornrunner\Solidity;
 use Elliptic\EC;
 
-$version = '1.18.1259';
+$version = '1.18.1267';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -53,7 +53,7 @@ const PAD_WITH_ZERO = 1;
 
 class Exchange {
 
-    const VERSION = '1.18.1259';
+    const VERSION = '1.18.1267';
 
     public static $eth_units = array (
         'wei'        => '1',
@@ -106,6 +106,7 @@ class Exchange {
         'bitkk',
         'bitlish',
         'bitmart',
+        'bitmax',
         'bitmex',
         'bitso',
         'bitstamp',
