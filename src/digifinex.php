@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class digifinex extends Exchange {
 
@@ -942,6 +942,10 @@ class digifinex extends Exchange {
         $orderType = $this->safe_string($params, 'type', $defaultType);
         $params = $this->omit ($params, 'type');
         $this->load_markets();
+        $market = null;
+        if ($symbol !== null) {
+            $market = $this->market ($symbol);
+        }
         $request = array (
             'market' => $orderType,
             'order_id' => $id,
@@ -950,7 +954,7 @@ class digifinex extends Exchange {
         //
         //     {
         //         "code" => 0,
-        //         "data" => array (
+        //         "$data" => array (
         //             {
         //                 "$symbol" => "BTC_USDT",
         //                 "order_id" => "dd3164b333a4afa9d5730bb87f6db8b3",
@@ -968,7 +972,8 @@ class digifinex extends Exchange {
         //         )
         //     }
         //
-        return $this->parse_order($response);
+        $data = $this->safe_value($response, 'data', array());
+        return $this->parse_order($data, $market);
     }
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {

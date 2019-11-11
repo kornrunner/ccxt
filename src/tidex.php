@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class tidex extends Exchange {
 
@@ -36,6 +36,7 @@ class tidex extends Exchange {
                 ),
                 'www' => 'https://tidex.com',
                 'doc' => 'https://tidex.com/exchange/public-api',
+                'referral' => 'https://tidex.com/exchange/?ref=57f5638d9cd7',
                 'fees' => array (
                     'https://tidex.com/exchange/assets-spec',
                     'https://tidex.com/exchange/pairs-spec',

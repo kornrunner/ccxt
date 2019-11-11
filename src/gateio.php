@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class gateio extends Exchange {
 
@@ -465,7 +465,8 @@ class gateio extends Exchange {
         $timestamp = $this->safe_timestamp($order, 'timestamp');
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $side = $this->safe_string($order, 'type');
-        $price = $this->safe_float($order, 'filledRate');
+        $price = $this->safe_float($order, 'initialRate');
+        $average = $this->safe_float($order, 'filledRate');
         $amount = $this->safe_float($order, 'initialAmount');
         $filled = $this->safe_float($order, 'filledAmount');
         // In the $order $status response, this field has a different name.
@@ -490,6 +491,7 @@ class gateio extends Exchange {
             'amount' => $amount,
             'filled' => $filled,
             'remaining' => $remaining,
+            'average' => $average,
             'trades' => null,
             'fee' => array (
                 'cost' => $feeCost,

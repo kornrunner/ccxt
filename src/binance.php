@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class binance extends Exchange {
 
@@ -747,7 +747,7 @@ class binance extends Exchange {
             if ($filled) {
                 $average = $cost / $filled;
                 if ($this->options['parseOrderToPrecision']) {
-                    $average = floatval ($this->amount_to_precision($symbol, $average));
+                    $average = floatval ($this->price_to_precision($symbol, $average));
                 }
             }
             if ($this->options['parseOrderToPrecision']) {

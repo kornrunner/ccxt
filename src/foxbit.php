@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class foxbit extends Exchange {
 
@@ -32,7 +32,7 @@ class foxbit extends Exchange {
                     'get' => array (
                         '{currency}/ticker',    // ?crypto_currency=BTC
                         '{currency}/orderbook', // ?crypto_currency=BTC
-                        '{currency}/trades',    // ?crypto_currency=BTC&since={TIMESTAMP}&limit={NUMBER}
+                        '{currency}/trades',    // ?crypto_currency=BTC&since=<TIMESTAMP>&limit=<NUMBER>
                     ),
                 ),
                 'private' => array (

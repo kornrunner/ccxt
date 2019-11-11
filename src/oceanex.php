@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class oceanex extends Exchange {
 
@@ -149,7 +149,7 @@ class oceanex extends Exchange {
                 ),
                 'limits' => array (
                     'amount' => array (
-                        'min' => $this->safe_value($market, 'minimum_trading_amount'),
+                        'min' => null,
                         'max' => null,
                     ),
                     'price' => array (
@@ -157,7 +157,7 @@ class oceanex extends Exchange {
                         'max' => null,
                     ),
                     'cost' => array (
-                        'min' => null,
+                        'min' => $this->safe_value($market, 'minimum_trading_amount'),
                         'max' => null,
                     ),
                 ),

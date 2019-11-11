@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class bitfinex extends Exchange {
 
@@ -273,6 +273,7 @@ class bitfinex extends Exchange {
             'commonCurrencies' => array (
                 'ABS' => 'ABYSS',
                 'AIO' => 'AION',
+                'ALG' => 'ALGO', // https://github.com/ccxt/ccxt/issues/6034
                 'AMP' => 'AMPL',
                 'ATM' => 'ATMI',
                 'ATO' => 'ATOM', // https://github.com/ccxt/ccxt/issues/5118
@@ -392,7 +393,11 @@ class bitfinex extends Exchange {
                     'USD' => 'wire',
                     'USDC' => 'udc', // https://github.com/ccxt/ccxt/issues/5833
                     'UTK' => 'utk',
-                    'USDT' => 'tetheruso', // undocumented
+                    'USDT' => 'tetheruso', // Tether on Omni
+                    // 'USDT' => 'tetheruse', // Tether on ERC20
+                    // 'USDT' => 'tetherusl', // Tether on Liquid
+                    // 'USDT' => 'tetherusx', // Tether on Tron
+                    // 'USDT' => 'tetheruss', // Tether on EOS
                     'VEE' => 'vee',
                     'WAX' => 'wax',
                     'XLM' => 'xlm',

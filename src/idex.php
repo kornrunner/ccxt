@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class idex extends Exchange {
 
@@ -200,8 +200,8 @@ class idex extends Exchange {
             'change' => null,
             'percentage' => $percentage,
             'average' => null,
-            'baseVolume' => $baseVolume,
-            'quoteVolume' => $quoteVolume,
+            'baseVolume' => $quoteVolume,
+            'quoteVolume' => $baseVolume,
             'info' => $ticker,
         );
     }

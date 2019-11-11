@@ -2,7 +2,7 @@
 
 namespace ccxt;
 
-use Exception as Exception; // a common import
+use Exception; // a common import
 
 class bibox extends Exchange {
 
@@ -106,6 +106,7 @@ class bibox extends Exchange {
             ),
             'commonCurrencies' => array (
                 'KEY' => 'Bihu',
+                'MTC' => 'MTC Mesh Network', // conflict with MTC Docademic doc.com Token https://github.com/ccxt/ccxt/issues/6081 https://github.com/ccxt/ccxt/issues/3025
                 'PAI' => 'PCHAIN',
             ),
         ));
