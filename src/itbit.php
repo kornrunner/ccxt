@@ -408,6 +408,7 @@ class itbit extends Exchange {
     }
 
     public function fetch_wallets ($params = array ()) {
+        $this->load_markets();
         if (!$this->uid) {
             throw new AuthenticationError($this->id . ' fetchWallets requires uid API credential');
         }
@@ -418,6 +419,7 @@ class itbit extends Exchange {
     }
 
     public function fetch_wallet ($walletId, $params = array ()) {
+        $this->load_markets();
         $request = array (
             'walletId' => $walletId,
         );
@@ -439,6 +441,11 @@ class itbit extends Exchange {
     }
 
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+        $this->load_markets();
+        $market = null;
+        if ($symbol !== null) {
+            $market = $this->market ($symbol);
+        }
         $walletIdInParams = (is_array($params) && array_key_exists('walletId', $params));
         if (!$walletIdInParams) {
             throw new ExchangeError($this->id . ' fetchOrders requires a $walletId parameter');
@@ -448,8 +455,18 @@ class itbit extends Exchange {
             'walletId' => $walletId,
         );
         $response = $this->privateGetWalletsWalletIdOrders (array_merge ($request, $params));
-        $orders = $this->parse_orders($response, null, $since, $limit);
-        return $orders;
+        return $this->parse_orders($response, $market, $since, $limit);
+    }
+
+    public function parse_order_status ($status) {
+        $statuses = array (
+            'submitted' => 'open', // order pending book entry
+            'open' => 'open',
+            'filled' => 'closed',
+            'cancelled' => 'canceled',
+            'rejected' => 'canceled',
+        );
+        return $this->safe_string($statuses, $status, $status);
     }
 
     public function parse_order ($order, $market = null) {
@@ -470,7 +487,7 @@ class itbit extends Exchange {
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
             'lastTradeTimestamp' => null,
-            'status' => $order['status'],
+            'status' => $this->parse_order_status($this->safe_string($order, 'status')),
             'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
@@ -490,6 +507,7 @@ class itbit extends Exchange {
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
+        $this->load_markets();
         if ($type === 'market') {
             throw new ExchangeError($this->id . ' allows limit orders only');
         }
@@ -517,6 +535,7 @@ class itbit extends Exchange {
     }
 
     public function fetch_order ($id, $symbol = null, $params = array ()) {
+        $this->load_markets();
         $walletIdInParams = (is_array($params) && array_key_exists('walletId', $params));
         if (!$walletIdInParams) {
             throw new ExchangeError($this->id . ' fetchOrder requires a walletId parameter');
