@@ -261,6 +261,7 @@ class huobipro extends Exchange {
             $maker = ($base === 'OMG') ? 0 : 0.2 / 100;
             $taker = ($base === 'OMG') ? 0 : 0.2 / 100;
             $minAmount = $this->safe_float($market, 'min-order-amt', pow(10, -$precision['amount']));
+            $maxAmount = $this->safe_float($market, 'max-order-amt');
             $minCost = $this->safe_float($market, 'min-order-value', 0);
             $state = $this->safe_string($market, 'state');
             $active = ($state === 'online');
@@ -278,7 +279,7 @@ class huobipro extends Exchange {
                 'limits' => array (
                     'amount' => array (
                         'min' => $minAmount,
-                        'max' => null,
+                        'max' => $maxAmount,
                     ),
                     'price' => array (
                         'min' => pow(10, -$precision['price']),
