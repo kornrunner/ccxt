@@ -94,6 +94,9 @@ class idex extends Exchange {
                 'apiKey' => false,
                 'secret' => false,
             ),
+            'commonCurrencies' => array (
+                'ONE' => 'Menlo One',
+            ),
         ));
     }
 

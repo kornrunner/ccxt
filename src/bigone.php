@@ -133,6 +133,9 @@ class bigone extends Exchange {
                 'broad' => array (
                 ),
             ),
+            'commonCurrencies' => array (
+                'ONE' => 'BigONE Token',
+            ),
         ));
     }
 

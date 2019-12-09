@@ -106,10 +106,7 @@ class allcoin extends okcoinusd {
                             'min' => $this->safe_float($market, 'MinOrderPrice'),
                             'max' => $this->safe_float($market, 'MaxOrderPrice'),
                         ),
-                        'cost' => array (
-                            'min' => null,
-                            'max' => null,
-                        ),
+                        'cost' => array( 'min' => null, 'max' => null ),
                     ),
                     'info' => $market,
                 );
