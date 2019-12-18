@@ -7,13 +7,13 @@ use Exception; // a common import
 class kuna extends acx {
 
     public function describe () {
-        return array_replace_recursive (parent::describe (), array (
+        return array_replace_recursive(parent::describe (), array(
             'id' => 'kuna',
             'name' => 'Kuna',
-            'countries' => array ( 'UA' ),
+            'countries' => array( 'UA' ),
             'rateLimit' => 1000,
             'version' => 'v2',
-            'has' => array (
+            'has' => array(
                 'CORS' => false,
                 'fetchTickers' => true,
                 'fetchOHLCV' => false,
@@ -21,7 +21,7 @@ class kuna extends acx {
                 'fetchMyTrades' => true,
                 'withdraw' => false,
             ),
-            'urls' => array (
+            'urls' => array(
                 'referral' => 'https://kuna.io?r=kunaid-gvfihe8az7o4',
                 'logo' => 'https://user-images.githubusercontent.com/1294454/31697638-912824fa-b3c1-11e7-8c36-cf9606eb94ac.jpg',
                 'api' => 'https://kuna.io',
@@ -29,13 +29,13 @@ class kuna extends acx {
                 'doc' => 'https://kuna.io/documents/api',
                 'fees' => 'https://kuna.io/documents/api',
             ),
-            'fees' => array (
-                'trading' => array (
+            'fees' => array(
+                'trading' => array(
                     'taker' => 0.25 / 100,
                     'maker' => 0.25 / 100,
                 ),
-                'funding' => array (
-                    'withdraw' => array (
+                'funding' => array(
+                    'withdraw' => array(
                         'UAH' => '1%',
                         'BTC' => 0.001,
                         'BCH' => 0.001,
@@ -48,7 +48,7 @@ class kuna extends acx {
                         // 'R' => 0.01 ETH
                         // 'EVR' => 0.01 ETH
                     ),
-                    'deposit' => array (
+                    'deposit' => array(
                         // 'UAH' => (amount) => amount * 0.001 . 5
                     ),
                 ),
@@ -57,16 +57,16 @@ class kuna extends acx {
     }
 
     public function fetch_markets ($params = array ()) {
-        $quotes = array ( 'btc', 'eth', 'eurs', 'rub', 'uah', 'usd', 'usdt' );
-        $pricePrecisions = array (
+        $quotes = array( 'btc', 'eth', 'eurs', 'rub', 'uah', 'usd', 'usdt' );
+        $pricePrecisions = array(
             'UAH' => 0,
         );
         $markets = array();
         $response = $this->publicGetTickers ($params);
         $ids = is_array($response) ? array_keys($response) : array();
-        for ($i = 0; $i < count ($ids); $i++) {
+        for ($i = 0; $i < count($ids); $i++) {
             $id = $ids[$i];
-            for ($j = 0; $j < count ($quotes); $j++) {
+            for ($j = 0; $j < count($quotes); $j++) {
                 $quoteId = $quotes[$j];
                 $index = mb_strpos($id, $quoteId);
                 $slice = mb_substr($id, $index);
@@ -75,11 +75,11 @@ class kuna extends acx {
                     $base = $this->safe_currency_code($baseId);
                     $quote = $this->safe_currency_code($quoteId);
                     $symbol = $base . '/' . $quote;
-                    $precision = array (
+                    $precision = array(
                         'amount' => 6,
                         'price' => $this->safe_integer($pricePrecisions, $quote, 6),
                     );
-                    $markets[] = array (
+                    $markets[] = array(
                         'id' => $id,
                         'symbol' => $symbol,
                         'base' => $base,
@@ -87,16 +87,16 @@ class kuna extends acx {
                         'baseId' => $baseId,
                         'quoteId' => $quoteId,
                         'precision' => $precision,
-                        'limits' => array (
-                            'amount' => array (
+                        'limits' => array(
+                            'amount' => array(
                                 'min' => pow(10, -$precision['amount']),
                                 'max' => pow(10, $precision['amount']),
                             ),
-                            'price' => array (
+                            'price' => array(
                                 'min' => pow(10, -$precision['price']),
                                 'max' => pow(10, $precision['price']),
                             ),
-                            'cost' => array (
+                            'cost' => array(
                                 'min' => null,
                                 'max' => null,
                             ),
@@ -119,10 +119,10 @@ class kuna extends acx {
         }
         $this->load_markets();
         $market = $this->market ($symbol);
-        $request = array (
+        $request = array(
             'market' => $market['id'],
         );
-        $response = $this->privateGetOrders (array_merge ($request, $params));
+        $response = $this->privateGetOrders (array_merge($request, $params));
         // todo emulation of fetchClosedOrders, fetchOrders, fetchOrder
         // with order cache . fetchOpenOrders
         // as in BTC-e, Liqui, Yobit, DSX, Tidex, WEX
@@ -137,7 +137,7 @@ class kuna extends acx {
         }
         $side = $this->safe_string_2($trade, 'side', 'trend');
         if ($side !== null) {
-            $sideMap = array (
+            $sideMap = array(
                 'ask' => 'sell',
                 'bid' => 'buy',
             );
@@ -148,7 +148,7 @@ class kuna extends acx {
         $cost = $this->safe_float($trade, 'funds');
         $orderId = $this->safe_string($trade, 'order_id');
         $id = $this->safe_string($trade, 'id');
-        return array (
+        return array(
             'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
@@ -168,10 +168,10 @@ class kuna extends acx {
     public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $request = array (
+        $request = array(
             'market' => $market['id'],
         );
-        $response = $this->publicGetTrades (array_merge ($request, $params));
+        $response = $this->publicGetTrades (array_merge($request, $params));
         return $this->parse_trades($response, $market, $since, $limit);
     }
 
@@ -181,10 +181,10 @@ class kuna extends acx {
         }
         $this->load_markets();
         $market = $this->market ($symbol);
-        $request = array (
+        $request = array(
             'market' => $market['id'],
         );
-        $response = $this->privateGetTradesMy (array_merge ($request, $params));
+        $response = $this->privateGetTradesMy (array_merge($request, $params));
         return $this->parse_trades($response, $market, $since, $limit);
     }
 }

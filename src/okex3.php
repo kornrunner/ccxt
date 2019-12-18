@@ -7,13 +7,13 @@ use Exception; // a common import
 class okex3 extends Exchange {
 
     public function describe () {
-        return array_replace_recursive (parent::describe (), array (
+        return array_replace_recursive(parent::describe (), array(
             'id' => 'okex3',
             'name' => 'OKEX',
-            'countries' => array ( 'CN', 'US' ),
+            'countries' => array( 'CN', 'US' ),
             'version' => 'v3',
             'rateLimit' => 1000, // up to 3000 requests per 5 minutes ≈ 600 requests per minute ≈ 10 requests per second ≈ 100 ms
-            'has' => array (
+            'has' => array(
                 'CORS' => false,
                 'fetchOHLCV' => true,
                 'fetchOrder' => true,
@@ -33,7 +33,7 @@ class okex3 extends Exchange {
                 'withdraw' => true,
                 'futures' => true,
             ),
-            'timeframes' => array (
+            'timeframes' => array(
                 '1m' => '60',
                 '3m' => '180',
                 '5m' => '300',
@@ -47,21 +47,21 @@ class okex3 extends Exchange {
                 '1d' => '86400',
                 '1w' => '604800',
             ),
-            'urls' => array (
+            'urls' => array(
                 'logo' => 'https://user-images.githubusercontent.com/1294454/32552768-0d6dd3c6-c4a6-11e7-90f8-c043b64756a7.jpg',
                 'api' => 'https://www.okex.com',
                 'www' => 'https://www.okex.com',
                 'doc' => 'https://www.okex.com/docs/en/',
                 'fees' => 'https://www.okex.com/pages/products/fees.html',
             ),
-            'api' => array (
-                'general' => array (
-                    'get' => array (
+            'api' => array(
+                'general' => array(
+                    'get' => array(
                         'time',
                     ),
                 ),
-                'account' => array (
-                    'get' => array (
+                'account' => array(
+                    'get' => array(
                         'currencies',
                         'wallet',
                         'wallet/{currency}',
@@ -73,13 +73,13 @@ class okex3 extends Exchange {
                         'deposit/history',
                         'deposit/history/{currency}',
                     ),
-                    'post' => array (
+                    'post' => array(
                         'transfer',
                         'withdrawal',
                     ),
                 ),
-                'spot' => array (
-                    'get' => array (
+                'spot' => array(
+                    'get' => array(
                         'accounts',
                         'accounts/{currency}',
                         'accounts/{currency}/ledger',
@@ -97,7 +97,7 @@ class okex3 extends Exchange {
                         'instruments/{instrument_id}/trades',
                         'instruments/{instrument_id}/candles',
                     ),
-                    'post' => array (
+                    'post' => array(
                         'order_algo',
                         'orders',
                         'batch_orders',
@@ -107,8 +107,8 @@ class okex3 extends Exchange {
                         'cancel_batch_orders',
                     ),
                 ),
-                'margin' => array (
-                    'get' => array (
+                'margin' => array(
+                    'get' => array(
                         'accounts',
                         'accounts/{instrument_id}',
                         'accounts/{instrument_id}/ledger',
@@ -122,7 +122,7 @@ class okex3 extends Exchange {
                         'orders_pending',
                         'fills',
                     ),
-                    'post' => array (
+                    'post' => array(
                         'accounts/borrow',
                         'accounts/repayment',
                         'orders',
@@ -133,8 +133,8 @@ class okex3 extends Exchange {
                         'cancel_batch_orders',
                     ),
                 ),
-                'futures' => array (
-                    'get' => array (
+                'futures' => array(
+                    'get' => array(
                         'position',
                         '{instrument_id}/position',
                         'accounts',
@@ -162,7 +162,7 @@ class okex3 extends Exchange {
                         'instruments/{instrument_id}/liquidation',
                         'instruments/{instrument_id}/mark_price',
                     ),
-                    'post' => array (
+                    'post' => array(
                         'accounts/{currency}/leverage',
                         'accounts/margin_mode',
                         'order',
@@ -176,8 +176,8 @@ class okex3 extends Exchange {
                         'cancel_all',
                     ),
                 ),
-                'swap' => array (
-                    'get' => array (
+                'swap' => array(
+                    'get' => array(
                         'position',
                         '{instrument_id}/position',
                         'accounts',
@@ -206,7 +206,7 @@ class okex3 extends Exchange {
                         'instruments/{instrument_id}/mark_price',
                         'instruments/{instrument_id}/historical_funding_rate',
                     ),
-                    'post' => array (
+                    'post' => array(
                         'accounts/{instrument_id}/leverage',
                         'order',
                         'order_algo',
@@ -218,8 +218,8 @@ class okex3 extends Exchange {
                     ),
                 ),
                 // they have removed this part from public
-                'ett' => array (
-                    'get' => array (
+                'ett' => array(
+                    'get' => array(
                         'accounts',
                         'accounts/{currency}',
                         'accounts/{currency}/ledger',
@@ -228,43 +228,43 @@ class okex3 extends Exchange {
                         'constituents/{ett}',
                         'define-price/{ett}',
                     ),
-                    'post' => array (
+                    'post' => array(
                         'orders',
                         'orders/{order_id}',
                     ),
                 ),
             ),
-            'fees' => array (
-                'trading' => array (
+            'fees' => array(
+                'trading' => array(
                     'taker' => 0.0015,
                     'maker' => 0.0010,
                 ),
-                'spot' => array (
+                'spot' => array(
                     'taker' => 0.0015,
                     'maker' => 0.0010,
                 ),
-                'futures' => array (
+                'futures' => array(
                     'taker' => 0.0005,
                     'maker' => 0.0002,
                 ),
-                'swap' => array (
+                'swap' => array(
                     'taker' => 0.00075,
                     'maker' => 0.00020,
                 ),
             ),
-            'requiredCredentials' => array (
+            'requiredCredentials' => array(
                 'apiKey' => true,
                 'secret' => true,
                 'password' => true,
             ),
-            'exceptions' => array (
+            'exceptions' => array(
                 // http error codes
                 // 400 Bad Request — Invalid request format
                 // 401 Unauthorized — Invalid API Key
                 // 403 Forbidden — You do not have access to the requested resource
                 // 404 Not Found
                 // 500 Internal Server Error — We had a problem with our server
-                'exact' => array (
+                'exact' => array(
                     '1' => '\\ccxt\\ExchangeError', // array( "code" => 1, "message" => "System error" )
                     // undocumented
                     'failure to get a peer from the ring-balancer' => '\\ccxt\\ExchangeNotAvailable', // array( "message" => "failure to get a peer from the ring-balancer" )
@@ -438,13 +438,14 @@ class okex3 extends Exchange {
                     '35063' => '\\ccxt\\InvalidOrder', // array( "code" => 35063, "message" => "Invalid order_size" )
                     '35064' => '\\ccxt\\InvalidOrder', // array( "code" => 35064, "message" => "Invalid client_oid" )
                 ),
-                'broad' => array (
+                'broad' => array(
                 ),
             ),
-            'options' => array (
-                'fetchMarkets' => array ( 'spot', 'futures', 'swap' ),
+            'options' => array(
+                'createMarketBuyOrderRequiresPrice' => true,
+                'fetchMarkets' => array( 'spot', 'futures', 'swap' ),
                 'defaultType' => 'spot', // 'account', 'spot', 'margin', 'futures', 'swap'
-                'auth' => array (
+                'auth' => array(
                     'time' => 'public',
                     'currencies' => 'private',
                     'instruments' => 'public',
@@ -453,7 +454,7 @@ class okex3 extends Exchange {
                     'define-price/{ett}' => 'public',
                 ),
             ),
-            'commonCurrencies' => array (
+            'commonCurrencies' => array(
                 // OKEX refers to ERC20 version of Aeternity (AEToken)
                 'AE' => 'AET', // https://github.com/ccxt/ccxt/issues/4981
                 'HOT' => 'Hydro Protocol',
@@ -479,7 +480,7 @@ class okex3 extends Exchange {
     public function fetch_markets ($params = array ()) {
         $types = $this->safe_value($this->options, 'fetchMarkets');
         $result = array();
-        for ($i = 0; $i < count ($types); $i++) {
+        for ($i = 0; $i < count($types); $i++) {
             $markets = $this->fetch_markets_by_type ($types[$i], $params);
             $result = $this->array_concat($result, $markets);
         }
@@ -488,7 +489,7 @@ class okex3 extends Exchange {
 
     public function parse_markets ($markets) {
         $result = array();
-        for ($i = 0; $i < count ($markets); $i++) {
+        for ($i = 0; $i < count($markets); $i++) {
             $result[] = $this->parse_market ($markets[$i]);
         }
         return $result;
@@ -498,7 +499,7 @@ class okex3 extends Exchange {
         //
         // $spot markets
         //
-        //     array ( array (   base_currency => "EOS",
+        //     array( array(   base_currency => "EOS",
         //           instrument_id => "EOS-OKB",
         //                min_size => "0.01",
         //              product_id => "EOS-OKB",
@@ -521,7 +522,7 @@ class okex3 extends Exchange {
         //
         // futures markets
         //
-        //     array ( {    instrument_id => "BTG-USD-190329",
+        //     array( {    instrument_id => "BTG-USD-190329",
         //         underlying_index => "BTG",
         //           quote_currency => "USD",
         //                tick_size => "0.01",
@@ -532,7 +533,7 @@ class okex3 extends Exchange {
         //
         // $swap markets
         //
-        //     array ( {    instrument_id => "BTC-USD-SWAP",
+        //     array( {    instrument_id => "BTC-USD-SWAP",
         //         underlying_index => "BTC",
         //           quote_currency => "USD",
         //                     coin => "BTC",
@@ -574,7 +575,7 @@ class okex3 extends Exchange {
         if ($pricePrecision !== null) {
             $pricePrecision = $this->precision_from_string($pricePrecision);
         }
-        $precision = array (
+        $precision = array(
             'amount' => $amountPrecision,
             'price' => $pricePrecision,
         );
@@ -589,7 +590,7 @@ class okex3 extends Exchange {
         }
         $active = true;
         $fees = $this->safe_value_2($this->fees, $marketType, 'trading', array());
-        return array_merge ($fees, array (
+        return array_merge($fees, array(
             'id' => $id,
             'symbol' => $symbol,
             'base' => $base,
@@ -603,16 +604,16 @@ class okex3 extends Exchange {
             'swap' => $swap,
             'active' => $active,
             'precision' => $precision,
-            'limits' => array (
-                'amount' => array (
+            'limits' => array(
+                'amount' => array(
                     'min' => $minAmount,
                     'max' => null,
                 ),
-                'price' => array (
+                'price' => array(
                     'min' => $minPrice,
                     'max' => null,
                 ),
-                'cost' => array (
+                'cost' => array(
                     'min' => $minCost,
                     'max' => null,
                 ),
@@ -626,7 +627,7 @@ class okex3 extends Exchange {
         //
         // spot markets
         //
-        //     array ( {   base_currency => "EOS",
+        //     array( {   base_currency => "EOS",
         //          base_increment => "0.000001",
         //           base_min_size => "0.01",
         //           instrument_id => "EOS-OKB",
@@ -639,7 +640,7 @@ class okex3 extends Exchange {
         //
         // futures markets
         //
-        //     array ( {    instrument_id => "BTG-USD-190329",
+        //     array( {    instrument_id => "BTG-USD-190329",
         //         underlying_index => "BTG",
         //           quote_currency => "USD",
         //                tick_size => "0.01",
@@ -650,7 +651,7 @@ class okex3 extends Exchange {
         //
         // swap markets
         //
-        //     array ( {    instrument_id => "BTC-USD-SWAP",
+        //     array( {    instrument_id => "BTC-USD-SWAP",
         //         underlying_index => "BTC",
         //           quote_currency => "USD",
         //                     coin => "BTC",
@@ -672,8 +673,8 @@ class okex3 extends Exchange {
         // if you attempt to access it without authentication
         $response = $this->accountGetCurrencies ($params);
         //
-        //     array (
-        //         array (
+        //     array(
+        //         array(
         //             $name => '',
         //             $currency => 'BTC',
         //             can_withdraw => '1',
@@ -683,7 +684,7 @@ class okex3 extends Exchange {
         //     )
         //
         $result = array();
-        for ($i = 0; $i < count ($response); $i++) {
+        for ($i = 0; $i < count($response); $i++) {
             $currency = $response[$i];
             $id = $this->safe_string($currency, 'currency');
             $code = $this->safe_currency_code($id);
@@ -692,7 +693,7 @@ class okex3 extends Exchange {
             $canDeposit = $this->safe_integer($currency, 'can_deposit');
             $canWithdraw = $this->safe_integer($currency, 'can_withdraw');
             $active = $canDeposit && $canWithdraw;
-            $result[$code] = array (
+            $result[$code] = array(
                 'id' => $id,
                 'code' => $code,
                 'info' => $currency,
@@ -701,11 +702,11 @@ class okex3 extends Exchange {
                 'active' => $active,
                 'fee' => null, // todo => redesign
                 'precision' => $precision,
-                'limits' => array (
+                'limits' => array(
                     'amount' => array( 'min' => null, 'max' => null ),
                     'price' => array( 'min' => null, 'max' => null ),
                     'cost' => array( 'min' => null, 'max' => null ),
-                    'withdraw' => array (
+                    'withdraw' => array(
                         'min' => $this->safe_float($currency, 'min_withdrawal'),
                         'max' => null,
                     ),
@@ -720,13 +721,13 @@ class okex3 extends Exchange {
         $market = $this->market ($symbol);
         $method = $market['type'] . 'GetInstrumentsInstrumentId';
         $method .= ($market['type'] === 'swap') ? 'Depth' : 'Book';
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
         );
         if ($limit !== null) {
             $request['size'] = $limit; // max 200
         }
-        $response = $this->$method (array_merge ($request, $params));
+        $response = $this->$method (array_merge($request, $params));
         //
         //     {      asks => [ ["0.02685268", "0.242571", "1"],
         //                    ["0.02685493", "0.164085", "1"],
@@ -767,7 +768,7 @@ class okex3 extends Exchange {
             $market = $this->markets_by_id[$marketId];
         } else if ($marketId !== null) {
             $parts = explode('-', $marketId);
-            $numParts = is_array ($parts) ? count ($parts) : 0;
+            $numParts = is_array($parts) ? count($parts) : 0;
             if ($numParts === 2) {
                 list($baseId, $quoteId) = $parts;
                 $base = $this->safe_currency_code($baseId);
@@ -782,7 +783,7 @@ class okex3 extends Exchange {
         }
         $last = $this->safe_float($ticker, 'last');
         $open = $this->safe_float($ticker, 'open_24h');
-        return array (
+        return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
@@ -810,10 +811,10 @@ class okex3 extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         $method = $market['type'] . 'GetInstrumentsInstrumentIdTicker';
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
         );
-        $response = $this->$method (array_merge ($request, $params));
+        $response = $this->$method (array_merge($request, $params));
         //
         //     {         best_ask => "0.02665472",
         //               best_bid => "0.02665221",
@@ -837,7 +838,7 @@ class okex3 extends Exchange {
         $method = $type . 'GetInstrumentsTicker';
         $response = $this->$method ($params);
         $result = array();
-        for ($i = 0; $i < count ($response); $i++) {
+        for ($i = 0; $i < count($response); $i++) {
             $ticker = $this->parse_ticker($response[$i]);
             $symbol = $ticker['symbol'];
             $result[$symbol] = $ticker;
@@ -881,7 +882,7 @@ class okex3 extends Exchange {
         //
         //     spot trades, margin trades
         //
-        //         array (
+        //         array(
         //             "created_at":"2019-03-15T02:52:56.000Z",
         //             "exec_type":"T", // whether the order is taker or maker
         //             "$fee":"0.00000082",
@@ -939,7 +940,7 @@ class okex3 extends Exchange {
             if ($market !== null) {
                 $feeCurrency = ($side === 'buy') ? $market['base'] : $market['quote'];
             }
-            $fee = array (
+            $fee = array(
                 // $fee is either a positive number (invitation rebate)
                 // or a negative number (transaction $fee deduction)
                 // therefore we need to invert the $fee
@@ -949,7 +950,7 @@ class okex3 extends Exchange {
             );
         }
         $orderId = $this->safe_string($trade, 'order_id');
-        return array (
+        return array(
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
@@ -973,17 +974,17 @@ class okex3 extends Exchange {
         if (($limit === null) || ($limit > 100)) {
             $limit = 100; // maximum = default = 100
         }
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
             'limit' => $limit,
             // from => 'id',
             // to => 'id',
         );
-        $response = $this->$method (array_merge ($request, $params));
+        $response = $this->$method (array_merge($request, $params));
         //
         // spot markets
         //
-        //     array (
+        //     array(
         //         {
         //             time => "2018-12-17T23:31:08.268Z",
         //             timestamp => "2018-12-17T23:31:08.268Z",
@@ -996,7 +997,7 @@ class okex3 extends Exchange {
         //
         // futures markets, swap markets
         //
-        //     array (
+        //     array(
         //         {
         //             trade_id => "1989230840021013",
         //             side => "buy",
@@ -1025,7 +1026,7 @@ class okex3 extends Exchange {
         //
         // futures markets
         //
-        //     array (
+        //     array(
         //         1545072720000,
         //         0.3159,
         //         0.3161,
@@ -1035,11 +1036,11 @@ class okex3 extends Exchange {
         //         725179.26172331,
         //     )
         //
-        if (gettype ($ohlcv) === 'array' && count (array_filter (array_keys ($ohlcv), 'is_string')) == 0) {
-            $numElements = is_array ($ohlcv) ? count ($ohlcv) : 0;
+        if (gettype($ohlcv) === 'array' && count(array_filter(array_keys($ohlcv), 'is_string')) == 0) {
+            $numElements = is_array($ohlcv) ? count($ohlcv) : 0;
             $volumeIndex = ($numElements > 6) ? 6 : 5;
             $timestamp = $ohlcv[0];
-            if (gettype ($timestamp) === 'string') {
+            if (gettype($timestamp) === 'string') {
                 $timestamp = $this->parse8601 ($timestamp);
             }
             return [
@@ -1053,7 +1054,7 @@ class okex3 extends Exchange {
                 floatval ($ohlcv[$volumeIndex]),  // Volume, okex will return base volume in the 7th element for future markets
             ];
         } else {
-            return array (
+            return array(
                 $this->parse8601 ($this->safe_string($ohlcv, 'time')),
                 $this->safe_float($ohlcv, 'open'),    // Open
                 $this->safe_float($ohlcv, 'high'),    // High
@@ -1068,18 +1069,18 @@ class okex3 extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         $method = $market['type'] . 'GetInstrumentsInstrumentIdCandles';
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
             'granularity' => $this->timeframes[$timeframe],
         );
         if ($since !== null) {
             $request['start'] = $this->iso8601 ($since);
         }
-        $response = $this->$method (array_merge ($request, $params));
+        $response = $this->$method (array_merge($request, $params));
         //
         // spot markets
         //
-        //     array ( array (  close => "0.02683401",
+        //     array( array(  close => "0.02683401",
         //           high => "0.02683401",
         //            low => "0.02683401",
         //           open => "0.02683401",
@@ -1095,7 +1096,7 @@ class okex3 extends Exchange {
         //
         // futures
         //
-        //     array ( array ( 1545090660000,
+        //     array( array( 1545090660000,
         //         0.3171,
         //         0.3174,
         //         0.3171,
@@ -1103,7 +1104,7 @@ class okex3 extends Exchange {
         //         1648,
         //         51930.38579450868 ),
         //       ...
-        //       array ( 1545072720000,
+        //       array( 1545072720000,
         //         0.3159,
         //         0.3161,
         //         0.3144,
@@ -1118,8 +1119,8 @@ class okex3 extends Exchange {
         //
         // $account
         //
-        //     array (
-        //         array (
+        //     array(
+        //         array(
         //             $balance =>  0,
         //             available =>  0,
         //             currency => "BTC",
@@ -1135,8 +1136,8 @@ class okex3 extends Exchange {
         //
         // spot
         //
-        //     array (
-        //         array (
+        //     array(
+        //         array(
         //             frozen => "0",
         //             hold => "0",
         //             id => "2149632",
@@ -1157,7 +1158,7 @@ class okex3 extends Exchange {
         //     )
         //
         $result = array( 'info' => $response );
-        for ($i = 0; $i < count ($response); $i++) {
+        for ($i = 0; $i < count($response); $i++) {
             $balance = $response[$i];
             $currencyId = $this->safe_string($balance, 'currency');
             $code = $this->safe_currency_code($currencyId);
@@ -1172,9 +1173,9 @@ class okex3 extends Exchange {
 
     public function parse_margin_balance ($response) {
         //
-        //     array (
-        //         array (
-        //             "currency:BTC" => array (
+        //     array(
+        //         array(
+        //             "currency:BTC" => array(
         //                 "available":"0",
         //                 "$balance":"0",
         //                 "borrowed":"0",
@@ -1184,7 +1185,7 @@ class okex3 extends Exchange {
         //                 "holds":"0",
         //                 "lending_fee":"0"
         //             ),
-        //             "currency:USDT" => array (
+        //             "currency:USDT" => array(
         //                 "available":"100",
         //                 "$balance":"100",
         //                 "borrowed":"0",
@@ -1202,7 +1203,7 @@ class okex3 extends Exchange {
         //     )
         //
         $result = array( 'info' => $response );
-        for ($i = 0; $i < count ($response); $i++) {
+        for ($i = 0; $i < count($response); $i++) {
             $balance = $response[$i];
             $marketId = $this->safe_string($balance, 'instrument_id');
             $market = $this->safe_value($this->markets_by_id, $marketId);
@@ -1215,16 +1216,18 @@ class okex3 extends Exchange {
             } else {
                 $symbol = $market['symbol'];
             }
-            $omittedBalance = $this->omit ($balance, array (
+            $omittedBalance = $this->omit ($balance, array(
                 'instrument_id',
                 'liquidation_price',
                 'product_id',
                 'risk_rate',
                 'margin_ratio',
+                'maint_margin_ratio',
+                'tiers',
             ));
             $keys = is_array($omittedBalance) ? array_keys($omittedBalance) : array();
             $accounts = array();
-            for ($k = 0; $k < count ($keys); $k++) {
+            for ($k = 0; $k < count($keys); $k++) {
                 $key = $keys[$k];
                 $marketBalance = $balance[$key];
                 if (mb_strpos($key, ':') !== false) {
@@ -1249,10 +1252,10 @@ class okex3 extends Exchange {
         //
         //     {
         //         "$info":{
-        //             "eos":array (
+        //             "eos":array(
         //                 "auto_margin":"0",
-        //                 "contracts" => array (
-        //                     array (
+        //                 "contracts" => array(
+        //                     array(
         //                         "available_qty":"40.37069445",
         //                         "fixed_balance":"0",
         //                         "instrument_id":"EOS-USD-190329",
@@ -1261,7 +1264,7 @@ class okex3 extends Exchange {
         //                         "realized_pnl":"0",
         //                         "unrealized_pnl":"0"
         //                     ),
-        //                     array (
+        //                     array(
         //                         "available_qty":"40.37069445",
         //                         "fixed_balance":"14.54895721",
         //                         "instrument_id":"EOS-USD-190628",
@@ -1282,7 +1285,7 @@ class okex3 extends Exchange {
         $result = array( 'info' => $response );
         $info = $this->safe_value($response, 'info', array());
         $ids = is_array($info) ? array_keys($info) : array();
-        for ($i = 0; $i < count ($ids); $i++) {
+        for ($i = 0; $i < count($ids); $i++) {
             $id = $ids[$i];
             $code = $this->safe_currency_code($id);
             $balance = $this->safe_value($info, $id, array());
@@ -1298,7 +1301,7 @@ class okex3 extends Exchange {
     public function parse_swap_balance ($response) {
         //
         //     {
-        //         "$info" => array (
+        //         "$info" => array(
         //             {
         //                 "equity":"3.0139",
         //                 "fixed_balance":"0.0000",
@@ -1318,7 +1321,7 @@ class okex3 extends Exchange {
         // their root field name is "$info", so our $info will contain their $info
         $result = array( 'info' => $response );
         $info = $this->safe_value($response, 'info', array());
-        for ($i = 0; $i < count ($info); $i++) {
+        for ($i = 0; $i < count($info); $i++) {
             $balance = $info[$i];
             $marketId = $this->safe_string($balance, 'instrument_id');
             $symbol = $marketId;
@@ -1348,8 +1351,8 @@ class okex3 extends Exchange {
         //
         // account
         //
-        //     array (
-        //         array (
+        //     array(
+        //         array(
         //             balance =>  0,
         //             available =>  0,
         //             currency => "BTC",
@@ -1365,8 +1368,8 @@ class okex3 extends Exchange {
         //
         // spot
         //
-        //     array (
-        //         array (
+        //     array(
+        //         array(
         //             frozen => "0",
         //             hold => "0",
         //             id => "2149632",
@@ -1388,9 +1391,9 @@ class okex3 extends Exchange {
         //
         // margin
         //
-        //     array (
-        //         array (
-        //             "currency:BTC" => array (
+        //     array(
+        //         array(
+        //             "currency:BTC" => array(
         //                 "available":"0",
         //                 "balance":"0",
         //                 "borrowed":"0",
@@ -1400,7 +1403,7 @@ class okex3 extends Exchange {
         //                 "holds":"0",
         //                 "lending_fee":"0"
         //             ),
-        //             "currency:USDT" => array (
+        //             "currency:USDT" => array(
         //                 "available":"100",
         //                 "balance":"100",
         //                 "borrowed":"0",
@@ -1421,10 +1424,10 @@ class okex3 extends Exchange {
         //
         //     {
         //         "info":{
-        //             "eos":array (
+        //             "eos":array(
         //                 "auto_margin":"0",
-        //                 "contracts" => array (
-        //                     array (
+        //                 "contracts" => array(
+        //                     array(
         //                         "available_qty":"40.37069445",
         //                         "fixed_balance":"0",
         //                         "instrument_id":"EOS-USD-190329",
@@ -1433,7 +1436,7 @@ class okex3 extends Exchange {
         //                         "realized_pnl":"0",
         //                         "unrealized_pnl":"0"
         //                     ),
-        //                     array (
+        //                     array(
         //                         "available_qty":"40.37069445",
         //                         "fixed_balance":"14.54895721",
         //                         "instrument_id":"EOS-USD-190628",
@@ -1453,7 +1456,7 @@ class okex3 extends Exchange {
         // swap
         //
         //     {
-        //         "info" => array (
+        //         "info" => array(
         //             {
         //                 "equity":"3.0139",
         //                 "fixed_balance":"0.0000",
@@ -1485,7 +1488,7 @@ class okex3 extends Exchange {
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
         $market = $this->market ($symbol);
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
             // 'client_oid' => 'abcdef1234567890', // [a-z0-9]array(1,32)
             // 'order_type' => '0', // 0 => Normal limit order (Unfilled and 0 represent normal limit order) 1 => Post only 2 => Fill Or Kill 3 => Immediatel Or Cancel
@@ -1493,7 +1496,7 @@ class okex3 extends Exchange {
         $method = null;
         if ($market['futures'] || $market['swap']) {
             $size = $market['futures'] ? $this->number_to_string($amount) : $this->amount_to_precision($symbol, $amount);
-            $request = array_merge ($request, array (
+            $request = array_merge($request, array(
                 'type' => $type, // 1:open long 2:open short 3:close long 4:close short for futures
                 'size' => $size,
                 'price' => $this->price_to_precision($symbol, $price),
@@ -1505,7 +1508,7 @@ class okex3 extends Exchange {
             $method = $market['type'] . 'PostOrder';
         } else {
             $marginTrading = $this->safe_string($params, 'margin_trading', '1');  // 1 = spot, 2 = margin
-            $request = array_merge ($request, array (
+            $request = array_merge($request, array(
                 'side' => $side,
                 'type' => $type, // limit/market
                 'margin_trading' => $marginTrading, // 1 = spot, 2 = margin
@@ -1534,7 +1537,7 @@ class okex3 extends Exchange {
             }
             $method = ($marginTrading === '2') ? 'marginPostOrders' : 'spotPostOrders';
         }
-        $response = $this->$method (array_merge ($request, $params));
+        $response = $this->$method (array_merge($request, $params));
         //
         //     {
         //         "client_oid":"oktspot79",
@@ -1546,7 +1549,7 @@ class okex3 extends Exchange {
         //
         $timestamp = $this->milliseconds ();
         $id = $this->safe_string($response, 'order_id');
-        return array (
+        return array(
             'info' => $response,
             'id' => $id,
             'timestamp' => $timestamp,
@@ -1574,7 +1577,7 @@ class okex3 extends Exchange {
         $market = $this->market ($symbol);
         $type = $market['type'];
         $method = $type . 'PostCancelOrder';
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
         );
         if ($market['futures'] || $market['swap']) {
@@ -1591,13 +1594,13 @@ class okex3 extends Exchange {
             $request['order_id'] = $id;
         }
         $query = $this->omit ($params, 'type');
-        $response = $this->$method (array_merge ($request, $query));
+        $response = $this->$method (array_merge($request, $query));
         $result = (is_array($response) && array_key_exists('result', $response)) ? $response : $this->safe_value($response, $market['id'], array());
         //
         // spot, margin
         //
         //     {
-        //         "btc-usdt" => array (
+        //         "btc-usdt" => array(
         //             {
         //                 "$result":true,
         //                 "client_oid":"a123",
@@ -1619,7 +1622,7 @@ class okex3 extends Exchange {
     }
 
     public function parse_order_status ($status) {
-        $statuses = array (
+        $statuses = array(
             '-2' => 'failed',
             '-1' => 'canceled',
             '0' => 'open',
@@ -1632,7 +1635,7 @@ class okex3 extends Exchange {
     }
 
     public function parse_order_side ($side) {
-        $sides = array (
+        $sides = array(
             '1' => 'buy', // open long
             '2' => 'sell', // open short
             '3' => 'sell', // close long
@@ -1765,12 +1768,12 @@ class okex3 extends Exchange {
         $fee = null;
         if ($feeCost !== null) {
             $feeCurrency = null;
-            $fee = array (
+            $fee = array(
                 'cost' => $feeCost,
                 'currency' => $feeCurrency,
             );
         }
-        return array (
+        return array(
             'info' => $order,
             'id' => $id,
             'timestamp' => $timestamp,
@@ -1803,7 +1806,7 @@ class okex3 extends Exchange {
         }
         $instrumentId = ($market['futures'] || $market['swap']) ? 'InstrumentId' : '';
         $method = $type . 'GetOrders' . $instrumentId;
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
             // 'client_oid' => 'abcdef12345', // optional, [a-z0-9]array(1,32)
             // 'order_id' => $id,
@@ -1817,7 +1820,7 @@ class okex3 extends Exchange {
             $request['order_id'] = $id;
         }
         $query = $this->omit ($params, 'type');
-        $response = $this->$method (array_merge ($request, $query));
+        $response = $this->$method (array_merge($request, $query));
         //
         // spot, margin
         //
@@ -1872,7 +1875,7 @@ class okex3 extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         $type = $market['type'];
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
             // '-2' => failed,
             // '-1' => cancelled,
@@ -1890,16 +1893,16 @@ class okex3 extends Exchange {
             $method .= 'InstrumentId';
         }
         $query = $this->omit ($params, 'type');
-        $response = $this->$method (array_merge ($request, $query));
+        $response = $this->$method (array_merge($request, $query));
         //
         // spot, margin
         //
-        //     array (
+        //     array(
         //         // in fact, this documented API $response does not correspond
         //         // to their actual API $response for spot markets
         //         // OKEX v3 API returns a plain array of $orders (see below)
-        //         array (
-        //             array (
+        //         array(
+        //             array(
         //                 "client_oid":"oktspot76",
         //                 "created_at":"2019-03-18T07:26:49.000Z",
         //                 "filled_notional":"3.9734",
@@ -1929,8 +1932,8 @@ class okex3 extends Exchange {
         //
         //     {
         //         "result":true,  // missing in swap $orders
-        //         "order_info" => array (
-        //             array (
+        //         "order_info" => array(
+        //             array(
         //                 "instrument_id":"EOS-USD-190628",
         //                 "size":"10",
         //                 "timestamp":"2019-03-20T10:04:55.000Z",
@@ -1956,7 +1959,7 @@ class okex3 extends Exchange {
             $orders = $this->safe_value($response, 'order_info', array());
         } else {
             $orders = $response;
-            $responseLength = is_array ($response) ? count ($response) : 0;
+            $responseLength = is_array($response) ? count($response) : 0;
             if ($responseLength < 1) {
                 return array();
             }
@@ -2001,7 +2004,7 @@ class okex3 extends Exchange {
 
     public function parse_deposit_addresses ($addresses) {
         $result = array();
-        for ($i = 0; $i < count ($addresses); $i++) {
+        for ($i = 0; $i < count($addresses); $i++) {
             $result[] = $this->parse_deposit_address ($addresses[$i]);
         }
         return $result;
@@ -2024,7 +2027,7 @@ class okex3 extends Exchange {
         $currencyId = $this->safe_string($depositAddress, 'currency');
         $code = $this->safe_currency_code($currencyId);
         $this->check_address($address);
-        return array (
+        return array(
             'currency' => $code,
             'address' => $address,
             'tag' => $tag,
@@ -2035,12 +2038,12 @@ class okex3 extends Exchange {
     public function fetch_deposit_address ($code, $params = array ()) {
         $this->load_markets();
         $currency = $this->currency ($code);
-        $request = array (
+        $request = array(
             'currency' => $currency['id'],
         );
-        $response = $this->accountGetDepositAddress (array_merge ($request, $params));
+        $response = $this->accountGetDepositAddress (array_merge($request, $params));
         //
-        //     array (
+        //     array(
         //         {
         //             address => '0x696abb81974a8793352cbd33aadcf78eda3cfdfa',
         //             $currency => 'eth'
@@ -2048,7 +2051,7 @@ class okex3 extends Exchange {
         //     )
         //
         $addresses = $this->parse_deposit_addresses ($response);
-        $numAddresses = is_array ($addresses) ? count ($addresses) : 0;
+        $numAddresses = is_array($addresses) ? count($addresses) : 0;
         if ($numAddresses < 1) {
             throw new InvalidAddress($this->id . ' fetchDepositAddress cannot return nonexistent $addresses, you should create withdrawal $addresses with the exchange website first');
         }
@@ -2066,7 +2069,7 @@ class okex3 extends Exchange {
         if ($fee === null) {
             throw new ExchangeError($this->id . " withdraw() requires a `$fee` string parameter, network transaction $fee must be ≥ 0. Withdrawals to OKCoin or OKEx are $fee-free, please set '0'. Withdrawing to external digital asset $address requires network transaction $fee->");
         }
-        $request = array (
+        $request = array(
             'currency' => $currency['id'],
             'to_address' => $address,
             'destination' => '4', // 2 = OKCoin International, 3 = OKEx 4 = others
@@ -2080,11 +2083,11 @@ class okex3 extends Exchange {
         } else if (is_array($params) && array_key_exists('trade_pwd', $params)) {
             $request['trade_pwd'] = $params['trade_pwd'];
         }
-        $query = $this->omit ($params, array ( 'fee', 'password', 'trade_pwd' ));
+        $query = $this->omit ($params, array( 'fee', 'password', 'trade_pwd' ));
         if (!(is_array($request) && array_key_exists('trade_pwd', $request))) {
             throw new ExchangeError($this->id . ' withdraw() requires $this->password set on the exchange instance or a password / trade_pwd parameter');
         }
-        $response = $this->accountPostWithdrawal (array_merge ($request, $query));
+        $response = $this->accountPostWithdrawal (array_merge($request, $query));
         //
         //     {
         //         "$amount":"0.1",
@@ -2093,7 +2096,7 @@ class okex3 extends Exchange {
         //         "result":true
         //     }
         //
-        return array (
+        return array(
             'info' => $response,
             'id' => $this->safe_string($response, 'withdrawal_id'),
         );
@@ -2109,7 +2112,7 @@ class okex3 extends Exchange {
             $request['code'] = $currency['code'];
             $method .= 'Currency';
         }
-        $response = $this->$method (array_merge ($request, $params));
+        $response = $this->$method (array_merge($request, $params));
         return $this->parse_transactions($response, $currency, $since, $limit, $params);
     }
 
@@ -2123,7 +2126,7 @@ class okex3 extends Exchange {
             $request['code'] = $currency['code'];
             $method .= 'Currency';
         }
-        $response = $this->$method (array_merge ($request, $params));
+        $response = $this->$method (array_merge($request, $params));
         return $this->parse_transactions($response, $currency, $since, $limit, $params);
     }
 
@@ -2151,7 +2154,7 @@ class okex3 extends Exchange {
         //         '5' => 'awaiting identity confirmation'
         //     }
         //
-        $statuses = array (
+        $statuses = array(
             '-3' => 'pending',
             '-2' => 'pending',
             '-1' => 'failed',
@@ -2238,7 +2241,7 @@ class okex3 extends Exchange {
             }
         }
         // todo parse tags
-        return array (
+        return array(
             'info' => $transaction,
             'id' => $id,
             'currency' => $code,
@@ -2255,7 +2258,7 @@ class okex3 extends Exchange {
             'txid' => $txid,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601 ($timestamp),
-            'fee' => array (
+            'fee' => array(
                 'currency' => $code,
                 'cost' => $feeCost,
             ),
@@ -2275,7 +2278,7 @@ class okex3 extends Exchange {
         if (($limit === null) || ($limit > 100)) {
             $limit = 100;
         }
-        $request = array (
+        $request = array(
             'instrument_id' => $market['id'],
             'order_id' => $id,
             // from => '1', // return the page after the specified page number
@@ -2286,11 +2289,11 @@ class okex3 extends Exchange {
         $type = $this->safe_string($params, 'type', $defaultType);
         $query = $this->omit ($params, 'type');
         $method = $type . 'GetFills';
-        $response = $this->$method (array_merge ($request, $query));
+        $response = $this->$method (array_merge($request, $query));
         //
         // spot trades, margin trades
         //
-        //     array (
+        //     array(
         //         {
         //             "created_at":"2019-09-20T07:15:24.000Z",
         //             "exec_type":"T",
@@ -2309,7 +2312,7 @@ class okex3 extends Exchange {
         //
         // futures trades, swap trades
         //
-        //     array (
+        //     array(
         //         {
         //             "trade_id":"197429674631450625",
         //             "instrument_id":"EOS-USD-SWAP",
@@ -2334,7 +2337,7 @@ class okex3 extends Exchange {
         $query = $this->omit ($params, 'type');
         $suffix = ($type === 'account') ? '' : 'Accounts';
         $argument = '';
-        $request = array (
+        $request = array(
             // 'from' => 'id',
             // 'to' => 'id',
         );
@@ -2417,7 +2420,7 @@ class okex3 extends Exchange {
             throw new NotSupported($this->id . " fetchLedger does not support the '" . $type . "' $type (the $type must be one of 'account', 'spot', 'margin', 'futures', 'swap')");
         }
         $method = $type . 'Get' . $suffix . $argument . 'Ledger';
-        $response = $this->$method (array_merge ($request, $query));
+        $response = $this->$method (array_merge($request, $query));
         //
         // transfer     funds transfer in/out
         // trade        funds moved as a result of a trade, spot and margin accounts only
@@ -2431,7 +2434,7 @@ class okex3 extends Exchange {
         //
         // account
         //
-        //     array (
+        //     array(
         //         {
         //             "amount":0.00051843,
         //             "balance":0.00100941,
@@ -2445,7 +2448,7 @@ class okex3 extends Exchange {
         //
         // spot
         //
-        //     array (
+        //     array(
         //         {
         //             "timestamp":"2019-03-18T07:08:25.000Z",
         //             "ledger_id":"3995334780",
@@ -2464,8 +2467,8 @@ class okex3 extends Exchange {
         //
         // margin
         //
-        //     array (
-        //         array (
+        //     array(
+        //         array(
         //             {
         //                 "created_at":"2019-03-20T03:45:05.000Z",
         //                 "ledger_id":"78918186",
@@ -2489,7 +2492,7 @@ class okex3 extends Exchange {
         //
         // futures
         //
-        //     array (
+        //     array(
         //         {
         //             "ledger_id":"2508090544914461",
         //             "timestamp":"2019-03-19T14:40:24.000Z",
@@ -2506,8 +2509,8 @@ class okex3 extends Exchange {
         //
         // swap
         //
-        //     array (
-        //         array (
+        //     array(
+        //         array(
         //             "amount":"0.004742",
         //             "fee":"-0.000551",
         //             "$type":"match",
@@ -2517,14 +2520,14 @@ class okex3 extends Exchange {
         //         ),
         //     )
         //
-        $isArray = gettype ($response[0]) === 'array' && count (array_filter (array_keys ($response[0]), 'is_string')) == 0;
+        $isArray = gettype($response[0]) === 'array' && count(array_filter(array_keys($response[0]), 'is_string')) == 0;
         $isMargin = ($type === 'margin');
         $entries = ($isMargin && $isArray) ? $response[0] : $response;
         return $this->parse_ledger($entries, $currency, $since, $limit);
     }
 
     public function parse_ledger_entry_type ($type) {
-        $types = array (
+        $types = array(
             'transfer' => 'transfer', // // funds transfer in/out
             'trade' => 'trade', // funds moved as a result of a trade, spot and margin accounts only
             'rebate' => 'rebate', // fee rebate as per fee schedule, spot and margin accounts only
@@ -2604,7 +2607,7 @@ class okex3 extends Exchange {
         //
         // swap
         //
-        //     array (
+        //     array(
         //         "$amount":"0.004742",
         //         "$fee":"-0.000551",
         //         "$type":"match",
@@ -2622,14 +2625,14 @@ class okex3 extends Exchange {
         $code = $this->safe_currency_code($this->safe_string($item, 'currency'), $currency);
         $amount = $this->safe_float($item, 'amount');
         $timestamp = $this->parse8601 ($this->safe_string($item, 'timestamp'));
-        $fee = array (
+        $fee = array(
             'cost' => $this->safe_float($item, 'fee'),
             'currency' => $code,
         );
         $before = null;
         $after = $this->safe_float($item, 'balance');
         $status = 'ok';
-        return array (
+        return array(
             'info' => $item,
             'id' => $id,
             'account' => $account,
@@ -2648,7 +2651,7 @@ class okex3 extends Exchange {
     }
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
-        $isArray = gettype ($params) === 'array' && count (array_filter (array_keys ($params), 'is_string')) == 0;
+        $isArray = gettype($params) === 'array' && count(array_filter(array_keys($params), 'is_string')) == 0;
         $request = '/api/' . $api . '/' . $this->version . '/';
         $request .= $isArray ? $path : $this->implode_params($path, $params);
         $query = $isArray ? $params : $this->omit ($params, $this->extract_params($path));
@@ -2661,7 +2664,7 @@ class okex3 extends Exchange {
         } else if ($type === 'private') {
             $this->check_required_credentials();
             $timestamp = $this->iso8601 ($this->milliseconds ());
-            $headers = array (
+            $headers = array(
                 'OK-ACCESS-KEY' => $this->apiKey,
                 'OK-ACCESS-PASSPHRASE' => $this->password,
                 'OK-ACCESS-TIMESTAMP' => $timestamp,
