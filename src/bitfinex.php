@@ -3,6 +3,9 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\ArgumentsRequired;
+use \ccxt\NotSupported;
 
 class bitfinex extends Exchange {
 

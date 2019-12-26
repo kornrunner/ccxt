@@ -3,6 +3,11 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\ArgumentsRequired;
+use \ccxt\InvalidAddress;
+use \ccxt\InvalidOrder;
+use \ccxt\NotSupported;
 
 class okex3 extends Exchange {
 

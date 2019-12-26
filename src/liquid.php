@@ -3,6 +3,11 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\ArgumentsRequired;
+use \ccxt\OrderNotFound;
+use \ccxt\NotSupported;
+use \ccxt\DDoSProtection;
 
 class liquid extends Exchange {
 

@@ -3,6 +3,9 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ArgumentsRequired;
+use \ccxt\InvalidOrder;
+use \ccxt\OrderNotFound;
 
 class kkex extends Exchange {
 

@@ -3,6 +3,8 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ArgumentsRequired;
+use \ccxt\InvalidOrder;
 
 class coinex extends Exchange {
 

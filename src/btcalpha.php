@@ -3,6 +3,10 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\AuthenticationError;
+use \ccxt\InvalidOrder;
+use \ccxt\DDoSProtection;
 
 class btcalpha extends Exchange {
 

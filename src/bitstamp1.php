@@ -3,6 +3,9 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\BadSymbol;
+use \ccxt\NotSupported;
 
 class bitstamp1 extends Exchange {
 

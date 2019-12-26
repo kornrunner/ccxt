@@ -3,6 +3,7 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\NotSupported;
 
 class bitlish extends Exchange {
 

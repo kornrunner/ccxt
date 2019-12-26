@@ -3,6 +3,7 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\OrderNotFound;
 
 class acx extends Exchange {
 

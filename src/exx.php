@@ -3,6 +3,8 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\ExchangeNotAvailable;
 
 class exx extends Exchange {
 

@@ -3,6 +3,9 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\InsufficientFunds;
+use \ccxt\NotSupported;
 
 class bitfinex2 extends bitfinex {
 

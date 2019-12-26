@@ -3,6 +3,8 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\OrderNotFound;
 
 class adara extends Exchange {
 

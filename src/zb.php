@@ -3,6 +3,11 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\ArgumentsRequired;
+use \ccxt\InvalidOrder;
+use \ccxt\OrderNotFound;
+use \ccxt\ExchangeNotAvailable;
 
 class zb extends Exchange {
 

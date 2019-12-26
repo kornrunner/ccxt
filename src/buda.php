@@ -3,6 +3,9 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\AddressPending;
+use \ccxt\NotSupported;
 
 class buda extends Exchange {
 

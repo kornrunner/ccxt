@@ -3,6 +3,10 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\ArgumentsRequired;
+use \ccxt\BadResponse;
+use \ccxt\DDoSProtection;
 
 class bytetrade extends Exchange {
 

@@ -3,6 +3,11 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\ArgumentsRequired;
+use \ccxt\InvalidAddress;
+use \ccxt\InvalidOrder;
+use \ccxt\DDoSProtection;
 
 class binance extends Exchange {
 
@@ -25,7 +30,7 @@ class binance extends Exchange {
                 'fetchOrder' => true,
                 'fetchOrders' => true,
                 'fetchOpenOrders' => true,
-                'fetchClosedOrders' => true,
+                'fetchClosedOrders' => 'emulated',
                 'withdraw' => true,
                 'fetchFundingFees' => true,
                 'fetchDeposits' => true,
@@ -155,7 +160,6 @@ class binance extends Exchange {
                         'ticker/24hr',
                         'ticker/price',
                         'ticker/bookTicker',
-                        'income',
                     ),
                     'put' => array( 'listenKey' ),
                     'post' => array( 'listenKey' ),
@@ -170,6 +174,7 @@ class binance extends Exchange {
                         'balance',
                         'positionRisk',
                         'userTrades',
+                        'income',
                     ),
                     'post' => array(
                         'order',

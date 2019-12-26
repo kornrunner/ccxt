@@ -3,6 +3,10 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\OrderNotFound;
+use \ccxt\OrderNotCached;
+use \ccxt\CancelPending;
 
 class poloniex extends Exchange {
 
@@ -977,10 +981,11 @@ class poloniex extends Exchange {
         $this->load_markets();
         $method = 'privatePost' . $this->capitalize ($side);
         $market = $this->market ($symbol);
+        $amount = $this->amount_to_precision($symbol, $amount);
         $request = array(
             'currencyPair' => $market['id'],
             'rate' => $this->price_to_precision($symbol, $price),
-            'amount' => $this->amount_to_precision($symbol, $amount),
+            'amount' => $amount,
         );
         // remember the $timestamp before issuing the $request
         $timestamp = $this->milliseconds ();

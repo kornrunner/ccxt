@@ -3,6 +3,9 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ArgumentsRequired;
+use \ccxt\BadResponse;
+use \ccxt\OrderNotFound;
 
 class digifinex extends Exchange {
 

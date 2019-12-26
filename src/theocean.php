@@ -3,6 +3,13 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\AuthenticationError;
+use \ccxt\ArgumentsRequired;
+use \ccxt\InvalidAddress;
+use \ccxt\OrderNotFound;
+use \ccxt\OrderNotFillable;
+use \ccxt\NotSupported;
 
 class theocean extends Exchange {
 

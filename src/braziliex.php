@@ -3,6 +3,10 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
+use \ccxt\AuthenticationError;
+use \ccxt\ArgumentsRequired;
+use \ccxt\InvalidOrder;
 
 class braziliex extends Exchange {
 

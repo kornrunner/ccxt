@@ -3,6 +3,7 @@
 namespace ccxt;
 
 use Exception; // a common import
+use \ccxt\ExchangeError;
 
 class virwox extends Exchange {
 
