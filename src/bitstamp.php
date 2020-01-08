@@ -29,7 +29,10 @@ class bitstamp extends Exchange {
             ),
             'urls' => array(
                 'logo' => 'https://user-images.githubusercontent.com/1294454/27786377-8c8ab57e-5fe9-11e7-8ea4-2b05b6bcceec.jpg',
-                'api' => 'https://www.bitstamp.net/api',
+                'api' => array(
+                    'public' => 'https://www.bitstamp.net/api',
+                    'private' => 'https://www.bitstamp.net/api',
+                ),
                 'www' => 'https://www.bitstamp.net',
                 'doc' => 'https://www.bitstamp.net/api',
             ),
@@ -1064,7 +1067,7 @@ class bitstamp extends Exchange {
     }
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
-        $url = $this->urls['api'] . '/';
+        $url = $this->urls['api'][$api] . '/';
         if ($api !== 'v1') {
             $url .= $this->version . '/';
         }

@@ -18,6 +18,7 @@ class kucoin extends Exchange {
             'certified' => true,
             'comment' => 'Platform 2.0',
             'has' => array(
+                'fetchTime' => true,
                 'fetchMarkets' => true,
                 'fetchCurrencies' => true,
                 'fetchTicker' => true,
@@ -198,6 +199,18 @@ class kucoin extends Exchange {
         $kucoinTime = $this->safe_integer($response, 'data');
         $this->options['timeDifference'] = intval ($after - $kucoinTime);
         return $this->options['timeDifference'];
+    }
+
+    public function fetch_time ($params = array ()) {
+        $response = $this->publicGetTimestamp ($params);
+        //
+        //     {
+        //         "code":"200000",
+        //         "msg":"success",
+        //         "data":1546837113087
+        //     }
+        //
+        return $this->safe_integer($response, 'data');
     }
 
     public function fetch_markets ($params = array ()) {
@@ -572,9 +585,16 @@ class kucoin extends Exchange {
     }
 
     public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
+        $level = '2';
+        if ($limit !== null) {
+            if (($limit !== 20) && ($limit !== 100)) {
+                throw new ExchangeError($this->id . ' fetchOrderBook $limit argument must be null, 20 or 100');
+            }
+            $level .= '_' . (string) $limit;
+        }
         $this->load_markets();
         $marketId = $this->market_id($symbol);
-        $request = array_merge(array( 'symbol' => $marketId, 'level' => 2 ), $params);
+        $request = array_merge(array( 'symbol' => $marketId, 'level' => $level ), $params);
         $response = $this->publicGetMarketOrderbookLevelLevel ($request);
         //
         // { sequence => '1547731421688',
@@ -586,8 +606,8 @@ class kucoin extends Exchange {
         // $level can be a string such as 2_20 or 2_100
         $levelString = $this->safe_string($request, 'level');
         $levelParts = explode('_', $levelString);
-        $level = intval ($levelParts[0]);
-        $orderbook = $this->parse_order_book($data, $timestamp, 'bids', 'asks', $level - 2, $level - 1);
+        $offset = intval ($levelParts[0]);
+        $orderbook = $this->parse_order_book($data, $timestamp, 'bids', 'asks', $offset - 2, $offset - 1);
         $orderbook['nonce'] = $this->safe_integer($data, 'sequence');
         return $orderbook;
     }
