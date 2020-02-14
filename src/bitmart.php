@@ -152,6 +152,7 @@ class bitmart extends Exchange {
             ),
             'commonCurrencies' => array(
                 'ONE' => 'Menlo One',
+                'PLA' => 'Plair',
             ),
         ));
     }

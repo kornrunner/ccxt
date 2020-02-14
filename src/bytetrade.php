@@ -576,6 +576,7 @@ class bytetrade extends Exchange {
             $typeNum = 1;
         } else {
             $typeNum = 2;
+            $price = 0;
         }
         $normalSymbol = $market['normalSymbol'];
         $baseId = $market['baseId'];
@@ -1282,7 +1283,7 @@ class bytetrade extends Exchange {
             $request = array(
                 'chainType' => $chainId,
                 'trObj' => $this->json ($fatty),
-                'chainContractAddresss' => $chainContractAddress,
+                'chainContractAddress' => $chainContractAddress,
             );
         } else {
             $operation = array(
@@ -1321,14 +1322,14 @@ class bytetrade extends Exchange {
                     'chainType' => $chainId,
                     'toExternalAddress' => 'noneed',
                     'trObj' => $this->json ($fatty),
-                    'chainContractAddresss' => $chainContractAddress,
+                    'chainContractAddress' => $chainContractAddress,
                 );
             } else {
                 $request = array(
                     'chainType' => $chainId,
                     'toExternalAddress' => $address,
                     'trObj' => $this->json ($fatty),
-                    'chainContractAddresss' => $chainContractAddress,
+                    'chainContractAddress' => $chainContractAddress,
                 );
             }
         }

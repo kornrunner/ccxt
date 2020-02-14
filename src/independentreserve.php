@@ -70,6 +70,9 @@ class independentreserve extends Exchange {
                     'tierBased' => false,
                 ),
             ),
+            'commonCurrencies' => array(
+                'PLA' => 'PlayChip',
+            ),
         ));
     }
 
