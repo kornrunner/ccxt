@@ -123,6 +123,15 @@ class binance extends Exchange {
                         'sub-account/margin/account',
                         'sub-account/margin/accountSummary',
                         'sub-account/status',
+                        // lending endpoints
+                        'lending/daily/product/list',
+                        'lending/daily/userLeftQuota',
+                        'lending/daily/userRedemptionQuota',
+                        'lending/daily/token/position',
+                        'lending/union/account',
+                        'lending/union/purchaseRecord',
+                        'lending/union/redemptionRecord',
+                        'lending/union/interestHistory',
                     ),
                     'post' => array(
                         'asset/dust',
@@ -138,6 +147,9 @@ class binance extends Exchange {
                         'sub-account/futures/enable',
                         'userDataStream',
                         'futures/transfer',
+                        // lending
+                        'lending/daily/purchase',
+                        'lending/daily/redeem',
                     ),
                     'put' => array(
                         'userDataStream',
@@ -1238,11 +1250,18 @@ class binance extends Exchange {
         }
         $this->load_markets();
         $market = $this->market ($symbol);
+        // https://github.com/ccxt/ccxt/issues/6507
+        $origClientOrderId = $this->safe_value($params, 'origClientOrderId');
         $request = array(
             'symbol' => $market['id'],
-            'orderId' => intval ($id),
+            // 'orderId' => intval ($id),
             // 'origClientOrderId' => $id,
         );
+        if ($origClientOrderId === null) {
+            $request['orderId'] = intval ($id);
+        } else {
+            $request['origClientOrderId'] = $origClientOrderId;
+        }
         $method = $market['spot'] ? 'privateDeleteOrder' : 'fapiPrivateDeleteOrder';
         $response = $this->$method (array_merge($request, $params));
         return $this->parse_order($response);

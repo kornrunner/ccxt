@@ -18,7 +18,7 @@ class adara extends Exchange {
             'certified' => false,
             // new metainfo interface
             'has' => array(
-                'CORS' => true,
+                'CORS' => false,
                 'fetchCurrencies' => true,
                 'fetchOrderBooks' => false,
                 'createMarketOrder' => false,

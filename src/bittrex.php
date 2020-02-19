@@ -22,7 +22,7 @@ class bittrex extends Exchange {
             'certified' => true,
             // new metainfo interface
             'has' => array(
-                'CORS' => true,
+                'CORS' => false,
                 'createMarketOrder' => false,
                 'fetchDepositAddress' => true,
                 'fetchClosedOrders' => true,

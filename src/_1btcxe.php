@@ -91,6 +91,7 @@ class _1btcxe extends Exchange {
     }
 
     public function fetch_balance ($params = array ()) {
+        $this->load_markets();
         $response = $this->privatePostBalancesAndInfo ($params);
         $balance = $response['balances-and-info'];
         $result = array( 'info' => $balance );
@@ -108,6 +109,7 @@ class _1btcxe extends Exchange {
     }
 
     public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
+        $this->load_markets();
         $request = array(
             'currency' => $this->market_id($symbol),
         );
@@ -116,6 +118,7 @@ class _1btcxe extends Exchange {
     }
 
     public function fetch_ticker ($symbol, $params = array ()) {
+        $this->load_markets();
         $request = array(
             'currency' => $this->market_id($symbol),
         );
@@ -158,6 +161,7 @@ class _1btcxe extends Exchange {
     }
 
     public function fetch_ohlcv ($symbol, $timeframe = '1d', $since = null, $limit = null, $params = array ()) {
+        $this->load_markets();
         $market = $this->market ($symbol);
         $response = $this->publicGetHistoricalPrices (array_merge(array(
             'currency' => $market['id'],
@@ -202,6 +206,7 @@ class _1btcxe extends Exchange {
     }
 
     public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
+        $this->load_markets();
         $market = $this->market ($symbol);
         $request = array(
             'currency' => $market['id'],
@@ -215,6 +220,7 @@ class _1btcxe extends Exchange {
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
+        $this->load_markets();
         $request = array(
             'side' => $side,
             'type' => $type,
@@ -232,6 +238,7 @@ class _1btcxe extends Exchange {
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
+        $this->load_markets();
         $request = array(
             'id' => $id,
         );
