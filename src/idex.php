@@ -100,6 +100,7 @@ class idex extends Exchange {
                 'ONE' => 'Menlo One',
                 'FT' => 'Fabric Token',
                 'PLA' => 'PlayChip',
+                'WAX' => 'WAXP',
             ),
         ));
     }
