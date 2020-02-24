@@ -194,9 +194,6 @@ class binance extends Exchange {
                         'ticker/price',
                         'ticker/bookTicker',
                     ),
-                    'put' => array( 'listenKey' ),
-                    'post' => array( 'listenKey' ),
-                    'delete' => array( 'listenKey' ),
                 ),
                 'fapiPrivate' => array(
                     'get' => array(
@@ -215,10 +212,15 @@ class binance extends Exchange {
                         'marginType',
                         'order',
                         'leverage',
+                        'listenKey',
+                    ),
+                    'put' => array(
+                        'listenKey',
                     ),
                     'delete' => array(
                         'order',
                         'allOpenOrders',
+                        'listenKey',
                     ),
                 ),
                 'v3' => array(
@@ -327,13 +329,13 @@ class binance extends Exchange {
         $type = $this->safe_string_2($this->options, 'fetchTime', 'defaultType', 'spot');
         $method = ($type === 'spot') ? 'publicGetTime' : 'fapiPublicGetTime';
         $response = $this->$method ($params);
-        return $this->safe_float($response, 'serverTime');
+        return $this->safe_integer($response, 'serverTime');
     }
 
     public function load_time_difference () {
         $serverTime = $this->fetch_time ();
         $after = $this->milliseconds ();
-        $this->options['timeDifference'] = intval ($after - $serverTime);
+        $this->options['timeDifference'] = $after - $serverTime;
         return $this->options['timeDifference'];
     }
 
@@ -1753,7 +1755,7 @@ class binance extends Exchange {
         if ($api === 'wapi') {
             $url .= '.html';
         }
-        $userDataStream = (($path === 'userDataStream') || ($path === 'listenKey'));
+        $userDataStream = ($path === 'userDataStream');
         if ($path === 'historicalTrades') {
             if ($this->apiKey) {
                 $headers = array(
