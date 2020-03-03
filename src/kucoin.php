@@ -16,6 +16,7 @@ class kucoin extends Exchange {
             'rateLimit' => 334,
             'version' => 'v2',
             'certified' => false,
+            'pro' => true,
             'comment' => 'Platform 2.0',
             'has' => array(
                 'CORS' => false,
@@ -263,8 +264,7 @@ class kucoin extends Exchange {
         for ($i = 0; $i < count($data); $i++) {
             $market = $data[$i];
             $id = $this->safe_string($market, 'symbol');
-            $baseId = $this->safe_string($market, 'baseCurrency');
-            $quoteId = $this->safe_string($market, 'quoteCurrency');
+            list($baseId, $quoteId) = explode('-', $id);
             $base = $this->safe_currency_code($baseId);
             $quote = $this->safe_currency_code($quoteId);
             $symbol = $base . '/' . $quote;
