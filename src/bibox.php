@@ -64,11 +64,14 @@ class bibox extends Exchange {
                         'mdata',
                     ),
                     'get' => array(
+                        'cquery',
                         'mdata',
                     ),
                 ),
                 'private' => array(
                     'post' => array(
+                        'cquery',
+                        'ctrade',
                         'user',
                         'orderpending',
                         'transfer',

@@ -309,6 +309,7 @@ class binance extends Exchange {
                 'Account has insufficient balance for requested action.' => '\\ccxt\\InsufficientFunds',
                 'Rest API trading is not enabled.' => '\\ccxt\\ExchangeNotAvailable',
                 "You don't have permission." => '\\ccxt\\PermissionDenied', // array("msg":"You don't have permission.","success":false)
+                'Market is closed.' => '\\ccxt\\ExchangeNotAvailable', // array("code":-1013,"msg":"Market is closed.")
                 '-1000' => '\\ccxt\\ExchangeNotAvailable', // array("code":-1000,"msg":"An unknown error occured while processing the request.")
                 '-1003' => '\\ccxt\\RateLimitExceeded', // array("code":-1003,"msg":"Too much request weight used, current limit is 1200 request weight per 1 MINUTE. Please use the websocket for live updates to avoid polling the API.")
                 '-1013' => '\\ccxt\\InvalidOrder', // createOrder -> 'invalid quantity'/'invalid price'/MIN_NOTIONAL
@@ -1117,6 +1118,9 @@ class binance extends Exchange {
             $timeInForceIsRequired = true;
         } else if (($uppercaseType === 'STOP_LOSS') || ($uppercaseType === 'TAKE_PROFIT')) {
             $stopPriceIsRequired = true;
+            if ($market['future']) {
+                $priceIsRequired = true;
+            }
         } else if (($uppercaseType === 'STOP_LOSS_LIMIT') || ($uppercaseType === 'TAKE_PROFIT_LIMIT')) {
             $stopPriceIsRequired = true;
             $priceIsRequired = true;
