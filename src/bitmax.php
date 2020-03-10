@@ -126,6 +126,10 @@ class bitmax extends Exchange {
                 ),
                 'broad' => array(),
             ),
+            'commonCurrencies' => array(
+                'BTCBEAR' => 'BEAR',
+                'BTCBULL' => 'BULL',
+            ),
         ));
     }
 
