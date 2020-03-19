@@ -414,7 +414,7 @@ class stronghold extends Exchange {
         $this->load_markets();
         $request = array_merge(array(
             'venueId' => $this->options['venueId'],
-            'accountId' => $this->get_active_account (),
+            'accountId' => $this->get_active_account(),
         ), $params);
         if (!$request['accountId']) {
             throw new ArgumentsRequired($this->id . " fetchTransactions requires either the 'accountId' extra parameter or exchange.options['accountId'] = 'YOUR_ACCOUNT_ID'.");
@@ -463,7 +463,7 @@ class stronghold extends Exchange {
             }
         }
         $amount = $this->safe_float($transaction, 'amount');
-        $status = $this->parse_transaction_status ($this->safe_string($transaction, 'status'));
+        $status = $this->parse_transaction_status($this->safe_string($transaction, 'status'));
         $feeCost = $this->safe_float($transaction, 'feeAmount');
         $feeRate = null;
         if ($feeCost !== null) {
@@ -500,7 +500,7 @@ class stronghold extends Exchange {
         $market = $this->market ($symbol);
         $request = array_merge(array(
             'venueId' => $this->options['venueId'],
-            'accountId' => $this->get_active_account (),
+            'accountId' => $this->get_active_account(),
             'marketID' => $market['id'],
             'type' => $type,
             'side' => $side,
@@ -517,7 +517,7 @@ class stronghold extends Exchange {
     public function cancel_order ($id, $symbol = null, $params = array ()) {
         $request = array_merge(array(
             'venueId' => $this->options['venueId'],
-            'accountId' => $this->get_active_account (),
+            'accountId' => $this->get_active_account(),
             'orderId' => $id,
         ), $params);
         if (!$request['accountId']) {
@@ -535,7 +535,7 @@ class stronghold extends Exchange {
         }
         $request = array_merge(array(
             'venueId' => $this->options['venueId'],
-            'accountId' => $this->get_active_account (),
+            'accountId' => $this->get_active_account(),
         ), $params);
         if (!$request['accountId']) {
             throw new ArgumentsRequired($this->id . " cancelOrder requires either the 'accountId' extra parameter or exchange.options['accountId'] = 'YOUR_ACCOUNT_ID'.");
@@ -610,7 +610,7 @@ class stronghold extends Exchange {
     public function fetch_balance ($params = array ()) {
         $request = array_merge(array(
             'venueId' => $this->options['venueId'],
-            'accountId' => $this->get_active_account (),
+            'accountId' => $this->get_active_account(),
         ), $params);
         if (!(is_array($request) && array_key_exists('accountId', $request))) {
             throw new ArgumentsRequired($this->id . " fetchBalance requires either the 'accountId' extra parameter or exchange.options['accountId'] = 'YOUR_ACCOUNT_ID'.");
@@ -637,7 +637,7 @@ class stronghold extends Exchange {
         $this->load_markets();
         $request = array_merge(array(
             'venueId' => $this->options['venueId'],
-            'accountId' => $this->get_active_account (),
+            'accountId' => $this->get_active_account(),
         ), $params);
         if (!$request['accountId']) {
             throw new ArgumentsRequired($this->id . " fetchMyTrades requires either the 'accountId' extra parameter or exchange.options['accountId'] = 'YOUR_ACCOUNT_ID'.");
@@ -658,7 +658,7 @@ class stronghold extends Exchange {
         }
         $request = array_merge(array(
             'venueId' => $this->options['venueId'],
-            'accountId' => $this->get_active_account (),
+            'accountId' => $this->get_active_account(),
             'assetId' => $this->currencyId ($code),
             'paymentMethod' => $paymentMethod,
         ), $params);
@@ -696,7 +696,7 @@ class stronghold extends Exchange {
         }
         $request = array_merge(array(
             'venueId' => $this->options['venueId'],
-            'accountId' => $this->get_active_account (),
+            'accountId' => $this->get_active_account(),
             'assetId' => $this->currencyId ($code),
             'amount' => $amount,
             'paymentMethod' => $paymentMethod,
@@ -769,7 +769,7 @@ class stronghold extends Exchange {
         }
         if ($api === 'private') {
             $this->check_required_credentials();
-            $timestamp = (string) $this->nonce ();
+            $timestamp = (string) $this->nonce();
             $payload = $timestamp . $method . $request;
             if ($body !== null) {
                 $payload .= $body;

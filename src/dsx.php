@@ -32,7 +32,7 @@ class dsx extends Exchange {
                 'withdraw' => true,
             ),
             'urls' => array(
-                'logo' => 'https://user-images.githubusercontent.com/1294454/27990275-1413158a-645a-11e7-931c-94717f7510e3.jpg',
+                'logo' => 'https://user-images.githubusercontent.com/51840849/76909626-cb2bb100-68bc-11ea-99e0-28ba54f04792.jpg',
                 'api' => array(
                     'public' => 'https://dsx.uk/mapi', // market data
                     'private' => 'https://dsx.uk/tapi', // trading
@@ -264,7 +264,7 @@ class dsx extends Exchange {
         $timestamp = $this->safe_timestamp($ticker, 'updated');
         $symbol = null;
         $marketId = $this->safe_string($ticker, 'pair');
-        $market = $this->parse_market ($marketId);
+        $market = $this->parse_market($marketId);
         if ($market !== null) {
             $symbol = $market['symbol'];
         }
@@ -338,7 +338,7 @@ class dsx extends Exchange {
         $id = $this->safe_string_2($trade, 'number', 'id');
         $orderId = $this->safe_string($trade, 'orderId');
         $marketId = $this->safe_string($trade, 'pair');
-        $market = $this->parse_market ($marketId);
+        $market = $this->parse_market($marketId);
         $symbol = null;
         if ($market !== null) {
             $symbol = $market['symbol'];
@@ -779,7 +779,7 @@ class dsx extends Exchange {
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $timestamp = $this->safe_timestamp($order, 'timestampCreated');
         $marketId = $this->safe_string($order, 'pair');
-        $market = $this->parse_market ($marketId);
+        $market = $this->parse_market($marketId);
         $symbol = null;
         if ($market !== null) {
             $symbol = $market['symbol'];
@@ -919,7 +919,7 @@ class dsx extends Exchange {
         //       }
         //     }
         //
-        return $this->parse_orders_by_id ($this->safe_value($response, 'return', array()), $symbol, $since, $limit);
+        return $this->parse_orders_by_id($this->safe_value($response, 'return', array()), $symbol, $since, $limit);
     }
 
     public function fetch_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -951,7 +951,7 @@ class dsx extends Exchange {
         //       }
         //     }
         //
-        return $this->parse_orders_by_id ($this->safe_value($response, 'return', array()), $symbol, $since, $limit);
+        return $this->parse_orders_by_id($this->safe_value($response, 'return', array()), $symbol, $since, $limit);
     }
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
@@ -1090,7 +1090,7 @@ class dsx extends Exchange {
         }
         $currencyId = $this->safe_string($transaction, 'currency');
         $code = $this->safe_currency_code($currencyId, $currency);
-        $status = $this->parse_transaction_status ($this->safe_string($transaction, 'status'));
+        $status = $this->parse_transaction_status($this->safe_string($transaction, 'status'));
         return array(
             'id' => $this->safe_string($transaction, 'id'),
             'txid' => $this->safe_string($transaction, 'txid'),
@@ -1114,7 +1114,7 @@ class dsx extends Exchange {
         $request = array(
             'new' => 1,
         );
-        $response = $this->fetch_deposit_address ($code, array_merge($request, $params));
+        $response = $this->fetch_deposit_address($code, array_merge($request, $params));
         return $response;
     }
 

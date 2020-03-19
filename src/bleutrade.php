@@ -292,7 +292,7 @@ class bleutrade extends Exchange {
             if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
                 $market = $this->markets_by_id[$marketId];
             } else {
-                $symbol = $this->parse_symbol ($marketId);
+                $symbol = $this->parse_symbol($marketId);
             }
         }
         if (($symbol === null) && ($market !== null)) {
@@ -452,11 +452,11 @@ class bleutrade extends Exchange {
     }
 
     public function fetch_deposits ($code = null, $since = null, $limit = null, $params = array ()) {
-        return $this->fetch_transactions_with_method ('v3PrivatePostGetdeposithistory', $code, $since, $limit, $params);
+        return $this->fetch_transactions_with_method('v3PrivatePostGetdeposithistory', $code, $since, $limit, $params);
     }
 
     public function fetch_withdrawals ($code = null, $since = null, $limit = null, $params = array ()) {
-        return $this->fetch_transactions_with_method ('v3PrivatePostGetwithdrawhistory', $code, $since, $limit, $params);
+        return $this->fetch_transactions_with_method('v3PrivatePostGetwithdrawhistory', $code, $since, $limit, $params);
     }
 
     public function fetch_deposit_address ($code, $params = array ()) {
@@ -540,7 +540,7 @@ class bleutrade extends Exchange {
         //
         $code = $this->safe_currency_code($this->safe_string($item, 'CoinSymbol'), $currency);
         $description = $this->safe_string($item, 'Description');
-        $type = $this->parse_ledger_entry_type ($this->safe_string($item, 'Type'));
+        $type = $this->parse_ledger_entry_type($this->safe_string($item, 'Type'));
         $referenceId = null;
         $fee = null;
         $delimiter = ($type === 'trade') ? ', ' : '; ';
@@ -650,7 +650,7 @@ class bleutrade extends Exchange {
                 $market = $this->markets_by_id[$marketId];
                 $symbol = $market['symbol'];
             } else {
-                $symbol = $this->parse_symbol ($marketId);
+                $symbol = $this->parse_symbol($marketId);
             }
         }
         $timestamp = null;
@@ -793,7 +793,7 @@ class bleutrade extends Exchange {
             $this->check_required_credentials();
             $request = array(
                 'apikey' => $this->apiKey,
-                'nonce' => $this->nonce (),
+                'nonce' => $this->nonce(),
             );
             $url .= $path . '?' . $this->urlencode (array_merge($request, $params));
             $signature = $this->hmac ($this->encode ($url), $this->encode ($this->secret), 'sha512');

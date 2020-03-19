@@ -24,7 +24,7 @@ class bittrex extends Exchange {
             // new metainfo interface
             'has' => array(
                 'CORS' => false,
-                'createMarketOrder' => false,
+                'createMarketOrder' => true,
                 'fetchDepositAddress' => true,
                 'fetchClosedOrders' => true,
                 'fetchCurrencies' => true,
@@ -219,6 +219,9 @@ class bittrex extends Exchange {
                     'INVALID_CURRENCY' => '\\ccxt\\ExchangeError',
                     'INVALID_PERMISSION' => '\\ccxt\\AuthenticationError',
                     'INSUFFICIENT_FUNDS' => '\\ccxt\\InsufficientFunds',
+                    'INVALID_CEILING_MARKET_BUY' => '\\ccxt\\InvalidOrder',
+                    'INVALID_FIAT_ACCOUNT' => '\\ccxt\\InvalidOrder',
+                    'INVALID_ORDER_TYPE' => '\\ccxt\\InvalidOrder',
                     'QUANTITY_NOT_PROVIDED' => '\\ccxt\\InvalidOrder',
                     'MIN_TRADE_REQUIREMENT_NOT_MET' => '\\ccxt\\InvalidOrder',
                     'ORDER_NOT_OPEN' => '\\ccxt\\OrderNotFound',
@@ -263,6 +266,7 @@ class bittrex extends Exchange {
                 // see the implementation of fetchClosedOrdersV3 below
                 'fetchClosedOrdersMethod' => 'fetch_closed_orders_v3',
                 'fetchClosedOrdersFilterBySince' => true,
+                // 'createOrderMethod' => 'create_order_v1',
             ),
             'commonCurrencies' => array(
                 'BITS' => 'SWIFT',
@@ -483,7 +487,7 @@ class bittrex extends Exchange {
             if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
                 $market = $this->markets_by_id[$marketId];
             } else {
-                $symbol = $this->parse_symbol ($marketId);
+                $symbol = $this->parse_symbol($marketId);
             }
         }
         if (($symbol === null) && ($market !== null)) {
@@ -666,6 +670,72 @@ class bittrex extends Exchange {
     }
 
     public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
+        $uppercaseType = strtoupper($type);
+        $isMarket = ($uppercaseType === 'MARKET');
+        $isCeilingLimit = ($uppercaseType === 'CEILING_LIMIT');
+        $isCeilingMarket = ($uppercaseType === 'CEILING_MARKET');
+        $isV3 = $isMarket || $isCeilingLimit || $isCeilingMarket;
+        $defaultMethod = $isV3 ? 'create_order_v3' : 'create_order_v1';
+        $method = $this->safe_value($this->options, 'createOrderMethod', $defaultMethod);
+        return $this->$method ($symbol, $type, $side, $amount, $price, $params);
+    }
+
+    public function create_order_v3 ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
+        // A ceiling order is a $market or limit order that allows you to specify
+        // the $amount of quote currency you want to spend (or receive, if selling)
+        // instead of the quantity of the $market currency (e.g. buy $100 USD of BTC
+        // at the current $market BTC $price)
+        $this->load_markets();
+        $market = $this->market ($symbol);
+        $uppercaseType = strtoupper($type);
+        $reverseId = $market['baseId'] . '-' . $market['quoteId'];
+        $request = array(
+            'marketSymbol' => $reverseId,
+            'direction' => strtoupper($side),
+            'type' => $uppercaseType, // LIMIT, MARKET, CEILING_LIMIT, CEILING_MARKET
+            // 'quantity' => $this->amount_to_precision($symbol, $amount), // required for limit orders, excluded for ceiling orders
+            // 'ceiling' => $this->price_to_precision($symbol, $price), // required for ceiling orders, excluded for non-ceiling orders
+            // 'limit' => $this->price_to_precision($symbol, $price), // required for limit orders, excluded for $market orders
+            // 'timeInForce' => 'GOOD_TIL_CANCELLED', // IMMEDIATE_OR_CANCEL, FILL_OR_KILL, POST_ONLY_GOOD_TIL_CANCELLED
+            // 'useAwards' => false, // optional
+        );
+        $isCeilingLimit = ($uppercaseType === 'CEILING_LIMIT');
+        $isCeilingMarket = ($uppercaseType === 'CEILING_MARKET');
+        $isCeilingOrder = $isCeilingLimit || $isCeilingMarket;
+        if ($isCeilingOrder) {
+            $request['ceiling'] = $this->price_to_precision($symbol, $price);
+            $request['timeInForce'] = 'IMMEDIATE_OR_CANCEL';
+        } else {
+            $request['quantity'] = $this->amount_to_precision($symbol, $amount);
+            if ($uppercaseType === 'LIMIT') {
+                $request['limit'] = $this->price_to_precision($symbol, $price);
+                $request['timeInForce'] = 'GOOD_TIL_CANCELLED';
+            } else {
+                $request['timeInForce'] = 'FILL_OR_KILL';
+            }
+        }
+        $response = $this->v3PostOrders (array_merge($request, $params));
+        //
+        //     {
+        //         id => 'f03d5e98-b5ac-48fb-8647-dd4db828a297',
+        //         marketSymbol => 'BTC-USDT',
+        //         direction => 'SELL',
+        //         $type => 'LIMIT',
+        //         quantity => '0.01',
+        //         limit => '6000',
+        //         timeInForce => 'GOOD_TIL_CANCELLED',
+        //         fillQuantity => '0.00000000',
+        //         commission => '0.00000000',
+        //         proceeds => '0.00000000',
+        //         status => 'OPEN',
+        //         createdAt => '2020-03-18T02:37:33.42Z',
+        //         updatedAt => '2020-03-18T02:37:33.42Z'
+        //       }
+        //
+        return $this->parse_order_v3($response, $market);
+    }
+
+    public function create_order_v1 ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         if ($type !== 'limit') {
             throw new ExchangeError($this->id . ' allows limit orders only');
         }
@@ -680,7 +750,7 @@ class bittrex extends Exchange {
         // if ($type == 'limit')
         //     order['rate'] = $this->price_to_precision($symbol, $price);
         $response = $this->$method (array_merge($request, $params));
-        $orderIdField = $this->get_order_id_field ();
+        $orderIdField = $this->get_order_id_field();
         $orderId = $this->safe_string($response['result'], $orderIdField);
         return array(
             'info' => $response,
@@ -698,7 +768,7 @@ class bittrex extends Exchange {
 
     public function cancel_order ($id, $symbol = null, $params = array ()) {
         $this->load_markets();
-        $orderIdField = $this->get_order_id_field ();
+        $orderIdField = $this->get_order_id_field();
         $request = array();
         $request[$orderIdField] = $id;
         $response = $this->marketGetCancel (array_merge($request, $params));
@@ -706,12 +776,15 @@ class bittrex extends Exchange {
         //     {
         //         "success" => true,
         //         "message" => "''",
-        //         "result" => {
+        //         "$result" => {
         //             "uuid" => "614c34e4-8d71-11e3-94b5-425861b86ab6"
         //         }
         //     }
         //
-        return array_merge($this->parse_order($response), array(
+        $result = $this->safe_value($response, 'result', array());
+        return array_merge($this->parse_order($result), array(
+            'id' => $id,
+            'info' => $response,
             'status' => 'canceled',
         ));
     }
@@ -892,9 +965,9 @@ class bittrex extends Exchange {
 
     public function parse_order ($order, $market = null) {
         if (is_array($order) && array_key_exists('marketSymbol', $order)) {
-            return $this->parse_order_v3 ($order, $market);
+            return $this->parse_order_v3($order, $market);
         } else {
-            return $this->parse_order_v2 ($order, $market);
+            return $this->parse_order_v2($order, $market);
         }
     }
 
@@ -1052,7 +1125,7 @@ class bittrex extends Exchange {
                     $market = $this->markets_by_id[$marketId];
                     $symbol = $market['symbol'];
                 } else {
-                    $symbol = $this->parse_symbol ($marketId);
+                    $symbol = $this->parse_symbol($marketId);
                 }
             }
         } else {
@@ -1142,7 +1215,7 @@ class bittrex extends Exchange {
         $this->load_markets();
         $response = null;
         try {
-            $orderIdField = $this->get_order_id_field ();
+            $orderIdField = $this->get_order_id_field();
             $request = array();
             $request[$orderIdField] = $id;
             $response = $this->accountGetOrder (array_merge($request, $params));
@@ -1184,14 +1257,14 @@ class bittrex extends Exchange {
         // this entire method should be moved to the base class
         $result = array();
         for ($i = 0; $i < count($orders); $i++) {
-            $result[] = $this->order_to_trade ($orders[$i]);
+            $result[] = $this->order_to_trade($orders[$i]);
         }
         return $result;
     }
 
     public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
-        $orders = $this->fetch_closed_orders ($symbol, $since, $limit, $params);
-        return $this->orders_to_trades ($orders);
+        $orders = $this->fetch_closed_orders($symbol, $since, $limit, $params);
+        return $this->orders_to_trades($orders);
     }
 
     public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -1324,10 +1397,16 @@ class bittrex extends Exchange {
             }
         } else if ($api === 'v3') {
             $url .= $path;
-            if ($params) {
-                $url .= '?' . $this->rawencode ($params);
+            $hashString = '';
+            if ($method === 'POST') {
+                $body = $this->json ($params);
+                $hashString = $body;
+            } else {
+                if ($params) {
+                    $url .= '?' . $this->rawencode ($params);
+                }
             }
-            $contentHash = $this->hash ($this->encode (''), 'sha512', 'hex');
+            $contentHash = $this->hash ($this->encode ($hashString), 'sha512', 'hex');
             $timestamp = (string) $this->milliseconds ();
             $auth = $timestamp . $url . $method . $contentHash;
             $subaccountId = $this->safe_value($this->options, 'subaccountId');
@@ -1343,6 +1422,9 @@ class bittrex extends Exchange {
             );
             if ($subaccountId !== null) {
                 $headers['Api-Subaccount-Id'] = $subaccountId;
+            }
+            if ($method === 'POST') {
+                $headers['Content-Type'] = 'application/json';
             }
         } else {
             $this->check_required_credentials();
@@ -1372,8 +1454,16 @@ class bittrex extends Exchange {
         //     array( $success => false, $message => "$message" )
         //
         if ($body[0] === '{') {
+            $feedback = $this->id . ' ' . $body;
             $success = $this->safe_value($response, 'success');
             if ($success === null) {
+                $code = $this->safe_string($response, 'code');
+                if ($code !== null) {
+                    $this->throw_exactly_matched_exception($this->exceptions['exact'], $code, $feedback);
+                    if ($code !== null) {
+                        $this->throw_broadly_matched_exception($this->exceptions['broad'], $code, $feedback);
+                    }
+                }
                 // throw new ExchangeError($this->id . ' malformed $response ' . $this->json ($response));
                 return;
             }
@@ -1383,7 +1473,6 @@ class bittrex extends Exchange {
             }
             if (!$success) {
                 $message = $this->safe_string($response, 'message');
-                $feedback = $this->id . ' ' . $body;
                 if ($message === 'APIKEY_INVALID') {
                     if ($this->options['hasAlreadyAuthenticatedSuccessfully']) {
                         throw new DDoSProtection($feedback);

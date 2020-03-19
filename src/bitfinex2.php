@@ -345,8 +345,8 @@ class bitfinex2 extends bitfinex {
             $quote = $this->safe_currency_code($quoteId);
             $symbol = $base . '/' . $quote;
             $id = 't' . $id;
-            $baseId = $this->get_currency_id ($baseId);
-            $quoteId = $this->get_currency_id ($quoteId);
+            $baseId = $this->get_currency_id($baseId);
+            $quoteId = $this->get_currency_id($quoteId);
             $precision = array(
                 'price' => $this->safe_integer($market, 'price_precision'),
                 'amount' => $this->safe_integer($market, 'price_precision'),
@@ -520,6 +520,26 @@ class bitfinex2 extends bitfinex {
         return $this->parse_ticker($ticker, $market);
     }
 
+    public function parse_symbol ($marketId) {
+        if ($marketId === null) {
+            return $marketId;
+        }
+        $marketId = str_replace('t', '', $marketId);
+        $baseId = null;
+        $quoteId = null;
+        if (mb_strpos($marketId, ':') !== false) {
+            $parts = explode(':', $marketId);
+            $baseId = $parts[0];
+            $quoteId = $parts[1];
+        } else {
+            $baseId = mb_substr($marketId, 0, 3 - 0);
+            $quoteId = mb_substr($marketId, 3, 6 - 3);
+        }
+        $base = $this->safe_currency_code($baseId);
+        $quote = $this->safe_currency_code($quoteId);
+        return $base . '/' . $quote;
+    }
+
     public function parse_trade ($trade, $market = null) {
         //
         // fetchTrades (public)
@@ -566,13 +586,11 @@ class bitfinex2 extends bitfinex {
         $timestamp = $trade[$timestampIndex];
         if ($isPrivate) {
             $marketId = $trade[1];
-            if ($marketId !== null) {
-                if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
-                    $market = $this->markets_by_id[$marketId];
-                    $symbol = $market['symbol'];
-                } else {
-                    $symbol = $marketId;
-                }
+            if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
+                $market = $this->markets_by_id[$marketId];
+                $symbol = $market['symbol'];
+            } else {
+                $symbol = $this->parse_symbol($marketId);
             }
             $orderId = (string) $trade[3];
             $takerOrMaker = ($trade[8] === 1) ? 'maker' : 'taker';
@@ -697,8 +715,10 @@ class bitfinex2 extends bitfinex {
         $marketId = $this->safe_string($order, 3);
         if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
             $market = $this->markets_by_id[$marketId];
+        } else {
+            $symbol = $this->parse_symbol($marketId);
         }
-        if ($market !== null) {
+        if (($symbol === null) && ($market !== null)) {
             $symbol = $market['symbol'];
         }
         $timestamp = $this->safe_timestamp($order, 5);
@@ -858,7 +878,7 @@ class bitfinex2 extends bitfinex {
         $request = array(
             'id' => array( intval ($id) ),
         );
-        $orders = $this->fetch_closed_orders ($symbol, null, null, array_merge($request, $params));
+        $orders = $this->fetch_closed_orders($symbol, null, null, array_merge($request, $params));
         $order = $this->safe_value($orders, 0);
         if ($order === null) {
             throw new OrderNotFound($this->id . ' $order ' . $id . ' not found');
@@ -946,7 +966,7 @@ class bitfinex2 extends bitfinex {
         $request = array(
             'op_renew' => 1,
         );
-        $response = $this->fetch_deposit_address ($code, array_merge($request, $params));
+        $response = $this->fetch_deposit_address($code, array_merge($request, $params));
         return $response;
     }
 
@@ -1125,7 +1145,7 @@ class bitfinex2 extends bitfinex {
         }
         if ($api === 'private') {
             $this->check_required_credentials();
-            $nonce = (string) $this->nonce ();
+            $nonce = (string) $this->nonce();
             $body = $this->json ($query);
             $auth = '/api/' . $request . $nonce . $body;
             $signature = $this->hmac ($this->encode ($auth), $this->encode ($this->secret), 'sha384');

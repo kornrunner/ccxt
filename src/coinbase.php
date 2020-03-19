@@ -278,7 +278,7 @@ class coinbase extends Exchange {
 
     public function fetch_my_sells ($symbol = null, $since = null, $limit = null, $params = array ()) {
         // they don't have an endpoint for all historical trades
-        $request = $this->prepare_account_request ($limit, $params);
+        $request = $this->prepare_account_request($limit, $params);
         $this->load_markets();
         $query = $this->omit ($params, array( 'account_id', 'accountId' ));
         $sells = $this->privateGetAccountsAccountIdSells (array_merge($request, $query));
@@ -287,7 +287,7 @@ class coinbase extends Exchange {
 
     public function fetch_my_buys ($symbol = null, $since = null, $limit = null, $params = array ()) {
         // they don't have an endpoint for all historical trades
-        $request = $this->prepare_account_request ($limit, $params);
+        $request = $this->prepare_account_request($limit, $params);
         $this->load_markets();
         $query = $this->omit ($params, array( 'account_id', 'accountId' ));
         $buys = $this->privateGetAccountsAccountIdBuys (array_merge($request, $query));
@@ -295,7 +295,7 @@ class coinbase extends Exchange {
     }
 
     public function fetch_transactions_with_method ($method, $code = null, $since = null, $limit = null, $params = array ()) {
-        $request = $this->prepare_account_request_with_currency_code ($code, $limit, $params);
+        $request = $this->prepare_account_request_with_currency_code($code, $limit, $params);
         $this->load_markets();
         $query = $this->omit ($params, array( 'account_id', 'accountId' ));
         $response = $this->$method (array_merge($request, $query));
@@ -304,12 +304,12 @@ class coinbase extends Exchange {
 
     public function fetch_withdrawals ($code = null, $since = null, $limit = null, $params = array ()) {
         // fiat only, for crypto transactions use fetchLedger
-        return $this->fetch_transactions_with_method ('privateGetAccountsAccountIdWithdrawals', $code, $since, $limit, $params);
+        return $this->fetch_transactions_with_method('privateGetAccountsAccountIdWithdrawals', $code, $since, $limit, $params);
     }
 
     public function fetch_deposits ($code = null, $since = null, $limit = null, $params = array ()) {
         // fiat only, for crypto transactions use fetchLedger
-        return $this->fetch_transactions_with_method ('privateGetAccountsAccountIdDeposits', $code, $since, $limit, $params);
+        return $this->fetch_transactions_with_method('privateGetAccountsAccountIdDeposits', $code, $since, $limit, $params);
     }
 
     public function parse_transaction_status ($status) {
@@ -401,7 +401,7 @@ class coinbase extends Exchange {
             'cost' => $feeCost,
             'currency' => $feeCurrency,
         );
-        $status = $this->parse_transaction_status ($this->safe_string($transaction, 'status'));
+        $status = $this->parse_transaction_status($this->safe_string($transaction, 'status'));
         if ($status === null) {
             $committed = $this->safe_value($transaction, 'committed');
             $status = $committed ? 'ok' : 'pending';
@@ -503,7 +503,7 @@ class coinbase extends Exchange {
     }
 
     public function fetch_markets ($params = array ()) {
-        $response = $this->fetch_currencies_from_cache ($params);
+        $response = $this->fetch_currencies_from_cache($params);
         $currencies = $this->safe_value($response, 'currencies', array());
         $exchangeRates = $this->safe_value($response, 'exchangeRates', array());
         $data = $this->safe_value($currencies, 'data', array());
@@ -575,7 +575,7 @@ class coinbase extends Exchange {
     }
 
     public function fetch_currencies ($params = array ()) {
-        $response = $this->fetch_currencies_from_cache ($params);
+        $response = $this->fetch_currencies_from_cache($params);
         $currencies = $this->safe_value($response, 'currencies', array());
         //
         //     {
@@ -722,7 +722,7 @@ class coinbase extends Exchange {
 
     public function fetch_ledger ($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
-        $request = $this->prepare_account_request_with_currency_code ($code, $limit, $params);
+        $request = $this->prepare_account_request_with_currency_code($code, $limit, $params);
         $query = $this->omit ($params, ['account_id', 'accountId']);
         // for pagination use parameter 'starting_after'
         // the value for the next page can be obtained from the result of the previous call in the 'pagination' field
@@ -1032,8 +1032,8 @@ class coinbase extends Exchange {
         }
         $timestamp = $this->parse8601 ($this->safe_value($item, 'created_at'));
         $id = $this->safe_string($item, 'id');
-        $type = $this->parse_ledger_entry_type ($this->safe_string($item, 'type'));
-        $status = $this->parse_ledger_entry_status ($this->safe_string($item, 'status'));
+        $type = $this->parse_ledger_entry_type($this->safe_string($item, 'type'));
+        $status = $this->parse_ledger_entry_status($this->safe_string($item, 'status'));
         $path = $this->safe_string($item, 'resource_path');
         $accountId = null;
         if ($path !== null) {
@@ -1094,7 +1094,7 @@ class coinbase extends Exchange {
             if ($code === null) {
                 throw new ArgumentsRequired($this->id . ' method requires an account_id (or $accountId) parameter OR a currency $code argument');
             }
-            $accountId = $this->find_account_id ($code);
+            $accountId = $this->find_account_id($code);
             if ($accountId === null) {
                 throw new ExchangeError($this->id . ' could not find account id for ' . $code);
             }

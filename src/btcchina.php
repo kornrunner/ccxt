@@ -149,7 +149,7 @@ class btcchina extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         $method = $market['api'] . 'GetOrderbook';
-        $request = $this->create_market_request ($market);
+        $request = $this->create_market_request($market);
         $response = $this->$method (array_merge($request, $params));
         $timestamp = $this->safe_timestamp($response, 'date');
         return $this->parse_order_book($response, $timestamp);
@@ -209,11 +209,11 @@ class btcchina extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         $method = $market['api'] . 'GetTicker';
-        $request = $this->create_market_request ($market);
+        $request = $this->create_market_request($market);
         $response = $this->$method (array_merge($request, $params));
         $ticker = $this->safe_value($response, 'ticker');
         if ($market['plus']) {
-            return $this->parse_ticker_plus ($ticker, $market);
+            return $this->parse_ticker_plus($ticker, $market);
         }
         return $this->parse_ticker($ticker, $market);
     }
@@ -271,7 +271,7 @@ class btcchina extends Exchange {
     public function parse_trades_plus ($trades, $market = null) {
         $result = array();
         for ($i = 0; $i < count($trades); $i++) {
-            $result[] = $this->parse_trade_plus ($trades[$i], $market);
+            $result[] = $this->parse_trade_plus($trades[$i], $market);
         }
         return $result;
     }
@@ -280,7 +280,7 @@ class btcchina extends Exchange {
         $this->load_markets();
         $market = $this->market ($symbol);
         $method = $market['api'] . 'GetTrade';
-        $request = $this->create_market_request ($market);
+        $request = $this->create_market_request($market);
         if ($market['plus']) {
             $now = $this->milliseconds ();
             $request['start_time'] = $now - 86400000;
@@ -290,7 +290,7 @@ class btcchina extends Exchange {
         }
         $response = $this->$method (array_merge($request, $params));
         if ($market['plus']) {
-            return $this->parse_trades_plus ($response['trades'], $market);
+            return $this->parse_trades_plus($response['trades'], $market);
         }
         return $this->parse_trades($response, $market, $since, $limit);
     }
@@ -335,7 +335,7 @@ class btcchina extends Exchange {
             if (is_array($params) && array_key_exists('params', $params)) {
                 $p = $params['params'];
             }
-            $nonce = $this->nonce ();
+            $nonce = $this->nonce();
             $request = array(
                 'method' => $path,
                 'id' => $nonce,

@@ -297,7 +297,7 @@ class bitforex extends Exchange {
             }
         }
         $sideId = $this->safe_integer($trade, 'direction');
-        $side = $this->parse_side ($sideId);
+        $side = $this->parse_side($sideId);
         return array(
             'info' => $trade,
             'id' => $id,
@@ -446,7 +446,7 @@ class bitforex extends Exchange {
         $lastTradeTimestamp = $this->safe_float($order, 'lastTime');
         $symbol = $market['symbol'];
         $sideId = $this->safe_integer($order, 'tradeType');
-        $side = $this->parse_side ($sideId);
+        $side = $this->parse_side($sideId);
         $type = null;
         $price = $this->safe_float($order, 'orderPrice');
         $average = $this->safe_float($order, 'avgPrice');

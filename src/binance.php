@@ -339,7 +339,7 @@ class binance extends Exchange {
     }
 
     public function load_time_difference () {
-        $serverTime = $this->fetch_time ();
+        $serverTime = $this->fetch_time();
         $after = $this->milliseconds ();
         $this->options['timeDifference'] = $after - $serverTime;
         return $this->options['timeDifference'];
@@ -428,7 +428,7 @@ class binance extends Exchange {
         //     }
         //
         if ($this->options['adjustForTimeDifference']) {
-            $this->load_time_difference ();
+            $this->load_time_difference();
         }
         $markets = $this->safe_value($response, 'symbols');
         $result = array();
@@ -726,14 +726,14 @@ class binance extends Exchange {
         $query = $this->omit ($params, 'type');
         $method = ($type === 'spot') ? 'publicGetTickerBookTicker' : 'fapiPublicGetTickerBookTicker';
         $response = $this->$method ($query);
-        return $this->parse_tickers ($response, $symbols);
+        return $this->parse_tickers($response, $symbols);
     }
 
     public function fetch_tickers ($symbols = null, $params = array ()) {
         $this->load_markets();
         $method = $this->options['fetchTickersMethod'];
         $response = $this->$method ($params);
-        return $this->parse_tickers ($response, $symbols);
+        return $this->parse_tickers($response, $symbols);
     }
 
     public function parse_ohlcv ($ohlcv, $market = null, $timeframe = '1m', $since = null, $limit = null) {
@@ -767,7 +767,7 @@ class binance extends Exchange {
 
     public function parse_trade ($trade, $market = null) {
         if (is_array($trade) && array_key_exists('isDustTrade', $trade)) {
-            return $this->parse_dust_trade ($trade, $market);
+            return $this->parse_dust_trade($trade, $market);
         }
         //
         // aggregate trades
@@ -1598,7 +1598,7 @@ class binance extends Exchange {
                 $timestamp = $applyTime;
             }
         }
-        $status = $this->parse_transaction_status_by_type ($this->safe_string($transaction, 'status'), $type);
+        $status = $this->parse_transaction_status_by_type($this->safe_string($transaction, 'status'), $type);
         $amount = $this->safe_float($transaction, 'amount');
         $feeCost = $this->safe_float($transaction, 'transactionFee');
         $fee = null;
@@ -1749,7 +1749,7 @@ class binance extends Exchange {
         //
         $tradeFee = $this->safe_value($response, 'tradeFee', array());
         $first = $this->safe_value($tradeFee, 0, array());
-        return $this->parse_trading_fee ($first);
+        return $this->parse_trading_fee($first);
     }
 
     public function fetch_trading_fees ($params = array ()) {
@@ -1770,7 +1770,7 @@ class binance extends Exchange {
         $tradeFee = $this->safe_value($response, 'tradeFee', array());
         $result = array();
         for ($i = 0; $i < count($tradeFee); $i++) {
-            $fee = $this->parse_trading_fee ($tradeFee[$i]);
+            $fee = $this->parse_trading_fee($tradeFee[$i]);
             $symbol = $fee['symbol'];
             $result[$symbol] = $fee;
         }
@@ -1783,7 +1783,7 @@ class binance extends Exchange {
         if ($api === 'wapi') {
             $url .= '.html';
         }
-        $userDataStream = ($path === 'userDataStream');
+        $userDataStream = ($path === 'userDataStream') || ($path === 'listenKey');
         if ($path === 'historicalTrades') {
             if ($this->apiKey) {
                 $headers = array(
@@ -1809,12 +1809,12 @@ class binance extends Exchange {
             $query = null;
             if (($api === 'sapi') && ($path === 'asset/dust')) {
                 $query = $this->urlencode_with_array_repeat(array_merge(array(
-                    'timestamp' => $this->nonce (),
+                    'timestamp' => $this->nonce(),
                     'recvWindow' => $this->options['recvWindow'],
                 ), $params));
             } else {
                 $query = $this->urlencode (array_merge(array(
-                    'timestamp' => $this->nonce (),
+                    'timestamp' => $this->nonce(),
                     'recvWindow' => $this->options['recvWindow'],
                 ), $params));
             }
