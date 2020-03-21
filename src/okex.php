@@ -310,7 +310,7 @@ class okex extends Exchange {
                     'failure to get a peer from the ring-balancer' => '\\ccxt\\ExchangeNotAvailable', // array( "message" => "failure to get a peer from the ring-balancer" )
                     '4010' => '\\ccxt\\PermissionDenied', // array( "code" => 4010, "message" => "For the security of your funds, withdrawals are not permitted within 24 hours after changing fund password  / mobile number / Google Authenticator settings " )
                     // common
-                    '0' => '\\ccxt\\ExchangeError', // 200 successful,when the order placement / cancellation / operation is successful
+                    // '0' => '\\ccxt\\ExchangeError', // 200 successful,when the order placement / cancellation / operation is successful
                     '4001' => '\\ccxt\\ExchangeError', // no data received in 30s
                     '4002' => '\\ccxt\\ExchangeError', // Buffer full. cannot write data
                     // --------------------------------------------------------
@@ -641,7 +641,6 @@ class okex extends Exchange {
                     'currencies' => 'private',
                     'instruments' => 'public',
                     'rate' => 'public',
-                    'underlying' => 'public',
                     '{instrument_id}/constituents' => 'public',
                 ),
             ),
@@ -2988,6 +2987,12 @@ class okex extends Exchange {
     }
 
     public function get_path_authentication_type ($path) {
+        // https://github.com/ccxt/ccxt/issues/6651
+        // a special case to handle the optionGetUnderlying interefering with
+        // other endpoints containing this keyword
+        if ($path === 'underlying') {
+            return 'public';
+        }
         $auth = $this->safe_value($this->options, 'auth', array());
         $key = $this->find_broadly_matched_key($auth, $path);
         return $this->safe_string($auth, $key, 'private');

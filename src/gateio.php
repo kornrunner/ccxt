@@ -156,6 +156,10 @@ class gateio extends Exchange {
                     ),
                 ),
             ),
+            'commonCurrencies' => array(
+                'BTCBEAR' => 'BEAR',
+                'BTCBULL' => 'BULL',
+            ),
         ));
     }
 
