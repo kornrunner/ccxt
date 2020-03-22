@@ -9,7 +9,7 @@ use \ccxt\NotSupported;
 
 class bitstamp1 extends Exchange {
 
-    public function describe () {
+    public function describe() {
         return array_replace_recursive(parent::describe (), array(
             'id' => 'bitstamp1',
             'name' => 'Bitstamp',
@@ -76,7 +76,7 @@ class bitstamp1 extends Exchange {
         ));
     }
 
-    public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
+    public function fetch_order_book($symbol, $limit = null, $params = array ()) {
         if ($symbol !== 'BTC/USD') {
             throw new ExchangeError($this->id . ' ' . $this->version . " fetchOrderBook doesn't support " . $symbol . ', use it for BTC/USD only');
         }
@@ -86,7 +86,7 @@ class bitstamp1 extends Exchange {
         return $this->parse_order_book($orderbook, $timestamp);
     }
 
-    public function fetch_ticker ($symbol, $params = array ()) {
+    public function fetch_ticker($symbol, $params = array ()) {
         if ($symbol !== 'BTC/USD') {
             throw new ExchangeError($this->id . ' ' . $this->version . " fetchTicker doesn't support " . $symbol . ', use it for BTC/USD only');
         }
@@ -103,7 +103,7 @@ class bitstamp1 extends Exchange {
         return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
+            'datetime' => $this->iso8601($timestamp),
             'high' => $this->safe_float($ticker, 'high'),
             'low' => $this->safe_float($ticker, 'low'),
             'bid' => $this->safe_float($ticker, 'bid'),
@@ -124,7 +124,7 @@ class bitstamp1 extends Exchange {
         );
     }
 
-    public function parse_trade ($trade, $market = null) {
+    public function parse_trade($trade, $market = null) {
         $timestamp = $this->safe_timestamp_2($trade, 'date', 'datetime');
         $side = ($trade['type'] === 0) ? 'buy' : 'sell';
         $orderId = $this->safe_string($trade, 'order_id');
@@ -150,7 +150,7 @@ class bitstamp1 extends Exchange {
             'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
+            'datetime' => $this->iso8601($timestamp),
             'symbol' => $symbol,
             'order' => $orderId,
             'type' => null,
@@ -163,12 +163,12 @@ class bitstamp1 extends Exchange {
         );
     }
 
-    public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
+    public function fetch_trades($symbol, $since = null, $limit = null, $params = array ()) {
         if ($symbol !== 'BTC/USD') {
             throw new BadSymbol($this->id . ' ' . $this->version . " fetchTrades doesn't support " . $symbol . ', use it for BTC/USD only');
         }
         $this->load_markets();
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         $request = array(
             'time' => 'minute',
         );
@@ -176,15 +176,15 @@ class bitstamp1 extends Exchange {
         return $this->parse_trades($response, $market, $since, $limit);
     }
 
-    public function fetch_balance ($params = array ()) {
+    public function fetch_balance($params = array ()) {
         $balance = $this->privatePostBalance ($params);
         $result = array( 'info' => $balance );
         $codes = is_array($this->currencies) ? array_keys($this->currencies) : array();
         for ($i = 0; $i < count($codes); $i++) {
             $code = $codes[$i];
-            $currency = $this->currency ($code);
+            $currency = $this->currency($code);
             $currencyId = $currency['id'];
-            $account = $this->account ();
+            $account = $this->account();
             $account['free'] = $this->safe_float($balance, $currencyId . '_available');
             $account['used'] = $this->safe_float($balance, $currencyId . '_reserved');
             $account['total'] = $this->safe_float($balance, $currencyId . '_balance');
@@ -193,7 +193,7 @@ class bitstamp1 extends Exchange {
         return $this->parse_balance($result);
     }
 
-    public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
+    public function create_order($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         if ($type !== 'limit') {
             throw new ExchangeError($this->id . ' ' . $this->version . ' accepts limit orders only');
         }
@@ -201,7 +201,7 @@ class bitstamp1 extends Exchange {
             throw new ExchangeError($this->id . ' v1 supports BTC/USD orders only');
         }
         $this->load_markets();
-        $method = 'privatePost' . $this->capitalize ($side);
+        $method = 'privatePost' . $this->capitalize($side);
         $request = array(
             'amount' => $amount,
             'price' => $price,
@@ -214,11 +214,11 @@ class bitstamp1 extends Exchange {
         );
     }
 
-    public function cancel_order ($id, $symbol = null, $params = array ()) {
+    public function cancel_order($id, $symbol = null, $params = array ()) {
         return $this->privatePostCancelOrder (array( 'id' => $id ));
     }
 
-    public function parse_order_status ($status) {
+    public function parse_order_status($status) {
         $statuses = array(
             'In Queue' => 'open',
             'Open' => 'open',
@@ -228,7 +228,7 @@ class bitstamp1 extends Exchange {
         return $this->safe_string($statuses, $status, $status);
     }
 
-    public function fetch_order_status ($id, $symbol = null, $params = array ()) {
+    public function fetch_order_status($id, $symbol = null, $params = array ()) {
         $this->load_markets();
         $request = array(
             'id' => $id,
@@ -237,11 +237,11 @@ class bitstamp1 extends Exchange {
         return $this->parse_order_status($response);
     }
 
-    public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
+    public function fetch_my_trades($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $market = null;
         if ($symbol !== null) {
-            $market = $this->market ($symbol);
+            $market = $this->market($symbol);
         }
         $pair = $market ? $market['id'] : 'all';
         $request = array(
@@ -251,28 +251,28 @@ class bitstamp1 extends Exchange {
         return $this->parse_trades($response, $market, $since, $limit);
     }
 
-    public function fetch_order ($id, $symbol = null, $params = array ()) {
+    public function fetch_order($id, $symbol = null, $params = array ()) {
         throw new NotSupported($this->id . ' fetchOrder is not implemented yet');
     }
 
-    public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
+    public function sign($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $url = $this->urls['api'] . '/' . $this->implode_params($path, $params);
-        $query = $this->omit ($params, $this->extract_params($path));
+        $query = $this->omit($params, $this->extract_params($path));
         if ($api === 'public') {
             if ($query) {
-                $url .= '?' . $this->urlencode ($query);
+                $url .= '?' . $this->urlencode($query);
             }
         } else {
             $this->check_required_credentials();
-            $nonce = (string) $this->nonce ();
+            $nonce = (string) $this->nonce();
             $auth = $nonce . $this->uid . $this->apiKey;
-            $signature = $this->encode ($this->hmac ($this->encode ($auth), $this->encode ($this->secret)));
+            $signature = $this->encode($this->hmac($this->encode($auth), $this->encode($this->secret)));
             $query = array_merge(array(
                 'key' => $this->apiKey,
                 'signature' => strtoupper($signature),
                 'nonce' => $nonce,
             ), $query);
-            $body = $this->urlencode ($query);
+            $body = $this->urlencode($query);
             $headers = array(
                 'Content-Type' => 'application/x-www-form-urlencoded',
             );
@@ -280,11 +280,11 @@ class bitstamp1 extends Exchange {
         return array( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
-        $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
+    public function request($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
+        $response = $this->fetch2($path, $api, $method, $params, $headers, $body);
         if (is_array($response) && array_key_exists('status', $response)) {
             if ($response['status'] === 'error') {
-                throw new ExchangeError($this->id . ' ' . $this->json ($response));
+                throw new ExchangeError($this->id . ' ' . $this->json($response));
             }
         }
         return $response;

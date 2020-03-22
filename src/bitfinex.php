@@ -9,7 +9,7 @@ use \ccxt\NotSupported;
 
 class bitfinex extends Exchange {
 
-    public function describe () {
+    public function describe() {
         return array_replace_recursive(parent::describe (), array(
             'id' => 'bitfinex',
             'name' => 'Bitfinex',
@@ -425,7 +425,7 @@ class bitfinex extends Exchange {
         ));
     }
 
-    public function fetch_funding_fees ($params = array ()) {
+    public function fetch_funding_fees($params = array ()) {
         $this->load_markets();
         $response = $this->privatePostAccountFees ($params);
         $fees = $response['withdraw'];
@@ -443,7 +443,7 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function fetch_trading_fees ($params = array ()) {
+    public function fetch_trading_fees($params = array ()) {
         $this->load_markets();
         $response = $this->privatePostSummary ($params);
         //
@@ -475,7 +475,7 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function fetch_markets ($params = array ()) {
+    public function fetch_markets($params = array ()) {
         $ids = $this->publicGetSymbols ();
         $details = $this->publicGetSymbolsDetails ();
         $result = array();
@@ -533,11 +533,11 @@ class bitfinex extends Exchange {
         return $result;
     }
 
-    public function amount_to_precision ($symbol, $amount) {
+    public function amount_to_precision($symbol, $amount) {
         return $this->number_to_string($amount);
     }
 
-    public function calculate_fee ($symbol, $type, $side, $amount, $price, $takerOrMaker = 'taker', $params = array ()) {
+    public function calculate_fee($symbol, $type, $side, $amount, $price, $takerOrMaker = 'taker', $params = array ()) {
         $market = $this->markets[$symbol];
         $rate = $market[$takerOrMaker];
         $cost = $amount * $rate;
@@ -563,10 +563,10 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function fetch_balance ($params = array ()) {
+    public function fetch_balance($params = array ()) {
         $this->load_markets();
         $balanceType = $this->safe_string($params, 'type', 'exchange');
-        $query = $this->omit ($params, 'type');
+        $query = $this->omit($params, 'type');
         $response = $this->privatePostBalances ($query);
         $result = array( 'info' => $response );
         for ($i = 0; $i < count($response); $i++) {
@@ -580,7 +580,7 @@ class bitfinex extends Exchange {
                 // would not override the new BAB $balance (BAB is unified to BCH)
                 // https://github.com/ccxt/ccxt/issues/4989
                 if (!(is_array($result) && array_key_exists($code, $result))) {
-                    $account = $this->account ();
+                    $account = $this->account();
                     $account['free'] = $this->safe_float($balance, 'available');
                     $account['total'] = $this->safe_float($balance, 'amount');
                     $result[$code] = $account;
@@ -590,7 +590,7 @@ class bitfinex extends Exchange {
         return $this->parse_balance($result);
     }
 
-    public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
+    public function fetch_order_book($symbol, $limit = null, $params = array ()) {
         $this->load_markets();
         $request = array(
             'symbol' => $this->market_id($symbol),
@@ -603,7 +603,7 @@ class bitfinex extends Exchange {
         return $this->parse_order_book($response, null, 'bids', 'asks', 'price', 'amount');
     }
 
-    public function fetch_tickers ($symbols = null, $params = array ()) {
+    public function fetch_tickers($symbols = null, $params = array ()) {
         $this->load_markets();
         $response = $this->publicGetTickers ($params);
         $result = array();
@@ -615,9 +615,9 @@ class bitfinex extends Exchange {
         return $result;
     }
 
-    public function fetch_ticker ($symbol, $params = array ()) {
+    public function fetch_ticker($symbol, $params = array ()) {
         $this->load_markets();
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         $request = array(
             'symbol' => $market['id'],
         );
@@ -625,7 +625,7 @@ class bitfinex extends Exchange {
         return $this->parse_ticker($ticker, $market);
     }
 
-    public function parse_ticker ($ticker, $market = null) {
+    public function parse_ticker($ticker, $market = null) {
         $timestamp = $this->safe_float($ticker, 'timestamp');
         if ($timestamp !== null) {
             $timestamp *= 1000;
@@ -653,7 +653,7 @@ class bitfinex extends Exchange {
         return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
+            'datetime' => $this->iso8601($timestamp),
             'high' => $this->safe_float($ticker, 'high'),
             'low' => $this->safe_float($ticker, 'low'),
             'bid' => $this->safe_float($ticker, 'bid'),
@@ -674,7 +674,7 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function parse_trade ($trade, $market) {
+    public function parse_trade($trade, $market) {
         $id = $this->safe_string($trade, 'tid');
         $timestamp = $this->safe_float($trade, 'timestamp');
         if ($timestamp !== null) {
@@ -705,7 +705,7 @@ class bitfinex extends Exchange {
             'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
+            'datetime' => $this->iso8601($timestamp),
             'symbol' => $market['symbol'],
             'type' => $type,
             'order' => $orderId,
@@ -718,9 +718,9 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function fetch_trades ($symbol, $since = null, $limit = 50, $params = array ()) {
+    public function fetch_trades($symbol, $since = null, $limit = 50, $params = array ()) {
         $this->load_markets();
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         $request = array(
             'symbol' => $market['id'],
             'limit_trades' => $limit,
@@ -732,12 +732,12 @@ class bitfinex extends Exchange {
         return $this->parse_trades($response, $market, $since, $limit);
     }
 
-    public function fetch_my_trades ($symbol = null, $since = null, $limit = null, $params = array ()) {
+    public function fetch_my_trades($symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
             throw new ArgumentsRequired($this->id . ' fetchMyTrades requires a `$symbol` argument');
         }
         $this->load_markets();
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         $request = array(
             'symbol' => $market['id'],
         );
@@ -751,7 +751,7 @@ class bitfinex extends Exchange {
         return $this->parse_trades($response, $market, $since, $limit);
     }
 
-    public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
+    public function create_order($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
         $request = array(
             'symbol' => $this->market_id($symbol),
@@ -771,7 +771,7 @@ class bitfinex extends Exchange {
         return $this->parse_order($response);
     }
 
-    public function edit_order ($id, $symbol, $type, $side, $amount = null, $price = null, $params = array ()) {
+    public function edit_order($id, $symbol, $type, $side, $amount = null, $price = null, $params = array ()) {
         $this->load_markets();
         $order = array(
             'order_id' => $id,
@@ -795,7 +795,7 @@ class bitfinex extends Exchange {
         return $this->parse_order($response);
     }
 
-    public function cancel_order ($id, $symbol = null, $params = array ()) {
+    public function cancel_order($id, $symbol = null, $params = array ()) {
         $this->load_markets();
         $request = array(
             'order_id' => intval ($id),
@@ -803,11 +803,11 @@ class bitfinex extends Exchange {
         return $this->privatePostOrderCancel (array_merge($request, $params));
     }
 
-    public function cancel_all_orders ($symbol = null, $params = array ()) {
+    public function cancel_all_orders($symbol = null, $params = array ()) {
         return $this->privatePostOrderCancelAll ($params);
     }
 
-    public function parse_order ($order, $market = null) {
+    public function parse_order($order, $market = null) {
         $side = $this->safe_string($order, 'side');
         $open = $this->safe_value($order, 'is_live');
         $canceled = $this->safe_value($order, 'is_cancelled');
@@ -846,7 +846,7 @@ class bitfinex extends Exchange {
             'info' => $order,
             'id' => $id,
             'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
+            'datetime' => $this->iso8601($timestamp),
             'lastTradeTimestamp' => null,
             'symbol' => $symbol,
             'type' => $orderType,
@@ -861,7 +861,7 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function fetch_open_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+    public function fetch_open_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         if ($symbol !== null) {
             if (!(is_array($this->markets) && array_key_exists($symbol, $this->markets))) {
@@ -876,7 +876,7 @@ class bitfinex extends Exchange {
         return $orders;
     }
 
-    public function fetch_closed_orders ($symbol = null, $since = null, $limit = null, $params = array ()) {
+    public function fetch_closed_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         $request = array();
         if ($limit !== null) {
@@ -891,7 +891,7 @@ class bitfinex extends Exchange {
         return $orders;
     }
 
-    public function fetch_order ($id, $symbol = null, $params = array ()) {
+    public function fetch_order($id, $symbol = null, $params = array ()) {
         $this->load_markets();
         $request = array(
             'order_id' => intval ($id),
@@ -900,7 +900,7 @@ class bitfinex extends Exchange {
         return $this->parse_order($response);
     }
 
-    public function parse_ohlcv ($ohlcv, $market = null, $timeframe = '1m', $since = null, $limit = null) {
+    public function parse_ohlcv($ohlcv, $market = null, $timeframe = '1m', $since = null, $limit = null) {
         return [
             $ohlcv[0],
             $ohlcv[1],
@@ -911,12 +911,12 @@ class bitfinex extends Exchange {
         ];
     }
 
-    public function fetch_ohlcv ($symbol, $timeframe = '1m', $since = null, $limit = null, $params = array ()) {
+    public function fetch_ohlcv($symbol, $timeframe = '1m', $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         if ($limit === null) {
             $limit = 100;
         }
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         $v2id = 't' . $market['id'];
         $request = array(
             'symbol' => $v2id,
@@ -931,7 +931,7 @@ class bitfinex extends Exchange {
         return $this->parse_ohlcvs($response, $market, $timeframe, $since, $limit);
     }
 
-    public function get_currency_name ($code) {
+    public function get_currency_name($code) {
         // todo rewrite for https://api-pub.bitfinex.com//v2/conf/pub:map:tx:method
         if (is_array($this->options['currencyNames']) && array_key_exists($code, $this->options['currencyNames'])) {
             return $this->options['currencyNames'][$code];
@@ -939,7 +939,7 @@ class bitfinex extends Exchange {
         throw new NotSupported($this->id . ' ' . $code . ' not supported for withdrawal');
     }
 
-    public function create_deposit_address ($code, $params = array ()) {
+    public function create_deposit_address($code, $params = array ()) {
         $this->load_markets();
         $request = array(
             'renew' => 1,
@@ -948,7 +948,7 @@ class bitfinex extends Exchange {
         return $response;
     }
 
-    public function fetch_deposit_address ($code, $params = array ()) {
+    public function fetch_deposit_address($code, $params = array ()) {
         $this->load_markets();
         // todo rewrite for https://api-pub.bitfinex.com//v2/conf/pub:map:tx:method
         $name = $this->get_currency_name($code);
@@ -973,12 +973,12 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function fetch_transactions ($code = null, $since = null, $limit = null, $params = array ()) {
+    public function fetch_transactions($code = null, $since = null, $limit = null, $params = array ()) {
         if ($code === null) {
             throw new ArgumentsRequired($this->id . ' fetchTransactions() requires a $currency `$code` argument');
         }
         $this->load_markets();
-        $currency = $this->currency ($code);
+        $currency = $this->currency($code);
         $request = array(
             'currency' => $currency['id'],
         );
@@ -1007,7 +1007,7 @@ class bitfinex extends Exchange {
         return $this->parse_transactions($response, $currency, $since, $limit);
     }
 
-    public function parse_transaction ($transaction, $currency = null) {
+    public function parse_transaction($transaction, $currency = null) {
         //
         // crypto
         //
@@ -1064,7 +1064,7 @@ class bitfinex extends Exchange {
             'id' => $this->safe_string($transaction, 'id'),
             'txid' => $this->safe_string($transaction, 'txid'),
             'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
+            'datetime' => $this->iso8601($timestamp),
             'address' => $this->safe_string($transaction, 'address'), // todo => this is actually the tag for XRP transfers (the address is missing)
             'tag' => null, // refix it properly for the tag from description
             'type' => $type,
@@ -1080,7 +1080,7 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function parse_transaction_status ($status) {
+    public function parse_transaction_status($status) {
         $statuses = array(
             'SENDING' => 'pending',
             'CANCELED' => 'canceled',
@@ -1090,7 +1090,7 @@ class bitfinex extends Exchange {
         return $this->safe_string($statuses, $status, $status);
     }
 
-    public function withdraw ($code, $amount, $address, $tag = null, $params = array ()) {
+    public function withdraw($code, $amount, $address, $tag = null, $params = array ()) {
         $this->check_address($address);
         $this->load_markets();
         // todo rewrite for https://api-pub.bitfinex.com//v2/conf/pub:map:tx:method
@@ -1114,7 +1114,7 @@ class bitfinex extends Exchange {
                 $ExceptionClass = $this->exceptions['broad'][$errorMessage];
                 throw new $ExceptionClass($this->id . ' ' . $message);
             }
-            throw new ExchangeError($this->id . ' withdraw returned an $id of zero => ' . $this->json ($response));
+            throw new ExchangeError($this->id . ' withdraw returned an $id of zero => ' . $this->json($response));
         }
         return array(
             'info' => $response,
@@ -1122,22 +1122,22 @@ class bitfinex extends Exchange {
         );
     }
 
-    public function nonce () {
-        return $this->milliseconds ();
+    public function nonce() {
+        return $this->milliseconds();
     }
 
-    public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
+    public function sign($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $request = '/' . $this->implode_params($path, $params);
         if ($api === 'v2') {
             $request = '/' . $api . $request;
         } else {
             $request = '/' . $this->version . $request;
         }
-        $query = $this->omit ($params, $this->extract_params($path));
+        $query = $this->omit($params, $this->extract_params($path));
         $url = $this->urls['api'][$api] . $request;
         if (($api === 'public') || (mb_strpos($path, '/hist') !== false)) {
             if ($query) {
-                $suffix = '?' . $this->urlencode ($query);
+                $suffix = '?' . $this->urlencode($query);
                 $url .= $suffix;
                 $request .= $suffix;
             }
@@ -1149,21 +1149,21 @@ class bitfinex extends Exchange {
                 'nonce' => (string) $nonce,
                 'request' => $request,
             ), $query);
-            $body = $this->json ($query);
-            $query = $this->encode ($body);
+            $body = $this->json($query);
+            $query = $this->encode($body);
             $payload = base64_encode($query);
-            $secret = $this->encode ($this->secret);
-            $signature = $this->hmac ($payload, $secret, 'sha384');
+            $secret = $this->encode($this->secret);
+            $signature = $this->hmac($payload, $secret, 'sha384');
             $headers = array(
                 'X-BFX-APIKEY' => $this->apiKey,
-                'X-BFX-PAYLOAD' => $this->decode ($payload),
+                'X-BFX-PAYLOAD' => $this->decode($payload),
                 'X-BFX-SIGNATURE' => $signature,
             );
         }
         return array( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );
     }
 
-    public function handle_errors ($code, $reason, $url, $method, $headers, $body, $response, $requestHeaders, $requestBody) {
+    public function handle_errors($code, $reason, $url, $method, $headers, $body, $response, $requestHeaders, $requestBody) {
         if ($response === null) {
             return;
         }

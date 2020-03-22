@@ -7,7 +7,7 @@ use \ccxt\ExchangeError;
 
 class btcturk extends Exchange {
 
-    public function describe () {
+    public function describe() {
         return array_replace_recursive(parent::describe (), array(
             'id' => 'btcturk',
             'name' => 'BTCTurk',
@@ -57,7 +57,7 @@ class btcturk extends Exchange {
         ));
     }
 
-    public function fetch_markets ($params = array ()) {
+    public function fetch_markets($params = array ()) {
         $response = $this->publicGetTicker ($params);
         $result = array();
         for ($i = 0; $i < count($response); $i++) {
@@ -104,7 +104,7 @@ class btcturk extends Exchange {
         return $result;
     }
 
-    public function fetch_balance ($params = array ()) {
+    public function fetch_balance($params = array ()) {
         $this->load_markets();
         $response = $this->privateGetBalance ($params);
         $result = array( 'info' => $response );
@@ -116,7 +116,7 @@ class btcturk extends Exchange {
             $total = $currency['id'] . '_balance';
             $used = $currency['id'] . '_reserved';
             if (is_array($response) && array_key_exists($free, $response)) {
-                $account = $this->account ();
+                $account = $this->account();
                 $account['free'] = $this->safe_float($response, $free);
                 $account['total'] = $this->safe_float($response, $total);
                 $account['used'] = $this->safe_float($response, $used);
@@ -126,9 +126,9 @@ class btcturk extends Exchange {
         return $this->parse_balance($result);
     }
 
-    public function fetch_order_book ($symbol, $limit = null, $params = array ()) {
+    public function fetch_order_book($symbol, $limit = null, $params = array ()) {
         $this->load_markets();
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         $request = array(
             'pairSymbol' => $market['id'],
         );
@@ -137,7 +137,7 @@ class btcturk extends Exchange {
         return $this->parse_order_book($response, $timestamp);
     }
 
-    public function parse_ticker ($ticker, $market = null) {
+    public function parse_ticker($ticker, $market = null) {
         $symbol = null;
         if ($market) {
             $symbol = $market['symbol'];
@@ -147,7 +147,7 @@ class btcturk extends Exchange {
         return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
+            'datetime' => $this->iso8601($timestamp),
             'high' => $this->safe_float($ticker, 'high'),
             'low' => $this->safe_float($ticker, 'low'),
             'bid' => $this->safe_float($ticker, 'bid'),
@@ -168,7 +168,7 @@ class btcturk extends Exchange {
         );
     }
 
-    public function fetch_tickers ($symbols = null, $params = array ()) {
+    public function fetch_tickers($symbols = null, $params = array ()) {
         $this->load_markets();
         $tickers = $this->publicGetTicker ($params);
         $result = array();
@@ -186,14 +186,14 @@ class btcturk extends Exchange {
         return $result;
     }
 
-    public function fetch_ticker ($symbol, $params = array ()) {
+    public function fetch_ticker($symbol, $params = array ()) {
         $this->load_markets();
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         $tickers = $this->fetch_tickers($params);
         return $this->safe_value_2($tickers, $market['id'], $symbol);
     }
 
-    public function parse_trade ($trade, $market = null) {
+    public function parse_trade($trade, $market = null) {
         $timestamp = $this->safe_timestamp($trade, 'date');
         $id = $this->safe_string($trade, 'tid');
         $price = $this->safe_float($trade, 'price');
@@ -212,7 +212,7 @@ class btcturk extends Exchange {
             'id' => $id,
             'info' => $trade,
             'timestamp' => $timestamp,
-            'datetime' => $this->iso8601 ($timestamp),
+            'datetime' => $this->iso8601($timestamp),
             'symbol' => $symbol,
             'type' => null,
             'side' => null,
@@ -225,9 +225,9 @@ class btcturk extends Exchange {
         );
     }
 
-    public function fetch_trades ($symbol, $since = null, $limit = null, $params = array ()) {
+    public function fetch_trades($symbol, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         // $maxCount = 50;
         $request = array(
             'pairSymbol' => $market['id'],
@@ -236,8 +236,8 @@ class btcturk extends Exchange {
         return $this->parse_trades($response, $market, $since, $limit);
     }
 
-    public function parse_ohlcv ($ohlcv, $market = null, $timeframe = '1d', $since = null, $limit = null) {
-        $timestamp = $this->parse8601 ($this->safe_string($ohlcv, 'Time'));
+    public function parse_ohlcv($ohlcv, $market = null, $timeframe = '1d', $since = null, $limit = null) {
+        $timestamp = $this->parse8601($this->safe_string($ohlcv, 'Time'));
         return array(
             $timestamp,
             $this->safe_float($ohlcv, 'Open'),
@@ -248,9 +248,9 @@ class btcturk extends Exchange {
         );
     }
 
-    public function fetch_ohlcv ($symbol, $timeframe = '1d', $since = null, $limit = null, $params = array ()) {
+    public function fetch_ohlcv($symbol, $timeframe = '1d', $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
-        $market = $this->market ($symbol);
+        $market = $this->market($symbol);
         $request = array();
         if ($limit !== null) {
             $request['last'] = $limit;
@@ -259,7 +259,7 @@ class btcturk extends Exchange {
         return $this->parse_ohlcvs($response, $market, $timeframe, $since, $limit);
     }
 
-    public function create_order ($symbol, $type, $side, $amount, $price = null, $params = array ()) {
+    public function create_order($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->load_markets();
         $request = array(
             'PairSymbol' => $this->market_id($symbol),
@@ -282,36 +282,36 @@ class btcturk extends Exchange {
         );
     }
 
-    public function cancel_order ($id, $symbol = null, $params = array ()) {
+    public function cancel_order($id, $symbol = null, $params = array ()) {
         $request = array(
             'id' => $id,
         );
         return $this->privatePostCancelOrder (array_merge($request, $params));
     }
 
-    public function nonce () {
-        return $this->milliseconds ();
+    public function nonce() {
+        return $this->milliseconds();
     }
 
-    public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
+    public function sign($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         if ($this->id === 'btctrader') {
             throw new ExchangeError($this->id . ' is an abstract base API for BTCExchange, BTCTurk');
         }
         $url = $this->urls['api'] . '/' . $path;
         if ($api === 'public') {
             if ($params) {
-                $url .= '?' . $this->urlencode ($params);
+                $url .= '?' . $this->urlencode($params);
             }
         } else {
             $this->check_required_credentials();
             $nonce = (string) $this->nonce();
-            $body = $this->urlencode ($params);
+            $body = $this->urlencode($params);
             $secret = base64_decode($this->secret);
             $auth = $this->apiKey . $nonce;
             $headers = array(
                 'X-PCK' => $this->apiKey,
                 'X-Stamp' => $nonce,
-                'X-Signature' => base64_encode($this->hmac ($this->encode ($auth), $secret, 'sha256', 'binary')),
+                'X-Signature' => base64_encode($this->hmac($this->encode($auth), $secret, 'sha256', 'binary')),
                 'Content-Type' => 'application/x-www-form-urlencoded',
             );
         }
