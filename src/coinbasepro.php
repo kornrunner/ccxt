@@ -584,6 +584,7 @@ class coinbasepro extends Exchange {
         $side = $this->safe_string($order, 'side');
         return array(
             'id' => $id,
+            'clientOrderId' => null,
             'info' => $order,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),

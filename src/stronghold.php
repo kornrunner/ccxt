@@ -577,6 +577,7 @@ class stronghold extends Exchange {
         }
         return array(
             'id' => $id,
+            'clientOrderId' => null,
             'info' => $order,
             'symbol' => $symbol,
             'datetime' => $datetime,

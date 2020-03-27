@@ -289,6 +289,7 @@ class bitbay extends Exchange {
         }
         return array(
             'id' => $this->safe_string($order, 'id'),
+            'clientOrderId' => null,
             'info' => $order,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),

@@ -320,6 +320,7 @@ class btctradeua extends Exchange {
         }
         return array(
             'id' => $this->safe_string($order, 'id'),
+            'clientOrderId' => null,
             'timestamp' => $timestamp, // until they fix their $timestamp
             'datetime' => $this->iso8601($timestamp),
             'lastTradeTimestamp' => null,

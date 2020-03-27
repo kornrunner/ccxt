@@ -317,6 +317,7 @@ class btcalpha extends Exchange {
         }
         return array(
             'id' => $id,
+            'clientOrderId' => null,
             'datetime' => $this->iso8601($timestamp),
             'timestamp' => $timestamp,
             'status' => $status,

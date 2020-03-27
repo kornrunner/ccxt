@@ -862,8 +862,10 @@ class kraken extends Exchange {
                 $id = ($length > 1) ? $id : $id[0];
             }
         }
+        $clientOrderId = $this->safe_string($params, 'userref');
         return array(
             'id' => $id,
+            'clientOrderId' => $clientOrderId,
             'info' => $response,
             'timestamp' => null,
             'datetime' => null,
@@ -985,8 +987,10 @@ class kraken extends Exchange {
         }
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $id = $this->safe_string($order, 'id');
+        $clientOrderId = $this->safe_string($order, 'userref');
         return array(
             'id' => $id,
+            'clientOrderId' => $clientOrderId,
             'info' => $order,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),

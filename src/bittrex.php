@@ -270,7 +270,6 @@ class bittrex extends Exchange {
             ),
             'commonCurrencies' => array(
                 'BITS' => 'SWIFT',
-                'CPC' => 'Capricoin',
             ),
         ));
     }
@@ -1052,6 +1051,7 @@ class bittrex extends Exchange {
         }
         return array(
             'id' => $this->safe_string($order, 'id'),
+            'clientOrderId' => null,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
             'lastTradeTimestamp' => $lastTradeTimestamp,
@@ -1194,6 +1194,7 @@ class bittrex extends Exchange {
         return array(
             'info' => $order,
             'id' => $id,
+            'clientOrderId' => null,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
             'lastTradeTimestamp' => $lastTradeTimestamp,
