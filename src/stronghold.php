@@ -223,6 +223,7 @@ class stronghold extends Exchange {
                 'precision' => $precision,
                 'info' => $entry,
                 'limits' => $limits,
+                'active' => null,
             );
         }
         return $result;
@@ -280,6 +281,7 @@ class stronghold extends Exchange {
                 'active' => null,
                 'name' => null,
                 'limits' => $limits,
+                'fee' => null,
             );
         }
         return $result;
@@ -593,6 +595,7 @@ class stronghold extends Exchange {
             'status' => null,
             'type' => null,
             'average' => null,
+            'fee' => null,
         );
     }
 

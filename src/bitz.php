@@ -770,6 +770,7 @@ class bitz extends Exchange {
             'trades' => null,
             'fee' => null,
             'info' => $order,
+            'average' => null,
         );
     }
 

@@ -339,6 +339,8 @@ class coinfalcon extends Exchange {
             'trades' => null,
             'fee' => null,
             'info' => $order,
+            'lastTradeTimestamp' => null,
+            'average' => null,
         );
     }
 

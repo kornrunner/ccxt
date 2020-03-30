@@ -163,6 +163,7 @@ class bleutrade extends Exchange {
                 'fee' => $this->safe_float($item, 'WithdrawTxFee'),
                 'precision' => $this->safe_float($item, 'DecimalPlaces'),
                 'info' => $item,
+                'limits' => $this->limits,
             );
         }
         return $result;
@@ -695,6 +696,7 @@ class bleutrade extends Exchange {
             'remaining' => $remaining,
             'status' => $status,
             'fee' => null,
+            'trades' => null,
         );
     }
 

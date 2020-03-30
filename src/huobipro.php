@@ -1023,6 +1023,7 @@ class huobipro extends Exchange {
             'remaining' => $remaining,
             'status' => $status,
             'fee' => $fee,
+            'trades' => null,
         );
     }
 
@@ -1077,6 +1078,8 @@ class huobipro extends Exchange {
             'cost' => null,
             'trades' => null,
             'fee' => null,
+            'clientOrderId' => null,
+            'average' => null,
         );
     }
 

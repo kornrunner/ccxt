@@ -865,6 +865,7 @@ class digifinex extends Exchange {
             'average' => $average,
             'status' => $status,
             'fee' => null,
+            'trades' => null,
         );
     }
 

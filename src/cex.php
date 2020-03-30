@@ -357,6 +357,7 @@ class cex extends Exchange {
                         'max' => null,
                     ),
                 ),
+                'active' => null,
             );
         }
         return $result;
@@ -808,6 +809,8 @@ class cex extends Exchange {
                         'currency' => $market['quote'],
                     ),
                     'info' => $item,
+                    'type' => null,
+                    'takerOrMaker' => null,
                 );
             }
         }
@@ -829,6 +832,7 @@ class cex extends Exchange {
             'trades' => $trades,
             'fee' => $fee,
             'info' => $order,
+            'average' => null,
         );
     }
 

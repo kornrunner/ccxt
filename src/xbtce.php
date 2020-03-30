@@ -130,6 +130,9 @@ class xbtce extends Exchange {
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
                 'info' => $market,
+                'active' => null,
+                'precision' => $this->precision,
+                'limits' => $this->limits,
             );
         }
         return $result;

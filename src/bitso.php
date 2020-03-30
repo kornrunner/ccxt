@@ -139,6 +139,7 @@ class bitso extends Exchange {
                 'info' => $market,
                 'limits' => $limits,
                 'precision' => $precision,
+                'active' => null,
             );
         }
         return $result;
@@ -387,6 +388,8 @@ class bitso extends Exchange {
             'filled' => $filled,
             'status' => $status,
             'fee' => null,
+            'average' => null,
+            'trades' => null,
         );
     }
 

@@ -257,6 +257,9 @@ class livecoin extends Exchange {
                     'max' => pow(10, $precision),
                 ),
             ),
+            'id' => null,
+            'code' => null,
+            'name' => null,
         );
         $currencies = array(
             array( 'id' => 'USD', 'code' => 'USD', 'name' => 'US Dollar' ),
@@ -624,6 +627,7 @@ class livecoin extends Exchange {
                 'currency' => $feeCurrency,
                 'rate' => $feeRate,
             ),
+            'average' => null,
         );
     }
 

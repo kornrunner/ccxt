@@ -153,6 +153,8 @@ class btcalpha extends Exchange {
                     ),
                 ),
                 'info' => $market,
+                'baseId' => null,
+                'quoteId' => null,
             );
         }
         return $result;
@@ -332,6 +334,8 @@ class btcalpha extends Exchange {
             'trades' => $trades,
             'fee' => null,
             'info' => $order,
+            'lastTradeTimestamp' => null,
+            'average' => null,
         );
     }
 

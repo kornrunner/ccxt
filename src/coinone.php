@@ -307,6 +307,8 @@ class coinone extends Exchange {
             'remaining' => $amount,
             'status' => 'open',
             'fee' => null,
+            'clientOrderId' => null,
+            'trades' => null,
         );
         $this->orders[$id] = $order;
         return $order;
@@ -425,6 +427,8 @@ class coinone extends Exchange {
             'remaining' => $remaining,
             'status' => $status,
             'fee' => $fee,
+            'average' => null,
+            'trades' => null,
         );
     }
 

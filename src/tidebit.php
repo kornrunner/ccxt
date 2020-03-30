@@ -157,6 +157,9 @@ class tidebit extends Exchange {
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
                 'info' => $market,
+                'active' => null,
+                'precision' => $this->precision,
+                'limits' => $this->limits,
             );
         }
         return $result;
@@ -417,6 +420,7 @@ class tidebit extends Exchange {
             'trades' => null,
             'fee' => null,
             'info' => $order,
+            'average' => null,
         );
     }
 

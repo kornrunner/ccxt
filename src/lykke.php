@@ -254,6 +254,8 @@ class lykke extends Exchange {
                         'max' => null,
                     ),
                 ),
+                'baseId' => null,
+                'quoteId' => null,
             );
         }
         return $result;
@@ -372,6 +374,7 @@ class lykke extends Exchange {
             'remaining' => $remaining,
             'status' => $status,
             'fee' => null,
+            'trades' => null,
         );
     }
 

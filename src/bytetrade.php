@@ -557,6 +557,7 @@ class bytetrade extends Exchange {
             'remaining' => $remaining,
             'status' => $status,
             'fee' => $fee,
+            'trades' => null,
         );
     }
 
@@ -730,6 +731,8 @@ class bytetrade extends Exchange {
             'cost' => null,
             'trades' => null,
             'fee' => null,
+            'clientOrderId' => null,
+            'average' => null,
         );
     }
 
@@ -906,6 +909,8 @@ class bytetrade extends Exchange {
             'cost' => null,
             'trades' => null,
             'fee' => null,
+            'clientOrderId' => null,
+            'average' => null,
         );
     }
 
@@ -1010,6 +1015,9 @@ class bytetrade extends Exchange {
             'remaining' => null,
             'cost' => null,
             'fee' => null,
+            'clientOrderId' => null,
+            'average' => null,
+            'trades' => null,
         );
     }
 

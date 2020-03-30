@@ -467,6 +467,7 @@ class lbank extends Exchange {
             'trades' => null,
             'fee' => null,
             'info' => $this->safe_value($order, 'info', $order),
+            'average' => null,
         );
     }
 

@@ -372,6 +372,8 @@ class bitflyer extends Exchange {
             'filled' => $filled,
             'remaining' => $remaining,
             'fee' => $fee,
+            'average' => null,
+            'trades' => null,
         );
     }
 

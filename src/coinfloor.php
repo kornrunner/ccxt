@@ -460,6 +460,8 @@ class coinfloor extends Exchange {
             'remaining' => null,
             'cost' => $cost,
             'fee' => null,
+            'average' => null,
+            'trades' => null,
         );
     }
 

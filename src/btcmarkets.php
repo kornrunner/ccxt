@@ -565,6 +565,7 @@ class btcmarkets extends Exchange {
                 'currency' => $feeCurrencyCode,
                 'cost' => $feeCost,
             ),
+            'takerOrMaker' => null,
         );
     }
 

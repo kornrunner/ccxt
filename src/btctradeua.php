@@ -334,6 +334,9 @@ class btctradeua extends Exchange {
             'remaining' => $this->safe_float($order, 'amnt_trade'),
             'trades' => null,
             'info' => $order,
+            'cost' => null,
+            'average' => null,
+            'fee' => null,
         );
     }
 

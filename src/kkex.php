@@ -458,6 +458,7 @@ class kkex extends Exchange {
             'remaining' => $remaining,
             'fee' => null,
             'info' => $order,
+            'trades' => null,
         );
     }
 
@@ -506,6 +507,8 @@ class kkex extends Exchange {
             'remaining' => null,
             'trades' => null,
             'fee' => null,
+            'clientOrderId' => null,
+            'average' => null,
         );
     }
 

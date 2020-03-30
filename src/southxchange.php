@@ -85,6 +85,8 @@ class southxchange extends Exchange {
                 'quoteId' => $quoteId,
                 'active' => null,
                 'info' => $market,
+                'precision' => $this->precision,
+                'limits' => $this->limits,
             );
         }
         return $result;
@@ -259,6 +261,8 @@ class southxchange extends Exchange {
             'remaining' => $remaining,
             'status' => $status,
             'fee' => null,
+            'average' => null,
+            'trades' => null,
         );
         return $result;
     }

@@ -305,6 +305,7 @@ class btcbox extends Exchange {
             'trades' => $trades,
             'fee' => null,
             'info' => $order,
+            'average' => null,
         );
     }
 

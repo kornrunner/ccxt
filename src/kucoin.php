@@ -333,6 +333,9 @@ class kucoin extends Exchange {
                 'code' => $code,
                 'precision' => $precision,
                 'info' => $entry,
+                'active' => null,
+                'fee' => null,
+                'limits' => $this->limits,
             );
         }
         return $result;
@@ -915,6 +918,9 @@ class kucoin extends Exchange {
             'fee' => $fee,
             'status' => $status,
             'info' => $order,
+            'lastTradeTimestamp' => null,
+            'average' => null,
+            'trades' => null,
         );
     }
 
