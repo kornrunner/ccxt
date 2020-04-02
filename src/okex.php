@@ -8,11 +8,12 @@ use \ccxt\ArgumentsRequired;
 use \ccxt\InvalidAddress;
 use \ccxt\InvalidOrder;
 use \ccxt\NotSupported;
+use \ccxt\ExchangeNotAvailable;
 
 class okex extends Exchange {
 
     public function describe() {
-        return array_replace_recursive(parent::describe (), array(
+        return $this->deep_extend(parent::describe (), array(
             'id' => 'okex',
             'name' => 'OKEX',
             'countries' => array( 'CN', 'US' ),
@@ -81,7 +82,7 @@ class okex extends Exchange {
                         'ledger',
                         'deposit/address',
                         'deposit/history',
-                        'deposit/historyarray(<currency)',
+                        'deposit/history/{currency}',
                         'currencies',
                         'withdrawal/fee',
                     ),
@@ -2567,14 +2568,6 @@ class okex extends Exchange {
     }
 
     public function parse_my_trade($pair, $market = null) {
-        if (!gettype($pair) === 'array' && count(array_filter(array_keys($pair), 'is_string')) == 0) {
-            throw new NotSupported($this->id . ' parseMyTrade() received unrecognized response format, the exchange API might have changed, paste your verbose outpu => https://github.com/ccxt/ccxt/wiki/FAQ#what-is-required-to-get-help');
-        }
-        // make sure it has exactly 2 trades, no more, no less
-        $numTradesInPair = is_array($pair) ? count($pair) : 0;
-        if ($numTradesInPair !== 2) {
-            throw new NotSupported($this->id . ' parseMyTrade() received unrecognized response format, more than two trades in one fill, the exchange API might have changed, paste your verbose output => https://github.com/ccxt/ccxt/wiki/FAQ#what-is-required-to-get-help');
-        }
         // check that trading symbols match in both entries
         $first = $pair[0];
         $second = $pair[1];
@@ -2697,8 +2690,12 @@ class okex extends Exchange {
         for ($i = 0; $i < count($tradeIds); $i++) {
             $tradeId = $tradeIds[$i];
             $pair = $grouped[$tradeId];
-            $trade = $this->parse_my_trade($pair);
-            $result[] = $trade;
+            // make sure it has exactly 2 $trades, no more, no less
+            $numTradesInPair = is_array($pair) ? count($pair) : 0;
+            if ($numTradesInPair === 2) {
+                $trade = $this->parse_my_trade($pair);
+                $result[] = $trade;
+            }
         }
         $symbol = null;
         if ($market !== null) {
@@ -3193,7 +3190,8 @@ class okex extends Exchange {
     public function handle_errors($code, $reason, $url, $method, $headers, $body, $response, $requestHeaders, $requestBody) {
         $feedback = $this->id . ' ' . $body;
         if ($code === 503) {
-            throw new ExchangeError($feedback);
+            // array("$message":"name resolution failed")
+            throw new ExchangeNotAvailable($feedback);
         }
         if (!$response) {
             return; // fallback to default error handler
@@ -3203,10 +3201,12 @@ class okex extends Exchange {
         if ($message !== null) {
             $this->throw_exactly_matched_exception($this->exceptions['exact'], $message, $feedback);
             $this->throw_broadly_matched_exception($this->exceptions['broad'], $message, $feedback);
-        }
-        $this->throw_exactly_matched_exception($this->exceptions['exact'], $errorCode, $feedback);
-        if ($message !== null) {
-            throw new ExchangeError($feedback); // unknown $message
+            $this->throw_exactly_matched_exception($this->exceptions['exact'], $errorCode, $feedback);
+            $nonEmptyMessage = ($message !== '');
+            $nonZeroErrorCode = ($errorCode !== null) && ($errorCode !== '0');
+            if ($nonZeroErrorCode || $nonEmptyMessage) {
+                throw new ExchangeError($feedback); // unknown $message
+            }
         }
     }
 }

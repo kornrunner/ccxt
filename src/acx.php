@@ -8,7 +8,7 @@ use \ccxt\OrderNotFound;
 class acx extends Exchange {
 
     public function describe() {
-        return array_replace_recursive(parent::describe (), array(
+        return $this->deep_extend(parent::describe (), array(
             'id' => 'acx',
             'name' => 'ACX',
             'countries' => array( 'AU' ),

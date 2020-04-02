@@ -9,7 +9,7 @@ use \ccxt\ArgumentsRequired;
 class coinmate extends Exchange {
 
     public function describe() {
-        return array_replace_recursive(parent::describe (), array(
+        return $this->deep_extend(parent::describe (), array(
             'id' => 'coinmate',
             'name' => 'CoinMate',
             'countries' => array( 'GB', 'CZ', 'EU' ), // UK, Czech Republic
@@ -163,6 +163,7 @@ class coinmate extends Exchange {
                     'No order with given ID' => '\\ccxt\\OrderNotFound',
                 ),
                 'broad' => array(
+                    'Not enough account balance available' => '\\ccxt\\InsufficientFunds',
                     'Incorrect order ID' => '\\ccxt\\InvalidOrder',
                     'Minimum Order Size ' => '\\ccxt\\InvalidOrder',
                     'TOO MANY REQUESTS' => '\\ccxt\\RateLimitExceeded',

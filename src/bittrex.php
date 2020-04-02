@@ -13,7 +13,7 @@ use \ccxt\DDoSProtection;
 class bittrex extends Exchange {
 
     public function describe() {
-        return array_replace_recursive(parent::describe (), array(
+        return $this->deep_extend(parent::describe (), array(
             'id' => 'bittrex',
             'name' => 'Bittrex',
             'countries' => array( 'US' ),
@@ -703,6 +703,7 @@ class bittrex extends Exchange {
         $isCeilingOrder = $isCeilingLimit || $isCeilingMarket;
         if ($isCeilingOrder) {
             $request['ceiling'] = $this->price_to_precision($symbol, $price);
+            // bittrex only accepts IMMEDIATE_OR_CANCEL or FILL_OR_KILL for ceiling orders
             $request['timeInForce'] = 'IMMEDIATE_OR_CANCEL';
         } else {
             $request['quantity'] = $this->amount_to_precision($symbol, $amount);
@@ -710,6 +711,7 @@ class bittrex extends Exchange {
                 $request['limit'] = $this->price_to_precision($symbol, $price);
                 $request['timeInForce'] = 'GOOD_TIL_CANCELLED';
             } else {
+                // bittrex does not allow GOOD_TIL_CANCELLED for $market orders
                 $request['timeInForce'] = 'IMMEDIATE_OR_CANCEL';
             }
         }

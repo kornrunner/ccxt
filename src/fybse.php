@@ -8,7 +8,7 @@ use \ccxt\ExchangeError;
 class fybse extends Exchange {
 
     public function describe() {
-        return array_replace_recursive(parent::describe (), array(
+        return $this->deep_extend(parent::describe (), array(
             'id' => 'fybse',
             'name' => 'FYB-SE',
             'countries' => array( 'SE' ), // Sweden
