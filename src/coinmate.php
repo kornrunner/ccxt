@@ -561,6 +561,7 @@ class coinmate extends Exchange {
         $statuses = array(
             'FILLED' => 'closed',
             'CANCELLED' => 'canceled',
+            'PARTIALLY_FILLED' => 'open',
             'OPEN' => 'open',
         );
         return $this->safe_string($statuses, $status, $status);
@@ -628,7 +629,10 @@ class coinmate extends Exchange {
         $filled = null;
         $cost = null;
         if (($amount !== null) && ($remaining !== null)) {
-            $filled = $amount - $remaining;
+            $filled = min ($amount - $remaining, 0);
+            if ($remaining === 0) {
+                $status = 'closed';
+            }
             if ($price !== null) {
                 $cost = $filled * $price;
             }
