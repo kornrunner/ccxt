@@ -4,6 +4,7 @@ namespace ccxt;
 
 use Exception; // a common import
 use \ccxt\ExchangeError;
+use \ccxt\ArgumentsRequired;
 use \ccxt\AddressPending;
 use \ccxt\NotSupported;
 
@@ -693,7 +694,7 @@ class buda extends Exchange {
     public function fetch_deposits($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         if ($code === null) {
-            throw new ExchangeError($this->id . ' => fetchDeposits() requires a $currency $code argument');
+            throw new ArgumentsRequired($this->id . ' => fetchDeposits() requires a $currency $code argument');
         }
         $currency = $this->currency($code);
         $request = array(
@@ -708,7 +709,7 @@ class buda extends Exchange {
     public function fetch_withdrawals($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         if ($code === null) {
-            throw new ExchangeError($this->id . ' => fetchDeposits() requires a $currency $code argument');
+            throw new ArgumentsRequired($this->id . ' => fetchDeposits() requires a $currency $code argument');
         }
         $currency = $this->currency($code);
         $request = array(

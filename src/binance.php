@@ -218,6 +218,8 @@ class binance extends Exchange {
                         'income',
                     ),
                     'post' => array(
+                        'batchOrders',
+                        'positionSide/dual',
                         'positionMargin',
                         'marginType',
                         'order',
@@ -228,6 +230,7 @@ class binance extends Exchange {
                         'listenKey',
                     ),
                     'delete' => array(
+                        'batchOrders',
                         'order',
                         'allOpenOrders',
                         'listenKey',

@@ -3,7 +3,7 @@
 namespace ccxt;
 
 use Exception; // a common import
-use \ccxt\ExchangeError;
+use \ccxt\ArgumentsRequired;
 
 class lbank extends Exchange {
 
@@ -338,10 +338,10 @@ class lbank extends Exchange {
         $this->load_markets();
         $market = $this->market($symbol);
         if ($since === null) {
-            throw new ExchangeError($this->id . ' fetchOHLCV requires a `$since` argument');
+            throw new ArgumentsRequired($this->id . ' fetchOHLCV requires a `$since` argument');
         }
         if ($limit === null) {
-            throw new ExchangeError($this->id . ' fetchOHLCV requires a `$limit` argument');
+            throw new ArgumentsRequired($this->id . ' fetchOHLCV requires a `$limit` argument');
         }
         $request = array(
             'symbol' => $market['id'],
