@@ -5,6 +5,7 @@ namespace ccxt;
 use Exception; // a common import
 use \ccxt\ExchangeError;
 use \ccxt\ArgumentsRequired;
+use \ccxt\BadRequest;
 use \ccxt\OrderNotFound;
 use \ccxt\NotSupported;
 
@@ -16,7 +17,7 @@ class exmo extends Exchange {
             'name' => 'EXMO',
             'countries' => array( 'ES', 'RU' ), // Spain, Russia
             'rateLimit' => 350, // once every 350 ms ≈ 180 requests per minute ≈ 3 requests per second
-            'version' => 'v1',
+            'version' => 'v1.1',
             'has' => array(
                 'CORS' => false,
                 'fetchClosedOrders' => 'emulated',
@@ -34,6 +35,21 @@ class exmo extends Exchange {
                 'fetchFundingFees' => true,
                 'fetchCurrencies' => true,
                 'fetchTransactions' => true,
+                'fetchOHLCV' => true,
+            ),
+            'timeframes' => array(
+                '1m' => '1',
+                '5m' => '5',
+                '15m' => '15',
+                '30m' => '30',
+                '45m' => '45',
+                '1h' => '60',
+                '2h' => '120',
+                '3h' => '180',
+                '4h' => '240',
+                '1d' => 'D',
+                '1w' => 'W',
+                '1M' => 'M',
             ),
             'urls' => array(
                 'logo' => 'https://user-images.githubusercontent.com/1294454/27766491-1b0ea956-5eda-11e7-9225-40d67b481b8d.jpg',
@@ -64,6 +80,7 @@ class exmo extends Exchange {
                         'pair_settings',
                         'ticker',
                         'trades',
+                        'candles_history',
                     ),
                 ),
                 'private' => array(
@@ -71,6 +88,8 @@ class exmo extends Exchange {
                         'user_info',
                         'order_create',
                         'order_cancel',
+                        'stop_market_order_create',
+                        'stop_market_order_cancel',
                         'user_open_orders',
                         'user_trades',
                         'user_cancelled_orders',
@@ -422,6 +441,7 @@ class exmo extends Exchange {
                     '40015' => '\\ccxt\\ExchangeError', // API function do not exist
                     '40016' => '\\ccxt\\OnMaintenance', // array("result":false,"error":"Error 40016 => Maintenance work in progress")
                     '40017' => '\\ccxt\\AuthenticationError', // Wrong API Key
+                    '40032' => '\\ccxt\\PermissionDenied', // array("result":false,"error":"Error 40032 => Access is denied for this API key")
                     '40034' => '\\ccxt\\RateLimitExceeded', // array("result":false,"error":"Error 40034 => Access is denied, rate limit is exceeded")
                     '50052' => '\\ccxt\\InsufficientFunds',
                     '50054' => '\\ccxt\\InsufficientFunds',
@@ -431,6 +451,8 @@ class exmo extends Exchange {
                     '50321' => '\\ccxt\\InvalidOrder', // Price by order is more than permissible maximum for this pair
                 ),
                 'broad' => array(
+                    'range period is too long' => '\\ccxt\\BadRequest',
+                    'invalid syntax' => '\\ccxt\\BadRequest',
                     'API rate limit exceeded' => '\\ccxt\\RateLimitExceeded', // array("result":false,"error":"API rate limit exceeded for 99.33.55.224. Retry after 60 sec.","history":array(),"begin":1579392000,"end":1579478400)
                 ),
             ),
@@ -592,8 +614,21 @@ class exmo extends Exchange {
     }
 
     public function fetch_markets($params = array ()) {
-        $fees = $this->fetch_trading_fees();
         $response = $this->publicGetPairSettings ($params);
+        //
+        //     {
+        //         "EXM_ETH" => array(
+        //         "min_quantity" => "1",
+        //         "max_quantity" => "1000",
+        //         "min_price" => "1",
+        //         "max_price" => "1000",
+        //         "max_amount" => "1000",
+        //         "min_amount" => "1",
+        //         "commission_taker_percent" => "0.2",
+        //         "commission_maker_percent" => "0.2"
+        //         ),
+        //     }
+        //
         $keys = is_array($response) ? array_keys($response) : array();
         $result = array();
         for ($i = 0; $i < count($keys); $i++) {
@@ -603,6 +638,8 @@ class exmo extends Exchange {
             list($baseId, $quoteId) = explode('/', $symbol);
             $base = $this->safe_currency_code($baseId);
             $quote = $this->safe_currency_code($quoteId);
+            $taker = $this->safe_float($market, 'commission_taker_percent');
+            $maker = $this->safe_float($market, 'commission_maker_percent');
             $result[] = array(
                 'id' => $id,
                 'symbol' => $symbol,
@@ -611,8 +648,8 @@ class exmo extends Exchange {
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
                 'active' => true,
-                'taker' => $fees['taker'],
-                'maker' => $fees['maker'],
+                'taker' => $taker / 100,
+                'maker' => $maker / 100,
                 'limits' => array(
                     'amount' => array(
                         'min' => $this->safe_float($market, 'min_quantity'),
@@ -635,6 +672,74 @@ class exmo extends Exchange {
             );
         }
         return $result;
+    }
+
+    public function fetch_ohlcv($symbol, $timeframe = '1m', $since = null, $limit = null, $params = array ()) {
+        $this->load_markets();
+        $market = $this->market($symbol);
+        $request = array(
+            'symbol' => $market['id'],
+            'resolution' => $this->timeframes[$timeframe],
+        );
+        $options = $this->safe_value($this->options, 'fetchOHLCV');
+        $maxLimit = $this->safe_integer($options, 'maxLimit', 3000);
+        $duration = $this->parse_timeframe($timeframe);
+        $now = $this->milliseconds();
+        if ($since === null) {
+            if ($limit === null) {
+                throw new ArgumentsRequired($this->id . ' fetchOHLCV requires a $since argument or a $limit argument');
+            } else {
+                if ($limit > $maxLimit) {
+                    throw new BadRequest($this->id . ' fetchOHLCV will serve ' . (string) $maxLimit . ' $candles at most');
+                }
+                $request['from'] = intval ($now / 1000) - $limit * $duration;
+                $request['to'] = intval ($now / 1000);
+            }
+        } else {
+            $request['from'] = intval ($since / 1000);
+            if ($limit === null) {
+                $request['to'] = intval ($now / 1000);
+            } else {
+                if ($limit > $maxLimit) {
+                    throw new BadRequest($this->id . ' fetchOHLCV will serve ' . (string) $maxLimit . ' $candles at most');
+                }
+                $to = $this->sum($since, $limit * $duration * 1000);
+                $request['to'] = intval ($to / 1000);
+            }
+        }
+        $response = $this->publicGetCandlesHistory (array_merge($request, $params));
+        //
+        //     {
+        //         "$candles":array(
+        //             array("t":1584057600000,"o":0.02235144,"c":0.02400233,"h":0.025171,"l":0.02221,"v":5988.34031761),
+        //             array("t":1584144000000,"o":0.0240373,"c":0.02367413,"h":0.024399,"l":0.0235,"v":2027.82522329),
+        //             array("t":1584230400000,"o":0.02363458,"c":0.02319242,"h":0.0237948,"l":0.02223196,"v":1707.96944997),
+        //         )
+        //     }
+        //
+        $candles = $this->safe_value($response, 'candles', array());
+        return $this->parse_ohlcvs($candles, $market, $timeframe, $since, $limit);
+    }
+
+    public function parse_ohlcv($ohlcv, $market = null, $timeframe = '5m', $since = null, $limit = null) {
+        //
+        //     {
+        //         "t":1584057600000,
+        //         "o":0.02235144,
+        //         "c":0.02400233,
+        //         "h":0.025171,
+        //         "l":0.02221,
+        //         "v":5988.34031761
+        //     }
+        //
+        return array(
+            $this->safe_integer($ohlcv, 't'),
+            $this->safe_float($ohlcv, 'o'),
+            $this->safe_float($ohlcv, 'h'),
+            $this->safe_float($ohlcv, 'l'),
+            $this->safe_float($ohlcv, 'c'),
+            $this->safe_float($ohlcv, 'v'),
+        );
     }
 
     public function fetch_balance($params = array ()) {
@@ -760,8 +865,36 @@ class exmo extends Exchange {
     }
 
     public function parse_trade($trade, $market = null) {
+        //
+        // fetchTrades (public)
+        //
+        //     array(
+        //         "trade_id":165087520,
+        //         "date":1587470005,
+        //         "$type":"buy",
+        //         "quantity":"1.004",
+        //         "$price":"0.02491461",
+        //         "$amount":"0.02501426"
+        //     ),
+        //
+        // fetchMyTrades, fetchOrderTrades
+        //
+        //     {
+        //         "trade_id" => 3,
+        //         "date" => 1435488248,
+        //         "$type" => "buy",
+        //         "pair" => "BTC_USD",
+        //         "order_id" => 12345,
+        //         "quantity" => 1,
+        //         "$price" => 100,
+        //         "$amount" => 100,
+        //         "exec_type" => "taker",
+        //         "commission_amount" => "0.02",
+        //         "commission_currency" => "BTC",
+        //         "commission_percent" => "0.2"
+        //     }
+        //
         $timestamp = $this->safe_timestamp($trade, 'date');
-        $fee = null;
         $symbol = null;
         $id = $this->safe_string($trade, 'trade_id');
         $orderId = $this->safe_string($trade, 'order_id');
@@ -770,24 +903,35 @@ class exmo extends Exchange {
         $cost = $this->safe_float($trade, 'amount');
         $side = $this->safe_string($trade, 'type');
         $type = null;
-        if ($market !== null) {
+        $marketId = $this->safe_string($trade, 'pair');
+        if ($marketId !== null) {
+            if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
+                $market = $this->markets_by_id[$marketId];
+            } else {
+                list($baseId, $quoteId) = explode('_', $marketId);
+                $base = $this->safe_currency_code($baseId);
+                $quote = $this->safe_currency_code($quoteId);
+                $symbol = $base . '/' . $quote;
+            }
+        }
+        if (($symbol === null) && ($market !== null)) {
             $symbol = $market['symbol'];
-            if ($market['taker'] !== $market['maker']) {
-                throw new ExchangeError($this->id . ' parseTrade can not deduce proper $fee costs, taker and maker fees now differ');
+        }
+        $takerOrMaker = $this->safe_string($trade, 'exec_type');
+        $fee = null;
+        $feeCost = $this->safe_float($trade, 'commission_amount');
+        if ($feeCost !== null) {
+            $feeCurrencyId = $this->safe_string($trade, 'commision_currency');
+            $feeCurrencyCode = $this->safe_currency_code($feeCurrencyId);
+            $feeRate = $this->safe_float($trade, 'commision_percent');
+            if ($feeRate !== null) {
+                $feeRate /= 1000;
             }
-            if (($side === 'buy') && ($amount !== null)) {
-                $fee = array(
-                    'currency' => $market['base'],
-                    'cost' => $amount * $market['taker'],
-                    'rate' => $market['taker'],
-                );
-            } else if (($side === 'sell') && ($cost !== null)) {
-                $fee = array(
-                    'currency' => $market['quote'],
-                    'cost' => $cost * $market['taker'],
-                    'rate' => $market['taker'],
-                );
-            }
+            $fee = array(
+                'cost' => $feeCost,
+                'currency' => $feeCurrencyCode,
+                'rate' => $feeRate,
+            );
         }
         return array(
             'id' => $id,
@@ -798,7 +942,7 @@ class exmo extends Exchange {
             'order' => $orderId,
             'type' => $type,
             'side' => $side,
-            'takerOrMaker' => null,
+            'takerOrMaker' => $takerOrMaker,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
@@ -813,6 +957,28 @@ class exmo extends Exchange {
             'pair' => $market['id'],
         );
         $response = $this->publicGetTrades (array_merge($request, $params));
+        //
+        //     {
+        //         "ETH_BTC":array(
+        //             array(
+        //                 "trade_id":165087520,
+        //                 "date":1587470005,
+        //                 "type":"buy",
+        //                 "quantity":"1.004",
+        //                 "price":"0.02491461",
+        //                 "amount":"0.02501426"
+        //             ),
+        //             {
+        //                 "trade_id":165087369,
+        //                 "date":1587469938,
+        //                 "type":"buy",
+        //                 "quantity":"0.94",
+        //                 "price":"0.02492348",
+        //                 "amount":"0.02342807"
+        //             }
+        //         )
+        //     }
+        //
         $data = $this->safe_value($response, $market['id'], array());
         return $this->parse_trades($data, $market, $since, $limit);
     }
@@ -970,6 +1136,31 @@ class exmo extends Exchange {
             'order_id' => (string) $id,
         );
         $response = $this->privatePostOrderTrades (array_merge($request, $params));
+        //
+        //     {
+        //         "type" => "buy",
+        //         "in_currency" => "BTC",
+        //         "in_amount" => "1",
+        //         "out_currency" => "USD",
+        //         "out_amount" => "100",
+        //         "$trades" => array(
+        //             {
+        //                 "trade_id" => 3,
+        //                 "date" => 1435488248,
+        //                 "type" => "buy",
+        //                 "pair" => "BTC_USD",
+        //                 "order_id" => 12345,
+        //                 "quantity" => 1,
+        //                 "price" => 100,
+        //                 "amount" => 100,
+        //                 "exec_type" => "taker",
+        //                 "commission_amount" => "0.02",
+        //                 "commission_currency" => "BTC",
+        //                 "commission_percent" => "0.2"
+        //             }
+        //         )
+        //     }
+        //
         $trades = $this->safe_value($response, 'trades');
         return $this->parse_trades($trades, $market, $since, $limit);
     }
@@ -1417,9 +1608,10 @@ class exmo extends Exchange {
         if ($response === null) {
             return; // fallback to default error handler
         }
-        if (is_array($response) && array_key_exists('result', $response)) {
+        if ((is_array($response) && array_key_exists('result', $response)) || (is_array($response) && array_key_exists('errmsg', $response))) {
             //
             //     array("result":false,"error":"Error 50052 => Insufficient funds")
+            //     array("s":"error","errmsg":"strconv.ParseInt => parsing \"\" => invalid syntax")
             //
             $success = $this->safe_value($response, 'result', false);
             if (gettype($success) === 'string') {
@@ -1431,7 +1623,7 @@ class exmo extends Exchange {
             }
             if (!$success) {
                 $code = null;
-                $message = $this->safe_string($response, 'error');
+                $message = $this->safe_string_2($response, 'error', 'errmsg');
                 $errorParts = explode(':', $message);
                 $numParts = is_array($errorParts) ? count($errorParts) : 0;
                 if ($numParts > 1) {
