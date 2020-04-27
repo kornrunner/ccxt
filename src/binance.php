@@ -40,6 +40,7 @@ class binance extends Exchange {
                 'fetchTransactions' => false,
                 'fetchTradingFee' => true,
                 'fetchTradingFees' => true,
+                'cancelAllOrders' => true,
             ),
             'timeframes' => array(
                 '1m' => '1m',
@@ -137,6 +138,8 @@ class binance extends Exchange {
                         'lending/union/purchaseRecord',
                         'lending/union/redemptionRecord',
                         'lending/union/interestHistory',
+                        'lending/project/list',
+                        'lending/project/position/list',
                     ),
                     'post' => array(
                         'asset/dust',
@@ -153,6 +156,7 @@ class binance extends Exchange {
                         'userDataStream',
                         'futures/transfer',
                         // lending
+                        'lending/customizedFixed/purchase',
                         'lending/daily/purchase',
                         'lending/daily/redeem',
                     ),
@@ -277,6 +281,7 @@ class binance extends Exchange {
                         'order/test',
                     ),
                     'delete' => array(
+                        'openOrders', // added on 2020-04-25 for canceling all open orders per symbol
                         'orderList', // oco
                         'order',
                     ),
@@ -1349,6 +1354,27 @@ class binance extends Exchange {
         $method = $market['spot'] ? 'privateDeleteOrder' : 'fapiPrivateDeleteOrder';
         $response = $this->$method (array_merge($request, $params));
         return $this->parse_order($response);
+    }
+
+    public function cancel_all_orders($symbol = null, $params = array ()) {
+        if ($symbol === null) {
+            throw new ArgumentsRequired($this->id . ' cancelAllOrders requires a $symbol argument');
+        }
+        $this->load_markets();
+        $market = $this->market($symbol);
+        $request = array(
+            'symbol' => $market['id'],
+        );
+        $defaultType = $this->safe_string_2($this->options, 'cancelAllOrders', 'defaultType', 'spot');
+        $type = $this->safe_string($params, 'type', $defaultType);
+        $query = $this->omit($params, 'type');
+        $method = ($type === 'spot') ? 'privateDeleteOpenOrders' : 'fapiPrivateDeleteAllOpenOrders';
+        $response = $this->$method (array_merge($request, $query));
+        if (gettype($response) === 'array' && count(array_filter(array_keys($response), 'is_string')) == 0) {
+            return $this->parse_orders($response, $market);
+        } else {
+            return $response;
+        }
     }
 
     public function fetch_my_trades($symbol = null, $since = null, $limit = null, $params = array ()) {
