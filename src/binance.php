@@ -911,6 +911,10 @@ class binance extends Exchange {
         if ($market !== null) {
             $symbol = $market['symbol'];
         }
+        $cost = null;
+        if (($price !== null) && ($amount !== null)) {
+            $cost = $price * $amount;
+        }
         return array(
             'info' => $trade,
             'timestamp' => $timestamp,
@@ -919,11 +923,11 @@ class binance extends Exchange {
             'id' => $id,
             'order' => $orderId,
             'type' => null,
-            'takerOrMaker' => $takerOrMaker,
             'side' => $side,
+            'takerOrMaker' => $takerOrMaker,
             'price' => $price,
             'amount' => $amount,
-            'cost' => $price * $amount,
+            'cost' => $cost,
             'fee' => $fee,
         );
     }
