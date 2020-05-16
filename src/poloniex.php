@@ -1037,6 +1037,7 @@ class poloniex extends Exchange {
                 'id' => $newid,
                 'price' => $price,
                 'status' => 'open',
+                'trades' => array(),
             ));
             if ($amount !== null) {
                 $this->orders[$newid]['amount'] = $amount;
