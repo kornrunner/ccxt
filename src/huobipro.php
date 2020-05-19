@@ -76,6 +76,7 @@ class huobipro extends Exchange {
                 ),
                 'v2Private' => array(
                     'get' => array(
+                        'account/ledger',
                         'account/withdraw/quota',
                         'account/deposit/address',
                         'reference/transact-fee-rate',
