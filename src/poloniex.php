@@ -61,7 +61,7 @@ class poloniex extends Exchange {
                 'www' => 'https://www.poloniex.com',
                 'doc' => 'https://docs.poloniex.com',
                 'fees' => 'https://poloniex.com/fees',
-                'referral' => 'https://www.poloniex.com/?utm_source=ccxt&utm_medium=web',
+                'referral' => 'https://poloniex.com/signup?c=UBFZJRPJ',
             ),
             'api' => array(
                 'public' => array(
