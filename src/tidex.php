@@ -601,6 +601,7 @@ class tidex extends Exchange {
         return array(
             'info' => $order,
             'id' => $id,
+            'clientOrderId' => null,
             'symbol' => $symbol,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
@@ -614,7 +615,6 @@ class tidex extends Exchange {
             'filled' => $filled,
             'status' => $status,
             'fee' => $fee,
-            'clientOrderId' => null,
             'average' => null,
             'trades' => null,
         );
