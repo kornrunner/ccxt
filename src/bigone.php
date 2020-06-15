@@ -625,7 +625,7 @@ class bigone extends Exchange {
         //
         //     {
         //         code => 0,
-        //         data => array(
+        //         $data => array(
         //             array(
         //                 close => '0.021656',
         //                 high => '0.021658',
@@ -645,8 +645,8 @@ class bigone extends Exchange {
         //         )
         //     }
         //
-        $ohlcvs = $this->safe_value($response, 'data', array());
-        return $this->parse_ohlcvs($ohlcvs, $market, $timeframe, $since, $limit);
+        $data = $this->safe_value($response, 'data', array());
+        return $this->parse_ohlcvs($data, $market, $timeframe, $since, $limit);
     }
 
     public function fetch_balance($params = array ()) {

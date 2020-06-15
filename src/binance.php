@@ -127,6 +127,7 @@ class binance extends Exchange {
                         'sub-account/margin/account',
                         'sub-account/margin/accountSummary',
                         'sub-account/status',
+                        'sub-account/transfer/subUserHistory',
                         // lending endpoints
                         'lending/daily/product/list',
                         'lending/daily/userLeftQuota',
@@ -790,6 +791,22 @@ class binance extends Exchange {
     }
 
     public function parse_ohlcv($ohlcv, $market = null, $timeframe = '1m', $since = null, $limit = null) {
+        //
+        //     array(
+        //         1591478520000,
+        //         "0.02501300",
+        //         "0.02501800",
+        //         "0.02500000",
+        //         "0.02500000",
+        //         "22.19000000",
+        //         1591478579999,
+        //         "0.55490906",
+        //         40,
+        //         "10.92900000",
+        //         "0.27336462",
+        //         "0"
+        //     )
+        //
         return array(
             $this->safe_integer($ohlcv, 0),
             $this->safe_float($ohlcv, 1),
@@ -815,6 +832,13 @@ class binance extends Exchange {
         }
         $method = $market['spot'] ? 'publicGetKlines' : 'fapiPublicGetKlines';
         $response = $this->$method (array_merge($request, $params));
+        //
+        //     [
+        //         [1591478520000,"0.02501300","0.02501800","0.02500000","0.02500000","22.19000000",1591478579999,"0.55490906",40,"10.92900000","0.27336462","0"],
+        //         [1591478580000,"0.02499600","0.02500900","0.02499400","0.02500300","21.34700000",1591478639999,"0.53370468",24,"7.53800000","0.18850725","0"],
+        //         [1591478640000,"0.02500800","0.02501100","0.02500300","0.02500800","154.14200000",1591478699999,"3.85405839",97,"5.32300000","0.13312641","0"],
+        //     ]
+        //
         return $this->parse_ohlcvs($response, $market, $timeframe, $since, $limit);
     }
 
@@ -1197,8 +1221,8 @@ class binance extends Exchange {
             $test = $this->safe_value($params, 'test', false);
             if ($test) {
                 $method .= 'Test';
-                $params = $this->omit($params, 'test');
             }
+            $params = $this->omit($params, 'test');
         }
         $uppercaseType = strtoupper($type);
         $validOrderTypes = $this->safe_value($market['info'], 'orderTypes');
@@ -1213,46 +1237,81 @@ class binance extends Exchange {
         if ($clientOrderId !== null) {
             $request['newClientOrderId'] = $clientOrderId;
         }
-        $quoteOrderQty = $this->safe_value($this->options, 'quoteOrderQty', false);
-        if ($uppercaseType === 'MARKET' && $quoteOrderQty) {
-            $quoteOrderQty = $this->safe_float($params, 'quoteOrderQty');
-            $precision = $market['precision']['price'];
-            if ($quoteOrderQty !== null) {
-                $request['quoteOrderQty'] = $this->decimal_to_precision($quoteOrderQty, TRUNCATE, $precision, $this->precisionMode);
-                $params = $this->omit($params, 'quoteOrderQty');
-            } else if ($price !== null) {
-                $request['quoteOrderQty'] = $this->decimal_to_precision($amount * $price, TRUNCATE, $precision, $this->precisionMode);
-            } else {
-                $request['quantity'] = $this->amount_to_precision($symbol, $amount);
-            }
-        } else {
-            $request['quantity'] = $this->amount_to_precision($symbol, $amount);
-        }
         if ($market['spot']) {
             $request['newOrderRespType'] = $this->safe_value($this->options['newOrderRespType'], $type, 'RESULT'); // 'ACK' for order id, 'RESULT' for full order or 'FULL' for order with fills
         }
+        // additional required fields depending on the order $type
         $timeInForceIsRequired = false;
         $priceIsRequired = false;
         $stopPriceIsRequired = false;
-        if ($uppercaseType === 'LIMIT') {
+        $quantityIsRequired = false;
+        //
+        // spot/margin
+        //
+        //     LIMIT                timeInForce, quantity, $price
+        //     MARKET               quantity or $quoteOrderQty
+        //     STOP_LOSS            quantity, $stopPrice
+        //     STOP_LOSS_LIMIT      timeInForce, quantity, $price, $stopPrice
+        //     TAKE_PROFIT          quantity, $stopPrice
+        //     TAKE_PROFIT_LIMIT    timeInForce, quantity, $price, $stopPrice
+        //     LIMIT_MAKER          quantity, $price
+        //
+        // futures
+        //
+        //     LIMIT                timeInForce, quantity, $price
+        //     MARKET               quantity
+        //     STOP/TAKE_PROFIT     quantity, $price, $stopPrice
+        //     STOP_MARKET          $stopPrice
+        //     TAKE_PROFIT_MARKET   $stopPrice
+        //     TRAILING_STOP_MARKET callbackRate
+        //
+        if ($uppercaseType === 'MARKET') {
+            $quoteOrderQty = $this->safe_value($this->options, 'quoteOrderQty', false);
+            if ($quoteOrderQty) {
+                $quoteOrderQty = $this->safe_float($params, 'quoteOrderQty');
+                $precision = $market['precision']['price'];
+                if ($quoteOrderQty !== null) {
+                    $request['quoteOrderQty'] = $this->decimal_to_precision($quoteOrderQty, TRUNCATE, $precision, $this->precisionMode);
+                    $params = $this->omit($params, 'quoteOrderQty');
+                } else if ($price !== null) {
+                    $request['quoteOrderQty'] = $this->decimal_to_precision($amount * $price, TRUNCATE, $precision, $this->precisionMode);
+                } else {
+                    $quantityIsRequired = true;
+                }
+            } else {
+                $quantityIsRequired = true;
+            }
+        } else if ($uppercaseType === 'LIMIT') {
             $priceIsRequired = true;
             $timeInForceIsRequired = true;
+            $quantityIsRequired = true;
         } else if (($uppercaseType === 'STOP_LOSS') || ($uppercaseType === 'TAKE_PROFIT')) {
             $stopPriceIsRequired = true;
+            $quantityIsRequired = true;
             if ($market['future']) {
                 $priceIsRequired = true;
             }
         } else if (($uppercaseType === 'STOP_LOSS_LIMIT') || ($uppercaseType === 'TAKE_PROFIT_LIMIT')) {
+            $quantityIsRequired = true;
             $stopPriceIsRequired = true;
             $priceIsRequired = true;
             $timeInForceIsRequired = true;
         } else if ($uppercaseType === 'LIMIT_MAKER') {
             $priceIsRequired = true;
+            $quantityIsRequired = true;
         } else if ($uppercaseType === 'STOP') {
+            $quantityIsRequired = true;
             $stopPriceIsRequired = true;
             $priceIsRequired = true;
-        } else if ($uppercaseType === 'STOP_MARKET') {
+        } else if (($uppercaseType === 'STOP_MARKET') || ($uppercaseType === 'TAKE_PROFIT_MARKET')) {
+            $closePosition = $this->safe_value($params, 'closePosition');
+            if ($closePosition === null) {
+                $quantityIsRequired = true;
+            }
             $stopPriceIsRequired = true;
+        }
+        if ($quantityIsRequired) {
+            $request['quantity'] = $this->amount_to_precision($symbol, $amount);
         }
         if ($priceIsRequired) {
             if ($price === null) {
@@ -1422,7 +1481,7 @@ class binance extends Exchange {
         $defaultType = $this->safe_string_2($this->options, 'fetchOpenOrders', 'defaultType', $market['type']);
         $type = $this->safe_string($params, 'type', $defaultType);
         // https://github.com/ccxt/ccxt/issues/6507
-        $origClientOrderId = $this->safe_value($params, 'origClientOrderId');
+        $origClientOrderId = $this->safe_value_2($params, 'origClientOrderId', 'clientOrderId');
         $request = array(
             'symbol' => $market['id'],
             // 'orderId' => intval ($id),
@@ -1439,7 +1498,7 @@ class binance extends Exchange {
         } else if ($type === 'margin') {
             $method = 'sapiDeleteMarginOrder';
         }
-        $query = $this->omit($params, 'type');
+        $query = $this->omit($params, array( 'type', 'origClientOrderId', 'clientOrderId' ));
         $response = $this->$method (array_merge($request, $query));
         return $this->parse_order($response);
     }
