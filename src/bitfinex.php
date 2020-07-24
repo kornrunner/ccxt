@@ -20,22 +20,30 @@ class bitfinex extends Exchange {
             'pro' => true,
             // new metainfo interface
             'has' => array(
-                'CORS' => false,
                 'cancelAllOrders' => true,
+                'cancelOrder' => true,
+                'CORS' => false,
                 'createDepositAddress' => true,
+                'createOrder' => true,
                 'deposit' => true,
+                'editOrder' => true,
+                'fetchBalance' => true,
                 'fetchClosedOrders' => true,
                 'fetchDepositAddress' => true,
-                'fetchTradingFee' => true,
-                'fetchTradingFees' => true,
+                'fetchDeposits' => false,
                 'fetchFundingFees' => true,
+                'fetchMarkets' => true,
                 'fetchMyTrades' => true,
                 'fetchOHLCV' => true,
                 'fetchOpenOrders' => true,
                 'fetchOrder' => true,
+                'fetchOrderBook' => true,
+                'fetchTicker' => true,
                 'fetchTickers' => true,
+                'fetchTrades' => true,
+                'fetchTradingFee' => true,
+                'fetchTradingFees' => true,
                 'fetchTransactions' => true,
-                'fetchDeposits' => false,
                 'fetchWithdrawals' => false,
                 'withdraw' => true,
             ),
@@ -502,7 +510,7 @@ class bitfinex extends Exchange {
             $symbol = $base . '/' . $quote;
             $precision = array(
                 'price' => $this->safe_integer($market, 'price_precision'),
-                'amount' => null,
+                'amount' => 8, // https://github.com/ccxt/ccxt/issues/7310
             );
             $limits = array(
                 'amount' => array(
@@ -535,7 +543,7 @@ class bitfinex extends Exchange {
     }
 
     public function amount_to_precision($symbol, $amount) {
-        return $this->number_to_string($amount);
+        return $this->decimal_to_precision($amount, TRUNCATE, $this->markets[$symbol]['precision']['amount'], DECIMAL_PLACES);
     }
 
     public function calculate_fee($symbol, $type, $side, $amount, $price, $takerOrMaker = 'taker', $params = array ()) {
@@ -1183,6 +1191,7 @@ class bitfinex extends Exchange {
                 'X-BFX-APIKEY' => $this->apiKey,
                 'X-BFX-PAYLOAD' => $this->decode($payload),
                 'X-BFX-SIGNATURE' => $signature,
+                'Content-Type' => 'application/json',
             );
         }
         return array( 'url' => $url, 'method' => $method, 'body' => $body, 'headers' => $headers );

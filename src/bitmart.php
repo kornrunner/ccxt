@@ -29,6 +29,7 @@ class bitmart extends Exchange {
                 'fetchOHLCV' => true,
                 'fetchBalance' => true,
                 'createOrder' => true,
+                'createMarketOrder' => false,
                 'cancelOrder' => true,
                 'cancelAllOrders' => true,
                 'fetchOrders' => false,
@@ -683,7 +684,7 @@ class bitmart extends Exchange {
 
     public function fetch_balance($params = array ()) {
         $this->load_markets();
-        $balances = $this->privateGetWallet ($params);
+        $response = $this->privateGetWallet ($params);
         //
         //     array(
         //         {
@@ -694,9 +695,9 @@ class bitmart extends Exchange {
         //         }
         //     )
         //
-        $result = array( 'info' => $balances );
-        for ($i = 0; $i < count($balances); $i++) {
-            $balance = $balances[$i];
+        $result = array( 'info' => $response );
+        for ($i = 0; $i < count($response); $i++) {
+            $balance = $response[$i];
             $currencyId = $this->safe_string($balance, 'id');
             $code = $this->safe_currency_code($currencyId);
             $account = $this->account();
@@ -735,7 +736,7 @@ class bitmart extends Exchange {
         //     }
         //
         $id = $this->safe_string($order, 'entrust_id');
-        $timestamp = $this->milliseconds();
+        $timestamp = $this->safe_integer($order, 'timestamp', $this->milliseconds());
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $symbol = null;
         $marketId = $this->safe_string($order, 'symbol');
@@ -760,12 +761,12 @@ class bitmart extends Exchange {
         if ($amount !== null) {
             if ($remaining !== null) {
                 if ($filled === null) {
-                    $filled = $amount - $remaining;
+                    $filled = max (0, $amount - $remaining);
                 }
             }
             if ($filled !== null) {
                 if ($remaining === null) {
-                    $remaining = $amount - $filled;
+                    $remaining = max (0, $amount - $filled);
                 }
                 if ($cost === null) {
                     if ($price !== null) {
@@ -788,7 +789,7 @@ class bitmart extends Exchange {
             'side' => $side,
             'price' => $price,
             'amount' => $amount,
-            'cost' => null,
+            'cost' => $cost,
             'average' => null,
             'filled' => $filled,
             'remaining' => $remaining,

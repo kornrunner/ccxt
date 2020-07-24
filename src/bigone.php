@@ -17,16 +17,24 @@ class bigone extends Exchange {
             'rateLimit' => 1200, // 500 request per 10 minutes
             'has' => array(
                 'cancelAllOrders' => true,
+                'cancelOrder' => true,
                 'createMarketOrder' => false,
+                'createOrder' => true,
+                'fetchBalance' => true,
+                'fetchClosedOrders' => true,
                 'fetchDepositAddress' => true,
                 'fetchDeposits' => true,
+                'fetchMarkets' => true,
                 'fetchMyTrades' => true,
                 'fetchOHLCV' => true,
+                'fetchOpenOrders' => true,
                 'fetchOrder' => true,
                 'fetchOrders' => true,
-                'fetchOpenOrders' => true,
-                'fetchClosedOrders' => true,
+                'fetchOrderBook' => true,
+                'fetchTicker' => true,
                 'fetchTickers' => true,
+                'fetchTime' => true,
+                'fetchTrades' => true,
                 'fetchWithdrawals' => true,
                 'withdraw' => true,
             ),
@@ -364,6 +372,20 @@ class bigone extends Exchange {
             $result[$symbol] = $ticker;
         }
         return $result;
+    }
+
+    public function fetch_time($params = array ()) {
+        $response = $this->publicGetPing ($params);
+        //
+        //     {
+        //         "$data" => {
+        //             "$timestamp" => 1527665262168391000
+        //         }
+        //     }
+        //
+        $data = $this->safe_value($response, 'data', array());
+        $timestamp = $this->safe_integer($data, 'timestamp');
+        return intval ($timestamp / 1000000);
     }
 
     public function fetch_order_book($symbol, $limit = null, $params = array ()) {

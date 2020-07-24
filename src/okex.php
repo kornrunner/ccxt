@@ -1801,7 +1801,7 @@ class okex extends Exchange {
         $request = array(
             'instrument_id' => $market['id'],
             // 'client_oid' => 'abcdef1234567890', // [a-z0-9]array(1,32)
-            // 'order_type' => '0', // 0 => Normal limit order (Unfilled and 0 represent normal limit order) 1 => Post only 2 => Fill Or Kill 3 => Immediatel Or Cancel
+            // 'order_type' => '0', // 0 = Normal limit $order, 1 = Post only, 2 = Fill Or Kill, 3 = Immediatel Or Cancel, 4 = Market for futures only
         );
         $clientOrderId = $this->safe_string_2($params, 'client_oid', 'clientOrderId');
         if ($clientOrderId !== null) {
@@ -1814,9 +1814,13 @@ class okex extends Exchange {
             $request = array_merge($request, array(
                 'type' => $type, // 1:open long 2:open short 3:close long 4:close short for futures
                 'size' => $size,
-                'price' => $this->price_to_precision($symbol, $price),
-                // 'match_price' => '0', // Order at best counter party $price? (0:no 1:yes). The default is 0. If it is set as 1, the $price parameter will be ignored. When posting orders at best bid $price, order_type can only be 0 (regular order).
+                // 'match_price' => '0', // Order at best counter party $price? (0:no 1:yes). The default is 0. If it is set as 1, the $price parameter will be ignored. When posting orders at best bid $price, order_type can only be 0 (regular $order).
             ));
+            $orderType = $this->safe_string($params, 'order_type');
+            // order_type === '4' means a $market $order
+            if ($orderType !== '4') {
+                $request['price'] = $this->price_to_precision($symbol, $price);
+            }
             if ($market['futures']) {
                 $request['leverage'] = '10'; // or '20'
             }
@@ -1842,7 +1846,7 @@ class okex extends Exchange {
                                 $notional = $amount * $price;
                             }
                         } else if ($notional === null) {
-                            throw new InvalidOrder($this->id . " createOrder() requires the $price argument with $market buy orders to calculate total order cost ($amount to spend), where cost = $amount * $price-> Supply a $price argument to createOrder() call if you want the cost to be calculated for you from $price and $amount, or, alternatively, add .options['createMarketBuyOrderRequiresPrice'] = false and supply the total cost value in the 'amount' argument or in the 'notional' extra parameter (the exchange-specific behaviour)");
+                            throw new InvalidOrder($this->id . " createOrder() requires the $price argument with $market buy orders to calculate total $order cost ($amount to spend), where cost = $amount * $price-> Supply a $price argument to createOrder() call if you want the cost to be calculated for you from $price and $amount, or, alternatively, add .options['createMarketBuyOrderRequiresPrice'] = false and supply the total cost value in the 'amount' argument or in the 'notional' extra parameter (the exchange-specific behaviour)");
                         }
                     } else {
                         $notional = ($notional === null) ? $amount : $notional;
@@ -1865,7 +1869,11 @@ class okex extends Exchange {
         //         "result":true
         //     }
         //
-        return $this->parse_order($response, $market);
+        $order = $this->parse_order($response, $market);
+        return array_merge($order, array(
+            'type' => $type,
+            'side' => $side,
+        ));
     }
 
     public function cancel_order($id, $symbol = null, $params = array ()) {
@@ -1874,8 +1882,13 @@ class okex extends Exchange {
         }
         $this->load_markets();
         $market = $this->market($symbol);
-        $defaultType = $this->safe_string_2($this->options, 'cancelOrder', 'defaultType', $market['type']);
-        $type = $this->safe_string($params, 'type', $defaultType);
+        $type = null;
+        if ($market['futures'] || $market['swap']) {
+            $type = $market['type'];
+        } else {
+            $defaultType = $this->safe_string_2($this->options, 'cancelOrder', 'defaultType', $market['type']);
+            $type = $this->safe_string($params, 'type', $defaultType);
+        }
         if ($type === null) {
             throw new ArgumentsRequired($this->id . " cancelOrder requires a $type parameter (one of 'spot', 'margin', 'futures', 'swap').");
         }
@@ -2022,13 +2035,6 @@ class okex extends Exchange {
         if (($side !== 'buy') && ($side !== 'sell')) {
             $side = $this->parse_order_side($type);
         }
-        if (($type !== 'limit') && ($type !== 'market')) {
-            if (is_array($order) && array_key_exists('pnl', $order)) {
-                $type = 'futures';
-            } else {
-                $type = 'swap';
-            }
-        }
         $symbol = null;
         $marketId = $this->safe_string($order, 'instrument_id');
         if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
@@ -2077,6 +2083,9 @@ class okex extends Exchange {
             );
         }
         $clientOrderId = $this->safe_string($order, 'client_oid');
+        if (strlen($clientOrderId) < 1) {
+            $clientOrderId = null; // fix empty $clientOrderId string
+        }
         return array(
             'info' => $order,
             'id' => $id,
@@ -2180,8 +2189,13 @@ class okex extends Exchange {
         }
         $this->load_markets();
         $market = $this->market($symbol);
-        $defaultType = $this->safe_string_2($this->options, 'fetchOrder', 'defaultType', $market['type']);
-        $type = $this->safe_string($params, 'type', $defaultType);
+        $type = null;
+        if ($market['futures'] || $market['swap']) {
+            $type = $market['type'];
+        } else {
+            $defaultType = $this->safe_string_2($this->options, 'fetchOrder', 'defaultType', $market['type']);
+            $type = $this->safe_string($params, 'type', $defaultType);
+        }
         if ($type === null) {
             throw new ArgumentsRequired($this->id . " fetchOrder requires a $type parameter (one of 'spot', 'margin', 'futures', 'swap').");
         }
@@ -2265,7 +2279,7 @@ class okex extends Exchange {
         //     }
         //
         $orders = null;
-        if ($market['type'] === 'swap' || $market['type'] === 'futures') {
+        if ($market['swap'] || $market['futures']) {
             $orders = $this->safe_value($response, 'order_info', array());
         } else {
             $orders = $response;
@@ -3212,17 +3226,22 @@ class okex extends Exchange {
         if (!$response) {
             return; // fallback to default error handler
         }
+        //
+        //     array("error_message":"Order does not exist","result":"true","error_code":"35029","order_id":"-1")
+        //
         $message = $this->safe_string($response, 'message');
         $errorCode = $this->safe_string_2($response, 'code', 'error_code');
+        $nonEmptyMessage = (($message !== null) && ($message !== ''));
+        $nonZeroErrorCode = ($errorCode !== null) && ($errorCode !== '0');
         if ($message !== null) {
             $this->throw_exactly_matched_exception($this->exceptions['exact'], $message, $feedback);
             $this->throw_broadly_matched_exception($this->exceptions['broad'], $message, $feedback);
+        }
+        if ($errorCode !== null) {
             $this->throw_exactly_matched_exception($this->exceptions['exact'], $errorCode, $feedback);
-            $nonEmptyMessage = ($message !== '');
-            $nonZeroErrorCode = ($errorCode !== null) && ($errorCode !== '0');
-            if ($nonZeroErrorCode || $nonEmptyMessage) {
-                throw new ExchangeError($feedback); // unknown $message
-            }
+        }
+        if ($nonZeroErrorCode || $nonEmptyMessage) {
+            throw new ExchangeError($feedback); // unknown $message
         }
     }
 }
