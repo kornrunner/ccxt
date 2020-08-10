@@ -19,24 +19,31 @@ class poloniex extends Exchange {
             'certified' => false,
             'pro' => true,
             'has' => array(
+                'cancelOrder' => true,
                 'CORS' => false,
                 'createDepositAddress' => true,
                 'createMarketOrder' => false,
+                'createOrder' => true,
                 'editOrder' => true,
+                'fetchBalance' => true,
                 'fetchClosedOrders' => 'emulated',
                 'fetchCurrencies' => true,
                 'fetchDepositAddress' => true,
                 'fetchDeposits' => true,
+                'fetchMarkets' => true,
                 'fetchMyTrades' => true,
                 'fetchOHLCV' => true,
                 'fetchOpenOrder' => true, // true endpoint for a single open order
                 'fetchOpenOrders' => true, // true endpoint for open orders
                 'fetchOrder' => 'emulated', // no endpoint for a single open-or-closed order (just for an open order only)
+                'fetchOrderBook' => true,
                 'fetchOrderBooks' => true,
                 'fetchOrders' => 'emulated', // no endpoint for open-or-closed orders (just for open orders only)
                 'fetchOrderStatus' => 'emulated', // no endpoint for status of a single open-or-closed order (just for open orders only)
                 'fetchOrderTrades' => true, // true endpoint for trades of a single open or closed order
+                'fetchTicker' => true,
                 'fetchTickers' => true,
+                'fetchTrades' => true,
                 'fetchTradingFee' => true,
                 'fetchTradingFees' => true,
                 'fetchTransactions' => true,
@@ -275,6 +282,15 @@ class poloniex extends Exchange {
         return $this->parse_ohlcvs($response, $market, $timeframe, $since, $limit);
     }
 
+    public function load_markets($reload = false, $params = array ()) {
+        $markets = parent::load_markets($reload, $params);
+        $currenciesByNumericId = $this->safe_value($this->options, 'currenciesByNumericId');
+        if (($currenciesByNumericId === null) || $reload) {
+            $this->options['currenciesByNumericId'] = $this->index_by($this->currencies, 'numericId');
+        }
+        return $markets;
+    }
+
     public function fetch_markets($params = array ()) {
         $markets = $this->publicGetReturnTicker ($params);
         $keys = is_array($markets) ? array_keys($markets) : array();
@@ -461,6 +477,7 @@ class poloniex extends Exchange {
             $code = $this->safe_currency_code($id);
             $active = ($currency['delisted'] === 0) && !$currency['disabled'];
             $numericId = $this->safe_integer($currency, 'id');
+            $fee = $this->safe_float($currency, 'txFee');
             $result[$code] = array(
                 'id' => $id,
                 'numericId' => $numericId,
@@ -468,7 +485,7 @@ class poloniex extends Exchange {
                 'info' => $currency,
                 'name' => $currency['name'],
                 'active' => $active,
-                'fee' => $this->safe_float($currency, 'txFee'), // todo => redesign
+                'fee' => $fee,
                 'precision' => $precision,
                 'limits' => array(
                     'amount' => array(
@@ -484,7 +501,7 @@ class poloniex extends Exchange {
                         'max' => null,
                     ),
                     'withdraw' => array(
-                        'min' => $currency['txFee'],
+                        'min' => $fee,
                         'max' => pow(10, $precision),
                     ),
                 ),
@@ -1212,9 +1229,17 @@ class poloniex extends Exchange {
 
     public function create_deposit_address($code, $params = array ()) {
         $this->load_markets();
-        $currency = $this->currency($code);
+        // USDT, USDTETH, USDTTRON
+        $currencyId = null;
+        $currency = null;
+        if (is_array($this->currencies) && array_key_exists($code, $this->currencies)) {
+            $currency = $this->currency($code);
+            $currencyId = $currency['id'];
+        } else {
+            $currencyId = $code;
+        }
         $request = array(
-            'currency' => $currency['id'],
+            'currency' => $currencyId,
         );
         $response = $this->privatePostGenerateNewAddress (array_merge($request, $params));
         $address = null;
@@ -1223,10 +1248,12 @@ class poloniex extends Exchange {
             $address = $this->safe_string($response, 'response');
         }
         $this->check_address($address);
-        $depositAddress = $this->safe_string($currency['info'], 'depositAddress');
-        if ($depositAddress !== null) {
-            $tag = $address;
-            $address = $depositAddress;
+        if ($currency !== null) {
+            $depositAddress = $this->safe_string($currency['info'], 'depositAddress');
+            if ($depositAddress !== null) {
+                $tag = $address;
+                $address = $depositAddress;
+            }
         }
         return array(
             'currency' => $code,
@@ -1238,16 +1265,25 @@ class poloniex extends Exchange {
 
     public function fetch_deposit_address($code, $params = array ()) {
         $this->load_markets();
-        $currency = $this->currency($code);
         $response = $this->privatePostReturnDepositAddresses ($params);
-        $currencyId = $currency['id'];
+        // USDT, USDTETH, USDTTRON
+        $currencyId = null;
+        $currency = null;
+        if (is_array($this->currencies) && array_key_exists($code, $this->currencies)) {
+            $currency = $this->currency($code);
+            $currencyId = $currency['id'];
+        } else {
+            $currencyId = $code;
+        }
         $address = $this->safe_string($response, $currencyId);
         $tag = null;
         $this->check_address($address);
-        $depositAddress = $this->safe_string($currency['info'], 'depositAddress');
-        if ($depositAddress !== null) {
-            $tag = $address;
-            $address = $depositAddress;
+        if ($currency !== null) {
+            $depositAddress = $this->safe_string($currency['info'], 'depositAddress');
+            if ($depositAddress !== null) {
+                $tag = $address;
+                $address = $depositAddress;
+            }
         }
         return array(
             'currency' => $code,

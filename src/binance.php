@@ -232,7 +232,6 @@ class binance extends Exchange {
                         'ticker/bookTicker',
                         'allForceOrders',
                         'openInterest',
-                        'leverageBracket',
                     ),
                 ),
                 'fapiData' => array(
@@ -253,6 +252,7 @@ class binance extends Exchange {
                         'order',
                         'account',
                         'balance',
+                        'leverageBracket',
                         'positionMargin/history',
                         'positionRisk',
                         'positionSide/dual',
@@ -1674,7 +1674,14 @@ class binance extends Exchange {
         }
         $this->load_markets();
         $market = $this->market($symbol);
-        $method = $market['spot'] ? 'privateGetMyTrades' : 'fapiPrivateGetUserTrades';
+        $type = $this->safe_value($params, 'type', $market['type']);
+        $method = null;
+        if ($type === 'spot') {
+            $method = 'privateGetMyTrades';
+        } else if ($type === 'future') {
+            $method = 'fapiPrivateGetUserTrades';
+        }
+        $params = $this->omit($params, 'type');
         $request = array(
             'symbol' => $market['id'],
         );
@@ -1687,6 +1694,7 @@ class binance extends Exchange {
         $response = $this->$method (array_merge($request, $params));
         //
         // spot trade
+        //
         //     array(
         //         {
         //             "$symbol" => "BNBBTC",
@@ -1724,6 +1732,7 @@ class binance extends Exchange {
         //             "time" => 1569514978020
         //         }
         //     )
+        //
         return $this->parse_trades($response, $market, $since, $limit);
     }
 

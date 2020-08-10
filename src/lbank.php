@@ -110,6 +110,7 @@ class lbank extends Exchange {
             ),
             'commonCurrencies' => array(
                 'VET_ERC20' => 'VEN',
+                'PNT' => 'Penta',
             ),
             'options' => array(
                 'cacheSecretAsPem' => true,

@@ -34,6 +34,7 @@ class whitebit extends Exchange {
                 'fetchTicker' => true,
                 'fetchTickers' => true,
                 'fetchTrades' => true,
+                'fetchTradingFees' => true,
                 'privateAPI' => false,
                 'publicAPI' => true,
             ),
