@@ -190,6 +190,7 @@ class yobit extends Exchange {
                     'Rate Limited' => '\\ccxt\\RateLimitExceeded',
                 ),
             ),
+            'orders' => array(), // orders cache / emulation
         ));
     }
 

@@ -206,6 +206,7 @@ class poloniex extends Exchange {
                     'is either completed or does not exist' => '\\ccxt\\InvalidOrder', // array("error":"Order 587957810791 is either completed or does not exist.")
                 ),
             ),
+            'orders' => array(), // orders cache / emulation
         ));
     }
 

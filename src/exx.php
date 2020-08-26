@@ -356,7 +356,6 @@ class exx extends Exchange {
             'type' => $side,
             'info' => $response,
         ), $market);
-        $this->orders[$id] = $order;
         return $order;
     }
 
@@ -389,7 +388,7 @@ class exx extends Exchange {
             'currency' => $market['id'],
         );
         $response = $this->privateGetGetOpenOrders (array_merge($request, $params));
-        if (!gettype($response) === 'array' && count(array_filter(array_keys($response), 'is_string')) == 0) {
+        if (gettype($response) !== 'array' || count(array_filter(array_keys($response), 'is_string')) != 0) {
             return array();
         }
         return $this->parse_orders($response, $market, $since, $limit);

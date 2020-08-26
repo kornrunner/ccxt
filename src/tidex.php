@@ -127,6 +127,7 @@ class tidex extends Exchange {
             'options' => array(
                 'fetchTickersMaxLength' => 2048,
             ),
+            'orders' => array(), // orders cache / emulation
         ));
     }
 

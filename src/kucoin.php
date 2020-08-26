@@ -1299,6 +1299,9 @@ class kucoin extends Exchange {
             );
         }
         $type = $this->safe_string($trade, 'type');
+        if ($type === 'match') {
+            $type = null;
+        }
         $cost = $this->safe_float_2($trade, 'funds', 'dealValue');
         if ($cost === null) {
             if ($amount !== null) {

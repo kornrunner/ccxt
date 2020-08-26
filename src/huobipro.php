@@ -116,7 +116,7 @@ class huobipro extends Exchange {
                     'get' => array(
                         'account/accounts', // 查询当前用户的所有账户(即account-id)
                         'account/accounts/{id}/balance', // 查询指定账户的余额
-                        'account/accounts/array(sub-uid)',
+                        'account/accounts/{sub-uid}',
                         'account/history',
                         'cross-margin/loan-info',
                         'fee/fee-rate/get',
@@ -129,6 +129,7 @@ class huobipro extends Exchange {
                         'order/matchresults', // 查询当前成交、历史成交
                         'dw/withdraw-virtual/addresses', // 查询虚拟币提现地址
                         'query/deposit-withdraw',
+                        'margin/loan-info',
                         'margin/loan-orders', // 借贷订单
                         'margin/accounts/balance', // 借贷账户详情
                         'points/actions',
@@ -562,6 +563,24 @@ class huobipro extends Exchange {
         //
         // fetchMyTrades (private)
         //
+        //     array(
+        //          'symbol' => 'swftcbtc',
+        //          'fee-currency' => 'swftc',
+        //          'filled-fees' => '0',
+        //          'source' => 'spot-api',
+        //          'id' => 83789509854000,
+        //          'type' => 'buy-limit',
+        //          'order-id' => 83711103204909,
+        //          'filled-points' => '0.005826843283532154',
+        //          'fee-deduct-currency' => 'ht',
+        //          'filled-amount' => '45941.53',
+        //          'price' => '0.0000001401',
+        //          'created-at' => 1597933260729,
+        //          'match-id' => 100087455560,
+        //          'role' => 'maker',
+        //          'trade-id' => 100050305348
+        //     ),
+        //
         $symbol = null;
         if ($market === null) {
             $marketId = $this->safe_string($trade, 'symbol');
@@ -594,7 +613,7 @@ class huobipro extends Exchange {
         $feeCost = $this->safe_float($trade, 'filled-fees');
         $feeCurrency = null;
         if ($market !== null) {
-            $feeCurrency = ($side === 'buy') ? $market['base'] : $market['quote'];
+            $feeCurrency = $this->safe_currency_code($this->safe_string($trade, 'fee-currency'));
         }
         $filledPoints = $this->safe_float($trade, 'filled-points');
         if ($filledPoints !== null) {
