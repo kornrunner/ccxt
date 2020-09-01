@@ -520,6 +520,9 @@ class kucoin extends Exchange {
                 $symbol = $market['symbol'];
             }
         }
+        $baseVolume = $this->safe_float($ticker, 'vol');
+        $quoteVolume = $this->safe_float($ticker, 'volValue');
+        $vwap = $this->vwap($baseVolume, $quoteVolume);
         $timestamp = $this->safe_integer_2($ticker, 'time', 'datetime');
         return array(
             'symbol' => $symbol,
@@ -531,7 +534,7 @@ class kucoin extends Exchange {
             'bidVolume' => null,
             'ask' => $this->safe_float($ticker, 'sell'),
             'askVolume' => null,
-            'vwap' => null,
+            'vwap' => $vwap,
             'open' => $this->safe_float($ticker, 'open'),
             'close' => $last,
             'last' => $last,
@@ -539,8 +542,8 @@ class kucoin extends Exchange {
             'change' => $this->safe_float($ticker, 'changePrice'),
             'percentage' => $percentage,
             'average' => $this->safe_float($ticker, 'averagePrice'),
-            'baseVolume' => $this->safe_float($ticker, 'vol'),
-            'quoteVolume' => $this->safe_float($ticker, 'volValue'),
+            'baseVolume' => $baseVolume,
+            'quoteVolume' => $quoteVolume,
             'info' => $ticker,
         );
     }

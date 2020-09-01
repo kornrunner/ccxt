@@ -445,14 +445,7 @@ class hitbtc extends Exchange {
                 $percentage = $change / $open * 100;
             }
         }
-        $vwap = null;
-        if ($quoteVolume !== null) {
-            if ($baseVolume !== null) {
-                if ($baseVolume > 0) {
-                    $vwap = $quoteVolume / $baseVolume;
-                }
-            }
-        }
+        $vwap = $this->vwap($baseVolume, $quoteVolume);
         return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
