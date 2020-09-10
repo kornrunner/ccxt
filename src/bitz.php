@@ -407,10 +407,10 @@ class bitz extends Exchange {
             return $microtime;
         }
         $parts = explode(' ', $microtime);
-        $milliseconds = floatval ($parts[0]);
-        $seconds = intval ($parts[1]);
+        $milliseconds = floatval($parts[0]);
+        $seconds = intval($parts[1]);
         $total = $this->sum($seconds, $milliseconds);
-        return intval ($total * 1000);
+        return intval($total * 1000);
     }
 
     public function fetch_ticker($symbol, $params = array ()) {
@@ -522,7 +522,7 @@ class bitz extends Exchange {
                 ));
             }
         }
-        return $result;
+        return $this->filter_by_array($result, 'symbol', $symbols);
     }
 
     public function fetch_time($params = array ()) {
@@ -968,8 +968,8 @@ class bitz extends Exchange {
             $request['pageSize'] = $limit;
         }
         if ($since !== null) {
-            $request['startTime'] = intval ($since / 1000);
-            // $request['endTime'] = intval ($since / 1000);
+            $request['startTime'] = intval($since / 1000);
+            // $request['endTime'] = intval($since / 1000);
         }
         $response = $this->$method (array_merge($request, $params));
         //
@@ -1163,7 +1163,7 @@ class bitz extends Exchange {
             'type' => $this->parse_transaction_type($type),
         );
         if ($since !== null) {
-            $request['startTime'] = intval ($since / (string) 1000);
+            $request['startTime'] = intval($since / (string) 1000);
         }
         if ($limit !== null) {
             $request['page'] = 1;

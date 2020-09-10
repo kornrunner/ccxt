@@ -392,7 +392,7 @@ class livecoin extends Exchange {
             $ticker = $tickers[$id];
             $result[$symbol] = $this->parse_ticker($ticker, $market);
         }
-        return $result;
+        return $this->filter_by_array($result, 'symbol', $symbols);
     }
 
     public function fetch_ticker($symbol, $params = array ()) {
@@ -662,7 +662,7 @@ class livecoin extends Exchange {
             $request['currencyPair'] = $market['id'];
         }
         if ($since !== null) {
-            $request['issuedFrom'] = intval ($since);
+            $request['issuedFrom'] = intval($since);
         }
         if ($limit !== null) {
             $request['endRow'] = $limit - 1;
@@ -835,7 +835,7 @@ class livecoin extends Exchange {
         $request = array(
             'types' => 'DEPOSIT',
             'end' => $now,
-            'start' => ($since !== null) ? intval ($since) : $now - $endtime,
+            'start' => ($since !== null) ? intval($since) : $now - $endtime,
         );
         $currency = null;
         if ($code !== null) {
@@ -855,7 +855,7 @@ class livecoin extends Exchange {
         $request = array(
             'types' => 'WITHDRAWAL',
             'end' => $now,
-            'start' => ($since !== null) ? intval ($since) : $now - $endtime,
+            'start' => ($since !== null) ? intval($since) : $now - $endtime,
         );
         $currency = null;
         if ($code !== null) {

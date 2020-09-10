@@ -311,7 +311,7 @@ class kraken extends Exchange {
             $symbol = $darkpool ? $market['altname'] : ($base . '/' . $quote);
             $maker = null;
             if (is_array($market) && array_key_exists('fees_maker', $market)) {
-                $maker = floatval ($market['fees_maker'][0][1]) / 100;
+                $maker = floatval($market['fees_maker'][0][1]) / 100;
             }
             $precision = array(
                 'amount' => $market['lot_decimals'],
@@ -329,7 +329,7 @@ class kraken extends Exchange {
                 'info' => $market,
                 'altname' => $market['altname'],
                 'maker' => $maker,
-                'taker' => floatval ($market['fees'][0][1]) / 100,
+                'taker' => floatval($market['fees'][0][1]) / 100,
                 'active' => true,
                 'precision' => $precision,
                 'limits' => array(
@@ -519,22 +519,22 @@ class kraken extends Exchange {
         if ($market) {
             $symbol = $market['symbol'];
         }
-        $baseVolume = floatval ($ticker['v'][1]);
-        $vwap = floatval ($ticker['p'][1]);
+        $baseVolume = floatval($ticker['v'][1]);
+        $vwap = floatval($ticker['p'][1]);
         $quoteVolume = null;
         if ($baseVolume !== null && $vwap !== null) {
             $quoteVolume = $baseVolume * $vwap;
         }
-        $last = floatval ($ticker['c'][0]);
+        $last = floatval($ticker['c'][0]);
         return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
-            'high' => floatval ($ticker['h'][1]),
-            'low' => floatval ($ticker['l'][1]),
-            'bid' => floatval ($ticker['b'][0]),
+            'high' => floatval($ticker['h'][1]),
+            'low' => floatval($ticker['l'][1]),
+            'bid' => floatval($ticker['b'][0]),
             'bidVolume' => null,
-            'ask' => floatval ($ticker['a'][0]),
+            'ask' => floatval($ticker['a'][0]),
             'askVolume' => null,
             'vwap' => $vwap,
             'open' => $this->safe_float($ticker, 'o'),
@@ -573,11 +573,9 @@ class kraken extends Exchange {
             $market = $this->markets_by_id[$id];
             $symbol = $market['symbol'];
             $ticker = $tickers[$id];
-            if ($this->in_array($symbol, $symbols)) {
-                $result[$symbol] = $this->parse_ticker($ticker, $market);
-            }
+            $result[$symbol] = $this->parse_ticker($ticker, $market);
         }
-        return $result;
+        return $this->filter_by_array($result, 'symbol', $symbols);
     }
 
     public function fetch_ticker($symbol, $params = array ()) {
@@ -626,7 +624,7 @@ class kraken extends Exchange {
             'interval' => $this->timeframes[$timeframe],
         );
         if ($since !== null) {
-            $request['since'] = intval (($since - 1) / 1000);
+            $request['since'] = intval(($since - 1) / 1000);
         }
         $response = $this->publicGetOHLC (array_merge($request, $params));
         //
@@ -691,7 +689,7 @@ class kraken extends Exchange {
         $time = $this->safe_float($item, 'time');
         $timestamp = null;
         if ($time !== null) {
-            $timestamp = intval ($time * 1000);
+            $timestamp = intval($time * 1000);
         }
         $fee = array(
             'cost' => $this->safe_float($item, 'fee'),
@@ -729,7 +727,7 @@ class kraken extends Exchange {
             $request['asset'] = $currency['id'];
         }
         if ($since !== null) {
-            $request['start'] = intval ($since / 1000);
+            $request['start'] = intval($since / 1000);
         }
         $response = $this->privatePostLedgers (array_merge($request, $params));
         // {  error => array(),
@@ -1228,7 +1226,7 @@ class kraken extends Exchange {
         $this->load_markets();
         $options = $this->safe_value($this->options, 'fetchOrderTrades', array());
         $batchSize = $this->safe_integer($options, 'batchSize', 20);
-        $numBatches = intval ($tradeIds / $batchSize);
+        $numBatches = intval($tradeIds / $batchSize);
         $numBatches = $this->sum($numBatches, 1);
         $numTradeIds = is_array($tradeIds) ? count($tradeIds) : 0;
         $result = array();
@@ -1305,7 +1303,7 @@ class kraken extends Exchange {
             // 'ofs' = $result offset
         );
         if ($since !== null) {
-            $request['start'] = intval ($since / 1000);
+            $request['start'] = intval($since / 1000);
         }
         $response = $this->privatePostTradesHistory (array_merge($request, $params));
         //
@@ -1367,7 +1365,7 @@ class kraken extends Exchange {
         $this->load_markets();
         $request = array();
         if ($since !== null) {
-            $request['start'] = intval ($since / 1000);
+            $request['start'] = intval($since / 1000);
         }
         $response = $this->privatePostOpenOrders (array_merge($request, $params));
         $orders = $this->parse_orders($response['result']['open'], null, $since, $limit);
@@ -1381,7 +1379,7 @@ class kraken extends Exchange {
         $this->load_markets();
         $request = array();
         if ($since !== null) {
-            $request['start'] = intval ($since / 1000);
+            $request['start'] = intval($since / 1000);
         }
         $response = $this->privatePostClosedOrders (array_merge($request, $params));
         $orders = $this->parse_orders($response['result']['closed'], null, $since, $limit);

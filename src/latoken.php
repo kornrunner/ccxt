@@ -269,7 +269,7 @@ class latoken extends Exchange {
             'type' => $takerOrMaker,
             'currency' => $market[$key],
             'rate' => $rate,
-            'cost' => floatval ($cost),
+            'cost' => floatval($cost),
         );
     }
 
@@ -432,11 +432,9 @@ class latoken extends Exchange {
         for ($i = 0; $i < count($response); $i++) {
             $ticker = $this->parse_ticker($response[$i]);
             $symbol = $ticker['symbol'];
-            if ($symbols === null || $this->in_array($symbol, $symbols)) {
-                $result[$symbol] = $ticker;
-            }
+            $result[$symbol] = $ticker;
         }
-        return $result;
+        return $this->filter_by_array($result, 'symbol', $symbols);
     }
 
     public function parse_trade($trade, $market = null) {

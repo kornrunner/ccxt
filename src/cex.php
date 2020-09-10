@@ -513,7 +513,7 @@ class cex extends Exchange {
             $market = $this->markets[$symbol];
             $result[$symbol] = $this->parse_ticker($ticker, $market);
         }
-        return $result;
+        return $this->filter_by_array($result, 'symbol', $symbols);
     }
 
     public function fetch_ticker($symbol, $params = array ()) {
@@ -652,7 +652,7 @@ class cex extends Exchange {
             $timestamp = $this->parse8601($timestamp);
         } else {
             // either integer or string integer
-            $timestamp = intval ($timestamp);
+            $timestamp = intval($timestamp);
         }
         $symbol = null;
         if ($market === null) {

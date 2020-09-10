@@ -383,7 +383,7 @@ class idex extends Exchange {
             $tokenSell = null;
             $amountBuy = null;
             $amountSell = null;
-            $quoteAmount = floatval ($price) * floatval ($amount);
+            $quoteAmount = floatval($price) * floatval($amount);
             if ($side === 'buy') {
                 $tokenBuy = $market['baseId'];
                 $tokenSell = $market['quoteId'];
@@ -537,7 +537,7 @@ class idex extends Exchange {
             'address' => $this->walletAddress,
         );
         if ($since !== null) {
-            $request['start'] = intval ($since / 1000);
+            $request['start'] = intval($since / 1000);
         }
         $response = $this->publicPostReturnDepositsWithdrawals (array_merge($request, $params));
         // { $deposits:
@@ -809,7 +809,7 @@ class idex extends Exchange {
             $request['market'] = $market['id'];
         }
         if ($since !== null) {
-            $request['start'] = intval ($since / 1000);
+            $request['start'] = intval($since / 1000);
         }
         if ($limit !== null) {
             $request['count'] = $limit;
@@ -881,7 +881,7 @@ class idex extends Exchange {
             'market' => $market['id'],
         );
         if ($limit !== null) {
-            $request['start'] = intval ((int) floor($limit));
+            $request['start'] = intval((int) floor($limit));
         }
         $response = $this->publicPostReturnTradeHistory (array_merge($request, $params));
         //    array( { type => 'buy',
