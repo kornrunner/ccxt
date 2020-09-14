@@ -101,6 +101,8 @@ class bitstamp extends Exchange {
                         'eth_address/',
                         'xrp_withdrawal/',
                         'xrp_address/',
+                        'xlm_withdrawal/',
+                        'xlm_address/',
                         'transfer-to-main/',
                         'transfer-from-main/',
                         'withdrawal-requests/',
@@ -1164,10 +1166,8 @@ class bitstamp extends Exchange {
         $v1 = ($code === 'BTC');
         $method = $v1 ? 'v1' : 'private'; // $v1 or v2
         $method .= 'Post' . $this->capitalize($name) . 'Withdrawal';
-        if ($code === 'XRP') {
-            if ($tag !== null) {
-                $request['destination_tag'] = $tag;
-            }
+        if ($tag !== null) {
+            $request['destination_tag'] = $tag;
         }
         $response = $this->$method (array_merge($request, $params));
         return array(

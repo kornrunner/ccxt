@@ -709,7 +709,7 @@ class bytetrade extends Exchange {
         $bytestring = $this->binary_concat_array($allByteStringArray);
         $hash = $this->hash($bytestring, 'sha256', 'hex');
         $signature = $this->ecdsa($hash, $this->secret, 'secp256k1', null, true);
-        $recoveryParam = $this->decode(bin2hex($this->number_to_le($this->sum($signature['v'], 31), 1)));
+        $recoveryParam = bin2hex($this->number_to_le($this->sum($signature['v'], 31), 1));
         $mySignature = $recoveryParam . $signature['r'] . $signature['s'];
         $operation = array(
             'now' => $datetime,
@@ -893,7 +893,7 @@ class bytetrade extends Exchange {
         $bytestring = $this->binary_concat_array($byteStringArray);
         $hash = $this->hash($bytestring, 'sha256', 'hex');
         $signature = $this->ecdsa($hash, $this->secret, 'secp256k1', null, true);
-        $recoveryParam = $this->decode(bin2hex($this->number_to_le($this->sum($signature['v'], 31), 1)));
+        $recoveryParam = bin2hex($this->number_to_le($this->sum($signature['v'], 31), 1));
         $mySignature = $recoveryParam . $signature['r'] . $signature['s'];
         $operation = array(
             'fee' => $feeAmount,
@@ -995,7 +995,7 @@ class bytetrade extends Exchange {
         $bytestring = $this->binary_concat_array($byteStringArray);
         $hash = $this->hash($bytestring, 'sha256', 'hex');
         $signature = $this->ecdsa($hash, $this->secret, 'secp256k1', null, true);
-        $recoveryParam = $this->decode(bin2hex($this->number_to_le($this->sum($signature['v'], 31), 1)));
+        $recoveryParam = bin2hex($this->number_to_le($this->sum($signature['v'], 31), 1));
         $mySignature = $recoveryParam . $signature['r'] . $signature['s'];
         $operation = array(
             'fee' => '300000000000000',
@@ -1301,7 +1301,7 @@ class bytetrade extends Exchange {
         $bytestring = $this->binary_concat_array($byteStringArray);
         $hash = $this->hash($bytestring, 'sha256', 'hex');
         $signature = $this->ecdsa($hash, $this->secret, 'secp256k1', null, true);
-        $recoveryParam = $this->decode(bin2hex($this->number_to_le($this->sum($signature['v'], 31), 1)));
+        $recoveryParam = bin2hex($this->number_to_le($this->sum($signature['v'], 31), 1));
         $mySignature = $recoveryParam . $signature['r'] . $signature['s'];
         $fatty = null;
         $request = null;
