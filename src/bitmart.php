@@ -693,9 +693,8 @@ class bitmart extends Exchange {
         if ($percentage !== null) {
             $percentage *= 100;
         }
-        // bitmart base/quote reversed
-        $baseVolume = $this->safe_float_2($ticker, 'quote_volume_24h', 'base_coin_volume');
-        $quoteVolume = $this->safe_float_2($ticker, 'base_volume_24h', 'quote_coin_volume');
+        $baseVolume = $this->safe_float_2($ticker, 'base_volume_24h', 'base_coin_volume');
+        $quoteVolume = $this->safe_float_2($ticker, 'quote_volume_24h', 'quote_coin_volume');
         $vwap = null;
         if (($quoteVolume !== null) && ($baseVolume !== null) && ($baseVolume !== 0)) {
             $vwap = $quoteVolume / $baseVolume;
@@ -1017,6 +1016,11 @@ class bitmart extends Exchange {
                 $side = 'sell';
             }
         }
+        $takerOrMaker = null;
+        $execType = $this->safe_string($trade, 'exec_type');
+        if ($execType !== null) {
+            $takerOrMaker = ($execType === 'M') ? 'maker' : 'taker';
+        }
         $price = $this->safe_float_2($trade, 'price', 'deal_price');
         $price = $this->safe_float($trade, 'price_avg', $price);
         $amount = $this->safe_float_2($trade, 'amount', 'deal_vol');
@@ -1069,7 +1073,7 @@ class bitmart extends Exchange {
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
-            'takerOrMaker' => null,
+            'takerOrMaker' => $takerOrMaker,
             'fee' => $fee,
         );
     }
