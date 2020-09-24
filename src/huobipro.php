@@ -6,6 +6,7 @@ use Exception; // a common import
 use \ccxt\ExchangeError;
 use \ccxt\ArgumentsRequired;
 use \ccxt\InvalidOrder;
+use \ccxt\NetworkError;
 
 class huobipro extends Exchange {
 
@@ -319,7 +320,7 @@ class huobipro extends Exchange {
         $markets = $this->safe_value($response, 'data');
         $numMarkets = is_array($markets) ? count($markets) : 0;
         if ($numMarkets < 1) {
-            throw new ExchangeError($this->id . ' publicGetCommonSymbols returned empty $response => ' . $this->json($markets));
+            throw new NetworkError($this->id . ' publicGetCommonSymbols returned empty $response => ' . $this->json($markets));
         }
         $result = array();
         for ($i = 0; $i < count($markets); $i++) {

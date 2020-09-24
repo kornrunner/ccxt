@@ -75,6 +75,7 @@ class digifinex extends Exchange {
                         'time',
                         'trades',
                         'trades/symbols',
+                        'ticker',
                     ),
                 ),
                 'private' => array(
@@ -412,7 +413,7 @@ class digifinex extends Exchange {
                 'date' => $date,
             ), $tickers[$reversedMarketId]);
             list($quoteId, $baseId) = explode('_', $reversedMarketId);
-            $marketId = $baseId . '_' . $quoteId;
+            $marketId = strtoupper($baseId) . '_' . strtoupper($quoteId);
             $market = null;
             $symbol = null;
             if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
@@ -436,7 +437,7 @@ class digifinex extends Exchange {
         $this->load_markets();
         $market = $this->market($symbol);
         // reversed base/quote in v2
-        $marketId = $market['quoteId'] . '_' . $market['baseId'];
+        $marketId = strtolower($market['quoteId']) . '_' . strtolower($market['baseId']);
         $request = array(
             'symbol' => $marketId,
             'apiKey' => $apiKey,

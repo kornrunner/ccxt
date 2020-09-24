@@ -341,6 +341,7 @@ class bitfinex extends Exchange {
                     'Nonce is too small.' => '\\ccxt\\InvalidNonce',
                     'No summary found.' => '\\ccxt\\ExchangeError', // fetchTradingFees (summary) endpoint can give this vague error message
                     'Cannot evaluate your available balance, please try again' => '\\ccxt\\ExchangeNotAvailable',
+                    'Unknown symbol' => '\\ccxt\\BadSymbol',
                 ),
                 'broad' => array(
                     'Invalid X-BFX-SIGNATURE' => '\\ccxt\\AuthenticationError',
@@ -365,6 +366,7 @@ class bitfinex extends Exchange {
                     // 'BCH' => 'bcash', // undocumented
                     'BCI' => 'bci',
                     'BFT' => 'bft',
+                    'BSV' => 'bsv',
                     'BTC' => 'bitcoin',
                     'BTG' => 'bgold',
                     'CFI' => 'cfi',
