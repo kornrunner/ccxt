@@ -149,7 +149,7 @@ class cex extends Exchange {
                     'status' => array(
                         'c' => 'canceled',
                         'd' => 'closed',
-                        'cd' => 'closed',
+                        'cd' => 'canceled',
                         'a' => 'open',
                     ),
                 ),

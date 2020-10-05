@@ -998,7 +998,7 @@ class btcmarkets extends Exchange {
         if ($api === 'private') {
             $this->check_required_credentials();
             $nonce = (string) $this->nonce();
-            $secret = base64_decode($this->encode($this->secret)); // or stringToBase64
+            $secret = base64_decode($this->encode($this->secret));
             $auth = $method . $request . $nonce;
             if (($method === 'GET') || ($method === 'DELETE')) {
                 if ($query) {
@@ -1015,7 +1015,7 @@ class btcmarkets extends Exchange {
                 'Content-Type' => 'application/json',
                 'BM-AUTH-APIKEY' => $this->apiKey,
                 'BM-AUTH-TIMESTAMP' => $nonce,
-                'BM-AUTH-SIGNATURE' => $this->decode($signature),
+                'BM-AUTH-SIGNATURE' => $signature,
             );
         } else if ($api === 'public') {
             if ($query) {
