@@ -336,11 +336,7 @@ class yobit extends Exchange {
         $ids = is_array($response) ? array_keys($response) : array();
         for ($i = 0; $i < count($ids); $i++) {
             $id = $ids[$i];
-            $symbol = $id;
-            if (is_array($this->markets_by_id) && array_key_exists($id, $this->markets_by_id)) {
-                $market = $this->markets_by_id[$id];
-                $symbol = $market['symbol'];
-            }
+            $symbol = $this->safe_symbol($id);
             $result[$symbol] = $this->parse_order_book($response[$id]);
         }
         return $result;
@@ -412,12 +408,8 @@ class yobit extends Exchange {
         for ($k = 0; $k < count($keys); $k++) {
             $id = $keys[$k];
             $ticker = $tickers[$id];
-            $symbol = $id;
-            $market = null;
-            if (is_array($this->markets_by_id) && array_key_exists($id, $this->markets_by_id)) {
-                $market = $this->markets_by_id[$id];
-                $symbol = $market['symbol'];
-            }
+            $market = $this->safe_market($id);
+            $symbol = $market['symbol'];
             $result[$symbol] = $this->parse_ticker($ticker, $market);
         }
         return $this->filter_by_array($result, 'symbol', $symbols);
@@ -439,17 +431,10 @@ class yobit extends Exchange {
         $price = $this->safe_float_2($trade, 'rate', 'price');
         $id = $this->safe_string_2($trade, 'trade_id', 'tid');
         $order = $this->safe_string($trade, 'order_id');
-        if (is_array($trade) && array_key_exists('pair', $trade)) {
-            $marketId = $this->safe_string($trade, 'pair');
-            $market = $this->safe_value($this->markets_by_id, $marketId, $market);
-        }
-        $symbol = null;
-        if ($market !== null) {
-            $symbol = $market['symbol'];
-        }
+        $marketId = $this->safe_string($trade, 'pair');
+        $symbol = $this->safe_symbol($marketId, $market);
         $amount = $this->safe_float($trade, 'amount');
         $type = 'limit'; // all trades are still limit trades
-        $takerOrMaker = null;
         $fee = null;
         $feeCost = $this->safe_float($trade, 'commission');
         if ($feeCost !== null) {
@@ -462,12 +447,8 @@ class yobit extends Exchange {
         }
         $isYourOrder = $this->safe_value($trade, 'is_your_order');
         if ($isYourOrder !== null) {
-            $takerOrMaker = 'taker';
-            if ($isYourOrder) {
-                $takerOrMaker = 'maker';
-            }
             if ($fee === null) {
-                $fee = $this->calculate_fee($symbol, $type, $side, $amount, $price, $takerOrMaker);
+                $fee = $this->calculate_fee($symbol, $type, $side, $amount, $price, 'taker');
             }
         }
         $cost = null;
@@ -484,7 +465,7 @@ class yobit extends Exchange {
             'symbol' => $symbol,
             'type' => $type,
             'side' => $side,
-            'takerOrMaker' => $takerOrMaker,
+            'takerOrMaker' => null,
             'price' => $price,
             'amount' => $amount,
             'cost' => $cost,
@@ -592,16 +573,8 @@ class yobit extends Exchange {
         $id = $this->safe_string($order, 'id');
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $timestamp = $this->safe_timestamp($order, 'timestamp_created');
-        $symbol = null;
-        if ($market === null) {
-            $marketId = $this->safe_string($order, 'pair');
-            if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
-                $market = $this->markets_by_id[$marketId];
-            }
-        }
-        if ($market !== null) {
-            $symbol = $market['symbol'];
-        }
+        $marketId = $this->safe_string($order, 'pair');
+        $symbol = $this->safe_symbol($marketId, $market);
         $remaining = $this->safe_float($order, 'amount');
         $amount = null;
         $price = $this->safe_float($order, 'rate');
