@@ -381,8 +381,7 @@ class bittrex extends Exchange {
         //         )
         //     }
         //
-        $sequence = $this->safe_value_2($this->last_response_headers, 'sequence', 'Sequence');
-        $sequence = gettype($sequence) === 'array' && count(array_filter(array_keys($sequence), 'is_string')) == 0 ? intval($sequence[0]) : intval($sequence);
+        $sequence = $this->safe_integer($this->last_response_headers, 'Sequence');
         $orderbook = $this->parse_order_book($response, null, 'bid', 'ask', 'rate', 'quantity');
         $orderbook['nonce'] = $sequence;
         return $orderbook;
@@ -613,19 +612,7 @@ class bittrex extends Exchange {
         $id = $this->safe_string($trade, 'id');
         $order = $this->safe_string($trade, 'orderId');
         $marketId = $this->safe_string($trade, 'marketSymbol');
-        $symbol = $this->safe_symbol($marketId, $market, '-');
-        $quote = null;
-        if ($marketId !== null) {
-            if (is_array($this->markets) && array_key_exists($symbol, $this->markets)) {
-                $market = $this->safe_value($this->markets, $symbol, $market);
-                $quote = $market['quote'];
-            } else {
-                list($baseId, $quoteId) = explode('-', $marketId);
-                $base = $this->safe_currency_code($baseId);
-                $quote = $this->safe_currency_code($quoteId);
-                $symbol = $base . '/' . $quote;
-            }
-        }
+        $market = $this->safe_market($marketId, $market, '-');
         $cost = null;
         $price = $this->safe_float($trade, 'rate');
         $amount = $this->safe_float($trade, 'quantity');
@@ -644,7 +631,7 @@ class bittrex extends Exchange {
         if ($feeCost !== null) {
             $fee = array(
                 'cost' => $feeCost,
-                'currency' => $quote,
+                'currency' => $market['quote'],
             );
         }
         $side = $this->safe_string_lower($trade, 'takerSide');
@@ -652,7 +639,7 @@ class bittrex extends Exchange {
             'info' => $trade,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
-            'symbol' => $symbol,
+            'symbol' => $market['symbol'],
             'id' => $id,
             'order' => $order,
             'takerOrMaker' => $takerOrMaker,
@@ -779,8 +766,7 @@ class bittrex extends Exchange {
             $request['marketSymbol'] = $market['id'];
         }
         $response = $this->privateGetOrdersOpen (array_merge($request, $params));
-        $orders = $this->parse_orders($response, $market, $since, $limit);
-        return $this->filter_by_symbol($orders, $symbol);
+        return $this->parse_orders($response, $market, $since, $limit);
     }
 
     public function fetch_order_trades($id, $symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -1216,11 +1202,7 @@ class bittrex extends Exchange {
         $response = $this->privateGetOrdersClosed (array_merge($request, $params));
         $orders = $this->parse_orders($response, $market);
         $trades = $this->orders_to_trades($orders);
-        if ($symbol !== null) {
-            return $this->filter_by_since_limit($trades, $since, $limit);
-        } else {
-            return $this->filter_by_symbol_since_limit($trades, $symbol, $since, $limit);
-        }
+        return $this->filter_by_symbol_since_limit($trades, $symbol, $since, $limit);
     }
 
     public function fetch_closed_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
@@ -1245,11 +1227,7 @@ class bittrex extends Exchange {
             $request['marketSymbol'] = $market['base'] . '-' . $market['quote'];
         }
         $response = $this->privateGetOrdersClosed (array_merge($request, $params));
-        $orders = $this->parse_orders($response, $market, $since, $limit);
-        if ($symbol !== null) {
-            return $this->filter_by_symbol($orders, $symbol);
-        }
-        return $orders;
+        return $this->parse_orders($response, $market, $since, $limit);
     }
 
     public function fetch_deposit_address($code, $params = array ()) {
