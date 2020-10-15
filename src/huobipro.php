@@ -215,11 +215,11 @@ class huobipro extends Exchange {
                     'api-signature-check-failed' => '\\ccxt\\AuthenticationError',
                     'api-signature-not-valid' => '\\ccxt\\AuthenticationError', // array("status":"error","err-code":"api-signature-not-valid","err-msg":"Signature not valid => Incorrect Access key [Access key错误]","data":null)
                     'base-record-invalid' => '\\ccxt\\OrderNotFound', // https://github.com/ccxt/ccxt/issues/5750
-                    // err-msg
-                    'invalid symbol' => '\\ccxt\\BadSymbol', // array("ts":1568813334794,"status":"error","err-code":"invalid-parameter","err-msg":"invalid symbol")
-                    'invalid-parameter' => '\\ccxt\\BadRequest', // array("ts":1576210479343,"status":"error","err-code":"invalid-parameter","err-msg":"symbol trade not open now")
                     'base-symbol-trade-disabled' => '\\ccxt\\BadSymbol', // array("status":"error","err-code":"base-symbol-trade-disabled","err-msg":"Trading is disabled for this symbol","data":null)
                     'system-maintenance' => '\\ccxt\\OnMaintenance', // array("status" => "error", "err-code" => "system-maintenance", "err-msg" => "System is in maintenance!", "data" => null)
+                    // err-msg
+                    'invalid symbol' => '\\ccxt\\BadSymbol', // array("ts":1568813334794,"status":"error","err-code":"invalid-parameter","err-msg":"invalid symbol")
+                    'symbol trade not open now' => '\\ccxt\\BadSymbol', // array("ts":1576210479343,"status":"error","err-code":"invalid-parameter","err-msg":"symbol trade not open now")
                 ),
             ),
             'options' => array(
@@ -562,15 +562,12 @@ class huobipro extends Exchange {
         $result = array();
         for ($i = 0; $i < count($tickers); $i++) {
             $marketId = $this->safe_string($tickers[$i], 'symbol');
-            $market = $this->safe_value($this->markets_by_id, $marketId);
-            $symbol = $marketId;
-            if ($market !== null) {
-                $symbol = $market['symbol'];
-                $ticker = $this->parse_ticker($tickers[$i], $market);
-                $ticker['timestamp'] = $timestamp;
-                $ticker['datetime'] = $this->iso8601($timestamp);
-                $result[$symbol] = $ticker;
-            }
+            $market = $this->safe_market($marketId);
+            $symbol = $market['symbol'];
+            $ticker = $this->parse_ticker($tickers[$i], $market);
+            $ticker['timestamp'] = $timestamp;
+            $ticker['datetime'] = $this->iso8601($timestamp);
+            $result[$symbol] = $ticker;
         }
         return $this->filter_by_array($result, 'symbol', $symbols);
     }
@@ -608,16 +605,8 @@ class huobipro extends Exchange {
         //          'trade-id' => 100050305348
         //     ),
         //
-        $symbol = null;
-        if ($market === null) {
-            $marketId = $this->safe_string($trade, 'symbol');
-            if (is_array($this->markets_by_id) && array_key_exists($marketId, $this->markets_by_id)) {
-                $market = $this->markets_by_id[$marketId];
-            }
-        }
-        if ($market !== null) {
-            $symbol = $market['symbol'];
-        }
+        $marketId = $this->safe_string($trade, 'symbol');
+        $symbol = $this->safe_symbol($marketId, $market);
         $timestamp = $this->safe_integer_2($trade, 'ts', 'created-at');
         $order = $this->safe_string($trade, 'order-id');
         $side = $this->safe_string($trade, 'direction');
@@ -1070,18 +1059,8 @@ class huobipro extends Exchange {
             $type = $orderType[1];
             $status = $this->parse_order_status($this->safe_string($order, 'state'));
         }
-        $symbol = null;
-        if ($market === null) {
-            if (is_array($order) && array_key_exists('symbol', $order)) {
-                if (is_array($this->markets_by_id) && array_key_exists($order['symbol'], $this->markets_by_id)) {
-                    $marketId = $order['symbol'];
-                    $market = $this->markets_by_id[$marketId];
-                }
-            }
-        }
-        if ($market !== null) {
-            $symbol = $market['symbol'];
-        }
+        $marketId = $this->safe_string($order, 'symbol');
+        $symbol = $this->safe_symbol($marketId, $market);
         $timestamp = $this->safe_integer($order, 'created-at');
         $amount = $this->safe_float($order, 'amount');
         $filled = $this->safe_float_2($order, 'filled-amount', 'field-amount'); // typo in their API, $filled $amount

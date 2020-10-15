@@ -144,6 +144,7 @@ class bigone extends Exchange {
                 ),
             ),
             'commonCurrencies' => array(
+                'MBN' => 'Mobilian Coin',
                 'ONE' => 'BigONE Token',
             ),
         ));

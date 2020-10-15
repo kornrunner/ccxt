@@ -222,12 +222,14 @@ class bitforex extends Exchange {
             ),
             'commonCurrencies' => array(
                 'CREDIT' => 'TerraCredit',
+                'IQ' => 'IQ.Cash',
                 'UOS' => 'UOS Network',
             ),
             'exceptions' => array(
                 '4004' => '\\ccxt\\OrderNotFound',
                 '1013' => '\\ccxt\\AuthenticationError',
                 '1016' => '\\ccxt\\AuthenticationError',
+                '1017' => '\\ccxt\\PermissionDenied', // array("code":"1017","success":false,"time":1602670594367,"message":"IP not allow")
                 '3002' => '\\ccxt\\InsufficientFunds',
                 '10204' => '\\ccxt\\DDoSProtection',
             ),
