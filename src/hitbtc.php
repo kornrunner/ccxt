@@ -529,7 +529,8 @@ class hitbtc extends Exchange {
         //   $timestamp => '2018-04-28T18:39:55.345Z' }
         $timestamp = $this->parse8601($trade['timestamp']);
         $marketId = $this->safe_string($trade, 'symbol');
-        $symbol = $this->safe_symbol($marketId, $market);
+        $market = $this->safe_market($marketId, $market);
+        $symbol = $market['symbol'];
         $fee = null;
         $feeCost = $this->safe_float($trade, 'fee');
         if ($feeCost !== null) {
@@ -812,7 +813,8 @@ class hitbtc extends Exchange {
         $created = $this->parse8601($this->safe_string($order, 'createdAt'));
         $updated = $this->parse8601($this->safe_string($order, 'updatedAt'));
         $marketId = $this->safe_string($order, 'symbol');
-        $symbol = $this->safe_symbol($marketId, $market);
+        $market = $this->safe_market($marketId, $market);
+        $symbol = $market['symbol'];
         $amount = $this->safe_float($order, 'quantity');
         $filled = $this->safe_float($order, 'cumQuantity');
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
