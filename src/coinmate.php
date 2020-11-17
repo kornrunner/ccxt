@@ -397,7 +397,7 @@ class coinmate extends Exchange {
             'status' => $status,
             'fee' => array(
                 'cost' => $fee,
-                'currency' => $currency,
+                'currency' => $code,
             ),
             'info' => $item,
         );
