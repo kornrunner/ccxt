@@ -839,6 +839,7 @@ class dsx extends Exchange {
             'datetime' => $this->iso8601($timestamp),
             'lastTradeTimestamp' => $lastTradeTimestamp,
             'type' => $orderType,
+            'timeInForce' => null,
             'side' => $side,
             'price' => $price,
             'cost' => $cost,

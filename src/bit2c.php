@@ -305,6 +305,7 @@ class bit2c extends Exchange {
             'status' => $status,
             'symbol' => $symbol,
             'type' => null,
+            'timeInForce' => null,
             'side' => $side,
             'price' => $price,
             'amount' => $amount,

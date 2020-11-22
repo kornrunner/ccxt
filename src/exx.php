@@ -326,6 +326,7 @@ class exx extends Exchange {
             'status' => $status,
             'symbol' => $symbol,
             'type' => 'limit',
+            'timeInForce' => null,
             'side' => $order['type'],
             'price' => $price,
             'cost' => $cost,

@@ -805,7 +805,7 @@ class hitbtc extends Exchange {
         //              $side =>   "sell",
         //            $status =>   "$filled",
         //            $symbol =>   "XRPUSDT",
-        //       timeInForce =>   "FOK",
+        //       $timeInForce =>   "FOK",
         //      tradesReport => array( {       $fee => "0.0004644",
         //                               $id =>  386394956,
         //                            $price => "0.4644",
@@ -875,6 +875,7 @@ class hitbtc extends Exchange {
                 );
             }
         }
+        $timeInForce = $this->safe_string($order, 'timeInForce');
         return array(
             'id' => $id,
             'clientOrderId' => $clientOrderId, // https://github.com/ccxt/ccxt/issues/5674
@@ -884,6 +885,7 @@ class hitbtc extends Exchange {
             'status' => $status,
             'symbol' => $symbol,
             'type' => $type,
+            'timeInForce' => $timeInForce,
             'side' => $side,
             'price' => $price,
             'average' => $average,

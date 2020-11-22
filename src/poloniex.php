@@ -812,16 +812,16 @@ class poloniex extends Exchange {
         //         'side' => $side,
         //         'price' => $price,
         //         'amount' => $amount,
+        //         // ---------------------------------------------------------
+        //         // 'resultingTrades' in editOrder
+        //         'resultingTrades' => {
+        //             'BTC_MANA' => array(),
+        //          }
         //     }
         //
         $timestamp = $this->safe_integer($order, 'timestamp');
         if ($timestamp === null) {
             $timestamp = $this->parse8601($this->safe_string($order, 'date'));
-        }
-        $trades = null;
-        $resultingTrades = $this->safe_value($order, 'resultingTrades');
-        if ($resultingTrades !== null) {
-            $trades = $this->parse_trades($resultingTrades, $market);
         }
         $symbol = null;
         $marketId = $this->safe_string($order, 'currencyPair');
@@ -837,6 +837,14 @@ class poloniex extends Exchange {
         }
         if (($symbol === null) && ($market !== null)) {
             $symbol = $market['symbol'];
+        }
+        $trades = null;
+        $resultingTrades = $this->safe_value($order, 'resultingTrades');
+        if (gettype($resultingTrades) === 'array' && count(array_filter(array_keys($resultingTrades), 'is_string')) != 0) {
+            $resultingTrades = $this->safe_value($resultingTrades, $this->safe_string($market, 'id', $marketId));
+        }
+        if ($resultingTrades !== null) {
+            $trades = $this->parse_trades($resultingTrades, $market);
         }
         $price = $this->safe_float_2($order, 'price', 'rate');
         $remaining = $this->safe_float($order, 'amount');
@@ -872,9 +880,11 @@ class poloniex extends Exchange {
                         $lastTradeTimestamp = max ($lastTradeTimestamp, $trade['timestamp']);
                     }
                 }
-                $remaining = max ($amount - $filled, 0);
-                if ($filled >= $amount) {
-                    $status = 'closed';
+                if ($amount !== null) {
+                    $remaining = max ($amount - $filled, 0);
+                    if ($filled >= $amount) {
+                        $status = 'closed';
+                    }
                 }
             }
         }
@@ -910,6 +920,7 @@ class poloniex extends Exchange {
             'status' => $status,
             'symbol' => $symbol,
             'type' => $type,
+            'timeInForce' => null,
             'side' => $side,
             'price' => $price,
             'cost' => $cost,
@@ -964,8 +975,8 @@ class poloniex extends Exchange {
     }
 
     public function create_order($symbol, $type, $side, $amount, $price = null, $params = array ()) {
-        if ($type !== 'limit') {
-            throw new ExchangeError($this->id . ' allows limit orders only');
+        if ($type === 'market') {
+            throw new ExchangeError($this->id . ' createOrder() does not accept $market orders');
         }
         $this->load_markets();
         $method = 'privatePost' . $this->capitalize($side);

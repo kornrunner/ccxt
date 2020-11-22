@@ -1263,6 +1263,7 @@ class bitstamp extends Exchange {
             'status' => $status,
             'symbol' => $symbol,
             'type' => null,
+            'timeInForce' => null,
             'side' => $side,
             'price' => $price,
             'cost' => $cost,

@@ -1209,6 +1209,16 @@ class bitmex extends Exchange {
         return $this->safe_string($statuses, $status, $status);
     }
 
+    public function parse_time_in_force($timeInForce) {
+        $timeInForces = array(
+            'Day' => 'Day',
+            'GoodTillCancel' => 'GTC',
+            'ImmediateOrCancel' => 'IOC',
+            'FillOrKill' => 'FOK',
+        );
+        return $this->safe_string($timeInForces, $timeInForce, $timeInForce);
+    }
+
     public function parse_order($order, $market = null) {
         $status = $this->parse_order_status($this->safe_string($order, 'ordStatus'));
         $marketId = $this->safe_string($order, 'symbol');
@@ -1237,6 +1247,7 @@ class bitmex extends Exchange {
         $type = $this->safe_string_lower($order, 'ordType');
         $side = $this->safe_string_lower($order, 'side');
         $clientOrderId = $this->safe_string($order, 'clOrdID');
+        $timeInForce = $this->parse_time_in_force($this->safe_string($order, 'timeInForce'));
         return array(
             'info' => $order,
             'id' => $id,
@@ -1246,6 +1257,7 @@ class bitmex extends Exchange {
             'lastTradeTimestamp' => $lastTradeTimestamp,
             'symbol' => $symbol,
             'type' => $type,
+            'timeInForce' => $timeInForce,
             'side' => $side,
             'price' => $price,
             'amount' => $amount,

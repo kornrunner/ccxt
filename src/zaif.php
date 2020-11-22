@@ -355,6 +355,7 @@ class zaif extends Exchange {
             'status' => 'open',
             'symbol' => $symbol,
             'type' => 'limit',
+            'timeInForce' => null,
             'side' => $side,
             'price' => $price,
             'cost' => $cost,
