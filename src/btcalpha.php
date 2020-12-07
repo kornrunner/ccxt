@@ -352,6 +352,7 @@ class btcalpha extends Exchange {
             'timeInForce' => null,
             'side' => $side,
             'price' => $price,
+            'stopPrice' => null,
             'cost' => null,
             'amount' => $amount,
             'filled' => $filled,

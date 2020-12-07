@@ -102,6 +102,7 @@ class livecoin extends Exchange {
                 ),
             ),
             'commonCurrencies' => array(
+                'BIT' => 'First Bitcoin',
                 'BTCH' => 'Bithash',
                 'CPC' => 'Capricoin',
                 'CBC' => 'CryptoBossCoin', // conflict with CBC (CashBet Coin)
@@ -632,6 +633,7 @@ class livecoin extends Exchange {
             'timeInForce' => null,
             'side' => $side,
             'price' => $price,
+            'stopPrice' => null,
             'amount' => $amount,
             'cost' => $cost,
             'filled' => $filled,

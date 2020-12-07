@@ -412,6 +412,7 @@ class tidebit extends Exchange {
                 $cost = $price * $filled;
             }
         }
+        $average = $this->safe_float($order, 'avg_price');
         return array(
             'id' => $id,
             'clientOrderId' => null,
@@ -424,6 +425,7 @@ class tidebit extends Exchange {
             'timeInForce' => null,
             'side' => $side,
             'price' => $price,
+            'stopPrice' => null,
             'amount' => $amount,
             'filled' => $filled,
             'remaining' => $remaining,
@@ -431,7 +433,7 @@ class tidebit extends Exchange {
             'trades' => null,
             'fee' => null,
             'info' => $order,
-            'average' => null,
+            'average' => $average,
         );
     }
 

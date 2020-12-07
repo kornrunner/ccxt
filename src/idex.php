@@ -779,37 +779,39 @@ class idex extends Exchange {
     }
 
     public function parse_order($order, $market = null) {
-        // {
-        //   "$market" => "DIL-ETH",
-        //   "orderId" => "7cdc8e90-eb7d-11ea-9e60-4118569f6e63",
-        //   "wallet" => "0x0AB991497116f7F5532a4c2f4f7B1784488628e1",
-        //   "time" => 1598873478650,
-        //   "$status" => "$filled",
-        //   "$type" => "limit",
-        //   "$side" => "buy",
-        //   "originalQuantity" => "0.40000000",
-        //   "executedQuantity" => "0.40000000",
-        //   "cumulativeQuoteQuantity" => "0.03962396",
-        //   "avgExecutionPrice" => "0.09905990",
-        //   "$price" => "1.00000000",
-        //   "$fills" => array(
+        //
         //     {
-        //       "fillId" => "48582d10-b9bb-3c4b-94d3-e67537cf2472",
-        //       "$price" => "0.09905990",
-        //       "quantity" => "0.40000000",
-        //       "quoteQuantity" => "0.03962396",
-        //       "time" => 1598873478650,
-        //       "makerSide" => "sell",
-        //       "sequence" => 5053,
-        //       "$fee" => "0.00080000",
-        //       "feeAsset" => "DIL",
-        //       "gas" => "0.00857497",
-        //       "liquidity" => "taker",
-        //       "txId" => "0xeaa02b112c0b8b61bc02fa1776a2b39d6c614e287c1af90df0a2e591da573e65",
-        //       "txStatus" => "mined"
+        //         "$market" => "DIL-ETH",
+        //         "orderId" => "7cdc8e90-eb7d-11ea-9e60-4118569f6e63",
+        //         "wallet" => "0x0AB991497116f7F5532a4c2f4f7B1784488628e1",
+        //         "time" => 1598873478650,
+        //         "$status" => "$filled",
+        //         "$type" => "limit",
+        //         "$side" => "buy",
+        //         "originalQuantity" => "0.40000000",
+        //         "executedQuantity" => "0.40000000",
+        //         "cumulativeQuoteQuantity" => "0.03962396",
+        //         "avgExecutionPrice" => "0.09905990",
+        //         "$price" => "1.00000000",
+        //         "$fills" => array(
+        //             {
+        //             "fillId" => "48582d10-b9bb-3c4b-94d3-e67537cf2472",
+        //             "$price" => "0.09905990",
+        //             "quantity" => "0.40000000",
+        //             "quoteQuantity" => "0.03962396",
+        //             "time" => 1598873478650,
+        //             "makerSide" => "sell",
+        //             "sequence" => 5053,
+        //             "$fee" => "0.00080000",
+        //             "feeAsset" => "DIL",
+        //             "gas" => "0.00857497",
+        //             "liquidity" => "taker",
+        //             "txId" => "0xeaa02b112c0b8b61bc02fa1776a2b39d6c614e287c1af90df0a2e591da573e65",
+        //             "txStatus" => "mined"
+        //             }
+        //         )
         //     }
-        //   )
-        // }
+        //
         $timestamp = $this->safe_integer($order, 'time');
         $fills = $this->safe_value($order, 'fills', array());
         $id = $this->safe_string($order, 'orderId');
@@ -856,6 +858,7 @@ class idex extends Exchange {
             'timeInForce' => null,
             'side' => $side,
             'price' => $price,
+            'stopPrice' => null,
             'amount' => $amount,
             'cost' => $cost,
             'average' => $average,
@@ -900,12 +903,36 @@ class idex extends Exchange {
         $market = $this->market($symbol);
         $nonce = $this->uuidv1();
         $typeEnum = null;
+        $stopLossTypeEnums = array(
+            'stopLoss' => 3,
+            'stopLossLimit' => 4,
+            'takeProfit' => 5,
+            'takeProfitLimit' => 6,
+        );
+        $stopPriceString = null;
+        if (($type === 'stopLossLimit') || ($type === 'takeProfitLimit') || (is_array($params) && array_key_exists('stopPrice', $params))) {
+            if (!(is_array($params) && array_key_exists('stopPrice', $params))) {
+                throw new BadRequest($this->id . ' stopPrice is a required parameter for ' . $type . 'orders');
+            }
+            $stopPriceString = $this->price_to_precision($symbol, $params['stopPrice']);
+        }
+        $limitTypeEnums = array(
+            'limit' => 1,
+            'limitMaker' => 2,
+        );
         $priceString = null;
-        if ($type === 'limit') {
-            $typeEnum = 1;
+        $typeLower = strtolower($type);
+        $limitOrder = mb_strpos($typeLower, 'limit') > -1;
+        if (is_array($limitTypeEnums) && array_key_exists($type, $limitTypeEnums)) {
+            $typeEnum = $limitTypeEnums[$type];
+            $priceString = $this->price_to_precision($symbol, $price);
+        } else if (is_array($stopLossTypeEnums) && array_key_exists($type, $stopLossTypeEnums)) {
+            $typeEnum = $stopLossTypeEnums[$type];
             $priceString = $this->price_to_precision($symbol, $price);
         } else if ($type === 'market') {
             $typeEnum = 0;
+        } else {
+            throw new BadRequest($this->id . ' ' . $type . ' is not a valid order type');
         }
         $amountEnum = 0; // base quantity
         if (is_array($params) && array_key_exists('quoteOrderQuantity', $params)) {
@@ -962,8 +989,12 @@ class idex extends Exchange {
             $this->encode($amountString),
             $this->number_to_be($amountEnum, 1),
         ];
-        if ($type === 'limit') {
+        if ($limitOrder) {
             $encodedPrice = $this->encode($priceString);
+            $byteArray[] = $encodedPrice;
+        }
+        if (is_array($stopLossTypeEnums) && array_key_exists($type, $stopLossTypeEnums)) {
+            $encodedPrice = $this->encode($stopPriceString || $priceString);
             $byteArray[] = $encodedPrice;
         }
         $clientOrderId = $this->safe_string($params, 'clientOrderId');
@@ -991,8 +1022,11 @@ class idex extends Exchange {
             ),
             'signature' => $signature,
         );
-        if ($type === 'limit') {
+        if ($limitOrder) {
             $request['parameters']['price'] = $priceString;
+        }
+        if (is_array($stopLossTypeEnums) && array_key_exists($type, $stopLossTypeEnums)) {
+            $request['parameters']['stopPrice'] = $stopPriceString || $priceString;
         }
         if ($amountEnum === 0) {
             $request['parameters']['quantity'] = $amountString;

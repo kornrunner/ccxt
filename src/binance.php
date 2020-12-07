@@ -334,6 +334,7 @@ class binance extends Exchange {
                         'ticker/bookTicker',
                         'allForceOrders',
                         'openInterest',
+                        'indexInfo',
                     ),
                 ),
                 'fapiData' => array(
@@ -709,22 +710,19 @@ class binance extends Exchange {
         $result = array();
         for ($i = 0; $i < count($markets); $i++) {
             $market = $markets[$i];
-            $marketType = 'spot';
-            $future = false;
-            $delivery = false;
-            if (is_array($market) && array_key_exists('maintMarginPercent', $market)) {
-                $delivery = (is_array($market) && array_key_exists('deliveryDate', $market));
-                $future = !$delivery;
-                $marketType = $delivery ? 'delivery' : 'future';
-            }
-            $spot = !($future || $delivery);
+            $spot = ($type === 'spot');
+            $future = ($type === 'future');
+            $delivery = ($type === 'delivery');
             $id = $this->safe_string($market, 'symbol');
             $lowercaseId = $this->safe_string_lower($market, 'symbol');
             $baseId = $this->safe_string($market, 'baseAsset');
             $quoteId = $this->safe_string($market, 'quoteAsset');
             $base = $this->safe_currency_code($baseId);
             $quote = $this->safe_currency_code($quoteId);
-            $symbol = $delivery ? $id : ($base . '/' . $quote);
+            $parts = explode('_', $id);
+            $lastPart = $this->safe_string($parts, 1);
+            $idSymbol = ($delivery) && ($lastPart !== 'PERP');
+            $symbol = $idSymbol ? $id : ($base . '/' . $quote);
             $filters = $this->safe_value($market, 'filters', array());
             $filtersByType = $this->index_by($filters, 'filterType');
             $precision = array(
@@ -745,7 +743,7 @@ class binance extends Exchange {
                 'baseId' => $baseId,
                 'quoteId' => $quoteId,
                 'info' => $market,
-                'type' => $marketType,
+                'type' => $type,
                 'spot' => $spot,
                 'margin' => $margin,
                 'future' => $future,
@@ -2309,6 +2307,7 @@ class binance extends Exchange {
         if ($feeCost !== null) {
             $fee = array( 'currency' => $code, 'cost' => $feeCost );
         }
+        $updated = $this->safe_integer($transaction, 'successTime');
         return array(
             'info' => $transaction,
             'id' => $id,
@@ -2316,12 +2315,16 @@ class binance extends Exchange {
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
             'address' => $address,
+            'addressTo' => $address,
+            'addressFrom' => null,
             'tag' => $tag,
+            'tagTo' => $tag,
+            'tagFrom' => null,
             'type' => $type,
             'amount' => $amount,
             'currency' => $code,
             'status' => $status,
-            'updated' => null,
+            'updated' => $updated,
             'fee' => $fee,
         );
     }

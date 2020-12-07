@@ -953,6 +953,7 @@ class therock extends Exchange {
                 $cost = 0;
             }
         }
+        $stopPrice = $this->safe_float($order, 'conditional_price');
         return array(
             'id' => $id,
             'clientOrderId' => null,
@@ -966,6 +967,7 @@ class therock extends Exchange {
             'timeInForce' => null,
             'side' => $side,
             'price' => $price,
+            'stopPrice' => $stopPrice,
             'cost' => $cost,
             'amount' => $amount,
             'filled' => $filled,

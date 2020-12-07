@@ -574,7 +574,7 @@ class coinmate extends Exchange {
         //         currencyPair => 'ETH_BTC',
         //         $price => 0.0345,
         //         $amount => 0.01,
-        //         stopPrice => null,
+        //         $stopPrice => null,
         //         originalStopPrice => null,
         //         marketPriceAtLastUpdate => null,
         //         marketPriceAtOrderCreation => null,
@@ -594,7 +594,7 @@ class coinmate extends Exchange {
         //         $price => 5897.24,
         //         remainingAmount => 0.002367,
         //         originalAmount => 0.1,
-        //         stopPrice => null,
+        //         $stopPrice => null,
         //         originalStopPrice => null,
         //         marketPriceAtLastUpdate => null,
         //         marketPriceAtOrderCreation => null,
@@ -631,6 +631,7 @@ class coinmate extends Exchange {
         $marketId = $this->safe_string($order, 'currencyPair');
         $symbol = $this->safe_symbol($marketId, $market, '_');
         $clientOrderId = $this->safe_string($order, 'clientOrderId');
+        $stopPrice = $this->safe_float($order, 'stopPrice');
         return array(
             'id' => $id,
             'clientOrderId' => $clientOrderId,
@@ -642,6 +643,7 @@ class coinmate extends Exchange {
             'timeInForce' => null,
             'side' => $side,
             'price' => $price,
+            'stopPrice' => $stopPrice,
             'amount' => $amount,
             'cost' => $cost,
             'average' => $average,

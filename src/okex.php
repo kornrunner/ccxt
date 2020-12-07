@@ -2157,6 +2157,7 @@ class okex extends Exchange {
         if (($clientOrderId !== null) && (strlen($clientOrderId) < 1)) {
             $clientOrderId = null; // fix empty $clientOrderId string
         }
+        $stopPrice = $this->safe_float($order, 'trigger_price');
         return array(
             'info' => $order,
             'id' => $id,
@@ -2169,6 +2170,7 @@ class okex extends Exchange {
             'timeInForce' => null,
             'side' => $side,
             'price' => $price,
+            'stopPrice' => $stopPrice,
             'average' => $average,
             'cost' => $cost,
             'amount' => $amount,
