@@ -4,28 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bcf88ea2ecbf4524d00adfd440af8b6",
+    "content-hash": "84af6dd563cfe10993d7b9f0c7fb9c0f",
     "packages": [
         {
             "name": "kornrunner/ethereum-util",
-            "version": "0.0.3",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kornrunner/php-ethereum-util.git",
-                "reference": "2068474206bcb94c976f094c4c8bf7e64f6cf20b"
+                "reference": "dbdfafc5fc074dc78be1deaf65005cb1488b1674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kornrunner/php-ethereum-util/zipball/2068474206bcb94c976f094c4c8bf7e64f6cf20b",
-                "reference": "2068474206bcb94c976f094c4c8bf7e64f6cf20b",
+                "url": "https://api.github.com/repos/kornrunner/php-ethereum-util/zipball/dbdfafc5fc074dc78be1deaf65005cb1488b1674",
+                "reference": "dbdfafc5fc074dc78be1deaf65005cb1488b1674",
                 "shasum": ""
             },
             "require": {
                 "kornrunner/keccak": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.5",
-                "satooshi/php-coveralls": "^1.0"
+                "phpunit/phpunit": "^8.2"
             },
             "type": "library",
             "autoload": {
@@ -35,7 +34,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -45,35 +44,35 @@
             ],
             "description": "Pure PHP implementation of Ethereum Utils",
             "keywords": [
+                "eth",
                 "ethereum"
             ],
             "support": {
                 "issues": "https://github.com/kornrunner/php-ethereum-util/issues",
-                "source": "https://github.com/kornrunner/php-ethereum-util/tree/master"
+                "source": "https://github.com/kornrunner/php-ethereum-util/tree/0.1.0"
             },
-            "time": "2017-12-08T00:21:20+00:00"
+            "time": "2020-12-07T16:05:32+00:00"
         },
         {
             "name": "kornrunner/keccak",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kornrunner/php-keccak.git",
-                "reference": "ad761f528f4d1e3ce378b8a0841e5f82c9973535"
+                "reference": "433749d28e117fb97baf9f2631b92b5d9ab3c890"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kornrunner/php-keccak/zipball/ad761f528f4d1e3ce378b8a0841e5f82c9973535",
-                "reference": "ad761f528f4d1e3ce378b8a0841e5f82c9973535",
+                "url": "https://api.github.com/repos/kornrunner/php-keccak/zipball/433749d28e117fb97baf9f2631b92b5d9ab3c890",
+                "reference": "433749d28e117fb97baf9f2631b92b5d9ab3c890",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.0",
+                "php": ">=7.3",
                 "symfony/polyfill-mbstring": "^1.8"
             },
             "require-dev": {
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "~7"
+                "phpunit/phpunit": "^8.2"
             },
             "type": "library",
             "autoload": {
@@ -99,32 +98,31 @@
             ],
             "support": {
                 "issues": "https://github.com/kornrunner/php-keccak/issues",
-                "source": "https://github.com/kornrunner/php-keccak/tree/master"
+                "source": "https://github.com/kornrunner/php-keccak/tree/1.1.0"
             },
-            "time": "2018-07-30T22:16:23+00:00"
+            "time": "2020-12-07T15:40:44+00:00"
         },
         {
             "name": "kornrunner/solidity",
-            "version": "0.1.3",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kornrunner/php-solidity.git",
-                "reference": "27c8009fb929a75dca321bb3dcccf0ac87259382"
+                "reference": "9b327c7c6bae688d17bffca3517ae3a3600013f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kornrunner/php-solidity/zipball/27c8009fb929a75dca321bb3dcccf0ac87259382",
-                "reference": "27c8009fb929a75dca321bb3dcccf0ac87259382",
+                "url": "https://api.github.com/repos/kornrunner/php-solidity/zipball/9b327c7c6bae688d17bffca3517ae3a3600013f4",
+                "reference": "9b327c7c6bae688d17bffca3517ae3a3600013f4",
                 "shasum": ""
             },
             "require": {
                 "kornrunner/keccak": "^1.0",
-                "php": ">=7.1.0",
+                "php": ">=7.3",
                 "simplito/bn-php": "^1.0"
             },
             "require-dev": {
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "~7"
+                "phpunit/phpunit": "^8.2"
             },
             "type": "library",
             "autoload": {
@@ -150,9 +148,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kornrunner/php-solidity/issues",
-                "source": "https://github.com/kornrunner/php-solidity/tree/master"
+                "source": "https://github.com/kornrunner/php-solidity/tree/0.2.0"
             },
-            "time": "2018-07-31T19:24:49+00:00"
+            "time": "2020-12-07T16:09:38+00:00"
         },
         {
             "name": "simplito/bigint-wrapper-php",
