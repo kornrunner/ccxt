@@ -840,6 +840,7 @@ class dsx extends Exchange {
             'lastTradeTimestamp' => $lastTradeTimestamp,
             'type' => $orderType,
             'timeInForce' => null,
+            'postOnly' => null,
             'side' => $side,
             'price' => $price,
             'stopPrice' => null,

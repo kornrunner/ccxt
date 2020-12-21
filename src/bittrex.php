@@ -979,7 +979,7 @@ class bittrex extends Exchange {
             'GOOD_TIL_CANCELLED' => 'GTC',
             'IMMEDIATE_OR_CANCEL' => 'IOC',
             'FILL_OR_KILL' => 'FOK',
-            'POST_ONLY_GOOD_TIL_CANCELLED' => 'POST_ONLY_GOOD_TIL_CANCELLED',
+            'POST_ONLY_GOOD_TIL_CANCELLED' => 'PO',
         );
         return $this->safe_string($timeInForces, $timeInForce, $timeInForce);
     }
@@ -1049,6 +1049,7 @@ class bittrex extends Exchange {
             $status = 'canceled';
         }
         $timeInForce = $this->parse_time_in_force($this->safe_string($order, 'timeInForce'));
+        $postOnly = ($timeInForce === 'PO');
         return array(
             'id' => $this->safe_string($order, 'id'),
             'clientOrderId' => null,
@@ -1058,6 +1059,7 @@ class bittrex extends Exchange {
             'symbol' => $symbol,
             'type' => $type,
             'timeInForce' => $timeInForce,
+            'postOnly' => $postOnly,
             'side' => $direction,
             'price' => $limit,
             'stopPrice' => null,

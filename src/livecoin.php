@@ -117,6 +117,7 @@ class livecoin extends Exchange {
                 'PLN' => 'Plutaneum', // conflict with Polish Zloty
                 'RUR' => 'RUB',
                 'SCT' => 'SpaceCoin',
+                'TCT' => 'Twecrypto',
                 'TPI' => 'ThaneCoin',
                 'UNUS' => 'LEO', // https://github.com/ccxt/ccxt/issues/7496
                 'WAX' => 'WAXP',
@@ -631,6 +632,7 @@ class livecoin extends Exchange {
             'symbol' => $symbol,
             'type' => $type,
             'timeInForce' => null,
+            'postOnly' => null,
             'side' => $side,
             'price' => $price,
             'stopPrice' => null,

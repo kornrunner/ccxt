@@ -721,6 +721,7 @@ class bigone extends Exchange {
             'symbol' => $symbol,
             'type' => null,
             'timeInForce' => null,
+            'postOnly' => null,
             'side' => $side,
             'price' => $price,
             'stopPrice' => null,

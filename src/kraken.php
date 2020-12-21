@@ -213,6 +213,7 @@ class kraken extends Exchange {
             ),
             'commonCurrencies' => array(
                 'XBT' => 'BTC',
+                'XBT.M' => 'BTC.M', // https://support.kraken.com/hc/en-us/articles/360039879471-What-is-Asset-S-and-Asset-M-
                 'XDG' => 'DOGE',
                 'REPV2' => 'REP',
                 'REP' => 'REPV1',
@@ -358,7 +359,7 @@ class kraken extends Exchange {
 
     public function safe_currency_code($currencyId, $currency = null) {
         if (strlen($currencyId) > 3) {
-            if ((mb_strpos($currencyId, 'X') === 0) || (mb_strpos($currencyId, 'Z') === 0)) {
+            if (((mb_strpos($currencyId, 'X') === 0) || (mb_strpos($currencyId, 'Z') === 0)) && (mb_strpos($currencyId, '.') < 0)) {
                 $currencyId = mb_substr($currencyId, 1);
             }
         }
@@ -1140,6 +1141,7 @@ class kraken extends Exchange {
             'symbol' => $symbol,
             'type' => $type,
             'timeInForce' => null,
+            'postOnly' => null,
             'side' => $side,
             'price' => $price,
             'stopPrice' => $stopPrice,

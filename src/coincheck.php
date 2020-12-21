@@ -197,6 +197,7 @@ class coincheck extends Exchange {
             'side' => $side,
             'type' => null,
             'timeInForce' => null,
+            'postOnly' => null,
             'status' => $status,
             'symbol' => $symbol,
             'price' => $price,

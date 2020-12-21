@@ -469,6 +469,7 @@ class binance extends Exchange {
             'exceptions' => array(
                 'API key does not exist' => '\\ccxt\\AuthenticationError',
                 'Order would trigger immediately.' => '\\ccxt\\OrderImmediatelyFillable',
+                'Stop price would trigger immediately.' => '\\ccxt\\OrderImmediatelyFillable', // array("code":-2010,"msg":"Stop price would trigger immediately.")
                 'Order would immediately match and take.' => '\\ccxt\\OrderImmediatelyFillable', // array("code":-2010,"msg":"Order would immediately match and take.")
                 'Account has insufficient balance for requested action.' => '\\ccxt\\InsufficientFunds',
                 'Rest API trading is not enabled.' => '\\ccxt\\ExchangeNotAvailable',
@@ -1569,6 +1570,7 @@ class binance extends Exchange {
         }
         $clientOrderId = $this->safe_string($order, 'clientOrderId');
         $timeInForce = $this->safe_string($order, 'timeInForce');
+        $postOnly = ($type === 'limit_maker') || ($timeInForce === 'GTX');
         return array(
             'info' => $order,
             'id' => $id,
@@ -1579,6 +1581,7 @@ class binance extends Exchange {
             'symbol' => $symbol,
             'type' => $type,
             'timeInForce' => $timeInForce,
+            'postOnly' => $postOnly,
             'side' => $side,
             'price' => $price,
             'amount' => $amount,
@@ -1755,7 +1758,7 @@ class binance extends Exchange {
         if ($clientOrderId !== null) {
             $request['origClientOrderId'] = $clientOrderId;
         } else {
-            $request['orderId'] = intval($id);
+            $request['orderId'] = $id;
         }
         $query = $this->omit($params, array( 'type', 'clientOrderId', 'origClientOrderId' ));
         $response = $this->$method (array_merge($request, $query));
@@ -1887,11 +1890,11 @@ class binance extends Exchange {
         $origClientOrderId = $this->safe_value_2($params, 'origClientOrderId', 'clientOrderId');
         $request = array(
             'symbol' => $market['id'],
-            // 'orderId' => intval($id),
+            // 'orderId' => $id,
             // 'origClientOrderId' => $id,
         );
         if ($origClientOrderId === null) {
-            $request['orderId'] = intval($id);
+            $request['orderId'] = $id;
         } else {
             $request['origClientOrderId'] = $origClientOrderId;
         }
