@@ -1010,7 +1010,7 @@ class deribit extends Exchange {
             'cancelled' => 'canceled',
             'filled' => 'closed',
             'rejected' => 'rejected',
-            // 'untriggered' => 'open',
+            'untriggered' => 'open',
         );
         return $this->safe_string($statuses, $status, $status);
     }

@@ -222,6 +222,7 @@ class bitforex extends Exchange {
             ),
             'commonCurrencies' => array(
                 'CREDIT' => 'TerraCredit',
+                'HBC' => 'Hybrid Bank Cash',
                 'IQ' => 'IQ.Cash',
                 'UOS' => 'UOS Network',
             ),
