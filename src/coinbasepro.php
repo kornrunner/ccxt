@@ -346,6 +346,7 @@ class coinbasepro extends Exchange {
     }
 
     public function fetch_accounts($params = array ()) {
+        $this->load_markets();
         $response = $this->privateGetAccounts ($params);
         //
         //     array(
