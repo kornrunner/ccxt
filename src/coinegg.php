@@ -153,6 +153,7 @@ class coinegg extends Exchange {
             ),
             'commonCurrencies' => array(
                 'JBC' => 'JubaoCoin',
+                'SBTC' => 'Super Bitcoin',
             ),
         ));
     }

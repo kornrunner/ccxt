@@ -139,6 +139,7 @@ class crex24 extends Exchange {
                 'GHOST' => 'GHOSTPRISM',
                 'IQ' => 'IQ.Cash',
                 'PUT' => 'PutinCoin',
+                'SBTC' => 'SBTCT', // SiamBitcoin
                 'UNI' => 'Universe',
                 'YOYO' => 'YOYOW',
             ),

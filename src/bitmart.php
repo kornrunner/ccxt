@@ -163,8 +163,8 @@ class bitmart extends Exchange {
                 'trading' => array(
                     'tierBased' => true,
                     'percentage' => true,
-                    'taker' => 0.002,
-                    'maker' => 0.001,
+                    'taker' => 0.0025,
+                    'maker' => 0.0025,
                     'tiers' => array(
                         'taker' => [
                             [0, 0.20 / 100],
@@ -298,6 +298,7 @@ class bitmart extends Exchange {
                 'broad' => array(),
             ),
             'commonCurrencies' => array(
+                'COT' => 'Community Coin',
                 'ONE' => 'Menlo One',
                 'PLA' => 'Plair',
             ),
@@ -1978,7 +1979,7 @@ class bitmart extends Exchange {
 
     public function fetch_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' fetchOrders requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' fetchOrders() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);

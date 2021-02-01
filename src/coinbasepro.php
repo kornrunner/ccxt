@@ -1092,6 +1092,9 @@ class coinbasepro extends Exchange {
             $address = $this->safe_string($details, 'sent_to_address', $address);
             $feeCost = $this->safe_float($details, 'fee');
             if ($feeCost !== null) {
+                if ($amount !== null) {
+                    $amount -= $feeCost;
+                }
                 $fee = array(
                     'cost' => $feeCost,
                     'currency' => $code,
