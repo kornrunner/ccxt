@@ -533,7 +533,7 @@ class okex extends Exchange {
                     '34021' => '\\ccxt\\InvalidAddress', // array( "code" => 34021, "message" => "Not verified address" )
                     '34022' => '\\ccxt\\ExchangeError', // array( "code" => 34022, "message" => "Withdrawals are not available for sub accounts" )
                     '34023' => '\\ccxt\\PermissionDenied', // array( "code" => 34023, "message" => "Please enable futures trading before transferring your funds" )
-                    '34026' => '\\ccxt\\ExchangeError', // transfer too frequently(transfer too frequently)
+                    '34026' => '\\ccxt\\RateLimitExceeded', // transfer too frequently(transfer too frequently)
                     '34036' => '\\ccxt\\ExchangeError', // Parameter is incorrect, please refer to API documentation
                     '34037' => '\\ccxt\\ExchangeError', // Get the sub-account balance interface, account type is not supported
                     '34038' => '\\ccxt\\ExchangeError', // Since your C2C transaction is unusual, you are restricted from fund transfer. Please contact our customer support to cancel the restriction
@@ -1721,7 +1721,7 @@ class okex extends Exchange {
         $defaultType = $this->safe_string_2($this->options, 'fetchBalance', 'defaultType');
         $type = $this->safe_string($params, 'type', $defaultType);
         if ($type === null) {
-            throw new ArgumentsRequired($this->id . " fetchBalance requires a $type parameter (one of 'account', 'spot', 'margin', 'futures', 'swap')");
+            throw new ArgumentsRequired($this->id . " fetchBalance() requires a $type parameter (one of 'account', 'spot', 'margin', 'futures', 'swap')");
         }
         $this->load_markets();
         $suffix = ($type === 'account') ? 'Wallet' : 'Accounts';
@@ -1967,7 +1967,7 @@ class okex extends Exchange {
             $type = $this->safe_string($params, 'type', $defaultType);
         }
         if ($type === null) {
-            throw new ArgumentsRequired($this->id . " cancelOrder requires a $type parameter (one of 'spot', 'margin', 'futures', 'swap').");
+            throw new ArgumentsRequired($this->id . " cancelOrder() requires a $type parameter (one of 'spot', 'margin', 'futures', 'swap').");
         }
         $method = $type . 'PostCancelOrder';
         $request = array(
@@ -2191,14 +2191,14 @@ class okex extends Exchange {
 
     public function fetch_order($id, $symbol = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' fetchOrder requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' fetchOrder() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);
         $defaultType = $this->safe_string_2($this->options, 'fetchOrder', 'defaultType', $market['type']);
         $type = $this->safe_string($params, 'type', $defaultType);
         if ($type === null) {
-            throw new ArgumentsRequired($this->id . " fetchOrder requires a $type parameter (one of 'spot', 'margin', 'futures', 'swap').");
+            throw new ArgumentsRequired($this->id . " fetchOrder() requires a $type parameter (one of 'spot', 'margin', 'futures', 'swap').");
         }
         $instrumentId = ($market['futures'] || $market['swap']) ? 'InstrumentId' : '';
         $method = $type . 'GetOrders' . $instrumentId;
@@ -2266,7 +2266,7 @@ class okex extends Exchange {
 
     public function fetch_orders_by_state($state, $symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' fetchOrdersByState requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' fetchOrdersByState() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);
@@ -2278,7 +2278,7 @@ class okex extends Exchange {
             $type = $this->safe_string($params, 'type', $defaultType);
         }
         if ($type === null) {
-            throw new ArgumentsRequired($this->id . " fetchOrder requires a $type parameter (one of 'spot', 'margin', 'futures', 'swap').");
+            throw new ArgumentsRequired($this->id . " fetchOrdersByState() requires a $type parameter (one of 'spot', 'margin', 'futures', 'swap').");
         }
         $request = array(
             'instrument_id' => $market['id'],
@@ -2835,7 +2835,7 @@ class okex extends Exchange {
         // this aspect renders the 'fills' endpoint unusable for fetchOrderTrades
         // until either OKEX fixes the API or we workaround this on our side somehow
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' fetchMyTrades requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' fetchMyTrades() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);
@@ -3226,14 +3226,14 @@ class okex extends Exchange {
         $currency = null;
         if (($type === 'spot') || ($type === 'futures')) {
             if ($code === null) {
-                throw new ArgumentsRequired($this->id . " fetchLedger requires a $currency $code $argument for '" . $type . "' markets");
+                throw new ArgumentsRequired($this->id . " fetchLedger() requires a $currency $code $argument for '" . $type . "' markets");
             }
             $argument = 'Currency';
             $currency = $this->currency($code);
             $request['currency'] = $currency['id'];
         } else if (($type === 'margin') || ($type === 'swap')) {
             if ($code === null) {
-                throw new ArgumentsRequired($this->id . " fetchLedger requires a $code $argument (a $market symbol) for '" . $type . "' markets");
+                throw new ArgumentsRequired($this->id . " fetchLedger() requires a $code $argument (a $market symbol) for '" . $type . "' markets");
             }
             $argument = 'InstrumentId';
             $market = $this->market($code); // we intentionally put a $market inside here for the margin and swap ledgers

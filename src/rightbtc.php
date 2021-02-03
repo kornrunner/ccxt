@@ -434,7 +434,7 @@ class rightbtc extends Exchange {
 
     public function cancel_order($id, $symbol = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' cancelOrder requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' cancelOrder() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);
@@ -561,7 +561,7 @@ class rightbtc extends Exchange {
 
     public function fetch_order($id, $symbol = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' fetchOrder requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' fetchOrder() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);
@@ -599,7 +599,7 @@ class rightbtc extends Exchange {
 
     public function fetch_open_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' fetchOpenOrders requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' fetchOpenOrders() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);
@@ -636,7 +636,7 @@ class rightbtc extends Exchange {
     public function fetch_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
         $ids = $this->safe_string($params, 'ids');
         if (($symbol === null) || ($ids === null)) {
-            throw new ArgumentsRequired($this->id . " fetchOrders requires a 'symbol' argument and an extra 'ids' parameter. The 'ids' should be an array or a string of one or more order $ids separated with slashes."); // eslint-disable-line quotes
+            throw new ArgumentsRequired($this->id . " fetchOrders() requires a 'symbol' argument and an extra 'ids' parameter. The 'ids' should be an array or a string of one or more order $ids separated with slashes."); // eslint-disable-line quotes
         }
         if (gettype($ids) === 'array' && count(array_filter(array_keys($ids), 'is_string')) == 0) {
             $ids = implode('/', $ids);
@@ -675,7 +675,7 @@ class rightbtc extends Exchange {
 
     public function fetch_my_trades($symbol = null, $since = null, $limit = null, $params = array ()) {
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' fetchMyTrades requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' fetchMyTrades() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);

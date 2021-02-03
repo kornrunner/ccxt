@@ -286,7 +286,7 @@ class bytetrade extends Exchange {
 
     public function fetch_balance($params = array ()) {
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired($this->id . ' fetchDeposits requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired($this->id . ' fetchDeposits() requires $this->apiKey or userid argument');
         }
         $this->load_markets();
         $request = array(
@@ -599,7 +599,7 @@ class bytetrade extends Exchange {
     public function create_order($symbol, $type, $side, $amount, $price = null, $params = array ()) {
         $this->check_required_dependencies();
         if ($this->apiKey === null) {
-            throw new ArgumentsRequired('createOrder requires $this->apiKey or userid in params');
+            throw new ArgumentsRequired('createOrder() requires $this->apiKey or userid in params');
         }
         $this->load_markets();
         $market = $this->market($symbol);
@@ -783,7 +783,7 @@ class bytetrade extends Exchange {
 
     public function fetch_order($id, $symbol = null, $params = array ()) {
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired('fetchOrder requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired('fetchOrder() requires $this->apiKey or userid argument');
         }
         $this->load_markets();
         $request = array(
@@ -801,7 +801,7 @@ class bytetrade extends Exchange {
 
     public function fetch_open_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired('fetchOpenOrders requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired('fetchOpenOrders() requires $this->apiKey or userid argument');
         }
         $this->load_markets();
         $request = array(
@@ -821,7 +821,7 @@ class bytetrade extends Exchange {
 
     public function fetch_closed_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired('fetchClosedOrders requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired('fetchClosedOrders() requires $this->apiKey or userid argument');
         }
         $this->load_markets();
         $market = null;
@@ -841,7 +841,7 @@ class bytetrade extends Exchange {
 
     public function fetch_orders($symbol = null, $since = null, $limit = null, $params = array ()) {
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired('fetchOrders requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired('fetchOrders() requires $this->apiKey or userid argument');
         }
         $this->load_markets();
         $market = null;
@@ -861,10 +861,10 @@ class bytetrade extends Exchange {
 
     public function cancel_order($id, $symbol = null, $params = array ()) {
         if ($this->apiKey === null) {
-            throw new ArgumentsRequired('cancelOrder requires hasAlreadyAuthenticatedSuccessfully');
+            throw new ArgumentsRequired('cancelOrder() requires hasAlreadyAuthenticatedSuccessfully');
         }
         if ($symbol === null) {
-            throw new ArgumentsRequired($this->id . ' cancelOrder requires a $symbol argument');
+            throw new ArgumentsRequired($this->id . ' cancelOrder() requires a $symbol argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);
@@ -962,7 +962,7 @@ class bytetrade extends Exchange {
     public function transfer($code, $amount, $address, $message = '', $params = array ()) {
         $this->check_required_dependencies();
         if ($this->apiKey === null) {
-            throw new ArgumentsRequired('transfer requires $this->apiKey');
+            throw new ArgumentsRequired('transfer() requires $this->apiKey');
         }
         $this->load_markets();
         $currency = $this->currency($code);
@@ -1068,7 +1068,7 @@ class bytetrade extends Exchange {
 
     public function fetch_my_trades($symbol = null, $since = null, $limit = null, $params = array ()) {
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired('fetchMyTrades requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired('fetchMyTrades() requires $this->apiKey or userid argument');
         }
         $this->load_markets();
         $market = $this->market($symbol);
@@ -1088,7 +1088,7 @@ class bytetrade extends Exchange {
     public function fetch_deposits($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired('fetchDeposits requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired('fetchDeposits() requires $this->apiKey or userid argument');
         }
         $currency = null;
         $request = array(
@@ -1111,7 +1111,7 @@ class bytetrade extends Exchange {
     public function fetch_withdrawals($code = null, $since = null, $limit = null, $params = array ()) {
         $this->load_markets();
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired('fetchWithdrawals requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired('fetchWithdrawals() requires $this->apiKey or userid argument');
         }
         $currency = null;
         $request = array(
@@ -1195,7 +1195,7 @@ class bytetrade extends Exchange {
     public function fetch_deposit_address($code, $params = array ()) {
         $this->load_markets();
         if (!(is_array($params) && array_key_exists('userid', $params)) && ($this->apiKey === null)) {
-            throw new ArgumentsRequired('fetchDepositAddress requires $this->apiKey or userid argument');
+            throw new ArgumentsRequired('fetchDepositAddress() requires $this->apiKey or userid argument');
         }
         $currency = $this->currency($code);
         $request = array(
@@ -1221,7 +1221,7 @@ class bytetrade extends Exchange {
         $this->check_address($address);
         $this->load_markets();
         if ($this->apiKey === null) {
-            throw new ArgumentsRequired('withdraw requires $this->apiKey');
+            throw new ArgumentsRequired($this->id . ' withdraw() requires $this->apiKey');
         }
         $addressResponse = $this->fetch_deposit_address($code);
         $chainTypeString = $this->safe_string($addressResponse, 'chainType');

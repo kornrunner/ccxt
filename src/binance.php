@@ -235,6 +235,7 @@ class binance extends Exchange {
                         'userDataStream/isolated',
                     ),
                     'delete' => array(
+                        'margin/openOrders',
                         'margin/order',
                         'userDataStream',
                         'userDataStream/isolated',
@@ -1219,7 +1220,8 @@ class binance extends Exchange {
         // binance docs say that the default $limit 500, max 1500 for futures, max 1000 for spot markets
         // the reality is that the time range wider than 500 candles won't work right
         $defaultLimit = 500;
-        $limit = ($limit === null) ? $defaultLimit : min ($defaultLimit, $limit);
+        $maxLimit = 1500;
+        $limit = ($limit === null) ? $defaultLimit : max ($limit, $maxLimit);
         $request = array(
             'symbol' => $market['id'],
             'interval' => $this->timeframes[$timeframe],
@@ -1946,7 +1948,9 @@ class binance extends Exchange {
         $type = $this->safe_string($params, 'type', $defaultType);
         $query = $this->omit($params, 'type');
         $method = 'privateDeleteOpenOrders';
-        if ($type === 'future') {
+        if ($type === 'margin') {
+            $method = 'sapiDeleteMarginOpenOrders';
+        } else if ($type === 'future') {
             $method = 'fapiPrivateDeleteAllOpenOrders';
         } else if ($type === 'delivery') {
             $method = 'dapiPrivateDeleteAllOpenOrders';
