@@ -41,4 +41,8 @@ class binanceus extends binance {
             ),
         ));
     }
+
+    public function fetch_currencies($params = array ()) {
+        return null;
+    }
 }
