@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84af6dd563cfe10993d7b9f0c7fb9c0f",
+    "content-hash": "44638ca3dd74ec9f0bab442b50b10370",
     "packages": [
         {
             "name": "kornrunner/ethereum-util",
@@ -674,24 +674,23 @@
         },
         {
             "name": "php-vcr/phpunit-testlistener-vcr",
-            "version": "3.2.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-vcr/phpunit-testlistener-vcr.git",
-                "reference": "299aaf88533cee3ae64e99bdc6ad5b97fb495f21"
+                "reference": "aa276316fbfd6be5919a7a351bde0beb3d332fab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-vcr/phpunit-testlistener-vcr/zipball/299aaf88533cee3ae64e99bdc6ad5b97fb495f21",
-                "reference": "299aaf88533cee3ae64e99bdc6ad5b97fb495f21",
+                "url": "https://api.github.com/repos/php-vcr/phpunit-testlistener-vcr/zipball/aa276316fbfd6be5919a7a351bde0beb3d332fab",
+                "reference": "aa276316fbfd6be5919a7a351bde0beb3d332fab",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1",
                 "php-vcr/php-vcr": "^1.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.0"
+                "phpunit/phpunit": "^7"
             },
             "type": "library",
             "autoload": {
@@ -712,9 +711,9 @@
             "description": "Integrates PHPUnit with PHP-VCR.",
             "support": {
                 "issues": "https://github.com/php-vcr/phpunit-testlistener-vcr/issues",
-                "source": "https://github.com/php-vcr/phpunit-testlistener-vcr/tree/master"
+                "source": "https://github.com/php-vcr/phpunit-testlistener-vcr/tree/3.1"
             },
-            "time": "2018-07-06T08:53:21+00:00"
+            "time": "2018-06-22T07:52:39+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2692,7 +2691,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2"
+        "php": "^7.2|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

@@ -227,7 +227,7 @@
         "files": [ "src/errors.php" ]
     },
     "require": {
-        "php": "^7.2",
+        "php": "^7.2|^8.0",
         "kornrunner/solidity": "~0",
         "kornrunner/ethereum-util": "~0"
     },
