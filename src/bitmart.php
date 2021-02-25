@@ -299,6 +299,7 @@ class bitmart extends Exchange {
             ),
             'commonCurrencies' => array(
                 'COT' => 'Community Coin',
+                'CPC' => 'CPCoin',
                 'ONE' => 'Menlo One',
                 'PLA' => 'Plair',
             ),

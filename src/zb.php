@@ -128,6 +128,11 @@ class zb extends Exchange {
                         'getCnyWithdrawRecord',
                         'getCnyChargeRecord',
                         'withdraw',
+                        // sub accounts
+                        'addSubUser',
+                        'getSubUserList',
+                        'doTransferFunds',
+                        'createSubUserKey',
                         // leverage API
                         'getLeverAssetsInfo',
                         'getLeverBills',
