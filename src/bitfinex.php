@@ -16,7 +16,6 @@ class bitfinex extends Exchange {
             'countries' => array( 'VG' ),
             'version' => 'v1',
             'rateLimit' => 1500,
-            'certified' => true,
             'pro' => true,
             // new metainfo interface
             'has' => array(
