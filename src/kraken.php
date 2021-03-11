@@ -1834,6 +1834,9 @@ class kraken extends Exchange {
         if (mb_strpos($body, 'Rate limit exceeded') !== false) {
             throw new RateLimitExceeded($this->id . ' ' . $body);
         }
+        if ($response === null) {
+            return;
+        }
         if ($body[0] === '{') {
             if (gettype($response) !== 'string') {
                 if (is_array($response) && array_key_exists('error', $response)) {

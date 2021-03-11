@@ -8,6 +8,7 @@ use \ccxt\ArgumentsRequired;
 use \ccxt\InsufficientFunds;
 use \ccxt\InvalidOrder;
 use \ccxt\OrderNotFound;
+use \ccxt\NotSupported;
 
 class bitfinex2 extends bitfinex {
 
@@ -587,6 +588,10 @@ class bitfinex2 extends bitfinex {
             }
         }
         return $this->parse_balance($result);
+    }
+
+    public function fetch_order($id, $symbol = null, $params = array ()) {
+        throw new NotSupported($this->id . ' fetchOrder is not implemented yet');
     }
 
     public function fetch_order_book($symbol, $limit = null, $params = array ()) {
