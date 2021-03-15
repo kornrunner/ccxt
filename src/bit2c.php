@@ -278,12 +278,6 @@ class bit2c extends Exchange {
         $timestamp = $this->safe_integer($order, 'created');
         $price = $this->safe_float($order, 'price');
         $amount = $this->safe_float($order, 'amount');
-        $cost = null;
-        if ($price !== null) {
-            if ($amount !== null) {
-                $cost = $price * $amount;
-            }
-        }
         $symbol = null;
         if ($market !== null) {
             $symbol = $market['symbol'];
@@ -296,7 +290,7 @@ class bit2c extends Exchange {
         }
         $id = $this->safe_string($order, 'id');
         $status = $this->safe_string($order, 'status');
-        return array(
+        return $this->safe_order(array(
             'id' => $id,
             'clientOrderId' => null,
             'timestamp' => $timestamp,
@@ -313,12 +307,12 @@ class bit2c extends Exchange {
             'amount' => $amount,
             'filled' => null,
             'remaining' => null,
-            'cost' => $cost,
+            'cost' => null,
             'trades' => null,
             'fee' => null,
             'info' => $order,
             'average' => null,
-        );
+        ));
     }
 
     public function fetch_my_trades($symbol = null, $since = null, $limit = null, $params = array ()) {

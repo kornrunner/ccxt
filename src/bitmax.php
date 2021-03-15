@@ -995,20 +995,6 @@ class bitmax extends Exchange {
         $amount = $this->safe_float($order, 'orderQty');
         $average = $this->safe_float($order, 'avgPx');
         $filled = $this->safe_float_2($order, 'cumFilledQty', 'cumQty');
-        $remaining = null;
-        if ($filled !== null) {
-            if ($filled === 0) {
-                $timestamp = $lastTradeTimestamp;
-                $lastTradeTimestamp = null;
-            }
-            if ($amount !== null) {
-                $remaining = max (0, $amount - $filled);
-            }
-        }
-        $cost = null;
-        if (($average !== null) && ($filled !== null)) {
-            $cost = $average * $filled;
-        }
         $id = $this->safe_string($order, 'orderId');
         $clientOrderId = $this->safe_string($order, 'id');
         if ($clientOrderId !== null) {
@@ -1029,7 +1015,7 @@ class bitmax extends Exchange {
             );
         }
         $stopPrice = $this->safe_float($order, 'stopPrice');
-        return array(
+        return $this->safe_order(array(
             'info' => $order,
             'id' => $id,
             'clientOrderId' => null,
@@ -1044,14 +1030,14 @@ class bitmax extends Exchange {
             'price' => $price,
             'stopPrice' => $stopPrice,
             'amount' => $amount,
-            'cost' => $cost,
+            'cost' => null,
             'average' => $average,
             'filled' => $filled,
-            'remaining' => $remaining,
+            'remaining' => null,
             'status' => $status,
             'fee' => $fee,
             'trades' => null,
-        );
+        ));
     }
 
     public function create_order($symbol, $type, $side, $amount, $price = null, $params = array ()) {
