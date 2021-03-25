@@ -506,14 +506,6 @@ class gemini extends Exchange {
         );
     }
 
-    public function parse_tickers($tickers, $symbols = null) {
-        $result = array();
-        for ($i = 0; $i < count($tickers); $i++) {
-            $result[] = $this->parse_ticker($tickers[$i]);
-        }
-        return $this->filter_by_array($result, 'symbol', $symbols);
-    }
-
     public function fetch_tickers($symbols = null, $params = array ()) {
         $this->load_markets();
         $response = $this->publicGetV1Pricefeed ($params);
@@ -638,12 +630,6 @@ class gemini extends Exchange {
         }
         $price = $this->safe_float($order, 'price');
         $average = $this->safe_float($order, 'avg_execution_price');
-        $cost = null;
-        if ($filled !== null) {
-            if ($average !== null) {
-                $cost = $filled * $average;
-            }
-        }
         $type = $this->safe_string($order, 'type');
         if ($type === 'exchange limit') {
             $type = 'limit';
@@ -658,7 +644,7 @@ class gemini extends Exchange {
         $id = $this->safe_string($order, 'order_id');
         $side = $this->safe_string_lower($order, 'side');
         $clientOrderId = $this->safe_string($order, 'client_order_id');
-        return array(
+        return $this->safe_order(array(
             'id' => $id,
             'clientOrderId' => $clientOrderId,
             'info' => $order,
@@ -674,13 +660,13 @@ class gemini extends Exchange {
             'price' => $price,
             'stopPrice' => null,
             'average' => $average,
-            'cost' => $cost,
+            'cost' => null,
             'amount' => $amount,
             'filled' => $filled,
             'remaining' => $remaining,
             'fee' => $fee,
             'trades' => null,
-        );
+        ));
     }
 
     public function fetch_order($id, $symbol = null, $params = array ()) {

@@ -672,9 +672,6 @@ class gateio extends Exchange {
         $filled = $this->safe_float($order, 'filledAmount');
         // In the $order $status response, this field has a different name.
         $remaining = $this->safe_float_2($order, 'leftAmount', 'left');
-        if ($remaining === null) {
-            $remaining = $amount - $filled;
-        }
         $feeCost = $this->safe_float($order, 'feeValue');
         $feeCurrencyId = $this->safe_string($order, 'feeCurrency');
         $feeCurrencyCode = $this->safe_currency_code($feeCurrencyId);
@@ -682,7 +679,7 @@ class gateio extends Exchange {
         if ($feeRate !== null) {
             $feeRate = $feeRate / 100;
         }
-        return array(
+        return $this->safe_order(array(
             'id' => $id,
             'clientOrderId' => null,
             'datetime' => $this->iso8601($timestamp),
@@ -708,7 +705,7 @@ class gateio extends Exchange {
                 'rate' => $feeRate,
             ),
             'info' => $order,
-        );
+        ));
     }
 
     public function create_order($symbol, $type, $side, $amount, $price = null, $params = array ()) {

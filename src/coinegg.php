@@ -341,12 +341,6 @@ class coinegg extends Exchange {
         $price = $this->safe_float($order, 'price');
         $amount = $this->safe_float($order, 'amount_original');
         $remaining = $this->safe_float($order, 'amount_outstanding');
-        $filled = null;
-        if ($amount !== null) {
-            if ($remaining !== null) {
-                $filled = $amount - $remaining;
-            }
-        }
         $status = $this->safe_string($order, 'status');
         if ($status === 'cancelled') {
             $status = 'canceled';
@@ -357,7 +351,7 @@ class coinegg extends Exchange {
         $type = 'limit';
         $side = $this->safe_string($order, 'type');
         $id = $this->safe_string($order, 'id');
-        return array(
+        return $this->safe_order(array(
             'id' => $id,
             'clientOrderId' => null,
             'datetime' => $this->iso8601($timestamp),
@@ -373,13 +367,13 @@ class coinegg extends Exchange {
             'stopPrice' => null,
             'cost' => null,
             'amount' => $amount,
-            'filled' => $filled,
+            'filled' => null,
             'remaining' => $remaining,
             'trades' => null,
             'fee' => null,
             'info' => $info,
             'average' => null,
-        );
+        ));
     }
 
     public function create_order($symbol, $type, $side, $amount, $price = null, $params = array ()) {
