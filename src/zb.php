@@ -92,8 +92,8 @@ class zb extends Exchange {
             'urls' => array(
                 'logo' => 'https://user-images.githubusercontent.com/1294454/32859187-cd5214f0-ca5e-11e7-967d-96568e2e2bd1.jpg',
                 'api' => array(
-                    'public' => 'http://api.zb.cn/data', // no https for public API
-                    'private' => 'https://trade.zb.cn/api',
+                    'public' => 'https://api.zb.today/data',
+                    'private' => 'https://trade.zb.today/api',
                 ),
                 'www' => 'https://www.zb.com',
                 'doc' => 'https://www.zb.com/i/developer',
@@ -281,8 +281,8 @@ class zb extends Exchange {
             $account = $this->account();
             $currencyId = $this->safe_string($balance, 'key');
             $code = $this->safe_currency_code($currencyId);
-            $account['free'] = $this->safe_float($balance, 'available');
-            $account['used'] = $this->safe_float($balance, 'freez');
+            $account['free'] = $this->safe_number($balance, 'available');
+            $account['used'] = $this->safe_number($balance, 'freez');
             $result[$code] = $account;
         }
         return $this->parse_balance($result);
@@ -440,16 +440,16 @@ class zb extends Exchange {
         if ($market !== null) {
             $symbol = $market['symbol'];
         }
-        $last = $this->safe_float($ticker, 'last');
+        $last = $this->safe_number($ticker, 'last');
         return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
-            'high' => $this->safe_float($ticker, 'high'),
-            'low' => $this->safe_float($ticker, 'low'),
-            'bid' => $this->safe_float($ticker, 'buy'),
+            'high' => $this->safe_number($ticker, 'high'),
+            'low' => $this->safe_number($ticker, 'low'),
+            'bid' => $this->safe_number($ticker, 'buy'),
             'bidVolume' => null,
-            'ask' => $this->safe_float($ticker, 'sell'),
+            'ask' => $this->safe_number($ticker, 'sell'),
             'askVolume' => null,
             'vwap' => null,
             'open' => null,
@@ -459,7 +459,7 @@ class zb extends Exchange {
             'change' => null,
             'percentage' => null,
             'average' => null,
-            'baseVolume' => $this->safe_float($ticker, 'vol'),
+            'baseVolume' => $this->safe_number($ticker, 'vol'),
             'quoteVolume' => null,
             'info' => $ticker,
         );
@@ -468,11 +468,11 @@ class zb extends Exchange {
     public function parse_ohlcv($ohlcv, $market = null) {
         return array(
             $this->safe_integer($ohlcv, 0),
-            $this->safe_float($ohlcv, 1),
-            $this->safe_float($ohlcv, 2),
-            $this->safe_float($ohlcv, 3),
-            $this->safe_float($ohlcv, 4),
-            $this->safe_float($ohlcv, 5),
+            $this->safe_number($ohlcv, 1),
+            $this->safe_number($ohlcv, 2),
+            $this->safe_number($ohlcv, 3),
+            $this->safe_number($ohlcv, 4),
+            $this->safe_number($ohlcv, 5),
         );
     }
 
@@ -500,14 +500,12 @@ class zb extends Exchange {
         $side = $this->safe_string($trade, 'trade_type');
         $side = ($side === 'bid') ? 'buy' : 'sell';
         $id = $this->safe_string($trade, 'tid');
-        $price = $this->safe_float($trade, 'price');
-        $amount = $this->safe_float($trade, 'amount');
-        $cost = null;
-        if ($price !== null) {
-            if ($amount !== null) {
-                $cost = $price * $amount;
-            }
-        }
+        $priceString = $this->safe_string($trade, 'price');
+        $amountString = $this->safe_string($trade, 'amount');
+        $costString = Precise::string_mul($priceString, $amountString);
+        $price = $this->parse_number($priceString);
+        $amount = $this->parse_number($amountString);
+        $cost = $this->parse_number($costString);
         $symbol = null;
         if ($market !== null) {
             $symbol = $market['symbol'];
@@ -686,13 +684,13 @@ class zb extends Exchange {
         $timestamp = $this->safe_integer($order, 'trade_date');
         $marketId = $this->safe_string($order, 'currency');
         $symbol = $this->safe_symbol($marketId, $market, '_');
-        $price = $this->safe_float($order, 'price');
-        $filled = $this->safe_float($order, 'trade_amount');
-        $amount = $this->safe_float($order, 'total_amount');
-        $cost = $this->safe_float($order, 'trade_money');
+        $price = $this->safe_number($order, 'price');
+        $filled = $this->safe_number($order, 'trade_amount');
+        $amount = $this->safe_number($order, 'total_amount');
+        $cost = $this->safe_number($order, 'trade_money');
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $id = $this->safe_string($order, 'id');
-        $feeCost = $this->safe_float($order, 'fees');
+        $feeCost = $this->safe_number($order, 'fees');
         $fee = null;
         if ($feeCost !== null) {
             $feeCurrency = null;
@@ -792,7 +790,7 @@ class zb extends Exchange {
         //
         $id = $this->safe_string($transaction, 'id');
         $txid = $this->safe_string($transaction, 'hash');
-        $amount = $this->safe_float($transaction, 'amount');
+        $amount = $this->safe_number($transaction, 'amount');
         $timestamp = $this->parse8601($this->safe_string($transaction, 'submit_time'));
         $timestamp = $this->safe_integer($transaction, 'submitTime', $timestamp);
         $address = $this->safe_string_2($transaction, 'toAddress', 'address');
@@ -812,7 +810,7 @@ class zb extends Exchange {
         }
         $status = $this->parse_transaction_status($this->safe_string($transaction, 'status'));
         $fee = null;
-        $feeCost = $this->safe_float($transaction, 'fees');
+        $feeCost = $this->safe_number($transaction, 'fees');
         if ($feeCost !== null) {
             $fee = array(
                 'cost' => $feeCost,
@@ -845,7 +843,7 @@ class zb extends Exchange {
         if ($password === null) {
             throw new ArgumentsRequired($this->id . ' withdraw() requires exchange.password or a safePwd parameter');
         }
-        $fees = $this->safe_float($params, 'fees');
+        $fees = $this->safe_number($params, 'fees');
         if ($fees === null) {
             throw new ArgumentsRequired($this->id . ' withdraw() requires a $fees parameter');
         }

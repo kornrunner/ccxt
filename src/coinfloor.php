@@ -106,14 +106,14 @@ class coinfloor extends Exchange {
         $baseIdLower = $this->safe_string_lower($market, 'baseId');
         $quoteIdLower = $this->safe_string_lower($market, 'quoteId');
         $result[$base] = array(
-            'free' => $this->safe_float($response, $baseIdLower . '_available'),
-            'used' => $this->safe_float($response, $baseIdLower . '_reserved'),
-            'total' => $this->safe_float($response, $baseIdLower . '_balance'),
+            'free' => $this->safe_number($response, $baseIdLower . '_available'),
+            'used' => $this->safe_number($response, $baseIdLower . '_reserved'),
+            'total' => $this->safe_number($response, $baseIdLower . '_balance'),
         );
         $result[$quote] = array(
-            'free' => $this->safe_float($response, $quoteIdLower . '_available'),
-            'used' => $this->safe_float($response, $quoteIdLower . '_reserved'),
-            'total' => $this->safe_float($response, $quoteIdLower . '_balance'),
+            'free' => $this->safe_number($response, $quoteIdLower . '_available'),
+            'used' => $this->safe_number($response, $quoteIdLower . '_reserved'),
+            'total' => $this->safe_number($response, $quoteIdLower . '_balance'),
         );
         return $this->parse_balance($result);
     }
@@ -134,22 +134,22 @@ class coinfloor extends Exchange {
         if ($market !== null) {
             $symbol = $market['symbol'];
         }
-        $vwap = $this->safe_float($ticker, 'vwap');
-        $baseVolume = $this->safe_float($ticker, 'volume');
+        $vwap = $this->safe_number($ticker, 'vwap');
+        $baseVolume = $this->safe_number($ticker, 'volume');
         $quoteVolume = null;
         if ($vwap !== null) {
             $quoteVolume = $baseVolume * $vwap;
         }
-        $last = $this->safe_float($ticker, 'last');
+        $last = $this->safe_number($ticker, 'last');
         return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
-            'high' => $this->safe_float($ticker, 'high'),
-            'low' => $this->safe_float($ticker, 'low'),
-            'bid' => $this->safe_float($ticker, 'bid'),
+            'high' => $this->safe_number($ticker, 'high'),
+            'low' => $this->safe_number($ticker, 'low'),
+            'bid' => $this->safe_number($ticker, 'bid'),
             'bidVolume' => null,
-            'ask' => $this->safe_float($ticker, 'ask'),
+            'ask' => $this->safe_number($ticker, 'ask'),
             'askVolume' => null,
             'vwap' => $vwap,
             'open' => null,
@@ -178,8 +178,8 @@ class coinfloor extends Exchange {
     public function parse_trade($trade, $market = null) {
         $timestamp = $this->safe_timestamp($trade, 'date');
         $id = $this->safe_string($trade, 'tid');
-        $price = $this->safe_float($trade, 'price');
-        $amount = $this->safe_float($trade, 'amount');
+        $price = $this->safe_number($trade, 'price');
+        $amount = $this->safe_number($trade, 'amount');
         $cost = null;
         if ($price !== null) {
             if ($amount !== null) {
@@ -303,8 +303,8 @@ class coinfloor extends Exchange {
                 $parts = explode('_', $key);
                 $numParts = is_array($parts) ? count($parts) : 0;
                 if ($numParts === 2) {
-                    $tmpBaseAmount = $this->safe_float($item, $parts[0]);
-                    $tmpQuoteAmount = $this->safe_float($item, $parts[1]);
+                    $tmpBaseAmount = $this->safe_number($item, $parts[0]);
+                    $tmpQuoteAmount = $this->safe_number($item, $parts[1]);
                     if ($tmpBaseAmount !== null && $tmpQuoteAmount !== null) {
                         $baseId = $parts[0];
                         $quoteId = $parts[1];
@@ -320,7 +320,7 @@ class coinfloor extends Exchange {
         $referenceId = $this->safe_string($item, 'id');
         $timestamp = $this->parse8601($this->safe_string($item, 'datetime'));
         $fee = null;
-        $feeCost = $this->safe_float($item, 'fee');
+        $feeCost = $this->safe_number($item, 'fee');
         $result = array(
             'id' => null,
             'timestamp' => $timestamp,
@@ -424,8 +424,8 @@ class coinfloor extends Exchange {
             'datetime' => $this->iso8601($timestamp),
             'timestamp' => $timestamp,
             'type' => $type,
-            'price' => $this->safe_float($response, 'price'),
-            'remaining' => $this->safe_float($response, 'amount'),
+            'price' => $this->safe_number($response, 'price'),
+            'remaining' => $this->safe_number($response, 'amount'),
             'info' => $response,
         );
     }
@@ -450,8 +450,8 @@ class coinfloor extends Exchange {
 
     public function parse_order($order, $market = null) {
         $timestamp = $this->parse8601($this->safe_string($order, 'datetime'));
-        $price = $this->safe_float($order, 'price');
-        $amount = $this->safe_float($order, 'amount');
+        $price = $this->safe_number($order, 'price');
+        $amount = $this->safe_number($order, 'amount');
         $side = null;
         $status = $this->safe_string($order, 'status');
         $rawType = $this->safe_string($order, 'type');

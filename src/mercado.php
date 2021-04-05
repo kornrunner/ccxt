@@ -161,7 +161,7 @@ class mercado extends Exchange {
                 'precision' => $precision,
                 'limits' => array(
                     'amount' => array(
-                        'min' => $this->safe_float($amountLimits, $baseId),
+                        'min' => $this->safe_number($amountLimits, $baseId),
                         'max' => null,
                     ),
                     'price' => array(
@@ -197,16 +197,16 @@ class mercado extends Exchange {
         $response = $this->publicGetCoinTicker (array_merge($request, $params));
         $ticker = $this->safe_value($response, 'ticker', array());
         $timestamp = $this->safe_timestamp($ticker, 'date');
-        $last = $this->safe_float($ticker, 'last');
+        $last = $this->safe_number($ticker, 'last');
         return array(
             'symbol' => $symbol,
             'timestamp' => $timestamp,
             'datetime' => $this->iso8601($timestamp),
-            'high' => $this->safe_float($ticker, 'high'),
-            'low' => $this->safe_float($ticker, 'low'),
-            'bid' => $this->safe_float($ticker, 'buy'),
+            'high' => $this->safe_number($ticker, 'high'),
+            'low' => $this->safe_number($ticker, 'low'),
+            'bid' => $this->safe_number($ticker, 'buy'),
             'bidVolume' => null,
-            'ask' => $this->safe_float($ticker, 'sell'),
+            'ask' => $this->safe_number($ticker, 'sell'),
             'askVolume' => null,
             'vwap' => null,
             'open' => null,
@@ -216,7 +216,7 @@ class mercado extends Exchange {
             'change' => null,
             'percentage' => null,
             'average' => null,
-            'baseVolume' => $this->safe_float($ticker, 'vol'),
+            'baseVolume' => $this->safe_number($ticker, 'vol'),
             'quoteVolume' => null,
             'info' => $ticker,
         );
@@ -231,15 +231,15 @@ class mercado extends Exchange {
         $id = $this->safe_string_2($trade, 'tid', 'operation_id');
         $type = null;
         $side = $this->safe_string($trade, 'type');
-        $price = $this->safe_float($trade, 'price');
-        $amount = $this->safe_float_2($trade, 'amount', 'quantity');
+        $price = $this->safe_number($trade, 'price');
+        $amount = $this->safe_number_2($trade, 'amount', 'quantity');
         $cost = null;
         if ($price !== null) {
             if ($amount !== null) {
                 $cost = $price * $amount;
             }
         }
-        $feeCost = $this->safe_float($trade, 'fee_rate');
+        $feeCost = $this->safe_number($trade, 'fee_rate');
         $fee = null;
         if ($feeCost !== null) {
             $fee = array(
@@ -296,8 +296,8 @@ class mercado extends Exchange {
             if (is_array($balances) && array_key_exists($currencyId, $balances)) {
                 $balance = $this->safe_value($balances, $currencyId, array());
                 $account = $this->account();
-                $account['free'] = $this->safe_float($balance, 'available');
-                $account['total'] = $this->safe_float($balance, 'total');
+                $account['free'] = $this->safe_number($balance, 'available');
+                $account['total'] = $this->safe_number($balance, 'total');
                 $result[$code] = $account;
             }
         }
@@ -386,7 +386,7 @@ class mercado extends Exchange {
         //     {
         //         "order_id" => 4,
         //         "coin_pair" => "BRLBTC",
-        //         "order_type" => 1,
+        //         "$order_type" => 1,
         //         "$status" => 2,
         //         "has_fills" => true,
         //         "quantity" => "2.00000000",
@@ -408,32 +408,31 @@ class mercado extends Exchange {
         //     }
         //
         $id = $this->safe_string($order, 'order_id');
+        $order_type = $this->safe_string($order, 'order_type');
         $side = null;
         if (is_array($order) && array_key_exists('order_type', $order)) {
-            $side = ($order['order_type'] === 1) ? 'buy' : 'sell';
+            $side = ($order_type === '1') ? 'buy' : 'sell';
         }
         $status = $this->parse_order_status($this->safe_string($order, 'status'));
         $marketId = $this->safe_string($order, 'coin_pair');
         $market = $this->safe_market($marketId, $market);
         $timestamp = $this->safe_timestamp($order, 'created_timestamp');
         $fee = array(
-            'cost' => $this->safe_float($order, 'fee'),
+            'cost' => $this->safe_number($order, 'fee'),
             'currency' => $market['quote'],
         );
-        $price = $this->safe_float($order, 'limit_price');
-        // $price = $this->safe_float($order, 'executed_price_avg', $price);
-        $average = $this->safe_float($order, 'executed_price_avg');
-        $amount = $this->safe_float($order, 'quantity');
-        $filled = $this->safe_float($order, 'executed_quantity');
-        $remaining = $amount - $filled;
-        $cost = $filled * $average;
+        $price = $this->safe_number($order, 'limit_price');
+        // $price = $this->safe_number($order, 'executed_price_avg', $price);
+        $average = $this->safe_number($order, 'executed_price_avg');
+        $amount = $this->safe_number($order, 'quantity');
+        $filled = $this->safe_number($order, 'executed_quantity');
         $lastTradeTimestamp = $this->safe_timestamp($order, 'updated_timestamp');
         $rawTrades = $this->safe_value($order, 'operations', array());
         $trades = $this->parse_trades($rawTrades, $market, null, null, array(
             'side' => $side,
             'order' => $id,
         ));
-        return array(
+        return $this->safe_order(array(
             'info' => $order,
             'id' => $id,
             'clientOrderId' => null,
@@ -447,15 +446,15 @@ class mercado extends Exchange {
             'side' => $side,
             'price' => $price,
             'stopPrice' => null,
-            'cost' => $cost,
+            'cost' => null,
             'average' => $average,
             'amount' => $amount,
             'filled' => $filled,
-            'remaining' => $remaining,
+            'remaining' => null,
             'status' => $status,
             'fee' => $fee,
             'trades' => $trades,
-        );
+        ));
     }
 
     public function fetch_order($id, $symbol = null, $params = array ()) {
@@ -513,11 +512,11 @@ class mercado extends Exchange {
     public function parse_ohlcv($ohlcv, $market = null) {
         return array(
             $this->safe_timestamp($ohlcv, 'timestamp'),
-            $this->safe_float($ohlcv, 'open'),
-            $this->safe_float($ohlcv, 'high'),
-            $this->safe_float($ohlcv, 'low'),
-            $this->safe_float($ohlcv, 'close'),
-            $this->safe_float($ohlcv, 'volume'),
+            $this->safe_number($ohlcv, 'open'),
+            $this->safe_number($ohlcv, 'high'),
+            $this->safe_number($ohlcv, 'low'),
+            $this->safe_number($ohlcv, 'close'),
+            $this->safe_number($ohlcv, 'volume'),
         );
     }
 
